@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Environment & Secrets
+.env
+*.key
+config/secrets.yaml
+
+# Runtime Data
+data/meta_cache/
+data/game_logs/
+
+# Test artifacts
+tests/test_data/*.png
+tests/test_data/*.jpg
+
+# Logs
+*.log
+logs/
