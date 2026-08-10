@@ -3,9 +3,14 @@
 > **Repository**: [github.com/minhnhb1304/TFT_Agent](https://github.com/minhnhb1304/TFT_Agent)  
 > **Author**: minhnhb1304  
 > **Created**: 2026-08-06  
-> **Status**: 📋 Planning  
+> **Updated**: 2026-08-10  
+> **Status**: 📋 Planning (Spec Finalized)  
 > **Language**: Python 3.11+  
-> **Platform**: Windows (PC — League Client)
+> **Platform**: Windows (PC — League Client)  
+> **Target Set**: Set 18 — Enchanted Wilds (PBE data)  
+> **Game Language**: Tiếng Việt  
+> **LLM Provider**: Gemini Flash (Google AI Studio — free tier)  
+> **Resolution**: 1920×1080
 
 ---
 
@@ -20,7 +25,9 @@ Xây dựng một **TFT Advisory Agent** — overlay hiển thị tư vấn real
 | Overlay tư vấn (gợi ý đội hình, item, vị trí, augment) | Auto-play (bot tự chơi hộ) |
 | Đọc trạng thái game qua screen capture + CV | Đọc game memory (vi phạm Vanguard) |
 | Kết hợp meta data từ các nguồn cộng đồng | Tự động điều khiển mouse/keyboard |
-| Suy luận AI cấp cao (LLM reasoning) | Inject code vào game process |
+| Suy luận AI cấp cao (LLM reasoning — Gemini Flash) | Inject code vào game process |
+| Gemini Vision multimodal (nhận diện augment từ ảnh) | Train custom model (không cần) |
+| Hỗ trợ game tiếng Việt | Phụ thuộc ngôn ngữ cho icon matching |
 
 ### 1.3 Nguyên Tắc An Toàn (Riot Vanguard)
 
@@ -505,7 +512,7 @@ WS_EX_NOACTIVATE   = 0x08000000  # Don't steal focus
 | Computer Vision | **OpenCV 4.x** | Template matching, image processing |
 | OCR | **EasyOCR** | Accuracy tốt hơn Tesseract với game fonts |
 | Overlay UI | **PyQt6** | Best transparency/click-through, rich widgets |
-| LLM | **OpenAI / Anthropic API** | Complex situational reasoning |
+| LLM | **Gemini Flash** (google-generativeai) | Free tier, multimodal (text + vision), low latency |
 | Data Scraping | **BeautifulSoup + requests** | Meta data từ community sites |
 | Config | **PyYAML** | Human-readable configuration |
 | Logging | **loguru** | Structured logging, better than stdlib |
@@ -623,9 +630,8 @@ Pillow>=10.0.0
 # UI - Overlay
 PyQt6>=6.5.0
 
-# AI - LLM Reasoning
-openai>=1.0.0
-anthropic>=0.20.0
+# AI - LLM Reasoning (Gemini Flash — free tier)
+google-generativeai>=0.8.0
 
 # Data - Scraping & API
 requests>=2.31.0
@@ -698,29 +704,105 @@ pywin32>=306
 
 ## 8. TFT Set Information
 
-### Current Set: Set 17 — Space Gods (Mid-2026)
-### Upcoming: Set 18 — Enchanted Wilds (Aug 26, 2026)
+### Target Set: Set 18 — Enchanted Wilds
+
+> **Quyết định**: Chỉ focus vào **Set 18**. Bỏ qua Set 17.
+> Set 18 đã xuất hiện trên **PBE server** — data chưa hoàn chỉnh nhưng đã có bộ khung.
 
 > **Important**: Set 18 sẽ migrate từ Hextech Engine sang **Unreal Engine**. 
 > Điều này có thể thay đổi UI layout/assets, cần cập nhật ROI coordinates và templates.
+> → Cần capture fresh screenshots từ PBE để calibrate ROIs.
 
 ### Data Sources:
 - **Champion/Item/Trait data**: [CommunityDragon](https://raw.communitydragon.org/) — raw JSON, updated every patch
 - **Asset images**: [Riot Data Dragon](https://ddragon.leagueoflegends.com/) — official CDN
-- **Meta statistics**: MetaTFT, lolchess.gg, TFTactics (web scraping)
-- **Match history**: [Riot TFT API](https://developer.riotgames.com/) — `tft-match-v1`
+- **PBE data**: Thu thập từ PBE server (Set 18 preview)
+- **Meta statistics**: MetaTFT, lolchess.gg, TFTactics (web scraping) — sẽ có data sau khi Set 18 release
+- **Match history**: [Riot TFT API](https://developer.riotgames.com/) — `tft-match-v1` (chưa cần, phase sau)
 
 ---
 
-## 9. Câu Hỏi Mở (Cần Quyết Định)
+## 9. Quyết Định Thiết Kế (Đã Thảo Luận 2026-08-10)
 
-| # | Câu hỏi | Status |
+| # | Câu hỏi | Quyết định |
 |---|---|---|
-| 1 | Resolution chơi game? (1080p / 1440p / 4K) | ❓ Pending |
-| 2 | LLM Provider? (OpenAI GPT / Anthropic Claude / cả hai) | ❓ Pending |
-| 3 | Riot API Key đã đăng ký chưa? | ❓ Pending |
-| 4 | Feature ưu tiên đầu tiên? (econ / comp / item) | ❓ Pending |
-| 5 | Overwolf SDK có muốn tích hợp không? | ❓ Pending |
+| 1 | Resolution chơi game? | ✅ **1920×1080 (1080p)** |
+| 2 | LLM Provider? | ✅ **Gemini Flash** (google-generativeai, free tier) |
+| 3 | Riot API Key? | ⏳ Chưa cần — focus screen capture trước |
+| 4 | Feature ưu tiên? | ✅ **Augment Advisor** (core) → Comp Selector → Economy |
+| 5 | Overwolf SDK? | 🔍 Khảo sát thêm trước khi quyết định |
+| 6 | Target Set? | ✅ **Set 18 only** (PBE data) |
+| 7 | Game language? | ✅ **Tiếng Việt** (hybrid: icon matching + Gemini Vision) |
+| 8 | Model training? | ✅ **Không cần** — prompt engineering + context injection |
+
+### 9.1 Chiến Lược LLM — Prompt Engineering (Không Training)
+
+> **Quyết định**: Không train/fine-tune model. Sử dụng prompt engineering với Gemini Flash.
+
+**Approach:**
+- Viết system prompt mô tả expertise TFT Challenger-level
+- Mỗi lần gọi API, cung cấp full context: game state + meta data + augment info
+- Output format: structured JSON để overlay parse được
+- Chi phí: **~$0** (Gemini Flash free tier: 15 RPM, 1M tokens/day)
+
+```python
+# Ví dụ API call
+import google.generativeai as genai
+
+model = genai.GenerativeModel('gemini-1.5-flash')
+response = model.generate_content([
+    SYSTEM_PROMPT,           # TFT Coach expertise
+    game_state_context,      # Current board, items, gold, HP...
+    augment_screenshot,      # PIL Image (Gemini Vision)
+    "Phân tích 3 augment và recommend cho game state hiện tại."
+])
+```
+
+### 9.2 Chiến Lược Ngôn Ngữ — Tiếng Việt (Hybrid)
+
+| Thành phần | Phương pháp | Phụ thuộc ngôn ngữ? |
+|---|---|---|
+| Champion recognition | **Template matching** (icon images) | ❌ Không |
+| Item recognition | **Template matching** (icon images) | ❌ Không |
+| Gold / HP / Level / Stage | **OCR** allowlist `0123456789-` | ❌ Không |
+| Augment recognition | **Dual approach** (xem 9.3) | ⚠️ Có — nhưng đã xử lý |
+| Trait names | **Template matching** (trait icons) | ❌ Không |
+
+> 💡 **Kết luận**: ~80% recognition pipeline **không phụ thuộc ngôn ngữ** nhờ template matching.
+> Chỉ augment recognition cần xử lý tiếng Việt riêng.
+
+### 9.3 Augment Recognition — Dual Approach
+
+> **Quyết định**: Lưu cả 2 hướng, thực tế triển khai sẽ đánh giá hướng nào hợp lý hơn.
+
+#### Approach A: Gemini Vision (Multimodal)
+```
+Screenshot augment panel → Gửi ảnh cho Gemini Flash → Nhận analysis
+```
+| Ưu điểm | Nhược điểm |
+|---|---|
+| Không cần OCR tiếng Việt | Latency ~2-3s |
+| Gemini đọc cả icon + text + description | Phụ thuộc internet |
+| Reasoning luôn trong 1 API call | Free tier có rate limit (15 RPM) |
+| Không cần maintain augment database | Có thể hallucinate tên augment |
+
+#### Approach B: OCR + Template Matching Truyền Thống
+```
+Screenshot → Template match augment icons → OCR text (EasyOCR vi) → Fuzzy match vào DB → Lookup stats → Rule-based recommend
+```
+| Ưu điểm | Nhược điểm |
+|---|---|
+| Offline, không cần internet | Cần maintain VN↔EN name mapping |
+| Nhanh (<100ms) | OCR tiếng Việt accuracy thấp hơn |
+| Deterministic, không hallucinate | Cần augment icon templates mỗi set |
+| Không tốn API quota | Không có deep reasoning (chỉ stats-based) |
+
+#### Hybrid Strategy (Khả năng cao sẽ dùng)
+```
+Primary: Template matching augment icons → identify augment names
+Enhanced: Gửi context (identified augments + game state) cho Gemini Flash text API
+Fallback: Nếu template match fail → Gemini Vision trên screenshot
+```
 
 ---
 
