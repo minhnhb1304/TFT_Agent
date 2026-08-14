@@ -20,6 +20,9 @@ env/
 *.swp
 *.swo
 
+# Agent tooling
+.claude/
+
 # OS
 Thumbs.db
 .DS_Store
