@@ -54,8 +54,12 @@ ngoài đều có fixture trong `tests/fixtures/`.
 | Contest score (Phase 7) | ✅ | `contest_analyzer.py` + cờ `enable_scouting` (mặc định **tắt**) |
 | A7 Dữ liệu Set 18 thật | ✅ | `scripts/fetch_locale.py` → `data/cdragon_cache/` (en_us + vi_vn đầy đủ, ~24 MB mỗi bản) |
 | A8 Bảng ánh xạ tên → `apiName` | ✅ | `scripts/build_name_index.py` → `data/name_index.json` (254 augment · 36 trait · 65 champion, cả VI lẫn EN) |
-| A9 Dữ liệu giả lập | ✅ | `data/augment_stats.csv` · `data/meta_comps.json` — xem cảnh báo bên dưới |
+| A9 Stats augment | ⚠️ giả lập | `data/augment_stats.csv` — Riot đã gỡ trường `augments`, xem cảnh báo bên dưới |
 | A10 Hotkey toàn cục | ✅ | `src/utils/hotkeys.py` — `RegisterHotKey` qua Qt, **không** dùng `WH_KEYBOARD_LL` |
+| A11 Nạp key từ `.env` | ✅ | `src/utils/env.py` — tự viết, không thêm dependency; biến môi trường thắng file |
+| A12 Riot API client | ✅ | `src/knowledge/riot_api.py` — rate limit 2 cửa sổ, lọc `tft_set_number`, 42 test offline |
+| A13 Meta comp **đo thật** | ✅ | `scripts/crawl_meta_comps.py` → `data/meta_comps.json` (VN2 hạng cao, kèm `match_id`) |
+| A14 Tinh chỉnh đặc trưng bằng LLM | ✅ | `build_augment_features.py --llm` trên `gemini-3.5-flash-lite` |
 
 **Track B — cần máy có game đang chạy**: capture, calibrate ROI, OCR, đọc `OpponentBoard`, và chạy
 overlay thật. Bắt đầu bằng `tools/probe_environment.py` (chưa viết). Phần quyết định của overlay
@@ -63,25 +67,33 @@ overlay thật. Bắt đầu bằng `tools/probe_environment.py` (chưa viết).
 
 ---
 
-## ⚠️ Dữ liệu giả lập — đọc trước khi trích số
+## ⚠️ Nguồn dữ liệu — đọc trước khi trích số
 
-`data/augment_stats.csv` và `data/meta_comps.json` chứa **số liệu thống kê GIẢ LẬP**.
+Hai file thống kê **không cùng độ tin cậy**. Phải phân biệt khi viết báo cáo.
 
-Không có win-rate augment thật cho Set 18: các trang stats mới cold-start từ 2026-08-26
-([`research/set-data.md`](research/set-data.md)). Thiếu file này thì w₁ trả 0.5 cho cả 254 augment,
-tức **30% ngân sách điểm trở thành hằng số** và dòng ablation *"chỉ w₁"* — dòng quan trọng nhất của
-đồ án (SPEC §12.4) — suy biến thành sắp xếp theo alphabet.
+| File | Nguồn | Dùng được cho báo cáo? |
+|---|---|---|
+| `data/meta_comps.json` | **Đo thật** — `tft-match-v1`, hạng cao VN2, có `match_id` truy ngược | ✅ Có, kèm cỡ mẫu |
+| `data/augment_stats.csv` | **GIẢ LẬP** — `source` = `MOCK-NOT-REAL` | ❌ **Tuyệt đối không** |
 
-Vì thế mỗi con số giả đều **tự khai báo là giả**: cột `source` = `MOCK-NOT-REAL`, và `BaseScorer`
-in thẳng chuỗi đó vào lý do hiển thị trên overlay:
+### Vì sao augment vẫn phải giả lập
+
+Đo trực tiếp bằng key thật ngày **2026-09-01**: participant của `tft-match-v1` ở Set 18
+**không còn trường `augments`**, và cả payload trận đấu không chứa chuỗi `"augment"` nào. Riot đã
+gỡ nó. Đây không phải giới hạn rate limit hay công sức — **đường đó đã đóng**.
+
+Còn lại `units`, `traits`, `placement`, `level` thì nguyên vẹn, nên **đội hình meta đo thật được** —
+và `crawl_meta_comps.py` làm đúng việc đó.
+
+Thiếu `augment_stats.csv` thì w₁ trả 0.5 cho cả 254 augment, tức **30% ngân sách điểm thành hằng số**
+và dòng ablation *"chỉ w₁"* — dòng quan trọng nhất của đồ án (SPEC §12.4) — suy biến thành sắp xếp
+alphabet. Nên file giả lập vẫn cần, nhưng nó **tự khai báo là giả** ở đúng chỗ người dùng nhìn thấy:
 
 ```
 Vị trí trung bình 3.94 (n=553, nguồn: MOCK-NOT-REAL)
 ```
 
-**Tuyệt đối không trích các số này vào báo cáo.** Tên tướng, trait và item trong `meta_comps.json`
-thì **có thật** (lấy từ roster Set 18) — chỉ phần thống kê là giả. Khi có Riot API Key, chạy script
-crawl đè lên đúng hai file đó; không phải sửa một dòng code nào.
+Chi tiết: [`research/set-data.md`](research/set-data.md) · [`research/open-questions.md`](research/open-questions.md)
 
 ---
 
@@ -94,8 +106,12 @@ python scripts/fetch_locale.py
 # Sinh lại các bảng dữ liệu (đều deterministic, chạy lại ra file y hệt)
 python scripts/build_augment_features.py --locale en_us --offline
 python scripts/build_name_index.py
-python scripts/build_mock_stats.py --overwrite
-python scripts/build_mock_comps.py --overwrite
+python scripts/build_mock_stats.py --overwrite      # augment: vẫn phải giả lập
+
+# Cần key (đặt trong .env — xem .env.example)
+python scripts/build_augment_features.py --locale en_us --offline --llm --diff
+python scripts/crawl_meta_comps.py --dry-run        # xem ngân sách request trước
+python scripts/crawl_meta_comps.py --matches 250 --overwrite
 
 # Chạy
 python -m src.decision.augment_advisor                        # xếp hạng 3 augment + lý do

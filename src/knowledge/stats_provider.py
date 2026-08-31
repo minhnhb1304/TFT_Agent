@@ -18,7 +18,7 @@ from __future__ import annotations
 import csv
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Protocol, runtime_checkable
+from typing import Any, Iterable, Protocol, runtime_checkable
 
 # Placement trung binh cua mot augment ngau nhien trong lobby 8 nguoi.
 NEUTRAL_PLACEMENT = 4.5
@@ -136,23 +136,52 @@ class CompositeProvider:
 
 
 class RiotApiProvider:
-    """Tu crawl tft-match-v1 roi tu tinh - bao ve tot nhat truoc hoi dong.
+    """So lieu tu chinh minh crawl tft-match-v1 - bao ve tot nhat truoc hoi dong.
 
-    Chua trien khai: can Riot API key (key ca nhan het han sau 24h) va mot
-    dot crawl dai. Stub nay ton tai de interface hoan chinh va de cho ro rang
-    day la viec CHUA lam, khong phai viec da lam roi hong.
+    Moi nguon khac deu la hop den: OP.GG khong cong bo cach tinh, cac trang
+    stats khong cong bo co mau. Nguon nay thi tung con so truy nguoc duoc den
+    mot tap match_id cu the, luu trong data/augment_stats.meta.json.
+
+    ⚠️ KHONG goi mang trong `get()`. Provider nay doc mot AGGREGATE da tinh
+    san, do scripts/crawl_augment_stats.py sinh ra offline. Dat mot request
+    HTTP len duong quyet dinh 30 giay la vi pham SPEC 3.5.3 - va lam ablation
+    study mat tinh tai lap.
+
+    Duong dung o runtime van la CsvProvider doc file da crawl. Lop nay ton tai
+    de tang crawl co mot implementation dung Protocol, va de test tong hop
+    duoc ma khong qua CSV.
     """
 
     name = "riot-api"
 
-    def __init__(self, api_key: str | None = None) -> None:
-        self.api_key = api_key
+    def __init__(self, stats: dict[str, AugmentStats] | None = None) -> None:
+        self._rows = dict(stats or {})
+
+    @classmethod
+    def from_aggregator(cls, aggregator: Any, source: str) -> "RiotApiProvider":
+        """Dung tu AugmentAggregator sau mot dot crawl.
+
+        Import muon de stats_provider khong keo theo `requests` - Track A phai
+        import duoc ma khong can tang mang.
+        """
+        rows = {
+            row["api_name"]: AugmentStats(
+                api_name=str(row["api_name"]),
+                avg_place=float(row["avg_place"]),
+                top4_rate=float(row["top4_rate"]),
+                win_rate=float(row["win_rate"]),
+                sample_n=int(row["sample_n"]),
+                source=str(row["source"]),
+            )
+            for row in aggregator.rows(source)
+        }
+        return cls(rows)
+
+    def __len__(self) -> int:
+        return len(self._rows)
 
     def get(self, api_name: str) -> AugmentStats | None:
-        raise NotImplementedError(
-            "RiotApiProvider chua trien khai - can key + dot crawl tft-match-v1. "
-            "Dung CsvProvider hoac NullProvider."
-        )
+        return self._rows.get(api_name)
 
 
 class OpggMcpProvider:

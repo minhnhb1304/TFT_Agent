@@ -422,7 +422,7 @@ class AugmentStats:
 |---|---|
 | `NullProvider` | Base = trung tính. **Cho phép chạy toàn hệ thống trước khi có bất kỳ số liệu nào** |
 | `CsvProvider` | Nạp file CSV tự chuẩn bị — mặc định hiện tại |
-| `RiotApiProvider` | Tự crawl `tft-match-v1` rồi tự tính. Bảo vệ tốt nhất trước hội đồng |
+| `RiotApiProvider` | ❌ **Bất khả thi cho Set 18** — đo 2026-09-01 với key thật: participant của `tft-match-v1` **không còn trường `augments`**, cả payload không có chuỗi `"augment"` nào. Lớp code vẫn giữ (có test) và sẽ chạy ngay khi Riot trả trường này về. Xem [set-data](research/set-data.md) |
 | `OpggMcpProvider` | `https://mcp-api.op.gg/mcp`. Nhanh nhưng là hộp đen — xem [prior-art](research/prior-art.md) |
 | `CompositeProvider` | Gộp nhiều nguồn theo thứ tự ưu tiên, **giữ nguyên provenance** |
 
@@ -935,7 +935,7 @@ Chi tiết đầy đủ: [`research/set-data.md`](research/set-data.md).
 |---|---|---|
 | 1 | Resolution? | ✅ **1920×1080** |
 | 2 | LLM Provider? | ✅ **Gemini Flash** qua `google-genai` — offline extraction + refinement tuỳ chọn |
-| 3 | Riot API Key? | ✅ **Cần** — `RiotApiProvider` (stats) + back-fill placement cho §12.2 |
+| 3 | Riot API Key? | 🔄 **Cần, nhưng cho việc khác v3 dự tính.** Augment stats **không lấy được** (trường `augments` đã bị gỡ ở Set 18). Vẫn dùng để crawl **meta comp** thật (`units`/`traits`/`placement` còn nguyên) và back-fill placement cho §12.2 |
 | 4 | Feature ưu tiên? | 🔄 **Augment Advisor → Comp → Economy → Item → Position → Contest** |
 | 5 | Overwolf SDK? | ❌ **Loại bỏ.** Cần runtime Electron/JS, và nó thay thế đúng phần CV vốn là đóng góp của đồ án. Dùng GEP thì không còn gì để đánh giá ở §12.1 |
 | 6 | Target Set? | ✅ **Set 18 (live)** — data từ `/latest/`. Giữ switch nhánh cho client 2026-10-09 |

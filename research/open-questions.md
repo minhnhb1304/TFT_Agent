@@ -3,6 +3,19 @@
 > **Re-graded:** 2026-08-28. Set 18's launch retired some questions and promoted others from
 > "hypothetical" to "testable today". Ordered by decision impact.
 
+## Settled 2026-09-01 by running the API with a real key
+
+| Was | Now |
+|---|---|
+| "Can we self-crawl augment statistics from `tft-match-v1`?" | **No — settled, negatively.** The `augments` field no longer exists on a Set 18 participant, and `"augment"` appears nowhere in the match payload. Measured on `vn2`, 3 ranked Set 18 matches. See [set-data](set-data.md) |
+| "Does `tft-match-v1` still carry enough for meta comps?" | **Yes.** `units` (with `itemNames`), `traits` (with `style`/`num_units`), `placement`, `level` are intact — enough to measure comps and to back-fill placement for §12.2 |
+| "Which regional host serves `vn2` for match-v1?" | **`sea`.** Confirmed by live call, not by inference |
+| "Is `gemini-2.5-flash-lite` still available?" | **No.** HTTP 404: *"no longer available to new users… use models/gemini-3.5-flash-lite"*. The project now pins `gemini-3.5-flash-lite` |
+
+> ⚠️ **Sample-size warning for `vn2`.** The apex ladder held **2 challenger** and **160 apex players
+> total** on 2026-09-01 — the ranked season is young. Comp statistics crawled now carry small-sample
+> uncertainty that must be reported, and a re-crawl closer to the deadline will be strictly better.
+
 ## Retired by the 2026-08-26 launch
 
 | Was | Now |

@@ -1,5 +1,17 @@
 """Sinh data/meta_comps.json GIA LAP - feedback Tier 1 #2.
 
+⚠️ DA BI THAY THE. Dung scripts/crawl_meta_comps.py thay cho script nay.
+
+    Tu 2026-09-01, doi hinh meta DO DUOC that qua tft-match-v1: `units`,
+    `traits` va `placement` deu con nguyen trong payload match. Khong con ly
+    do gi de dung so gia cho comp.
+
+    Script nay duoc GIU LAI cho truong hop khong co Riot API key (VD nguoi
+    cham do an muon chay lai pipeline ma khong dang ky key). Chay no se ghi
+    de du lieu that bang du lieu gia - nen no doi --overwrite, va
+    tests/test_meta_comps.py se DO NGAY neu file ket qua mang source
+    MOCK-NOT-REAL.
+
 VI SAO FILE NAY TON TAI
     Khong co nguon meta comp Set 18 nao da xac minh (research/prior-art.md:
     OP.GG MCP vuong ToS va chua smoke-test; cac trang stats con cold-start).
