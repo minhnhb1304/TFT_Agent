@@ -1,16 +1,20 @@
 # Vision Stack
 
+> **Verified:** 2026-08-28. All PyPI pins re-checked the same day and unchanged from the previous pass
+> except `google-genai`, now **2.20.0**.
+
 **Bottom line:** two §6 pins block installation on day one. The risk every researcher ranked highest —
 Vietnamese diacritics — is **refuted by direct measurement** (see [OCR & matching](ocr.md)); the real
-matching risk is augment tier collisions, which nobody found. And the hardest CV work (board grid + star
-levels) may not need to be written at all.
+matching risks are augment **tier resolution** and **name collisions**, both measured in
+[augments.md](augments.md). And the hardest CV work (board grid + star levels) may not need to be
+written at all.
 
 ## Install blockers — fix before anything else
 
 | §6 line | Failure | Fix |
 |---|---|---|
 | `dxcam>=0.4.0` | **Unsatisfiable.** PyPI releases are `0.0.5, 0.1.0.dev1, 0.1.0.dev2, 0.1.0, 0.2.0.dev1, 0.2.0, 0.3.0.dev1, 0.3.0, 0.4.0.dev1` — PEP 440 sorts `0.4.0.dev1` **below** `0.4.0`, so nothing satisfies the pin. Latest real release is **0.3.0**, `requires_python >=3.10` | `dxcam>=0.3.0` |
-| `google-generativeai>=0.8.0` | `0.8.6`, `Development Status :: 7 - Inactive`, EOL 2025-11-30; §9.1's `gemini-1.5-flash` shut down 2025-09-29 | `google-genai` (live at `2.18.0`) + a current Flash model ID |
+| `google-generativeai>=0.8.0` | `0.8.6`, `Development Status :: 7 - Inactive`, EOL 2025-11-30; §9.1's `gemini-1.5-flash` shut down 2025-09-29 | `google-genai` (live at **`2.20.0`**, 2026-08-25) + a current Flash model ID |
 
 ## Capture backend
 
@@ -64,6 +68,7 @@ client runtime and a JS/Electron stack, and it does **not** cure the policy prob
 ## Related
 
 - [OCR engine & matching rules](ocr.md)
+- [Augment pipeline](augments.md) — tier ladder, unrecoverable pairs
 - [Research overview](../overview.md)
 - [Ban risk & Riot policy](../vanguard-risk.md)
 - [Set 18 status & data sources](../set-data.md)

@@ -1,0 +1,36 @@
+# ============================================================================
+# TFT Advisory Agent - Dependencies
+# Verified 2026-08-29 against Python 3.14.7 (cp314 / abi3 wheels available)
+# ============================================================================
+
+# --- Core: Screen Capture & Vision ---------------------------------------
+dxcam>=0.3.0             # DXGI + WinRT. 0.4.0 KHONG cai duoc (chi co 0.4.0.dev1)
+mss>=9.0.0               # fallback capture cuoi cung
+opencv-python>=4.12,<5   # GHIM <5: OpenCV 5.0 doi API, moi prior art deu dung 4.x
+rapidocr>=3.9.2          # pin model PP-OCRv6 (model duy nhat ho tro 'vi')
+onnxruntime>=1.19        # runtime cho rapidocr
+numpy>=1.24.0
+Pillow>=10.0.0
+comtypes>=1.4.0          # ghim de tranh dxcam issue #139
+
+# --- UI: Overlay ----------------------------------------------------------
+PyQt6>=6.5.0
+
+# --- AI: LLM Reasoning ----------------------------------------------------
+google-genai>=2.20.0     # THAY google-generativeai (EOL 2025-11-30)
+
+# --- Data -----------------------------------------------------------------
+requests>=2.31.0
+pyyaml>=6.0.0
+
+# --- Utils ----------------------------------------------------------------
+loguru>=0.7.0
+
+# --- Windows --------------------------------------------------------------
+pywin32>=306             # SetWindowDisplayAffinity, client rect
+
+# --- Dev / Test -----------------------------------------------------------
+pytest>=8.0.0
+
+# --- Danh gia (chua commit) -----------------------------------------------
+# windows-capture>=2.0.1  # WGC, capture theo window - xem SPEC 3.1

@@ -1,0 +1,3218 @@
+{
+ "items": [
+  {
+   "apiName": "DA_FocusedFire",
+   "name": "Tập Trung Hỏa Lực",
+   "desc": "Đội của bạn nhận @AD*100@% Sức Mạnh Công Kích. Mỗi @Timer@ giây, nhận thêm @StackAD*100@%.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/marksman_i.tex",
+   "effects": {
+    "AD": 0.10000000149011612,
+    "Timer": 5.0,
+    "{7c17607a}": 0.05000000074505806
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Kingslayer",
+   "name": "Đồ Vương",
+   "desc": "Sau khi thắng giao tranh người chơi, nhận @BaseGoldAfterCombat@ vàng. Nếu đối thủ có nhiều máu hơn bạn, thay vào đó nhận @ModifiedGoldAfterCombat@ Vàng. Nhận @InitialGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/kingslayer_i.tex",
+   "effects": {
+    "InitialGold": 1.0,
+    "{a53ec6ac}": 1.0,
+    "{f0923f66}": 6.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_NestingDollsPlus",
+   "name": "Búp Bê Xây Tổ",
+   "desc": "Sau khi tướng bị hạ gục trong giao tranh, tạo ra một bản sao của tướng đó thấp hơn 1 cấp sao với @HealthMultiplier*100@% máu. Nhận @NumRerolls@ lượt đổi miễn phí.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+   "effects": {
+    "NumRerolls": 3.0,
+    "{52fcdfb4}": 0.6000000238418579
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_RiftbeastTraitAugment",
+   "name": "Quái Rừng Omega",
+   "desc": "Giờ đây bạn có thể chọn thêm một Quái Rừng Đầu Đàn thứ hai. Nhận 1 Cua Kỳ Cục, 1 Mầm Non và 1 Sỏi.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {},
+   "associatedTraits": [
+    "DA_Riftbeast18"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Min_Max",
+   "name": "Tối Đa Hóa",
+   "desc": "Nhận 1 Nam Châm Hoàng Kim và 4 trang bị thành phần ngẫu nhiên.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/minmax_iii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BoosterPack",
+   "name": "Gói Tăng Cường",
+   "desc": "Nhận các tướng ngẫu nhiên có tổng giá là @CombinedChampsValueNormal@ vàng. (Đảm bảo có ít nhất một tướng @GuaranteedChampValueNormal@ vàng!)",
+   "icon": "assets/maps/tft/icons/augments/hexcore/boosterpack1_ii.tex",
+   "effects": {
+    "{4b65cc7c}": 3.0,
+    "{8aa0da9c}": 12.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_MakeshiftArmorI",
+   "name": "Giáp Tự Chế I",
+   "desc": "Các tướng không mang trang bị nhận @Armor_Silver@ Giáp và Kháng Phép.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/makeshift1.tex",
+   "effects": {
+    "{9724cae4}": 30.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PartialAscension",
+   "name": "Bán Thăng Hoa",
+   "desc": "Sau @ActivationDelay@ giây giao tranh, các tướng của bạn nhận thêm @DamageAmp*100@% Khuếch Đại Sát Thương.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/ascension1.tex",
+   "effects": {
+    "ActivationDelay": 12.0,
+    "DamageAmp": 0.20000000298023224
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Coronation",
+   "name": "Lên Ngôi Vương",
+   "desc": "Nhận 1 Vương Miện Chiến Thuật. Vương Miện, Áo Choàng và Lá Chắn Chiến Thuật sẽ cho chủ sở hữu @AttackSpeed*100@% Tốc Độ Đánh, @AttackDamage*100@% Sức Mạnh Công Kích và @AbilityPower*100@% Sức Mạnh Phép Thuật.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/coronation_iii.tex",
+   "effects": {
+    "AbilityPower": 0.30000001192092896,
+    "AttackDamage": 0.25,
+    "AttackSpeed": 0.20000004768371582
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ShoppingSpree",
+   "name": "Tín Đồ Mua Sắm",
+   "desc": "Khi bạn thăng cấp, nhận số lượt làm mới cửa hàng miễn phí tương đương với cấp của bạn +@BonusRollPerLevel@. Nhận @GoldGain@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/silver-ticket-iii.tex",
+   "effects": {
+    "BonusRollPerLevel": 1.0,
+    "GoldGain": 6.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_ElderwoodTraitAugment",
+   "name": "Thiên Nhiên Che Chở",
+   "desc": "Các tướng bắt đầu giao tranh ở ô liền kề cây Thần Rừng nhận @AS*100@% Tốc Độ Đánh và hồi @heal*100@% Máu tối đa mỗi @HealInterval@ giây. Nhận 1 Alistar, 1 Ornn và 1 Xayah.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "AS": 0.1499999761581421,
+    "Heal": 0.019999999552965164,
+    "HealInterval": 2.0
+   },
+   "associatedTraits": [
+    "DA_18_Elderwood"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_HoldTheLine",
+   "name": "Giữ Vững Hàng Ngũ",
+   "desc": "Các tướng ở 2 hàng sau nhận @AbilityPowerPcntPerFrontLiner*100@% Sức Mạnh Phép Thuật và @AttackDamagePcntPerFrontLiner*100@% Sức Mạnh Công Kích với mỗi tướng bắt đầu giao tranh ở hàng trên.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/holdtheline_iii.tex",
+   "effects": {
+    "{910d2567}": 0.07999999821186066,
+    "{dac37571}": 0.09000000357627869
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GroupHugI",
+   "name": "Ôm Tập Thể I",
+   "desc": "Bắt đầu giao tranh: Các tướng sẽ tăng cho các tướng liền kề khác @Armor_Silver@ Giáp và Kháng Phép. Hiệu ứng này có thể cộng dồn.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/grouphug1_i.tex",
+   "effects": {
+    "{9724cae4}": 6.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TradeSector",
+   "name": "Khu Giao Dịch",
+   "desc": "Nhận 1 lượt đổi miễn phí mỗi vòng đấu. Nhận @NumGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/trade2.tex",
+   "effects": {
+    "NumGold": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_WovenMagic",
+   "name": "Ma Thuật Đan Kết",
+   "desc": "Nhận 1 trang bị thành phần ngẫu nhiên. Mỗi @ManaPerComponent@ Năng Lượng tướng của bạn tiêu hao sẽ trao thêm 1 trang bị thành phần (tối đa: 0/@NumberOfComponents@).",
+   "icon": "assets/maps/tft/icons/augments/hexcore/wovenmagic_iii.tex",
+   "effects": {
+    "ManaPerComponent": 2200.0,
+    "{856d7d1d}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_MagicRoll",
+   "name": "Xúc Xắc Ma Pháp",
+   "desc": "Đổ 3 xúc xắc. Nhận phần thưởng dựa trên tổng số đã đổ được.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/a-magical-roll-ii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_HedgeFund",
+   "name": "Quỹ Phòng Hộ",
+   "desc": "Nhận @InstantGold@ vàng. Lợi tức tối đa của bạn tăng lên thành 10.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/richgetricher3.tex",
+   "effects": {
+    "InstantGold": 22.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SpeedyDoubleKill",
+   "name": "Song Sát Tốc Hành",
+   "desc": "Nhận 1 Cuồng Đao Guinsoo. Sau khi @NumEliminationsRequired@ người chơi đã bị loại, nhận @GoldAmount@ vàng.<br><br><rules>Giải Vô Địch Định Mệnh, 2021</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/speedydoublekill_ii.tex",
+   "effects": {
+    "GoldAmount": 40.0,
+    "{9f8b33fc}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BuildABud",
+   "name": "Tự Lập Đội",
+   "desc": "Nhận 1 tướng @UnitCost@ vàng @ActorLevel@ sao ngẫu nhiên. Nhận @NumGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/constructacompanion_iii.tex",
+   "effects": {
+    "NumGold": 6.0,
+    "UnitCost": 1.0,
+    "{141b5538}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_NestingDollsPlusPlus",
+   "name": "Búp Bê Xây Tổ",
+   "desc": "Sau khi tướng bị hạ gục trong giao tranh, tạo ra một bản sao của tướng đó thấp hơn 1 cấp sao với @HealthMultiplier*100@% máu. Nhận @NumRerolls@ lượt đổi miễn phí.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+   "effects": {
+    "NumRerolls": 3.0,
+    "{52fcdfb4}": 0.6000000238418579
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_EarlyLearnings",
+   "name": "Bài Học Sơ Khai",
+   "desc": "Đội của bạn nhận @InitialStacks@% Sức Mạnh Công Kích & Sức Mạnh Phép Thuật. Lượng này sẽ tăng thêm @StacksPerCombat@% sau mỗi giao tranh người chơi. Tướng 1 vàng nhận gấp đôi.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/earlylearning_ii.tex",
+   "effects": {
+    "{6af58d52}": 5.0,
+    "{b584a6db}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_CaretakersAlly",
+   "name": "Đồng Minh Của Bụt",
+   "desc": "Nhận ngay 1 tướng 2 vàng ngẫu nhiên. Mỗi lần thăng cấp, nhận được tướng này một lần nữa.<br><br><rules>Tướng: 0</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/caretaker_s-chosen-i.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_WeStickTogether",
+   "name": "Kề Vai Sát Cánh",
+   "desc": "Nhận 1 Ấn ngẫu nhiên và 1 gói trang bị hoàn chỉnh. Các đồng minh có chung tộc/hệ với Ấn đó nhận thêm @AttackSpeed*100@% Tốc Độ Đánh. 0 0<br><br><rules>Tactician's Crown Bước Vào Arcane, 2025</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/westicktogether_iii.tex",
+   "effects": {
+    "AttackSpeed": 0.30000001192092896
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Ascension",
+   "name": "Thăng Hoa",
+   "desc": "Sau @ActivationDelay@ giây giao tranh, các tướng của bạn nhận thêm @DamageAmp*100@% Khuếch Đại Sát Thương.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/ascension2.tex",
+   "effects": {
+    "ActivationDelay": 12.0,
+    "DamageAmp": 0.3499999940395355
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_LevelUp",
+   "name": "Thăng Cấp!",
+   "desc": "Khi bạn mua XP, nhận thêm @AdditionalXP@ XP. Ngay lập tức nhận @InstantXP@ XP.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/levelup3.tex",
+   "effects": {
+    "InstantXP": 6.0,
+    "{322ef094}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_SolarTraitAugment",
+   "name": "Sự Lựa Chọn của Mặt Trời",
+   "desc": "Nhận 1 Leona, 1 Kayle và 1 Sejuani. Leona nhận được @FlatHealth@ Máu tối đa vĩnh viễn mỗi vòng, tăng thêm @HealthPerThreeStar@ với mỗi tướng 3 sao khác nhau được triển khai.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "FlatHealth": 60.0,
+    "{ff019e0e}": 10.0
+   },
+   "associatedTraits": [
+    "DA_18_Solar"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ChampDeliveryPlusPlus",
+   "name": "Phân Phối Tướng++",
+   "desc": "Nhận @NumInitialChamps@ tướng @ChampCost@ vàng. Sau @Delay@ vòng, nhận thêm @NumDelayedChamps@ tướng cùng bậc.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "ChampCost": 4.0,
+    "Delay": 6.0,
+    "{30e83e0d}": 3.0,
+    "{b82d82af}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GoingLong",
+   "name": "Thích Mở Rộng",
+   "desc": "Bạn sẽ không còn nhận được lợi tức. Nhận ngay @GoldInstant@ vàng. Bắt đầu vòng đấu: nhận @RoundStartBonusXp@ XP.<br><br><rules>Lợi tức là lượng vàng bạn nhận được thêm từ mỗi </rules>@OldInterestThreshold@<rules> vàng bạn giữ lại.</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/going-long-iii.tex",
+   "effects": {
+    "{1e108c20}": 10.0,
+    "{677df9f0}": 4.0,
+    "{dcfa8547}": 10.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GoldDestinyPlus",
+   "name": "Vận Mệnh Vàng+",
+   "desc": "Nhận 1 Nâng Cấp Vàng ngẫu nhiên và @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/goldendestiny_ii.tex",
+   "effects": {
+    "Gold": 6.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ComponentBuffet",
+   "name": "Đại Tiệc Trang Bị",
+   "desc": "Mỗi khi nhận 1 trang bị thành phần, nó biến đổi thành gói trang bị thành phần. Nhận 1 trang bị thành phần ngẫu nhiên. Gói trang bị cho bạn 4 lựa chọn.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/the-customer-is-always-right-i.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BuriedTreasuresIII",
+   "name": "Kho Báu Chôn Giấu III",
+   "desc": "Nhận 1 trang bị thành phần ngẫu nhiên ngay bây giờ và khi bắt đầu @RoundsDuration@ vòng tiếp theo.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/buried-treasures-iii.tex",
+   "effects": {
+    "{bb1120a8}": 5.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CyberneticUplink_Gold",
+   "name": "Trí Tuệ Siêu Công Nghệ",
+   "desc": "Tướng có sở hữu trang bị nhận @HPFromGold@ Máu và @ManaRegenFromGold@ Hồi Phục Năng Lượng. Nhận 1 Nước Mắt Nữ Thần.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/cybernetic-uplink-ii.tex",
+   "effects": {
+    "{8f6709ad}": 2.0,
+    "{b64e9f63}": 100.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SalvageBin",
+   "name": "Nhà Máy Tái Chế",
+   "desc": "Nhận 1 trang bị hoàn chỉnh ngẫu nhiên ngay lập tức, và 1 trang bị thành phần sau @Rounds@ vòng giao tranh người chơi. Bán tướng sẽ tách trang bị hoàn chỉnh của tướng đó ra thành trang bị thành phần (ngoại trừ các trang bị Chiến Thuật và Ấn).",
+   "icon": "assets/maps/tft/icons/augments/hexcore/salvage2.tex",
+   "effects": {
+    "rounds": 8.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ConstructACompanion",
+   "name": "Người Bạn Vàng",
+   "desc": "Tướng @UnitCost@ vàng tiếp theo bạn mua được nâng lên @ActorLevel@ sao. Nhận @NumGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/constructacompanion_iii.tex",
+   "effects": {
+    "NumGold": 2.0,
+    "UnitCost": 1.0,
+    "{141b5538}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SpreadingRootsPlus",
+   "name": "Cắm Rễ Phân Tán+",
+   "desc": "Nhận @EmblemAmountPlus@ Ấn ngẫu nhiên, 1 Búa Rèn và @GoldAmountPlus@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/spreadingroots_ii.tex",
+   "effects": {
+    "{1a129973}": 2.0,
+    "{c99cbe2b}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BoosterPackPlus",
+   "name": "Gói Tăng Cường+",
+   "desc": "Nhận các tướng ngẫu nhiên có tổng giá là @CombinedChampsValuePlus@ vàng. (Đảm bảo có ít nhất một tướng @GuaranteedChampValuePlus@ vàng!)",
+   "icon": "assets/maps/tft/icons/augments/hexcore/boosterpack1_ii.tex",
+   "effects": {
+    "{c717f167}": 18.0,
+    "{ecffcc47}": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Retribution",
+   "name": "Báo Oán",
+   "desc": "Nhận @NumItemsToGrant@ Bàn Tay Công Lý. Đồng minh được trang bị Bàn Tay Công Lý nhận <TFTKeyword>Chuẩn Xác</TFTKeyword> và @CriticalStrikeChance*100@% Tỉ Lệ Chí Mạng.<br><br><rules>Chuẩn Xác: Sát thương kỹ năng có thể chí mạng. Chỉ số Chuẩn Xác cộng thêm tăng 10% Sát Thương Chí Mạng.</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/retribution_iii.tex",
+   "effects": {
+    "CriticalStrikeChance": 0.25,
+    "{cf436c6a}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BonusGiftPlus",
+   "name": "Quà Tặng Thêm+",
+   "desc": "Bất cứ khi nào bạn mở hộp vật phẩm, bạn có @Chance*100@% cơ hội nhận được 1 hộp vật phẩm xám. Nhận @StartingOrbs@ hộp vật phẩm xám.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "Chance": 0.25,
+    "{8ec37f1f}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_LunarTraitAugmentPlus",
+   "name": "Mặt Trời và Mặt Trăng+",
+   "desc": "Các tướng Mặt Trăng của bạn nhận được @Health@ Máu và @DamageAmp*100@% Khuếch Đại Sát Thương với mỗi tướng Mặt Trời khác biệt được triển khai. Nhận 1 Leona, 1 Kayle và 1 Aphelios.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "DamageAmp": 0.07999999821186066,
+    "Health": 100.0
+   },
+   "associatedTraits": [
+    "DA_18_Lunar"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SwordOverflow",
+   "name": "Đam Mê Kiếm",
+   "desc": "Nhận @NumBFSwords@ Kiếm BF. Kiếm BF của bạn sẽ cho +@AttackSpeedPerSword*100@% Tốc Độ Đánh.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/bladeoverflow_iii.tex",
+   "effects": {
+    "{91c13e0c}": 0.03999999910593033,
+    "{a200424d}": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_AdvancedLoanPlus",
+   "name": "Vay Tạm Ứng+",
+   "desc": "Nhận @GoldInstantPlus@ Vàng. Nâng cấp tiếp theo của bạn bị giảm 1 bậc.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/advancedloan_ii.tex",
+   "effects": {
+    "{076d12c0}": 33.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BronzeForLifeII",
+   "name": "Tất Tay Bậc Đồng II",
+   "desc": "Đội của bạn nhận @DamageAmp*100@% Khuếch Đại Sát Thương và @Armor@ Giáp & Kháng Phép cho mỗi tộc/hệ bậc Đồng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/bronzeforlife_iii.tex",
+   "effects": {
+    "Armor": 4.0,
+    "DamageAmp": 0.02500000037252903
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_InvestmentStrategy",
+   "name": "Chiến Thuật Đầu Tư II",
+   "desc": "Tướng của bạn nhận thêm vĩnh viễn @MaxHealthPerInterest@ máu tối đa với mỗi vàng lợi tức bạn kiếm được. Lợi tức tối đa của bạn tăng thêm @MaxInterestInc@. Nhận ngay @InstantGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/investmentstrategy_iii.tex",
+   "effects": {
+    "InstantGold": 8.0,
+    "{77dbf275}": 2.0,
+    "{da66a800}": 8.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BeltOverflow",
+   "name": "Đam Mê Đai Lưng",
+   "desc": "Nhận @NumBelts@ Đai Khổng Lồ. Đai Khổng Lồ của bạn cho thêm +@BonusHealthPerBelt@ Máu.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/beltoverflow_iii.tex",
+   "effects": {
+    "{4c69dfc4}": 85.0,
+    "{c37beadb}": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_LuckyGloves",
+   "name": "Đo Ni Đóng Giày",
+   "desc": "Găng Đạo Tặc sẽ luôn cho tướng của bạn những trang bị lý tưởng. Nhận @StartSparringGlovesAmount@ Găng Đấu Tập và @gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/lucky-gloves-iii.tex",
+   "effects": {
+    "Gold": 4.0,
+    "{9af8dfcf}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TimeSkip",
+   "name": "Vượt Thời Gian",
+   "desc": "Vô hiệu hóa cửa hàng của bạn trong @RoundsSkipped@ vòng tiếp theo. Sau đó nhận @ExperienceToAdd@ XP.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/timeskip_ii.tex",
+   "effects": {
+    "{16aa0994}": 3.0,
+    "{80907c8b}": 32.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_EpicRolldown",
+   "name": "Xúc Xắc Hoành Tráng",
+   "desc": "Khi đạt Cấp @Level@, nhận @Rerolls@ lượt đổi Cửa Hàng.<br><br><rules>Giải Vô Địch Runeterra Tái Hợp, 2023</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/epicrolldown_ii.tex",
+   "effects": {
+    "Level": 8.0,
+    "Rerolls": 20.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_UrfsGrabBag",
+   "name": "Túi Đồ Urf",
+   "desc": "Nhận @NumSpats@ Xẻng Vàng, @NumComponents@ trang bị thành phần ngẫu nhiên và @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/urfs-grab-bag-iii.tex",
+   "effects": {
+    "Gold": 5.0,
+    "NumComponents": 3.0,
+    "{fc476b32}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_WispRebatePlus",
+   "name": "Tinh Linh Hoàn Tiền",
+   "desc": "Mỗi lần bạn mua 1 Tinh Linh, nhận @Gold@ vàng. Nhận ngay @StartingGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "Gold": 2.0,
+    "{66816927}": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TeamBuilding",
+   "name": "Xây Dựng Đội Hình",
+   "desc": "Nhận 1 Máy Sao Chép Tướng Cỡ Nhỏ. Nhận thêm 1 Máy Sao Chép Tướng Cỡ Nhỏ nữa sau @PlayerRounds@ vòng giao tranh người chơi.<br><br><rules>Trang bị này cho phép bạn sao chép một tướng 3 vàng trở xuống.</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/building-an-army-i.tex",
+   "effects": {
+    "{422a9dd1}": 5.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GlassCannon_Gold",
+   "name": "Lấy Công Bù Thủ II",
+   "desc": "Các đồng minh bắt đầu giao tranh ở hàng sau sẽ khởi đầu với @StartingHP_Gold*100@% Máu nhưng nhận thêm @DamageAmp_Gold*100@% Khuếch Đại Sát Thương.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/glasscannon_ii.tex",
+   "effects": {
+    "{3013a2e1}": 0.25,
+    "{eb5881d0}": 0.800000011920929
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_InvestedPlus",
+   "name": "Đầu Tư+",
+   "desc": "Nhận 26 vàng. Khi bắt đầu mỗi vòng đấu, nhận 1 lượt làm mới Cửa Hàng với mỗi 10 vàng vượt hơn 50 (tối đa 80 vàng).",
+   "icon": "assets/maps/tft/icons/augments/hexcore/invested-iii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_BigGrabBag",
+   "name": "Túi Đồ Cỡ Đại",
+   "desc": "Nhận 3 trang bị thành phần ngẫu nhiên, @Gold@ vàng và 1 Búa Rèn.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/grab-bag-ii.tex",
+   "effects": {
+    "Gold": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CapitalGainsII",
+   "name": "Tăng Vốn II",
+   "desc": "Tích trữ vàng bằng với lượng lợi tức bạn kiếm được. Ở vòng @Stage@-@Round@, nhận lượng vàng bằng @InterestRatio*100@% số vàng đã tích trữ. Nhận ngay @StartingGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "Round": 3.0,
+    "Stage": 3.0,
+    "{1c49a816}": 1.25,
+    "{66816927}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_UpwardMobility",
+   "name": "Đẩy Nhanh Tiến Độ",
+   "desc": "Giảm @ReducedXPCost@ vàng khi mua XP. Nhận @HealthOnLevelUp@ Máu và @RerollsOnLevelUp@ lượt đổi miễn phí mỗi khi bạn thăng cấp.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/upwardmobility_iii.tex",
+   "effects": {
+    "{0ef06055}": 2.0,
+    "{3e85783c}": 1.0,
+    "{9ba044dc}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Corrosion",
+   "name": "Ăn Mòn",
+   "desc": "Tướng địch đứng ở 2 hàng trên sẽ bị mất @ResistLoss@ Giáp và Kháng Phép sau mỗi @Time@ giây.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/corrosion_i.tex",
+   "effects": {
+    "ResistLoss": 4.0,
+    "Time": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_LoadedDice",
+   "name": "Gian Lận",
+   "desc": "Xúc xắc và xu của bạn còn may mắn hơn.<br><br>Đổ một xúc xắc và nhận số vàng bằng với số điểm đổ được. Sau đó tung đồng xu và nhận @Gold@ vàng nếu tung ra mặt ngửa.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "Gold": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BonusGift",
+   "name": "Quà Tặng Thêm",
+   "desc": "Bất cứ khi nào bạn mở hộp vật phẩm, bạn có @Chance*100@% cơ hội nhận được 1 hộp vật phẩm xám. Nhận @StartingOrbs@ hộp vật phẩm xám.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "Chance": 0.25,
+    "{8ec37f1f}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SoloPlate",
+   "name": "Khiên Đơn Đấu",
+   "desc": "Nhận 1 Thú Tượng Thạch Giáp. Các đồng minh mang Thú Tượng Thạch Giáp nhận @MaxHealthPercent*100@% Máu tối đa nếu họ đứng một mình một hàng khi bắt đầu giao tranh.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/soloplate_ii.tex",
+   "effects": {
+    "MaxHealthPercent": 0.16999995708465576
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Swordsmith",
+   "name": "Thợ Rèn Kiếm",
+   "desc": "Nhận @ItemQuantity@ trang bị hoàn chỉnh ngẫu nhiên được ghép từ Kiếm B.F.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/swordsmith_ii.tex",
+   "effects": {
+    "{2ce16abf}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BlackthornTraitAugment",
+   "name": "Chiết Xuất Trang Bị",
+   "desc": "Trong @NumComponents@ lần đầu tiên bạn hiến tế tướng trên ô Gai Đen, nhận 1 bản sao của một trang bị thành phần ngẫu nhiên mà tướng đó đang mang. Nhận 1 Veigar và 1 Rek'Sai.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "NumComponents": 3.0
+   },
+   "associatedTraits": [
+    "DA_18_Blackthorn"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Pilfer",
+   "name": "Ăn Trộm",
+   "desc": "Mỗi vòng đấu, nhận 1 bản sao 1 sao của tướng đầu tiên bạn tiêu diệt ở giao tranh trước. Lần đầu tiên bạn nhận được số lượng tướng trị giá @GoldForGloves@ vàng theo cách này, nhận 1 Găng Đạo Tặc.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/pilfer_ii.tex",
+   "effects": {
+    "{299b9104}": 21.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_FOURcing",
+   "name": "Ép Bốn",
+   "desc": "Nhận 1 tướng 4 vàng ngẫu nhiên. Với mỗi trang bị được gắn trên tướng đó, đội của bạn nhận @Health@ máu.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "Health": 120.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_MissedConnections",
+   "name": "Kết Nối Gián Đoạn",
+   "desc": "Nhận 1 bản sao của mỗi tướng 1 vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missed-connections-i.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PrismaticTicket",
+   "name": "Vé Kim Cương",
+   "desc": "Mỗi khi cửa hàng được đổi lại, bạn có @PrismaticChance@% tỉ lệ nhận được thêm 1 lượt đổi miễn phí.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/goldenticket3.tex",
+   "effects": {
+    "{0c2e40cb}": 45.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_PrimalAugment_Sivir",
+   "name": "Quái Thú Bên Trong",
+   "desc": "Tướng Nguyên Sinh cho thêm một Phước Lành nữa.  Nhận 1 Vi ngay bây giờ và 1 Sivir sau @AugmentRoundDelay@ vòng đấu.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "{288cc52f}": 3.0
+   },
+   "associatedTraits": [
+    "DA_Primal18"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_VerticalityI",
+   "name": "Chỉ Một Con Đường I",
+   "desc": "Các Tướng nhận được @ADAP*100@% Sức Mạnh Công Kích, @ADAP*100@% Sức Mạnh Phép Thuật, @resists@ Giáp và @resists@ Kháng Phép cho mỗi đồng minh có cùng tộc/hệ với họ.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "ADAP": 0.014999999664723873,
+    "Resists": 1.5
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_WorththeWaitII",
+   "name": "Chờ Đợi Xứng Đáng II",
+   "desc": "Nhận 2 bản sao của một tướng 2 vàng ngẫu nhiên. Nhận 1 bản sao nữa của tướng đó khi bắt đầu mỗi vòng đấu cho đến hết trận.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/worththewait_iii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_RollingForDays",
+   "name": "Xúc Xắc Vô Tận",
+   "desc": "Nhận @NumFreeRerolls@ lượt đổi Cửa Hàng miễn phí.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/rolling-for-days-i.tex",
+   "effects": {
+    "{aed5e4c4}": 10.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BoxingLessons",
+   "name": "Tập Chịu Đòn",
+   "desc": "Đội của bạn nhận @HealthIncreasePerFrontLiner@ Máu với mỗi tướng bắt đầu giao tranh ở hàng đầu.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/boxinglessons_i.tex",
+   "effects": {
+    "{0e4302c3}": 30.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ElectrochargeI",
+   "name": "Tụ Điện I",
+   "desc": "Mỗi khi đồng minh nhận @ProcAttackCount@ đòn đánh, họ sẽ gây @DamageI@ - @DamageI_4@ (dựa trên Giai Đoạn hiện tại) sát thương phép lên kẻ địch gần đó (@Cooldown@ giây hồi chiêu).",
+   "icon": "assets/maps/tft/icons/augments/hexcore/electrocharge-i.tex",
+   "effects": {
+    "Cooldown": 1.0,
+    "{75249118}": 90.0,
+    "{b342e48b}": 30.0,
+    "{c6163c80}": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TheTraitTreePlus",
+   "name": "Cây Tộc/Hệ+",
+   "desc": "Nhận @EmblemAmountPlus@ Ấn ngẫu nhiên, 1 Búa Rèn và @GoldAmountPlus@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/thetraittree_iii.tex",
+   "effects": {
+    "{1a129973}": 3.0,
+    "{c99cbe2b}": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CalculatedLoss",
+   "name": "Thua Có Tính Toán",
+   "desc": "Sau khi thua giao tranh, nhận @Gold@ vàng và 1 lượt đổi Cửa Hàng miễn phí.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/calculatedloss2.tex",
+   "effects": {
+    "Gold": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SoloLeveling",
+   "name": "Tôi Thăng Cấp Một Mình",
+   "desc": "Trong @NumCombats@ giao tranh tiếp theo, bạn chỉ được triển khai @MaxTeamSize@ tướng, nhưng tướng đó sẽ được tăng mạnh chỉ số. Nhận @XPPerKill@ XP với mỗi mạng hạ gục tướng đó đạt được. Sau đó, nhận @NumComponents@ trang bị thành phần.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/sololeveling_ii.tex",
+   "effects": {
+    "NumCombats": 5.0,
+    "NumComponents": 2.0,
+    "XPPerKill": 1.0,
+    "{948200d9}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_LatentForge",
+   "name": "Lò Rèn Tiềm Ẩn",
+   "desc": "Sau @WaitRounds@ giao tranh người chơi, nhận 1 Gói Trang Bị Tạo Tác.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/long-time-crafting-i.tex",
+   "effects": {
+    "{1adef671}": 8.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SlightlyMagicRoll",
+   "name": "Quay Trúng Thưởng",
+   "desc": "Đổ 1 con xúc xắc. Nhận thưởng dựa trên số xúc xắc đổ ra.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/slightlymagicroll_i.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_FloraFatalisAugmentPlus",
+   "name": "Thực Vật Hấp Thụ",
+   "desc": "Nhận 1 ấn Thực Vật. Tướng mang ấn sẽ nhận gấp đôi hiệu ứng từ tộc/hệ Thực Vật. Nhận @PlusGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "{22830bc3}": 3.0
+   },
+   "associatedTraits": [
+    "DA_FloraFatalis18"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ClearMind",
+   "name": "Thông Thoáng",
+   "desc": "Nếu không có tướng trong hàng chờ khi kết thúc giao tranh người chơi, nhận @XPGain@ XP.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/clearmind2.tex",
+   "effects": {
+    "XPGain": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PandorasItemsII",
+   "name": "Hộp Pandora II",
+   "desc": "Bắt đầu vòng đấu: Các trang bị trên hàng chờ được đánh tráo ngẫu nhiên. <br><br>Nhận @NumberOfComponentsII@ trang bị thành phần ngẫu nhiên.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/pandora2.tex",
+   "effects": {
+    "{739a48af}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Slammin",
+   "name": "Hạ Đo Ván",
+   "desc": "Nhận @NumGold@ vàng. Sau mỗi giao tranh người chơi, nếu không có trang bị nào của bạn nằm ở hàng chờ (ngoài các trang bị tiêu thụ), nhận @NoItemsXP@ XP.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/slammin_ii.tex",
+   "effects": {
+    "NumGold": 3.0,
+    "{e279ec9e}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_LivingForge",
+   "name": "Chế Tạo Tại Chỗ",
+   "desc": "Nhận 1 Gói Trang Bị Tạo Tác ngay lập tức và sau mỗi @RoundCounter@ giao tranh người chơi.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/living-forge-iii.tex",
+   "effects": {
+    "{1accd79d}": 9.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CognitiveOverload",
+   "name": "Quá Tải Tư Duy",
+   "desc": "Nhận @NumGold@ vàng, @NumChamp@ tướng @ChampCost@ vàng @ChampLevel@ sao, @NumChamp2@ tướng @ChampCost2@ vàng, @NumChamp3@ tướng @ChampCost3@ vàng, @NumXP@ XP và @NumRerolls@ lượt đổi Cửa Hàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/cognitiveoverload_ii.tex",
+   "effects": {
+    "ChampCost": 1.0,
+    "NumGold": 7.0,
+    "NumRerolls": 1.0,
+    "{12945232}": 3.0,
+    "{139453c5}": 2.0,
+    "{6aaaa386}": 2.0,
+    "{718ec2c6}": 1.0,
+    "{9b31b433}": 1.0,
+    "{b7bce61c}": 1.0,
+    "{b8bce7af}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TheTraitTree",
+   "name": "Cây Tộc/Hệ",
+   "desc": "Nhận @EmblemAmount@ Ấn ngẫu nhiên và @GoldAmount@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/thetraittree_iii.tex",
+   "effects": {
+    "GoldAmount": 2.0,
+    "{bd12a44f}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_FloraFatalisAugment",
+   "name": "Thực Vật Hấp Thụ",
+   "desc": "Nhận 1 ấn Thực Vật. Tướng mang ấn sẽ nhận gấp đôi hiệu ứng từ tộc/hệ Thực Vật. Nhận @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "Gold": 3.0
+   },
+   "associatedTraits": [
+    "DA_FloraFatalis18"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GoldenGamblePlus",
+   "name": "Ván Cược Hoàng Kim+",
+   "desc": "Nhận @Gold@ vàng và tung đồng xu. Nếu ra mặt ngửa, nhận 1 Rương Trang Bị Ánh Sáng May Mắn. Nếu ra mặt sấp, nhận @NumAnvils@ Gói Trang Bị Hoàn Chỉnh.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/goldengamble_iii.tex",
+   "effects": {
+    "Gold": 3.0,
+    "NumAnvils": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_OneTwoFive",
+   "name": "Một, Hai, Năm!",
+   "desc": "Nhận 1 trang bị thành phần ngẫu nhiên, @Gold@ vàng và 1 tướng 5 vàng ngẫu nhiên.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/one-two-five-i.tex",
+   "effects": {
+    "Gold": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_MaliciousMonetization",
+   "name": "Dòng Tiền Mờ Ám",
+   "desc": "Nhận @InstantGold@ vàng. Trong @Duration@ vòng tiếp theo, tướng địch sẽ rớt ra @GoldPerEnemy@ vàng khi bị tiêu diệt.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/mirroredmonetization_ii.tex",
+   "effects": {
+    "Duration": 2.0,
+    "InstantGold": 4.0,
+    "{2af2509e}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_CovenTraitAugment",
+   "name": "Tín Đồ Tiên Hắc Ám",
+   "desc": "Khi bạn chọn tiếp tục thu thập tinh hoa Tiên Hắc Ám, hồi @Health@ máu Linh Thú. Nhận 1 Camille, 1 Elise và 1 Caitlyn.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "Health": 2.0
+   },
+   "associatedTraits": [
+    "DA_18_Coven"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_HeroicGrabBagPlus",
+   "name": "Túi Đồ Siêu Hùng+",
+   "desc": "Nhận 2 Máy Sao Chép Tướng Cỡ Nhỏ. Nhận @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/heroic-grab-bag-ii.tex",
+   "effects": {
+    "Gold": 8.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ClutteredMind",
+   "name": "Bừa Bộn",
+   "desc": "Nhận @NumChamps@ tướng @CostChamps@ vàng ngay lập tức. Nếu hàng chờ của bạn đầy khi kết thúc giao tranh người chơi, nhận @XPGain@ XP.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/dizzy-ii.tex",
+   "effects": {
+    "NumChamps": 4.0,
+    "XPGain": 3.0,
+    "{d546bdd8}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_PrimalAugment_Nidalee",
+   "name": "Quái Thú Bên Trong",
+   "desc": "Tướng Nguyên Sinh cho thêm một Phước Lành nữa. Nhận 1 Vi ngay bây giờ và 1 Nidalee sau @AugmentRoundDelay@ vòng đấu.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "{288cc52f}": 3.0
+   },
+   "associatedTraits": [
+    "DA_Primal18"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_JeweledLotus_I",
+   "name": "Khảm Bảo Thạch I",
+   "desc": "Đội của bạn nhận @CritChance_I@% Tỉ Lệ Chí Mạng và <TFTKeyword>Chuẩn Xác.</TFTKeyword><br><br><rules>Chuẩn Xác: Sát thương kỹ năng có thể chí mạng. Chỉ số Chuẩn Xác cộng thêm tăng 10% Sát Thương Chí Mạng.</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/jeweled-lotus-ii.tex",
+   "effects": {
+    "{eb825291}": 10.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_LunarTraitAugment",
+   "name": "Mặt Trời và Mặt Trăng",
+   "desc": "Các tướng Mặt Trăng của bạn nhận được @Health@ Máu và @DamageAmp*100@% Khuếch Đại Sát Thương với mỗi tướng Mặt Trời khác biệt được triển khai. Nhận 1 Leona, 1 Kayle và 1 Diana.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "DamageAmp": 0.07999999821186066,
+    "Health": 100.0
+   },
+   "associatedTraits": [
+    "DA_18_Lunar"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ForgeAFriend",
+   "name": "Chế Tạo Bằng Hữu",
+   "desc": "Tướng @UnitCost@ vàng tiếp theo bạn mua được nâng lên @ActorLevel@ sao. Nhận @NumGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/constructacompanion_iii.tex",
+   "effects": {
+    "NumGold": 5.0,
+    "UnitCost": 1.0,
+    "{141b5538}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SweetTreats",
+   "name": "Món Quà Ngọt Ngào",
+   "desc": "Nhận 1 gói Trang Bị Tạo Tác. Đội của bạn nhận @BonusHealth@ Máu với mỗi trang bị đang mang trên tướng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/sweettreats_iii.tex",
+   "effects": {
+    "BonusHealth": 16.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PatientStudy",
+   "name": "Kiên Nhẫn Học Tập",
+   "desc": "Sau giao tranh người chơi, nhận thêm @XPBonusWin@ XP nếu bạn thắng hoặc @XPBonusLose@ XP nếu bạn thua.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/learning-from-experience-ii.tex",
+   "effects": {
+    "{5c260a45}": 3.0,
+    "{956c98ba}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_RivalsAugment",
+   "name": "Không Đối Thủ",
+   "desc": "Bạn có thể đưa Rengar và Kha'Zix ra sân cùng nhau mà không bị hạn chế và chúng sẽ nhận thêm sức mạnh khi tướng kia tung chiêu. Nhận 1 Rengar và 1 Kha'Zix.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {},
+   "associatedTraits": [
+    "DA_18_Rival"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_HeroicGrabBag",
+   "name": "Túi Đồ Siêu Hùng",
+   "desc": "Nhận 2 Máy Sao Chép Tướng Cỡ Nhỏ. Nhận @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/heroic-grab-bag-ii.tex",
+   "effects": {
+    "Gold": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CognitiveTaxPlus",
+   "name": "Thuế Nhận Thức+",
+   "desc": "Nhận @NumGoldPlus@ vàng và @NumXpPlus@ XP.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/cognitivetax_i.tex",
+   "effects": {
+    "{351944c7}": 3.0,
+    "{96ce7ab1}": 12.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BandOfThieves",
+   "name": "Băng Trộm",
+   "desc": "Nhận @AmountOfGlovesAtStart@ Găng Đạo Tặc.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/bandthieves1.tex",
+   "effects": {
+    "{df001585}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ExtraBuckles",
+   "name": "Khóa Dự Phòng",
+   "desc": "Nhận 1 Đai Khổng Lồ. Sau khi các tướng của bạn chịu @DamageTakenReq@ sát thương, nhận thêm @NumCashoutLoot@ Đai Khổng Lồ.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/extrabuckles_i.tex",
+   "effects": {
+    "{25a5e77d}": 75000.0,
+    "{ca6db686}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TonsOfStatsI",
+   "name": "Cộng Mệt Nghỉ!",
+   "desc": "Đội của bạn nhận thêm @Health@ Máu, @ADAP*100@% Sức Mạnh Công Kích, @ADAP*100@% Sức Mạnh Phép Thuật, @Resists@ Giáp, @Resists@ Kháng Phép, @AttackSpeed*100@% Tốc Độ Đánh và @Mana@ Năng Lượng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/tons-of-stats-ii.tex",
+   "effects": {
+    "ADAP": 0.03999999910593033,
+    "AttackSpeed": 0.039999961853027344,
+    "Health": 44.0,
+    "Mana": 4.0,
+    "Resists": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ExplosiveGrowthPlus",
+   "name": "Tăng Trưởng Bùng Nổ+",
+   "desc": "Nhận @XPPerRound_Plus@ XP ngay bây giờ và khi bắt đầu @Rounds@ vòng đấu tiếp theo.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/explosivegrowth_ii.tex",
+   "effects": {
+    "rounds": 3.0,
+    "{5ad11391}": 10.0,
+    "{822fdcb5}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_LateGameScaling",
+   "name": "Thăng Tiến Cuối Trận",
+   "desc": "Nhận @XPGain@ XP khi bắt đầu vòng giao tranh người chơi. Tướng 5 vàng của bạn nhận @ChampBuff*100@% Máu và @ChampBuff*100@% Tốc Độ Đánh.<br><br><rules>Tactician's Crown Thành Phố Công Nghệ, 2025</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/lategamescaling_ii.tex",
+   "effects": {
+    "XPGain": 2.0,
+    "{4980c641}": 0.12000000476837158
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_PrimalAugmentPlus_Nidalee",
+   "name": "Quái Thú Bên Trong+",
+   "desc": "Tướng Nguyên Sinh cho thêm một Phước Lành nữa. Nhận 1 Vi và 1 Nidalee.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {},
+   "associatedTraits": [
+    "DA_Primal18"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PlotArmor",
+   "name": "Hào Quang Nhân Vật Chính",
+   "desc": "Đội của bạn nhận @ArmorInstant@ Giáp và Kháng Phép. Sau khi còn dưới @HealthDropThreshold*100@% Máu, tăng hiệu ứng này lên thành @ThresholdArmorBoostCombined@ cho đến hết giao tranh.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/plotarmor_ii.tex",
+   "effects": {
+    "{0735b729}": 40.0,
+    "{5705afa5}": 8.0,
+    "{a6c6ae91}": 0.5
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ShimmerscaleEssence",
+   "name": "Tinh Túy Kim Long",
+   "desc": "Nhận 1 Giáp Đại Hãn. Sau @NumberOfRoundsToWait@ giao tranh người chơi, nhận 1 Kiếm Của Tay Bạc.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/shimmerscaleessence_iii.tex",
+   "effects": {
+    "{9b9fe148}": 7.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_HealingOrbsI",
+   "name": "Cầu Hồi Phục I",
+   "desc": "Khi 1 kẻ địch bị hạ gục, 1 đồng minh gần đó sẽ được hồi @HealthFromHealingOrbSilver@ Máu.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/healing-orbs-i.tex",
+   "effects": {
+    "{cab2cdc5}": 250.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_DuoQueue",
+   "name": "Hàng Chờ Đấu Đôi",
+   "desc": "Nhận 2 tướng 5 vàng ngẫu nhiên và 2 bản sao của một trang bị thành phần ngẫu nhiên.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/duoqueue_ii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PortableForge",
+   "name": "Lò Rèn Thần Thoại",
+   "desc": "Chọn 1 trong 4 Tạo Tác. Tạo Tác là những trang bị mạnh mẽ hơn với hiệu ứng đặc biệt.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/portableforge2.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CallToChaos",
+   "name": "Triệu Gọi Hỗn Mang",
+   "desc": "Nhận 1 phần thưởng mạnh mẽ và ngẫu nhiên.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/calltochaos_iii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TraitLadder",
+   "name": "Thứ Hạng Tộc Hệ",
+   "desc": "Nhận 1 ấn ngẫu nhiên. Sau khi triển khai @LowestTraitBreakpoint@ tộc/hệ không độc nhất trong giao tranh người chơi, nhận 1 phần thưởng. Sau đó tăng số tộc/hệ cần thiết và giá trị của phần thưởng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+   "effects": {
+    "{b8fc0662}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_LateGameSpecialist",
+   "name": "Hướng Đến Hồi Kết",
+   "desc": "Khi bạn đạt Cấp @LevelReq@, nhận @NumGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/late-game-specialist-i.tex",
+   "effects": {
+    "LevelReq": 9.0,
+    "NumGold": 27.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ChallengersGrace",
+   "name": "Ân Huệ Thách Đấu",
+   "desc": "Ở đầu giao tranh, đồng minh tăng @AttackSpeedMultiplier*100@% Tốc Độ Đánh trong @BuffDuration@ giây. Khi tham gia hạ gục, đồng minh lướt tới mục tiêu tiếp theo và nhận lại hiệu ứng này.",
+   "icon": "assets/maps/tft/icons/augments/choiceui/precisiongrace_ii.tex",
+   "effects": {
+    "BuffDuration": 3.0,
+    "{ad998bcf}": 0.25
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_FaeTraitAugment",
+   "name": "Hóa Lớn",
+   "desc": "Các Pix Tiên Linh giờ trở nên lớn hơn và trao thêm @BonusMultiplier*100@% Sức Mạnh Công Kích & Sức Mạnh Phép Thuật. Các tướng Tiên Linh nhận @UpfrontADAP*100@% Sức Mạnh Công Kích và Sức Mạnh Phép Thuật ngay lập tức. Nhận 1 Xayah và 1 Rakan.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "BonusMultiplier": 0.5,
+    "{020fc56b}": 0.10000000149011612
+   },
+   "associatedTraits": [
+    "DA_18_Fae"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ChampDelivery",
+   "name": "Phân Phối Tướng",
+   "desc": "Nhận @NumInitialChamps@ tướng @ChampCost@ vàng. Sau @Delay@ vòng, nhận thêm @NumDelayedChamps@ tướng cùng bậc.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "ChampCost": 2.0,
+    "Delay": 6.0,
+    "{30e83e0d}": 3.0,
+    "{b82d82af}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BandOfThievesII",
+   "name": "Băng Trộm II",
+   "desc": "Nhận @AmountOfGlovesAtStartII@ Găng Đạo Tặc. Sau @CombatsUntilNextRewardII@ giao tranh người chơi, nhận thêm 1 Găng Đạo Tặc.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/bandthieves3.tex",
+   "effects": {
+    "{1e541b17}": 2.0,
+    "{cd9faa42}": 6.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_VerticalityII",
+   "name": "Chỉ Một Con Đường II",
+   "desc": "Các Tướng nhận được @ADAP*100@% Sức Mạnh Công Kích, @ADAP*100@% Sức Mạnh Phép Thuật, @resists@ Giáp và @resists@ Kháng Phép cho mỗi đồng minh có cùng tộc/hệ với họ.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "ADAP": 0.019999999552965164,
+    "Resists": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Epoch",
+   "name": "Kỷ Nguyên",
+   "desc": "Ngay lập tức, và khi bắt đầu mỗi giai đoạn, nhận @EpochXP@ XP và @EpochRerolls@ lượt đổi miễn phí.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/epoch_ii.tex",
+   "effects": {
+    "{795f1afe}": 4.0,
+    "{831a9955}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CapitalGainsI",
+   "name": "Tăng Vốn I",
+   "desc": "Tích trữ vàng bằng với lượng lợi tức bạn kiếm được. Ở vòng @Stage@-@Round@, nhận lượng vàng bằng @InterestRatio*100@% số vàng đã tích trữ. Nhận ngay @StartingGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "Round": 3.0,
+    "Stage": 3.0,
+    "{1c49a816}": 1.0,
+    "{66816927}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Replication",
+   "name": "Nhân Bản",
+   "desc": "Chọn 1 trong 3 trang bị thành phần. Trong @NumberOfRoundsToGrantLoot@ vòng đấu tiếp theo, nhận 1 bản sao của trang bị thành phần đó.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/replication-ii.tex",
+   "effects": {
+    "{2e582b57}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CursedCrown",
+   "name": "Vương Miện Hắc Hóa",
+   "desc": "Tăng +@MaxArmySizeIncrease@ số lượng tướng tối đa và đội của bạn nhận @DurabilityBonus*100@% Chống Chịu, nhưng bạn sẽ nhận gấp đôi sát thương lên Linh Thú khi thua giao tranh người chơi.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/cursedcrown-iii.tex",
+   "effects": {
+    "DurabilityBonus": 0.04000002145767212,
+    "MaxArmySizeIncrease": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_FeelingLucky",
+   "name": "Cảm Thấy May Mắn",
+   "desc": "Nhận @GoldUpFront@ vàng, sau đó tung đồng xu. Nếu ra mặt ngửa, nhận thêm @GoldIfHeads@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/feelinglucky_i.tex",
+   "effects": {
+    "{b198bbbb}": 4.0,
+    "{be75f5e1}": 12.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Hustler",
+   "name": "Sống Vội",
+   "desc": "Bạn không còn lợi tức, nhưng sẽ nhận @RoundStartBonusGold@ vàng khi bắt đầu mỗi vòng giao tranh người chơi. Nhận ngay @GoldInstant@ vàng.<br><br><rules>Lợi tức là lượng vàng bạn nhận được thêm từ mỗi</rules> @OldInterestThreshold@<rules> vàng bạn giữ lại.</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/hyperroll2.tex",
+   "effects": {
+    "{1e108c20}": 3.0,
+    "{a3ad916e}": 3.0,
+    "{dcfa8547}": 10.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CryMeARiver",
+   "name": "Giọt Lệ Bi Ai",
+   "desc": "Nhận 1 Nước Mắt Nữ Thần. Đội của bạn nhận @RegenBonus@ Hồi Năng Lượng. Sau @UpgradeDelay@ giây giao tranh, tăng hiệu ứng này lên thành @UpgradedRegenBonus@.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/crymeariver_ii.tex",
+   "effects": {
+    "RegenBonus": 1.0,
+    "UpgradedRegenBonus": 4.0,
+    "{a69302a6}": 12.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_AugmentedPower",
+   "name": "Nâng Tầm Uy Lực",
+   "desc": "Nâng Cấp tiếp theo của bạn được tăng một bậc.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/powerup_i.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CyberneticImplants_Gold",
+   "name": "Cấy Ghép Siêu Công Nghệ",
+   "desc": "Tướng sở hữu trang bị của bạn nhận @HPFromGold@ Máu và @ADFromGold*100@% Sức Mạnh Công Kích. Nhận 1 Kiếm B.F.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/cybernetic2.tex",
+   "effects": {
+    "{697f1a9e}": 0.15000000596046448,
+    "{b64e9f63}": 100.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_DoubleTrouble",
+   "name": "Cặp Đôi Hoàn Cảnh",
+   "desc": "Khi triển khai đúng 2 bản sao của một tướng, cả 2 tướng đó được tăng @DamageStatAdd*100@% SMCK và SMPT, và @DefenseStatAdd@ Giáp và Kháng Phép. Khi ghép tướng 3 sao, nhận 1 bản sao 2 sao.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/double-trouble-ii.tex",
+   "effects": {
+    "{14ae3030}": 25.0,
+    "{65020e89}": 0.25
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ItsMeBaby",
+   "name": "Là Ta Đây",
+   "desc": "Nhận một hào quang ở góc dưới bên phải. Tướng bên trong nhận thêm @DamageAmpPercent*100@% Khuếch Đại Sát Thương và @AttackSpeed*100@% Tốc Độ Đánh, đồng thời rơi ra @GoldToGrant@ vàng mỗi @TakedownsPerGold@ lần tham gia hạ gục.<br><br><rules>Tactician's Crown Truyền Thuyết & Huyền Thoại, 2026</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "AttackSpeed": 0.1499999761581421,
+    "DamageAmpPercent": 0.15000000596046448,
+    "GoldToGrant": 1.0,
+    "{d0e73794}": 5.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_QuickStreaks",
+   "name": "Tích Chuỗi Nhanh",
+   "desc": "Bạn nhận được gấp đôi tiến trình chuỗi thắng và chuỗi thua. Nhận @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "Gold": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_NestingAnvils",
+   "name": "Gói Trang Bị Bất Ngờ",
+   "desc": "Nhận 1 Gói Trang Bị Tạo Tác. Sau khi bạn mở nó, nhận 1 Gói Trang Bị Thành Phần. Sau khi bạn mở nó, nhận @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+   "effects": {
+    "Gold": 8.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_BranchingOutPlus",
+   "name": "Phân Nhánh+",
+   "desc": "Nhận 1 Ấn ngẫu nhiên và 1 Búa Rèn.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/branching-out-i.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GainGold",
+   "name": "Nhận 21 Vàng",
+   "desc": "Nhận @NumGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/windfall2.tex",
+   "effects": {
+    "NumGold": 21.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Recombobulator",
+   "name": "Xoay Bài Tự Động",
+   "desc": "Tất cả tướng trên sân đấu của bạn sẽ vĩnh viễn chuyển thành tướng ngẫu nhiên với giá cao hơn 1 bậc (tối đa 5). Nhận @NumRemovers@ Nam Châm Ma Thuật và @NumRolls@ lượt đổi miễn phí.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/recombobulator-i.tex",
+   "effects": {
+    "NumRemovers": 2.0,
+    "Numrolls": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TonsOfStatsII",
+   "name": "Cộng Mệt Nghỉ!",
+   "desc": "Đội của bạn nhận thêm @Health@ Máu, @ADAP*100@% Sức Mạnh Công Kích, @ADAP*100@% Sức Mạnh Phép Thuật, @Resists@ Giáp, @Resists@ Kháng Phép, @AttackSpeed*100@% Tốc Độ Đánh và @Mana@ Năng Lượng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/tons-of-stats-ii.tex",
+   "effects": {
+    "ADAP": 0.07999999821186066,
+    "AttackSpeed": 0.08000004291534424,
+    "Health": 88.0,
+    "Mana": 8.0,
+    "Resists": 8.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_OnesTwosThree",
+   "name": "Một, Hai, Ba",
+   "desc": "Nhận @OneCosts@ tướng 1 vàng, @TwoCosts@ tướng 2 vàng và @ThreeCosts@ tướng 3 vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "{16f514ab}": 1.0,
+    "{79bfdecd}": 1.0,
+    "{c280645f}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_MaxBuild",
+   "name": "Đội Hình Tối Ưu",
+   "desc": "Nhận @Rerolls@ lượt đổi Cửa Hàng miễn phí. Khi bạn đạt cấp @Level@, nhận @RewardRolls@ lượt đổi Cửa Hàng miễn phí và 1 Máy Sao Chép Tướng.<br><br><rules>Giải Vô Địch Thiên Hà, 2020</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/maxbuild_ii.tex",
+   "effects": {
+    "Level": 9.0,
+    "Rerolls": 10.0,
+    "{a1ea30d2}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SlamminPlus",
+   "name": "Hạ Đo Ván+",
+   "desc": "Nhận ngay @NumGoldPlus@ vàng và @InstantXPPlus@ XP. Sau mỗi giao tranh người chơi, nếu không có trang bị nào của bạn nằm ở hàng chờ (ngoài các trang bị tiêu thụ), nhận @NoItemsXPPlus@ XP.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/slammin_ii.tex",
+   "effects": {
+    "{14bedd02}": 2.0,
+    "{96ce7ab1}": 4.0,
+    "{c8226cce}": 10.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SilverSpoon",
+   "name": "Đặc Quyền Phú Gia",
+   "desc": "Nhận @XP@ XP.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/silver-spoon-i.tex",
+   "effects": {
+    "XP": 10.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TacticiansKitchen",
+   "name": "Linh Thú Vào Bếp",
+   "desc": "Nhận 1 Ấn ngẫu nhiên. Sau @Rounds@ vòng đấu, nhận 1 Áo Choàng Chiến Thuật.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/tacticianskitchen_iii.tex",
+   "effects": {
+    "rounds": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_DeadlierCaps",
+   "name": "Mũ Tử Thần",
+   "desc": "Nhận 1 Mũ Phù Thủy Rabadon. Mũ Phù Thủy Rabadon cho @ManaGen@ Hồi Năng Lượng và vĩnh viễn tăng thêm @AbilityPowerPercent*100@% Sức Mạnh Phép Thuật mỗi khi chủ sở hữu tham gia hạ gục.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/deadliercaps_ii.tex",
+   "effects": {
+    "ManaGen": 1.0,
+    "{b8e3e5e3}": 0.009999999776482582
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_MoneyHungryPlus",
+   "name": "Cơn Khát Vàng+",
+   "desc": "Nhận @InitialGoldPlus@ vàng ngay lập tức, sau đó nhận thêm @GoldPerStagePlus@ vàng vào khởi đầu mỗi giai đoạn. Nhặt vàng sẽ khiến Linh Thú của bạn to hơn.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/moneyhungry2_ii.tex",
+   "effects": {
+    "{bac4bc6c}": 7.0,
+    "{f3c91381}": 10.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Dummify",
+   "name": "Hình Nhân Hóa",
+   "desc": "Mất đi tất cả tướng trên bàn đấu và trên hàng dự bị của bạn. Nhận 1 Hình Nhân mang @CombinedHealthPercentage*100@% tổng Máu của tất cả các tướng đó. Hình Nhân nhận thêm @HealthGainPerStage@ Máu mỗi giai đoạn. Nhận ngẫu nhiên 1 tướng 2 vàng 2 sao không phải đỡ đòn.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/dummify_i.tex",
+   "effects": {
+    "{9190ad30}": 0.6000000238418579,
+    "{acc6fa4b}": 1000.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_NestingAnvilsPlus",
+   "name": "Gói Trang Bị Bất Ngờ+",
+   "desc": "Nhận 1 Gói Trang Bị Tạo Tác. Sau khi bạn mở nó, nhận 1 Gói Trang Bị Thành Phần. Sau khi bạn mở nó, nhận @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+   "effects": {
+    "Gold": 12.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PandorasItemsI",
+   "name": "Hộp Pandora I",
+   "desc": "Bắt đầu vòng đấu: Các trang bị trên hàng chờ được đánh tráo ngẫu nhiên. <br><br>Nhận @NumberOfComponentsI@ trang bị thành phần ngẫu nhiên.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/pandora1.tex",
+   "effects": {
+    "{7f5c7d9c}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GoldenGamble",
+   "name": "Ván Cược Hoàng Kim",
+   "desc": "Nhận @Gold@ vàng và tung đồng xu. Nếu ra mặt ngửa, nhận 1 Rương Trang Bị Ánh Sáng May Mắn. Nếu ra mặt sấp, nhận @NumAnvils@ Gói Trang Bị Hoàn Chỉnh.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/goldengamble_iii.tex",
+   "effects": {
+    "Gold": 2.0,
+    "NumAnvils": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_YoungAndWildAndFree",
+   "name": "Trẻ, Khỏe & Tự Do",
+   "desc": "Bạn sẽ luôn được di chuyển tự do trong Vòng Đi Chợ. Nhận @InstantGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/young-and-wild-and-free-i.tex",
+   "effects": {
+    "InstantGold": 5.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_MoneyMonsoon",
+   "name": "Bão Vàng",
+   "desc": "Nhận @GoldPerRoundMonsoon@ vàng ngay bây giờ và mỗi vòng đấu cho đến hết trận.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/moneymonsoon_iii.tex",
+   "effects": {
+    "{6d7e7c33}": 7.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BacklineBlueprint",
+   "name": "Sơ Đồ Tuyến Sau",
+   "desc": "Nhận 1 tướng 3 vàng không phải Đỡ Đòn và 1 Ấn phù hợp với hệ của tướng đó.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/backlineblueprint_ii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BirthdayReunion",
+   "name": "Sinh Nhật Đoàn Tụ",
+   "desc": "Nhận 1 tướng @FirstRewardShopTier@ vàng @ChampLevel@ sao ngẫu nhiên. Ở Cấp @MiddleRewardLevel@, nhận 1 trang bị thành phần ngẫu nhiên. Ở Cấp @LastRewardLevel@, nhận 1 tướng @LastRewardShopTier@ vàng @ChampLevel@ sao ngẫu nhiên.<br><br><rules>Tactician's Crown Họa Thế Chi Linh, 2024</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/birthdayreunion_ii.tex",
+   "effects": {
+    "{6aaaa386}": 2.0,
+    "{753e85a2}": 5.0,
+    "{90aacdef}": 6.0,
+    "{b4ea6eba}": 2.0,
+    "{c64c8794}": 9.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_LuxAugmentII",
+   "name": "Tinh Thông Mọi Tộc",
+   "desc": "Mở kho vũ khí và chọn một trong @ArmoryChoices@ tộc/hệ. Nhận 1 Lux mang tộc/hệ đó và 1 Ngọn Giáo Shojin.<br><br><dim>Các tộc/hệ trên sân của bạn sẽ có khả năng xuất hiện trong kho vũ khí cao hơn. Lux tăng +2 cho tộc/hệ được chọn</dim>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+   "effects": {
+    "{d6cf9365}": 3.0
+   },
+   "associatedTraits": [
+    "DA_18_LuxUniqueTrait"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Warpath",
+   "name": "Đường Ra Trận",
+   "desc": "Nhận 1 tướng 2 vàng 2 sao. Sau khi gây @PlayerDamage@ sát thương lên người chơi, nhận 1 rương chứa các trang bị và tướng bậc cao.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/warpath_ii.tex",
+   "effects": {
+    "PlayerDamage": 80.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GoldDestiny",
+   "name": "Vận Mệnh Vàng",
+   "desc": "Nhận 1 Nâng Cấp Vàng ngẫu nhiên và @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/goldendestiny_ii.tex",
+   "effects": {
+    "Gold": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_LegionOfThrees",
+   "name": "Quân Đoàn 3 Sao",
+   "desc": "Nhận 1 Ấn ngẫu nhiên. Các tướng 3 vàng của bạn và mọi đồng minh được trang bị Ấn nhận @HealthMaxAdd@ Máu và @AttackSpeedPercent*100@% Tốc Độ Đánh.<br><br><rules>Giải Vô Địch Ngày Phán Quyết, 2021</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/legionofthrees_ii.tex",
+   "effects": {
+    "AttackSpeedPercent": 0.12000000476837158,
+    "{28e35d72}": 150.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_MakeshiftArmorII",
+   "name": "Giáp Tự Chế II",
+   "desc": "Các tướng không mang trang bị nhận @Armor_Gold@ Giáp và Kháng Phép.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/makeshift2.tex",
+   "effects": {
+    "{cf29d61f}": 50.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SilverDestinyPlus",
+   "name": "Vận Mệnh Bạc+",
+   "desc": "Nhận 1 Nâng Cấp Bạc và @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/silverdestiny_i.tex",
+   "effects": {
+    "Gold": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PatienceIsAVirtue",
+   "name": "Kiên Nhẫn Là Một Đức Tính",
+   "desc": "Nhận ngay @RerollsUpfront@ lượt đổi lại. Mỗi vòng đấu, nhận @Rerolls@ lượt đổi miễn phí nếu bạn không mua tướng ở vòng đấu trước.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/patienceisavirtue_i.tex",
+   "effects": {
+    "Rerolls": 1.0,
+    "{88446308}": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_HardCommit",
+   "name": "Chỉ Một Con Đường",
+   "desc": "Nhận 1 ấn ngẫu nhiên. Ngay lập tức và khi bắt đầu mỗi giai đoạn, nhận 1 tướng 1 sao cùng tộc/hệ, có giá bằng với Giai Đoạn hiện tại (tối đa 5) và 3 vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/hardcommit_iii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_StandUnited",
+   "name": "Nhất Thống",
+   "desc": "Tướng của bạn nhận @AttackDamagePercentagePerTrait*100@% Sức Mạnh Công Kích và @AbilityPowerPerTrait*100@% Sức Mạnh Phép Thuật với mỗi Tộc/Hệ không phải duy nhất được kích hoạt trong đội hình.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/standunited1.tex",
+   "effects": {
+    "{48edbb7f}": 0.014999999664723873,
+    "{744414c5}": 0.014999999664723873
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TheGoldenDragon",
+   "name": "Kim Long",
+   "desc": "Nhận 1 Giáp Đại Hãn. Tướng mang Giáp Đại Hãn chiếm +@IncreasedTeamSizeContribution@ vị trí trong đội hình nhưng nhận thêm @BonusHealth@ Máu và @BonusDurability*100@% Chống Chịu.<br><br><rules>Giáp Đại Hãn này mang lại vàng và tăng sức mạnh chiến đấu.</rules><br><rules>Giải Vô Địch Thế Giới Rồng, 2022</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/thegoldendragon_ii.tex",
+   "effects": {
+    "BonusDurability": 0.20000000298023224,
+    "BonusHealth": 700.0,
+    "{857f7819}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_IronAssets",
+   "name": "Kho Báu Sắt",
+   "desc": "Nhận 1 gói trang bị thành phần và @NumCoins@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/iron-assets-i.tex",
+   "effects": {
+    "{4e157f8f}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GildedSteel",
+   "name": "Thép Mạ Vàng",
+   "desc": "Nhận 2 tướng 5 vàng. Nếu bạn triển khai ít nhất 1 tướng 5 vàng, các tướng từ 1 đến 4 vàng của bạn nhận được @Durability*100@% Chống Chịu.<br><br><rules>Tactician's Crown K.O. Đại Chiến Anh Hùng, 2025</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/gildedsteel_ii.tex",
+   "effects": {
+    "Durability": 0.07999999821186066
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_InvestmentStrategyI",
+   "name": "Chiến Thuật Đầu Tư I",
+   "desc": "Tướng của bạn nhận thêm vĩnh viễn @MaxHealthPerInterest@ máu tối đa với mỗi vàng lợi tức bạn kiếm được. Nhận ngay @InstantGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/investmentstrategy_ii.tex",
+   "effects": {
+    "InstantGold": 4.0,
+    "{da66a800}": 8.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_RadiantRelic",
+   "name": "Kho Thần Tích",
+   "desc": "Chọn 1 trong 5 Trang Bị Ánh Sáng. Nhận 1 Nam Châm Ma Thuật.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/radiantrelic-iii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_EpochPlus",
+   "name": "Kỷ Nguyên+",
+   "desc": "Ngay lập tức, và khi bắt đầu mỗi giai đoạn, nhận @EpochPlusXP@ XP và @EpochPlusRerolls@ lượt đổi miễn phí.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/epoch_ii.tex",
+   "effects": {
+    "{4951ec62}": 8.0,
+    "{c409ef91}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_URF",
+   "name": "U.R.F.",
+   "desc": "Nhận 1 Xẻng Vàng. Các tướng mang Xẻng Vàng hoặc Chảo Vàng nhận thêm @AS*100@% Tốc Độ Đánh và @ManaRegen@ Hồi Năng Lượng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/ultrarapidfire_ii.tex",
+   "effects": {
+    "AS": 0.20000000298023224,
+    "ManaRegen": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_LuxurySubscription",
+   "name": "Gói Đăng Ký Hạng Sang",
+   "desc": "Nhận một gói quà chứa 1 tướng @1StarCost@ vàng, 1 tướng @2StarCost@ vàng 2 sao và @Gold@ vàng.<br><br>Khi bắt đầu @Stages@ giai đoạn tiếp theo, nhận gói quà một lần nữa.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/luxurysubscription_iii.tex",
+   "effects": {
+    "Gold": 3.0,
+    "{04a101fa}": 2.0,
+    "{34512474}": 1.0,
+    "{3ae20dd9}": 5.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PromisedProtection",
+   "name": "Thệ Ước Bảo Hộ",
+   "desc": "Nhận 1 Lời Thề Hộ Vệ. Lời Thề Hộ Vệ cho chủ sở hữu thêm @IncomingManaIncreasePercentage*100@% Năng Lượng từ mọi nguồn và @FlatHP@ Máu tối đa.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/promisedprotection_ii.tex",
+   "effects": {
+    "{88b73576}": 0.20000000298023224,
+    "{c38f01f2}": 200.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_JeweledLotus_II",
+   "name": "Khảm Bảo Thạch II",
+   "desc": "Đội của bạn nhận @CritChance_II@% Tỉ Lệ Chí Mạng, @CritDamage_II@% Sát Thương Chí Mạng và <TFTKeyword>Chuẩn Xác</TFTKeyword>.<br><br><rules>Chuẩn Xác: Sát thương kỹ năng có thể chí mạng. Chỉ số Chuẩn Xác cộng thêm tăng 10% Sát Thương Chí Mạng.</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/jeweled-lotus-iii.tex",
+   "effects": {
+    "{265c28b7}": 10.0,
+    "{b6289c68}": 25.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TwinGuardians",
+   "name": "Song Vệ",
+   "desc": "Nếu bạn có đúng @NumMultiples@ đồng minh ở hàng đầu, tăng cho họ @BonusHealth@ Máu, @ArmorInstant@ Giáp và @MagicResistInstant@ Kháng Phép.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/twinguardians_i.tex",
+   "effects": {
+    "BonusHealth": 100.0,
+    "{5705afa5}": 35.0,
+    "{6c230424}": 2.0,
+    "{aa79200f}": 35.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ExplosiveGrowth",
+   "name": "Tăng Trưởng Bùng Nổ",
+   "desc": "Nhận @XPPerRound@ XP ngay bây giờ và khi bắt đầu @Rounds@ vòng đấu tiếp theo.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/explosivegrowth_ii.tex",
+   "effects": {
+    "XPPerRound": 7.0,
+    "rounds": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ForgedInStrength",
+   "name": "Tôi Luyện Sức Mạnh",
+   "desc": "Nhận @InitialArtifacts@ Tạo Tác ngẫu nhiên. Khi bạn xuống dưới @Health@ Máu, nhận thêm @MoreArtifacts@ Tạo Tác ngẫu nhiên, @MoreCompletedItems@ trang bị hoàn chỉnh ngẫu nhiên, và @MoreComponents@ trang bị thành phần ngẫu nhiên.<br><br><rules>Giải Vô Địch Remix Rumble, 2023</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/forgedinstrength_iii.tex",
+   "effects": {
+    "Health": 35.0,
+    "{559cca94}": 2.0,
+    "{70b8be03}": 1.0,
+    "{736a47ea}": 1.0,
+    "{8ec217d3}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_AdvancedLoan",
+   "name": "Vay Tạm Ứng",
+   "desc": "Nhận @GoldInstantBasic@ Vàng. Nâng cấp tiếp theo của bạn bị giảm 1 bậc.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/advancedloan_ii.tex",
+   "effects": {
+    "{c2c01596}": 20.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ElectrochargeII",
+   "name": "Tụ Điện II",
+   "desc": "Mỗi khi đồng minh nhận @ProcAttackCount@ đòn đánh, họ sẽ gây @DamageII@ - @DamageII_4@ (dựa trên Giai Đoạn hiện tại) sát thương phép lên kẻ địch gần đó (@Cooldown@ giây hồi chiêu).",
+   "icon": "assets/maps/tft/icons/augments/hexcore/electrocharge-ii.tex",
+   "effects": {
+    "Cooldown": 1.0,
+    "{0f3faf3d}": 140.0,
+    "{144e4fc6}": 50.0,
+    "{c6163c80}": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_LuckyGlovesPlus",
+   "name": "Đo Ni Đóng Giày+",
+   "desc": "Găng Đạo Tặc sẽ luôn cho tướng của bạn những trang bị lý tưởng. Nhận ngay @StartSparringGlovesAmount@ Găng Đấu Tập, nhận thêm 1 găng sau @CombatsUntilNextRewardPlus@ giao tranh người chơi.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/lucky-gloves-iii.tex",
+   "effects": {
+    "{0bfe3dfc}": 4.0,
+    "{9af8dfcf}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TradeSectorPlus",
+   "name": "Khu Giao Dịch+",
+   "desc": "Nhận 1 lượt đổi miễn phí mỗi vòng đấu. Nhận @NumGoldPlus@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/trade2.tex",
+   "effects": {
+    "{96ce7ab1}": 8.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ArcaneViktory",
+   "name": "Arcane Viktor-y",
+   "desc": "Sau @InitialStunDelayInSeconds@ giây giao tranh, làm choáng đội địch trong @StunDuration@ giây. Lặp lại hiệu ứng này sau @RepeatStunDelayInSeconds@ giây giao tranh.<br><br><rules>ĐTCL Macao Open, 2024</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/arcaneviktory_ii.tex",
+   "effects": {
+    "StunDuration": 1.5,
+    "{234b347e}": 8.0,
+    "{4c23f86b}": 18.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GlassCannon_Silver",
+   "name": "Lấy Công Bù Thủ I",
+   "desc": "Các đồng minh bắt đầu giao tranh ở hàng sau sẽ khởi đầu với @StartingHP*100@% Máu nhưng nhận thêm @DamageAmp*100@% Khuếch Đại Sát Thương.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/glasscannon_i.tex",
+   "effects": {
+    "DamageAmp": 0.1599999964237213,
+    "{9e58e1a9}": 0.800000011920929
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BackupBows",
+   "name": "Cung Dự Phòng",
+   "desc": "Nhận 1 Cung Gỗ. Sau khi các tướng của bạn tấn công @AttackCount@ lần, nhận thêm @NumBows@ Cung Gỗ.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/recurvewrecker_i.tex",
+   "effects": {
+    "AttackCount": 1000.0,
+    "{434df90e}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_VerticalityIII",
+   "name": "Chỉ Một Con Đường III",
+   "desc": "Các Tướng nhận được @ADAP*100@% Sức Mạnh Công Kích, @ADAP*100@% Sức Mạnh Phép Thuật, @resists@ Giáp và @resists@ Kháng Phép cho mỗi đồng minh có cùng tộc/hệ với họ.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+   "effects": {
+    "ADAP": 0.03500000014901161,
+    "Resists": 3.5
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_CovenTraitAugment_LootToAP",
+   "name": "Tà Thuật",
+   "desc": "Chuyển đổi Tinh Hoa Tiên Hắc Ám thành phần thưởng sẽ cho các tướng Tiên Hắc Ám Sức Mạnh Phép Thuật thay vì báu vật. Nhận 1 Camille, 1 Elise và 1 Caitlyn.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {},
+   "associatedTraits": [
+    "DA_18_Coven"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CraftedCrafting",
+   "name": "Khéo Tay Hay Làm",
+   "desc": "Mỗi khi bạn chế tạo 1 trang bị hoàn chỉnh, nhận @NumFreeRerolls@ lượt đổi.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/craftedcrafting_i.tex",
+   "effects": {
+    "{aed5e4c4}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ChampDeliveryPlus",
+   "name": "Phân Phối Tướng+",
+   "desc": "Nhận @NumInitialChamps@ tướng @ChampCost@ vàng. Sau @Delay@ vòng, nhận thêm @NumDelayedChamps@ tướng cùng bậc.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "ChampCost": 3.0,
+    "Delay": 6.0,
+    "{30e83e0d}": 3.0,
+    "{b82d82af}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SpreadingRoots",
+   "name": "Cắm Rễ Phân Tán",
+   "desc": "Nhận @EmblemAmount@ Ấn ngẫu nhiên và @GoldAmount@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/spreadingroots_ii.tex",
+   "effects": {
+    "GoldAmount": 1.0,
+    "{bd12a44f}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SliceOfLife",
+   "name": "Chuyện Đời Thường",
+   "desc": "Hai lần mỗi giai đoạn, nhận 1 tướng ngẫu nhiên. Giá của tướng tăng theo Giai Đoạn. Hiệu ứng này kết thúc sau khi nhận được tướng @NumOfMaxCosts@ - @MaxChampCost@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/slice_of_life_i.tex",
+   "effects": {
+    "{5f411789}": 5.0,
+    "{949c47da}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SilverDestiny",
+   "name": "Vận Mệnh Bạc",
+   "desc": "Nhận 1 Nâng Cấp Bạc và @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/silverdestiny_i.tex",
+   "effects": {
+    "Gold": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ClockworkAccelerator",
+   "name": "Động Cơ Tăng Tốc",
+   "desc": "Đội của bạn được tăng @AttackSpeed*100@% Tốc Độ Đánh sau mỗi @FrequencySeconds@ giây giao tranh.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/clockworkaccelerator_ii.tex",
+   "effects": {
+    "AttackSpeed": 0.10000002384185791,
+    "{0810f00e}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SmallGrabBag",
+   "name": "Túi Đồ Cỡ Nhỏ",
+   "desc": "Nhận @NumberOfComponents@ trang bị thành phần ngẫu nhiên.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/smallgrabbag_i.tex",
+   "effects": {
+    "{856d7d1d}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BandOfThievesIIPlusPlus",
+   "name": "Băng Trộm II++",
+   "desc": "Nhận @AmountOfGlovesAtStartIIPlusPlus@ Găng Đạo Tặc. Sau @CombatsUntilNextRewardIIPlusPlus@ giao tranh người chơi, nhận thêm 1 Găng Đạo Tặc.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/bandthieves3.tex",
+   "effects": {
+    "{1336236f}": 2.0,
+    "{3c620baa}": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_BlossomTraitAugment",
+   "name": "Tiếng Gọi Hoa Linh",
+   "desc": "Khi bạn mua 1 Tinh Linh, nhận 1 tướng Hoa Linh ngẫu nhiên dựa trên giá của Tinh Linh. Nhận 1 Yunara, 1 Yorick và 1 Karma.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {},
+   "associatedTraits": [
+    "DA_18_Blossom"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_FrontlineFoundation",
+   "name": "Củng Cố Tuyến Trước",
+   "desc": "Nhận 1 tướng Đỡ Đòn 1 vàng 2 sao và 1 Ấn phù hợp với hệ của tướng đó.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/frontlinefoundation_ii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_WandOverflow",
+   "name": "Đam Mê Gậy",
+   "desc": "Nhận @NumRods@ Gậy Quá Khổ. Gậy Quá Khổ của bạn sẽ cho +@AttackSpeedPerRod*100@% Tốc Độ Đánh.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/wandoverflow_iii.tex",
+   "effects": {
+    "{1b24e9f9}": 4.0,
+    "{60ed4c64}": 0.05000000074505806
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SoulAwakening",
+   "name": "Thức Tỉnh Linh Hồn",
+   "desc": "Bắt đầu giao tranh: Đội của bạn nhận @CombatStartAdBoost*100@% Sức Mạnh Công Kích và Sức Mạnh Phép Thuật mỗi giây trong @NumRepeatsAfterInitialApplication@ giây. Khi đạt cộng dồn tối đa, gây thêm @TrueDamage*100@% sát thương chuẩn.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/awakenedsoul_iii.tex",
+   "effects": {
+    "TrueDamage": 0.11999999731779099,
+    "{3b7e331f}": 10.0,
+    "{a69048c5}": 0.014999999664723873
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Expedition",
+   "name": "Cuộc Viễn Chinh",
+   "desc": "Khi bắt đầu giao tranh, mất đi vị tướng ở ô ngoài cùng bên phải hàng dự bị. Sau khi tổng giá tướng mất đi theo cách này là @CashoutCost@ vàng, nhận một phần thưởng mạnh mẽ. Nhận ngay 1 tướng 3 vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/expedition_i.tex",
+   "effects": {
+    "CashoutCost": 33.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_PrimalAugmentPlus_Sivir",
+   "name": "Quái Thú Bên Trong+",
+   "desc": "Tướng Nguyên Sinh cho thêm một Phước Lành nữa. Nhận 1 Vi và 1 Sivir.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {},
+   "associatedTraits": [
+    "DA_Primal18"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_InfernoTraitAugment",
+   "name": "Bùng Cháy",
+   "desc": "Tướng Hỏa Ngục gây nhiều sát thương nhất trong giao tranh trước sẽ Bốc Lửa, nhận @AS*100@% Tốc Độ Đánh. Nhận 1 Varus và 1 Akali.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "AS": 0.5499999523162842
+   },
+   "associatedTraits": [
+    "DA_18_Inferno"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ComponentQuest",
+   "name": "Nhiệm Vụ Trang Bị",
+   "desc": "Nhận 1 trang bị thành phần ngẫu nhiên và @NumGold@ vàng. Trong 7 lần tiếp theo bạn thắng giao tranh người chơi, nhận 1 trang bị thành phần ngẫu nhiên khác nhau. Sau đó, nhận @CompletionGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+   "effects": {
+    "NumGold": 1.0,
+    "{4daea365}": 5.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PandorasItemsIII",
+   "name": "Hộp Pandora III",
+   "desc": "Bắt đầu vòng đấu: Các trang bị trên hàng chờ được đánh tráo ngẫu nhiên. <br><br>Nhận @NumberOfRadiantItemsIII@ Trang Bị Ánh Sáng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/pandora3.tex",
+   "effects": {
+    "{def3d059}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_MoneyHungry_NotBroken",
+   "name": "Cơn Khát Vàng",
+   "desc": "Nhận @InitialGold@ vàng ngay lập tức, sau đó nhận thêm @GoldPerStage@ vàng vào khởi đầu mỗi giai đoạn. Nhặt vàng sẽ khiến Linh Thú của bạn to hơn.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/moneyhungry1_ii.tex",
+   "effects": {
+    "GoldPerStage": 7.0,
+    "InitialGold": 7.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_KickStart",
+   "name": "Khởi Động Nhanh",
+   "desc": "Nhận 1 tướng @ChampCost@ vàng @StarLevel@ sao ngẫu nhiên và @NumGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/kickstart_i.tex",
+   "effects": {
+    "ChampCost": 2.0,
+    "NumGold": 1.0,
+    "starLevel": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CaretakersFavor",
+   "name": "Chúc Phúc Của Bụt",
+   "desc": "Nhận một gói trang bị thành phần khi bạn đạt cấp 5, 6, 7 và 8.<br><br><rules>Gói trang bị thành phần sẽ đưa ra 4 lựa chọn.</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/caretaker_s-chosen-ii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_WispRebatePlusPlus",
+   "name": "Tinh Linh Hoàn Tiền+",
+   "desc": "Mỗi lần bạn mua 1 Tinh Linh, nhận @Gold@ vàng. Nhận ngay @StartingGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "Gold": 2.0,
+    "{66816927}": 8.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SeraphimsStaff",
+   "name": "Trượng Đại Thiên Sứ",
+   "desc": "Nhận 1 Quyền Trượng Thiên Thần. Quyền Trượng Thiên Thần tăng thêm @ManaPerSecond@ Hồi Phục Năng Lượng nếu chủ sở hữu có @APThreshold*100@% Sức Mạnh Phép Thuật trở lên.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/seraphimsstaff_ii.tex",
+   "effects": {
+    "APThreshold": 0.8999999761581421,
+    "ManaPerSecond": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Staffsmith",
+   "name": "Thợ Rèn Gậy",
+   "desc": "Nhận @ItemQuantity@ trang bị hoàn chỉnh ngẫu nhiên được ghép từ Gậy Quá Khổ.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/rodsmith_ii.tex",
+   "effects": {
+    "{2ce16abf}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_ResidualMagic",
+   "name": "Dư Âm Ma Thuật",
+   "desc": "Đội của bạn được tăng @InitialHealth@ Máu. Mỗi khi bạn mua 1 Tinh Linh, tăng hiệu ứng này thêm @HealthPerSprite@.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "InitialHealth": 60.0,
+    "{17a52adf}": 10.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CelestialBlessingII",
+   "name": "Phước Lành Vũ Trụ II",
+   "desc": "Đội của bạn nhận @OmnivampII*100@% Hút Máu Toàn Phần. Lượng hồi máu phụ trội sẽ được chuyển thành lá chắn, tối đa @ShieldMaxII@ Máu.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/celestialblessing2.tex",
+   "effects": {
+    "{684aaa94}": 400.0,
+    "{6ad4b9ae}": 0.18000000715255737
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_RadiantRascal",
+   "name": "Quang Lân Tiểu Yêu",
+   "desc": "Nhận 1 trang bị Găng Đạo Tặc Ánh Sáng. Vật phẩm này sẽ lắp 2 trang bị Ánh Sáng ngẫu nhiên mỗi vòng đấu.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/roll-the-dice-iii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CelestialBlessingIII",
+   "name": "Phước Lành Vũ Trụ III",
+   "desc": "Đội của bạn nhận @OmnivampIII*100@% Hút Máu Toàn Phần. Lượng hồi máu phụ trội sẽ được chuyển thành lá chắn, tối đa @ShieldMaxIII@ Máu.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/celestialblessing3.tex",
+   "effects": {
+    "{2a8b2c47}": 1000.0,
+    "{f3e07445}": 0.25
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ExclusiveCustomization",
+   "name": "Lựa Chọn Độc Quyền",
+   "desc": "Nhận 1 Rương Trang Bị May Mắn, 1 Nam Châm Ma Thuật và @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/exclusivecustomization_ii.tex",
+   "effects": {
+    "Gold": 7.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_DeadlierBlades",
+   "name": "Kiếm Tử Thần",
+   "desc": "Nhận 1 Kiếm Tử Thần. Kiếm Tử Thần vĩnh viễn tăng thêm @AttackDamagePercent*100@% Sức Mạnh Công Kích mỗi khi chủ sở hữu tham gia hạ gục.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/deadlierblades_ii.tex",
+   "effects": {
+    "AttackDamagePercent": 0.009999999776482582
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_ResidualMagicPlus",
+   "name": "Dư Âm Ma Thuật +",
+   "desc": "Đội của bạn được tăng @InitialHealth@ Máu. Mỗi khi bạn mua 1 Tinh Linh, tăng hiệu ứng này thêm @HealthPerSprite@.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "InitialHealth": 75.0,
+    "{17a52adf}": 10.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_Flexible",
+   "name": "Linh Hoạt",
+   "desc": "Nhận 1 Ấn ngẫu nhiên. Khi bắt đầu mỗi Giai Đoạn, nhận 1 Ấn ngẫu nhiên. Đội của bạn nhận @Health@ Máu với mỗi Ấn mà họ đang mang.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/flexible_ii.tex",
+   "effects": {
+    "Health": 30.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_FlowingTears",
+   "name": "Lệ Lưu Ly",
+   "desc": "Nhận 1 Nước Mắt Nữ Thần. Sau khi các tướng của bạn tiêu tốn @CompletionManaRequired@ Năng Lượng, nhận thêm @CompletionNumRewards@ Nước Mắt Nữ Thần.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/griefofthegreatgoddess_i.tex",
+   "effects": {
+    "{c11bb61b}": 2.0,
+    "{ca7d02a1}": 6500.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BodyguardTraining",
+   "name": "Huấn Luyện Cận Vệ",
+   "desc": "Các đồng minh nhận @ArmorBonus@ Giáp và Kháng Phép, tăng thêm @PlayerLevelBonus@ với mỗi cấp người chơi.<br><br><rules>Chung Kết Thế Giới Thời Đại Công Nghệ, 2022</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/bodyguardstraining_ii.tex",
+   "effects": {
+    "ArmorBonus": 15.0,
+    "{8ca89e49}": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CelestialBlessingI",
+   "name": "Phước Lành Vũ Trụ I",
+   "desc": "Đội của bạn nhận @OmnivampI*100@% Hút Máu Toàn Phần. Lượng hồi máu phụ trội sẽ được chuyển thành lá chắn, tối đa @ShieldMaxI@ Máu.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/celestialblessing1.tex",
+   "effects": {
+    "{5c26a433}": 0.11999999731779099,
+    "{90b497f5}": 200.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_HeartOfSteel",
+   "name": "Trái Tim Sắt Đá",
+   "desc": "Nhận 1 Trái Tim Kiên Định. Mỗi @SurvivePeriodInSeconds@ giây mà chủ sở hữu sống sót trong giao tranh, Trái Tim Kiên Định nhận thêm vĩnh viễn @MaxHealthGain@ Máu tối đa.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/healthygains_ii.tex",
+   "effects": {
+    "MaxHealthGain": 16.0,
+    "{40e6f170}": 10.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SalvageBinPlus",
+   "name": "Nhà Máy Tái Chế+",
+   "desc": "Nhận 1 trang bị hoàn chỉnh ngẫu nhiên ngay lập tức, và 1 trang bị thành phần sau @RoundsPlus@ vòng giao tranh người chơi. Bán tướng sẽ tách trang bị hoàn chỉnh của tướng đó ra thành trang bị thành phần (ngoại trừ các trang bị Chiến Thuật và Ấn).",
+   "icon": "assets/maps/tft/icons/augments/hexcore/salvage2.tex",
+   "effects": {
+    "{4e40c208}": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GoldenEgg",
+   "name": "Rồng Đẻ Trứng Vàng",
+   "desc": "Nhận một trứng vàng nở ra sau @Rounds@ vòng đấu, cho lượng lớn báu vật. Chiến thắng vòng giao tranh người chơi sẽ đẩy nhanh thời gian nở trứng thêm một vòng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/the-golden-egg-iii.tex",
+   "effects": {
+    "rounds": 11.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ComebackStory",
+   "name": "Cố Gắng Lật Kèo",
+   "desc": "Đội của bạn nhận @HPPerMissingHP@ Máu và @ASMultiplyPerMissingHP*100@% Tốc Độ Đánh với mỗi Máu người chơi đã mất.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/comebackstory_iii.tex",
+   "effects": {
+    "HPPerMissingHP": 4.0,
+    "{54f2d0e4}": 0.004000000189989805
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_InvestedPlusPlus",
+   "name": "Đầu Tư++",
+   "desc": "Nhận 45 vàng. Khi bắt đầu mỗi vòng đấu, nhận 1 lượt làm mới Cửa Hàng với mỗi 10 vàng vượt hơn 50 (tối đa 80 vàng).",
+   "icon": "assets/maps/tft/icons/augments/hexcore/invested-iii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PrismaticDestiny",
+   "name": "Vận Mệnh Kim Cương",
+   "desc": "Nhận 1 Nâng Cấp Kim Cương ngẫu nhiên và @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/prismaticdestiny_iii.tex",
+   "effects": {
+    "Gold": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CookingPot",
+   "name": "Nồi Nấu Ăn",
+   "desc": "Khi bắt đầu mỗi lượt, tất cả các đồng minh đang mang trang bị Xẻng Vàng hoặc Chảo Vàng sẽ vĩnh viễn tăng cho tướng gần nhất @HealthIncrease@ Máu. Nhận 1 Chảo Vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/cookingpot_ii.tex",
+   "effects": {
+    "HealthIncrease": 60.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PandorasBench",
+   "name": "Hàng Chờ Pandora",
+   "desc": "Ở đầu mỗi vòng đấu, các tướng ở @NumBenchSlots@ ô ngoài cùng bên phải hàng chờ sẽ được chuyển đổi thành tướng ngẫu nhiên cùng giá tiền. Nhận @GoldGain@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/pandoras-bench-ii.tex",
+   "effects": {
+    "GoldGain": 4.0,
+    "NumBenchSlots": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_HeroicGrabBagPlusPlus",
+   "name": "Túi Đồ Siêu Hùng++",
+   "desc": "Nhận 2 Máy Sao Chép Tướng Cỡ Nhỏ. Nhận @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/heroic-grab-bag-ii.tex",
+   "effects": {
+    "Gold": 14.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_WeightTheWorth",
+   "name": "Xứng Đáng Chờ Đợi",
+   "desc": "Lần đầu tiên bạn nâng một tướng lên 3 sao, nhận 1 bản sao của tướng đó mỗi vòng đấu cho đến hết trận. Nâng tướng đó lên 3 sao lần nữa sẽ nhận thêm bản sao. Nhận 1 Máy Sao Chép Tướng Cỡ Nhỏ và 1 Máy Sao Chép Tướng Tí Hon.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BoosterPackPlusPlus",
+   "name": "Gói Tăng Cường++",
+   "desc": "Nhận các tướng ngẫu nhiên có tổng giá là @CombinedChampsValuePlusPlus@ vàng. (Đảm bảo có ít nhất một tướng @GuaranteedChampValuePlusPlus@ vàng!)",
+   "icon": "assets/maps/tft/icons/augments/hexcore/boosterpack1_ii.tex",
+   "effects": {
+    "{171edc1b}": 26.0,
+    "{cbc2b1fb}": 5.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CommerceCore",
+   "name": "Trung Tâm Thương Mại",
+   "desc": "Nhận @InitRerolls@ lượt đổi cửa hàng miễn phí ngay lập tức và @PerTurnRerolls@ lượt đổi mỗi vòng đấu cho đến hết trận.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/trade3.tex",
+   "effects": {
+    "{cfee5822}": 3.0,
+    "{fce5f43a}": 16.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CarveAPath",
+   "name": "Mở Lối",
+   "desc": "Nhận 1 Kiếm B.F. Sau khi các tướng của bạn gây @PhysicalDamageUntilCompletion@ sát thương vật lý, nhận thêm @NumCompletionRewards@ Kiếm B.F.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/carveapath_i.tex",
+   "effects": {
+    "{0d78d513}": 2.0,
+    "{1e3f247d}": 65000.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CognitiveTax",
+   "name": "Thuế Nhận Thức",
+   "desc": "Nhận @NumGold@ vàng và @NumXp@ XP.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/cognitivetax_i.tex",
+   "effects": {
+    "NumGold": 8.0,
+    "{9b31b433}": 1.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GroupHugII",
+   "name": "Ôm Tập Thể II",
+   "desc": "Bắt đầu giao tranh: Các tướng sẽ tăng cho các tướng liền kề khác @Armor_Gold@ Giáp và Kháng Phép. Hiệu ứng này có thể cộng dồn.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/grouphug2_ii.tex",
+   "effects": {
+    "{cf29d61f}": 9.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_InfinityProtection",
+   "name": "Bảo Hộ Vô Tận",
+   "desc": "Nhận ngay @GoldAmount@ vàng. Tại Vòng @UnlockStage@-@UnlockRound@, nhận 1 Tam Luyện Kiếm. Tam Luyện Kiếm trao cho các đồng minh cùng hàng một lá chắn bằng @HealthPercent*100@% Máu.<br><br><rules>Giải Vô Địch Quái Vật Tấn Công, 2023</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/infinityprotection_ii.tex",
+   "effects": {
+    "GoldAmount": 3.0,
+    "HealthPercent": 0.11999999731779099,
+    "UnlockRound": 7.0,
+    "UnlockStage": 3.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SilverDestinyPlusPlus",
+   "name": "Vận Mệnh Bạc++",
+   "desc": "Nhận 1 Nâng Cấp Bạc và @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/silverdestiny_i.tex",
+   "effects": {
+    "Gold": 7.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_OneBuffTwoBuff",
+   "name": "Một Bùa, Hai Bùa",
+   "desc": "Nhận 1 Bùa Đỏ, 1 Bùa Xanh và 1 Máy Sao Chép Tướng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/onebufftwobuff_iii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_BranchingOut",
+   "name": "Phân Nhánh",
+   "desc": "Nhận 1 Ấn ngẫu nhiên.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/branching-out-i.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_CalledShot",
+   "name": "Đòn Quyết Định",
+   "desc": "Đặt chuỗi thắng của bạn thành +@WinStreakCount@. Nhận @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/calledshot_i.tex",
+   "effects": {
+    "Gold": 4.0,
+    "{dccca3be}": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BandOfThievesIIPlus",
+   "name": "Băng Trộm II+",
+   "desc": "Nhận @AmountOfGlovesAtStartIIPlus@ Găng Đạo Tặc. Sau @CombatsUntilNextRewardIIPlus@ giao tranh người chơi, nhận thêm 1 Găng Đạo Tặc.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/bandthieves3.tex",
+   "effects": {
+    "{14baa76b}": 2.0,
+    "{4af53eb6}": 5.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_TheTower",
+   "name": "Tòa Tháp",
+   "desc": "Nhận 1 Hình Nhân khổng lồ. Cứ mỗi @TowerAttackInterval@ giây, nó phóng điện vào @TowerNumTargets@ kẻ địch gần nhất, gây sát thương chuẩn tương đương @MaxHealthDamageMultiplier*100@% Máu tối đa.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/thetower_i.tex",
+   "effects": {
+    "{578c3ca8}": 3.0,
+    "{72eed94b}": 4.0,
+    "{d5b4831d}": 0.05000000074505806
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BirthdayPresent",
+   "name": "Quà Sinh Nhật",
+   "desc": "Nhận một tướng 2 sao và @Gold@ vàng mỗi lần bạn lên cấp. Bậc của tướng sẽ là cấp của bạn trừ @LevelDiff@ (tối đa: @MaxTier@ vàng).",
+   "icon": "assets/maps/tft/icons/augments/hexcore/golden-gifts-iii.tex",
+   "effects": {
+    "Gold": 1.0,
+    "{0d14760d}": 5.0,
+    "{c2a3e602}": 4.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_FindYourCenter",
+   "name": "Tiền Vệ Trung Tâm",
+   "desc": "Tướng bắt đầu giao tranh ở chính giữa hàng trên sẽ được nhận @DamageAmpPercent*100@% Khuếch Đại Sát Thương và @MaxHealthMultiplier*100@% Máu tối đa.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/findyourcenter_i.tex",
+   "effects": {
+    "DamageAmpPercent": 0.15000000596046448,
+    "MaxHealthMultiplier": 0.25
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_SprykinAugment",
+   "name": "Lông Xù Bé Nhỏ",
+   "desc": "Khi tộc/hệ Tinh Nghịch được kích hoạt, triệu hồi LXKL thứ hai mạnh bằng @Effectiveness_DoesntIncludeSummonSpell*100@% LXKL đầu tiên. Nhận 1 Teemo, 1 Veigar và 1 Kobuko.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "{7f8d6662}": 0.3499999940395355
+   },
+   "associatedTraits": [
+    "DA_18_Sprykin"
+   ],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_HealingOrbsII",
+   "name": "Cầu Hồi Phục II",
+   "desc": "Khi 1 kẻ địch bị hạ gục, 1 đồng minh gần đó sẽ được hồi @HealthFromHealingOrbGold@ Máu.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/healing-orbs-ii.tex",
+   "effects": {
+    "{2b5df382}": 575.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_NoScoutNoPivot",
+   "name": "NHẮM MẮT CHƠI BỪA",
+   "desc": "Các tướng tham gia giao tranh người chơi không thể được đưa về hàng dự bị hoặc bán. Đội của bạn nhận @PostCombatHealthBoost*100@% Máu, @PostCombatApBoost*100@% Sức Mạnh Công Kích và Sức Mạnh Phép Thuật sau giao tranh người chơi.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/noscoutnopivot_ii.tex",
+   "effects": {
+    "{198d04cd}": 0.009999999776482582,
+    "{3a0c2000}": 0.009999999776482582
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GoldenGamblePlusPlus",
+   "name": "Ván Cược Hoàng Kim++",
+   "desc": "Nhận @Gold@ vàng và tung đồng xu. Nếu ra mặt ngửa, nhận 1 Rương Trang Bị Ánh Sáng May Mắn. Nếu ra mặt sấp, nhận @NumAnvils@ Gói Trang Bị Hoàn Chỉnh.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/goldengamble_iii.tex",
+   "effects": {
+    "Gold": 6.0,
+    "NumAnvils": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_HardBargain",
+   "name": "Thương Vụ Khó Xơi",
+   "desc": "Bạn không thể chọn phần thưởng trong Vòng Đi Chợ. Nhận thêm @PlayerHealth@ máu người chơi và @Gold@ vàng mỗi vòng đi chợ.<br><rules>Khi bạn không chọn Phần Thưởng Ở Vòng Đi Chợ, bạn sẽ được trao 1 tướng chưa có người chọn cùng trang bị đi kèm.</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/hardbargain_ii.tex",
+   "effects": {
+    "Gold": 8.0,
+    "PlayerHealth": 6.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BronzeForLifeI",
+   "name": "Tất Tay Bậc Đồng I",
+   "desc": "Đội của bạn nhận @DamageAmp*100@% Khuếch Đại Sát Thương cho mỗi tộc/hệ bậc Đồng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/bronzeforlife_ii.tex",
+   "effects": {
+    "DamageAmp": 0.02500000037252903
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_GiantAndMighty",
+   "name": "To Lớn & Mạnh Mẽ",
+   "desc": "Đội của bạn hóa lớn, được tăng @FlatHealth@ Máu và @HealthMultiplier*100@% Máu tối đa.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/giantandmighty_iii.tex",
+   "effects": {
+    "FlatHealth": 200.0,
+    "{52fcdfb4}": 0.10000002384185791
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_ResidualMagicPlusPlus",
+   "name": "Dư Âm Ma Thuật ++",
+   "desc": "Đội của bạn được tăng @InitialHealth@ Máu. Mỗi khi bạn mua 1 Tinh Linh, tăng hiệu ứng này thêm @HealthPerSprite@.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "InitialHealth": 90.0,
+    "{17a52adf}": 10.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_ItemGrabBag",
+   "name": "Tiếp Tế Trang Bị I",
+   "desc": "Nhận 1 trang bị hoàn chỉnh ngẫu nhiên.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/itemgrabbag1.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_FutureFocused",
+   "name": "Định Hướng Tương Lai",
+   "desc": "Linh Thú của bạn mất @HealthLoss@ Máu, nhưng sau @NumRounds@ giao tranh người chơi, nhận @NumChampions@ tướng 4 vàng và @RewardGold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t1.tex",
+   "effects": {
+    "HealthLoss": 20.0,
+    "NumChampions": 3.0,
+    "NumRounds": 5.0,
+    "{461c2a88}": 8.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_BaronsLair",
+   "name": "Hang Ổ Baron",
+   "desc": "Nhận 1 trang bị Đỡ Đòn ngẫu nhiên. Sau @StartSeconds@ giây giao tranh, đội của bạn nhận thêm @Stats*100@% Sức Mạnh Công Kích và Sức Mạnh Phép Thuật mỗi giây cho đến hết giao tranh.<br><br><rules>TFT Paris Open, 2025</rules>",
+   "icon": "assets/maps/tft/icons/augments/hexcore/thebaronslair_iii.tex",
+   "effects": {
+    "StartSeconds": 8.0,
+    "Stats": 0.05000000074505806
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_18_GoodForSomethingI",
+   "name": "Được Cái Này Mất Cái Kia I",
+   "desc": "Tướng không mang trang bị có @ChangeDrop*100@% xác suất rơi ra @GoldReward@ vàng khi hy sinh.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/good-for-something-i.tex",
+   "effects": {
+    "GoldReward": 1.0,
+    "{f117ccd4}": 0.4000000059604645
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_SpiritOfRedemption",
+   "name": "Linh Hồn Chuộc Tội",
+   "desc": "Nhận 1 Giáp Tâm Linh. Mỗi @TimeIntervalSeconds@ giây, Giáp Tâm Linh hồi lại cho các đồng minh trong phạm vi @HexRange@ ô @PercentMissingHealth*100@% Máu đã mất của họ.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/spiritofredemption_ii.tex",
+   "effects": {
+    "HexRange": 1.0,
+    "PercentMissingHealth": 0.07500000298023224,
+    "{0f5a682a}": 5.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_WorththeWait",
+   "name": "Chờ Đợi Xứng Đáng",
+   "desc": "Nhận 1 tướng 1 vàng ngẫu nhiên. Nhận 1 bản sao nữa của tướng đó khi bắt đầu mỗi vòng đấu cho đến hết trận.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/worththewait_ii.tex",
+   "effects": {},
+   "associatedTraits": [],
+   "isAugment": true
+  },
+  {
+   "apiName": "DA_PrismaticDestinyPlus",
+   "name": "Vận Mệnh Kim Cương+",
+   "desc": "Nhận 1 Nâng Cấp Kim Cương ngẫu nhiên và @Gold@ vàng.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/prismaticdestiny_iii.tex",
+   "effects": {
+    "Gold": 10.0
+   },
+   "associatedTraits": [],
+   "isAugment": true
+  }
+ ],
+ "setData": [
+  {
+   "number": 18,
+   "mutator": "TFTSet18",
+   "name": "Set10",
+   "traits": [
+    {
+     "apiName": "DA_18_Elderwood",
+     "name": "Thần Rừng",
+     "desc": "Nhận các cây Thần Rừng có thể đặt được.<br><row>(@MinUnits@) 1 Cây Vỏ Đá và 1 Hoa Sinh Mệnh</row><br><row>(@MinUnits@) Cây Vỏ Đá thứ hai & các Cây Vỏ Đá được tăng @StonebarkTreeBonusHealth@ Máu</row><br><row>(@MinUnits@) và Hộ Vệ Rừng</row><br><row>(@MinUnits@) Các cây trở thành 2 sao</row><br><row>(@MinUnits@) Các cây trở thành 3 sao và khu rừng được hình thành</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_elderwood.tex"
+    },
+    {
+     "apiName": "DA_18_LuxUniqueTrait",
+     "name": "Thế Thần",
+     "desc": "Sở hữu một tướng Thế Thần sẽ biến mọi tướng Thế Thần khác trong cửa hàng của bạn về Tộc/Hệ của tướng Thế Thần đó.<br><br>Tộc/Hệ được chọn của tướng Thế Thần sẽ được tính gấp đôi cho các mốc thưởng Tộc/Hệ.",
+     "icon": "assets/ux/traiticons/trait_icon_18_avatar.tex"
+    },
+    {
+     "apiName": "DA_18_Slayer",
+     "name": "Tàn Phá",
+     "desc": "Tướng Tàn Phá nhận @Omnivamp*100@% Hút Máu Toàn Phần. Ngoài ra, tướng Tàn Phá sẽ gây thêm sát thương, tăng gấp đôi khi tấn công kẻ địch còn dưới @EnemyHealthThreshold*100@% Máu.<br><row>(@MinUnits@) @BonusDamagePercentBase*100@% Sát Thương Cộng Thêm</row><br><row>(@MinUnits@) @BonusDamagePercentBase*100@% Sát Thương Cộng Thêm</row><br><row>(@MinUnits@) @BonusDamagePercentBase*100@% Sát Thương Cộng Thêm</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_ravager.tex"
+    },
+    {
+     "apiName": "DA_DravenUniqueTrait18",
+     "name": "Săn Thưởng",
+     "desc": "Chọn một nhiệm vụ. Draven mạnh nhất của bạn có thể hoàn thành nhiệm vụ săn thưởng để nhận phần thưởng tương ứng. Sau khi hoàn thành một nhiệm vụ săn thưởng, hãy chọn nhiệm vụ tiếp theo.",
+     "icon": "assets/ux/traiticons/trait_icon_18_bountyseeker.tex"
+    },
+    {
+     "apiName": "DA_18_Solar",
+     "name": "Mặt Trời",
+     "desc": "<row>(@MinUnits@) Tướng của bạn nhận lá chắn bằng @ShieldRatio*100@% Máu tối đa và gây @BonusMagicDamage*100@% sát thương phép cộng thêm. Nhận thêm hiệu ứng bổ sung với mỗi tướng 3 sao độc nhất:<br><br>1: Tăng lá chắn và sát thương phép thêm @PercentIncreasePer3Star*100@% với mỗi tướng 3 sao. <br>@NumThreeStarThreshold1@: @Threshold1AttackSpeed*100@% %i:scaleAS% và @Threshold1ArmorMagicResist@ %i:scaleArmor%%i:scaleMR%<br>@NumThreeStarThreshold2@: Chuyển đổi @Threshold2TrueDamageConversion*100@% sát thương phép cộng thêm thành sát thương chuẩn.<br>@NumThreeStarThreshold3@: Mỗi @Threshold3StarUpPeriod@ giây giao tranh, 1 tướng 3 sao thăng hoa lên 4 sao.</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_solar.tex"
+    },
+    {
+     "apiName": "DA_18_Sprykin",
+     "name": "Tinh Nghịch",
+     "desc": "Nhận Lông Xù Khổng Lồ. Thả một tướng Tinh Nghịch lên LXKL để chọn làm Kỵ Sĩ.<br><row>(@MinUnits@) Kỵ Sĩ nhận được<br>@HealthIncrease*100@% %i:scaleHealth% và @AttackSpeedIncrease*100@% %i:scaleAS%</row><br><row>(@MinUnits@) @HealthIncrease*100@% %i:scaleHealth% @AttackSpeedIncrease*100@% %i:scaleAS%, và @TeamwideRatio*100@% Kỹ năng của LXKL sẽ áp dụng cho các tướng Tinh Nghịch của bạn.</row><br><row>(@MinUnits@) @HealthIncrease*100@% %i:scaleHealth% @AttackSpeedIncrease*100@% %i:scaleAS%, và @TeamwideRatio*100@% Kỹ năng của LXKL sẽ áp dụng cho các tướng Tinh Nghịch của bạn.</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_sprykin.tex"
+    },
+    {
+     "apiName": "DA_18_Adaptor",
+     "name": "Thích Ứng",
+     "desc": "Thiên Phú: Kỹ năng của tướng Thích Ứng sẽ thay đổi tùy theo việc Sức Mạnh Công Kích hay Sức Mạnh Phép Thuật của họ cao hơn.<br><br>Tướng Thích Ứng nhận thêm Sức Mạnh Phép Thuật hoặc Sức Mạnh Công Kích, tùy vào chỉ số nào cao hơn.<br><row>(@MinUnits@) @ADAPGain*100@% HOẶC </row><br><row>(@MinUnits@) @ADAPGain*100@% HOẶC </row><br><row>(@MinUnits@) @ADAPGain*100@% HOẶC </row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_adaptor.tex"
+    },
+    {
+     "apiName": "DA_18_Coven",
+     "name": "Tiên Hắc Ám",
+     "desc": "Nhận Tinh Hoa khi hạ gục tướng, và nhận thêm khi thua giao tranh người chơi. <br><br>Bắt đầu từ mốc @EssenceForRitualTooltip@ Tinh Hoa, bạn có thể chọn chuyển đổi Tinh Hoa thành phần thưởng hoặc tiếp tục tích lũy. Mỗi phần thưởng yêu cầu lượng Tinh Hoa tăng dần.<br><row>(@MinUnits@) @EssencePerDeath@ Tinh Hoa mỗi mạng hạ gục, @EssencePerLoss@ Tinh Hoa mỗi lần thua</row><br><row>(@MinUnits@) @EssencePerDeath@ mỗi mạng hạ gục, @EssencePerLoss@ mỗi lần thua</row><br><row>(@MinUnits@) @EssencePerDeath@ mỗi mạng hạ gục, @EssencePerLoss@ mỗi lần thua</row><br><row>(@MinUnits@) @EssencePerDeath@ mỗi mạng hạ gục, @EssencePerLoss@ mỗi lần thua</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_coven.tex"
+    },
+    {
+     "apiName": "DA_18_Eclipse",
+     "name": "Thiên Thực",
+     "desc": "Sau @DelaySeconds@ giây giao tranh, tướng Thiên Thực sẽ hạ gục kẻ địch có lượng Máu thấp nhất, lặp lại sau mỗi @EclipseBeamPeriod@ giây.",
+     "icon": "assets/ux/traiticons/trait_icon_18_eclipse.tex"
+    },
+    {
+     "apiName": "DA_18_Hunter",
+     "name": "Thợ Săn",
+     "desc": "Tướng Thợ Săn nhận Sức Mạnh Công Kích. Nếu tướng Thợ Săn không đổi mục tiêu trong @HunterDuration@ giây, họ nhận thêm @DamageAmp*100@% Khuếch Đại Sát Thương.<br><row>(@MinUnits@) @HunterAD*100@% %i:scaleAD%</row><br><row>(@MinUnits@) @HunterAD*100@% %i:scaleAD%</row><br><row>(@MinUnits@) @HunterAD*100@% %i:scaleAD%</row><br><row>(@MinUnits@) @HunterAD*100@% %i:scaleAD%</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_hunter.tex"
+    },
+    {
+     "apiName": "DA_18_Maokai_UniqueTrait",
+     "name": "Cổ Thụ",
+     "desc": "Mỗi khi một kẻ địch trong @UniqueTraitHexRange@ ô bị hạ gục, tướng Cổ Thụ mạnh nhất của bạn nhận @UniqueTraitHealthPerStack@ Máu tối đa vĩnh viễn.<br><br>Hiện tại: 0",
+     "icon": "assets/ux/traiticons/trait_icon_18_oldgrowth.tex"
+    },
+    {
+     "apiName": "DA_18_Battlemage",
+     "name": "Cự Thạch",
+     "desc": "Tướng Cự Thạch tăng @Resists@ Giáp và Kháng Phép với mỗi kẻ địch đang nhắm vào họ.",
+     "icon": "assets/ux/traiticons/trait_icon_18_monolith.tex"
+    },
+    {
+     "apiName": "DA_Primal18",
+     "name": "Nguyên Sinh",
+     "desc": "Chọn 1 trong 4 Phước Lành Nguyên Sinh.<br><row>(@MinUnits@)</row><br><row>(@MinUnits@)</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_primal.tex"
+    },
+    {
+     "apiName": "DA_18_Greenfather",
+     "name": "Thụ Thần",
+     "desc": "Nhận @SeedsPerCast@ hạt giống khi Ivern mạnh nhất của bạn thi triển, cộng thêm @CombatStartSeeds@ mỗi giao tranh. Ivern dùng @SeedsToGrowHex@ hạt giống để nuôi lớn 1 ô trên bàn đấu của bạn, trao hiệu ứng cộng thêm cho đơn vị đứng trên ô đó. <br><br>Hạt Giống: 0 / @SeedsToGrowHex@<br><br>Hệ Sinh Thái Hiện Tại:",
+     "icon": "assets/ux/traiticons/trait_icon_18_greenfather.tex"
+    },
+    {
+     "apiName": "DA_18_Invoker",
+     "name": "Thuật Sĩ",
+     "desc": "Đội của bạn được tăng Hồi Năng Lượng, tướng Thuật Sĩ nhận được nhiều hơn.<br><row>(@MinUnits@) @TeamManaRegen@ %i:scaleManaRegen% | @InvokerManaBonus@ %i:scaleManaRegen%</row><br><row>(@MinUnits@) @TeamManaRegen@ %i:scaleManaRegen% | @InvokerManaBonus@ %i:scaleManaRegen%</row><br><row>(@MinUnits@) @TeamManaRegen@ %i:scaleManaRegen% | @InvokerManaBonus@ %i:scaleManaRegen%</row><br><row>(@MinUnits@) @TeamManaRegen@ %i:scaleManaRegen% | @InvokerManaBonus@ %i:scaleManaRegen%</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_invoker.tex"
+    },
+    {
+     "apiName": "DA_18_Rapidfire",
+     "name": "Liên Kích",
+     "desc": "Đội của bạn nhận @TeamAS*100@% Tốc Độ Đánh. Các tướng Liên Kích nhận thêm sau mỗi đòn đánh, tối đa @MaxStacks@ cộng dồn.<br><row>(@MinUnits@) +@ASPerAttack*100@% %i:scaleAS% mỗi Đòn Đánh</row><br><row>(@MinUnits@) +@ASPerAttack*100@% %i:scaleAS% mỗi Đòn Đánh</row><br><row>(@MinUnits@) +@ASPerAttack*100@% %i:scaleAS% mỗi Đòn Đánh</row><br><row>(@MinUnits@) +@ASPerAttack*100@% %i:scaleAS% mỗi Đòn Đánh</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_rapidfire.tex"
+    },
+    {
+     "apiName": "DA_Juggernaut18",
+     "name": "Dũng Sĩ",
+     "desc": "Đội của bạn nhận Chống Chịu. Tướng Dũng Sĩ nhận được nhiều hơn.<br><row>(@MinUnits@) @TeamDurability*100@% %i:scaleDR% hoặc @JuggernautDurability*100@% %i:scaleDR%</row><br><row>(@MinUnits@) @TeamDurability*100@% %i:scaleDR% hoặc @JuggernautDurability*100@% %i:scaleDR%</row><br><row>(@MinUnits@) @TeamDurability*100@% %i:scaleDR% hoặc @JuggernautDurability*100@% %i:scaleDR%</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_juggernaut.tex"
+    },
+    {
+     "apiName": "DA_18_Inferno",
+     "name": "Hỏa Ngục",
+     "desc": "Sát thương từ tướng Hỏa Ngục sẽ gây <TFTKeyword>Thiêu Đốt</TFTKeyword> và <TFTKeyword>Vết Thương Sâu</TFTKeyword> lên kẻ địch trong @Duration@ giây. Thiêu Đốt từ Hỏa Ngục cộng dồn với các hiệu ứng Thiêu Đốt khác.<br><row>(@MinUnits@) Thiêu Đốt @HPBurnPerSecond@%, Vết Thương Sâu @WoundPercent@%</row><br><row>(@MinUnits@) Sau giao tranh, @LuckySlotCount@ ô cửa hàng không chứa tướng Hỏa Ngục của bạn sẽ bốc cháy, hiện ra tướng cao hơn 1 bậc</row><br><row>(@MinUnits@) @LuckySlotCount@ ô cửa hàng Bốc Cháy, Thiêu Đốt @HPBurnPerSecond@%</row><br><row>(@MinUnits@) @LuckySlotCount@ ô cửa hàng Bốc Cháy, Thiêu Đốt @HPBurnPerSecond@%</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_inferno.tex"
+    },
+    {
+     "apiName": "DA_AluneUniqueTrait18",
+     "name": "Hòa Hợp",
+     "desc": "Alune mạnh nhất của bạn sẽ chuyển sang một pha trăng mới sau mỗi lần thi triển. Khi mặt trăng ở pha bán nguyệt hoặc khuyết hơn, đội của bạn nhận @Durability*100@% Chống Chịu. Khi ở những pha còn lại, đội của bạn nhận @DamageAmp*100@% Khuếch Đại Sát Thương.",
+     "icon": "assets/ux/traiticons/trait_icon_18_attuned.tex"
+    },
+    {
+     "apiName": "DA_18_Rival",
+     "name": "Khắc Tinh",
+     "desc": "<row>(@MinUnits@) Chỉ kích hoạt khi triển khai 1 tướng Khắc Tinh.<br><br>Tướng Khắc Tinh thu thập điểm tham gia hạ gục, nhận 3 điểm nếu tham gia hạ gục một tướng Khắc Tinh khác.</row><br><row>(@MinUnits@) Tướng Khắc Tinh thu thập điểm tham gia hạ gục, nhận 3 điểm nếu tham gia hạ gục một tướng Khắc Tinh khác.<br><br>Tham gia hạ gục sẽ tiến hóa Kha'Zix, vĩnh viễn ban cho hắn lựa chọn tùy ý: Đao Phủ, Liên Kích, Tàn Phá hoặc Thuật Sư.<br><br>Rengar trao @RengarGold@/@RengarGold_2@/@RengarGold_3@ vàng mỗi @RengarStackReq@ lần tham gia hạ gục. Sau @RengarADStackReq@ lần tham gia hạ gục, đội của bạn nhận @RengarThresholdAD*100@% Sức Mạnh Công Kích + @RengarADPerStack*100@% %i:scaleAD% cho mỗi lần tham gia hạ gục tiếp theo.<br><br>Số Lần Kha'Zix Tham Gia Hạ Gục: 0 / 0<br>Số Lần Rengar Tham Gia Hạ Gục: 0<br>Vàng Kiếm Được: 0</row><br><row>(@MinUnits@) tướng Khắc Tinh được triển khai cùng nhau, và kỹ năng của họ sẽ trao hiệu ứng thưởng cho nhau.</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_rival.tex"
+    },
+    {
+     "apiName": "DA_18_Vanguard",
+     "name": "Tiên Phong",
+     "desc": "Khi Bắt đầu giao tranh và khi xuống dưới @HealthThreshold*100@% <colorHealth>Máu</colorHealth>, tướng Tiên Phong nhận Lá Chắn theo Máu tối đa trong @ShieldDuration@ giây.<br><row>(@MinUnits@) @MaxHealthShield*100@% Máu tối đa</row><br><row>(@MinUnits@) @MaxHealthShield*100@% Máu tối đa</row><br><row>(@MinUnits@) @MaxHealthShield*100@% Máu tối đa. Tăng @DurabilityIncrease*100@% Chống Chịu khi có Lá Chắn.</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_vanguard.tex"
+    },
+    {
+     "apiName": "DA_18_Brawler",
+     "name": "Đấu Sĩ",
+     "desc": "Đội của bạn nhận thêm @BrawlerTeamHealth@ Máu tối đa. Tướng Đấu Sĩ nhận được nhiều hơn.<br><row>(@MinUnits@) @BrawlerHealthPercent*100@% %i:scaleHealth%</row><br><row>(@MinUnits@) @BrawlerHealthPercent*100@% %i:scaleHealth%</row><br><row>(@MinUnits@) @BrawlerHealthPercent*100@% %i:scaleHealth%</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_brawler.tex"
+    },
+    {
+     "apiName": "DA_18_Blackthorn",
+     "name": "Gai Đen",
+     "desc": "Đồng minh trên ô Gai Đen sẽ bị hiến tế trước khi giao tranh, tăng Máu cho các tướng của bạn. <br><br>Tướng Gai Đen nhận thêm chỉ số dựa trên Vai Trò, Cấp Sao và Giá của vật tế.<br><row>(@MinUnits@) @Health@ %i:scaleHealth%</row><br><row>(@MinUnits@) @Health@ %i:scaleHealth%; Hiệu ứng cộng thêm mạnh hơn @StatMultiplier*100@%</row><br><row>(@MinUnits@) @Health@ %i:scaleHealth%; Hiệu ứng cộng thêm mạnh hơn @StatMultiplier*100@%</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_oldgod.tex"
+    },
+    {
+     "apiName": "DA_18_Executioner",
+     "name": "Đao Phủ",
+     "desc": "<row>(@MinUnits@) Tướng Đao Phủ nhận được <TFTKeyword>Chuẩn Xác</TFTKeyword> và @CritChance*100@% Tỉ Lệ Chí Mạng.</row><br><row>(@MinUnits@) Ngoài ra, kẻ địch sẽ bị chảy máu, chịu thêm @BonusBleedPercent*100@% sát thương chuẩn trong @BleedDuration@ giây.</row><br><row>(@MinUnits@) Sát thương chảy máu tăng thành @BonusBleedPercent*100@%.</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_executioner.tex"
+    },
+    {
+     "apiName": "DA_18_ApexPredator",
+     "name": "Bá Chủ",
+     "desc": "Rồng Ngàn Tuổi chiếm 2 vị trí đội hình và tăng thêm 2 mốc vào tộc/hệ Quái Rừng.",
+     "icon": "assets/ux/traiticons/trait_icon_18_apexpredator.tex"
+    },
+    {
+     "apiName": "DA_Riftbeast18",
+     "name": "Quái Rừng",
+     "desc": "<row>(@MinUnits@) Sử dụng Dấu Ấn Đầu Đàn để trao Bùa Lợi độc nhất cho một tướng Quái Rừng</row><br><row>(@MinUnits@) Mỗi @OverrunCombats@ giao tranh, cửa hàng tiếp theo của bạn sẽ tràn ngập tướng Quái Rừng.</row><br><row>(@MinUnits@) Khi bắt đầu giao tranh và cứ mỗi 5 giây, tướng Quái Rừng tăng trưởng và nhận <br>@CapstoneAD*100@% %i:scaleAD% @CapstoneAP*100@% %i:scaleAP% @CapstoneAspd*100@% %i:scaleAS%<br>+@CapstoneArmor@ %i:scaleArmor% +@CapstoneMR@ %i:scaleMR% +@CapstoneHealth@ %i:scaleHealth% +@CapstoneManaRegen@ %i:scaleManaRegen%</row><br><row>(@MinUnits@) +@TeamSize@ số lượng tướng tối đa</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_riftbeast.tex"
+    },
+    {
+     "apiName": "DA_18_Caustic",
+     "name": "Ăn Mòn",
+     "desc": "Sát thương Ăn Mòn sẽ Cào Xé và Phân Tách kẻ địch @ShredPercent@% trong @ShredDuration@ giây.<br><br><rules>Cào Xé: giảm Kháng Phép</rules><br><rules>Phân Tách: giảm Giáp</rules>",
+     "icon": "assets/ux/traiticons/trait_icon_18_caustic.tex"
+    },
+    {
+     "apiName": "DA_18_Fae",
+     "name": "Tiên Linh",
+     "desc": "Sát thương, hồi máu và tạo lá chắn của đội bạn sẽ thu hút các Pix.<br><br>Mỗi Pix sẽ tăng Sức Mạnh Công Kích và Sức Mạnh Phép Thuật cho các tướng Tiên Linh, và sau khi họ tụt xuống dưới @HealThreshold*100@% Máu, họ sẽ hồi máu với mỗi Pix.<br><row>(@MinUnits@) @ADAP@% và @Heal@% Hồi Máu.</row><br><row>(@MinUnits@) @ADAP@% và @Heal@% Hồi Máu. Sau khi thu hút 7 Pix, bạn sẽ bắt đầu thu hút Pix Hoàng Kim, những Pix Hoàng Kim này sẽ cho vàng.</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_fae.tex"
+    },
+    {
+     "apiName": "DA_18_Lunar",
+     "name": "Mặt Trăng",
+     "desc": "Các tướng Mặt Trăng và đồng minh liền kề nhận Tốc Độ Đánh và Sức Mạnh Phép Thuật. Các tướng Mặt Trăng nhận thêm @LunarMultiplier*100@%.<br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%, @AbilityPower*100@% %i:scaleAP%</row><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%, @AbilityPower*100@% %i:scaleAP%</row><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%, @AbilityPower*100@% %i:scaleAP%</row><br><row>(@MinUnits@) @AttackSpeed*100@% %i:scaleAS%, @AbilityPower*100@% %i:scaleAP%</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_lunar.tex"
+    },
+    {
+     "apiName": "DA_18_Defender",
+     "name": "Vệ Quân",
+     "desc": "Đội của bạn nhận @NonDefenderDefenseGain@ Giáp và Kháng Phép. Tướng Vệ Quân nhận được nhiều hơn.<br><row>(@MinUnits@) @DefenderDefenseGain@</row><br><row>(@MinUnits@) @DefenderDefenseGain@</row><br><row>(@MinUnits@) @DefenderDefenseGain@</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_defender.tex"
+    },
+    {
+     "apiName": "DA_18_Spellweaver",
+     "name": "Thuật Sư",
+     "desc": "Đội của bạn nhận @TeamwideAP*100@% Sức Mạnh Phép Thuật. Các tướng Thuật Sư nhận được nhiều hơn, và nhận thêm Sức Mạnh Phép Thuật mỗi khi một tướng Thuật Sư thi triển Kỹ Năng.<br><row>(@MinUnits@) @SpellweaverAP*100@% %i:scaleAP%, +@APPerCast*100@% %i:scaleAP% mỗi lần thi triển</row><br><row>(@MinUnits@) @SpellweaverAP*100@% %i:scaleAP%, +@APPerCast*100@% %i:scaleAP% mỗi lần thi triển</row><br><row>(@MinUnits@) @SpellweaverAP*100@% %i:scaleAP%, +@APPerCast*100@% %i:scaleAP% mỗi lần thi triển</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_spellweaver.tex"
+    },
+    {
+     "apiName": "DA_18_ZyraUniqueTrait",
+     "name": "Vườn Gai",
+     "desc": "Đội của bạn nhận @BaseDurability*100@% Chống Chịu, tăng lên thành @IncreasedDurability*100@% nếu có tối thiểu @PlantNumThreshold@ cây của Zyra đang còn sống.",
+     "icon": "assets/ux/traiticons/trait_icon_18_zyraorigin.tex"
+    },
+    {
+     "apiName": "DA_FloraFatalis18",
+     "name": "Thực Vật",
+     "desc": "Các tướng Thực Vật thu hoạch kẻ địch khi tham gia hạ gục, nhận:<br><row>(@MinUnits@) @Mana@ Năng Lượng</row><br><row>(@MinUnits@), đồng thời hồi lại @PercentHeal*100@% Máu tối đa cho đồng minh có lượng Máu thấp nhất.</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_florafatalis.tex"
+    },
+    {
+     "apiName": "DA_18_Summoner",
+     "name": "Triệu Hồi",
+     "desc": "Tướng Triệu Hồi cường hóa các đơn vị triệu hồi của mình theo nhiều cách khác nhau.<br><br>Yorick: +@HealthMult*100@% Máu<br>Azir: +@DamageMult*100@% Sát Thương<br>Chim Mẹ: +@DamageMult*100@% Sát Thương<br>Zyra: +@NumExtraAttacks@ Đòn Đánh Từ Cây<br><row>(@MinUnits@) Cường Hóa Đơn Vị Triệu Hồi</row><br><row>(@MinUnits@) Tăng mỗi hiệu ứng thêm 50%</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_summoner.tex"
+    },
+    {
+     "apiName": "DA_18_Blossom",
+     "name": "Hoa Linh",
+     "desc": "Sau giao tranh, các Tinh Linh của bạn được cường hóa. <br><br>Tướng Hoa Linh nhận thêm Sức Mạnh Công Kích, Sức Mạnh Phép Thuật và @BonusHealth*100@% Máu tối đa.<br><row>(@MinUnits@) Tinh Linh được nâng cấp, @ADAP*100@% %i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@) Tinh Linh xuất hiện trong mọi cửa hàng, @ADAP*100@% %i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@) Nhận @GoldPerCharmPurchased@ vàng sau khi mua 1 Tinh Linh, @ADAP*100@% %i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@) Bạn có thể mua 2 Tinh Linh mỗi vòng, @ADAP*100@% %i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@) Tinh Linh tràn đầy sức mạnh, @ADAP*100@% %i:scaleAD%%i:scaleAP%</row>",
+     "icon": "assets/ux/traiticons/trait_icon_18_blossom.tex"
+    },
+    {
+     "apiName": "DA_Emerald18",
+     "name": "Lục Bảo",
+     "desc": "Kéo một đồng minh vào Taric mạnh nhất của bạn để ghép đôi họ, ban cho đồng minh các hiệu ứng mạnh mẽ từ Kỹ Năng của Taric.",
+     "icon": "assets/ux/traiticons/trait_icon_18_emeraldaspect.tex"
+    }
+   ]
+  }
+ ]
+}

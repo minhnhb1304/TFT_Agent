@@ -1,0 +1,38 @@
+# Cau hinh runtime - SPEC 5
+#
+# Moi co o day deu MAC DINH AN TOAN: tat cai gi chua chung minh duoc, chu
+# khong bat cai gi chua kip tat.
+
+paths:
+  augment_features: data/augment_features.json
+  augment_stats_csv: data/augment_stats.csv     # co the chua ton tai -> NullProvider
+  scoring_weights: config/scoring_weights.yaml
+  meta_comps: data/meta_comps.json              # co the chua ton tai -> comp DB rong
+  item_recipes: data/item_recipes.json          # SINH RA tu locale, khong sua tay
+  scenarios: data/scenarios
+
+locale:
+  # vi_vn. TUYET DOI khong dung vn_vn (bay so 1 trong research/set-data.md).
+  language: vi_vn
+  branch: latest
+
+features:
+  # Phase 7 - doc board doi thu. MAC DINH TAT: khoi luong CV lon, do nhieu cao,
+  # va no khong duoc phep an vao thoi gian cua Augment Advisor (SPEC 3.3).
+  enable_scouting: false
+
+  # Vai tro B cua LLM (SPEC 3.5.3): chi lam muot cau chu, KHONG duoc doi thu hang.
+  enable_llm_refinement: false
+  llm_model: gemini-2.5-flash-lite
+  llm_hard_timeout_s: 2.0
+
+  # Roll odds Set 18 chua public (SPEC 3.4.2). Bat co nay = chap nhan hien so
+  # cua cac set truoc kem nhan "chua xac minh".
+  allow_unverified_roll_odds: false
+
+logging:
+  # ScenarioLogger ship o Phase 3 chu khong phai cuoi: SPEC 12.2/12.3/12.4 dung
+  # chung mot dataset do no sinh ra.
+  log_scenarios: true
+  # Luu anh frame ben canh JSON. Ton dia, nhung 12.1 can frame de gan nhan.
+  save_frames: false

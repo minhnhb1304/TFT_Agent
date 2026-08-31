@@ -1,5 +1,8 @@
 # Prior Art, Overlay UI and the LLM Layer
 
+> **Verified:** 2026-08-28. PyPI and repo facts re-checked; OP.GG recommendation **downgraded** after
+> a ToS conflict surfaced; post-Unreal facts added.
+
 **Bottom line:** every open-source TFT overlay is dead or archived — budget for building capture, OCR,
 state model and overlay from scratch. But two §8/§10 assumptions are refuted: the planned scraping layer
 is replaced by an official MIT-licensed API, and the §9.1 LLM stack is end-of-life.
@@ -37,16 +40,24 @@ alternatives as a transparent window vs *"injecting a Riot-approved .dll"*. Do n
 
 | Source | Verdict |
 |---|---|
-| **OP.GG MCP** — `https://mcp-api.op.gg/mcp`, Streamable HTTP, **MIT** ([README](https://raw.githubusercontent.com/opgginc/opgg-mcp/main/README.md)) | **Adopt.** Six TFT tools confirmed: `tft_get_champion_item_build`, `tft_get_play_style`, `tft_list_augments`, `tft_list_champions_for_item`, `tft_list_item_combinations`, `tft_list_meta_decks`. Feeds Comp Selector + Item Advisor + Economy directly. **Caveat:** the README documents no API key, **no rate limits and no ToS grant** — email OP.GG before depending on it |
+| **OP.GG MCP** — `https://mcp-api.op.gg/mcp`, Streamable HTTP, **MIT** ([README](https://raw.githubusercontent.com/opgginc/opgg-mcp/main/README.md)) | **Adopt, but conditionally — see the ToS conflict below.** Endpoint, MIT licence and all six TFT tools re-verified unchanged: `tft_get_champion_item_build`, `tft_get_play_style`, `tft_list_augments`, `tft_list_champions_for_item`, `tft_list_item_combinations`, `tft_list_meta_decks` |
 | MetaTFT / lolchess / TFTactics scraping (§8) | **Drop as primary.** Only MetaTFT's ToS was ever retrieved and it has no scraping clause; permissive `robots.txt` is not a licence |
 | Fallback if OP.GG declines | A **centralised** server-side Playwright crawl on a 4-hourly cron into your own DB — never scraping from each user's machine |
-| CommunityDragon `vi_vn.json` | **Keep.** 28 locales, all refreshed on one daily pipeline (identical timestamps). Use as a constrained OCR lexicon and cross-join to `en_us.json` by ID |
+| CommunityDragon `vi_vn.json` | **Keep.** All locales refreshed on one daily pipeline (identical timestamps). Use as a constrained OCR lexicon and cross-join to `en_us.json` by ID |
+
+### OP.GG MCP — three findings that qualify the recommendation
+
+| Finding | Detail |
+|---|---|
+| **ToS conflict** (new) | OP.GG's site-wide terms ([op.gg/policies/agreement](https://op.gg/policies/agreement)) restrict use to *"personal, non-commercial use only"* and prohibit *"automated scripts to collect information from… the Services"* — with **no carve-out for their own MCP server**. The previous pass recorded "no ToS grant"; the sharper truth is an apparent **contradiction** between the MIT-licensed server OP.GG publishes and the terms OP.GG imposes. Tolerable for a private single-user tool; **blocks any distribution** |
+| **Repo is stale** | Last commit **2026-05-13** (docs/deps only), 1 open Dependabot issue, 100 stars, not archived. One resolved full-outage incident (issue #11, 2026-02) |
+| **Set 18 coverage unverified** | The server proxies OP.GG's live backend, so Set 18 data *should* flow without a code change — but this was **not confirmed by a live call**. Run a smoke test before depending on it |
 
 ## LLM layer — §9.1 must be rewritten
 
 | §9.1 as written | Reality |
 |---|---|
-| `import google.generativeai as genai` | `Development Status :: 7 - Inactive`; publisher states *"All support for this repository ended permanently on November 30, 2025"* ([PyPI](https://pypi.org/pypi/google-generativeai/json)). → `google-genai` |
+| `import google.generativeai as genai` | `Development Status :: 7 - Inactive`; publisher states *"All support for this repository ended permanently on November 30, 2025"* ([PyPI](https://pypi.org/pypi/google-generativeai/json)). → `google-genai` (live at **2.20.0**, 2026-08-25) |
 | `GenerativeModel('gemini-1.5-flash')` | Shut down 2025-09-29. `gemini-2.0-flash` and `-lite` also marked **(Shut down)** ([models](https://ai.google.dev/gemini-api/docs/models)). → `gemini-2.5-flash-lite` ($0.10/$0.40 per 1M) or `gemini-3.5-flash-lite` |
 | "Chi phí ~$0 — free tier: 15 RPM, 1M tokens/day" | No free-tier RPM/TPM/RPD table exists any more; docs say only *"View your active rate limits in AI Studio"* ([rate limits](https://ai.google.dev/gemini-api/docs/rate-limits)). Free tier is marked *"Used to improve our products: Yes"* for every Flash model |
 | Screenshot upload on free tier | Human review is permitted — though all researchers omitted the mitigating clause *"disconnecting this data from your Google Account, API key, and Cloud project before reviewers see or annotate it"* ([terms](https://ai.google.dev/gemini-api/terms)). The real exposure is **in-frame**: eight summoner names are pixels, not metadata. **Crop to the augment/shop ROI before upload**, and use the paid tier |
@@ -58,17 +69,23 @@ deterministic answer immediately from a rules+stats engine (interest breakpoints
 are closed-form arithmetic) and let any LLM response arrive as an optional refinement behind a hard
 timeout. Route through an OpenAI-compatible abstraction so the reasoning layer stays vendor-swappable.
 
-## §8 assumption to correct
+## Post-Unreal reality — what actually shipped on 2026-08-26
 
-Building template assets against **PBE Set 18** means rebuilding them at live launch and again at mid-set.
-No researcher connected this to their own survivorship evidence, yet per-set churn is what killed every
-overlay above. Build the asset pipeline to **regenerate automatically** from CommunityDragon rather than
-hand-curating, and defer final template capture until 2026-08-26.
+| Item | Status |
+|---|---|
+| Patch | **18.1**, Unreal engine. Min spec Win10 build **19041+**, DX11 FL4.3, SM5. **macOS support dropped** |
+| Process identity | **Unchanged so far** — TFT still launches through the existing League/Riot client. DXGI window targeting is *not* broken today. The 2026-10-09 standalone client is the real risk; its PBE is reported ~2026-09-09 |
+| Capture / overlay breakage | **No evidence either way.** Two days post-launch, EN searches surfaced no OBS/overlay/capture failure reports — and no confirmation of safety. Community "black screen" reports refer to *in-game rendering* crashes, not capture. **Treat as untested, not as safe** |
+| Overwolf | GEP docs still list TFT under LoL game ID **21570** with no migration notice. MetaTFT and Blitz pages reference 18.1 content, which is marketing copy, not a compatibility confirmation |
+
+**Asset-pipeline consequence (unchanged and now urgent):** per-set churn killed every overlay above.
+Build the asset pipeline to **regenerate automatically** from CommunityDragon rather than hand-curating.
+Set 17 template assets are now disposable; regenerate against live Set 18.
 
 ## Related
 
 - [Research overview](overview.md)
 - [Ban risk & Riot policy](vanguard-risk.md)
 - [Set 18 status & data sources](set-data.md)
-- [Vision stack](vision-stack/overview.md)
+- [Vision stack](vision-stack/overview.md) · [Augment pipeline](vision-stack/augments.md)
 - [Open questions](open-questions.md)
