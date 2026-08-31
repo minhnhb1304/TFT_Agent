@@ -20,6 +20,7 @@ import io
 import json
 import os
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -35,6 +36,7 @@ from src.knowledge.augment_features import (  # noqa: E402
     extract_deterministic,
 )
 from src.knowledge.cdragon_client import CDragonClient, select_set_data  # noqa: E402
+from src.utils.env import load_env  # noqa: E402
 
 DEFAULT_OUT = ROOT / "data" / "augment_features.json"
 
@@ -50,6 +52,11 @@ EXTRACT_PROMPT = """Cho mo ta mot Augment trong Teamfight Tactics, tra ve JSON P
 
 Chi dua vao mo ta duoc cung cap. Khong suy doan chi so khong co trong text.
 Neu khong xac dinh duoc mot truong, tra ve null - KHONG BIA.
+
+trait_affinity: dung TEN TRAIT tieng Anh nhu hien trong game (VD "Riftbeast").
+Neu mo ta khong nhac den trait nao thi tra ve null, KHONG tra ve [].
+
+item_grants: bo qua truong nay, dieu phoi vien tu tinh.
 """
 
 
@@ -112,7 +119,7 @@ def summarize(table: FeatureTable) -> dict[str, Any]:
 
 
 def refine_with_llm(
-    table: FeatureTable, locale: dict[str, Any], model: str
+    table: FeatureTable, locale: dict[str, Any], model: str, limit: int = 0
 ) -> tuple[FeatureTable, list[str]]:
     """Tang 2: goi Gemini de tinh chinh. Can GEMINI_API_KEY.
 
@@ -122,11 +129,14 @@ def refine_with_llm(
     Returns:
         (bang moi, danh sach mo ta thay doi)
     """
+    # Doc .env neu co. Bien da co san trong moi truong van thang file.
+    load_env()
     api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if not api_key:
         raise SystemExit(
-            "--llm can GEMINI_API_KEY (hoac GOOGLE_API_KEY) trong bien moi truong. "
-            "Tang 1 van chay duoc khong can key - bo co --llm di."
+            "--llm can GEMINI_API_KEY (hoac GOOGLE_API_KEY) trong file .env o thu muc "
+            "goc, hoac trong bien moi truong. Tang 1 van chay duoc khong can key - "
+            "bo co --llm di."
         )
     try:
         from google import genai  # noqa: PLC0415
@@ -136,24 +146,74 @@ def refine_with_llm(
     by_api = {
         str(i.get("apiName")): i for i in locale.get("items", []) if i.get("isAugment")
     }
+    traits = trait_display_map(locale)
     client = genai.Client(api_key=api_key)
     changes: list[str] = []
     refined = dict(table.features)
 
-    for api_name, feat in table.features.items():
+    items = list(table.features.items())
+    if limit:
+        items = items[:limit]
+
+    failed: list[str] = []
+    for i, (api_name, feat) in enumerate(items, start=1):
         raw = by_api.get(api_name, {})
         prompt = (
             f"{EXTRACT_PROMPT}\n\nTen: {raw.get('name')}\nMo ta: {raw.get('desc')}\n"
         )
-        resp = client.models.generate_content(model=model, contents=prompt)
-        parsed = _parse_json_block(getattr(resp, "text", "") or "")
-        if not parsed:
-            continue
-        merged, diff = _merge(feat, parsed, model)
-        refined[api_name] = merged
-        changes.extend(f"{api_name}: {d}" for d in diff)
+
+        text = _call_with_retry(client, model, prompt)
+        if text is None:
+            # Mot augment hong khong duoc lam mat ca luot chay. Tang 1 cua no
+            # van dung, chi la khong duoc tinh chinh - va ta ghi lai la ai.
+            failed.append(api_name)
+        else:
+            parsed = _parse_json_block(text)
+            if parsed:
+                merged, diff = _merge(feat, parsed, model, traits)
+                refined[api_name] = merged
+                changes.extend(f"{api_name}: {d}" for d in diff)
+
+        if i % 10 == 0 or i == len(items):
+            print(
+                f"  tang 2: {i}/{len(items)}  |  {len(changes)} thay doi  "
+                f"|  {len(failed)} loi",
+                flush=True,
+            )
+
+    if failed:
+        print(f"\n{len(failed)} augment goi that bai, giu nguyen tang 1:")
+        for api_name in failed[:20]:
+            print(f"   {api_name}")
+        if len(failed) > 20:
+            print(f"   ... con {len(failed) - 20} nua")
 
     return FeatureTable(refined, table.meta), changes
+
+
+def _call_with_retry(client: Any, model: str, prompt: str, attempts: int = 3) -> str | None:
+    """Goi model, lui dan khi loi. Tra None neu chiu thua - KHONG nem.
+
+    Mot lan goi hong giua chung khong duoc lam mat 253 ket qua da co: tang 1
+    cua augment do van dung, no chi khong duoc tinh chinh.
+    """
+    for attempt in range(attempts):
+        try:
+            resp = client.models.generate_content(model=model, contents=prompt)
+            return getattr(resp, "text", "") or ""
+        except Exception as exc:  # noqa: BLE001 - SDK nem nhieu loai, doi het
+            if attempt == attempts - 1:
+                # In CA NOI DUNG loi, khong chi ten kieu. Loi 404 cua Gemini
+                # noi thang model nao thay the model da bi go - nuot mat cau
+                # do thi phai di doan, va do la mot lan da mat thoi gian that.
+                print(
+                    f"    bo qua sau {attempts} lan thu: {type(exc).__name__}: "
+                    f"{str(exc)[:300]}",
+                    flush=True,
+                )
+                return None
+            time.sleep(2.0 * (attempt + 1))
+    return None
 
 
 def _parse_json_block(text: str) -> dict[str, Any] | None:
@@ -167,10 +227,36 @@ def _parse_json_block(text: str) -> dict[str, Any] | None:
         return None
 
 
+# Cac truong tang 2 DUOC PHEP ghi de. Day la danh sach TRANG - moi truong
+# khac bi bo qua du model co tra ve.
+#
+# Vi sao phai gioi han (do duoc tren 8 augment dau, 2026-09-01):
+#
+#   trait_affinity: ['DA_Riftbeast18'] -> []
+#   item_grants:    ['AnyComponent'] -> ['component','component','component',...]
+#
+# Hai truong nay chua apiName lay tu du lieu CO CAU TRUC (bang trait cua
+# setData, va COMPONENT_PATTERNS). Model khong the biet `DA_Riftbeast18` hay
+# `BFSword` la chuoi gi, nen no tra ve chuoi tieng Anh chung chung hoac rong
+# - tuc la XOA mat du lieu tang 1 VON DA DUNG.
+#
+# Nguyen tac chung: LLM chi duoc dung cho phan PHAN DOAN doc tu van ban mo
+# ta. Phan dinh danh thi luon lay tu du lieu co cau truc.
+LLM_REFINABLE = ("category", "carry_type", "tempo", "econ_value", "board_condition")
+
+
 def _merge(
-    feat: AugmentFeature, parsed: dict[str, Any], model: str
+    feat: AugmentFeature,
+    parsed: dict[str, Any],
+    model: str,
+    traits: dict[str, str] | None = None,
 ) -> tuple[AugmentFeature, list[str]]:
-    """Gop ket qua LLM vao entry tang 1. Bo qua moi gia tri None hoac sai mien."""
+    """Gop ket qua LLM vao entry tang 1. Bo qua moi gia tri None hoac sai mien.
+
+    `traits` la bang ten trait hien thi -> apiName. Neu truyen vao thi
+    trait_affinity do model de xuat duoc chap nhan CHI KHI moi phan tu anh xa
+    duoc ve mot trait apiName co that. Khong anh xa duoc thi giu nguyen tang 1.
+    """
     from src.knowledge.augment_features import CARRY_TYPES, CATEGORIES, TEMPOS
 
     allowed = {"category": CATEGORIES, "carry_type": CARRY_TYPES, "tempo": TEMPOS}
@@ -178,7 +264,7 @@ def _merge(
     diff: list[str] = []
 
     for key, value in parsed.items():
-        if key not in data or value is None:
+        if key not in LLM_REFINABLE or key not in data or value is None:
             continue
         if key in allowed and value not in allowed[key]:
             continue
@@ -191,9 +277,43 @@ def _merge(
             diff.append(f"{key}: {data[key]!r} -> {value!r}")
             data[key] = value
 
+    mapped = _map_trait_affinity(parsed.get("trait_affinity"), traits or {})
+    if mapped is not None and mapped != data["trait_affinity"]:
+        diff.append(f"trait_affinity: {data['trait_affinity']!r} -> {mapped!r}")
+        data["trait_affinity"] = mapped
+
     if diff:
-        data["extraction_method"] = f"gemini-{model}"
+        # `model` da chua ten nha cung cap ("gemini-3.5-flash-lite"), nen
+        # them tien to "gemini-" nua se ra "gemini-gemini-...".
+        data["extraction_method"] = f"llm:{model}"
     return AugmentFeature(**data), diff
+
+
+def _map_trait_affinity(value: Any, traits: dict[str, str]) -> list[str] | None:
+    """Doi trait do model de xuat thanh apiName. None = khong chap nhan.
+
+    Chap nhan ca apiName san (`DA_Riftbeast18`) lan ten hien thi (`Riftbeast`).
+    Chi mot phan tu khong anh xa duoc la BO CA DANH SACH: mot trait_affinity
+    dung mot nua con nguy hiem hon rong, vi BoardFit se tin no.
+
+    Danh sach rong bi tu choi thang - do gan nhu luon la model "khong biet"
+    chu khong phai "augment nay that su khong gan trait nao", va chap nhan no
+    se xoa mat du lieu tang 1 dung.
+    """
+    if not isinstance(value, list) or not value or not traits:
+        return None
+
+    known = set(traits.values())
+    out: list[str] = []
+    for raw in value:
+        name = str(raw).strip()
+        if name in known:
+            out.append(name)
+        elif name in traits:
+            out.append(traits[name])
+        else:
+            return None
+    return sorted(set(out))
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -203,7 +323,13 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--offline", action="store_true", help="chi doc cache CDragon")
     ap.add_argument("--out", default=str(DEFAULT_OUT))
     ap.add_argument("--llm", action="store_true", help="bat tang 2 (can API key)")
-    ap.add_argument("--model", default="gemini-2.5-flash-lite")
+    ap.add_argument("--model", default="gemini-3.5-flash-lite")
+    ap.add_argument(
+        "--limit",
+        type=int,
+        default=0,
+        help="tang 2: chi xu ly N augment dau. 0 = het. Dung de thu truoc khi chay ca 254.",
+    )
     ap.add_argument("--diff", action="store_true", help="chi in thay doi, khong ghi")
     ap.add_argument("--write", action="store_true", help="ghi de file dau ra")
     args = ap.parse_args(argv)
@@ -213,7 +339,7 @@ def main(argv: list[str] | None = None) -> int:
     print(json.dumps(summarize(table), indent=2, ensure_ascii=False))
 
     if args.llm:
-        table, changes = refine_with_llm(table, locale, args.model)
+        table, changes = refine_with_llm(table, locale, args.model, limit=args.limit)
         print(f"\ntang 2 doi {len(changes)} truong:")
         for line in changes[:50]:
             print("  ", line)
