@@ -52,16 +52,53 @@ ngoài đều có fixture trong `tests/fixtures/`.
 | Advisor phụ trợ (Phase 5) | ✅ | `comp_selector` · `rules_engine` · `item_advisor` · `position_advisor` · `llm_reasoner` · `advisor` |
 | A6 Eval harness (Phase 6) | ✅ | `src/eval/` — logger, correlation, ablation, recognition, expert study |
 | Contest score (Phase 7) | ✅ | `contest_analyzer.py` + cờ `enable_scouting` (mặc định **tắt**) |
+| A7 Dữ liệu Set 18 thật | ✅ | `scripts/fetch_locale.py` → `data/cdragon_cache/` (en_us + vi_vn đầy đủ, ~24 MB mỗi bản) |
+| A8 Bảng ánh xạ tên → `apiName` | ✅ | `scripts/build_name_index.py` → `data/name_index.json` (254 augment · 36 trait · 65 champion, cả VI lẫn EN) |
+| A9 Dữ liệu giả lập | ✅ | `data/augment_stats.csv` · `data/meta_comps.json` — xem cảnh báo bên dưới |
+| A10 Hotkey toàn cục | ✅ | `src/utils/hotkeys.py` — `RegisterHotKey` qua Qt, **không** dùng `WH_KEYBOARD_LL` |
 
 **Track B — cần máy có game đang chạy**: capture, calibrate ROI, OCR, đọc `OpponentBoard`, và chạy
 overlay thật. Bắt đầu bằng `tools/probe_environment.py` (chưa viết). Phần quyết định của overlay
 (`overlay_window.apply_capture_protection`) đã có test; phần vẽ chỉ kiểm chứng được khi có màn hình.
 
+---
+
+## ⚠️ Dữ liệu giả lập — đọc trước khi trích số
+
+`data/augment_stats.csv` và `data/meta_comps.json` chứa **số liệu thống kê GIẢ LẬP**.
+
+Không có win-rate augment thật cho Set 18: các trang stats mới cold-start từ 2026-08-26
+([`research/set-data.md`](research/set-data.md)). Thiếu file này thì w₁ trả 0.5 cho cả 254 augment,
+tức **30% ngân sách điểm trở thành hằng số** và dòng ablation *"chỉ w₁"* — dòng quan trọng nhất của
+đồ án (SPEC §12.4) — suy biến thành sắp xếp theo alphabet.
+
+Vì thế mỗi con số giả đều **tự khai báo là giả**: cột `source` = `MOCK-NOT-REAL`, và `BaseScorer`
+in thẳng chuỗi đó vào lý do hiển thị trên overlay:
+
+```
+Vị trí trung bình 3.94 (n=553, nguồn: MOCK-NOT-REAL)
+```
+
+**Tuyệt đối không trích các số này vào báo cáo.** Tên tướng, trait và item trong `meta_comps.json`
+thì **có thật** (lấy từ roster Set 18) — chỉ phần thống kê là giả. Khi có Riot API Key, chạy script
+crawl đè lên đúng hai file đó; không phải sửa một dòng code nào.
+
+---
+
 ## Chạy thử không cần game
 
 ```bash
-python -m src.decision.augment_advisor          # xếp hạng 3 augment trên tình huống tổng hợp
-python scripts/build_augment_features.py --locale-file tests/fixtures/cdragon/en_us.trimmed.json
+# Một lần: kéo dữ liệu Set 18 thật về cache (~50 MB, cần mạng)
+python scripts/fetch_locale.py
+
+# Sinh lại các bảng dữ liệu (đều deterministic, chạy lại ra file y hệt)
+python scripts/build_augment_features.py --locale en_us --offline
+python scripts/build_name_index.py
+python scripts/build_mock_stats.py --overwrite
+python scripts/build_mock_comps.py --overwrite
+
+# Chạy
+python -m src.decision.augment_advisor                        # xếp hạng 3 augment + lý do
 python scripts/run_evaluation.py --scenarios data/scenarios   # 4 phương pháp đánh giá §12
 ```
 
@@ -80,6 +117,15 @@ pytest tests/test_readonly_invariant.py -v
 Test quét AST của toàn bộ `src/`, `scripts/`, `tools/`. Nhắc tên `SendInput` trong comment thì không
 sao; thực sự import hay gọi nó thì build đỏ ngay.
 
+**Hotkey là chỗ dễ vi phạm nhất** — nên nó có banlist riêng (`tests/test_hotkeys.py`).
+Thư viện `keyboard` cài `SetWindowsHookEx(WH_KEYBOARD_LL)`: một hook cấp thấp nhìn thấy **mọi phím
+của mọi ứng dụng** trên máy, và thường đòi quyền admin. `RegisterHotKey` không cần cả hai — nó đăng
+ký tổ hợp với hệ điều hành, và OS post `WM_HOTKEY` vào message queue của process này. Vẫn chạy khi
+game đang focus, vì chặn ở tầng OS chứ không phải tầng cửa sổ.
+
+> `QShortcut` **không** dùng được ở đây: nó chỉ bắn khi cửa sổ được focus, mà overlay đặt
+> `WA_ShowWithoutActivating` + `WindowTransparentForInput` nên không bao giờ focus.
+
 ---
 
 ## Ghi chú cho người chấm
@@ -93,3 +139,23 @@ pytest tests/test_augment_catalog.py -v
 Ví dụ: ladder giải tier augment đạt **254/254** với phân bố 75/28/135/16; **19/254** đường dẫn icon
 mâu thuẫn với tên augment (bằng chứng định lượng cho quy tắc "tên là chính, icon là phụ"); **0** va
 chạm khi bỏ dấu tiếng Việt.
+
+Bảng ánh xạ tên tái lập cùng những con số đó trên **locale đầy đủ**, không phải fixture:
+
+```bash
+pytest tests/test_name_index.py -v
+```
+
+Tiếng Việt mất **5** cặp augment không phân biệt được, tiếng Anh mất **4** — chênh lệch đúng một cặp,
+do `Tons of Stats!` / `TONS of Stats!` chỉ khác nhau ở chữ hoa và bản dịch tiếng Việt gộp cả hai.
+Đây là **giới hạn dữ liệu**, được báo cáo chứ không giấu: gặp cặp mập mờ thì hiển thị cả hai kèm nhãn.
+
+### Một cái bẫy đã đo được, chưa từng ghi trong research
+
+Trên bản locale **đầy đủ**, `setData[0]` là **`TFTSet14`**, không phải Set 18. File thật mang 35 khối
+`setData` không theo thứ tự nào, và khối của Set 18 có `name` là `"Set10"`. Lấy nhầm khối thì bảng
+ánh xạ trait thành của Set 14, `trait_affinity` rỗng sạch, và `BoardFit` trung tính cho **mọi**
+augment — hỏng hoàn toàn im lặng.
+
+Bẫy này **không lộ ra ở fixture trimmed** (fixture chỉ giữ đúng một khối), nên nó xanh hết test cho
+đến ngày chạy trên dữ liệu thật. Đã khoá bằng `cdragon_client.select_set_data()` + test.
