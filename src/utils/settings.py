@@ -28,6 +28,9 @@ DEFAULTS: dict[str, Any] = {
         "cdragon_cache": "data/cdragon_cache",
     },
     "locale": {"language": "vi_vn", "branch": "latest"},
+    # Nguon crawl cho scripts/crawl_augment_stats.py. Chi dung OFFLINE luc
+    # sinh du lieu - runtime khong bao gio goi Riot API (SPEC 3.5.3).
+    "riot": {"platform": "vn2", "tiers": ["challenger", "grandmaster", "master"]},
     # Hotkey toan cuc. BAT BUOC di qua RegisterHotKey cua Win32 goi tu Qt
     # (SPEC 1.3): no la co che cap OS, KHONG cai hook WH_KEYBOARD_LL va
     # KHONG can quyen admin. Thu vien `keyboard` lam nguoc lai ca hai.
@@ -41,7 +44,7 @@ DEFAULTS: dict[str, Any] = {
     "features": {
         "enable_scouting": False,
         "enable_llm_refinement": False,
-        "llm_model": "gemini-2.5-flash-lite",
+        "llm_model": "gemini-3.5-flash-lite",
         "llm_hard_timeout_s": 2.0,
         "allow_unverified_roll_odds": False,
     },

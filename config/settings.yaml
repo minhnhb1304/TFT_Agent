@@ -18,6 +18,17 @@ locale:
   language: vi_vn
   branch: latest
 
+riot:
+  # Nguon cho scripts/crawl_augment_stats.py. CHI dung luc sinh du lieu
+  # offline - runtime khong bao gio goi Riot API (SPEC 3.5.3: khong co gi
+  # cham mang nam tren duong quyet dinh 30 giay).
+  #
+  # vn2 = server DTCL Viet Nam, thuoc cum regional `sea` cho match-v1.
+  platform: vn2
+  # Hang cao: quyet dinh augment chat luong hon, va du it nguoi de crawl het
+  # trong gioi han cua Personal Key (100 request / 2 phut).
+  tiers: [challenger, grandmaster, master]
+
 hotkeys:
   # BAT BUOC dung RegisterHotKey cua Win32 goi tu Qt (SPEC 1.3, feedback #10):
   # co che cap OS, KHONG cai hook WH_KEYBOARD_LL, KHONG can quyen admin. Thu
@@ -36,7 +47,7 @@ features:
 
   # Vai tro B cua LLM (SPEC 3.5.3): chi lam muot cau chu, KHONG duoc doi thu hang.
   enable_llm_refinement: false
-  llm_model: gemini-2.5-flash-lite
+  llm_model: gemini-3.5-flash-lite
   llm_hard_timeout_s: 2.0
 
   # Roll odds Set 18 chua public (SPEC 3.4.2). Bat co nay = chap nhan hien so
