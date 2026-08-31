@@ -34,7 +34,7 @@ from src.knowledge.augment_features import (  # noqa: E402
     FeatureTable,
     extract_deterministic,
 )
-from src.knowledge.cdragon_client import CDragonClient  # noqa: E402
+from src.knowledge.cdragon_client import CDragonClient, select_set_data  # noqa: E402
 
 DEFAULT_OUT = ROOT / "data" / "augment_features.json"
 
@@ -62,11 +62,12 @@ def load_locale(args: argparse.Namespace) -> dict[str, Any]:
 
 
 def trait_display_map(locale: dict[str, Any]) -> dict[str, str]:
-    """Map ten trait hien thi -> apiName, tu setData cua locale."""
-    sets = locale.get("setData") or []
-    if not sets:
-        return {}
-    return {t["name"]: t["apiName"] for t in sets[0].get("traits", [])}
+    """Map ten trait hien thi -> apiName, tu setData cua Set 18.
+
+    Phai di qua select_set_data: ban locale DAY DU co 35 khoi setData va
+    khoi dau tien la TFTSet14. Xem cdragon_client.select_set_data.
+    """
+    return {t["name"]: t["apiName"] for t in select_set_data(locale).get("traits", [])}
 
 
 def build_tier1(locale: dict[str, Any]) -> FeatureTable:
