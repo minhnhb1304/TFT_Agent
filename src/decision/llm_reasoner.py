@@ -52,7 +52,7 @@ class LlmReasoner:
     """
 
     enabled: bool = False
-    model: str = "gemini-2.5-flash-lite"
+    model: str = "gemini-3.5-flash-lite"
     timeout_s: float = 2.0
     call: Callable[[str], str] | None = None
 

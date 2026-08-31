@@ -15,11 +15,17 @@ from pathlib import Path
 
 import pytest
 
-from scripts.build_augment_features import build_tier1, trait_display_map
+from scripts.build_augment_features import (
+    LLM_REFINABLE,
+    _merge,
+    build_tier1,
+    trait_display_map,
+)
 from src.knowledge.augment_catalog import AugmentCatalog
 from src.knowledge.augment_features import (
     CARRY_TYPES,
     CATEGORIES,
+    EXTRACTOR_VERSION,
     TEMPOS,
     AugmentFeature,
     FeatureTable,
@@ -148,15 +154,37 @@ def test_trait_display_map_reads_set_data(locale) -> None:
 
 @pytest.mark.skipif(not COMMITTED.exists(), reason="chua sinh data/augment_features.json")
 def test_committed_table_is_reproducible(table) -> None:
-    """File trong repo phai sinh lai duoc tu fixture, khong sai mot dong.
+    """Phan TANG 1 cua file trong repo phai sinh lai duoc, khong sai mot dong.
 
-    Neu test nay do len thi hoac fixture da doi, hoac ai do da sua tay file
-    ma khong ghi lai cach sinh - ca hai deu phai duoc phat hien ngay.
+    File da commit hien co ca dong tang 2 (LLM), va LLM khong deterministic
+    nen KHONG the doi hoi tai lap toan bo. Nhung ranh gioi thi phai giu:
+
+        extraction_method == "deterministic-v1"  ->  sinh lai giong het
+        extraction_method bat dau bang "llm:"    ->  chi cac truong LLM
+                                                     duoc phep sua moi khac
+
+    Nho the "ai do sua tay file" van bi bat, va "LLM cham vao truong no
+    khong duoc cham" cung bi bat.
     """
     committed = json.loads(COMMITTED.read_text(encoding="utf-8"))["augments"]
     generated = table.to_payload({})["augments"]
     assert set(committed) == set(generated)
-    for api in committed:
+
+    # Truong LLM TUYET DOI khong duoc dong den - chung chua apiName lay tu du
+    # lieu co cau truc, khong phai phan doan doc tu van ban.
+    immutable = ("api_name", "name", "tier", "trait_affinity", "item_grants")
+    n_llm = 0
+    for api, row in committed.items():
+        if str(row["extraction_method"]).startswith("llm:"):
+            n_llm += 1
+            for f in immutable:
+                assert row[f] == generated[api][f], f"{api}.{f} bi tang 2 sua"
+
+    assert n_llm, "khong dong nao do LLM sinh - chay --llm chua?"
+
+    tier1 = {a: r for a, r in committed.items() if r["extraction_method"] == EXTRACTOR_VERSION}
+    assert tier1, "khong dong tang 1 nao con lai"
+    for api in tier1:
         assert committed[api] == generated[api], f"{api} khac voi ban sinh lai"
 
 
@@ -171,3 +199,105 @@ def test_loader_round_trips_the_committed_file() -> None:
 def test_missing_augment_returns_none_not_a_fabricated_feature() -> None:
     """Bang thieu mot augment la trang thai HOP LE - khong duoc bia dac trung."""
     assert FeatureTable.empty().get("DA_KhongTonTai") is None
+
+
+# --- Tang 2: LLM chi duoc sua phan PHAN DOAN -------------------------------
+
+
+def _feat(**kwargs) -> AugmentFeature:
+    base = dict(
+        api_name="DA_X",
+        name="X",
+        tier=2,
+        category="trait",
+        carry_type="none",
+        trait_affinity=["DA_Riftbeast18"],
+        econ_value=0,
+        tempo="immediate",
+        item_grants=["BFSword"],
+    )
+    base.update(kwargs)
+    return AugmentFeature(**base)
+
+
+TRAITS = {"Riftbeast": "DA_Riftbeast18", "Ravager": "DA_18_Slayer"}
+
+
+def test_llm_may_refine_judgement_fields() -> None:
+    """Cac truong doc duoc tu van ban mo ta thi LLM sua duoc."""
+    merged, diff = _merge(_feat(), {"category": "combat", "econ_value": 3}, "m", TRAITS)
+    assert merged.category == "combat"
+    assert merged.econ_value == 3
+    assert len(diff) == 2
+    assert merged.extraction_method == "llm:m"
+
+
+def test_llm_cannot_wipe_item_grants() -> None:
+    """Regression: do duoc 2026-09-01 tren 8 augment dau.
+
+    Model tra ve ['component','component',...] - chuoi tieng Anh chung chung
+    thay cho apiName that. Chap nhan no la XOA du lieu tang 1 von dung, va
+    ItemFit se khong con khop duoc component nao.
+    """
+    merged, diff = _merge(
+        _feat(), {"item_grants": ["component", "component"]}, "m", TRAITS
+    )
+    assert merged.item_grants == ["BFSword"]
+    assert diff == []
+
+
+def test_llm_cannot_wipe_trait_affinity_with_an_empty_list() -> None:
+    """Regression: model tra [] cho DA_18_RiftbeastTraitAugment.
+
+    Danh sach rong gan nhu luon la "model khong biet", khong phai "augment
+    nay that su khong gan trait nao".
+    """
+    merged, diff = _merge(_feat(), {"trait_affinity": []}, "m", TRAITS)
+    assert merged.trait_affinity == ["DA_Riftbeast18"]
+    assert diff == []
+
+
+def test_trait_names_are_mapped_to_api_names() -> None:
+    """Model noi ten hien thi; he thong chi luu apiName (feedback #6/#7)."""
+    merged, _ = _merge(_feat(), {"trait_affinity": ["Ravager"]}, "m", TRAITS)
+    assert merged.trait_affinity == ["DA_18_Slayer"]
+
+
+def test_api_names_from_the_model_are_accepted_as_is() -> None:
+    merged, _ = _merge(
+        _feat(trait_affinity=[]), {"trait_affinity": ["DA_18_Slayer"]}, "m", TRAITS
+    )
+    assert merged.trait_affinity == ["DA_18_Slayer"]
+
+
+def test_one_unmappable_trait_rejects_the_whole_list() -> None:
+    """trait_affinity dung mot nua con nguy hiem hon rong - BoardFit se tin no."""
+    merged, diff = _merge(
+        _feat(), {"trait_affinity": ["Ravager", "KhongCoTrait"]}, "m", TRAITS
+    )
+    assert merged.trait_affinity == ["DA_Riftbeast18"]
+    assert diff == []
+
+
+def test_out_of_domain_values_are_ignored() -> None:
+    merged, diff = _merge(_feat(), {"category": "khong_ton_tai"}, "m", TRAITS)
+    assert merged.category == "trait"
+    assert diff == []
+
+
+def test_econ_value_is_clamped_to_its_domain() -> None:
+    assert _merge(_feat(), {"econ_value": 99}, "m", TRAITS)[0].econ_value == 3
+    assert _merge(_feat(), {"econ_value": -5}, "m", TRAITS)[0].econ_value == 0
+
+
+def test_no_change_means_extraction_method_stays_tier1() -> None:
+    """Khong duoc gan nhan gemini len dong ma LLM khong dong gop gi."""
+    merged, diff = _merge(_feat(), {"category": "trait"}, "m", TRAITS)
+    assert diff == []
+    assert merged.extraction_method == EXTRACTOR_VERSION
+
+
+def test_unknown_keys_from_the_model_are_ignored() -> None:
+    merged, diff = _merge(_feat(), {"khong_phai_truong": "gi do"}, "m", TRAITS)
+    assert diff == []
+    assert merged == _feat()

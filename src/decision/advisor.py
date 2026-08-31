@@ -96,7 +96,7 @@ class Advisor:
         self.economy = EconomyRules()
         self.reasoner = LlmReasoner(
             enabled=s.enable_llm_refinement,
-            model=str(s.get("features", "llm_model", "gemini-2.5-flash-lite")),
+            model=str(s.get("features", "llm_model", "gemini-3.5-flash-lite")),
             timeout_s=float(s.get("features", "llm_hard_timeout_s", 2.0)),
         )
         self.logger = logger or ScenarioLogger(s.path("scenarios"), enabled=s.log_scenarios)
