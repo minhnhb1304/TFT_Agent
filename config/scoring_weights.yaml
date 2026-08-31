@@ -1,0 +1,62 @@
+# Trong so cho Augment Scoring Engine - SPEC 3.5.4
+#
+# File nay TON TAI de ablation study (SPEC 12.4) tat duoc tung thanh phan ma
+# khong sua mot dong code nao. Dung bao gio hardcode cac so nay vao Python.
+#
+# Gia tri khoi tao la GIA DINH TIEN NGHIEM, chua duoc fit tren du lieu nao.
+# Phai noi ro dieu do trong bao cao: chung se duoc hieu chinh sau khi
+# ScenarioLogger tich luy du dataset (SPEC 12.2).
+
+weights:
+  base: 0.30       # w1 - so lieu tinh tu StatsProvider
+  board_fit: 0.30  # w2 - trung trait / khop carry type
+  econ_fit: 0.15   # w3 - gia tri econ x do hop stage
+  item_fit: 0.15   # w4 - component duoc tang vs item dang thieu
+  tempo_fit: 0.10  # w5 - greed theo HP
+
+# Tham so cua tung thanh phan. Tach khoi `weights` de ablation chi cham vao
+# `weights` va khong vo tinh doi hanh vi noi tai cua component.
+tuning:
+  base:
+    # Khoang placement dung de chuan hoa: 3.5 (rat tot) -> 5.0 (rat te).
+    best_place: 3.5
+    worst_place: 5.0
+    # Duoi nguong co mau nay, diem bi keo ve trung tinh thay vi tin tuong.
+    min_sample_n: 200
+  board_fit:
+    trait_weight: 0.6
+    carry_weight: 0.4
+    # So unit cua mot trait tro len thi coi la dang theo trait do.
+    active_trait_min_units: 2
+  econ_fit:
+    # He so theo stage: econ som con thoi gian sinh loi, econ muon thi khong.
+    stage_curve: [1.0, 1.0, 0.8, 0.5, 0.25, 0.1]
+  item_fit:
+    # Diem cho component khop dung thu dang thieu vs component bat ky.
+    exact_component: 1.0
+    generic_component: 0.6
+    completed_item: 0.8
+  tempo_fit:
+    # Duoi nguong HP nay thi scaling bi phat nang - khong con thoi gian de no lon.
+    low_hp: 35
+    high_hp: 70
+
+# Comp Selection Algorithm - SPEC 3.5.2. De o day (khong hardcode) vi cung ly
+# do voi `weights`: phai doi duoc tu file khi hieu chinh hoac khi ablation.
+comp_selector:
+  unit: 0.40
+  item: 0.25
+  meta: 0.23
+  augment: 0.12
+  # contest_score chi khac 0 khi enable_scouting = true (Phase 7). Khi scouting
+  # tat, thanh phan nay bang 0 va cac trong so tren giu nguyen y het.
+  contest: 0.20
+  stability:
+    # Trung khuyen nghi truoc do va con du tot -> thuong, de tranh pivot vo co.
+    same_direction_bonus: 0.15
+    same_direction_min_score: 0.60
+    # Pivot ma phai ban qua nhieu unit -> phat.
+    pivot_penalty: 0.10
+    pivot_sell_threshold: 3
+    # Duoi nguong nay thi comp hien tai bi danh dau la nen doi huong.
+    pivot_flag_below: 0.30

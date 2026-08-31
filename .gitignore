@@ -43,3 +43,11 @@ tests/test_data/*.jpg
 # Logs
 *.log
 logs/
+
+# Generated data (v3)
+data/cdragon_cache/
+data/scenarios/
+data/frames/
+
+# Generated config
+config/screen_regions.yaml

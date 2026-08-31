@@ -1,9 +1,19 @@
 # Ban Risk and Riot Policy
 
-**Bottom line:** Vanguard is the wrong thing to fear. The TFT developer policy is the real blocker — and
-it prohibits the Augment Advisor *as specified in §9 decision #4* while explicitly permitting a narrower
-version. The loudest "project killer" circulating in the research (augment win rates are banned) is
-**refuted** by Riot's own text.
+> **Verified:** 2026-08-28. All eight policy quotes below were re-fetched and confirmed verbatim.
+> Two were **truncated** in the previous pass and are now completed — the omissions mattered.
+
+> 📌 **Scope note (SPEC v3, 2026-08-29).** The project is an unpublished single-user thesis artifact,
+> so the **developer-policy** half below is no longer a build constraint ([SPEC §11](../SPEC.md)) — it
+> is retained as the evidence base should the tool ever be distributed. The **ToS / Vanguard** half
+> stays fully binding, enforced by `tests/test_readonly_invariant.py`. Independent axes: dropping the
+> policy constraint does **not** relax the read-only architecture.
+
+**Bottom line (as research, not as a build constraint — see the scope note above):** Vanguard is the
+wrong thing to fear. Were this tool published, the TFT developer policy — not anti-cheat — would be the
+binding limit, and it would prohibit a board-state-aware Augment Advisor while permitting a narrower
+static version. The loudest "project killer" circulating in the research (augment win rates are banned)
+is **refuted** by Riot's own text.
 
 ## Actually safe vs assumed safe
 
@@ -18,20 +28,25 @@ version. The loudest "project killer" circulating in the research (augment win r
 
 ## Riot's TFT policy, verbatim
 
-Source for all quotes: <https://developer.riotgames.com/docs/tft> (sibling policy page still stamped
-LAST UPDATED March 11, 2025, so this is live).
+Source for all quotes: <https://developer.riotgames.com/docs/tft>, re-fetched 2026-08-28.
+
+> **Correction to the previous pass:** it claimed the page was *"still stamped LAST UPDATED March 11,
+> 2025."* The TFT policy page carries **no date stamp of its own**. The adjacent general-policies page
+> ([/policies/general](https://developer.riotgames.com/policies/general)) reads **LAST UPDATED
+> May 29, 2025**. Do not cite a date for the TFT page itself.
 
 | Prohibited | Quote |
 |---|---|
 | Real-time prescription | *"Issues arise when the recommendations adjust in real time based on the player's actions in game and give direct prescriptions of what to do."* |
-| Overlays | *"Apps and overlays during the game may not include any real-time data that would improve a player's performance immediately by altering player behavior."* |
+| Overlays | *"Apps and overlays during the game may not include any real-time data that would improve a player's performance immediately by altering player behavior, such as 'go here now' versus altering it upon reflection, learning and coaching the player game over game."* ← **the trailing clause was missing before; it is permissive** |
 | Skill tests | *"Products cannot bypass a skill test for the player. Skill tests can include the tracking of diverse information over a short period of time."* |
 | Unapproved list | *"Scouting - tracking the champions opponents have on their boards. Products that bypass a skill test for the player. Apps that provide dynamic, real-time information. Apps that dictate player decisions."* |
-| Legend stats | *"Products cannot display win rates for Legends and Legend-based Augments."* |
+| Opponent prediction | *"Apps and Overlays during gameplay (including the loading screen) may not track your opponent's champions/plays or predict their next plays."* Elaborated: a lobby's most-played champ/synergy/augment may not be shown during gameplay ← **not previously recorded** |
+| Legend stats | *"Products cannot display win rates for Legends and Legend-based Augments. This applies to all websites, applications, and overlays."* |
 
 | Permitted | Quote |
 |---|---|
-| Augment metadata | *"An app can provide metadata on augment statistics as this information is available prior to the game and is not based on in-game activity."* |
+| Augment metadata | *"**For example**, an app can provide metadata on augment statistics as this information is available prior to the game and is not based on in-game activity."* |
 | Static recommendations | *"Having a static recommendation for a player pre-game is acceptable, even if that same recommendation is available to you the entire game."* |
 | Highlighting choices | *"Products should not remove game decisions, but may highlight decisions that are important and give multiple choices to help players make good decisions."* |
 | The one approved overlay category | *"Game overlays that provide static data that is available prior to the game."* (Production key + RSO) |
@@ -45,6 +60,11 @@ LAST UPDATED March 11, 2025, so this is live).
 | Present all three as equal options | Recompute anything from live board state |
 | Ship Legend data with win rates stripped | Display Legend or Legend-based Augment win rates |
 | Keep it private, single-user, unpublished | Distribute (triggers the registration clause) |
+
+**Corridor widener, newly surfaced:** the completed overlay quote contrasts banned *"go here now"*
+prescriptions against *"altering it upon reflection, learning and coaching the player game over game."*
+Riot is drawing the line at **immediacy**, not at advice. A post-round or post-game review surface is
+materially safer than a live in-round one, and the previous pass's truncated quote hid this.
 
 **REFUTED — "augment win rates are banned, the project is dead":** Riot's live policy blesses augment
 metadata, and [tactics.tools/augments](https://tactics.tools/augments) currently renders `Place`, `Top 4`
@@ -81,6 +101,6 @@ reads *"archived by the owner on Apr 9, 2026"*; all three researchers conflated 
 
 - [Research overview](overview.md)
 - [Set 18 status & data sources](set-data.md)
-- [Vision stack](vision-stack/overview.md)
+- [Vision stack](vision-stack/overview.md) · [Augment pipeline](vision-stack/augments.md)
 - [Prior art, overlay UI & LLM layer](prior-art.md)
 - [Open questions](open-questions.md)

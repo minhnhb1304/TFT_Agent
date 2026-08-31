@@ -1,59 +1,78 @@
-# 🎮 TFT Advisory Agent — Project Specification (v2)
+# 🎮 TFT Advisory Agent — Project Specification (v3)
 
 > **Repository**: [github.com/minhnhb1304/TFT_Agent](https://github.com/minhnhb1304/TFT_Agent)  
 > **Author**: minhnhb1304  
 > **Created**: 2026-08-06  
-> **Updated**: 2026-08-13 (v2 — research-validated)  
-> **Status**: 📋 Planning (Spec v2)  
+> **Updated**: 2026-08-29 (v3 — Thesis Edition)  
+> **Status**: 📋 Planning (Spec v3)  
+> **Loại dự án**: **Đồ án tốt nghiệp** — chạy cục bộ, single-user, **KHÔNG phát hành** (§11)  
 > **Language**: Python 3.11+  
 > **Platform**: Windows (PC — League Client)  
-> **Target Set**: Set 18 — Enchanted Wilds (**PBE only cho tới 2026-08-26**)  
+> **Target Set**: Set 18 — Enchanted Wilds (**ĐÃ LIVE từ 2026-08-26**, patch 18.1 / Unreal)  
 > **Game Language**: Tiếng Việt  
 > **LLM Provider**: Gemini Flash (`google-genai` SDK)  
 > **Resolution**: 1920×1080
 
 ---
 
-## 0. Changelog v2 — Điều Chỉnh Sau Research
+## 0. Changelog v3 — Đổi Hướng Thành Đồ Án Nghiên Cứu
 
-Toàn bộ báo cáo research: [`research/overview.md`](research/overview.md) (18 agents, EN/ZH/KO/VN).
+v2 thiết kế quanh **Riot TFT developer policy**. v3 xác định lại: đây là **đồ án tốt nghiệp cá nhân,
+chạy cục bộ, không phát hành**. Developer policy ràng buộc sản phẩm *đăng ký và phân phối* — đồ án này
+không thuộc cả hai. **Riot ToS + Vanguard vẫn ràng buộc đầy đủ** (§11) — đây là hai trục độc lập.
 
-| # | Thay đổi | Lý do | Nguồn |
-|---|---|---|---|
-| 1 | `dxcam>=0.4.0` → `dxcam>=0.3.0` | Pin cũ **không cài được** — PyPI chỉ có tới `0.3.0` + `0.4.0.dev1`, PEP 440 xếp `.dev1` **thấp hơn** `0.4.0` | [vision-stack](research/vision-stack/overview.md) |
-| 2 | `google-generativeai` → `google-genai` | SDK cũ `Development Status :: 7 - Inactive`, EOL 2025-11-30 | [prior-art](research/prior-art.md) |
-| 3 | `gemini-1.5-flash` → model Flash hiện hành | Model đã shut down 2025-09-29 | [prior-art](research/prior-art.md) |
-| 4 | `easyocr` → `rapidocr` (PP-OCRv6) | EasyOCR stale 2024-09-24, kéo theo `torch`; chỉ PP-OCRv6 hỗ trợ `vi` | [ocr](research/vision-stack/ocr.md) |
-| 5 | Set 18 **chưa live** — build trên Set 17, data từ `/pbe/` | `mDefaultSet` trên live vẫn là `TFTSet17` (đã verify 2026-08-13) | [set-data](research/set-data.md) |
-| 6 | Ưu tiên feature: **Comp Selector → Economy → Augment** | Augment Advisor như spec v1 nằm trong danh sách cấm của Riot TFT developer policy | [vanguard-risk](research/vanguard-risk.md) |
-| 7 | Thêm §11 Compliance Contract | Ràng buộc chính sách phải là design constraint, không phải ghi chú | [vanguard-risk](research/vanguard-risk.md) |
-| 8 | Thêm `preflight`, `session_detector`, `calibrate`, `opgg_client`, `sync_assets` | 5 module thiếu trong v1, mỗi cái chặn một failure mode thực tế | §5 |
-| 9 | Scraping MetaTFT/lolchess → OP.GG MCP (MIT) | Có API chính thức, không cần scrape | [prior-art](research/prior-art.md) |
-| 10 | §1.3 "Riot Official API" → chỉ post-game | **Không tồn tại** live TFT state API | [set-data](research/set-data.md) |
+| # | Thay đổi v2 → v3 | Lý do |
+|---|---|---|
+| 1 | **Augment Advisor thành tính năng số 1** — xếp hạng đầy đủ theo board state | Thể hiện năng lực thiết kế thuật toán Decision-Making. v2 §11 cấm đúng điều này |
+| 2 | §11 "Compliance Contract" → **"Phạm vi, Đạo đức & Giới hạn Nghiên cứu"** | Policy không còn là design constraint; phạm vi + đạo đức thì có |
+| 3 | Xoá `src/compliance/gate.py` → thêm `tests/test_readonly_invariant.py` | Biến §1.3 từ lời hứa thành **thuộc tính kiểm chứng được** bằng test |
+| 4 | Thêm `data/augment_features.json` + `scripts/build_augment_features.py` | Metadata augment của CDragon **không dùng được** để chấm điểm — xem §3.4.1 |
+| 5 | Thêm `stats_provider.py` — interface cắm-rút nhiều nguồn stats | Nguồn số liệu sẽ chốt sau; scoring engine không được phụ thuộc nguồn cụ thể |
+| 6 | Thêm `ScenarioLogger` (Phase 3, **sớm**) + `src/eval/` | 3 trong 4 phương pháp đánh giá dùng **chung một dataset** — logger ra muộn = không có dữ liệu để đánh giá |
+| 7 | Thêm §12 Phương pháp đánh giá | Đồ án cần bằng chứng đo được, không chỉ demo |
+| 8 | `GameState.opponents` + `contest_score` quay lại (Phase 7, feature-flag) | Không còn bị policy cấm; hoãn lại vì khối lượng CV |
+| 9 | Overwolf GEP: **loại bỏ** | Cần runtime Electron/JS và làm mất chính phần đóng góp CV của đồ án |
 
-> ✅ **Không đổi**: danh sách cấm ở §1.3 được research xác nhận là **đúng** — giữ nguyên.
-> ✅ **Không đổi**: `tft-match-v1` là đúng; `tft-match-v5` không tồn tại.
+**Giữ nguyên từ v2.1** (đã re-verify 2026-08-28, xem [`research/`](research/overview.md)):
+`dxcam>=0.3.0` · `google-genai` · `rapidocr` PP-OCRv6 · Set 18 live dùng `/latest/` · tier augment tra từ
+`apiName`/`name` · 4 cặp augment không phân biệt được · đọc `icon` nguyên văn · `tft-match-v1`.
+
+> ✅ **Không đổi tuyệt đối**: danh sách cấm ở §1.3. Đổi hướng đồ án **không** nới lỏng bất kỳ dòng nào.
 
 ---
 
 ## 1. Tổng Quan Dự Án
 
 ### 1.1 Mục Tiêu
-Xây dựng một **TFT Advisory Agent** — overlay hiển thị tư vấn trong game Teamfight Tactics, giúp người chơi
-đưa ra quyết định tốt hơn, **trong giới hạn cho phép của Riot TFT developer policy** (xem §11).
+
+Xây dựng một **hệ hỗ trợ ra quyết định (decision-support system)** cho Teamfight Tactics: đọc trạng thái
+bàn cờ **chỉ bằng thị giác máy tính**, rồi **xếp hạng và giải thích** lựa chọn tốt nhất cho người chơi.
+
+Đóng góp học thuật của đồ án nằm ở ba chỗ, không phải ở việc "làm được overlay":
+
+| # | Đóng góp | Đo bằng |
+|---|---|---|
+| 1 | **Pipeline nhận diện** trạng thái game tiếng Việt từ pixel, không đọc memory | Precision / Recall / F1 + latency (§12.1) |
+| 2 | **Thuật toán xếp hạng Augment** có điều kiện theo board state, có giải thích | Tương quan với kết quả thật + đồng thuận chuyên gia (§12.2, §12.3) |
+| 3 | **Phương pháp trích đặc trưng offline** từ mô tả augment bằng LLM, cache lại và audit được | Ablation study (§12.4) |
 
 ### 1.2 Phạm Vi
+
 | Có | Không |
 |---|---|
-| Overlay tư vấn (đội hình, item, vị trí) | Auto-play (bot tự chơi hộ) |
+| Overlay tư vấn (augment, đội hình, item, vị trí) | Auto-play (bot tự chơi hộ) |
 | Đọc trạng thái game qua screen capture + CV | Đọc game memory (vi phạm Vanguard) |
-| Kết hợp meta data từ OP.GG MCP + CommunityDragon | Tự động điều khiển mouse/keyboard |
-| Suy luận AI cấp cao (LLM — Gemini Flash) | Inject code vào game process |
+| **Augment Advisor đầy đủ — xếp hạng theo board state, kèm lý do** | Tự động điều khiển mouse/keyboard |
+| Kết hợp meta data từ nhiều nguồn (§3.4.2) | Inject code vào game process |
 | Gemini Vision multimodal (nhận diện augment từ ảnh) | Train custom model (không cần) |
-| Hỗ trợ game tiếng Việt | Xếp hạng / kê đơn augment theo board state (§11) |
-| Hiển thị stats augment **tĩnh, không xếp hạng** | Scouting đối thủ (Riot cấm rõ ràng) |
+| Trích đặc trưng augment offline bằng LLM, cache lại | **Phát hành / phân phối cho người khác (§11)** |
+| Hỗ trợ game tiếng Việt | Chơi hộ, boosting, chia sẻ tài khoản |
+| Scouting đối thủ + `contest_score` — **Phase 7, mặc định tắt** | |
 
-### 1.3 Nguyên Tắc An Toàn (Riot Vanguard)
+### 1.3 Nguyên Tắc An Toàn (Riot Vanguard) — **BẤT BIẾN KIẾN TRÚC**
+
+> Đổi hướng sang đồ án nghiên cứu (§11) **không nới lỏng một dòng nào ở đây.**
+> Mục này được **thi hành bằng test**, không phải bằng lời hứa: [`tests/test_readonly_invariant.py`](tests/).
 
 > ⚠️ **Riot Vanguard** là anti-cheat kernel-level (Ring-0). Vi phạm = **ban vĩnh viễn + HWID ban**.
 
@@ -108,14 +127,25 @@ overlay được focus → dùng `RegisterHotKey` qua Qt, **không cần hook**.
 │  │  State Tracker │ Economy Tracker │ Pool Tracker          │ │
 │  └─────────────────────────┬───────────────────────────────┘ │
 │  ┌─────────────────────────▼───────────────────────────────┐ │
-│  │        Decision Engine  ──▶ Compliance Gate (§11)        │ │
-│  │  Rules │ Comp Selector │ Item │ LLM Reasoner (Gemini)    │ │
-│  └─────────────────────────┬───────────────────────────────┘ │
-│  ┌─────────────────────────▼───────────────────────────────┐ │
-│  │   PyQt6 Overlay — 2 windows (click-through + clickable)  │ │
-│  │   + SetWindowDisplayAffinity(WDA_EXCLUDEFROMCAPTURE)     │ │
-│  └──────────────────────────────────────────────────────────┘ │
+│  │       Decision Engine (§3.5)                             │ │
+│  │  ▸ AUGMENT SCORING ENGINE  ← augment_features.json       │ │
+│  │                            ← StatsProvider (§3.4.2)      │ │
+│  │  ▸ Comp Selector │ Economy │ Item │ Position             │ │
+│  │  ▸ LLM Reasoner — TÙY CHỌN, sau hard timeout             │ │
+│  └───────────┬─────────────────────────────┬───────────────┘ │
+│              │                             │                  │
+│  ┌───────────▼──────────────────┐  ┌───────▼───────────────┐ │
+│  │ PyQt6 Overlay — 2 windows    │  │ ScenarioLogger (§12)  │ │
+│  │ + WDA_EXCLUDEFROMCAPTURE     │  │ ghi mọi quyết định →  │ │
+│  │ xếp hạng + LÝ DO từng mục    │  │ dataset đánh giá      │ │
+│  └──────────────────────────────┘  └───────────────────────┘ │
 └─────────────────────────────────────────────────────────────┘
+
+        ┌──────────────── OFFLINE, chạy 1 lần mỗi set ────────────────┐
+        │ scripts/build_augment_features.py                            │
+        │   254 augment `desc` ──▶ Gemini ──▶ data/augment_features.json│
+        │   (commit vào repo, audit tay được — xem §3.4.1)              │
+        └──────────────────────────────────────────────────────────────┘
 ```
 
 ### 2.2 Luồng Dữ Liệu
@@ -144,8 +174,18 @@ overlay được focus → dùng `RegisterHotKey` qua Qt, **không cần hook**.
 4. Game State Object → State/Economy/Pool Tracker
              │
              ▼
-5. Decision Engine → **Compliance Gate (§11)** → Overlay
+5. Decision Engine
+      ├── Màn hình chọn augment? → Augment Scoring Engine (§3.5.4)
+      │     └── Score(a|S) cho cả 3 → xếp hạng + lý do từng thành phần
+      └── Ngược lại → Comp / Economy / Item / Position advisor
+             │
+             ├──────────────▶ Overlay (hiển thị xếp hạng + LÝ DO)
+             └──────────────▶ ScenarioLogger (ghi ra đĩa, §12)
 ```
+
+> **Vì sao LÝ DO là bắt buộc, không phải trang trí**: overlay chỉ hiện "chọn cái số 2" là hộp đen,
+> không bảo vệ được trước hội đồng. Mỗi thành phần điểm phải trả về kèm một câu giải thích —
+> đó cũng chính là thứ mà ablation study (§12.4) mổ xẻ.
 
 > **Lưu ý nhịp độ**: TFT là turn-based, planning phase ~30 s. **Không** cần loop 10 FPS liên tục.
 > Prior art dùng poll 200 ms sau một aHash gate, hoặc chỉ chạy khi bấm hotkey.
@@ -217,7 +257,8 @@ dùng được thì bài toán overlay tự chụp chính mình biến mất ho�
 |---|---|
 | Normalize cả 2 phía | NFD + bỏ Mn + `đ→d`, lowercase, **trước** mọi so sánh |
 | Tách tier token trước | Bỏ hậu tố `I`/`II`/`III`/`+`/`++`, fuzzy match phần **gốc** |
-| Tier tra bằng lookup | Icon path đã encode tier (`_i.` / `_ii.` / `_iii.`) — **không** đoán qua màu viền |
+| Tier tra từ `apiName`/`name` | ⚠️ **ĐẢO so với v2**: icon art dùng lại giữa các tier — **19/254** icon path mâu thuẫn với tên augment. Icon chỉ là fallback. Regex phải bắt cả `_` lẫn `-`: `[-_](i{1,3})\.tex$`. Ladder đầy đủ: [augments](research/vision-stack/augments.md) |
+| Chấp nhận nhập nhằng | **4 cặp augment trùng cả tên lẫn icon** — không phương pháp nào tách được. Hiển thị cả hai, gắn nhãn, **không đoán** |
 | Giới hạn charset | Chỉ nhận ký tự xuất hiện trong tên của set hiện tại |
 
 > ⚠️ **Không copy threshold của prior art.** `jfd02` dùng `SequenceMatcher >= 0.85` cho item. Áp lên
@@ -278,10 +319,26 @@ class GameState:
     timestamp: float
     round_phase: str                 # "planning", "combat", "carousel", "augment"
     session_state: str               # "in_game", "lobby", "not_running", "occluded"
+
+    # Phase 7, feature-flag `enable_scouting` — MẶC ĐỊNH TẮT
+    opponents: list["OpponentBoard"] = field(default_factory=list)
+
+@dataclass
+class OpponentBoard:
+    slot: int                        # 1-7
+    units: list[str]                 # champion names đọc từ scoreboard/tab
+    level: int | None
+    hp: int | None
+    confidence: float                # đọc đối thủ nhiễu hơn đọc board mình — luôn kèm confidence
 ```
 
-> ❌ **Bỏ khỏi v1**: field `opponents` (scouting). Riot liệt kê rõ *"Scouting - tracking the champions
-> opponents have on their boards"* trong danh sách **không được duyệt**. Xem §11.
+> 🔄 **Quay lại ở v3**: `opponents` từng bị bỏ ở v2 vì Riot liệt kê scouting vào danh sách không được
+> duyệt. Đồ án không phát hành nên ràng buộc đó không áp dụng (§11). Nó cho phép tính `contest_score` —
+> bao nhiêu người đang tranh comp của mình — một yếu tố quyết định thật trong TFT.
+>
+> ⚠️ **Nhưng để ở Phase 7 và mặc định tắt**: đọc board 7 người khác qua scoreboard là khối lượng CV
+> đáng kể và độ nhiễu cao. Làm sớm sẽ nuốt mất thời gian của Augment Advisor — thứ mới là trọng tâm
+> đồ án. Mọi code đọc `state.opponents` phải chịu được list rỗng.
 
 **State Tracker Events:**
 ```python
@@ -298,13 +355,79 @@ class GameEvent(Enum):
 
 | File | Mô tả |
 |---|---|
-| `opgg_client.py` | **MỚI v2, primary** — OP.GG MCP (`https://mcp-api.op.gg/mcp`, MIT) |
-| `cdragon_client.py` | CommunityDragon — champions/traits/items/locale |
-| `meta_scraper.py` | Fallback nếu OP.GG không cấp quyền — crawl tập trung, **không** crawl từ máy user |
+| `cdragon_client.py` | CommunityDragon — champions/traits/items/locale (`/latest/`) |
+| `augment_features.py` | **MỚI v3** — loader cho `data/augment_features.json` (§3.4.1) |
+| `stats_provider.py` | **MỚI v3** — interface stats cắm-rút + các implementation (§3.4.2) |
 | `comp_database.py` | Comp tier list & database |
 | `item_guide.py` | Item combinations & BiS |
 | `roll_odds.py` | Roll probability tables |
-| `riot_api.py` | Riot API client — **chỉ post-game** (`tft-match-v1`) |
+| `riot_api.py` | Riot API client — `tft-match-v1`, dùng cho stats tự crawl + back-fill placement |
+
+#### 3.4.1 Bảng đặc trưng Augment — **vì sao phải sinh offline**
+
+Đã đo trực tiếp metadata augment Set 18 của CDragon (n = **254**) để xem có chấm điểm bằng rule được không:
+
+| Field | Có dữ liệu | Dùng được? |
+|---|---|---|
+| `associatedTraits` | **20 / 254** | ❌ Chỉ augment gắn trait mới có |
+| `incompatibleTraits`, `composition`, `unique` | **0 / 254** | ❌ Rỗng hoàn toàn |
+| `tags` | 254 / 254 | ❌ **Giá trị bị băm** (`{ce1fd21c}`…), chỉ 3 giá trị phân biệt |
+| `effects` | 223 / 254 | ⚠️ Nhiều key bị băm; chỉ **47%** placeholder `@Var@` resolve được |
+| `desc` | **254 / 254**, cả EN lẫn VI, không băm | ✅ **Tín hiệu đầy đủ duy nhất** |
+
+> **Kết luận: KHÔNG thể xây scorer bằng rule từ field có cấu trúc của CDragon.** Chỉ 40% augment
+> resolve đủ số. Đặc trưng phải trích từ **văn bản `desc`**.
+
+**Giải pháp — trích đặc trưng offline bằng LLM, cache lại, audit được:**
+
+```
+scripts/build_augment_features.py   (chạy 1 LẦN mỗi set, không phải mỗi trận)
+  input : 254 × {apiName, name, tier, desc_en}
+  output: data/augment_features.json   ← COMMIT vào repo, sửa tay được
+
+  mỗi augment →
+    category        : econ | combat | trait | item | utility | reroll
+    carry_type      : AD | AP | tank | none
+    trait_affinity  : [trait_id, ...]
+    econ_value      : 0-3
+    tempo           : immediate | scaling
+    item_grants     : [component, ...]
+    board_condition : điều kiện board cần có để augment phát huy
+```
+
+| Vì sao thiết kế thế này | |
+|---|---|
+| **LLM không nằm trên critical path** | Runtime chỉ đọc JSON — deterministic, nhanh, không tốn quota |
+| **Audit được** | 254 dòng JSON, người đọc và sửa tay được. Hội đồng kiểm tra được |
+| **Tái sinh mỗi set** | Per-set churn là thứ đã giết mọi TFT overlay open-source. Sinh tự động thì sống |
+| **Là đóng góp phương pháp** | Không phải workaround — đây là cách hợp lệ để cấu trúc hoá dữ liệu phi cấu trúc |
+
+#### 3.4.2 Stats Provider — interface cắm-rút
+
+Nguồn số liệu thống kê augment (avg placement / top-4) **sẽ chốt sau**. Vì vậy scoring engine
+**không được** phụ thuộc nguồn cụ thể:
+
+```python
+class AugmentStatsProvider(Protocol):
+    def get(self, api_name: str) -> AugmentStats | None: ...
+
+@dataclass
+class AugmentStats:
+    avg_place: float; top4_rate: float; win_rate: float
+    sample_n: int                    # cỡ mẫu — luôn hiển thị kèm
+    source: str                      # provenance — luôn hiển thị kèm
+```
+
+| Implementation | Ghi chú |
+|---|---|
+| `NullProvider` | Base = trung tính. **Cho phép chạy toàn hệ thống trước khi có bất kỳ số liệu nào** |
+| `CsvProvider` | Nạp file CSV tự chuẩn bị — mặc định hiện tại |
+| `RiotApiProvider` | Tự crawl `tft-match-v1` rồi tự tính. Bảo vệ tốt nhất trước hội đồng |
+| `OpggMcpProvider` | `https://mcp-api.op.gg/mcp`. Nhanh nhưng là hộp đen — xem [prior-art](research/prior-art.md) |
+| `CompositeProvider` | Gộp nhiều nguồn theo thứ tự ưu tiên, **giữ nguyên provenance** |
+
+> **Thêm nguồn mới = thêm 1 file, KHÔNG sửa scoring engine.** Mọi số hiển thị trên overlay phải kèm
+> `source` và `sample_n` — không có cỡ mẫu thì không phải bằng chứng.
 
 **⚠️ Roll Odds / Pool Size — CHƯA XÁC MINH CHO SET 18**
 
@@ -335,15 +458,22 @@ play_rate, core_units, flex_units, core_items, best_augments, level_timing, earl
 
 ### 3.5 Decision Engine (`src/decision/`)
 
-| File | Mô tả | Ưu tiên v2 |
+| File | Mô tả | Ưu tiên v3 |
 |---|---|---|
-| `comp_selector.py` | Comp selection algorithm | **1** |
-| `rules_engine.py` | Economy, leveling, rolling | **2** |
-| `item_advisor.py` | Item crafting recommendations | 3 |
-| `position_advisor.py` | Unit positioning | 4 |
-| `augment_advisor.py` | **Chỉ stats tĩnh, không xếp hạng** (§11) | 5 |
-| `llm_reasoner.py` | LLM-based reasoning (Gemini Flash) | xuyên suốt |
-| `advisor.py` | Orchestrator — tổng hợp, rồi đẩy qua Compliance Gate | — |
+| `augment_advisor.py` | **Xếp hạng đầy đủ theo board state + lý do** (§3.5.4) | **1 — trọng tâm đồ án** |
+| `comp_selector.py` | Comp selection algorithm — cấp dữ liệu cho `BoardFit` | **2** |
+| `rules_engine.py` | Economy, leveling, rolling | 3 |
+| `item_advisor.py` | Item crafting recommendations | 4 |
+| `position_advisor.py` | Unit positioning | 5 |
+| `contest_analyzer.py` | `contest_score` từ `state.opponents` — Phase 7, feature-flag | 6 |
+| `llm_reasoner.py` | **Tùy chọn** — tinh chỉnh câu giải thích, sau hard timeout | — |
+| `advisor.py` | Orchestrator — tổng hợp rồi đẩy sang Overlay **và** ScenarioLogger | — |
+
+> 🔄 **Đảo ngược so với v2.** v2 xếp Augment Advisor cuối cùng và giới hạn ở "stats tĩnh, không xếp
+> hạng" vì §11. v3 đưa nó lên số 1 với đầy đủ khả năng xếp hạng — đây chính là phần thuật toán
+> Decision-Making mà đồ án cần thể hiện.
+>
+> ❌ **Xoá `src/compliance/gate.py`** — thay bằng `tests/test_readonly_invariant.py` (§11).
 
 #### 3.5.1 Rules Engine — Economy
 
@@ -375,7 +505,10 @@ OUTPUT: top 3 comp directions
 
      total = unit_score*0.40 + item_score*0.25 + meta_score*0.23 + augment_score*0.12
 
-     ❌ BỎ contest_score — nó yêu cầu scouting board đối thủ (Riot cấm, §11).
+     🔄 contest_score QUAY LẠI ở v3 — nhưng chỉ khi enable_scouting = true (Phase 7).
+        contest_score = -(số đối thủ đang dùng >=2 core_units của comp này) / 7
+        Khi scouting tắt → contest_score = 0, các trọng số trên giữ nguyên.
+        Trọng số thật nằm ở config/scoring_weights.yaml, KHÔNG hardcode.
 
 2. DIRECTION STABILITY
      - Trùng recommendation trước với score > 0.6  → +0.15 (tránh pivot vô cớ)
@@ -385,27 +518,69 @@ OUTPUT: top 3 comp directions
    Flag pivot nếu comp hiện tại < 0.3
 ```
 
-#### 3.5.3 LLM Reasoner
+#### 3.5.3 LLM Reasoner — hai vai trò, cả hai đều NGOÀI critical path
+
+| Vai trò | Khi nào chạy | Vì sao an toàn |
+|---|---|---|
+| **A. Trích đặc trưng augment** (§3.4.1) | **Offline**, 1 lần mỗi set | Kết quả cache vào `augment_features.json`. Runtime không gọi LLM |
+| **B. Tinh chỉnh câu giải thích** | Runtime, **tùy chọn**, sau hard timeout | Rules engine đã trả lời xong rồi; LLM chỉ làm câu chữ mượt hơn |
 
 ```python
-SYSTEM_PROMPT = """
-Bạn là một người chơi TFT trình độ Challenger.
-Phân tích game state và đưa ra tư vấn chiến thuật.
+# Vai trò A — offline, chạy bởi scripts/build_augment_features.py
+EXTRACT_PROMPT = """
+Cho mô tả một Augment trong Teamfight Tactics, trả về JSON PHẲNG:
+{category, carry_type, trait_affinity[], econ_value, tempo, item_grants[], board_condition}
 
-Chuyên môn: quản lý kinh tế và tempo, xác định board mạnh nhất mỗi stage,
-quyết định pivot comp, timing slam item, positioning, xác định win condition.
+Chỉ dựa vào mô tả được cung cấp. Không suy đoán chỉ số không có trong text.
+Nếu không xác định được một trường, trả về null — KHÔNG bịa.
+"""
 
-Luôn cân nhắc: HP hiện tại (chơi aggressive hay defensive), item compatibility,
-roll odds ở level hiện tại, champion pool còn lại.
-
-RÀNG BUỘC (§11): không xếp hạng augment theo board state; không tư vấn dựa trên
-board của đối thủ; đưa ra lựa chọn kèm lý do, không ra lệnh.
+# Vai trò B — runtime, tùy chọn
+REFINE_PROMPT = """
+Bạn là người chơi TFT trình độ Challenger. Dưới đây là xếp hạng augment đã được
+tính bằng thuật toán, kèm điểm từng thành phần. Viết lại phần lý do cho tự nhiên,
+NGẮN GỌN (1 câu mỗi augment). KHÔNG được đổi thứ tự xếp hạng.
 """
 ```
 
-> **Ràng buộc kiến trúc**: LLM **không bao giờ** nằm trên critical path của một quyết định có hạn giờ.
-> Rules+stats engine trả lời tức thì (interest breakpoint, level EV, trait fitting đều là số học đóng);
-> LLM đến sau như một refinement tuỳ chọn, sau một hard timeout.
+> **Ràng buộc kiến trúc (giữ nguyên từ v2)**: LLM **không bao giờ** nằm trên critical path của một
+> quyết định có hạn giờ. Augment chỉ có ~30 s để chọn. Scoring engine trả lời tức thì bằng số học đóng;
+> LLM đến sau như refinement, sau hard timeout, và **không được phép đổi thứ hạng**.
+>
+> Vì sao vai trò B bị cấm đổi thứ hạng: nếu LLM đổi được kết quả thì ablation study (§12.4) mất ý
+> nghĩa — không còn biết điểm số nào thực sự tạo ra khuyến nghị.
+
+#### 3.5.4 Augment Scoring Engine — **lõi thuật toán của đồ án**
+
+```
+Score(a | S) = w₁·Base(a)        stats tĩnh, từ StatsProvider (§3.4.2)
+             + w₂·BoardFit(a,S)  trùng trait / khớp carry type
+             + w₃·EconFit(a,S)   giá trị econ × độ hợp stage
+             + w₄·ItemFit(a,S)   component được tặng vs item đang thiếu
+             + w₅·TempoFit(a,S)  greed theo HP (HP thấp → ưu tiên sức mạnh tức thì)
+```
+
+| Thành phần | Nguồn dữ liệu | Trả về |
+|---|---|---|
+| `Base` | `StatsProvider.get(api_name)` | Điểm chuẩn hoá + `source` + `sample_n`. Không có stats → trung tính |
+| `BoardFit` | `augment_features.trait_affinity` ∩ `state.active_traits`; `carry_type` vs carry hiện tại | Điểm + *"khớp 2/3 unit Thần Rừng đang có"* |
+| `EconFit` | `augment_features.econ_value` × hệ số theo `state.stage` | Điểm + *"augment econ ở 2-1 còn kịp sinh lời"* |
+| `ItemFit` | `augment_features.item_grants` vs `state.item_components` | Điểm + *"cho 1 Kiếm, đang thiếu đúng Kiếm"* |
+| `TempoFit` | `augment_features.tempo` × `state.hp` | Điểm + *"HP 22 — cần sức mạnh ngay, không scaling"* |
+
+**Mỗi thành phần BẮT BUỘC trả về `(score: float, reason: str)`.** Đây không phải tính năng phụ:
+
+- Overlay hiển thị *xếp hạng kèm lý do* → là advisor, không phải hộp đen.
+- Ablation study (§12.4) tắt từng `wᵢ` → đo đóng góp thật của từng thành phần.
+- Khi 2 augment điểm sát nhau, lý do là thứ giúp người chơi tự quyết.
+
+**Xử lý 4 cặp augment không phân biệt được** (xem [augments](research/vision-stack/augments.md)):
+khi nhận diện ra một cặp mập mờ → **chấm điểm và hiển thị CẢ HAI, gắn nhãn "không phân biệt được"**,
+tuyệt đối không đoán bừa một tier. Đây là giới hạn dữ liệu có thật, phải báo cáo trong đồ án chứ
+không giấu đi.
+
+> Trọng số `w₁..w₅` nằm ở `config/scoring_weights.yaml`. **Không hardcode** — ablation study cần
+> tắt/bật được từng cái từ file config.
 
 ### 3.6 Overlay UI (`src/overlay/`)
 
@@ -485,12 +660,14 @@ tft_agent/
 │   ├── set-data.md
 │   ├── vision-stack/
 │   │   ├── overview.md
-│   │   └── ocr.md
+│   │   ├── ocr.md
+│   │   └── augments.md          # ← MỚI v2.1
 │   ├── prior-art.md
 │   └── open-questions.md
 │
 ├── config/
-│   ├── settings.yaml
+│   ├── settings.yaml            # có flag enable_scouting (mặc định false)
+│   ├── scoring_weights.yaml     # ← MỚI v3: w₁..w₅ cho §3.5.4 (ablation đọc file này)
 │   ├── screen_regions.yaml      # SINH RA bởi tools/calibrate.py — không sửa tay
 │   └── set_data/
 │       └── current_set.json
@@ -498,8 +675,9 @@ tft_agent/
 ├── tools/                       # ← MỚI v2
 │   └── calibrate.py             # Chụp frame, khoanh ROI, ghi screen_regions.yaml
 │
-├── scripts/                     # ← MỚI v2
-│   └── sync_assets.py           # Regenerate icon templates từ CommunityDragon
+├── scripts/
+│   ├── sync_assets.py           # Regenerate icon templates từ CommunityDragon
+│   └── build_augment_features.py # ← MỚI v3: sinh augment_features.json (§3.4.1)
 │
 ├── src/
 │   ├── main.py
@@ -519,42 +697,52 @@ tft_agent/
 │   │   ├── economy.py
 │   │   └── pool_tracker.py
 │   ├── knowledge/
-│   │   ├── opgg_client.py       # ← MỚI v2
-│   │   ├── cdragon_client.py    # ← MỚI v2
-│   │   ├── meta_scraper.py
+│   │   ├── cdragon_client.py
+│   │   ├── augment_features.py  # ← MỚI v3: loader bảng đặc trưng (§3.4.1)
+│   │   ├── stats_provider.py    # ← MỚI v3: Protocol + Null/Csv/RiotApi/Opgg/Composite
 │   │   ├── comp_database.py
 │   │   ├── item_guide.py
 │   │   ├── roll_odds.py
 │   │   └── riot_api.py
 │   ├── decision/
 │   │   ├── advisor.py
-│   │   ├── rules_engine.py
+│   │   ├── augment_advisor.py   # ← ƯU TIÊN 1 (§3.5.4)
+│   │   ├── scoring/             # ← MỚI v3: 5 thành phần điểm, mỗi cái trả (score, reason)
+│   │   │   ├── base.py · board_fit.py · econ_fit.py
+│   │   │   └── item_fit.py · tempo_fit.py
 │   │   ├── comp_selector.py
+│   │   ├── rules_engine.py
 │   │   ├── item_advisor.py
 │   │   ├── position_advisor.py
-│   │   ├── augment_advisor.py
+│   │   ├── contest_analyzer.py  # ← MỚI v3, Phase 7, feature-flag
 │   │   └── llm_reasoner.py
-│   ├── compliance/              # ← MỚI v2
-│   │   └── gate.py              # Chặn output vi phạm §11 trước khi tới overlay
+│   ├── eval/                    # ← MỚI v3 (§12)
+│   │   ├── scenario_logger.py   # Ghi mọi quyết định — SHIP Ở PHASE 3, không phải cuối
+│   │   ├── recognition.py       # §12.1 precision/recall/F1 + latency
+│   │   ├── correlation.py       # §12.2 Spearman vs placement
+│   │   ├── expert_study.py      # §12.3 export scenario + tính Cohen's κ
+│   │   └── ablation.py          # §12.4 tắt từng wᵢ, đo delta
 │   ├── overlay/
 │   │   ├── overlay_window.py
-│   │   ├── widgets/
+│   │   ├── widgets/             # + widgets/augment_panel.py (xếp hạng + lý do)
 │   │   └── styles.py
 │   └── utils/
-│       ├── preflight.py         # ← MỚI v2
-│       ├── logger.py
-│       ├── hotkeys.py
-│       └── performance.py
+│       ├── preflight.py
+│       ├── logger.py · hotkeys.py · performance.py
 │
 ├── assets/                      # SINH RA bởi scripts/sync_assets.py
 │   ├── champions/ · items/ · traits/ · ui_elements/
 │
 ├── data/
+│   ├── augment_features.json    # ← MỚI v3: COMMIT vào repo, audit tay được
+│   ├── augment_stats.csv        # ← nguồn cho CsvProvider (sẽ chốt sau)
 │   ├── meta_cache/ · game_logs/
+│   └── scenarios/               # ← MỚI v3: dataset đánh giá do ScenarioLogger sinh
 │
 └── tests/
     ├── test_capture.py · test_vision.py · test_game_state.py
-    ├── test_decision.py · test_compliance.py
+    ├── test_decision.py · test_scoring.py
+    ├── test_readonly_invariant.py   # ← MỚI v3: thi hành §1.3 bằng test (§11)
     └── test_data/
 ```
 
@@ -580,7 +768,7 @@ comtypes                 # pin để tránh dxcam issue #139
 PyQt6>=6.5.0
 
 # AI - LLM Reasoning
-google-genai>=2.18.0     # THAY google-generativeai (EOL 2025-11-30)
+google-genai>=2.20.0     # THAY google-generativeai (EOL 2025-11-30)
 
 # Data
 requests>=2.31.0
@@ -605,62 +793,94 @@ pywin32>=306
 
 ## 7. Kế Hoạch Phát Triển
 
-### Phase 0: De-risk (Tuần 1) 🚨 — **MỚI v2, chặn mọi thứ khác**
-- [ ] Chụp 1 frame TFT → assert không đen (Riot có bật capture protection không?)
+> ⏱️ **Số tuần là ước lượng, thứ tự mới là thứ quan trọng.** Thứ tự dưới đây được sắp theo **phụ
+> thuộc**: không có bước nào cần kết quả của bước sau nó.
+
+### Phase 0: De-risk (Tuần 1) 🚨 — **chặn mọi thứ khác**
+- [ ] Chụp 1 frame trên **live Unreal build (18.1)** → assert không đen hoàn toàn
+- [ ] Xác nhận Unreal build còn hỗ trợ **Borderless Windowed** (chưa nguồn nào trả lời)
+- [ ] **Ghi lại process name / executable / window class hiện tại** — mốc so sánh cho client 2026-10-09
 - [ ] Test capture ở fullscreen-exclusive
+- [ ] Benchmark RapidOCR PP-OCRv6 trên frame 1080p **khi game đang chạy** (mọi số latency hiện có đều đo trên máy rảnh)
 - [ ] `GET 127.0.0.1:2999/liveclientdata/allgamedata` trong trận TFT thật
-- [ ] Chụp PBE client (bản Unreal) → diff HUD với Set 17
-- [ ] Spike Overwolf GEP 1 ngày — nó đã trả sẵn `board`/`bench`/`store`/`augments`
-- [ ] Gửi ticket Riot DevRel: tool private, single-user có bị ràng buộc policy không?
+- [ ] ~~Ticket Riot DevRel~~ — **bỏ**, không còn liên quan (§11)
+- [ ] ~~Spike Overwolf GEP~~ — **bỏ**, xem §9 quyết định #5
 
 ### Phase 1: Foundation (Tuần 1–2) 🏗️
 - [ ] Project setup, virtualenv, `pip install --dry-run` sạch
 - [ ] `preflight.py` — toàn bộ self-check ở §3.0
 - [ ] Screen capture (dxcam DXGI → WinRT → mss)
-- [ ] `tools/calibrate.py` + sinh `screen_regions.yaml`
+- [ ] `tools/calibrate.py` + sinh `screen_regions.yaml` **trên HUD Unreal**
 - [ ] `session_detector.py` — in-game / lobby / occluded
 - [ ] Basic OCR (Gold, HP, Level, Stage)
-- [ ] Game state data models
+- [ ] Game state data models (kèm `OpponentBoard`, chưa dùng)
 - [ ] Basic overlay (2 cửa sổ + `WDA_EXCLUDEFROMCAPTURE`)
+- [ ] **`tests/test_readonly_invariant.py`** — thi hành §1.3 ngay từ đầu
 
-### Phase 2: Knowledge Base (Tuần 2–3) 📚
-- [ ] `cdragon_client.py` — roster, traits, locale `vi_vn` (assert Last-Modified)
-- [ ] `scripts/sync_assets.py` — sinh icon templates tự động
-- [ ] `opgg_client.py` — OP.GG MCP (email xin phép trước)
+### Phase 2: Knowledge + Feature Table (Tuần 2–3) 📚
+- [ ] `cdragon_client.py` — roster, traits, locale `vi_vn` (assert `Last-Modified`)
+- [ ] `scripts/sync_assets.py` — sinh icon templates tự động từ `/latest/`
 - [ ] Bảng join 4 cột: `trait_id` → EN → icon file → VI
-- [ ] Roll odds / pool size — **gate sau khi verify 18.1**
+- [ ] Tier ladder 254/254 + xử lý 4 cặp mập mờ (§3.5.4)
+- [ ] **`scripts/build_augment_features.py` → `data/augment_features.json`** + audit tay
+- [ ] `stats_provider.py` — Protocol + `NullProvider` + `CsvProvider`
+- [ ] Roll odds / pool size — **vẫn gate**, 18.1 chưa public số
 
-### Phase 3: Vision & Recognition (Tuần 3–5) 👁️
+### Phase 3: Recognition + Logger (Tuần 3–5) 👁️
+- [ ] **Augment screen detection + recognizer** (Gemini Vision → RapidOCR fallback) — làm TRƯỚC
 - [ ] Champion recognition (shop + board + bench)
-- [ ] Item recognition
-- [ ] Star level detection
-- [ ] Trait panel reading
-- [ ] Augment screen detection (Gemini Vision — §9.3)
+- [ ] Item recognition · Star level detection · Trait panel reading
+- [ ] **`eval/scenario_logger.py` — SHIP Ở ĐÂY, không để cuối**
 
-### Phase 4: Decision Engine (Tuần 5–7) 🤖
-- [ ] **Comp Selector** (ưu tiên 1)
-- [ ] **Economy rules engine** (ưu tiên 2)
-- [ ] Item crafting advisor
-- [ ] Position advisor
-- [ ] `compliance/gate.py` + `test_compliance.py`
-- [ ] LLM integration (Gemini Flash, sau hard timeout)
-- [ ] Augment advisor — **stats tĩnh, không xếp hạng** (§11)
+> ⚠️ **Vì sao logger phải ra sớm**: §12.2, §12.3 và §12.4 đều ăn **chung một dataset** do logger sinh.
+> Nếu logger ra ở Phase cuối thì không có dữ liệu để đánh giá, và deadline đồ án không tha cho việc đó.
+> Logger chạy sớm = dataset tự tích luỹ trong lúc bạn vẫn đang code phần khác.
 
-### Phase 5: UI & Integration (Tuần 7–8) 🎨
-- [ ] Full overlay UI, hotkey system, settings UI
+### Phase 4: Augment Advisor (Tuần 5–7) 🤖 — **TRỌNG TÂM ĐỒ ÁN**
+- [x] `config/scoring_weights.yaml` — cả `weights` (ablation) lẫn `tuning` (hành vi component)
+- [x] 5 thành phần điểm — mỗi cái trả `(score, reason)` (§3.5.4)
+- [x] `augment_advisor.py` — tổng hợp, xếp hạng, xử lý cặp mập mờ
+- [x] `widgets/augment_panel.py` — hiển thị xếp hạng **kèm lý do**; `build_rows()` tách khỏi Qt để test được
+- [x] `test_scoring.py` — unit test từng thành phần
+- [x] `scripts/build_augment_features.py` → `data/augment_features.json` (254/254, tầng 1 không cần key)
 
-### Phase 6: Set 18 Cutover (2026-08-26) 🔄
-- [ ] Re-calibrate toàn bộ ROI trên Unreal build
-- [ ] Re-generate assets từ CommunityDragon
-- [ ] Chuyển URL từ `/pbe/` sang `/latest/` khi `mDefaultSet` == `TFTSet18`
-- [ ] Verify roll odds / pool size thực tế của 18.1
+### Phase 5: Advisor phụ trợ (Tuần 7–8) 🎨
+- [x] Comp Selector (cấp dữ liệu cho `BoardFit`) · Economy rules · Item · Position
+- [x] LLM refinement (tùy chọn, sau hard timeout, **không đổi thứ hạng** — khoá bằng `assert_order_preserved`)
+- [x] `advisor.py` — điều phối, mỗi advisor phụ được phép hỏng riêng
+- [x] `overlay_window.py` + `styles.py` + loader `settings.yaml`
+- [ ] Hotkey system + settings UI — **hoãn**: cần quyết định ở §1.3 về thư viện nghe phím, và cần desktop thật
 
-### Phase 7: Standalone Client (2026-10-09) 🔄
-- [ ] Kiểm tra process name / window class / title mới
+> ⚠️ `roll_odds.py` **có gate**: `get_odds()` ném `UnverifiedDataError` chừng nào 18.1 chưa xác minh.
+> Economy Advisor vì thế không dùng bảng xác suất — chỉ dùng interest/streak (đo được trong trận).
+
+### Phase 6: Đánh giá (Tuần 8–10) 📊 — **§12**
+- [x] `eval/scenario_logger.py` — ghi đủ `GameState` để chấm điểm lại được
+- [x] `eval/recognition.py` — P/R/F1 theo thực thể + latency p50/p95, tách riêng 4 cặp mập mờ
+- [x] `eval/correlation.py` — Spearman (có xử lý hạng đồng hạng) + p-value hoán vị
+- [x] `eval/expert_study.py` — export **không kèm** xếp hạng advisor, tính Cohen's κ
+- [x] `eval/ablation.py` — tắt từng `wᵢ`, lập bảng delta, có dòng "chỉ `w₁`"
+- [x] `scripts/run_evaluation.py` — chạy cả 4 phương pháp, sinh bảng cho chương kết quả
+- [ ] Gán nhãn 200–500 frame — **cần Track B**, harness đã sẵn sàng
+- [ ] Viết chương kết quả — **cần dataset thật**
+
+### Phase 7: Scouting + contest_score (tuỳ chọn) 🔍
+- [x] `contest_analyzer.py` → `contest_score` vào §3.5.2, bỏ qua board đọc dưới ngưỡng tin cậy
+- [x] `enable_scouting` trong `settings.yaml` — **mặc định `false`**, có test cho cả hai trạng thái
+- [ ] Đọc `OpponentBoard` qua scoreboard/tab — **cần Track B** (đây là phần khối lượng CV)
+
+> Hoãn có chủ đích. Chỉ làm khi Phase 4 + 6 đã xong — không được ăn vào thời gian của Augment Advisor.
+
+### Phase 8: Standalone Client (2026-10-09) 🔄 — **deadline bên ngoài**
+- [ ] So sánh process name / window class / title với mốc ghi ở Phase 0
 - [ ] Sửa window targeting + overlay owner-window logic
+- [ ] Kiểm tra CommunityDragon còn feed dữ liệu TFT không
 
-### Phase 8: Testing & Polish ✨
-- [ ] Unit tests, integration testing, accuracy tuning, docs
+> ⚠️ Mốc này do Riot đặt, **có thể rơi vào giữa đồ án**. Đó là lý do Phase 0 phải ghi lại
+> process/window class ngay hôm nay — sau khi client đổi thì không truy ngược được nữa.
+
+### Phase 9: Polish ✨
+- [ ] Integration testing, accuracy tuning, README, hướng dẫn chạy lại toàn bộ pipeline
 
 ---
 
@@ -668,16 +888,17 @@ pywin32>=306
 
 ### Trạng thái Set 18 — Enchanted Wilds
 
-> ⛔ **Set 18 CHƯA LIVE.** Verify 2026-08-13: live `mDefaultSet.SetName` = `TFTSet17` ("Space Gods").
-> Trên PBE = `TFTSet18` ("Enchanted Wilds").
+> ✅ **Set 18 ĐÃ LIVE** từ 2026-08-26 (patch 18.1, Unreal). Verify 2026-08-28: live
+> `mDefaultSet.SetName` = `TFTSet18` / `"Enchanted Wilds"`. `/pbe/` và `/latest/` hiện **giống hệt**.
 
 | Mốc | Ngày | Ảnh hưởng |
 |---|---|---|
-| Set 18 live + **Unreal engine** | **2026-08-26** | Mọi ROI, icon template, star-border heuristic thành rác. Minimap deprecated. Min spec: Win10 19041+, DX11 FL4.3, SM5 |
+| Set 18 live + **Unreal engine** | **2026-08-26** ✅ xong | Mọi ROI, icon template, star-border heuristic Set 17 thành rác. Minimap deprecated. Min spec: Win10 19041+, DX11 FL4.3, SM5. **macOS bị bỏ** ở 18.1. Client vẫn khởi động từ League/Riot client — chưa đổi process |
 | **Standalone TFT PC client** | **2026-10-09** | Có thể đổi process name / executable / window class → vỡ window targeting và overlay owner logic |
 
-**Chiến lược**: build machinery trên **Set 17** (live, ổn định), data lấy từ nhánh `/pbe/`, gate cutover
-bằng điều kiện `mDefaultSet.SetName == "TFTSet18"`.
+**Chiến lược**: build trực tiếp trên **Set 18 live**, data từ `/latest/`. **Không xóa** switch nhánh —
+nó cần lại khi standalone client lên PBE (~2026-09-09). Luôn đọc `mDefaultSet.SetName` lúc chạy,
+không hardcode tên set.
 
 > ⚠️ Set 18 đổi tên hệ thống augment: `SetAugmentName` = **`"Boombox Augment"`** (Set 17: `"Hexcore
 > Augments"`). Mọi chỗ hardcode chuỗi "Hexcore" sẽ vỡ ở 18.1.
@@ -686,13 +907,13 @@ bằng điều kiện `mDefaultSet.SetName == "TFTSet18"`.
 
 | Mục đích | URL |
 |---|---|
-| Champion roster (**authoritative**) | `raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/tftchampions-teamplanner.json` |
-| Active sets / default set | `…/pbe/…/v1/tftsets.json` → key gốc `LCTFTModeData`, đọc `.mDefaultSet.SetName` |
-| Localized text (VI) | `raw.communitydragon.org/pbe/cdragon/tft/vi_vn.json` |
-| Trait art | `raw.communitydragon.org/pbe/game/assets/ux/traiticons/trait_icon_18_<en_name>.png` |
+| Champion roster (**authoritative**) | `raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/tftchampions-teamplanner.json` — 65 champs, tier `{1:14,2:13,3:14,4:14,5:10}` |
+| Active sets / default set | `…/latest/…/v1/tftsets.json` → key gốc `LCTFTModeData`, đọc `.mDefaultSet.SetName` |
+| Localized text (VI) | `raw.communitydragon.org/latest/cdragon/tft/vi_vn.json` — assert `Last-Modified` |
+| Trait art / augment art | Đọc field `icon` **nguyên văn**, đổi `.tex`→`.png`, prefix `raw.communitydragon.org/latest/game/` — **36/36 OK**. ⚠️ Pattern ghép chuỗi `trait_icon_18_<en_name>.png` chỉ đúng **34/36** |
 | Meta decks / augments / items | `https://mcp-api.op.gg/mcp` (MIT) |
 | Match history (post-game) | `tft-match-v1` — [developer.riotgames.com/apis](https://developer.riotgames.com/apis) |
-| ~~Data Dragon~~ | **Bỏ** — không có key Set 18, version mới nhất `16.16.1` trong khi TFT ở patch 17.x |
+| ~~Data Dragon~~ | **Bỏ** — không có key Set 18 |
 | ~~Live TFT state API~~ | **Không tồn tại** |
 
 ### 4 cái bẫy im lặng
@@ -710,17 +931,19 @@ Chi tiết đầy đủ: [`research/set-data.md`](research/set-data.md).
 
 ## 9. Quyết Định Thiết Kế
 
-| # | Câu hỏi | Quyết định v2 |
+| # | Câu hỏi | Quyết định v3 |
 |---|---|---|
 | 1 | Resolution? | ✅ **1920×1080** |
-| 2 | LLM Provider? | ✅ **Gemini Flash** qua `google-genai` |
-| 3 | Riot API Key? | ⏳ Chỉ cần cho post-game analysis |
-| 4 | Feature ưu tiên? | 🔄 **Comp Selector → Economy → Item → Position → Augment (tĩnh)** |
-| 5 | Overwolf SDK? | 🔄 **Spike 1 ngày ở Phase 0** — GEP đã trả sẵn `board`/`bench`/`store`/`augments` |
-| 6 | Target Set? | 🔄 **Build trên Set 17, data `/pbe/`, cutover 2026-08-26** |
-| 7 | Game language? | ✅ **Tiếng Việt** (rủi ro đã đo — thấp hơn dự kiến, xem §9.2) |
-| 8 | Model training? | ✅ **Không cần** — prompt engineering + context injection |
-| 9 | Scraping meta? | 🔄 **OP.GG MCP** thay cho scraping |
+| 2 | LLM Provider? | ✅ **Gemini Flash** qua `google-genai` — offline extraction + refinement tuỳ chọn |
+| 3 | Riot API Key? | ✅ **Cần** — `RiotApiProvider` (stats) + back-fill placement cho §12.2 |
+| 4 | Feature ưu tiên? | 🔄 **Augment Advisor → Comp → Economy → Item → Position → Contest** |
+| 5 | Overwolf SDK? | ❌ **Loại bỏ.** Cần runtime Electron/JS, và nó thay thế đúng phần CV vốn là đóng góp của đồ án. Dùng GEP thì không còn gì để đánh giá ở §12.1 |
+| 6 | Target Set? | ✅ **Set 18 (live)** — data từ `/latest/`. Giữ switch nhánh cho client 2026-10-09 |
+| 7 | Game language? | ✅ **Tiếng Việt** — dấu đã đo và bác bỏ; rủi ro thật là trùng tên (§9.2) |
+| 8 | Model training? | ✅ **Không cần** — prompt engineering + bảng đặc trưng cache sẵn |
+| 9 | Nguồn stats? | 🔄 **Interface cắm-rút** (§3.4.2). Mặc định `Csv` + `Null`; nguồn cụ thể chốt sau |
+| 10 | Scouting? | 🔄 **Có, Phase 7, mặc định tắt** — không còn bị policy cấm, nhưng tốn CV |
+| 11 | Đánh giá thế nào? | ✅ **Cả 4 phương pháp** — xem §12 |
 
 ### 9.1 Chiến Lược LLM
 
@@ -752,9 +975,13 @@ response = client.models.generate_content(
 | Gold / HP / Level / Stage | OCR allowlist `0123456789-` | ❌ Không |
 | Augment recognition | Gemini Vision (§9.3) | ⚠️ Có — đã xử lý |
 
-> ✅ **Rủi ro dấu tiếng Việt đã được ĐO và BÁC BỎ.** Test trên vocabulary thật trong `vi_vn.json`: bỏ
-> **toàn bộ** dấu (NFD + Mn + `đ→d`) vẫn cho **0 collision** trên 82 champions, 66 traits, 410 augments.
-> Điều kiện duy nhất: phải normalize **cả hai phía** trước khi so sánh.
+> ✅ **Rủi ro dấu tiếng Việt đã được ĐO và BÁC BỎ.** Re-verify 2026-08-28 trên `/latest/`: bỏ
+> **toàn bộ** dấu (NFD + Mn + `đ→d`) vẫn cho **0 collision** trên 36 traits và 249 augment names.
+> Điều kiện duy nhất: normalize **cả hai phía** trước khi so sánh.
+>
+> ⚠️ **Nhưng rủi ro ngôn ngữ KHÔNG bằng 0.** Dấu thì hết, nhưng **trùng tên thì không**: 254
+> augment chỉ còn **249** tên VI duy nhất (EN: 250) — tiếng Việt **tệ hơn** EN một chút.
+> Xem [augments](research/vision-stack/augments.md).
 
 ### 9.3 Augment Recognition — Gemini Vision là PRIMARY
 
@@ -767,10 +994,22 @@ Không có template để match.
 ```
 Primary:  Crop ROI augment → Gemini Vision → tên + tier
 Verify:   Normalize + fuzzy match phần GỐC (đã tách tier token) vào DB CommunityDragon
-Tier:     Tra từ icon path (_i. / _ii. / _iii.) — KHÔNG đoán qua màu viền
+Tier:     Ladder → 1) apiName/name token (75)  2) missing-t(N) (28)
+                   3) [-_](i{1,3}).tex (135)  4) (digit).tex (16)   = 254/254
+          → THỨ TỰ QUAN TRỌNG: đọc tên TRƯỚC, icon path chỉ là fallback.
+            Đảo lại thì 19/254 augment bị gán SAI tier.
+Ambiguous: 4 cặp trùng cả tên lẫn icon → hiển thị CẢ HAI, gắn nhãn, KHÔNG đoán
 Fallback: OCR (RapidOCR PP-OCRv6) nếu Vision fail hoặc hết quota
-Output:   Stats tĩnh của cả 3 augment, KHÔNG xếp hạng (§11)
+Output:   3 apiName + confidence → đẩy sang Augment Scoring Engine (§3.5.4)
+          → XẾP HẠNG đầy đủ theo board state, kèm lý do từng thành phần
 ```
+
+> 🔄 **Đổi ở v3**: output không còn là "stats tĩnh, không xếp hạng" (ràng buộc §11 cũ). Nhận diện chỉ
+> là **đầu vào** của scoring engine — phần xếp hạng mới là trọng tâm đồ án.
+>
+> **Ranh giới trách nhiệm**: recognizer trả `apiName` + confidence, **không** chấm điểm.
+> Scoring engine nhận `apiName`, **không** chạm tới pixel. Tách bạch để §12.1 (độ chính xác nhận diện)
+> và §12.2–12.4 (chất lượng tư vấn) đo được **độc lập** — nhận diện sai và tư vấn dở là hai lỗi khác nhau.
 
 ---
 
@@ -782,6 +1021,7 @@ Output:   Stats tĩnh của cả 3 augment, KHÔNG xếp hạng (§11)
 - [`research/set-data.md`](research/set-data.md) — Set 18 timeline, data URLs, các bẫy
 - [`research/vision-stack/overview.md`](research/vision-stack/overview.md) — capture + overlay
 - [`research/vision-stack/ocr.md`](research/vision-stack/ocr.md) — OCR + matching rules
+- [`research/vision-stack/augments.md`](research/vision-stack/augments.md) — **MỚI** tier ladder, cặp không phân biệt được
 - [`research/prior-art.md`](research/prior-art.md) — project đã chết, overlay UI, LLM layer
 - [`research/open-questions.md`](research/open-questions.md) — việc cần tự kiểm chứng
 
@@ -803,44 +1043,147 @@ Output:   Stats tĩnh của cả 3 augment, KHÔNG xếp hạng (§11)
 
 ---
 
-## 11. Compliance Contract (BẮT BUỘC)
+## 11. Phạm Vi, Đạo Đức & Giới Hạn Nghiên Cứu
 
-> Nguồn: Riot TFT developer policy — [developer.riotgames.com/docs/tft](https://developer.riotgames.com/docs/tft).
-> Phân tích đầy đủ: [`research/vanguard-risk.md`](research/vanguard-risk.md).
+> Thay thế "Compliance Contract" của v2. Hội đồng **sẽ hỏi** đồ án này có hợp lệ không — mục này là
+> câu trả lời, viết thẳng, không né.
 
-Riot ràng buộc **bất kể** có dùng API hay không: *"If your product serves players, you must register it
-with us regardless of whether or not your product uses official documented APIs."*
+### 11.1 Phạm vi tự ràng buộc
 
-### Corridor được phép
-
-| ✅ Được | ❌ Không được |
+| Cam kết | Chi tiết |
 |---|---|
-| Nhận diện **3 augment nào** đang hiện trên màn hình | Xếp hạng chúng, hoặc chỉ ra nên chọn cái nào |
-| Hiển thị Place / Top-4 / Win **tĩnh, có trước trận** | Weight theo board / gold / HP / comp hiện tại |
-| Trình bày cả 3 như lựa chọn ngang nhau | Tính lại bất cứ thứ gì từ live board state |
-| Ship data Legend đã **bỏ** win rate | Hiển thị win rate của Legend / Legend-based Augment |
-| Giữ private, single-user, không phát hành | Phân phối (kích hoạt điều khoản registration) |
-| Highlight quyết định quan trọng, đưa nhiều lựa chọn | Scouting board đối thủ |
+| Chạy cục bộ, single-user | Chỉ trên máy tác giả, phục vụ đúng tài khoản của tác giả |
+| **Không phát hành** | Không build installer, không publish, không chia sẻ binary |
+| Không thương mại hoá | Không bán, không nhận tài trợ, không quảng cáo |
+| Không chơi hộ / boosting | Không dùng trên tài khoản người khác, không chia sẻ tài khoản |
+| Repo công khai chỉ để chấm | Mã nguồn + đồ án; **không** kèm hướng dẫn triển khai cho người dùng cuối |
 
-### Cách thi hành trong code
+### 11.2 Vì sao Riot developer policy nằm ngoài phạm vi
 
-`src/compliance/gate.py` là **chốt chặn cuối** trước overlay. Mọi advice object phải đi qua nó.
+Policy ràng buộc sản phẩm **phục vụ người chơi**, tức được **đăng ký và phân phối**:
+*"If your product serves players, you must register it with us…"*
+
+Đồ án này **không phục vụ ai ngoài chính tác giả** và **không được phân phối**, nên không rơi vào phạm
+vi điều chỉnh đó. Đây là quyết định có ý thức của tác giả, không phải sơ suất — và nó chỉ đúng **chừng
+nào §11.1 còn được giữ**.
+
+### 11.3 Cái VẪN ràng buộc đầy đủ — và đây là hai trục độc lập
+
+> ⚠️ **Bỏ developer policy KHÔNG có nghĩa là bỏ luật chơi.** Riot ToS §7.1(11) và Vanguard áp dụng cho
+> **mọi** phần mềm chạy cùng game, phát hành hay không. Đây là lý do §1.3 không đổi một dòng nào.
+
+| Trục | Trạng thái ở v3 |
+|---|---|
+| **Developer policy** (đăng ký, phân phối, tính năng) | ❌ Ngoài phạm vi — không phát hành |
+| **Riot ToS §7.1(11) + Vanguard** (memory, injection, hook, input) | ✅ **Ràng buộc đầy đủ, thi hành bằng test** |
+
+### 11.4 Thi hành bằng test, không bằng lời hứa
+
+`src/compliance/gate.py` của v2 đã bị **xoá** — nó gác *policy*, thứ giờ không còn áp dụng.
+Thay bằng một thứ mạnh hơn: kiểm tra tĩnh rằng **kiến trúc thực sự read-only**.
 
 ```python
-def gate(advice: Advice, state: GameState) -> Advice:
-    """Raise nếu advice vi phạm §11. Có test riêng: tests/test_compliance.py."""
-    assert not advice.ranks_augments,        "Augment ranking bị cấm"
-    assert not advice.derived_from_opponents, "Scouting bị cấm"
-    assert not advice.contains_legend_winrate, "Legend win rate bị cấm"
-    assert advice.augment_stats_are_static,   "Stats augment phải là pre-game, không tính từ board"
-    return advice
+# tests/test_readonly_invariant.py — chạy trong CI, fail thì build đỏ
+FORBIDDEN = [
+    "pyautogui", "pydirectinput", "pynput",        # synthetic input
+    "SendInput", "keybd_event", "mouse_event",      # Win32 input injection
+    "WriteProcessMemory", "ReadProcessMemory",      # memory access
+    "OpenProcess", "CreateRemoteThread",            # injection
+    "d3d11.dll", "Present", "detours",              # render hooking
+]
+
+def test_no_forbidden_symbol_in_import_graph():
+    """§1.3 phải là thuộc tính KIỂM CHỨNG ĐƯỢC của source, không phải lời hứa trong doc."""
+    for symbol in FORBIDDEN:
+        assert symbol not in scan_all_source_and_imports("src/")
 ```
 
-> 💡 **Điểm được BÁC BỎ**: tin đồn "augment win rates bị cấm hoàn toàn, project chết" là **sai**. Riot
-> cho phép rõ ràng: *"An app can provide metadata on augment statistics as this information is available
-> prior to the game and is not based on in-game activity."* Cái bị cấm là **xếp hạng theo trạng thái trận**.
+> 💡 **Vì sao đây là điểm cộng cho đồ án**: "tôi hứa không đọc memory" là lời khẳng định.
+> "Đây là test chứng minh không dòng nào trong source chạm tới memory API" là **bằng chứng**.
+> Hội đồng verify được trong 5 giây.
 
-### Câu hỏi chưa có lời đáp
+### 11.5 Rủi ro còn lại — nói thật
 
-Tool **private, single-user, không phát hành** có bị policy ràng buộc không? Không nguồn nào trong 4 ngôn
-ngữ trả lời được. Đây là ẩn số quan trọng nhất — xem [`research/open-questions.md`](research/open-questions.md).
+| Điều | Trạng thái |
+|---|---|
+| Ban vì overlay read-only | Tìm 4 ngôn ngữ: **0 ca được xác nhận** — nhưng cũng **0 tuyên bố nào của Riot nói là an toàn** |
+| Kết luận trung thực | Rủi ro thực nghiệm **thấp**, rủi ro pháp lý **chưa được giải quyết**. Đây là *absence of evidence*, không phải *evidence of absence* |
+| Giảm thiểu | Kiến trúc read-only + không phát hành + không boosting |
+
+### 11.6 Điều kiện kích hoạt lại ràng buộc cũ
+
+**Nếu đồ án này từng được phát hành**, toàn bộ corridor §11 của v2 áp dụng lại đầy đủ: augment chỉ được
+hiện stats tĩnh không xếp hạng, không scouting, phải đăng ký với Riot.
+[`research/vanguard-risk.md`](research/vanguard-risk.md) được **giữ nguyên** làm cơ sở bằng chứng cho
+tình huống đó — nghiên cứu đó vẫn đúng, chỉ là hiện không áp dụng.
+
+---
+
+## 12. Phương Pháp Đánh Giá
+
+Đồ án cần **bằng chứng đo được**, không chỉ demo chạy được. Bốn phương pháp, bổ trợ nhau.
+
+> ⚠️ **Phụ thuộc quan trọng**: §12.2, §12.3, §12.4 dùng **chung một dataset** do
+> `eval/scenario_logger.py` sinh ra. Vì thế logger **phải ship ở Phase 3**, không phải Phase cuối.
+
+### 12.0 ScenarioLogger — nền của ba phương pháp sau
+
+Mỗi lần màn hình chọn augment xuất hiện, ghi 1 file JSON vào `data/scenarios/`:
+
+```json
+{
+  "ts": "...", "frame_ref": "frames/0001.png",
+  "recognized": [{"api_name": "...", "confidence": 0.94, "ambiguous": false}, ...],
+  "game_state": { "...GameState đầy đủ..." },
+  "component_scores": {"DA_X": {"base": 0.7, "board_fit": 0.9, "...": "..."}},
+  "ranking": ["DA_X", "DA_Y", "DA_Z"],
+  "player_pick": "DA_Y",
+  "final_placement": null
+}
+```
+
+`final_placement` được **back-fill sau trận** từ `tft-match-v1`.
+
+### 12.1 Độ chính xác nhận diện (CV/OCR)
+
+| Mục | Chi tiết |
+|---|---|
+| Dataset | **200–500 frame** gán nhãn tay, phủ đủ các stage và cả 4 cặp augment mập mờ |
+| Chỉ số | Precision / Recall / **F1** theo từng loại thực thể (augment, champion, item, gold, level, HP, stage) |
+| Latency | p50 / p95, đo **khi game đang chạy** — không đo trên máy rảnh |
+| Ghi chú | Báo cáo riêng độ chính xác trên 4 cặp mập mờ; đây là **giới hạn dữ liệu**, không phải lỗi model |
+
+### 12.2 Tương quan với kết quả thật
+
+Trên N trận đã log: tính **Spearman ρ** giữa *thứ hạng advisor gán cho augment người chơi đã chọn* và
+*thứ hạng cuối trận*. Giả thuyết: chọn augment mà advisor xếp cao → placement tốt hơn.
+
+> ⚠️ **Giới hạn phải nêu trong báo cáo**: đây là dữ liệu quan sát, **không phải thí nghiệm có đối
+> chứng**. Augment chỉ là một trong rất nhiều yếu tố quyết định placement. Nêu rõ cỡ mẫu và không
+> tuyên bố quan hệ nhân quả.
+
+### 12.3 Đồng thuận chuyên gia
+
+| Mục | Chi tiết |
+|---|---|
+| Cách làm | Export ~50 scenario (ảnh + tóm tắt state) → người chơi rank cao xếp hạng độc lập |
+| Chỉ số | **Top-1 agreement** + **Cohen's κ** giữa advisor và chuyên gia |
+| Đối chứng | So thêm với baseline "chỉ dùng stats tĩnh" để thấy phần board-state đóng góp gì |
+
+### 12.4 Ablation study
+
+Tắt lần lượt từng `wᵢ` trong `config/scoring_weights.yaml`, chấm lại **toàn bộ dataset đã log**, đo
+delta ở §12.2 và §12.3.
+
+| Cấu hình | Câu hỏi trả lời |
+|---|---|
+| Full model | Baseline |
+| `w₂ = 0` (bỏ BoardFit) | Nhận thức board thực sự đóng góp bao nhiêu? |
+| `w₃ = 0` (bỏ EconFit) | — |
+| `w₄ = 0` (bỏ ItemFit) | — |
+| `w₅ = 0` (bỏ TempoFit) | — |
+| **Chỉ `w₁`** (chỉ stats tĩnh) | **Quan trọng nhất** — chứng minh v3 thực sự hơn v2 |
+
+> Dòng cuối chính là câu trả lời định lượng cho câu hỏi "vì sao phải làm advisor động thay vì bảng
+> stats tĩnh". Nếu delta ≈ 0 thì đó cũng là **một kết quả nghiên cứu hợp lệ** và phải báo cáo trung
+> thực, không được giấu.

@@ -1,63 +1,74 @@
 # Open Questions
 
-What four adversarial cross-checks could **not** resolve. Ordered by decision impact.
+> **Re-graded:** 2026-08-28. Set 18's launch retired some questions and promoted others from
+> "hypothetical" to "testable today". Ordered by decision impact.
+
+## Retired by the 2026-08-26 launch
+
+| Was | Now |
+|---|---|
+| "When does Set 18 go live / is the data real?" | **Settled.** Live since 2026-08-26; roster, icons and traps all re-measured on `/latest/` — see [set-data](set-data.md) |
+| "Capture the PBE client and diff its HUD against Set 17" | **Superseded.** The Unreal HUD is now the *live* HUD. This is ordinary calibration work against the live client, not research |
+| "Which branch do we build against?" | **Settled.** `/pbe/` and `/latest/` are currently identical. Use `/latest/`; keep the switch for the 2026-10-09 client |
 
 ## Blocking — resolve before writing code
 
 | Question | Why it is unresolved | Who can resolve it |
 |---|---|---|
-| Does Riot's TFT policy bind a **purely private, never-distributed, single-user** tool? | The registration clause is scoped to products that *"serve players"*, and developer enforcement runs through API-key revocation — which does not exist for an unregistered tool. No source in any of four languages addresses Riot's posture | Riot DevRel ticket. **This is the single most decision-relevant unknown** |
-| Would Riot approve a registered product of this shape? | The policy text reads as a clear no for state-conditioned advice, but registration outcomes are case-by-case and there is no public register of TFT overlay approvals or denials to sample | Riot Developer Portal application |
-| How does Overwolf obtain real-time TFT `board` / `bench` / `store` / `augments` when Riot's Live Client Data API carries none of it? | Injection, a private arrangement, or an undocumented endpoint — all three are consistent with the evidence | Unanswerable from public docs |
-| Does the Riot/Overwolf **augment contradiction** resolve in favour of Riot's text? | Riot permits augment metadata; Overwolf says it *"can't be displayed… by any means"*; Blitz and tactics.tools ship it publicly today. All three cannot be right | Riot DevRel |
+| Does Riot's TFT policy bind a **purely private, never-distributed, single-user** tool? | The registration clause is scoped to products that *"serve players"*, and developer enforcement runs through API-key revocation — which does not exist for an unregistered tool. No source addresses Riot's posture | Riot DevRel ticket. **Still the single most decision-relevant unknown** |
+| **Does capture still work on the Unreal build?** | **Promoted.** Two days post-launch, EN searches found *no* reports of capture/overlay breakage — and *no* confirmation of safety. Absence of evidence, on a two-day window | **You, in 10 minutes.** See the test table below |
+| Would Riot approve a registered product of this shape? | The policy text reads as a clear no for state-conditioned advice; registration outcomes are case-by-case with no public register to sample | Riot Developer Portal application |
+| How does Overwolf obtain real-time TFT `board` / `bench` / `store` / `augments` when Riot's Live Client Data API carries none of it? | Injection, a private arrangement, or an undocumented endpoint — all consistent with the evidence | Unanswerable from public docs |
+| Does the Riot/Overwolf **augment contradiction** resolve in favour of Riot's text? | Riot permits augment metadata; Overwolf says it *"can't be displayed"*; Blitz and tactics.tools ship it publicly today | Riot DevRel |
+| Does OP.GG's MCP server actually serve **Set 18** data, and does its ToS permit use? | The endpoint proxies OP.GG's live backend, so Set 18 *should* flow — unverified by a live call. Separately, OP.GG's site ToS prohibits automated collection with no MCP carve-out ([prior-art](prior-art.md)) | A 5-minute smoke test; then an email to OP.GG |
 
 ## The user must verify these personally
 
 | Test | Cost | What it settles |
 |---|---|---|
-| Capture one frame of TFT and assert it is not uniformly black | 10 min | Whether Riot has shipped `SetWindowDisplayAffinity` on the client. No researcher ran this. Treat capture as a **runtime precondition**, not an architectural invariant — build the self-check into startup and fail loudly |
-| Run TFT in **fullscreen-exclusive** and retry DXGI desktop duplication | 10 min | A hard dependency. Untested by every researcher |
-| `GET https://127.0.0.1:2999/liveclientdata/allgamedata` during an actual **TFT** match | 5 min | Whether `activePlayer.level` and `championStats.currentHealth` are served for TFT. Riot documents this for League only; the sole evidence is one 2024 bot's code. Do **not** remove level/HP from the vision pipeline until this passes |
-| Capture the **PBE** client and diff its HUD against Set 17 | 1 hr | Whether any Set 17 pixel geometry survives the Unreal swap. PBE is already the Unreal build — this is the only place the post-migration HUD exists before 2026-08-26, and nobody has done it |
-| Open `support.riotgames.com` policy pages in a **real browser** | 5 min | See below |
-| Run RapidOCR PP-OCRv6 on a real 1080p TFT frame **with the game running** | 30 min | Every latency figure in the corpus is vendor-published, measured on Apple Silicon, or measured on an idle Xeon. None measures the contended case |
+| Capture one frame of TFT **on the Unreal build** and assert it is not uniformly black | 10 min | Whether Riot ships `SetWindowDisplayAffinity` on the client. **Nobody has run this on 18.1.** Treat capture as a **runtime precondition**, not an architectural invariant |
+| Confirm the Unreal build still offers **borderless windowed** | 5 min | A hard dependency — exclusive fullscreen bypasses the DWM compositor and cannot be overlaid. **No source addresses this post-migration** |
+| Record the client's **process name, executable and window class/title** on 18.1 | 5 min | Baseline for detecting what the 2026-10-09 standalone client changes. Cheap now, impossible retroactively |
+| Run DXGI desktop duplication with TFT in **fullscreen-exclusive** | 10 min | Untested by every researcher |
+| `GET https://127.0.0.1:2999/liveclientdata/allgamedata` during an actual **TFT** match | 5 min | Whether `activePlayer.level` and `championStats.currentHealth` are served for TFT. Do **not** remove level/HP from the vision pipeline until this passes |
+| Call `tft_list_meta_decks` against `https://mcp-api.op.gg/mcp` | 5 min | Whether the meta layer has Set 18 data at all |
+| Run RapidOCR PP-OCRv6 on a real 1080p **Unreal-rendered** TFT frame with the game running | 30 min | Every latency figure in the corpus is vendor-published or measured on an idle machine. The Unreal build has a higher GPU floor than Hextech |
+| Confirm an Overwolf app (MetaTFT/Blitz) still receives live events on 18.1 | 15 min | Whether the GEP route survived the migration. Marketing pages referencing 18.1 are not evidence |
 
 ## Primary sources no agent could fetch
 
 | Source | Failure | Consequence |
 |---|---|---|
-| `support.riotgames.com/hc/en-us/articles/225266848` (Third-Party Applications) | JS-rendered SPA returning a ~10 KB "Poro loading" shell to every fetcher, via 4 independent attempts. `web.archive.org` unreachable | The widely-quoted four "measurable player advantage" categories — including *"drawing conclusions for you"* — are **not primary-source confirmed** and are **not** on `developer.riotgames.com/policies/general` where one researcher placed them. **Drop this quote from any risk memo.** It does not change the verdict, because the TFT developer policy prohibits the same behaviour verifiably |
-| Riot DevRel Vanguard FAQ (article 28021427366163) | HTTP 403 on both URL forms | *"There is absolutely no allow list"* remains second-hand — and is in tension with Overwolf's undocumented TFT data capability. **Do not reason "MetaTFT does it through channels I could also use."** |
-| `legal.kr.riotgames.com` | JS SPA; archive.org blocked | The Korean identity-linked permanent-ban model is unverified — and moot, since Vietnam is governed by Riot Games Services PTE. LTD. under Singapore law |
-| [dev-relations #1071](https://github.com/RiotGames/developer-relations/issues/1071) comment thread | Could not render | Issue metadata confirmed: opened 2025-05-06, author account deleted, closed *"unsuitable"*. **No public safe-harbour statement for transparent topmost overlays exists.** A private ticket is the only channel that can produce one, and nobody has confirmed anyone ever got an answer |
+| `support.riotgames.com/hc/en-us/articles/225266848` (Third-Party Applications) | JS-rendered SPA returning a "Poro loading" shell. `web.archive.org` **blocked** to agents | The widely-quoted four "measurable player advantage" categories are **not primary-source confirmed**. **Drop this quote from any risk memo.** It does not change the verdict |
+| `support-developer.riotgames.com` TFT article | **HTTP 403** | May contain supplementary policy detail; needs a manual browser check |
+| Riot DevRel Vanguard FAQ (article 28021427366163) | HTTP 403 on both URL forms | *"There is absolutely no allow list"* remains second-hand. **Do not reason "MetaTFT does it through channels I could also use."** |
+| [dev-relations #1071](https://github.com/RiotGames/developer-relations/issues/1071) comment thread | Could not render; author account deleted, closed *"unsuitable"* | **No public safe-harbour statement for transparent topmost overlays exists** |
 
-## Cross-language tensions left genuinely unsettled
+## Cross-source tensions left genuinely unsettled
 
 | Topic | The tension |
 |---|---|
-| Overwolf GEP after 2026-10-09 | GEP keys off LoL game ID **21570** and detects TFT queues via the LoL launcher's `lobby_info`. Both anchors disappear when TFT leaves the League client. Overwolf's TFT docs mention neither Set 18, Unreal, nor the standalone client. **The sanctioned route may break on the same date as the scraping route** |
-| Is Overwolf's TFT GEP formally Riot-authorised or merely tolerated? | Two of three reports asserted "Riot-authorized"; no Riot-owned page names Overwolf. Treat as **unproven** |
-| Does CommunityDragon's TFT feed have a hard expiry? | Suggestive already: Set 18 gameplay data is largely absent from the League-extracted `map22` (109 refs vs Set 17's 10,169) and the `rcp-be-lol-game-data` plugin path carries zero Set 18 champions on live. If TFT data migrates into Unreal-client files a League extractor cannot parse, the project's primary data source dies |
-| Does the Oct 9 client change process name / window class / title? | No Riot statement; the client is not yet on PBE. Directly determines whether dxcam/DXGI window targeting survives |
-| Vietnamese client coverage at 18.1 | Trait strings are present and correct on PBE — a good sign — but champion display names and augment text were not exhaustively verified, and the `vi_vn`/`vn_vn` decoy suggests locale handling deserves direct testing |
-| Would Riot treat OCR acquisition as "unregistered" or as **anti-cheat evasion**? | Riot's policies are uniformly behaviour-based and completely silent on OCR as an acquisition method for *advisory* tools, as opposed to for pixelbots |
-| Has Riot **ever** banned a player for a read-only screen-capture overlay in any title? | Four independent language searches: zero confirmed cases, and zero Riot statements affirming such tools are safe. Convergent — but still absence of evidence. Empirical ban risk is low; policy risk is high; **these are independent axes** |
+| Overwolf GEP after 2026-10-09 | GEP keys off LoL game ID **21570** and detects TFT queues via the LoL launcher's `lobby_info`. Both anchors disappear when TFT leaves the League client. Overwolf's docs still mention neither Set 18, Unreal, nor the standalone client. **The sanctioned route may break on the same date as the scraping route** |
+| Is Overwolf's TFT GEP formally Riot-authorised or merely tolerated? | No Riot-owned page names Overwolf. Treat as **unproven** |
+| Does CommunityDragon's TFT feed survive the standalone client? | It survived 18.1 intact — a good sign. But if TFT data migrates into Unreal-client files a League extractor cannot parse, the project's primary data source dies. The Oct 9 client is the real test |
+| Does the Oct 9 client change process name / window class / title? | No Riot statement; standalone PBE reported ~2026-09-09 (secondary sources only). Directly determines whether DXGI window targeting survives |
+| Was the policy's opponent-prediction clause always there? | The *"including the loading screen"* opponent-tracking sentence is present today but could not be diffed against a March-2025 snapshot (archive.org blocked). Reads as elaboration, not contradiction |
+| Would Riot treat OCR acquisition as "unregistered" or as **anti-cheat evasion**? | Riot's policies are behaviour-based and silent on OCR as an acquisition method for *advisory* tools |
+| Has Riot **ever** banned a player for a read-only screen-capture overlay? | Four independent language searches: zero confirmed cases, and zero Riot statements affirming safety. Empirical ban risk is low; policy risk is high; **these are independent axes** |
 
 ## Lower-priority unknowns
 
 | Question | Note |
 |---|---|
-| Does `windows-capture`'s `draw_border` flag actually suppress the Windows capture indicator, and can it target the TFT window without the `GraphicsCapturePicker` consent UI? | Microsoft's docs describe both as standard; the programmatic per-window path exists (OBS uses it) but the Python binding's exposure was not verified |
-| Gemini Flash vision accuracy on small anti-aliased HUD text over a busy background, **in any language** | Every benchmark found across four languages tests documents, receipts or handwriting. Nearest datapoint: PaddleOCR at >90% on TFT card names, which its own author judged insufficient without a second recogniser fused in |
-| Champion portrait variance from skins, chibi tacticians and star-level borders | Unresolved everywhere. Decides whether masked template matching or dHash is viable for unit art at all |
-| Does VNG Games layer Vietnam-specific account monitoring on the ĐTCL PC client? | Garena-era VED demonstrably did. Governing ToS is settled; local operational enforcement posture is not |
-| ToS text (as distinct from `robots.txt`) for lolchess.gg, tactics.tools, TFTacademy | Matters much less if the OP.GG MCP path is adopted |
-| OP.GG MCP rate limits, API-key requirement, commercial-use grant | The README states none of it, and GitHub's API returned 403, so repo activity is unverified |
+| Does `windows-capture`'s `draw_border` flag suppress the Windows capture indicator, and can it target the TFT window without the `GraphicsCapturePicker` consent UI? | The programmatic per-window path exists (OBS uses it); the Python binding's exposure was not verified |
+| Gemini Flash vision accuracy on small anti-aliased HUD text over a busy background | Every benchmark found tests documents, receipts or handwriting. Nearest datapoint: PaddleOCR >90% on TFT card names, judged insufficient by its own author |
+| Champion portrait variance from skins, chibi tacticians and star-level borders | Decides whether masked template matching or dHash is viable for unit art at all |
+| Does VNG Games layer Vietnam-specific account monitoring on the ĐTCL PC client? | Governing ToS is settled (Riot Games Services PTE. LTD., Singapore law); local enforcement posture is not |
+| macOS support dropped in 18.1 | Irrelevant to this Windows-only project, but confirms Riot is willing to break platforms at a set boundary |
 
 ## Related
 
-- [Research overview](overview.md)
-- [Ban risk & Riot policy](vanguard-risk.md)
+- [Research overview](overview.md) · [Ban risk & Riot policy](vanguard-risk.md)
 - [Set 18 status & data sources](set-data.md)
-- [Vision stack](vision-stack/overview.md)
+- [Vision stack](vision-stack/overview.md) · [OCR & matching](vision-stack/ocr.md) · [Augment pipeline](vision-stack/augments.md)
 - [Prior art, overlay UI & LLM layer](prior-art.md)
