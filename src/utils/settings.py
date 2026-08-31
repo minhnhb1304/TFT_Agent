@@ -23,9 +23,21 @@ DEFAULTS: dict[str, Any] = {
         "scoring_weights": "config/scoring_weights.yaml",
         "meta_comps": "data/meta_comps.json",
         "item_recipes": "data/item_recipes.json",
+        "name_index": "data/name_index.json",
         "scenarios": "data/scenarios",
+        "cdragon_cache": "data/cdragon_cache",
     },
     "locale": {"language": "vi_vn", "branch": "latest"},
+    # Hotkey toan cuc. BAT BUOC di qua RegisterHotKey cua Win32 goi tu Qt
+    # (SPEC 1.3): no la co che cap OS, KHONG cai hook WH_KEYBOARD_LL va
+    # KHONG can quyen admin. Thu vien `keyboard` lam nguoc lai ca hai.
+    "hotkeys": {
+        "toggle_visibility": "F1",
+        "toggle_click_through": "F2",
+        "force_refresh": "F3",
+        "toggle_detail": "F4",
+        "quit": "Ctrl+Q",
+    },
     "features": {
         "enable_scouting": False,
         "enable_llm_refinement": False,

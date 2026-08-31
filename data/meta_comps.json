@@ -1,0 +1,460 @@
+{
+  "meta": {
+    "set": "TFTSet18",
+    "source": "MOCK-NOT-REAL",
+    "warning": "So lieu thong ke la GIA LAP. Unit/trait/item lay tu du lieu Set 18 that.",
+    "generated_at": "2026-08-31T17:59:33+00:00",
+    "n": 10
+  },
+  "comps": [
+    {
+      "name": "Riftbeast Core",
+      "tier": "S",
+      "core_units": [
+        "DA_18_ElderDragon",
+        "DA_Brambleback18",
+        "DA_Sentinel18",
+        "DA_CrimsonRaptor18"
+      ],
+      "flex_units": [
+        "DA_Krug18",
+        "DA_Gromp18_AP",
+        "DA_Murkwolf18",
+        "DA_Scuttlecrab18"
+      ],
+      "core_items": [
+        "TFT_Item_CorruptedJeweledGauntlet",
+        "TFT_Item_RabadonsDeathcap",
+        "TFT_Item_RedBuff"
+      ],
+      "best_augments": [
+        "DA_18_RiftbeastTraitAugment",
+        "DA_BandOfThievesIIPlus",
+        "DA_GlassCannon_Gold"
+      ],
+      "traits": {
+        "DA_Riftbeast18": 4
+      },
+      "avg_placement": 4.042,
+      "top4_rate": 0.62,
+      "win_rate": 0.1632,
+      "play_rate": 0.0202,
+      "level_timing": {
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "early_game": [
+        "DA_18_Sentry",
+        "DA_Cinderling18",
+        "DA_Gromp18_AP"
+      ],
+      "positioning_notes": "DU LIEU GIA LAP (MOCK-NOT-REAL) - khong dung cho bao cao. Core (ten hien thi): Elder Dragon, Brambleback, Sentinel, Mama Beak.",
+      "source": "MOCK-NOT-REAL",
+      "sample_n": 3029
+    },
+    {
+      "name": "Blossom Core",
+      "tier": "S",
+      "core_units": [
+        "DA_18_Ashe",
+        "DA_18_Ahri",
+        "DA_18_Sett",
+        "DA_18_MasterYi_AD"
+      ],
+      "flex_units": [
+        "DA_18_Yunara",
+        "DA_18_Yorick",
+        "DA_Karma18"
+      ],
+      "core_items": [
+        "TFT_Item_NightHarvester",
+        "TFT_Item_StatikkShiv",
+        "TFT_Item_RunaansHurricane"
+      ],
+      "best_augments": [
+        "DA_18_BlossomTraitAugment",
+        "DA_SoloPlate",
+        "DA_Swordsmith"
+      ],
+      "traits": {
+        "DA_18_Blossom": 4
+      },
+      "avg_placement": 4.084,
+      "top4_rate": 0.595,
+      "win_rate": 0.1566,
+      "play_rate": 0.106,
+      "level_timing": {
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "early_game": [
+        "DA_18_Yorick",
+        "DA_Karma18",
+        "DA_18_Yunara"
+      ],
+      "positioning_notes": "DU LIEU GIA LAP (MOCK-NOT-REAL) - khong dung cho bao cao. Core (ten hien thi): Ashe, Ahri, Sett, Master Yi.",
+      "source": "MOCK-NOT-REAL",
+      "sample_n": 1138
+    },
+    {
+      "name": "Elderwood Core",
+      "tier": "A",
+      "core_units": [
+        "DA_18_GnarSmall",
+        "DA_18_Ezreal",
+        "DA_18_Hecarim",
+        "DA_18_Alistar"
+      ],
+      "flex_units": [
+        "DA_18_LeBlanc",
+        "DA_18_Ornn",
+        "DA_18_Xayah"
+      ],
+      "core_items": [
+        "TFT_Item_SteraksGage",
+        "TFT_Item_GuardianAngel",
+        "TFT_Item_RedBuff"
+      ],
+      "best_augments": [
+        "DA_18_ElderwoodTraitAugment",
+        "DA_PandorasBench",
+        "DA_HedgeFund"
+      ],
+      "traits": {
+        "DA_18_Elderwood": 4,
+        "DA_18_Brawler": 2
+      },
+      "avg_placement": 4.241,
+      "top4_rate": 0.57,
+      "win_rate": 0.15,
+      "play_rate": 0.0862,
+      "level_timing": {
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "early_game": [
+        "DA_18_Ornn",
+        "DA_18_Xayah",
+        "DA_18_Alistar"
+      ],
+      "positioning_notes": "DU LIEU GIA LAP (MOCK-NOT-REAL) - khong dung cho bao cao. Core (ten hien thi): Gnar, Ezreal, Hecarim, Alistar.",
+      "source": "MOCK-NOT-REAL",
+      "sample_n": 2471
+    },
+    {
+      "name": "Juggernaut Core",
+      "tier": "A",
+      "core_units": [
+        "DA_18_Maokai",
+        "DA_Amumu18",
+        "DA_Vi18",
+        "DA_18_Sejuani"
+      ],
+      "flex_units": [
+        "DA_Scuttlecrab18",
+        "DA_18_Rakan",
+        "DA_18_Yorick"
+      ],
+      "core_items": [
+        "TFT_Item_CorruptedInfinityEdge",
+        "TFT_Item_GargoyleStoneplate",
+        "TFT_Item_GuardianAngel"
+      ],
+      "best_augments": [
+        "DA_MaxBuild",
+        "DA_TimeSkip",
+        "DA_BandOfThievesII"
+      ],
+      "traits": {
+        "DA_Juggernaut18": 4
+      },
+      "avg_placement": 4.379,
+      "top4_rate": 0.545,
+      "win_rate": 0.1434,
+      "play_rate": 0.0315,
+      "level_timing": {
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "early_game": [
+        "DA_18_Rakan",
+        "DA_18_Yorick",
+        "DA_18_Sejuani"
+      ],
+      "positioning_notes": "DU LIEU GIA LAP (MOCK-NOT-REAL) - khong dung cho bao cao. Core (ten hien thi): Maokai, Amumu, Vi, Sejuani.",
+      "source": "MOCK-NOT-REAL",
+      "sample_n": 2167
+    },
+    {
+      "name": "Spellweaver Core",
+      "tier": "A",
+      "core_units": [
+        "DA_18_Alune",
+        "DA_18_Ahri",
+        "DA_18_Cassiopeia",
+        "DA_Fiddlesticks18"
+      ],
+      "flex_units": [
+        "DA_18_LeBlanc",
+        "DA_18_Veigar",
+        "DA_Karma18"
+      ],
+      "core_items": [
+        "TFT_Item_BlueBuff",
+        "TFT_Item_Morellonomicon",
+        "TFT_Item_CorruptedInfinityEdge"
+      ],
+      "best_augments": [
+        "DA_ExclusiveCustomization",
+        "DA_ComponentQuest",
+        "DA_ConstructACompanion"
+      ],
+      "traits": {
+        "DA_18_Spellweaver": 4
+      },
+      "avg_placement": 4.564,
+      "top4_rate": 0.52,
+      "win_rate": 0.1368,
+      "play_rate": 0.0931,
+      "level_timing": {
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "early_game": [
+        "DA_18_Veigar",
+        "DA_Karma18",
+        "DA_18_LeBlanc"
+      ],
+      "positioning_notes": "DU LIEU GIA LAP (MOCK-NOT-REAL) - khong dung cho bao cao. Core (ten hien thi): Alune, Ahri, Cassiopeia, Fiddlesticks.",
+      "source": "MOCK-NOT-REAL",
+      "sample_n": 459
+    },
+    {
+      "name": "Brawler Core",
+      "tier": "B",
+      "core_units": [
+        "DA_18_GnarSmall",
+        "DA_18_Sett",
+        "DA_Krug18",
+        "DA_18_Alistar"
+      ],
+      "flex_units": [
+        "DA_18_Kobuko",
+        "DA_18_RekSai"
+      ],
+      "core_items": [
+        "TFT_Item_RabadonsDeathcap",
+        "TFT_Item_TacticiansScepter",
+        "TFT_Item_ForceOfNature"
+      ],
+      "best_augments": [
+        "DA_SlamminPlus",
+        "DA_EpicRolldown",
+        "DA_VerticalityIII"
+      ],
+      "traits": {
+        "DA_18_Brawler": 4,
+        "DA_18_Elderwood": 2
+      },
+      "avg_placement": 4.538,
+      "top4_rate": 0.495,
+      "win_rate": 0.1303,
+      "play_rate": 0.0838,
+      "level_timing": {
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "early_game": [
+        "DA_18_Kobuko",
+        "DA_18_RekSai",
+        "DA_18_Alistar"
+      ],
+      "positioning_notes": "DU LIEU GIA LAP (MOCK-NOT-REAL) - khong dung cho bao cao. Core (ten hien thi): Gnar, Sett, Krug, Alistar.",
+      "source": "MOCK-NOT-REAL",
+      "sample_n": 611
+    },
+    {
+      "name": "Defender Core",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Lillia",
+        "DA_18_Rammus",
+        "DA_Fiddlesticks18",
+        "DA_18_Shen"
+      ],
+      "flex_units": [
+        "DA_18_Leona",
+        "DA_18_Ornn"
+      ],
+      "core_items": [
+        "TFT_Item_CorruptedHandOfJustice",
+        "TFT_Item_BrambleVest",
+        "TFT_Item_ArchangelsStaff"
+      ],
+      "best_augments": [
+        "DA_Slammin",
+        "DA_HoldTheLine",
+        "DA_CaretakersFavor"
+      ],
+      "traits": {
+        "DA_18_Defender": 4
+      },
+      "avg_placement": 4.688,
+      "top4_rate": 0.47,
+      "win_rate": 0.1237,
+      "play_rate": 0.1187,
+      "level_timing": {
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "early_game": [
+        "DA_18_Leona",
+        "DA_18_Ornn",
+        "DA_18_Shen"
+      ],
+      "positioning_notes": "DU LIEU GIA LAP (MOCK-NOT-REAL) - khong dung cho bao cao. Core (ten hien thi): Lillia, Rammus, Fiddlesticks, Shen.",
+      "source": "MOCK-NOT-REAL",
+      "sample_n": 2459
+    },
+    {
+      "name": "Ravager Core",
+      "tier": "B",
+      "core_units": [
+        "DA_Brambleback18",
+        "DA_18_Diana",
+        "DA_18_Warwick",
+        "DA_Murkwolf18"
+      ],
+      "flex_units": [
+        "DA_18_Akali_AD",
+        "DA_18_Camille"
+      ],
+      "core_items": [
+        "TFT_Item_MadredsBloodrazor",
+        "TFT_Item_TacticiansScepter",
+        "TFT_Item_CorruptedWarmogsArmor"
+      ],
+      "best_augments": [
+        "DA_BuriedTreasuresIII",
+        "DA_PlotArmor",
+        "DA_Ascension"
+      ],
+      "traits": {
+        "DA_18_Slayer": 4,
+        "DA_Riftbeast18": 2
+      },
+      "avg_placement": 4.749,
+      "top4_rate": 0.445,
+      "win_rate": 0.1171,
+      "play_rate": 0.0469,
+      "level_timing": {
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "early_game": [
+        "DA_18_Akali_AD",
+        "DA_18_Camille",
+        "DA_18_Warwick"
+      ],
+      "positioning_notes": "DU LIEU GIA LAP (MOCK-NOT-REAL) - khong dung cho bao cao. Core (ten hien thi): Brambleback, Diana, Warwick, Murkwolf.",
+      "source": "MOCK-NOT-REAL",
+      "sample_n": 3763
+    },
+    {
+      "name": "Sprykin Core",
+      "tier": "C",
+      "core_units": [
+        "DA_18_GnarSmall",
+        "DA_18_Rammus",
+        "DA_18_Tristana",
+        "DA_18_Teemo"
+      ],
+      "flex_units": [
+        "DA_18_Kobuko",
+        "DA_18_Veigar"
+      ],
+      "core_items": [
+        "TFT_Item_Redemption",
+        "TFT_Item_TacticiansScepter",
+        "TFT_Item_UnstableConcoction"
+      ],
+      "best_augments": [
+        "DA_18_SprykinAugment",
+        "DA_ForgeAFriend",
+        "DA_SweetTreats"
+      ],
+      "traits": {
+        "DA_18_Sprykin": 4
+      },
+      "avg_placement": 4.913,
+      "top4_rate": 0.42,
+      "win_rate": 0.1105,
+      "play_rate": 0.0307,
+      "level_timing": {
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "early_game": [
+        "DA_18_Kobuko",
+        "DA_18_Veigar",
+        "DA_18_Teemo"
+      ],
+      "positioning_notes": "DU LIEU GIA LAP (MOCK-NOT-REAL) - khong dung cho bao cao. Core (ten hien thi): Gnar, Rammus, Tristana, Teemo.",
+      "source": "MOCK-NOT-REAL",
+      "sample_n": 3598
+    },
+    {
+      "name": "Vanguard Core",
+      "tier": "C",
+      "core_units": [
+        "DA_Taric18",
+        "DA_Sentinel18",
+        "DA_18_Diana",
+        "DA_18_Hecarim"
+      ],
+      "flex_units": [
+        "DA_18_Elise",
+        "DA_18_Rakan"
+      ],
+      "core_items": [
+        "TFT_Item_CorruptedSpearOfShojin",
+        "TFT_Item_Bloodthirster",
+        "TFT_Item_Redemption"
+      ],
+      "best_augments": [
+        "DA_TacticiansKitchen",
+        "DA_TheGoldenDragon",
+        "DA_BirthdayReunion"
+      ],
+      "traits": {
+        "DA_18_Vanguard": 4
+      },
+      "avg_placement": 5.121,
+      "top4_rate": 0.395,
+      "win_rate": 0.1039,
+      "play_rate": 0.0331,
+      "level_timing": {
+        "6": 3,
+        "7": 4,
+        "8": 5
+      },
+      "early_game": [
+        "DA_18_Rakan",
+        "DA_18_Elise",
+        "DA_18_Diana"
+      ],
+      "positioning_notes": "DU LIEU GIA LAP (MOCK-NOT-REAL) - khong dung cho bao cao. Core (ten hien thi): Taric, Sentinel, Diana, Hecarim.",
+      "source": "MOCK-NOT-REAL",
+      "sample_n": 2463
+    }
+  ]
+}

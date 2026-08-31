@@ -271,6 +271,37 @@ def test_config_loads_from_yaml() -> None:
     assert sum(cfg.weights.values()) == pytest.approx(1.0)
 
 
+def test_top_level_comp_selector_block_reaches_tuning(tmp_path) -> None:
+    """Khoi `comp_selector:` o cap cao nhat phai den duoc CompSelector.
+
+    Truoc khi co ScoringConfig.TOP_LEVEL_TUNING, khoi nay la CONFIG CHET:
+    CompSelector doc no bang cfg.tune("comp_selector") nhung load() chi lay
+    `weights` va `tuning`, nen sua so trong YAML khong co tac dung gi va
+    CompSelector im lang dung DEFAULT_WEIGHTS trong code. Khong test nao bat
+    duoc vi hai bo gia tri tinh co trung nhau - test nay dung gia tri KHAC
+    han mac dinh de bay ra chenh lech.
+    """
+    path = tmp_path / "w.yaml"
+    path.write_text(
+        "weights: {base: 1.0}\n"
+        "tuning: {}\n"
+        "comp_selector:\n"
+        "  unit: 0.77\n"
+        "  stability: {pivot_penalty: 0.99}\n",
+        encoding="utf-8",
+    )
+    tune = ScoringConfig.load(path).tune("comp_selector")
+    assert tune["unit"] == 0.77
+    assert tune["stability"]["pivot_penalty"] == 0.99
+
+
+def test_shipped_comp_selector_weights_are_actually_read() -> None:
+    """File that trong repo cung phai di qua duong do, khong chi file tam."""
+    tune = ScoringConfig.load("config/scoring_weights.yaml").tune("comp_selector")
+    assert tune, "khoi comp_selector: khong den duoc tuning - config chet"
+    assert set(tune) >= {"unit", "item", "meta", "augment", "stability"}
+
+
 # --- AugmentAdvisor (tong hop) --------------------------------------------
 
 

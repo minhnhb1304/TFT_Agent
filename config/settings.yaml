@@ -9,12 +9,25 @@ paths:
   scoring_weights: config/scoring_weights.yaml
   meta_comps: data/meta_comps.json              # co the chua ton tai -> comp DB rong
   item_recipes: data/item_recipes.json          # SINH RA tu locale, khong sua tay
+  name_index: data/name_index.json              # SINH RA boi scripts/build_name_index.py
   scenarios: data/scenarios
+  cdragon_cache: data/cdragon_cache             # SINH RA boi scripts/fetch_locale.py
 
 locale:
   # vi_vn. TUYET DOI khong dung vn_vn (bay so 1 trong research/set-data.md).
   language: vi_vn
   branch: latest
+
+hotkeys:
+  # BAT BUOC dung RegisterHotKey cua Win32 goi tu Qt (SPEC 1.3, feedback #10):
+  # co che cap OS, KHONG cai hook WH_KEYBOARD_LL, KHONG can quyen admin. Thu
+  # vien `keyboard` lam nguoc lai ca hai -> dung loai hanh vi anti-cheat de y.
+  # De trong ("") de tat mot binding.
+  toggle_visibility: F1
+  toggle_click_through: F2
+  force_refresh: F3
+  toggle_detail: F4
+  quit: Ctrl+Q
 
 features:
   # Phase 7 - doc board doi thu. MAC DINH TAT: khoi luong CV lon, do nhieu cao,

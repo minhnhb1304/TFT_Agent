@@ -22,6 +22,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 VERIFIED_FOR_SET18 = False
+
+# Nhan BAT BUOC gan kem moi lan hien bang nay (feedback #9). Co y de nguyen
+# tieng Anh va nguyen van: no la mot chuoi CO DINH de nguoi doc bao cao va
+# nguoi xem overlay nhan ra ngay, va de grep duoc trong source lan trong anh
+# chup man hinh. Doi chuoi nay = doi hop dong hien thi.
+UNVERIFIED_LABEL = "Unverified Data (Set 18.1)"
+
 SOURCE_NOTE = (
     "Chuan cua cac set truoc. Chua xac minh cho 18.1 - "
     "khong tim thay ShopOdds/TierOdds/LevelXP trong du lieu PBE."
@@ -54,12 +61,18 @@ class UnverifiedDataError(RuntimeError):
 
 @dataclass(frozen=True)
 class RollOdds:
-    """Ti le shop cua mot level, LUON kem co xac minh."""
+    """Ti le shop cua mot level, LUON kem co xac minh va nhan hien thi.
+
+    `label` ton tai de khong the quen gan nhan: no di kem ngay trong ban ghi
+    tra ve, nen bat ky cho nao hien `odds` deu co san chuoi canh bao ben canh
+    ma khong phai nho tra nguoc lai module nay.
+    """
 
     level: int
     odds: tuple[float, float, float, float, float]
     verified: bool
     note: str
+    label: str = UNVERIFIED_LABEL
 
     def chance_of(self, cost: int) -> float:
         """Ti le xuat hien cua mot cost trong mot o shop."""
@@ -84,10 +97,16 @@ def get_odds(level: int, allow_unverified: bool = False) -> RollOdds:
         raise ValueError(f"khong co bang cho level {level}")
     if not VERIFIED_FOR_SET18 and not allow_unverified:
         raise UnverifiedDataError(
-            f"Ti le roll chua xac minh cho Set 18. {SOURCE_NOTE} "
+            f"{UNVERIFIED_LABEL} - ti le roll chua xac minh cho Set 18. {SOURCE_NOTE} "
             "Bat allow_unverified_roll_odds trong config/settings.yaml neu chap nhan."
         )
-    return RollOdds(level, SHOP_ODDS[level], VERIFIED_FOR_SET18, SOURCE_NOTE)
+    return RollOdds(
+        level,
+        SHOP_ODDS[level],
+        VERIFIED_FOR_SET18,
+        SOURCE_NOTE,
+        label="" if VERIFIED_FOR_SET18 else UNVERIFIED_LABEL,
+    )
 
 
 def pool_size(cost: int, variant: str = "community_reported") -> tuple[int, str]:
