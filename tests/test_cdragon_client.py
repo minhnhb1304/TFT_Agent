@@ -20,6 +20,7 @@ from src.knowledge.cdragon_client import (
     EXPECTED_TIER_DISTRIBUTION,
     CDragonClient,
     CDragonError,
+    select_set_data,
 )
 
 FIXTURES = Path(__file__).parent / "fixtures" / "cdragon"
@@ -138,3 +139,55 @@ def test_stale_locale_detection() -> None:
 
     # Header rac thi tra None chu khong crash.
     assert CDragonClient._age_in_days("khong-phai-ngay") is None
+
+
+# --- Bay so 6: setData[0] KHONG phai set dang target ----------------------
+
+
+def test_set_data_is_selected_by_mutator_not_position() -> None:
+    """Ban locale DAY DU co 35 khoi setData va khoi dau tien la TFTSet14.
+
+    Do duoc 2026-09-01 tren en_us.json that. Bay nay khong lo ra o fixture
+    trimmed vi fixture chi giu dung mot khoi - nghia la mot bug o day se
+    xanh het test cho den ngay chay tren du lieu that.
+
+    Lay nham khoi thi hong IM LANG: bang anh xa trait tro thanh cua Set 14,
+    trait_affinity rong sach, va BoardFit thanh trung tinh cho moi augment.
+    """
+    locale = {
+        "setData": [
+            {"mutator": "TFTSet14", "name": "Set14", "traits": [{"apiName": "X"}]},
+            {"mutator": "TFTSet18", "name": "Set10", "traits": [{"apiName": "DA_18_Ravager"}]},
+            {"mutator": "TFTSet17", "name": "Set17", "traits": []},
+        ]
+    }
+    block = select_set_data(locale)
+    assert block["mutator"] == "TFTSet18"
+    assert block["traits"][0]["apiName"] == "DA_18_Ravager"
+
+
+def test_set_data_never_keys_on_display_name() -> None:
+    """Khoi cua Set 18 co `name` la "Set10" - loc theo name cung sai im lang.
+
+    Set 18 dung lai ten asset cua Set 10 (bay so 4, research/set-data.md).
+    """
+    locale = {
+        "setData": [
+            {"mutator": "TFTSet10", "name": "Set10", "traits": [{"apiName": "SAI"}]},
+            {"mutator": "TFTSet18", "name": "Set10", "traits": [{"apiName": "DUNG"}]},
+        ]
+    }
+    assert select_set_data(locale)["traits"][0]["apiName"] == "DUNG"
+
+
+def test_missing_target_set_raises_and_lists_what_was_there() -> None:
+    """Khong tim thay thi phai nem kem danh sach mutator co san de con debug."""
+    locale = {"setData": [{"mutator": "TFTSet14"}, {"mutator": "TFTSet17"}]}
+    with pytest.raises(CDragonError, match="TFTSet14"):
+        select_set_data(locale)
+
+
+def test_trimmed_fixture_still_resolves(client: CDragonClient) -> None:
+    """Fixture chi co mot khoi - duong nay van phai chay dung."""
+    locale = json.loads((FIXTURES / "en_us.trimmed.json").read_text(encoding="utf-8"))
+    assert len(select_set_data(locale)["traits"]) == 36

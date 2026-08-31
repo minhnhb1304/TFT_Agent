@@ -43,6 +43,34 @@ class CDragonError(RuntimeError):
     """Loi nap du lieu CommunityDragon - luon fail sang, khong bao gio nuot."""
 
 
+def select_set_data(locale: dict[str, Any], mutator: str = EXPECTED_SET_NAME) -> dict[str, Any]:
+    """Lay khoi setData cua DUNG set dang target - key theo `mutator`.
+
+    Bay so 6 (do 2026-09-01 tren ban locale DAY DU, khong lo ra o fixture
+    trimmed vi fixture chi co dung mot phan tu setData):
+
+        setData[0] la TFTSet14, KHONG phai Set 18.
+
+    File locale that mang 35 khoi setData khong sap xep theo thu tu nao, va
+    khoi cua Set 18 co `name` la "Set10" (Set 18 dung lai ten asset cua Set
+    10 - bay so 4 trong research/set-data.md). Nghia la:
+
+        setData[0]      -> sai set, im lang
+        loc theo name   -> sai set, im lang
+        loc theo mutator-> dung
+
+    Lay nham khoi nay thi bang anh xa trait sai toan bo ma khong bao loi:
+    `trait_affinity` rong het, BoardFit thanh trung tinh cho moi augment.
+    """
+    for block in locale.get("setData") or []:
+        if block.get("mutator") == mutator:
+            return block
+    seen = sorted({str(b.get("mutator")) for b in locale.get("setData") or []})
+    raise CDragonError(
+        f"Khong tim thay setData co mutator={mutator!r}. Cac mutator co san: {seen}"
+    )
+
+
 @dataclass(frozen=True)
 class ChampionEntry:
     """Mot tuong trong roster Set 18."""
