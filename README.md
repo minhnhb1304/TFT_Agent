@@ -9,6 +9,7 @@ rồi xếp hạng và giải thích lựa chọn augment tốt nhất.
 | Tài liệu | Nội dung |
 |---|---|
 | [`SPEC.md`](SPEC.md) | Đặc tả v3 — kiến trúc, thuật toán, phương pháp đánh giá |
+| [`dev_log.md`](dev_log.md) | **Trạng thái thực tế** — đã làm gì, còn gì, nợ kỹ thuật |
 | [`research/`](research/overview.md) | Báo cáo nghiên cứu, đã re-verify 2026-08-28 trên Set 18 live |
 
 ---
