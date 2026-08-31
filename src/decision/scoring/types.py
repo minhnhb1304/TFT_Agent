@@ -65,12 +65,27 @@ class ScoringConfig:
 
     COMPONENTS = ("base", "board_fit", "econ_fit", "item_fit", "tempo_fit")
 
+    # Cac khoi cau hinh nam o cap CAO NHAT trong YAML nhung duoc doc qua
+    # `tuning`. `comp_selector` la truong hop duy nhat hien nay: no khong phai
+    # tham so cua mot scorer nen khong thuoc `tuning` ve mat ngu nghia, nhung
+    # CompSelector lai tra no bang cfg.tune("comp_selector").
+    #
+    # Truoc khi co dong nay, ca khoi comp_selector: trong scoring_weights.yaml
+    # la CONFIG CHET - sua so trong file khong co tac dung gi, CompSelector im
+    # lang dung DEFAULT_WEIGHTS trong code. Khong test nao bat duoc vi hai bo
+    # gia tri tinh co trung nhau.
+    TOP_LEVEL_TUNING = ("comp_selector",)
+
     @classmethod
     def load(cls, path: str | Path) -> "ScoringConfig":
         data = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
+        tuning = dict(data.get("tuning") or {})
+        for key in cls.TOP_LEVEL_TUNING:
+            if key in data and key not in tuning:
+                tuning[key] = data[key]
         return cls(
             weights={k: float(v) for k, v in (data.get("weights") or {}).items()},
-            tuning=data.get("tuning") or {},
+            tuning=tuning,
         )
 
     @classmethod

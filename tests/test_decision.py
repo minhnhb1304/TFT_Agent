@@ -10,6 +10,8 @@ vo trong luc phat trien:
 
 from __future__ import annotations
 
+import re
+
 import pytest
 
 from src.decision.advisor import Advisor
@@ -24,7 +26,12 @@ from src.eval.scenario_logger import ScenarioLogger
 from src.game_state.models import Champion, GameState, OpponentBoard
 from src.knowledge.augment_features import AugmentFeature, FeatureTable
 from src.knowledge.comp_database import CompDatabase, MetaComp
-from src.knowledge.roll_odds import UnverifiedDataError, get_odds, pool_size
+from src.knowledge.roll_odds import (
+    UNVERIFIED_LABEL,
+    UnverifiedDataError,
+    get_odds,
+    pool_size,
+)
 from src.utils.settings import Settings
 
 
@@ -88,6 +95,29 @@ def test_roll_odds_are_labelled_unverified_when_forced() -> None:
     odds = get_odds(7, allow_unverified=True)
     assert odds.verified is False
     assert odds.chance_of(4) == pytest.approx(0.15)
+
+
+def test_forced_odds_carry_the_exact_required_label() -> None:
+    """Feedback #9: duoc phep hien bang cu, NHUNG bat buoc gan nhan nay.
+
+    Chuoi duoc khoa nguyen van chu khong kiem tra "co chua chu unverified":
+    no la hop dong hien thi, va la thu nguoi cham do an tim tren anh chup
+    man hinh. Doi chuoi = doi hop dong, phai co y thuc chu khong vo tinh.
+    """
+    assert UNVERIFIED_LABEL == "Unverified Data (Set 18.1)"
+    assert get_odds(7, allow_unverified=True).label == UNVERIFIED_LABEL
+
+
+def test_the_label_travels_with_the_data_not_beside_it() -> None:
+    """Nhan nam TRONG ban ghi -> khong the hien so ma quen hien nhan."""
+    for level in (1, 5, 10):
+        assert get_odds(level, allow_unverified=True).label
+
+
+def test_the_refusal_message_also_names_the_label() -> None:
+    """Nguoi doc log phai biet ngay day la du lieu chua xac minh cua 18.1."""
+    with pytest.raises(UnverifiedDataError, match=re.escape(UNVERIFIED_LABEL)):
+        get_odds(7)
 
 
 def test_pool_size_returns_the_variant_it_used() -> None:

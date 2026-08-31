@@ -1,0 +1,7652 @@
+{
+  "by_norm": {
+    "augments": {
+      "en": {
+        "advanced loan": [
+          "DA_AdvancedLoan"
+        ],
+        "advanced loan+": [
+          "DA_AdvancedLoanPlus"
+        ],
+        "arcane viktor-y": [
+          "DA_ArcaneViktory"
+        ],
+        "ascension": [
+          "DA_Ascension"
+        ],
+        "augmented power": [
+          "DA_AugmentedPower"
+        ],
+        "backline blueprint": [
+          "DA_BacklineBlueprint"
+        ],
+        "backup bows": [
+          "DA_BackupBows"
+        ],
+        "band of thieves": [
+          "DA_BandOfThieves"
+        ],
+        "band of thieves ii": [
+          "DA_BandOfThievesII"
+        ],
+        "band of thieves ii+": [
+          "DA_BandOfThievesIIPlus"
+        ],
+        "band of thieves ii++": [
+          "DA_BandOfThievesIIPlusPlus"
+        ],
+        "baron's lair": [
+          "DA_BaronsLair"
+        ],
+        "beast within": [
+          "DA_18_PrimalAugment_Nidalee",
+          "DA_18_PrimalAugment_Sivir"
+        ],
+        "beast within+": [
+          "DA_18_PrimalAugmentPlus_Nidalee",
+          "DA_18_PrimalAugmentPlus_Sivir"
+        ],
+        "belt overflow": [
+          "DA_BeltOverflow"
+        ],
+        "big grab bag": [
+          "DA_18_BigGrabBag"
+        ],
+        "birthday present": [
+          "DA_BirthdayPresent"
+        ],
+        "birthday reunion": [
+          "DA_BirthdayReunion"
+        ],
+        "blossom's call": [
+          "DA_18_BlossomTraitAugment"
+        ],
+        "bodyguard training": [
+          "DA_BodyguardTraining"
+        ],
+        "bonus gift": [
+          "DA_BonusGift"
+        ],
+        "bonus gift+": [
+          "DA_BonusGiftPlus"
+        ],
+        "booster pack": [
+          "DA_BoosterPack"
+        ],
+        "booster pack+": [
+          "DA_BoosterPackPlus"
+        ],
+        "booster pack++": [
+          "DA_BoosterPackPlusPlus"
+        ],
+        "boxing lessons": [
+          "DA_BoxingLessons"
+        ],
+        "branching out": [
+          "DA_18_BranchingOut"
+        ],
+        "branching out+": [
+          "DA_18_BranchingOutPlus"
+        ],
+        "bronze for life i": [
+          "DA_BronzeForLifeI"
+        ],
+        "bronze for life ii": [
+          "DA_BronzeForLifeII"
+        ],
+        "build a bud": [
+          "DA_BuildABud"
+        ],
+        "buried treasures iii": [
+          "DA_BuriedTreasuresIII"
+        ],
+        "calculated loss": [
+          "DA_CalculatedLoss"
+        ],
+        "call to chaos": [
+          "DA_CallToChaos"
+        ],
+        "called shot": [
+          "DA_CalledShot"
+        ],
+        "capital gains i": [
+          "DA_CapitalGainsI"
+        ],
+        "capital gains ii": [
+          "DA_CapitalGainsII"
+        ],
+        "caretaker's ally": [
+          "DA_18_CaretakersAlly"
+        ],
+        "caretaker's favor": [
+          "DA_CaretakersFavor"
+        ],
+        "carve a path": [
+          "DA_CarveAPath"
+        ],
+        "celestial blessing i": [
+          "DA_CelestialBlessingI"
+        ],
+        "celestial blessing ii": [
+          "DA_CelestialBlessingII"
+        ],
+        "celestial blessing iii": [
+          "DA_CelestialBlessingIII"
+        ],
+        "challenger's grace": [
+          "DA_ChallengersGrace"
+        ],
+        "champ delivery": [
+          "DA_ChampDelivery"
+        ],
+        "champ delivery+": [
+          "DA_ChampDeliveryPlus"
+        ],
+        "champ delivery++": [
+          "DA_ChampDeliveryPlusPlus"
+        ],
+        "chosen of the sun": [
+          "DA_18_SolarTraitAugment"
+        ],
+        "clear mind": [
+          "DA_ClearMind"
+        ],
+        "clockwork accelerator": [
+          "DA_ClockworkAccelerator"
+        ],
+        "cluttered mind": [
+          "DA_ClutteredMind"
+        ],
+        "cognitive overload": [
+          "DA_CognitiveOverload"
+        ],
+        "cognitive tax": [
+          "DA_CognitiveTax"
+        ],
+        "cognitive tax+": [
+          "DA_CognitiveTaxPlus"
+        ],
+        "comeback story": [
+          "DA_ComebackStory"
+        ],
+        "commerce core": [
+          "DA_CommerceCore"
+        ],
+        "component buffet": [
+          "DA_ComponentBuffet"
+        ],
+        "component quest": [
+          "DA_ComponentQuest"
+        ],
+        "construct a companion": [
+          "DA_ConstructACompanion"
+        ],
+        "consuming flora": [
+          "DA_18_FloraFatalisAugment",
+          "DA_18_FloraFatalisAugmentPlus"
+        ],
+        "cooking pot": [
+          "DA_CookingPot"
+        ],
+        "coronation": [
+          "DA_Coronation"
+        ],
+        "corrosion": [
+          "DA_Corrosion"
+        ],
+        "coven acolyte": [
+          "DA_18_CovenTraitAugment"
+        ],
+        "crafted crafting": [
+          "DA_CraftedCrafting"
+        ],
+        "cry me a river": [
+          "DA_CryMeARiver"
+        ],
+        "cursed crown": [
+          "DA_CursedCrown"
+        ],
+        "cybernetic implants": [
+          "DA_CyberneticImplants_Gold"
+        ],
+        "cybernetic uplink": [
+          "DA_CyberneticUplink_Gold"
+        ],
+        "dark ritual": [
+          "DA_18_CovenTraitAugment_LootToAP"
+        ],
+        "deadlier blades": [
+          "DA_DeadlierBlades"
+        ],
+        "deadlier caps": [
+          "DA_DeadlierCaps"
+        ],
+        "double trouble": [
+          "DA_DoubleTrouble"
+        ],
+        "dummify": [
+          "DA_Dummify"
+        ],
+        "duo queue": [
+          "DA_18_DuoQueue"
+        ],
+        "early learnings": [
+          "DA_EarlyLearnings"
+        ],
+        "electrocharge i": [
+          "DA_ElectrochargeI"
+        ],
+        "electrocharge ii": [
+          "DA_ElectrochargeII"
+        ],
+        "embiggen": [
+          "DA_18_FaeTraitAugment"
+        ],
+        "epic rolldown": [
+          "DA_EpicRolldown"
+        ],
+        "epoch": [
+          "DA_Epoch"
+        ],
+        "epoch+": [
+          "DA_EpochPlus"
+        ],
+        "exclusive customization": [
+          "DA_ExclusiveCustomization"
+        ],
+        "expedition": [
+          "DA_Expedition"
+        ],
+        "explosive growth": [
+          "DA_ExplosiveGrowth"
+        ],
+        "explosive growth+": [
+          "DA_ExplosiveGrowthPlus"
+        ],
+        "extra buckles": [
+          "DA_ExtraBuckles"
+        ],
+        "feeling lucky": [
+          "DA_FeelingLucky"
+        ],
+        "find your center": [
+          "DA_FindYourCenter"
+        ],
+        "flame on": [
+          "DA_18_InfernoTraitAugment"
+        ],
+        "flexible": [
+          "DA_Flexible"
+        ],
+        "flowing tears": [
+          "DA_FlowingTears"
+        ],
+        "focused fire": [
+          "DA_FocusedFire"
+        ],
+        "forge a friend": [
+          "DA_ForgeAFriend"
+        ],
+        "forged in strength": [
+          "DA_ForgedInStrength"
+        ],
+        "fourcing": [
+          "DA_18_FOURcing"
+        ],
+        "frontline foundation": [
+          "DA_FrontlineFoundation"
+        ],
+        "future focused": [
+          "DA_FutureFocused"
+        ],
+        "gain 21 gold": [
+          "DA_GainGold"
+        ],
+        "giant and mighty": [
+          "DA_GiantAndMighty"
+        ],
+        "gilded steel": [
+          "DA_GildedSteel"
+        ],
+        "glass cannon i": [
+          "DA_GlassCannon_Silver"
+        ],
+        "glass cannon ii": [
+          "DA_GlassCannon_Gold"
+        ],
+        "going long": [
+          "DA_GoingLong"
+        ],
+        "gold destiny": [
+          "DA_GoldDestiny"
+        ],
+        "gold destiny+": [
+          "DA_GoldDestinyPlus"
+        ],
+        "golden gamble": [
+          "DA_GoldenGamble"
+        ],
+        "golden gamble+": [
+          "DA_GoldenGamblePlus"
+        ],
+        "golden gamble++": [
+          "DA_GoldenGamblePlusPlus"
+        ],
+        "good for something i": [
+          "DA_18_GoodForSomethingI"
+        ],
+        "group hug i": [
+          "DA_GroupHugI"
+        ],
+        "group hug ii": [
+          "DA_GroupHugII"
+        ],
+        "hard bargain": [
+          "DA_HardBargain"
+        ],
+        "hard commit": [
+          "DA_HardCommit"
+        ],
+        "healing orbs i": [
+          "DA_HealingOrbsI"
+        ],
+        "healing orbs ii": [
+          "DA_HealingOrbsII"
+        ],
+        "heart of steel": [
+          "DA_HeartOfSteel"
+        ],
+        "hedge fund": [
+          "DA_HedgeFund"
+        ],
+        "heroic grab bag": [
+          "DA_HeroicGrabBag"
+        ],
+        "heroic grab bag+": [
+          "DA_HeroicGrabBagPlus"
+        ],
+        "heroic grab bag++": [
+          "DA_HeroicGrabBagPlusPlus"
+        ],
+        "hold the line": [
+          "DA_HoldTheLine"
+        ],
+        "hustler": [
+          "DA_Hustler"
+        ],
+        "infinity protection": [
+          "DA_InfinityProtection"
+        ],
+        "invested+": [
+          "DA_InvestedPlus"
+        ],
+        "invested++": [
+          "DA_InvestedPlusPlus"
+        ],
+        "investment strategy i": [
+          "DA_InvestmentStrategyI"
+        ],
+        "investment strategy ii": [
+          "DA_InvestmentStrategy"
+        ],
+        "iron assets": [
+          "DA_IronAssets"
+        ],
+        "it's me, baby": [
+          "DA_ItsMeBaby"
+        ],
+        "item extraction": [
+          "DA_BlackthornTraitAugment"
+        ],
+        "item grab bag i": [
+          "DA_ItemGrabBag"
+        ],
+        "jeweled lotus i": [
+          "DA_JeweledLotus_I"
+        ],
+        "jeweled lotus ii": [
+          "DA_JeweledLotus_II"
+        ],
+        "kick start": [
+          "DA_KickStart"
+        ],
+        "kingslayer": [
+          "DA_Kingslayer"
+        ],
+        "late game scaling": [
+          "DA_LateGameScaling"
+        ],
+        "late game specialist": [
+          "DA_LateGameSpecialist"
+        ],
+        "latent forge": [
+          "DA_LatentForge"
+        ],
+        "legion of threes": [
+          "DA_LegionOfThrees"
+        ],
+        "level up!": [
+          "DA_LevelUp"
+        ],
+        "living forge": [
+          "DA_LivingForge"
+        ],
+        "loaded dice": [
+          "DA_LoadedDice"
+        ],
+        "lucky gloves": [
+          "DA_LuckyGloves"
+        ],
+        "lucky gloves+": [
+          "DA_LuckyGlovesPlus"
+        ],
+        "luxury subscription": [
+          "DA_LuxurySubscription"
+        ],
+        "magic roll": [
+          "DA_MagicRoll"
+        ],
+        "makeshift armor i": [
+          "DA_MakeshiftArmorI"
+        ],
+        "makeshift armor ii": [
+          "DA_MakeshiftArmorII"
+        ],
+        "malicious monetization": [
+          "DA_MaliciousMonetization"
+        ],
+        "master of all origins": [
+          "DA_18_LuxAugmentII"
+        ],
+        "max build": [
+          "DA_MaxBuild"
+        ],
+        "min-max": [
+          "DA_Min_Max"
+        ],
+        "missed connections": [
+          "DA_MissedConnections"
+        ],
+        "money hungry": [
+          "DA_MoneyHungry_NotBroken"
+        ],
+        "money hungry+": [
+          "DA_MoneyHungryPlus"
+        ],
+        "money monsoon": [
+          "DA_MoneyMonsoon"
+        ],
+        "nature's shelter": [
+          "DA_18_ElderwoodTraitAugment"
+        ],
+        "nesting anvils": [
+          "DA_NestingAnvils"
+        ],
+        "nesting anvils+": [
+          "DA_NestingAnvilsPlus"
+        ],
+        "nesting dolls": [
+          "DA_NestingDollsPlus",
+          "DA_NestingDollsPlusPlus"
+        ],
+        "no scout no pivot": [
+          "DA_NoScoutNoPivot"
+        ],
+        "omega riftbeast": [
+          "DA_18_RiftbeastTraitAugment"
+        ],
+        "one buff two buff": [
+          "DA_OneBuffTwoBuff"
+        ],
+        "one, two, five!": [
+          "DA_18_OneTwoFive"
+        ],
+        "ones two three": [
+          "DA_18_OnesTwosThree"
+        ],
+        "pandora's bench": [
+          "DA_PandorasBench"
+        ],
+        "pandora's items i": [
+          "DA_PandorasItemsI"
+        ],
+        "pandora's items ii": [
+          "DA_PandorasItemsII"
+        ],
+        "pandora's items iii": [
+          "DA_PandorasItemsIII"
+        ],
+        "partial ascension": [
+          "DA_PartialAscension"
+        ],
+        "patience is a virtue": [
+          "DA_PatienceIsAVirtue"
+        ],
+        "patient study": [
+          "DA_PatientStudy"
+        ],
+        "pilfer": [
+          "DA_Pilfer"
+        ],
+        "plot armor": [
+          "DA_PlotArmor"
+        ],
+        "portable forge": [
+          "DA_PortableForge"
+        ],
+        "prismatic destiny": [
+          "DA_PrismaticDestiny"
+        ],
+        "prismatic destiny+": [
+          "DA_PrismaticDestinyPlus"
+        ],
+        "prismatic ticket": [
+          "DA_PrismaticTicket"
+        ],
+        "promised protection": [
+          "DA_PromisedProtection"
+        ],
+        "quick streaks": [
+          "DA_QuickStreaks"
+        ],
+        "radiant rascal": [
+          "DA_RadiantRascal"
+        ],
+        "radiant relics": [
+          "DA_RadiantRelic"
+        ],
+        "recombobulator": [
+          "DA_Recombobulator"
+        ],
+        "replication": [
+          "DA_Replication"
+        ],
+        "residual magic": [
+          "DA_18_ResidualMagic"
+        ],
+        "residual magic +": [
+          "DA_18_ResidualMagicPlus"
+        ],
+        "residual magic ++": [
+          "DA_18_ResidualMagicPlusPlus"
+        ],
+        "retribution": [
+          "DA_Retribution"
+        ],
+        "rolling for days": [
+          "DA_RollingForDays"
+        ],
+        "salvage bin": [
+          "DA_SalvageBin"
+        ],
+        "salvage bin+": [
+          "DA_SalvageBinPlus"
+        ],
+        "seraphim's staff": [
+          "DA_SeraphimsStaff"
+        ],
+        "shimmerscale essence": [
+          "DA_ShimmerscaleEssence"
+        ],
+        "shopping spree": [
+          "DA_ShoppingSpree"
+        ],
+        "silver destiny": [
+          "DA_SilverDestiny"
+        ],
+        "silver destiny+": [
+          "DA_SilverDestinyPlus"
+        ],
+        "silver destiny++": [
+          "DA_SilverDestinyPlusPlus"
+        ],
+        "silver spoon": [
+          "DA_SilverSpoon"
+        ],
+        "slammin'": [
+          "DA_Slammin"
+        ],
+        "slammin'+": [
+          "DA_SlamminPlus"
+        ],
+        "slice of life": [
+          "DA_SliceOfLife"
+        ],
+        "slightly magic roll": [
+          "DA_SlightlyMagicRoll"
+        ],
+        "small furry friend": [
+          "DA_18_SprykinAugment"
+        ],
+        "small grab bag": [
+          "DA_SmallGrabBag"
+        ],
+        "solo leveling": [
+          "DA_SoloLeveling"
+        ],
+        "solo plate": [
+          "DA_SoloPlate"
+        ],
+        "soul awakening": [
+          "DA_SoulAwakening"
+        ],
+        "speedy double kill": [
+          "DA_SpeedyDoubleKill"
+        ],
+        "spirit of redemption": [
+          "DA_SpiritOfRedemption"
+        ],
+        "spreading roots": [
+          "DA_SpreadingRoots"
+        ],
+        "spreading roots+": [
+          "DA_SpreadingRootsPlus"
+        ],
+        "staffsmith": [
+          "DA_Staffsmith"
+        ],
+        "stand united": [
+          "DA_StandUnited"
+        ],
+        "sun and moon": [
+          "DA_18_LunarTraitAugment"
+        ],
+        "sun and moon+": [
+          "DA_18_LunarTraitAugmentPlus"
+        ],
+        "sweet treats": [
+          "DA_SweetTreats"
+        ],
+        "sword overflow": [
+          "DA_SwordOverflow"
+        ],
+        "swordsmith": [
+          "DA_Swordsmith"
+        ],
+        "tactician's kitchen": [
+          "DA_TacticiansKitchen"
+        ],
+        "team building": [
+          "DA_TeamBuilding"
+        ],
+        "the golden dragon": [
+          "DA_TheGoldenDragon"
+        ],
+        "the golden egg": [
+          "DA_GoldenEgg"
+        ],
+        "the tower": [
+          "DA_TheTower"
+        ],
+        "the trait tree": [
+          "DA_TheTraitTree"
+        ],
+        "the trait tree+": [
+          "DA_TheTraitTreePlus"
+        ],
+        "time skip": [
+          "DA_TimeSkip"
+        ],
+        "tons of stats!": [
+          "DA_TonsOfStatsI",
+          "DA_TonsOfStatsII"
+        ],
+        "trade sector": [
+          "DA_TradeSector"
+        ],
+        "trade sector+": [
+          "DA_TradeSectorPlus"
+        ],
+        "trait ladder": [
+          "DA_TraitLadder"
+        ],
+        "twin guardians": [
+          "DA_TwinGuardians"
+        ],
+        "u.r.f": [
+          "DA_URF"
+        ],
+        "unrivaled": [
+          "DA_18_RivalsAugment"
+        ],
+        "upward mobility": [
+          "DA_UpwardMobility"
+        ],
+        "urf's grab bag": [
+          "DA_UrfsGrabBag"
+        ],
+        "verticality i": [
+          "DA_VerticalityI"
+        ],
+        "verticality ii": [
+          "DA_VerticalityII"
+        ],
+        "verticality iii": [
+          "DA_VerticalityIII"
+        ],
+        "wand overflow": [
+          "DA_WandOverflow"
+        ],
+        "warpath": [
+          "DA_Warpath"
+        ],
+        "we stick together": [
+          "DA_WeStickTogether"
+        ],
+        "weight the worth": [
+          "DA_18_WeightTheWorth"
+        ],
+        "wisp rebate": [
+          "DA_18_WispRebatePlus"
+        ],
+        "wisp rebate+": [
+          "DA_18_WispRebatePlusPlus"
+        ],
+        "worth the wait": [
+          "DA_WorththeWait"
+        ],
+        "worth the wait ii": [
+          "DA_WorththeWaitII"
+        ],
+        "woven magic": [
+          "DA_WovenMagic"
+        ],
+        "young and wild and free": [
+          "DA_YoungAndWildAndFree"
+        ]
+      },
+      "vi": {
+        "an hue thach dau": [
+          "DA_ChallengersGrace"
+        ],
+        "an mon": [
+          "DA_Corrosion"
+        ],
+        "an trom": [
+          "DA_Pilfer"
+        ],
+        "arcane viktor-y": [
+          "DA_ArcaneViktory"
+        ],
+        "bai hoc so khai": [
+          "DA_EarlyLearnings"
+        ],
+        "ban thang hoa": [
+          "DA_PartialAscension"
+        ],
+        "bang trom": [
+          "DA_BandOfThieves"
+        ],
+        "bang trom ii": [
+          "DA_BandOfThievesII"
+        ],
+        "bang trom ii+": [
+          "DA_BandOfThievesIIPlus"
+        ],
+        "bang trom ii++": [
+          "DA_BandOfThievesIIPlusPlus"
+        ],
+        "bao ho vo tan": [
+          "DA_InfinityProtection"
+        ],
+        "bao oan": [
+          "DA_Retribution"
+        ],
+        "bao vang": [
+          "DA_MoneyMonsoon"
+        ],
+        "bua bon": [
+          "DA_ClutteredMind"
+        ],
+        "bung chay": [
+          "DA_18_InfernoTraitAugment"
+        ],
+        "bup be xay to": [
+          "DA_NestingDollsPlus",
+          "DA_NestingDollsPlusPlus"
+        ],
+        "cam re phan tan": [
+          "DA_SpreadingRoots"
+        ],
+        "cam re phan tan+": [
+          "DA_SpreadingRootsPlus"
+        ],
+        "cam thay may man": [
+          "DA_FeelingLucky"
+        ],
+        "cap doi hoan canh": [
+          "DA_DoubleTrouble"
+        ],
+        "cau hoi phuc i": [
+          "DA_HealingOrbsI"
+        ],
+        "cau hoi phuc ii": [
+          "DA_HealingOrbsII"
+        ],
+        "cay ghep sieu cong nghe": [
+          "DA_CyberneticImplants_Gold"
+        ],
+        "cay toc/he": [
+          "DA_TheTraitTree"
+        ],
+        "cay toc/he+": [
+          "DA_TheTraitTreePlus"
+        ],
+        "che tao bang huu": [
+          "DA_ForgeAFriend"
+        ],
+        "che tao tai cho": [
+          "DA_LivingForge"
+        ],
+        "chi mot con duong": [
+          "DA_HardCommit"
+        ],
+        "chi mot con duong i": [
+          "DA_VerticalityI"
+        ],
+        "chi mot con duong ii": [
+          "DA_VerticalityII"
+        ],
+        "chi mot con duong iii": [
+          "DA_VerticalityIII"
+        ],
+        "chien thuat dau tu i": [
+          "DA_InvestmentStrategyI"
+        ],
+        "chien thuat dau tu ii": [
+          "DA_InvestmentStrategy"
+        ],
+        "chiet xuat trang bi": [
+          "DA_BlackthornTraitAugment"
+        ],
+        "cho doi xung dang": [
+          "DA_WorththeWait"
+        ],
+        "cho doi xung dang ii": [
+          "DA_WorththeWaitII"
+        ],
+        "chuc phuc cua but": [
+          "DA_CaretakersFavor"
+        ],
+        "chuyen doi thuong": [
+          "DA_SliceOfLife"
+        ],
+        "co gang lat keo": [
+          "DA_ComebackStory"
+        ],
+        "con khat vang": [
+          "DA_MoneyHungry_NotBroken"
+        ],
+        "con khat vang+": [
+          "DA_MoneyHungryPlus"
+        ],
+        "cong met nghi!": [
+          "DA_TonsOfStatsI",
+          "DA_TonsOfStatsII"
+        ],
+        "cung co tuyen truoc": [
+          "DA_FrontlineFoundation"
+        ],
+        "cung du phong": [
+          "DA_BackupBows"
+        ],
+        "cuoc vien chinh": [
+          "DA_Expedition"
+        ],
+        "dac quyen phu gia": [
+          "DA_SilverSpoon"
+        ],
+        "dai tiec trang bi": [
+          "DA_ComponentBuffet"
+        ],
+        "dam me dai lung": [
+          "DA_BeltOverflow"
+        ],
+        "dam me gay": [
+          "DA_WandOverflow"
+        ],
+        "dam me kiem": [
+          "DA_SwordOverflow"
+        ],
+        "dau tu+": [
+          "DA_InvestedPlus"
+        ],
+        "dau tu++": [
+          "DA_InvestedPlusPlus"
+        ],
+        "day nhanh tien do": [
+          "DA_UpwardMobility"
+        ],
+        "dinh huong tuong lai": [
+          "DA_FutureFocused"
+        ],
+        "do ni dong giay": [
+          "DA_LuckyGloves"
+        ],
+        "do ni dong giay+": [
+          "DA_LuckyGlovesPlus"
+        ],
+        "do vuong": [
+          "DA_Kingslayer"
+        ],
+        "doi hinh toi uu": [
+          "DA_MaxBuild"
+        ],
+        "don quyet dinh": [
+          "DA_CalledShot"
+        ],
+        "dong co tang toc": [
+          "DA_ClockworkAccelerator"
+        ],
+        "dong minh cua but": [
+          "DA_18_CaretakersAlly"
+        ],
+        "dong tien mo am": [
+          "DA_MaliciousMonetization"
+        ],
+        "du am ma thuat": [
+          "DA_18_ResidualMagic"
+        ],
+        "du am ma thuat +": [
+          "DA_18_ResidualMagicPlus"
+        ],
+        "du am ma thuat ++": [
+          "DA_18_ResidualMagicPlusPlus"
+        ],
+        "duoc cai nay mat cai kia i": [
+          "DA_18_GoodForSomethingI"
+        ],
+        "duong ra tran": [
+          "DA_Warpath"
+        ],
+        "ep bon": [
+          "DA_18_FOURcing"
+        ],
+        "gian lan": [
+          "DA_LoadedDice"
+        ],
+        "giap tu che i": [
+          "DA_MakeshiftArmorI"
+        ],
+        "giap tu che ii": [
+          "DA_MakeshiftArmorII"
+        ],
+        "giot le bi ai": [
+          "DA_CryMeARiver"
+        ],
+        "giu vung hang ngu": [
+          "DA_HoldTheLine"
+        ],
+        "goi dang ky hang sang": [
+          "DA_LuxurySubscription"
+        ],
+        "goi tang cuong": [
+          "DA_BoosterPack"
+        ],
+        "goi tang cuong+": [
+          "DA_BoosterPackPlus"
+        ],
+        "goi tang cuong++": [
+          "DA_BoosterPackPlusPlus"
+        ],
+        "goi trang bi bat ngo": [
+          "DA_NestingAnvils"
+        ],
+        "goi trang bi bat ngo+": [
+          "DA_NestingAnvilsPlus"
+        ],
+        "ha do van": [
+          "DA_Slammin"
+        ],
+        "ha do van+": [
+          "DA_SlamminPlus"
+        ],
+        "hang cho dau doi": [
+          "DA_18_DuoQueue"
+        ],
+        "hang cho pandora": [
+          "DA_PandorasBench"
+        ],
+        "hang o baron": [
+          "DA_BaronsLair"
+        ],
+        "hao quang nhan vat chinh": [
+          "DA_PlotArmor"
+        ],
+        "hinh nhan hoa": [
+          "DA_Dummify"
+        ],
+        "hoa lon": [
+          "DA_18_FaeTraitAugment"
+        ],
+        "hop pandora i": [
+          "DA_PandorasItemsI"
+        ],
+        "hop pandora ii": [
+          "DA_PandorasItemsII"
+        ],
+        "hop pandora iii": [
+          "DA_PandorasItemsIII"
+        ],
+        "huan luyen can ve": [
+          "DA_BodyguardTraining"
+        ],
+        "huong den hoi ket": [
+          "DA_LateGameSpecialist"
+        ],
+        "ke vai sat canh": [
+          "DA_WeStickTogether"
+        ],
+        "ket noi gian doan": [
+          "DA_MissedConnections"
+        ],
+        "kham bao thach i": [
+          "DA_JeweledLotus_I"
+        ],
+        "kham bao thach ii": [
+          "DA_JeweledLotus_II"
+        ],
+        "kheo tay hay lam": [
+          "DA_CraftedCrafting"
+        ],
+        "khien don dau": [
+          "DA_SoloPlate"
+        ],
+        "kho bau chon giau iii": [
+          "DA_BuriedTreasuresIII"
+        ],
+        "kho bau sat": [
+          "DA_IronAssets"
+        ],
+        "kho than tich": [
+          "DA_RadiantRelic"
+        ],
+        "khoa du phong": [
+          "DA_ExtraBuckles"
+        ],
+        "khoi dong nhanh": [
+          "DA_KickStart"
+        ],
+        "khong doi thu": [
+          "DA_18_RivalsAugment"
+        ],
+        "khu giao dich": [
+          "DA_TradeSector"
+        ],
+        "khu giao dich+": [
+          "DA_TradeSectorPlus"
+        ],
+        "kiem tu than": [
+          "DA_DeadlierBlades"
+        ],
+        "kien nhan hoc tap": [
+          "DA_PatientStudy"
+        ],
+        "kien nhan la mot duc tinh": [
+          "DA_PatienceIsAVirtue"
+        ],
+        "kim long": [
+          "DA_TheGoldenDragon"
+        ],
+        "ky nguyen": [
+          "DA_Epoch"
+        ],
+        "ky nguyen+": [
+          "DA_EpochPlus"
+        ],
+        "la ta day": [
+          "DA_ItsMeBaby"
+        ],
+        "lay cong bu thu i": [
+          "DA_GlassCannon_Silver"
+        ],
+        "lay cong bu thu ii": [
+          "DA_GlassCannon_Gold"
+        ],
+        "le luu ly": [
+          "DA_FlowingTears"
+        ],
+        "len ngoi vuong": [
+          "DA_Coronation"
+        ],
+        "linh hoat": [
+          "DA_Flexible"
+        ],
+        "linh hon chuoc toi": [
+          "DA_SpiritOfRedemption"
+        ],
+        "linh thu vao bep": [
+          "DA_TacticiansKitchen"
+        ],
+        "lo ren than thoai": [
+          "DA_PortableForge"
+        ],
+        "lo ren tiem an": [
+          "DA_LatentForge"
+        ],
+        "long xu be nho": [
+          "DA_18_SprykinAugment"
+        ],
+        "lua chon doc quyen": [
+          "DA_ExclusiveCustomization"
+        ],
+        "ma thuat dan ket": [
+          "DA_WovenMagic"
+        ],
+        "mat troi va mat trang": [
+          "DA_18_LunarTraitAugment"
+        ],
+        "mat troi va mat trang+": [
+          "DA_18_LunarTraitAugmentPlus"
+        ],
+        "mo loi": [
+          "DA_CarveAPath"
+        ],
+        "mon qua ngot ngao": [
+          "DA_SweetTreats"
+        ],
+        "mot bua, hai bua": [
+          "DA_OneBuffTwoBuff"
+        ],
+        "mot, hai, ba": [
+          "DA_18_OnesTwosThree"
+        ],
+        "mot, hai, nam!": [
+          "DA_18_OneTwoFive"
+        ],
+        "mu tu than": [
+          "DA_DeadlierCaps"
+        ],
+        "nang tam uy luc": [
+          "DA_AugmentedPower"
+        ],
+        "nguoi ban vang": [
+          "DA_ConstructACompanion"
+        ],
+        "nha may tai che": [
+          "DA_SalvageBin"
+        ],
+        "nha may tai che+": [
+          "DA_SalvageBinPlus"
+        ],
+        "nham mat choi bua": [
+          "DA_NoScoutNoPivot"
+        ],
+        "nhan 21 vang": [
+          "DA_GainGold"
+        ],
+        "nhan ban": [
+          "DA_Replication"
+        ],
+        "nhat thong": [
+          "DA_StandUnited"
+        ],
+        "nhiem vu trang bi": [
+          "DA_ComponentQuest"
+        ],
+        "noi nau an": [
+          "DA_CookingPot"
+        ],
+        "om tap the i": [
+          "DA_GroupHugI"
+        ],
+        "om tap the ii": [
+          "DA_GroupHugII"
+        ],
+        "phan nhanh": [
+          "DA_18_BranchingOut"
+        ],
+        "phan nhanh+": [
+          "DA_18_BranchingOutPlus"
+        ],
+        "phan phoi tuong": [
+          "DA_ChampDelivery"
+        ],
+        "phan phoi tuong+": [
+          "DA_ChampDeliveryPlus"
+        ],
+        "phan phoi tuong++": [
+          "DA_ChampDeliveryPlusPlus"
+        ],
+        "phuoc lanh vu tru i": [
+          "DA_CelestialBlessingI"
+        ],
+        "phuoc lanh vu tru ii": [
+          "DA_CelestialBlessingII"
+        ],
+        "phuoc lanh vu tru iii": [
+          "DA_CelestialBlessingIII"
+        ],
+        "qua sinh nhat": [
+          "DA_BirthdayPresent"
+        ],
+        "qua tai tu duy": [
+          "DA_CognitiveOverload"
+        ],
+        "qua tang them": [
+          "DA_BonusGift"
+        ],
+        "qua tang them+": [
+          "DA_BonusGiftPlus"
+        ],
+        "quai rung omega": [
+          "DA_18_RiftbeastTraitAugment"
+        ],
+        "quai thu ben trong": [
+          "DA_18_PrimalAugment_Nidalee",
+          "DA_18_PrimalAugment_Sivir"
+        ],
+        "quai thu ben trong+": [
+          "DA_18_PrimalAugmentPlus_Nidalee",
+          "DA_18_PrimalAugmentPlus_Sivir"
+        ],
+        "quan doan 3 sao": [
+          "DA_LegionOfThrees"
+        ],
+        "quang lan tieu yeu": [
+          "DA_RadiantRascal"
+        ],
+        "quay trung thuong": [
+          "DA_SlightlyMagicRoll"
+        ],
+        "quy phong ho": [
+          "DA_HedgeFund"
+        ],
+        "rong de trung vang": [
+          "DA_GoldenEgg"
+        ],
+        "sinh nhat doan tu": [
+          "DA_BirthdayReunion"
+        ],
+        "so do tuyen sau": [
+          "DA_BacklineBlueprint"
+        ],
+        "song sat toc hanh": [
+          "DA_SpeedyDoubleKill"
+        ],
+        "song ve": [
+          "DA_TwinGuardians"
+        ],
+        "song voi": [
+          "DA_Hustler"
+        ],
+        "su lua chon cua mat troi": [
+          "DA_18_SolarTraitAugment"
+        ],
+        "ta thuat": [
+          "DA_18_CovenTraitAugment_LootToAP"
+        ],
+        "tang truong bung no": [
+          "DA_ExplosiveGrowth"
+        ],
+        "tang truong bung no+": [
+          "DA_ExplosiveGrowthPlus"
+        ],
+        "tang von i": [
+          "DA_CapitalGainsI"
+        ],
+        "tang von ii": [
+          "DA_CapitalGainsII"
+        ],
+        "tap chiu don": [
+          "DA_BoxingLessons"
+        ],
+        "tap trung hoa luc": [
+          "DA_FocusedFire"
+        ],
+        "tat tay bac dong i": [
+          "DA_BronzeForLifeI"
+        ],
+        "tat tay bac dong ii": [
+          "DA_BronzeForLifeII"
+        ],
+        "thang cap!": [
+          "DA_LevelUp"
+        ],
+        "thang hoa": [
+          "DA_Ascension"
+        ],
+        "thang tien cuoi tran": [
+          "DA_LateGameScaling"
+        ],
+        "the uoc bao ho": [
+          "DA_PromisedProtection"
+        ],
+        "thep ma vang": [
+          "DA_GildedSteel"
+        ],
+        "thich mo rong": [
+          "DA_GoingLong"
+        ],
+        "thien nhien che cho": [
+          "DA_18_ElderwoodTraitAugment"
+        ],
+        "tho ren gay": [
+          "DA_Staffsmith"
+        ],
+        "tho ren kiem": [
+          "DA_Swordsmith"
+        ],
+        "thong thoang": [
+          "DA_ClearMind"
+        ],
+        "thu hang toc he": [
+          "DA_TraitLadder"
+        ],
+        "thua co tinh toan": [
+          "DA_CalculatedLoss"
+        ],
+        "thuc tinh linh hon": [
+          "DA_SoulAwakening"
+        ],
+        "thuc vat hap thu": [
+          "DA_18_FloraFatalisAugment",
+          "DA_18_FloraFatalisAugmentPlus"
+        ],
+        "thue nhan thuc": [
+          "DA_CognitiveTax"
+        ],
+        "thue nhan thuc+": [
+          "DA_CognitiveTaxPlus"
+        ],
+        "thuong vu kho xoi": [
+          "DA_HardBargain"
+        ],
+        "tich chuoi nhanh": [
+          "DA_QuickStreaks"
+        ],
+        "tien ve trung tam": [
+          "DA_FindYourCenter"
+        ],
+        "tieng goi hoa linh": [
+          "DA_18_BlossomTraitAugment"
+        ],
+        "tiep te trang bi i": [
+          "DA_ItemGrabBag"
+        ],
+        "tin do mua sam": [
+          "DA_ShoppingSpree"
+        ],
+        "tin do tien hac am": [
+          "DA_18_CovenTraitAugment"
+        ],
+        "tinh linh hoan tien": [
+          "DA_18_WispRebatePlus"
+        ],
+        "tinh linh hoan tien+": [
+          "DA_18_WispRebatePlusPlus"
+        ],
+        "tinh thong moi toc": [
+          "DA_18_LuxAugmentII"
+        ],
+        "tinh tuy kim long": [
+          "DA_ShimmerscaleEssence"
+        ],
+        "to lon & manh me": [
+          "DA_GiantAndMighty"
+        ],
+        "toa thap": [
+          "DA_TheTower"
+        ],
+        "toi da hoa": [
+          "DA_Min_Max"
+        ],
+        "toi luyen suc manh": [
+          "DA_ForgedInStrength"
+        ],
+        "toi thang cap mot minh": [
+          "DA_SoloLeveling"
+        ],
+        "trai tim sat da": [
+          "DA_HeartOfSteel"
+        ],
+        "tre, khoe & tu do": [
+          "DA_YoungAndWildAndFree"
+        ],
+        "tri tue sieu cong nghe": [
+          "DA_CyberneticUplink_Gold"
+        ],
+        "trieu goi hon mang": [
+          "DA_CallToChaos"
+        ],
+        "trung tam thuong mai": [
+          "DA_CommerceCore"
+        ],
+        "truong dai thien su": [
+          "DA_SeraphimsStaff"
+        ],
+        "tu dien i": [
+          "DA_ElectrochargeI"
+        ],
+        "tu dien ii": [
+          "DA_ElectrochargeII"
+        ],
+        "tu lap doi": [
+          "DA_BuildABud"
+        ],
+        "tui do co dai": [
+          "DA_18_BigGrabBag"
+        ],
+        "tui do co nho": [
+          "DA_SmallGrabBag"
+        ],
+        "tui do sieu hung": [
+          "DA_HeroicGrabBag"
+        ],
+        "tui do sieu hung+": [
+          "DA_HeroicGrabBagPlus"
+        ],
+        "tui do sieu hung++": [
+          "DA_HeroicGrabBagPlusPlus"
+        ],
+        "tui do urf": [
+          "DA_UrfsGrabBag"
+        ],
+        "u.r.f.": [
+          "DA_URF"
+        ],
+        "van cuoc hoang kim": [
+          "DA_GoldenGamble"
+        ],
+        "van cuoc hoang kim+": [
+          "DA_GoldenGamblePlus"
+        ],
+        "van cuoc hoang kim++": [
+          "DA_GoldenGamblePlusPlus"
+        ],
+        "van menh bac": [
+          "DA_SilverDestiny"
+        ],
+        "van menh bac+": [
+          "DA_SilverDestinyPlus"
+        ],
+        "van menh bac++": [
+          "DA_SilverDestinyPlusPlus"
+        ],
+        "van menh kim cuong": [
+          "DA_PrismaticDestiny"
+        ],
+        "van menh kim cuong+": [
+          "DA_PrismaticDestinyPlus"
+        ],
+        "van menh vang": [
+          "DA_GoldDestiny"
+        ],
+        "van menh vang+": [
+          "DA_GoldDestinyPlus"
+        ],
+        "vay tam ung": [
+          "DA_AdvancedLoan"
+        ],
+        "vay tam ung+": [
+          "DA_AdvancedLoanPlus"
+        ],
+        "ve kim cuong": [
+          "DA_PrismaticTicket"
+        ],
+        "vuong mien hac hoa": [
+          "DA_CursedCrown"
+        ],
+        "vuot thoi gian": [
+          "DA_TimeSkip"
+        ],
+        "xay dung doi hinh": [
+          "DA_TeamBuilding"
+        ],
+        "xoay bai tu dong": [
+          "DA_Recombobulator"
+        ],
+        "xuc xac hoanh trang": [
+          "DA_EpicRolldown"
+        ],
+        "xuc xac ma phap": [
+          "DA_MagicRoll"
+        ],
+        "xuc xac vo tan": [
+          "DA_RollingForDays"
+        ],
+        "xung dang cho doi": [
+          "DA_18_WeightTheWorth"
+        ]
+      }
+    },
+    "champions": {
+      "en": {
+        "ahri": [
+          "DA_18_Ahri"
+        ],
+        "akali": [
+          "DA_18_Akali_AD"
+        ],
+        "alistar": [
+          "DA_18_Alistar"
+        ],
+        "alune": [
+          "DA_18_Alune"
+        ],
+        "amumu": [
+          "DA_Amumu18"
+        ],
+        "aphelios": [
+          "DA_18_Aphelios"
+        ],
+        "ashe": [
+          "DA_18_Ashe"
+        ],
+        "azir": [
+          "DA_18_Azir"
+        ],
+        "brambleback": [
+          "DA_Brambleback18"
+        ],
+        "caitlyn": [
+          "DA_18_Caitlyn"
+        ],
+        "camille": [
+          "DA_18_Camille"
+        ],
+        "cassiopeia": [
+          "DA_18_Cassiopeia"
+        ],
+        "cinderling": [
+          "DA_Cinderling18"
+        ],
+        "diana": [
+          "DA_18_Diana"
+        ],
+        "draven": [
+          "DA_Draven18"
+        ],
+        "elder dragon": [
+          "DA_18_ElderDragon"
+        ],
+        "elise": [
+          "DA_18_Elise"
+        ],
+        "ezreal": [
+          "DA_18_Ezreal"
+        ],
+        "fiddlesticks": [
+          "DA_Fiddlesticks18"
+        ],
+        "gnar": [
+          "DA_18_GnarSmall"
+        ],
+        "gromp": [
+          "DA_Gromp18_AP"
+        ],
+        "hecarim": [
+          "DA_18_Hecarim"
+        ],
+        "ivern": [
+          "DA_18_Ivern"
+        ],
+        "karma": [
+          "DA_Karma18"
+        ],
+        "kayle": [
+          "DA_18_Kayle"
+        ],
+        "kennen": [
+          "DA_18_Kennen"
+        ],
+        "kha'zix": [
+          "DA_18_KhaZix"
+        ],
+        "kobuko": [
+          "DA_18_Kobuko"
+        ],
+        "kog'maw": [
+          "DA_KogMaw18_AD"
+        ],
+        "krug": [
+          "DA_Krug18"
+        ],
+        "leblanc": [
+          "DA_18_LeBlanc"
+        ],
+        "leona": [
+          "DA_18_Leona"
+        ],
+        "lillia": [
+          "DA_18_Lillia"
+        ],
+        "lux": [
+          "DA_Lux18_Base"
+        ],
+        "malphite": [
+          "DA_18_Malphite"
+        ],
+        "mama beak": [
+          "DA_CrimsonRaptor18"
+        ],
+        "maokai": [
+          "DA_18_Maokai"
+        ],
+        "master yi": [
+          "DA_18_MasterYi_AD"
+        ],
+        "morgana": [
+          "DA_18_Morgana"
+        ],
+        "murkwolf": [
+          "DA_Murkwolf18"
+        ],
+        "nidalee": [
+          "DA_Nidalee18_AP"
+        ],
+        "ornn": [
+          "DA_18_Ornn"
+        ],
+        "pebbles": [
+          "DA_18_Sentry"
+        ],
+        "rakan": [
+          "DA_18_Rakan"
+        ],
+        "rammus": [
+          "DA_18_Rammus"
+        ],
+        "rek'sai": [
+          "DA_18_RekSai"
+        ],
+        "rengar": [
+          "DA_18_Rengar"
+        ],
+        "scuttlecrab": [
+          "DA_Scuttlecrab18"
+        ],
+        "sejuani": [
+          "DA_18_Sejuani"
+        ],
+        "sentinel": [
+          "DA_Sentinel18"
+        ],
+        "sett": [
+          "DA_18_Sett"
+        ],
+        "shen": [
+          "DA_18_Shen"
+        ],
+        "sivir": [
+          "DA_18_Sivir"
+        ],
+        "soraka": [
+          "DA_18_Soraka"
+        ],
+        "taric": [
+          "DA_Taric18"
+        ],
+        "teemo": [
+          "DA_18_Teemo"
+        ],
+        "tristana": [
+          "DA_18_Tristana"
+        ],
+        "varus": [
+          "DA_18_Varus"
+        ],
+        "veigar": [
+          "DA_18_Veigar"
+        ],
+        "vi": [
+          "DA_Vi18"
+        ],
+        "warwick": [
+          "DA_18_Warwick"
+        ],
+        "xayah": [
+          "DA_18_Xayah"
+        ],
+        "yorick": [
+          "DA_18_Yorick"
+        ],
+        "yunara": [
+          "DA_18_Yunara"
+        ],
+        "zyra": [
+          "DA_18_Zyra"
+        ]
+      },
+      "vi": {
+        "ahri": [
+          "DA_18_Ahri"
+        ],
+        "akali": [
+          "DA_18_Akali_AD"
+        ],
+        "alistar": [
+          "DA_18_Alistar"
+        ],
+        "alune": [
+          "DA_18_Alune"
+        ],
+        "amumu": [
+          "DA_Amumu18"
+        ],
+        "aphelios": [
+          "DA_18_Aphelios"
+        ],
+        "ashe": [
+          "DA_18_Ashe"
+        ],
+        "azir": [
+          "DA_18_Azir"
+        ],
+        "bui gai do": [
+          "DA_Brambleback18"
+        ],
+        "caitlyn": [
+          "DA_18_Caitlyn"
+        ],
+        "camille": [
+          "DA_18_Camille"
+        ],
+        "cassiopeia": [
+          "DA_18_Cassiopeia"
+        ],
+        "chim me": [
+          "DA_CrimsonRaptor18"
+        ],
+        "coc thanh tinh": [
+          "DA_Gromp18_AP"
+        ],
+        "cua ky cuc": [
+          "DA_Scuttlecrab18"
+        ],
+        "diana": [
+          "DA_18_Diana"
+        ],
+        "draven": [
+          "DA_Draven18"
+        ],
+        "elise": [
+          "DA_18_Elise"
+        ],
+        "ezreal": [
+          "DA_18_Ezreal"
+        ],
+        "fiddlesticks": [
+          "DA_Fiddlesticks18"
+        ],
+        "gnar": [
+          "DA_18_GnarSmall"
+        ],
+        "hecarim": [
+          "DA_18_Hecarim"
+        ],
+        "ivern": [
+          "DA_18_Ivern"
+        ],
+        "karma": [
+          "DA_Karma18"
+        ],
+        "kayle": [
+          "DA_18_Kayle"
+        ],
+        "kennen": [
+          "DA_18_Kennen"
+        ],
+        "kha'zix": [
+          "DA_18_KhaZix"
+        ],
+        "kobuko": [
+          "DA_18_Kobuko"
+        ],
+        "kog'maw": [
+          "DA_KogMaw18_AD"
+        ],
+        "leblanc": [
+          "DA_18_LeBlanc"
+        ],
+        "leona": [
+          "DA_18_Leona"
+        ],
+        "lillia": [
+          "DA_18_Lillia"
+        ],
+        "lux": [
+          "DA_Lux18_Base"
+        ],
+        "malphite": [
+          "DA_18_Malphite"
+        ],
+        "mam non": [
+          "DA_Cinderling18"
+        ],
+        "maokai": [
+          "DA_18_Maokai"
+        ],
+        "master yi": [
+          "DA_18_MasterYi_AD"
+        ],
+        "morgana": [
+          "DA_18_Morgana"
+        ],
+        "nguoi da": [
+          "DA_Sentinel18"
+        ],
+        "nidalee": [
+          "DA_Nidalee18_AP"
+        ],
+        "ornn": [
+          "DA_18_Ornn"
+        ],
+        "quai da krug": [
+          "DA_Krug18"
+        ],
+        "rakan": [
+          "DA_18_Rakan"
+        ],
+        "rammus": [
+          "DA_18_Rammus"
+        ],
+        "rek'sai": [
+          "DA_18_RekSai"
+        ],
+        "rengar": [
+          "DA_18_Rengar"
+        ],
+        "rong ngan tuoi": [
+          "DA_18_ElderDragon"
+        ],
+        "sejuani": [
+          "DA_18_Sejuani"
+        ],
+        "sett": [
+          "DA_18_Sett"
+        ],
+        "shen": [
+          "DA_18_Shen"
+        ],
+        "sivir": [
+          "DA_18_Sivir"
+        ],
+        "soi": [
+          "DA_18_Sentry"
+        ],
+        "soi hac am": [
+          "DA_Murkwolf18"
+        ],
+        "soraka": [
+          "DA_18_Soraka"
+        ],
+        "taric": [
+          "DA_Taric18"
+        ],
+        "teemo": [
+          "DA_18_Teemo"
+        ],
+        "tristana": [
+          "DA_18_Tristana"
+        ],
+        "varus": [
+          "DA_18_Varus"
+        ],
+        "veigar": [
+          "DA_18_Veigar"
+        ],
+        "vi": [
+          "DA_Vi18"
+        ],
+        "warwick": [
+          "DA_18_Warwick"
+        ],
+        "xayah": [
+          "DA_18_Xayah"
+        ],
+        "yorick": [
+          "DA_18_Yorick"
+        ],
+        "yunara": [
+          "DA_18_Yunara"
+        ],
+        "zyra": [
+          "DA_18_Zyra"
+        ]
+      }
+    },
+    "traits": {
+      "en": {
+        "adaptor": [
+          "DA_18_Adaptor"
+        ],
+        "apex predator": [
+          "DA_18_ApexPredator"
+        ],
+        "attuned": [
+          "DA_AluneUniqueTrait18"
+        ],
+        "avatar": [
+          "DA_18_LuxUniqueTrait"
+        ],
+        "blackthorn": [
+          "DA_18_Blackthorn"
+        ],
+        "blossom": [
+          "DA_18_Blossom"
+        ],
+        "bounty seeker": [
+          "DA_DravenUniqueTrait18"
+        ],
+        "brawler": [
+          "DA_18_Brawler"
+        ],
+        "caustic": [
+          "DA_18_Caustic"
+        ],
+        "coven": [
+          "DA_18_Coven"
+        ],
+        "defender": [
+          "DA_18_Defender"
+        ],
+        "eclipse": [
+          "DA_18_Eclipse"
+        ],
+        "elderwood": [
+          "DA_18_Elderwood"
+        ],
+        "emerald aspect": [
+          "DA_Emerald18"
+        ],
+        "executioner": [
+          "DA_18_Executioner"
+        ],
+        "fae": [
+          "DA_18_Fae"
+        ],
+        "flora fatalis": [
+          "DA_FloraFatalis18"
+        ],
+        "greenfather": [
+          "DA_18_Greenfather"
+        ],
+        "hunter": [
+          "DA_18_Hunter"
+        ],
+        "inferno": [
+          "DA_18_Inferno"
+        ],
+        "invoker": [
+          "DA_18_Invoker"
+        ],
+        "juggernaut": [
+          "DA_Juggernaut18"
+        ],
+        "lunar": [
+          "DA_18_Lunar"
+        ],
+        "monolith": [
+          "DA_18_Battlemage"
+        ],
+        "old growth": [
+          "DA_18_Maokai_UniqueTrait"
+        ],
+        "primal": [
+          "DA_Primal18"
+        ],
+        "rapidfire": [
+          "DA_18_Rapidfire"
+        ],
+        "ravager": [
+          "DA_18_Slayer"
+        ],
+        "riftbeast": [
+          "DA_Riftbeast18"
+        ],
+        "rival": [
+          "DA_18_Rival"
+        ],
+        "solar": [
+          "DA_18_Solar"
+        ],
+        "spellweaver": [
+          "DA_18_Spellweaver"
+        ],
+        "sprykin": [
+          "DA_18_Sprykin"
+        ],
+        "summoner": [
+          "DA_18_Summoner"
+        ],
+        "thornmaiden": [
+          "DA_18_ZyraUniqueTrait"
+        ],
+        "vanguard": [
+          "DA_18_Vanguard"
+        ]
+      },
+      "vi": {
+        "an mon": [
+          "DA_18_Caustic"
+        ],
+        "ba chu": [
+          "DA_18_ApexPredator"
+        ],
+        "co thu": [
+          "DA_18_Maokai_UniqueTrait"
+        ],
+        "cu thach": [
+          "DA_18_Battlemage"
+        ],
+        "dao phu": [
+          "DA_18_Executioner"
+        ],
+        "dau si": [
+          "DA_18_Brawler"
+        ],
+        "dung si": [
+          "DA_Juggernaut18"
+        ],
+        "gai den": [
+          "DA_18_Blackthorn"
+        ],
+        "hoa hop": [
+          "DA_AluneUniqueTrait18"
+        ],
+        "hoa linh": [
+          "DA_18_Blossom"
+        ],
+        "hoa nguc": [
+          "DA_18_Inferno"
+        ],
+        "khac tinh": [
+          "DA_18_Rival"
+        ],
+        "lien kich": [
+          "DA_18_Rapidfire"
+        ],
+        "luc bao": [
+          "DA_Emerald18"
+        ],
+        "mat trang": [
+          "DA_18_Lunar"
+        ],
+        "mat troi": [
+          "DA_18_Solar"
+        ],
+        "nguyen sinh": [
+          "DA_Primal18"
+        ],
+        "quai rung": [
+          "DA_Riftbeast18"
+        ],
+        "san thuong": [
+          "DA_DravenUniqueTrait18"
+        ],
+        "tan pha": [
+          "DA_18_Slayer"
+        ],
+        "than rung": [
+          "DA_18_Elderwood"
+        ],
+        "the than": [
+          "DA_18_LuxUniqueTrait"
+        ],
+        "thich ung": [
+          "DA_18_Adaptor"
+        ],
+        "thien thuc": [
+          "DA_18_Eclipse"
+        ],
+        "tho san": [
+          "DA_18_Hunter"
+        ],
+        "thu than": [
+          "DA_18_Greenfather"
+        ],
+        "thuat si": [
+          "DA_18_Invoker"
+        ],
+        "thuat su": [
+          "DA_18_Spellweaver"
+        ],
+        "thuc vat": [
+          "DA_FloraFatalis18"
+        ],
+        "tien hac am": [
+          "DA_18_Coven"
+        ],
+        "tien linh": [
+          "DA_18_Fae"
+        ],
+        "tien phong": [
+          "DA_18_Vanguard"
+        ],
+        "tinh nghich": [
+          "DA_18_Sprykin"
+        ],
+        "trieu hoi": [
+          "DA_18_Summoner"
+        ],
+        "ve quan": [
+          "DA_18_Defender"
+        ],
+        "vuon gai": [
+          "DA_18_ZyraUniqueTrait"
+        ]
+      }
+    }
+  },
+  "by_stem": {
+    "augments": {
+      "en": {
+        "advanced loan": [
+          "DA_AdvancedLoan",
+          "DA_AdvancedLoanPlus"
+        ],
+        "arcane viktor-y": [
+          "DA_ArcaneViktory"
+        ],
+        "ascension": [
+          "DA_Ascension"
+        ],
+        "augmented power": [
+          "DA_AugmentedPower"
+        ],
+        "backline blueprint": [
+          "DA_BacklineBlueprint"
+        ],
+        "backup bows": [
+          "DA_BackupBows"
+        ],
+        "band of thieves": [
+          "DA_BandOfThieves",
+          "DA_BandOfThievesII",
+          "DA_BandOfThievesIIPlus",
+          "DA_BandOfThievesIIPlusPlus"
+        ],
+        "baron's lair": [
+          "DA_BaronsLair"
+        ],
+        "beast within": [
+          "DA_18_PrimalAugmentPlus_Nidalee",
+          "DA_18_PrimalAugmentPlus_Sivir",
+          "DA_18_PrimalAugment_Nidalee",
+          "DA_18_PrimalAugment_Sivir"
+        ],
+        "belt overflow": [
+          "DA_BeltOverflow"
+        ],
+        "big grab bag": [
+          "DA_18_BigGrabBag"
+        ],
+        "birthday present": [
+          "DA_BirthdayPresent"
+        ],
+        "birthday reunion": [
+          "DA_BirthdayReunion"
+        ],
+        "blossom's call": [
+          "DA_18_BlossomTraitAugment"
+        ],
+        "bodyguard training": [
+          "DA_BodyguardTraining"
+        ],
+        "bonus gift": [
+          "DA_BonusGift",
+          "DA_BonusGiftPlus"
+        ],
+        "booster pack": [
+          "DA_BoosterPack",
+          "DA_BoosterPackPlus",
+          "DA_BoosterPackPlusPlus"
+        ],
+        "boxing lessons": [
+          "DA_BoxingLessons"
+        ],
+        "branching out": [
+          "DA_18_BranchingOut",
+          "DA_18_BranchingOutPlus"
+        ],
+        "bronze for life": [
+          "DA_BronzeForLifeI",
+          "DA_BronzeForLifeII"
+        ],
+        "build a bud": [
+          "DA_BuildABud"
+        ],
+        "buried treasures": [
+          "DA_BuriedTreasuresIII"
+        ],
+        "calculated loss": [
+          "DA_CalculatedLoss"
+        ],
+        "call to chaos": [
+          "DA_CallToChaos"
+        ],
+        "called shot": [
+          "DA_CalledShot"
+        ],
+        "capital gains": [
+          "DA_CapitalGainsI",
+          "DA_CapitalGainsII"
+        ],
+        "caretaker's ally": [
+          "DA_18_CaretakersAlly"
+        ],
+        "caretaker's favor": [
+          "DA_CaretakersFavor"
+        ],
+        "carve a path": [
+          "DA_CarveAPath"
+        ],
+        "celestial blessing": [
+          "DA_CelestialBlessingI",
+          "DA_CelestialBlessingII",
+          "DA_CelestialBlessingIII"
+        ],
+        "challenger's grace": [
+          "DA_ChallengersGrace"
+        ],
+        "champ delivery": [
+          "DA_ChampDelivery",
+          "DA_ChampDeliveryPlus",
+          "DA_ChampDeliveryPlusPlus"
+        ],
+        "chosen of the sun": [
+          "DA_18_SolarTraitAugment"
+        ],
+        "clear mind": [
+          "DA_ClearMind"
+        ],
+        "clockwork accelerator": [
+          "DA_ClockworkAccelerator"
+        ],
+        "cluttered mind": [
+          "DA_ClutteredMind"
+        ],
+        "cognitive overload": [
+          "DA_CognitiveOverload"
+        ],
+        "cognitive tax": [
+          "DA_CognitiveTax",
+          "DA_CognitiveTaxPlus"
+        ],
+        "comeback story": [
+          "DA_ComebackStory"
+        ],
+        "commerce core": [
+          "DA_CommerceCore"
+        ],
+        "component buffet": [
+          "DA_ComponentBuffet"
+        ],
+        "component quest": [
+          "DA_ComponentQuest"
+        ],
+        "construct a companion": [
+          "DA_ConstructACompanion"
+        ],
+        "consuming flora": [
+          "DA_18_FloraFatalisAugment",
+          "DA_18_FloraFatalisAugmentPlus"
+        ],
+        "cooking pot": [
+          "DA_CookingPot"
+        ],
+        "coronation": [
+          "DA_Coronation"
+        ],
+        "corrosion": [
+          "DA_Corrosion"
+        ],
+        "coven acolyte": [
+          "DA_18_CovenTraitAugment"
+        ],
+        "crafted crafting": [
+          "DA_CraftedCrafting"
+        ],
+        "cry me a river": [
+          "DA_CryMeARiver"
+        ],
+        "cursed crown": [
+          "DA_CursedCrown"
+        ],
+        "cybernetic implants": [
+          "DA_CyberneticImplants_Gold"
+        ],
+        "cybernetic uplink": [
+          "DA_CyberneticUplink_Gold"
+        ],
+        "dark ritual": [
+          "DA_18_CovenTraitAugment_LootToAP"
+        ],
+        "deadlier blades": [
+          "DA_DeadlierBlades"
+        ],
+        "deadlier caps": [
+          "DA_DeadlierCaps"
+        ],
+        "double trouble": [
+          "DA_DoubleTrouble"
+        ],
+        "dummify": [
+          "DA_Dummify"
+        ],
+        "duo queue": [
+          "DA_18_DuoQueue"
+        ],
+        "early learnings": [
+          "DA_EarlyLearnings"
+        ],
+        "electrocharge": [
+          "DA_ElectrochargeI",
+          "DA_ElectrochargeII"
+        ],
+        "embiggen": [
+          "DA_18_FaeTraitAugment"
+        ],
+        "epic rolldown": [
+          "DA_EpicRolldown"
+        ],
+        "epoch": [
+          "DA_Epoch",
+          "DA_EpochPlus"
+        ],
+        "exclusive customization": [
+          "DA_ExclusiveCustomization"
+        ],
+        "expedition": [
+          "DA_Expedition"
+        ],
+        "explosive growth": [
+          "DA_ExplosiveGrowth",
+          "DA_ExplosiveGrowthPlus"
+        ],
+        "extra buckles": [
+          "DA_ExtraBuckles"
+        ],
+        "feeling lucky": [
+          "DA_FeelingLucky"
+        ],
+        "find your center": [
+          "DA_FindYourCenter"
+        ],
+        "flame on": [
+          "DA_18_InfernoTraitAugment"
+        ],
+        "flexible": [
+          "DA_Flexible"
+        ],
+        "flowing tears": [
+          "DA_FlowingTears"
+        ],
+        "focused fire": [
+          "DA_FocusedFire"
+        ],
+        "forge a friend": [
+          "DA_ForgeAFriend"
+        ],
+        "forged in strength": [
+          "DA_ForgedInStrength"
+        ],
+        "fourcing": [
+          "DA_18_FOURcing"
+        ],
+        "frontline foundation": [
+          "DA_FrontlineFoundation"
+        ],
+        "future focused": [
+          "DA_FutureFocused"
+        ],
+        "gain 21 gold": [
+          "DA_GainGold"
+        ],
+        "giant and mighty": [
+          "DA_GiantAndMighty"
+        ],
+        "gilded steel": [
+          "DA_GildedSteel"
+        ],
+        "glass cannon": [
+          "DA_GlassCannon_Gold",
+          "DA_GlassCannon_Silver"
+        ],
+        "going long": [
+          "DA_GoingLong"
+        ],
+        "gold destiny": [
+          "DA_GoldDestiny",
+          "DA_GoldDestinyPlus"
+        ],
+        "golden gamble": [
+          "DA_GoldenGamble",
+          "DA_GoldenGamblePlus",
+          "DA_GoldenGamblePlusPlus"
+        ],
+        "good for something": [
+          "DA_18_GoodForSomethingI"
+        ],
+        "group hug": [
+          "DA_GroupHugI",
+          "DA_GroupHugII"
+        ],
+        "hard bargain": [
+          "DA_HardBargain"
+        ],
+        "hard commit": [
+          "DA_HardCommit"
+        ],
+        "healing orbs": [
+          "DA_HealingOrbsI",
+          "DA_HealingOrbsII"
+        ],
+        "heart of steel": [
+          "DA_HeartOfSteel"
+        ],
+        "hedge fund": [
+          "DA_HedgeFund"
+        ],
+        "heroic grab bag": [
+          "DA_HeroicGrabBag",
+          "DA_HeroicGrabBagPlus",
+          "DA_HeroicGrabBagPlusPlus"
+        ],
+        "hold the line": [
+          "DA_HoldTheLine"
+        ],
+        "hustler": [
+          "DA_Hustler"
+        ],
+        "infinity protection": [
+          "DA_InfinityProtection"
+        ],
+        "invested": [
+          "DA_InvestedPlus",
+          "DA_InvestedPlusPlus"
+        ],
+        "investment strategy": [
+          "DA_InvestmentStrategy",
+          "DA_InvestmentStrategyI"
+        ],
+        "iron assets": [
+          "DA_IronAssets"
+        ],
+        "it's me, baby": [
+          "DA_ItsMeBaby"
+        ],
+        "item extraction": [
+          "DA_BlackthornTraitAugment"
+        ],
+        "item grab bag": [
+          "DA_ItemGrabBag"
+        ],
+        "jeweled lotus": [
+          "DA_JeweledLotus_I",
+          "DA_JeweledLotus_II"
+        ],
+        "kick start": [
+          "DA_KickStart"
+        ],
+        "kingslayer": [
+          "DA_Kingslayer"
+        ],
+        "late game scaling": [
+          "DA_LateGameScaling"
+        ],
+        "late game specialist": [
+          "DA_LateGameSpecialist"
+        ],
+        "latent forge": [
+          "DA_LatentForge"
+        ],
+        "legion of threes": [
+          "DA_LegionOfThrees"
+        ],
+        "level up!": [
+          "DA_LevelUp"
+        ],
+        "living forge": [
+          "DA_LivingForge"
+        ],
+        "loaded dice": [
+          "DA_LoadedDice"
+        ],
+        "lucky gloves": [
+          "DA_LuckyGloves",
+          "DA_LuckyGlovesPlus"
+        ],
+        "luxury subscription": [
+          "DA_LuxurySubscription"
+        ],
+        "magic roll": [
+          "DA_MagicRoll"
+        ],
+        "makeshift armor": [
+          "DA_MakeshiftArmorI",
+          "DA_MakeshiftArmorII"
+        ],
+        "malicious monetization": [
+          "DA_MaliciousMonetization"
+        ],
+        "master of all origins": [
+          "DA_18_LuxAugmentII"
+        ],
+        "max build": [
+          "DA_MaxBuild"
+        ],
+        "min-max": [
+          "DA_Min_Max"
+        ],
+        "missed connections": [
+          "DA_MissedConnections"
+        ],
+        "money hungry": [
+          "DA_MoneyHungryPlus",
+          "DA_MoneyHungry_NotBroken"
+        ],
+        "money monsoon": [
+          "DA_MoneyMonsoon"
+        ],
+        "nature's shelter": [
+          "DA_18_ElderwoodTraitAugment"
+        ],
+        "nesting anvils": [
+          "DA_NestingAnvils",
+          "DA_NestingAnvilsPlus"
+        ],
+        "nesting dolls": [
+          "DA_NestingDollsPlus",
+          "DA_NestingDollsPlusPlus"
+        ],
+        "no scout no pivot": [
+          "DA_NoScoutNoPivot"
+        ],
+        "omega riftbeast": [
+          "DA_18_RiftbeastTraitAugment"
+        ],
+        "one buff two buff": [
+          "DA_OneBuffTwoBuff"
+        ],
+        "one, two, five!": [
+          "DA_18_OneTwoFive"
+        ],
+        "ones two three": [
+          "DA_18_OnesTwosThree"
+        ],
+        "pandora's bench": [
+          "DA_PandorasBench"
+        ],
+        "pandora's items": [
+          "DA_PandorasItemsI",
+          "DA_PandorasItemsII",
+          "DA_PandorasItemsIII"
+        ],
+        "partial ascension": [
+          "DA_PartialAscension"
+        ],
+        "patience is a virtue": [
+          "DA_PatienceIsAVirtue"
+        ],
+        "patient study": [
+          "DA_PatientStudy"
+        ],
+        "pilfer": [
+          "DA_Pilfer"
+        ],
+        "plot armor": [
+          "DA_PlotArmor"
+        ],
+        "portable forge": [
+          "DA_PortableForge"
+        ],
+        "prismatic destiny": [
+          "DA_PrismaticDestiny",
+          "DA_PrismaticDestinyPlus"
+        ],
+        "prismatic ticket": [
+          "DA_PrismaticTicket"
+        ],
+        "promised protection": [
+          "DA_PromisedProtection"
+        ],
+        "quick streaks": [
+          "DA_QuickStreaks"
+        ],
+        "radiant rascal": [
+          "DA_RadiantRascal"
+        ],
+        "radiant relics": [
+          "DA_RadiantRelic"
+        ],
+        "recombobulator": [
+          "DA_Recombobulator"
+        ],
+        "replication": [
+          "DA_Replication"
+        ],
+        "residual magic": [
+          "DA_18_ResidualMagic",
+          "DA_18_ResidualMagicPlus",
+          "DA_18_ResidualMagicPlusPlus"
+        ],
+        "retribution": [
+          "DA_Retribution"
+        ],
+        "rolling for days": [
+          "DA_RollingForDays"
+        ],
+        "salvage bin": [
+          "DA_SalvageBin",
+          "DA_SalvageBinPlus"
+        ],
+        "seraphim's staff": [
+          "DA_SeraphimsStaff"
+        ],
+        "shimmerscale essence": [
+          "DA_ShimmerscaleEssence"
+        ],
+        "shopping spree": [
+          "DA_ShoppingSpree"
+        ],
+        "silver destiny": [
+          "DA_SilverDestiny",
+          "DA_SilverDestinyPlus",
+          "DA_SilverDestinyPlusPlus"
+        ],
+        "silver spoon": [
+          "DA_SilverSpoon"
+        ],
+        "slammin'": [
+          "DA_Slammin",
+          "DA_SlamminPlus"
+        ],
+        "slice of life": [
+          "DA_SliceOfLife"
+        ],
+        "slightly magic roll": [
+          "DA_SlightlyMagicRoll"
+        ],
+        "small furry friend": [
+          "DA_18_SprykinAugment"
+        ],
+        "small grab bag": [
+          "DA_SmallGrabBag"
+        ],
+        "solo leveling": [
+          "DA_SoloLeveling"
+        ],
+        "solo plate": [
+          "DA_SoloPlate"
+        ],
+        "soul awakening": [
+          "DA_SoulAwakening"
+        ],
+        "speedy double kill": [
+          "DA_SpeedyDoubleKill"
+        ],
+        "spirit of redemption": [
+          "DA_SpiritOfRedemption"
+        ],
+        "spreading roots": [
+          "DA_SpreadingRoots",
+          "DA_SpreadingRootsPlus"
+        ],
+        "staffsmith": [
+          "DA_Staffsmith"
+        ],
+        "stand united": [
+          "DA_StandUnited"
+        ],
+        "sun and moon": [
+          "DA_18_LunarTraitAugment",
+          "DA_18_LunarTraitAugmentPlus"
+        ],
+        "sweet treats": [
+          "DA_SweetTreats"
+        ],
+        "sword overflow": [
+          "DA_SwordOverflow"
+        ],
+        "swordsmith": [
+          "DA_Swordsmith"
+        ],
+        "tactician's kitchen": [
+          "DA_TacticiansKitchen"
+        ],
+        "team building": [
+          "DA_TeamBuilding"
+        ],
+        "the golden dragon": [
+          "DA_TheGoldenDragon"
+        ],
+        "the golden egg": [
+          "DA_GoldenEgg"
+        ],
+        "the tower": [
+          "DA_TheTower"
+        ],
+        "the trait tree": [
+          "DA_TheTraitTree",
+          "DA_TheTraitTreePlus"
+        ],
+        "time skip": [
+          "DA_TimeSkip"
+        ],
+        "tons of stats!": [
+          "DA_TonsOfStatsI",
+          "DA_TonsOfStatsII"
+        ],
+        "trade sector": [
+          "DA_TradeSector",
+          "DA_TradeSectorPlus"
+        ],
+        "trait ladder": [
+          "DA_TraitLadder"
+        ],
+        "twin guardians": [
+          "DA_TwinGuardians"
+        ],
+        "u.r.f": [
+          "DA_URF"
+        ],
+        "unrivaled": [
+          "DA_18_RivalsAugment"
+        ],
+        "upward mobility": [
+          "DA_UpwardMobility"
+        ],
+        "urf's grab bag": [
+          "DA_UrfsGrabBag"
+        ],
+        "verticality": [
+          "DA_VerticalityI",
+          "DA_VerticalityII",
+          "DA_VerticalityIII"
+        ],
+        "wand overflow": [
+          "DA_WandOverflow"
+        ],
+        "warpath": [
+          "DA_Warpath"
+        ],
+        "we stick together": [
+          "DA_WeStickTogether"
+        ],
+        "weight the worth": [
+          "DA_18_WeightTheWorth"
+        ],
+        "wisp rebate": [
+          "DA_18_WispRebatePlus",
+          "DA_18_WispRebatePlusPlus"
+        ],
+        "worth the wait": [
+          "DA_WorththeWait",
+          "DA_WorththeWaitII"
+        ],
+        "woven magic": [
+          "DA_WovenMagic"
+        ],
+        "young and wild and free": [
+          "DA_YoungAndWildAndFree"
+        ]
+      },
+      "vi": {
+        "an hue thach dau": [
+          "DA_ChallengersGrace"
+        ],
+        "an mon": [
+          "DA_Corrosion"
+        ],
+        "an trom": [
+          "DA_Pilfer"
+        ],
+        "arcane viktor-y": [
+          "DA_ArcaneViktory"
+        ],
+        "bai hoc so khai": [
+          "DA_EarlyLearnings"
+        ],
+        "ban thang hoa": [
+          "DA_PartialAscension"
+        ],
+        "bang trom": [
+          "DA_BandOfThieves",
+          "DA_BandOfThievesII",
+          "DA_BandOfThievesIIPlus",
+          "DA_BandOfThievesIIPlusPlus"
+        ],
+        "bao ho vo tan": [
+          "DA_InfinityProtection"
+        ],
+        "bao oan": [
+          "DA_Retribution"
+        ],
+        "bao vang": [
+          "DA_MoneyMonsoon"
+        ],
+        "bua bon": [
+          "DA_ClutteredMind"
+        ],
+        "bung chay": [
+          "DA_18_InfernoTraitAugment"
+        ],
+        "bup be xay to": [
+          "DA_NestingDollsPlus",
+          "DA_NestingDollsPlusPlus"
+        ],
+        "cam re phan tan": [
+          "DA_SpreadingRoots",
+          "DA_SpreadingRootsPlus"
+        ],
+        "cam thay may man": [
+          "DA_FeelingLucky"
+        ],
+        "cap doi hoan canh": [
+          "DA_DoubleTrouble"
+        ],
+        "cau hoi phuc": [
+          "DA_HealingOrbsI",
+          "DA_HealingOrbsII"
+        ],
+        "cay ghep sieu cong nghe": [
+          "DA_CyberneticImplants_Gold"
+        ],
+        "cay toc/he": [
+          "DA_TheTraitTree",
+          "DA_TheTraitTreePlus"
+        ],
+        "che tao bang huu": [
+          "DA_ForgeAFriend"
+        ],
+        "che tao tai cho": [
+          "DA_LivingForge"
+        ],
+        "chi mot con duong": [
+          "DA_HardCommit",
+          "DA_VerticalityI",
+          "DA_VerticalityII",
+          "DA_VerticalityIII"
+        ],
+        "chien thuat dau tu": [
+          "DA_InvestmentStrategy",
+          "DA_InvestmentStrategyI"
+        ],
+        "chiet xuat trang bi": [
+          "DA_BlackthornTraitAugment"
+        ],
+        "cho doi xung dang": [
+          "DA_WorththeWait",
+          "DA_WorththeWaitII"
+        ],
+        "chuc phuc cua but": [
+          "DA_CaretakersFavor"
+        ],
+        "chuyen doi thuong": [
+          "DA_SliceOfLife"
+        ],
+        "co gang lat keo": [
+          "DA_ComebackStory"
+        ],
+        "con khat vang": [
+          "DA_MoneyHungryPlus",
+          "DA_MoneyHungry_NotBroken"
+        ],
+        "cong met nghi!": [
+          "DA_TonsOfStatsI",
+          "DA_TonsOfStatsII"
+        ],
+        "cung co tuyen truoc": [
+          "DA_FrontlineFoundation"
+        ],
+        "cung du phong": [
+          "DA_BackupBows"
+        ],
+        "cuoc vien chinh": [
+          "DA_Expedition"
+        ],
+        "dac quyen phu gia": [
+          "DA_SilverSpoon"
+        ],
+        "dai tiec trang bi": [
+          "DA_ComponentBuffet"
+        ],
+        "dam me dai lung": [
+          "DA_BeltOverflow"
+        ],
+        "dam me gay": [
+          "DA_WandOverflow"
+        ],
+        "dam me kiem": [
+          "DA_SwordOverflow"
+        ],
+        "dau tu": [
+          "DA_InvestedPlus",
+          "DA_InvestedPlusPlus"
+        ],
+        "day nhanh tien do": [
+          "DA_UpwardMobility"
+        ],
+        "dinh huong tuong lai": [
+          "DA_FutureFocused"
+        ],
+        "do ni dong giay": [
+          "DA_LuckyGloves",
+          "DA_LuckyGlovesPlus"
+        ],
+        "do vuong": [
+          "DA_Kingslayer"
+        ],
+        "doi hinh toi uu": [
+          "DA_MaxBuild"
+        ],
+        "don quyet dinh": [
+          "DA_CalledShot"
+        ],
+        "dong co tang toc": [
+          "DA_ClockworkAccelerator"
+        ],
+        "dong minh cua but": [
+          "DA_18_CaretakersAlly"
+        ],
+        "dong tien mo am": [
+          "DA_MaliciousMonetization"
+        ],
+        "du am ma thuat": [
+          "DA_18_ResidualMagic",
+          "DA_18_ResidualMagicPlus",
+          "DA_18_ResidualMagicPlusPlus"
+        ],
+        "duoc cai nay mat cai kia": [
+          "DA_18_GoodForSomethingI"
+        ],
+        "duong ra tran": [
+          "DA_Warpath"
+        ],
+        "ep bon": [
+          "DA_18_FOURcing"
+        ],
+        "gian lan": [
+          "DA_LoadedDice"
+        ],
+        "giap tu che": [
+          "DA_MakeshiftArmorI",
+          "DA_MakeshiftArmorII"
+        ],
+        "giot le bi ai": [
+          "DA_CryMeARiver"
+        ],
+        "giu vung hang ngu": [
+          "DA_HoldTheLine"
+        ],
+        "goi dang ky hang sang": [
+          "DA_LuxurySubscription"
+        ],
+        "goi tang cuong": [
+          "DA_BoosterPack",
+          "DA_BoosterPackPlus",
+          "DA_BoosterPackPlusPlus"
+        ],
+        "goi trang bi bat ngo": [
+          "DA_NestingAnvils",
+          "DA_NestingAnvilsPlus"
+        ],
+        "ha do van": [
+          "DA_Slammin",
+          "DA_SlamminPlus"
+        ],
+        "hang cho dau doi": [
+          "DA_18_DuoQueue"
+        ],
+        "hang cho pandora": [
+          "DA_PandorasBench"
+        ],
+        "hang o baron": [
+          "DA_BaronsLair"
+        ],
+        "hao quang nhan vat chinh": [
+          "DA_PlotArmor"
+        ],
+        "hinh nhan hoa": [
+          "DA_Dummify"
+        ],
+        "hoa lon": [
+          "DA_18_FaeTraitAugment"
+        ],
+        "hop pandora": [
+          "DA_PandorasItemsI",
+          "DA_PandorasItemsII",
+          "DA_PandorasItemsIII"
+        ],
+        "huan luyen can ve": [
+          "DA_BodyguardTraining"
+        ],
+        "huong den hoi ket": [
+          "DA_LateGameSpecialist"
+        ],
+        "ke vai sat canh": [
+          "DA_WeStickTogether"
+        ],
+        "ket noi gian doan": [
+          "DA_MissedConnections"
+        ],
+        "kham bao thach": [
+          "DA_JeweledLotus_I",
+          "DA_JeweledLotus_II"
+        ],
+        "kheo tay hay lam": [
+          "DA_CraftedCrafting"
+        ],
+        "khien don dau": [
+          "DA_SoloPlate"
+        ],
+        "kho bau chon giau": [
+          "DA_BuriedTreasuresIII"
+        ],
+        "kho bau sat": [
+          "DA_IronAssets"
+        ],
+        "kho than tich": [
+          "DA_RadiantRelic"
+        ],
+        "khoa du phong": [
+          "DA_ExtraBuckles"
+        ],
+        "khoi dong nhanh": [
+          "DA_KickStart"
+        ],
+        "khong doi thu": [
+          "DA_18_RivalsAugment"
+        ],
+        "khu giao dich": [
+          "DA_TradeSector",
+          "DA_TradeSectorPlus"
+        ],
+        "kiem tu than": [
+          "DA_DeadlierBlades"
+        ],
+        "kien nhan hoc tap": [
+          "DA_PatientStudy"
+        ],
+        "kien nhan la mot duc tinh": [
+          "DA_PatienceIsAVirtue"
+        ],
+        "kim long": [
+          "DA_TheGoldenDragon"
+        ],
+        "ky nguyen": [
+          "DA_Epoch",
+          "DA_EpochPlus"
+        ],
+        "la ta day": [
+          "DA_ItsMeBaby"
+        ],
+        "lay cong bu thu": [
+          "DA_GlassCannon_Gold",
+          "DA_GlassCannon_Silver"
+        ],
+        "le luu ly": [
+          "DA_FlowingTears"
+        ],
+        "len ngoi vuong": [
+          "DA_Coronation"
+        ],
+        "linh hoat": [
+          "DA_Flexible"
+        ],
+        "linh hon chuoc toi": [
+          "DA_SpiritOfRedemption"
+        ],
+        "linh thu vao bep": [
+          "DA_TacticiansKitchen"
+        ],
+        "lo ren than thoai": [
+          "DA_PortableForge"
+        ],
+        "lo ren tiem an": [
+          "DA_LatentForge"
+        ],
+        "long xu be nho": [
+          "DA_18_SprykinAugment"
+        ],
+        "lua chon doc quyen": [
+          "DA_ExclusiveCustomization"
+        ],
+        "ma thuat dan ket": [
+          "DA_WovenMagic"
+        ],
+        "mat troi va mat trang": [
+          "DA_18_LunarTraitAugment",
+          "DA_18_LunarTraitAugmentPlus"
+        ],
+        "mo loi": [
+          "DA_CarveAPath"
+        ],
+        "mon qua ngot ngao": [
+          "DA_SweetTreats"
+        ],
+        "mot bua, hai bua": [
+          "DA_OneBuffTwoBuff"
+        ],
+        "mot, hai, ba": [
+          "DA_18_OnesTwosThree"
+        ],
+        "mot, hai, nam!": [
+          "DA_18_OneTwoFive"
+        ],
+        "mu tu than": [
+          "DA_DeadlierCaps"
+        ],
+        "nang tam uy luc": [
+          "DA_AugmentedPower"
+        ],
+        "nguoi ban vang": [
+          "DA_ConstructACompanion"
+        ],
+        "nha may tai che": [
+          "DA_SalvageBin",
+          "DA_SalvageBinPlus"
+        ],
+        "nham mat choi bua": [
+          "DA_NoScoutNoPivot"
+        ],
+        "nhan 21 vang": [
+          "DA_GainGold"
+        ],
+        "nhan ban": [
+          "DA_Replication"
+        ],
+        "nhat thong": [
+          "DA_StandUnited"
+        ],
+        "nhiem vu trang bi": [
+          "DA_ComponentQuest"
+        ],
+        "noi nau an": [
+          "DA_CookingPot"
+        ],
+        "om tap the": [
+          "DA_GroupHugI",
+          "DA_GroupHugII"
+        ],
+        "phan nhanh": [
+          "DA_18_BranchingOut",
+          "DA_18_BranchingOutPlus"
+        ],
+        "phan phoi tuong": [
+          "DA_ChampDelivery",
+          "DA_ChampDeliveryPlus",
+          "DA_ChampDeliveryPlusPlus"
+        ],
+        "phuoc lanh vu tru": [
+          "DA_CelestialBlessingI",
+          "DA_CelestialBlessingII",
+          "DA_CelestialBlessingIII"
+        ],
+        "qua sinh nhat": [
+          "DA_BirthdayPresent"
+        ],
+        "qua tai tu duy": [
+          "DA_CognitiveOverload"
+        ],
+        "qua tang them": [
+          "DA_BonusGift",
+          "DA_BonusGiftPlus"
+        ],
+        "quai rung omega": [
+          "DA_18_RiftbeastTraitAugment"
+        ],
+        "quai thu ben trong": [
+          "DA_18_PrimalAugmentPlus_Nidalee",
+          "DA_18_PrimalAugmentPlus_Sivir",
+          "DA_18_PrimalAugment_Nidalee",
+          "DA_18_PrimalAugment_Sivir"
+        ],
+        "quan doan 3 sao": [
+          "DA_LegionOfThrees"
+        ],
+        "quang lan tieu yeu": [
+          "DA_RadiantRascal"
+        ],
+        "quay trung thuong": [
+          "DA_SlightlyMagicRoll"
+        ],
+        "quy phong ho": [
+          "DA_HedgeFund"
+        ],
+        "rong de trung vang": [
+          "DA_GoldenEgg"
+        ],
+        "sinh nhat doan tu": [
+          "DA_BirthdayReunion"
+        ],
+        "so do tuyen sau": [
+          "DA_BacklineBlueprint"
+        ],
+        "song sat toc hanh": [
+          "DA_SpeedyDoubleKill"
+        ],
+        "song ve": [
+          "DA_TwinGuardians"
+        ],
+        "song voi": [
+          "DA_Hustler"
+        ],
+        "su lua chon cua mat troi": [
+          "DA_18_SolarTraitAugment"
+        ],
+        "ta thuat": [
+          "DA_18_CovenTraitAugment_LootToAP"
+        ],
+        "tang truong bung no": [
+          "DA_ExplosiveGrowth",
+          "DA_ExplosiveGrowthPlus"
+        ],
+        "tang von": [
+          "DA_CapitalGainsI",
+          "DA_CapitalGainsII"
+        ],
+        "tap chiu don": [
+          "DA_BoxingLessons"
+        ],
+        "tap trung hoa luc": [
+          "DA_FocusedFire"
+        ],
+        "tat tay bac dong": [
+          "DA_BronzeForLifeI",
+          "DA_BronzeForLifeII"
+        ],
+        "thang cap!": [
+          "DA_LevelUp"
+        ],
+        "thang hoa": [
+          "DA_Ascension"
+        ],
+        "thang tien cuoi tran": [
+          "DA_LateGameScaling"
+        ],
+        "the uoc bao ho": [
+          "DA_PromisedProtection"
+        ],
+        "thep ma vang": [
+          "DA_GildedSteel"
+        ],
+        "thich mo rong": [
+          "DA_GoingLong"
+        ],
+        "thien nhien che cho": [
+          "DA_18_ElderwoodTraitAugment"
+        ],
+        "tho ren gay": [
+          "DA_Staffsmith"
+        ],
+        "tho ren kiem": [
+          "DA_Swordsmith"
+        ],
+        "thong thoang": [
+          "DA_ClearMind"
+        ],
+        "thu hang toc he": [
+          "DA_TraitLadder"
+        ],
+        "thua co tinh toan": [
+          "DA_CalculatedLoss"
+        ],
+        "thuc tinh linh hon": [
+          "DA_SoulAwakening"
+        ],
+        "thuc vat hap thu": [
+          "DA_18_FloraFatalisAugment",
+          "DA_18_FloraFatalisAugmentPlus"
+        ],
+        "thue nhan thuc": [
+          "DA_CognitiveTax",
+          "DA_CognitiveTaxPlus"
+        ],
+        "thuong vu kho xoi": [
+          "DA_HardBargain"
+        ],
+        "tich chuoi nhanh": [
+          "DA_QuickStreaks"
+        ],
+        "tien ve trung tam": [
+          "DA_FindYourCenter"
+        ],
+        "tieng goi hoa linh": [
+          "DA_18_BlossomTraitAugment"
+        ],
+        "tiep te trang bi": [
+          "DA_ItemGrabBag"
+        ],
+        "tin do mua sam": [
+          "DA_ShoppingSpree"
+        ],
+        "tin do tien hac am": [
+          "DA_18_CovenTraitAugment"
+        ],
+        "tinh linh hoan tien": [
+          "DA_18_WispRebatePlus",
+          "DA_18_WispRebatePlusPlus"
+        ],
+        "tinh thong moi toc": [
+          "DA_18_LuxAugmentII"
+        ],
+        "tinh tuy kim long": [
+          "DA_ShimmerscaleEssence"
+        ],
+        "to lon & manh me": [
+          "DA_GiantAndMighty"
+        ],
+        "toa thap": [
+          "DA_TheTower"
+        ],
+        "toi da hoa": [
+          "DA_Min_Max"
+        ],
+        "toi luyen suc manh": [
+          "DA_ForgedInStrength"
+        ],
+        "toi thang cap mot minh": [
+          "DA_SoloLeveling"
+        ],
+        "trai tim sat da": [
+          "DA_HeartOfSteel"
+        ],
+        "tre, khoe & tu do": [
+          "DA_YoungAndWildAndFree"
+        ],
+        "tri tue sieu cong nghe": [
+          "DA_CyberneticUplink_Gold"
+        ],
+        "trieu goi hon mang": [
+          "DA_CallToChaos"
+        ],
+        "trung tam thuong mai": [
+          "DA_CommerceCore"
+        ],
+        "truong dai thien su": [
+          "DA_SeraphimsStaff"
+        ],
+        "tu dien": [
+          "DA_ElectrochargeI",
+          "DA_ElectrochargeII"
+        ],
+        "tu lap doi": [
+          "DA_BuildABud"
+        ],
+        "tui do co dai": [
+          "DA_18_BigGrabBag"
+        ],
+        "tui do co nho": [
+          "DA_SmallGrabBag"
+        ],
+        "tui do sieu hung": [
+          "DA_HeroicGrabBag",
+          "DA_HeroicGrabBagPlus",
+          "DA_HeroicGrabBagPlusPlus"
+        ],
+        "tui do urf": [
+          "DA_UrfsGrabBag"
+        ],
+        "u.r.f.": [
+          "DA_URF"
+        ],
+        "van cuoc hoang kim": [
+          "DA_GoldenGamble",
+          "DA_GoldenGamblePlus",
+          "DA_GoldenGamblePlusPlus"
+        ],
+        "van menh bac": [
+          "DA_SilverDestiny",
+          "DA_SilverDestinyPlus",
+          "DA_SilverDestinyPlusPlus"
+        ],
+        "van menh kim cuong": [
+          "DA_PrismaticDestiny",
+          "DA_PrismaticDestinyPlus"
+        ],
+        "van menh vang": [
+          "DA_GoldDestiny",
+          "DA_GoldDestinyPlus"
+        ],
+        "vay tam ung": [
+          "DA_AdvancedLoan",
+          "DA_AdvancedLoanPlus"
+        ],
+        "ve kim cuong": [
+          "DA_PrismaticTicket"
+        ],
+        "vuong mien hac hoa": [
+          "DA_CursedCrown"
+        ],
+        "vuot thoi gian": [
+          "DA_TimeSkip"
+        ],
+        "xay dung doi hinh": [
+          "DA_TeamBuilding"
+        ],
+        "xoay bai tu dong": [
+          "DA_Recombobulator"
+        ],
+        "xuc xac hoanh trang": [
+          "DA_EpicRolldown"
+        ],
+        "xuc xac ma phap": [
+          "DA_MagicRoll"
+        ],
+        "xuc xac vo tan": [
+          "DA_RollingForDays"
+        ],
+        "xung dang cho doi": [
+          "DA_18_WeightTheWorth"
+        ]
+      }
+    },
+    "champions": {
+      "en": {
+        "ahri": [
+          "DA_18_Ahri"
+        ],
+        "akali": [
+          "DA_18_Akali_AD"
+        ],
+        "alistar": [
+          "DA_18_Alistar"
+        ],
+        "alune": [
+          "DA_18_Alune"
+        ],
+        "amumu": [
+          "DA_Amumu18"
+        ],
+        "aphelios": [
+          "DA_18_Aphelios"
+        ],
+        "ashe": [
+          "DA_18_Ashe"
+        ],
+        "azir": [
+          "DA_18_Azir"
+        ],
+        "brambleback": [
+          "DA_Brambleback18"
+        ],
+        "caitlyn": [
+          "DA_18_Caitlyn"
+        ],
+        "camille": [
+          "DA_18_Camille"
+        ],
+        "cassiopeia": [
+          "DA_18_Cassiopeia"
+        ],
+        "cinderling": [
+          "DA_Cinderling18"
+        ],
+        "diana": [
+          "DA_18_Diana"
+        ],
+        "draven": [
+          "DA_Draven18"
+        ],
+        "elder dragon": [
+          "DA_18_ElderDragon"
+        ],
+        "elise": [
+          "DA_18_Elise"
+        ],
+        "ezreal": [
+          "DA_18_Ezreal"
+        ],
+        "fiddlesticks": [
+          "DA_Fiddlesticks18"
+        ],
+        "gnar": [
+          "DA_18_GnarSmall"
+        ],
+        "gromp": [
+          "DA_Gromp18_AP"
+        ],
+        "hecarim": [
+          "DA_18_Hecarim"
+        ],
+        "ivern": [
+          "DA_18_Ivern"
+        ],
+        "karma": [
+          "DA_Karma18"
+        ],
+        "kayle": [
+          "DA_18_Kayle"
+        ],
+        "kennen": [
+          "DA_18_Kennen"
+        ],
+        "kha'zix": [
+          "DA_18_KhaZix"
+        ],
+        "kobuko": [
+          "DA_18_Kobuko"
+        ],
+        "kog'maw": [
+          "DA_KogMaw18_AD"
+        ],
+        "krug": [
+          "DA_Krug18"
+        ],
+        "leblanc": [
+          "DA_18_LeBlanc"
+        ],
+        "leona": [
+          "DA_18_Leona"
+        ],
+        "lillia": [
+          "DA_18_Lillia"
+        ],
+        "lux": [
+          "DA_Lux18_Base"
+        ],
+        "malphite": [
+          "DA_18_Malphite"
+        ],
+        "mama beak": [
+          "DA_CrimsonRaptor18"
+        ],
+        "maokai": [
+          "DA_18_Maokai"
+        ],
+        "master yi": [
+          "DA_18_MasterYi_AD"
+        ],
+        "morgana": [
+          "DA_18_Morgana"
+        ],
+        "murkwolf": [
+          "DA_Murkwolf18"
+        ],
+        "nidalee": [
+          "DA_Nidalee18_AP"
+        ],
+        "ornn": [
+          "DA_18_Ornn"
+        ],
+        "pebbles": [
+          "DA_18_Sentry"
+        ],
+        "rakan": [
+          "DA_18_Rakan"
+        ],
+        "rammus": [
+          "DA_18_Rammus"
+        ],
+        "rek'sai": [
+          "DA_18_RekSai"
+        ],
+        "rengar": [
+          "DA_18_Rengar"
+        ],
+        "scuttlecrab": [
+          "DA_Scuttlecrab18"
+        ],
+        "sejuani": [
+          "DA_18_Sejuani"
+        ],
+        "sentinel": [
+          "DA_Sentinel18"
+        ],
+        "sett": [
+          "DA_18_Sett"
+        ],
+        "shen": [
+          "DA_18_Shen"
+        ],
+        "sivir": [
+          "DA_18_Sivir"
+        ],
+        "soraka": [
+          "DA_18_Soraka"
+        ],
+        "taric": [
+          "DA_Taric18"
+        ],
+        "teemo": [
+          "DA_18_Teemo"
+        ],
+        "tristana": [
+          "DA_18_Tristana"
+        ],
+        "varus": [
+          "DA_18_Varus"
+        ],
+        "veigar": [
+          "DA_18_Veigar"
+        ],
+        "vi": [
+          "DA_Vi18"
+        ],
+        "warwick": [
+          "DA_18_Warwick"
+        ],
+        "xayah": [
+          "DA_18_Xayah"
+        ],
+        "yorick": [
+          "DA_18_Yorick"
+        ],
+        "yunara": [
+          "DA_18_Yunara"
+        ],
+        "zyra": [
+          "DA_18_Zyra"
+        ]
+      },
+      "vi": {
+        "ahri": [
+          "DA_18_Ahri"
+        ],
+        "akali": [
+          "DA_18_Akali_AD"
+        ],
+        "alistar": [
+          "DA_18_Alistar"
+        ],
+        "alune": [
+          "DA_18_Alune"
+        ],
+        "amumu": [
+          "DA_Amumu18"
+        ],
+        "aphelios": [
+          "DA_18_Aphelios"
+        ],
+        "ashe": [
+          "DA_18_Ashe"
+        ],
+        "azir": [
+          "DA_18_Azir"
+        ],
+        "bui gai do": [
+          "DA_Brambleback18"
+        ],
+        "caitlyn": [
+          "DA_18_Caitlyn"
+        ],
+        "camille": [
+          "DA_18_Camille"
+        ],
+        "cassiopeia": [
+          "DA_18_Cassiopeia"
+        ],
+        "chim me": [
+          "DA_CrimsonRaptor18"
+        ],
+        "coc thanh tinh": [
+          "DA_Gromp18_AP"
+        ],
+        "cua ky cuc": [
+          "DA_Scuttlecrab18"
+        ],
+        "diana": [
+          "DA_18_Diana"
+        ],
+        "draven": [
+          "DA_Draven18"
+        ],
+        "elise": [
+          "DA_18_Elise"
+        ],
+        "ezreal": [
+          "DA_18_Ezreal"
+        ],
+        "fiddlesticks": [
+          "DA_Fiddlesticks18"
+        ],
+        "gnar": [
+          "DA_18_GnarSmall"
+        ],
+        "hecarim": [
+          "DA_18_Hecarim"
+        ],
+        "ivern": [
+          "DA_18_Ivern"
+        ],
+        "karma": [
+          "DA_Karma18"
+        ],
+        "kayle": [
+          "DA_18_Kayle"
+        ],
+        "kennen": [
+          "DA_18_Kennen"
+        ],
+        "kha'zix": [
+          "DA_18_KhaZix"
+        ],
+        "kobuko": [
+          "DA_18_Kobuko"
+        ],
+        "kog'maw": [
+          "DA_KogMaw18_AD"
+        ],
+        "leblanc": [
+          "DA_18_LeBlanc"
+        ],
+        "leona": [
+          "DA_18_Leona"
+        ],
+        "lillia": [
+          "DA_18_Lillia"
+        ],
+        "lux": [
+          "DA_Lux18_Base"
+        ],
+        "malphite": [
+          "DA_18_Malphite"
+        ],
+        "mam non": [
+          "DA_Cinderling18"
+        ],
+        "maokai": [
+          "DA_18_Maokai"
+        ],
+        "master yi": [
+          "DA_18_MasterYi_AD"
+        ],
+        "morgana": [
+          "DA_18_Morgana"
+        ],
+        "nguoi da": [
+          "DA_Sentinel18"
+        ],
+        "nidalee": [
+          "DA_Nidalee18_AP"
+        ],
+        "ornn": [
+          "DA_18_Ornn"
+        ],
+        "quai da krug": [
+          "DA_Krug18"
+        ],
+        "rakan": [
+          "DA_18_Rakan"
+        ],
+        "rammus": [
+          "DA_18_Rammus"
+        ],
+        "rek'sai": [
+          "DA_18_RekSai"
+        ],
+        "rengar": [
+          "DA_18_Rengar"
+        ],
+        "rong ngan tuoi": [
+          "DA_18_ElderDragon"
+        ],
+        "sejuani": [
+          "DA_18_Sejuani"
+        ],
+        "sett": [
+          "DA_18_Sett"
+        ],
+        "shen": [
+          "DA_18_Shen"
+        ],
+        "sivir": [
+          "DA_18_Sivir"
+        ],
+        "soi": [
+          "DA_18_Sentry"
+        ],
+        "soi hac am": [
+          "DA_Murkwolf18"
+        ],
+        "soraka": [
+          "DA_18_Soraka"
+        ],
+        "taric": [
+          "DA_Taric18"
+        ],
+        "teemo": [
+          "DA_18_Teemo"
+        ],
+        "tristana": [
+          "DA_18_Tristana"
+        ],
+        "varus": [
+          "DA_18_Varus"
+        ],
+        "veigar": [
+          "DA_18_Veigar"
+        ],
+        "vi": [
+          "DA_Vi18"
+        ],
+        "warwick": [
+          "DA_18_Warwick"
+        ],
+        "xayah": [
+          "DA_18_Xayah"
+        ],
+        "yorick": [
+          "DA_18_Yorick"
+        ],
+        "yunara": [
+          "DA_18_Yunara"
+        ],
+        "zyra": [
+          "DA_18_Zyra"
+        ]
+      }
+    },
+    "traits": {
+      "en": {
+        "adaptor": [
+          "DA_18_Adaptor"
+        ],
+        "apex predator": [
+          "DA_18_ApexPredator"
+        ],
+        "attuned": [
+          "DA_AluneUniqueTrait18"
+        ],
+        "avatar": [
+          "DA_18_LuxUniqueTrait"
+        ],
+        "blackthorn": [
+          "DA_18_Blackthorn"
+        ],
+        "blossom": [
+          "DA_18_Blossom"
+        ],
+        "bounty seeker": [
+          "DA_DravenUniqueTrait18"
+        ],
+        "brawler": [
+          "DA_18_Brawler"
+        ],
+        "caustic": [
+          "DA_18_Caustic"
+        ],
+        "coven": [
+          "DA_18_Coven"
+        ],
+        "defender": [
+          "DA_18_Defender"
+        ],
+        "eclipse": [
+          "DA_18_Eclipse"
+        ],
+        "elderwood": [
+          "DA_18_Elderwood"
+        ],
+        "emerald aspect": [
+          "DA_Emerald18"
+        ],
+        "executioner": [
+          "DA_18_Executioner"
+        ],
+        "fae": [
+          "DA_18_Fae"
+        ],
+        "flora fatalis": [
+          "DA_FloraFatalis18"
+        ],
+        "greenfather": [
+          "DA_18_Greenfather"
+        ],
+        "hunter": [
+          "DA_18_Hunter"
+        ],
+        "inferno": [
+          "DA_18_Inferno"
+        ],
+        "invoker": [
+          "DA_18_Invoker"
+        ],
+        "juggernaut": [
+          "DA_Juggernaut18"
+        ],
+        "lunar": [
+          "DA_18_Lunar"
+        ],
+        "monolith": [
+          "DA_18_Battlemage"
+        ],
+        "old growth": [
+          "DA_18_Maokai_UniqueTrait"
+        ],
+        "primal": [
+          "DA_Primal18"
+        ],
+        "rapidfire": [
+          "DA_18_Rapidfire"
+        ],
+        "ravager": [
+          "DA_18_Slayer"
+        ],
+        "riftbeast": [
+          "DA_Riftbeast18"
+        ],
+        "rival": [
+          "DA_18_Rival"
+        ],
+        "solar": [
+          "DA_18_Solar"
+        ],
+        "spellweaver": [
+          "DA_18_Spellweaver"
+        ],
+        "sprykin": [
+          "DA_18_Sprykin"
+        ],
+        "summoner": [
+          "DA_18_Summoner"
+        ],
+        "thornmaiden": [
+          "DA_18_ZyraUniqueTrait"
+        ],
+        "vanguard": [
+          "DA_18_Vanguard"
+        ]
+      },
+      "vi": {
+        "an mon": [
+          "DA_18_Caustic"
+        ],
+        "ba chu": [
+          "DA_18_ApexPredator"
+        ],
+        "co thu": [
+          "DA_18_Maokai_UniqueTrait"
+        ],
+        "cu thach": [
+          "DA_18_Battlemage"
+        ],
+        "dao phu": [
+          "DA_18_Executioner"
+        ],
+        "dau si": [
+          "DA_18_Brawler"
+        ],
+        "dung si": [
+          "DA_Juggernaut18"
+        ],
+        "gai den": [
+          "DA_18_Blackthorn"
+        ],
+        "hoa hop": [
+          "DA_AluneUniqueTrait18"
+        ],
+        "hoa linh": [
+          "DA_18_Blossom"
+        ],
+        "hoa nguc": [
+          "DA_18_Inferno"
+        ],
+        "khac tinh": [
+          "DA_18_Rival"
+        ],
+        "lien kich": [
+          "DA_18_Rapidfire"
+        ],
+        "luc bao": [
+          "DA_Emerald18"
+        ],
+        "mat trang": [
+          "DA_18_Lunar"
+        ],
+        "mat troi": [
+          "DA_18_Solar"
+        ],
+        "nguyen sinh": [
+          "DA_Primal18"
+        ],
+        "quai rung": [
+          "DA_Riftbeast18"
+        ],
+        "san thuong": [
+          "DA_DravenUniqueTrait18"
+        ],
+        "tan pha": [
+          "DA_18_Slayer"
+        ],
+        "than rung": [
+          "DA_18_Elderwood"
+        ],
+        "the than": [
+          "DA_18_LuxUniqueTrait"
+        ],
+        "thich ung": [
+          "DA_18_Adaptor"
+        ],
+        "thien thuc": [
+          "DA_18_Eclipse"
+        ],
+        "tho san": [
+          "DA_18_Hunter"
+        ],
+        "thu than": [
+          "DA_18_Greenfather"
+        ],
+        "thuat si": [
+          "DA_18_Invoker"
+        ],
+        "thuat su": [
+          "DA_18_Spellweaver"
+        ],
+        "thuc vat": [
+          "DA_FloraFatalis18"
+        ],
+        "tien hac am": [
+          "DA_18_Coven"
+        ],
+        "tien linh": [
+          "DA_18_Fae"
+        ],
+        "tien phong": [
+          "DA_18_Vanguard"
+        ],
+        "tinh nghich": [
+          "DA_18_Sprykin"
+        ],
+        "trieu hoi": [
+          "DA_18_Summoner"
+        ],
+        "ve quan": [
+          "DA_18_Defender"
+        ],
+        "vuon gai": [
+          "DA_18_ZyraUniqueTrait"
+        ]
+      }
+    }
+  },
+  "display": {
+    "augments": {
+      "DA_18_BigGrabBag": {
+        "en": "Big Grab Bag",
+        "vi": "Túi Đồ Cỡ Đại"
+      },
+      "DA_18_BlossomTraitAugment": {
+        "en": "Blossom's Call",
+        "vi": "Tiếng Gọi Hoa Linh"
+      },
+      "DA_18_BranchingOut": {
+        "en": "Branching Out",
+        "vi": "Phân Nhánh"
+      },
+      "DA_18_BranchingOutPlus": {
+        "en": "Branching Out+",
+        "vi": "Phân Nhánh+"
+      },
+      "DA_18_CaretakersAlly": {
+        "en": "Caretaker's Ally",
+        "vi": "Đồng Minh Của Bụt"
+      },
+      "DA_18_CovenTraitAugment": {
+        "en": "Coven Acolyte",
+        "vi": "Tín Đồ Tiên Hắc Ám"
+      },
+      "DA_18_CovenTraitAugment_LootToAP": {
+        "en": "Dark Ritual",
+        "vi": "Tà Thuật"
+      },
+      "DA_18_DuoQueue": {
+        "en": "Duo Queue",
+        "vi": "Hàng Chờ Đấu Đôi"
+      },
+      "DA_18_ElderwoodTraitAugment": {
+        "en": "Nature's Shelter",
+        "vi": "Thiên Nhiên Che Chở"
+      },
+      "DA_18_FOURcing": {
+        "en": "FOURcing",
+        "vi": "Ép Bốn"
+      },
+      "DA_18_FaeTraitAugment": {
+        "en": "Embiggen",
+        "vi": "Hóa Lớn"
+      },
+      "DA_18_FloraFatalisAugment": {
+        "en": "Consuming Flora",
+        "vi": "Thực Vật Hấp Thụ"
+      },
+      "DA_18_FloraFatalisAugmentPlus": {
+        "en": "Consuming Flora",
+        "vi": "Thực Vật Hấp Thụ"
+      },
+      "DA_18_GoodForSomethingI": {
+        "en": "Good For Something I",
+        "vi": "Được Cái Này Mất Cái Kia I"
+      },
+      "DA_18_InfernoTraitAugment": {
+        "en": "Flame On",
+        "vi": "Bùng Cháy"
+      },
+      "DA_18_LunarTraitAugment": {
+        "en": "Sun and Moon",
+        "vi": "Mặt Trời và Mặt Trăng"
+      },
+      "DA_18_LunarTraitAugmentPlus": {
+        "en": "Sun and Moon+",
+        "vi": "Mặt Trời và Mặt Trăng+"
+      },
+      "DA_18_LuxAugmentII": {
+        "en": "Master of All Origins",
+        "vi": "Tinh Thông Mọi Tộc"
+      },
+      "DA_18_OneTwoFive": {
+        "en": "One, Two, Five!",
+        "vi": "Một, Hai, Năm!"
+      },
+      "DA_18_OnesTwosThree": {
+        "en": "Ones Two Three",
+        "vi": "Một, Hai, Ba"
+      },
+      "DA_18_PrimalAugmentPlus_Nidalee": {
+        "en": "Beast Within+",
+        "vi": "Quái Thú Bên Trong+"
+      },
+      "DA_18_PrimalAugmentPlus_Sivir": {
+        "en": "Beast Within+",
+        "vi": "Quái Thú Bên Trong+"
+      },
+      "DA_18_PrimalAugment_Nidalee": {
+        "en": "Beast Within",
+        "vi": "Quái Thú Bên Trong"
+      },
+      "DA_18_PrimalAugment_Sivir": {
+        "en": "Beast Within",
+        "vi": "Quái Thú Bên Trong"
+      },
+      "DA_18_ResidualMagic": {
+        "en": "Residual Magic",
+        "vi": "Dư Âm Ma Thuật"
+      },
+      "DA_18_ResidualMagicPlus": {
+        "en": "Residual Magic +",
+        "vi": "Dư Âm Ma Thuật +"
+      },
+      "DA_18_ResidualMagicPlusPlus": {
+        "en": "Residual Magic ++",
+        "vi": "Dư Âm Ma Thuật ++"
+      },
+      "DA_18_RiftbeastTraitAugment": {
+        "en": "Omega Riftbeast",
+        "vi": "Quái Rừng Omega"
+      },
+      "DA_18_RivalsAugment": {
+        "en": "Unrivaled",
+        "vi": "Không Đối Thủ"
+      },
+      "DA_18_SolarTraitAugment": {
+        "en": "Chosen of the Sun",
+        "vi": "Sự Lựa Chọn của Mặt Trời"
+      },
+      "DA_18_SprykinAugment": {
+        "en": "Small Furry Friend",
+        "vi": "Lông Xù Bé Nhỏ"
+      },
+      "DA_18_WeightTheWorth": {
+        "en": "Weight The Worth",
+        "vi": "Xứng Đáng Chờ Đợi"
+      },
+      "DA_18_WispRebatePlus": {
+        "en": "Wisp Rebate",
+        "vi": "Tinh Linh Hoàn Tiền"
+      },
+      "DA_18_WispRebatePlusPlus": {
+        "en": "Wisp Rebate+",
+        "vi": "Tinh Linh Hoàn Tiền+"
+      },
+      "DA_AdvancedLoan": {
+        "en": "Advanced Loan",
+        "vi": "Vay Tạm Ứng"
+      },
+      "DA_AdvancedLoanPlus": {
+        "en": "Advanced Loan+",
+        "vi": "Vay Tạm Ứng+"
+      },
+      "DA_ArcaneViktory": {
+        "en": "Arcane Viktor-y",
+        "vi": "Arcane Viktor-y"
+      },
+      "DA_Ascension": {
+        "en": "Ascension",
+        "vi": "Thăng Hoa"
+      },
+      "DA_AugmentedPower": {
+        "en": "Augmented Power",
+        "vi": "Nâng Tầm Uy Lực"
+      },
+      "DA_BacklineBlueprint": {
+        "en": "Backline Blueprint",
+        "vi": "Sơ Đồ Tuyến Sau"
+      },
+      "DA_BackupBows": {
+        "en": "Backup Bows",
+        "vi": "Cung Dự Phòng"
+      },
+      "DA_BandOfThieves": {
+        "en": "Band of Thieves",
+        "vi": "Băng Trộm"
+      },
+      "DA_BandOfThievesII": {
+        "en": "Band of Thieves II",
+        "vi": "Băng Trộm II"
+      },
+      "DA_BandOfThievesIIPlus": {
+        "en": "Band of Thieves II+",
+        "vi": "Băng Trộm II+"
+      },
+      "DA_BandOfThievesIIPlusPlus": {
+        "en": "Band of Thieves II++",
+        "vi": "Băng Trộm II++"
+      },
+      "DA_BaronsLair": {
+        "en": "Baron's Lair",
+        "vi": "Hang Ổ Baron"
+      },
+      "DA_BeltOverflow": {
+        "en": "Belt Overflow",
+        "vi": "Đam Mê Đai Lưng"
+      },
+      "DA_BirthdayPresent": {
+        "en": "Birthday Present",
+        "vi": "Quà Sinh Nhật"
+      },
+      "DA_BirthdayReunion": {
+        "en": "Birthday Reunion",
+        "vi": "Sinh Nhật Đoàn Tụ"
+      },
+      "DA_BlackthornTraitAugment": {
+        "en": "Item Extraction",
+        "vi": "Chiết Xuất Trang Bị"
+      },
+      "DA_BodyguardTraining": {
+        "en": "Bodyguard Training",
+        "vi": "Huấn Luyện Cận Vệ"
+      },
+      "DA_BonusGift": {
+        "en": "Bonus Gift",
+        "vi": "Quà Tặng Thêm"
+      },
+      "DA_BonusGiftPlus": {
+        "en": "Bonus Gift+",
+        "vi": "Quà Tặng Thêm+"
+      },
+      "DA_BoosterPack": {
+        "en": "Booster Pack",
+        "vi": "Gói Tăng Cường"
+      },
+      "DA_BoosterPackPlus": {
+        "en": "Booster Pack+",
+        "vi": "Gói Tăng Cường+"
+      },
+      "DA_BoosterPackPlusPlus": {
+        "en": "Booster Pack++",
+        "vi": "Gói Tăng Cường++"
+      },
+      "DA_BoxingLessons": {
+        "en": "Boxing Lessons",
+        "vi": "Tập Chịu Đòn"
+      },
+      "DA_BronzeForLifeI": {
+        "en": "Bronze For Life I",
+        "vi": "Tất Tay Bậc Đồng I"
+      },
+      "DA_BronzeForLifeII": {
+        "en": "Bronze For Life II",
+        "vi": "Tất Tay Bậc Đồng II"
+      },
+      "DA_BuildABud": {
+        "en": "Build A Bud",
+        "vi": "Tự Lập Đội"
+      },
+      "DA_BuriedTreasuresIII": {
+        "en": "Buried Treasures III",
+        "vi": "Kho Báu Chôn Giấu III"
+      },
+      "DA_CalculatedLoss": {
+        "en": "Calculated Loss",
+        "vi": "Thua Có Tính Toán"
+      },
+      "DA_CallToChaos": {
+        "en": "Call To Chaos",
+        "vi": "Triệu Gọi Hỗn Mang"
+      },
+      "DA_CalledShot": {
+        "en": "Called Shot",
+        "vi": "Đòn Quyết Định"
+      },
+      "DA_CapitalGainsI": {
+        "en": "Capital Gains I",
+        "vi": "Tăng Vốn I"
+      },
+      "DA_CapitalGainsII": {
+        "en": "Capital Gains II",
+        "vi": "Tăng Vốn II"
+      },
+      "DA_CaretakersFavor": {
+        "en": "Caretaker's Favor",
+        "vi": "Chúc Phúc Của Bụt"
+      },
+      "DA_CarveAPath": {
+        "en": "Carve a Path",
+        "vi": "Mở Lối"
+      },
+      "DA_CelestialBlessingI": {
+        "en": "Celestial Blessing I",
+        "vi": "Phước Lành Vũ Trụ I"
+      },
+      "DA_CelestialBlessingII": {
+        "en": "Celestial Blessing II",
+        "vi": "Phước Lành Vũ Trụ II"
+      },
+      "DA_CelestialBlessingIII": {
+        "en": "Celestial Blessing III",
+        "vi": "Phước Lành Vũ Trụ III"
+      },
+      "DA_ChallengersGrace": {
+        "en": "Challenger's Grace",
+        "vi": "Ân Huệ Thách Đấu"
+      },
+      "DA_ChampDelivery": {
+        "en": "Champ Delivery",
+        "vi": "Phân Phối Tướng"
+      },
+      "DA_ChampDeliveryPlus": {
+        "en": "Champ Delivery+",
+        "vi": "Phân Phối Tướng+"
+      },
+      "DA_ChampDeliveryPlusPlus": {
+        "en": "Champ Delivery++",
+        "vi": "Phân Phối Tướng++"
+      },
+      "DA_ClearMind": {
+        "en": "Clear Mind",
+        "vi": "Thông Thoáng"
+      },
+      "DA_ClockworkAccelerator": {
+        "en": "Clockwork Accelerator",
+        "vi": "Động Cơ Tăng Tốc"
+      },
+      "DA_ClutteredMind": {
+        "en": "Cluttered Mind",
+        "vi": "Bừa Bộn"
+      },
+      "DA_CognitiveOverload": {
+        "en": "Cognitive Overload",
+        "vi": "Quá Tải Tư Duy"
+      },
+      "DA_CognitiveTax": {
+        "en": "Cognitive Tax",
+        "vi": "Thuế Nhận Thức"
+      },
+      "DA_CognitiveTaxPlus": {
+        "en": "Cognitive Tax+",
+        "vi": "Thuế Nhận Thức+"
+      },
+      "DA_ComebackStory": {
+        "en": "Comeback Story",
+        "vi": "Cố Gắng Lật Kèo"
+      },
+      "DA_CommerceCore": {
+        "en": "Commerce Core",
+        "vi": "Trung Tâm Thương Mại"
+      },
+      "DA_ComponentBuffet": {
+        "en": "Component Buffet",
+        "vi": "Đại Tiệc Trang Bị"
+      },
+      "DA_ComponentQuest": {
+        "en": "Component Quest",
+        "vi": "Nhiệm Vụ Trang Bị"
+      },
+      "DA_ConstructACompanion": {
+        "en": "Construct a Companion",
+        "vi": "Người Bạn Vàng"
+      },
+      "DA_CookingPot": {
+        "en": "Cooking Pot",
+        "vi": "Nồi Nấu Ăn"
+      },
+      "DA_Coronation": {
+        "en": "Coronation",
+        "vi": "Lên Ngôi Vương"
+      },
+      "DA_Corrosion": {
+        "en": "Corrosion",
+        "vi": "Ăn Mòn"
+      },
+      "DA_CraftedCrafting": {
+        "en": "Crafted Crafting",
+        "vi": "Khéo Tay Hay Làm"
+      },
+      "DA_CryMeARiver": {
+        "en": "Cry Me A River",
+        "vi": "Giọt Lệ Bi Ai"
+      },
+      "DA_CursedCrown": {
+        "en": "Cursed Crown",
+        "vi": "Vương Miện Hắc Hóa"
+      },
+      "DA_CyberneticImplants_Gold": {
+        "en": "Cybernetic Implants",
+        "vi": "Cấy Ghép Siêu Công Nghệ"
+      },
+      "DA_CyberneticUplink_Gold": {
+        "en": "Cybernetic Uplink",
+        "vi": "Trí Tuệ Siêu Công Nghệ"
+      },
+      "DA_DeadlierBlades": {
+        "en": "Deadlier Blades",
+        "vi": "Kiếm Tử Thần"
+      },
+      "DA_DeadlierCaps": {
+        "en": "Deadlier Caps",
+        "vi": "Mũ Tử Thần"
+      },
+      "DA_DoubleTrouble": {
+        "en": "Double Trouble",
+        "vi": "Cặp Đôi Hoàn Cảnh"
+      },
+      "DA_Dummify": {
+        "en": "Dummify",
+        "vi": "Hình Nhân Hóa"
+      },
+      "DA_EarlyLearnings": {
+        "en": "Early Learnings",
+        "vi": "Bài Học Sơ Khai"
+      },
+      "DA_ElectrochargeI": {
+        "en": "Electrocharge I",
+        "vi": "Tụ Điện I"
+      },
+      "DA_ElectrochargeII": {
+        "en": "Electrocharge II",
+        "vi": "Tụ Điện II"
+      },
+      "DA_EpicRolldown": {
+        "en": "Epic Rolldown",
+        "vi": "Xúc Xắc Hoành Tráng"
+      },
+      "DA_Epoch": {
+        "en": "Epoch",
+        "vi": "Kỷ Nguyên"
+      },
+      "DA_EpochPlus": {
+        "en": "Epoch+",
+        "vi": "Kỷ Nguyên+"
+      },
+      "DA_ExclusiveCustomization": {
+        "en": "Exclusive Customization",
+        "vi": "Lựa Chọn Độc Quyền"
+      },
+      "DA_Expedition": {
+        "en": "Expedition",
+        "vi": "Cuộc Viễn Chinh"
+      },
+      "DA_ExplosiveGrowth": {
+        "en": "Explosive Growth",
+        "vi": "Tăng Trưởng Bùng Nổ"
+      },
+      "DA_ExplosiveGrowthPlus": {
+        "en": "Explosive Growth+",
+        "vi": "Tăng Trưởng Bùng Nổ+"
+      },
+      "DA_ExtraBuckles": {
+        "en": "Extra Buckles",
+        "vi": "Khóa Dự Phòng"
+      },
+      "DA_FeelingLucky": {
+        "en": "Feeling Lucky",
+        "vi": "Cảm Thấy May Mắn"
+      },
+      "DA_FindYourCenter": {
+        "en": "Find Your Center",
+        "vi": "Tiền Vệ Trung Tâm"
+      },
+      "DA_Flexible": {
+        "en": "Flexible",
+        "vi": "Linh Hoạt"
+      },
+      "DA_FlowingTears": {
+        "en": "Flowing Tears",
+        "vi": "Lệ Lưu Ly"
+      },
+      "DA_FocusedFire": {
+        "en": "Focused Fire",
+        "vi": "Tập Trung Hỏa Lực"
+      },
+      "DA_ForgeAFriend": {
+        "en": "Forge A Friend",
+        "vi": "Chế Tạo Bằng Hữu"
+      },
+      "DA_ForgedInStrength": {
+        "en": "Forged In Strength",
+        "vi": "Tôi Luyện Sức Mạnh"
+      },
+      "DA_FrontlineFoundation": {
+        "en": "Frontline Foundation",
+        "vi": "Củng Cố Tuyến Trước"
+      },
+      "DA_FutureFocused": {
+        "en": "Future Focused",
+        "vi": "Định Hướng Tương Lai"
+      },
+      "DA_GainGold": {
+        "en": "Gain 21 Gold",
+        "vi": "Nhận 21 Vàng"
+      },
+      "DA_GiantAndMighty": {
+        "en": "Giant and Mighty",
+        "vi": "To Lớn & Mạnh Mẽ"
+      },
+      "DA_GildedSteel": {
+        "en": "Gilded Steel",
+        "vi": "Thép Mạ Vàng"
+      },
+      "DA_GlassCannon_Gold": {
+        "en": "Glass Cannon II",
+        "vi": "Lấy Công Bù Thủ II"
+      },
+      "DA_GlassCannon_Silver": {
+        "en": "Glass Cannon I",
+        "vi": "Lấy Công Bù Thủ I"
+      },
+      "DA_GoingLong": {
+        "en": "Going Long",
+        "vi": "Thích Mở Rộng"
+      },
+      "DA_GoldDestiny": {
+        "en": "Gold Destiny",
+        "vi": "Vận Mệnh Vàng"
+      },
+      "DA_GoldDestinyPlus": {
+        "en": "Gold Destiny+",
+        "vi": "Vận Mệnh Vàng+"
+      },
+      "DA_GoldenEgg": {
+        "en": "The Golden Egg",
+        "vi": "Rồng Đẻ Trứng Vàng"
+      },
+      "DA_GoldenGamble": {
+        "en": "Golden Gamble",
+        "vi": "Ván Cược Hoàng Kim"
+      },
+      "DA_GoldenGamblePlus": {
+        "en": "Golden Gamble+",
+        "vi": "Ván Cược Hoàng Kim+"
+      },
+      "DA_GoldenGamblePlusPlus": {
+        "en": "Golden Gamble++",
+        "vi": "Ván Cược Hoàng Kim++"
+      },
+      "DA_GroupHugI": {
+        "en": "Group Hug I",
+        "vi": "Ôm Tập Thể I"
+      },
+      "DA_GroupHugII": {
+        "en": "Group Hug II",
+        "vi": "Ôm Tập Thể II"
+      },
+      "DA_HardBargain": {
+        "en": "Hard Bargain",
+        "vi": "Thương Vụ Khó Xơi"
+      },
+      "DA_HardCommit": {
+        "en": "Hard Commit",
+        "vi": "Chỉ Một Con Đường"
+      },
+      "DA_HealingOrbsI": {
+        "en": "Healing Orbs I",
+        "vi": "Cầu Hồi Phục I"
+      },
+      "DA_HealingOrbsII": {
+        "en": "Healing Orbs II",
+        "vi": "Cầu Hồi Phục II"
+      },
+      "DA_HeartOfSteel": {
+        "en": "Heart of Steel",
+        "vi": "Trái Tim Sắt Đá"
+      },
+      "DA_HedgeFund": {
+        "en": "Hedge Fund",
+        "vi": "Quỹ Phòng Hộ"
+      },
+      "DA_HeroicGrabBag": {
+        "en": "Heroic Grab Bag",
+        "vi": "Túi Đồ Siêu Hùng"
+      },
+      "DA_HeroicGrabBagPlus": {
+        "en": "Heroic Grab Bag+",
+        "vi": "Túi Đồ Siêu Hùng+"
+      },
+      "DA_HeroicGrabBagPlusPlus": {
+        "en": "Heroic Grab Bag++",
+        "vi": "Túi Đồ Siêu Hùng++"
+      },
+      "DA_HoldTheLine": {
+        "en": "Hold the Line",
+        "vi": "Giữ Vững Hàng Ngũ"
+      },
+      "DA_Hustler": {
+        "en": "Hustler",
+        "vi": "Sống Vội"
+      },
+      "DA_InfinityProtection": {
+        "en": "Infinity Protection",
+        "vi": "Bảo Hộ Vô Tận"
+      },
+      "DA_InvestedPlus": {
+        "en": "Invested+",
+        "vi": "Đầu Tư+"
+      },
+      "DA_InvestedPlusPlus": {
+        "en": "Invested++",
+        "vi": "Đầu Tư++"
+      },
+      "DA_InvestmentStrategy": {
+        "en": "Investment Strategy II",
+        "vi": "Chiến Thuật Đầu Tư II"
+      },
+      "DA_InvestmentStrategyI": {
+        "en": "Investment Strategy I",
+        "vi": "Chiến Thuật Đầu Tư I"
+      },
+      "DA_IronAssets": {
+        "en": "Iron Assets",
+        "vi": "Kho Báu Sắt"
+      },
+      "DA_ItemGrabBag": {
+        "en": "Item Grab Bag I",
+        "vi": "Tiếp Tế Trang Bị I"
+      },
+      "DA_ItsMeBaby": {
+        "en": "It's Me, Baby",
+        "vi": "Là Ta Đây"
+      },
+      "DA_JeweledLotus_I": {
+        "en": "Jeweled Lotus I",
+        "vi": "Khảm Bảo Thạch I"
+      },
+      "DA_JeweledLotus_II": {
+        "en": "Jeweled Lotus II",
+        "vi": "Khảm Bảo Thạch II"
+      },
+      "DA_KickStart": {
+        "en": "Kick Start",
+        "vi": "Khởi Động Nhanh"
+      },
+      "DA_Kingslayer": {
+        "en": "Kingslayer",
+        "vi": "Đồ Vương"
+      },
+      "DA_LateGameScaling": {
+        "en": "Late Game Scaling",
+        "vi": "Thăng Tiến Cuối Trận"
+      },
+      "DA_LateGameSpecialist": {
+        "en": "Late Game Specialist",
+        "vi": "Hướng Đến Hồi Kết"
+      },
+      "DA_LatentForge": {
+        "en": "Latent Forge",
+        "vi": "Lò Rèn Tiềm Ẩn"
+      },
+      "DA_LegionOfThrees": {
+        "en": "Legion Of Threes",
+        "vi": "Quân Đoàn 3 Sao"
+      },
+      "DA_LevelUp": {
+        "en": "Level Up!",
+        "vi": "Thăng Cấp!"
+      },
+      "DA_LivingForge": {
+        "en": "Living Forge",
+        "vi": "Chế Tạo Tại Chỗ"
+      },
+      "DA_LoadedDice": {
+        "en": "Loaded Dice",
+        "vi": "Gian Lận"
+      },
+      "DA_LuckyGloves": {
+        "en": "Lucky Gloves",
+        "vi": "Đo Ni Đóng Giày"
+      },
+      "DA_LuckyGlovesPlus": {
+        "en": "Lucky Gloves+",
+        "vi": "Đo Ni Đóng Giày+"
+      },
+      "DA_LuxurySubscription": {
+        "en": "Luxury Subscription",
+        "vi": "Gói Đăng Ký Hạng Sang"
+      },
+      "DA_MagicRoll": {
+        "en": "Magic Roll",
+        "vi": "Xúc Xắc Ma Pháp"
+      },
+      "DA_MakeshiftArmorI": {
+        "en": "Makeshift Armor I",
+        "vi": "Giáp Tự Chế I"
+      },
+      "DA_MakeshiftArmorII": {
+        "en": "Makeshift Armor II",
+        "vi": "Giáp Tự Chế II"
+      },
+      "DA_MaliciousMonetization": {
+        "en": "Malicious Monetization",
+        "vi": "Dòng Tiền Mờ Ám"
+      },
+      "DA_MaxBuild": {
+        "en": "Max Build",
+        "vi": "Đội Hình Tối Ưu"
+      },
+      "DA_Min_Max": {
+        "en": "Min-Max",
+        "vi": "Tối Đa Hóa"
+      },
+      "DA_MissedConnections": {
+        "en": "Missed Connections",
+        "vi": "Kết Nối Gián Đoạn"
+      },
+      "DA_MoneyHungryPlus": {
+        "en": "Money Hungry+",
+        "vi": "Cơn Khát Vàng+"
+      },
+      "DA_MoneyHungry_NotBroken": {
+        "en": "Money Hungry",
+        "vi": "Cơn Khát Vàng"
+      },
+      "DA_MoneyMonsoon": {
+        "en": "Money Monsoon",
+        "vi": "Bão Vàng"
+      },
+      "DA_NestingAnvils": {
+        "en": "Nesting Anvils",
+        "vi": "Gói Trang Bị Bất Ngờ"
+      },
+      "DA_NestingAnvilsPlus": {
+        "en": "Nesting Anvils+",
+        "vi": "Gói Trang Bị Bất Ngờ+"
+      },
+      "DA_NestingDollsPlus": {
+        "en": "Nesting Dolls",
+        "vi": "Búp Bê Xây Tổ"
+      },
+      "DA_NestingDollsPlusPlus": {
+        "en": "Nesting Dolls",
+        "vi": "Búp Bê Xây Tổ"
+      },
+      "DA_NoScoutNoPivot": {
+        "en": "NO SCOUT NO PIVOT",
+        "vi": "NHẮM MẮT CHƠI BỪA"
+      },
+      "DA_OneBuffTwoBuff": {
+        "en": "One Buff Two Buff",
+        "vi": "Một Bùa, Hai Bùa"
+      },
+      "DA_PandorasBench": {
+        "en": "Pandora's Bench",
+        "vi": "Hàng Chờ Pandora"
+      },
+      "DA_PandorasItemsI": {
+        "en": "Pandora's Items I",
+        "vi": "Hộp Pandora I"
+      },
+      "DA_PandorasItemsII": {
+        "en": "Pandora's Items II",
+        "vi": "Hộp Pandora II"
+      },
+      "DA_PandorasItemsIII": {
+        "en": "Pandora's Items III",
+        "vi": "Hộp Pandora III"
+      },
+      "DA_PartialAscension": {
+        "en": "Partial Ascension",
+        "vi": "Bán Thăng Hoa"
+      },
+      "DA_PatienceIsAVirtue": {
+        "en": "Patience Is A Virtue",
+        "vi": "Kiên Nhẫn Là Một Đức Tính"
+      },
+      "DA_PatientStudy": {
+        "en": "Patient Study",
+        "vi": "Kiên Nhẫn Học Tập"
+      },
+      "DA_Pilfer": {
+        "en": "Pilfer",
+        "vi": "Ăn Trộm"
+      },
+      "DA_PlotArmor": {
+        "en": "Plot Armor",
+        "vi": "Hào Quang Nhân Vật Chính"
+      },
+      "DA_PortableForge": {
+        "en": "Portable Forge",
+        "vi": "Lò Rèn Thần Thoại"
+      },
+      "DA_PrismaticDestiny": {
+        "en": "Prismatic Destiny",
+        "vi": "Vận Mệnh Kim Cương"
+      },
+      "DA_PrismaticDestinyPlus": {
+        "en": "Prismatic Destiny+",
+        "vi": "Vận Mệnh Kim Cương+"
+      },
+      "DA_PrismaticTicket": {
+        "en": "Prismatic Ticket",
+        "vi": "Vé Kim Cương"
+      },
+      "DA_PromisedProtection": {
+        "en": "Promised Protection",
+        "vi": "Thệ Ước Bảo Hộ"
+      },
+      "DA_QuickStreaks": {
+        "en": "Quick Streaks",
+        "vi": "Tích Chuỗi Nhanh"
+      },
+      "DA_RadiantRascal": {
+        "en": "Radiant Rascal",
+        "vi": "Quang Lân Tiểu Yêu"
+      },
+      "DA_RadiantRelic": {
+        "en": "Radiant Relics",
+        "vi": "Kho Thần Tích"
+      },
+      "DA_Recombobulator": {
+        "en": "Recombobulator",
+        "vi": "Xoay Bài Tự Động"
+      },
+      "DA_Replication": {
+        "en": "Replication",
+        "vi": "Nhân Bản"
+      },
+      "DA_Retribution": {
+        "en": "Retribution",
+        "vi": "Báo Oán"
+      },
+      "DA_RollingForDays": {
+        "en": "Rolling For Days",
+        "vi": "Xúc Xắc Vô Tận"
+      },
+      "DA_SalvageBin": {
+        "en": "Salvage Bin",
+        "vi": "Nhà Máy Tái Chế"
+      },
+      "DA_SalvageBinPlus": {
+        "en": "Salvage Bin+",
+        "vi": "Nhà Máy Tái Chế+"
+      },
+      "DA_SeraphimsStaff": {
+        "en": "Seraphim's Staff",
+        "vi": "Trượng Đại Thiên Sứ"
+      },
+      "DA_ShimmerscaleEssence": {
+        "en": "Shimmerscale Essence",
+        "vi": "Tinh Túy Kim Long"
+      },
+      "DA_ShoppingSpree": {
+        "en": "Shopping Spree",
+        "vi": "Tín Đồ Mua Sắm"
+      },
+      "DA_SilverDestiny": {
+        "en": "Silver Destiny",
+        "vi": "Vận Mệnh Bạc"
+      },
+      "DA_SilverDestinyPlus": {
+        "en": "Silver Destiny+",
+        "vi": "Vận Mệnh Bạc+"
+      },
+      "DA_SilverDestinyPlusPlus": {
+        "en": "Silver Destiny++",
+        "vi": "Vận Mệnh Bạc++"
+      },
+      "DA_SilverSpoon": {
+        "en": "Silver Spoon",
+        "vi": "Đặc Quyền Phú Gia"
+      },
+      "DA_Slammin": {
+        "en": "Slammin'",
+        "vi": "Hạ Đo Ván"
+      },
+      "DA_SlamminPlus": {
+        "en": "Slammin'+",
+        "vi": "Hạ Đo Ván+"
+      },
+      "DA_SliceOfLife": {
+        "en": "Slice of Life",
+        "vi": "Chuyện Đời Thường"
+      },
+      "DA_SlightlyMagicRoll": {
+        "en": "Slightly Magic Roll",
+        "vi": "Quay Trúng Thưởng"
+      },
+      "DA_SmallGrabBag": {
+        "en": "Small Grab Bag",
+        "vi": "Túi Đồ Cỡ Nhỏ"
+      },
+      "DA_SoloLeveling": {
+        "en": "Solo Leveling",
+        "vi": "Tôi Thăng Cấp Một Mình"
+      },
+      "DA_SoloPlate": {
+        "en": "Solo Plate",
+        "vi": "Khiên Đơn Đấu"
+      },
+      "DA_SoulAwakening": {
+        "en": "Soul Awakening",
+        "vi": "Thức Tỉnh Linh Hồn"
+      },
+      "DA_SpeedyDoubleKill": {
+        "en": "Speedy Double Kill",
+        "vi": "Song Sát Tốc Hành"
+      },
+      "DA_SpiritOfRedemption": {
+        "en": "Spirit Of Redemption",
+        "vi": "Linh Hồn Chuộc Tội"
+      },
+      "DA_SpreadingRoots": {
+        "en": "Spreading Roots",
+        "vi": "Cắm Rễ Phân Tán"
+      },
+      "DA_SpreadingRootsPlus": {
+        "en": "Spreading Roots+",
+        "vi": "Cắm Rễ Phân Tán+"
+      },
+      "DA_Staffsmith": {
+        "en": "Staffsmith",
+        "vi": "Thợ Rèn Gậy"
+      },
+      "DA_StandUnited": {
+        "en": "Stand United",
+        "vi": "Nhất Thống"
+      },
+      "DA_SweetTreats": {
+        "en": "Sweet Treats",
+        "vi": "Món Quà Ngọt Ngào"
+      },
+      "DA_SwordOverflow": {
+        "en": "Sword Overflow",
+        "vi": "Đam Mê Kiếm"
+      },
+      "DA_Swordsmith": {
+        "en": "Swordsmith",
+        "vi": "Thợ Rèn Kiếm"
+      },
+      "DA_TacticiansKitchen": {
+        "en": "Tactician's Kitchen",
+        "vi": "Linh Thú Vào Bếp"
+      },
+      "DA_TeamBuilding": {
+        "en": "Team Building",
+        "vi": "Xây Dựng Đội Hình"
+      },
+      "DA_TheGoldenDragon": {
+        "en": "The Golden Dragon",
+        "vi": "Kim Long"
+      },
+      "DA_TheTower": {
+        "en": "The Tower",
+        "vi": "Tòa Tháp"
+      },
+      "DA_TheTraitTree": {
+        "en": "The Trait Tree",
+        "vi": "Cây Tộc/Hệ"
+      },
+      "DA_TheTraitTreePlus": {
+        "en": "The Trait Tree+",
+        "vi": "Cây Tộc/Hệ+"
+      },
+      "DA_TimeSkip": {
+        "en": "Time Skip",
+        "vi": "Vượt Thời Gian"
+      },
+      "DA_TonsOfStatsI": {
+        "en": "Tons of Stats!",
+        "vi": "Cộng Mệt Nghỉ!"
+      },
+      "DA_TonsOfStatsII": {
+        "en": "TONS of Stats!",
+        "vi": "Cộng Mệt Nghỉ!"
+      },
+      "DA_TradeSector": {
+        "en": "Trade Sector",
+        "vi": "Khu Giao Dịch"
+      },
+      "DA_TradeSectorPlus": {
+        "en": "Trade Sector+",
+        "vi": "Khu Giao Dịch+"
+      },
+      "DA_TraitLadder": {
+        "en": "Trait Ladder",
+        "vi": "Thứ Hạng Tộc Hệ"
+      },
+      "DA_TwinGuardians": {
+        "en": "Twin Guardians",
+        "vi": "Song Vệ"
+      },
+      "DA_URF": {
+        "en": "U.R.F",
+        "vi": "U.R.F."
+      },
+      "DA_UpwardMobility": {
+        "en": "Upward Mobility",
+        "vi": "Đẩy Nhanh Tiến Độ"
+      },
+      "DA_UrfsGrabBag": {
+        "en": "Urf's Grab Bag",
+        "vi": "Túi Đồ Urf"
+      },
+      "DA_VerticalityI": {
+        "en": "Verticality I",
+        "vi": "Chỉ Một Con Đường I"
+      },
+      "DA_VerticalityII": {
+        "en": "Verticality II",
+        "vi": "Chỉ Một Con Đường II"
+      },
+      "DA_VerticalityIII": {
+        "en": "Verticality III",
+        "vi": "Chỉ Một Con Đường III"
+      },
+      "DA_WandOverflow": {
+        "en": "Wand Overflow",
+        "vi": "Đam Mê Gậy"
+      },
+      "DA_Warpath": {
+        "en": "Warpath",
+        "vi": "Đường Ra Trận"
+      },
+      "DA_WeStickTogether": {
+        "en": "We Stick Together",
+        "vi": "Kề Vai Sát Cánh"
+      },
+      "DA_WorththeWait": {
+        "en": "Worth the Wait",
+        "vi": "Chờ Đợi Xứng Đáng"
+      },
+      "DA_WorththeWaitII": {
+        "en": "Worth the Wait II",
+        "vi": "Chờ Đợi Xứng Đáng II"
+      },
+      "DA_WovenMagic": {
+        "en": "Woven Magic",
+        "vi": "Ma Thuật Đan Kết"
+      },
+      "DA_YoungAndWildAndFree": {
+        "en": "Young and Wild and Free",
+        "vi": "Trẻ, Khỏe & Tự Do"
+      }
+    },
+    "champions": {
+      "DA_18_Ahri": {
+        "en": "Ahri",
+        "vi": "Ahri"
+      },
+      "DA_18_Akali_AD": {
+        "en": "Akali",
+        "vi": "Akali"
+      },
+      "DA_18_Alistar": {
+        "en": "Alistar",
+        "vi": "Alistar"
+      },
+      "DA_18_Alune": {
+        "en": "Alune",
+        "vi": "Alune"
+      },
+      "DA_18_Aphelios": {
+        "en": "Aphelios",
+        "vi": "Aphelios"
+      },
+      "DA_18_Ashe": {
+        "en": "Ashe",
+        "vi": "Ashe"
+      },
+      "DA_18_Azir": {
+        "en": "Azir",
+        "vi": "Azir"
+      },
+      "DA_18_Caitlyn": {
+        "en": "Caitlyn",
+        "vi": "Caitlyn"
+      },
+      "DA_18_Camille": {
+        "en": "Camille",
+        "vi": "Camille"
+      },
+      "DA_18_Cassiopeia": {
+        "en": "Cassiopeia",
+        "vi": "Cassiopeia"
+      },
+      "DA_18_Diana": {
+        "en": "Diana",
+        "vi": "Diana"
+      },
+      "DA_18_ElderDragon": {
+        "en": "Elder Dragon",
+        "vi": "Rồng Ngàn Tuổi"
+      },
+      "DA_18_Elise": {
+        "en": "Elise",
+        "vi": "Elise"
+      },
+      "DA_18_Ezreal": {
+        "en": "Ezreal",
+        "vi": "Ezreal"
+      },
+      "DA_18_GnarSmall": {
+        "en": "Gnar",
+        "vi": "Gnar"
+      },
+      "DA_18_Hecarim": {
+        "en": "Hecarim",
+        "vi": "Hecarim"
+      },
+      "DA_18_Ivern": {
+        "en": "Ivern",
+        "vi": "Ivern"
+      },
+      "DA_18_Kayle": {
+        "en": "Kayle",
+        "vi": "Kayle"
+      },
+      "DA_18_Kennen": {
+        "en": "Kennen",
+        "vi": "Kennen"
+      },
+      "DA_18_KhaZix": {
+        "en": "Kha'Zix",
+        "vi": "Kha'Zix"
+      },
+      "DA_18_Kobuko": {
+        "en": "Kobuko",
+        "vi": "Kobuko"
+      },
+      "DA_18_LeBlanc": {
+        "en": "LeBlanc",
+        "vi": "LeBlanc"
+      },
+      "DA_18_Leona": {
+        "en": "Leona",
+        "vi": "Leona"
+      },
+      "DA_18_Lillia": {
+        "en": "Lillia",
+        "vi": "Lillia"
+      },
+      "DA_18_Malphite": {
+        "en": "Malphite",
+        "vi": "Malphite"
+      },
+      "DA_18_Maokai": {
+        "en": "Maokai",
+        "vi": "Maokai"
+      },
+      "DA_18_MasterYi_AD": {
+        "en": "Master Yi",
+        "vi": "Master Yi"
+      },
+      "DA_18_Morgana": {
+        "en": "Morgana",
+        "vi": "Morgana"
+      },
+      "DA_18_Ornn": {
+        "en": "Ornn",
+        "vi": "Ornn"
+      },
+      "DA_18_Rakan": {
+        "en": "Rakan",
+        "vi": "Rakan"
+      },
+      "DA_18_Rammus": {
+        "en": "Rammus",
+        "vi": "Rammus"
+      },
+      "DA_18_RekSai": {
+        "en": "Rek'Sai",
+        "vi": "Rek'Sai"
+      },
+      "DA_18_Rengar": {
+        "en": "Rengar",
+        "vi": "Rengar"
+      },
+      "DA_18_Sejuani": {
+        "en": "Sejuani",
+        "vi": "Sejuani"
+      },
+      "DA_18_Sentry": {
+        "en": "Pebbles",
+        "vi": "Sỏi"
+      },
+      "DA_18_Sett": {
+        "en": "Sett",
+        "vi": "Sett"
+      },
+      "DA_18_Shen": {
+        "en": "Shen",
+        "vi": "Shen"
+      },
+      "DA_18_Sivir": {
+        "en": "Sivir",
+        "vi": "Sivir"
+      },
+      "DA_18_Soraka": {
+        "en": "Soraka",
+        "vi": "Soraka"
+      },
+      "DA_18_Teemo": {
+        "en": "Teemo",
+        "vi": "Teemo"
+      },
+      "DA_18_Tristana": {
+        "en": "Tristana",
+        "vi": "Tristana"
+      },
+      "DA_18_Varus": {
+        "en": "Varus",
+        "vi": "Varus"
+      },
+      "DA_18_Veigar": {
+        "en": "Veigar",
+        "vi": "Veigar"
+      },
+      "DA_18_Warwick": {
+        "en": "Warwick",
+        "vi": "Warwick"
+      },
+      "DA_18_Xayah": {
+        "en": "Xayah",
+        "vi": "Xayah"
+      },
+      "DA_18_Yorick": {
+        "en": "Yorick",
+        "vi": "Yorick"
+      },
+      "DA_18_Yunara": {
+        "en": "Yunara",
+        "vi": "Yunara"
+      },
+      "DA_18_Zyra": {
+        "en": "Zyra",
+        "vi": "Zyra"
+      },
+      "DA_Amumu18": {
+        "en": "Amumu",
+        "vi": "Amumu"
+      },
+      "DA_Brambleback18": {
+        "en": "Brambleback",
+        "vi": "Bụi Gai Đỏ"
+      },
+      "DA_Cinderling18": {
+        "en": "Cinderling",
+        "vi": "Mầm Non"
+      },
+      "DA_CrimsonRaptor18": {
+        "en": "Mama Beak",
+        "vi": "Chim Mẹ"
+      },
+      "DA_Draven18": {
+        "en": "Draven",
+        "vi": "Draven"
+      },
+      "DA_Fiddlesticks18": {
+        "en": "Fiddlesticks",
+        "vi": "Fiddlesticks"
+      },
+      "DA_Gromp18_AP": {
+        "en": "Gromp",
+        "vi": "Cóc Thành Tinh"
+      },
+      "DA_Karma18": {
+        "en": "Karma",
+        "vi": "Karma"
+      },
+      "DA_KogMaw18_AD": {
+        "en": "Kog'Maw",
+        "vi": "Kog'Maw"
+      },
+      "DA_Krug18": {
+        "en": "Krug",
+        "vi": "Quái Đá Krug"
+      },
+      "DA_Lux18_Base": {
+        "en": "Lux",
+        "vi": "Lux"
+      },
+      "DA_Murkwolf18": {
+        "en": "Murkwolf",
+        "vi": "Sói Hắc Ám"
+      },
+      "DA_Nidalee18_AP": {
+        "en": "Nidalee",
+        "vi": "Nidalee"
+      },
+      "DA_Scuttlecrab18": {
+        "en": "Scuttlecrab",
+        "vi": "Cua Kỳ Cục"
+      },
+      "DA_Sentinel18": {
+        "en": "Sentinel",
+        "vi": "Người Đá"
+      },
+      "DA_Taric18": {
+        "en": "Taric",
+        "vi": "Taric"
+      },
+      "DA_Vi18": {
+        "en": "Vi",
+        "vi": "Vi"
+      }
+    },
+    "traits": {
+      "DA_18_Adaptor": {
+        "en": "Adaptor",
+        "vi": "Thích Ứng"
+      },
+      "DA_18_ApexPredator": {
+        "en": "Apex Predator",
+        "vi": "Bá Chủ"
+      },
+      "DA_18_Battlemage": {
+        "en": "Monolith",
+        "vi": "Cự Thạch"
+      },
+      "DA_18_Blackthorn": {
+        "en": "Blackthorn",
+        "vi": "Gai Đen"
+      },
+      "DA_18_Blossom": {
+        "en": "Blossom",
+        "vi": "Hoa Linh"
+      },
+      "DA_18_Brawler": {
+        "en": "Brawler",
+        "vi": "Đấu Sĩ"
+      },
+      "DA_18_Caustic": {
+        "en": "Caustic",
+        "vi": "Ăn Mòn"
+      },
+      "DA_18_Coven": {
+        "en": "Coven",
+        "vi": "Tiên Hắc Ám"
+      },
+      "DA_18_Defender": {
+        "en": "Defender",
+        "vi": "Vệ Quân"
+      },
+      "DA_18_Eclipse": {
+        "en": "Eclipse",
+        "vi": "Thiên Thực"
+      },
+      "DA_18_Elderwood": {
+        "en": "Elderwood",
+        "vi": "Thần Rừng"
+      },
+      "DA_18_Executioner": {
+        "en": "Executioner",
+        "vi": "Đao Phủ"
+      },
+      "DA_18_Fae": {
+        "en": "Fae",
+        "vi": "Tiên Linh"
+      },
+      "DA_18_Greenfather": {
+        "en": "Greenfather",
+        "vi": "Thụ Thần"
+      },
+      "DA_18_Hunter": {
+        "en": "Hunter",
+        "vi": "Thợ Săn"
+      },
+      "DA_18_Inferno": {
+        "en": "Inferno",
+        "vi": "Hỏa Ngục"
+      },
+      "DA_18_Invoker": {
+        "en": "Invoker",
+        "vi": "Thuật Sĩ"
+      },
+      "DA_18_Lunar": {
+        "en": "Lunar",
+        "vi": "Mặt Trăng"
+      },
+      "DA_18_LuxUniqueTrait": {
+        "en": "Avatar",
+        "vi": "Thế Thần"
+      },
+      "DA_18_Maokai_UniqueTrait": {
+        "en": "Old Growth",
+        "vi": "Cổ Thụ"
+      },
+      "DA_18_Rapidfire": {
+        "en": "Rapidfire",
+        "vi": "Liên Kích"
+      },
+      "DA_18_Rival": {
+        "en": "Rival",
+        "vi": "Khắc Tinh"
+      },
+      "DA_18_Slayer": {
+        "en": "Ravager",
+        "vi": "Tàn Phá"
+      },
+      "DA_18_Solar": {
+        "en": "Solar",
+        "vi": "Mặt Trời"
+      },
+      "DA_18_Spellweaver": {
+        "en": "Spellweaver",
+        "vi": "Thuật Sư"
+      },
+      "DA_18_Sprykin": {
+        "en": "Sprykin",
+        "vi": "Tinh Nghịch"
+      },
+      "DA_18_Summoner": {
+        "en": "Summoner",
+        "vi": "Triệu Hồi"
+      },
+      "DA_18_Vanguard": {
+        "en": "Vanguard",
+        "vi": "Tiên Phong"
+      },
+      "DA_18_ZyraUniqueTrait": {
+        "en": "Thornmaiden",
+        "vi": "Vườn Gai"
+      },
+      "DA_AluneUniqueTrait18": {
+        "en": "Attuned",
+        "vi": "Hòa Hợp"
+      },
+      "DA_DravenUniqueTrait18": {
+        "en": "Bounty Seeker",
+        "vi": "Săn Thưởng"
+      },
+      "DA_Emerald18": {
+        "en": "Emerald Aspect",
+        "vi": "Lục Bảo"
+      },
+      "DA_FloraFatalis18": {
+        "en": "Flora Fatalis",
+        "vi": "Thực Vật"
+      },
+      "DA_Juggernaut18": {
+        "en": "Juggernaut",
+        "vi": "Dũng Sĩ"
+      },
+      "DA_Primal18": {
+        "en": "Primal",
+        "vi": "Nguyên Sinh"
+      },
+      "DA_Riftbeast18": {
+        "en": "Riftbeast",
+        "vi": "Quái Rừng"
+      }
+    }
+  },
+  "exact": {
+    "augments": {
+      "en": {
+        "Advanced Loan": [
+          "DA_AdvancedLoan"
+        ],
+        "Advanced Loan+": [
+          "DA_AdvancedLoanPlus"
+        ],
+        "Arcane Viktor-y": [
+          "DA_ArcaneViktory"
+        ],
+        "Ascension": [
+          "DA_Ascension"
+        ],
+        "Augmented Power": [
+          "DA_AugmentedPower"
+        ],
+        "Backline Blueprint": [
+          "DA_BacklineBlueprint"
+        ],
+        "Backup Bows": [
+          "DA_BackupBows"
+        ],
+        "Band of Thieves": [
+          "DA_BandOfThieves"
+        ],
+        "Band of Thieves II": [
+          "DA_BandOfThievesII"
+        ],
+        "Band of Thieves II+": [
+          "DA_BandOfThievesIIPlus"
+        ],
+        "Band of Thieves II++": [
+          "DA_BandOfThievesIIPlusPlus"
+        ],
+        "Baron's Lair": [
+          "DA_BaronsLair"
+        ],
+        "Beast Within": [
+          "DA_18_PrimalAugment_Nidalee",
+          "DA_18_PrimalAugment_Sivir"
+        ],
+        "Beast Within+": [
+          "DA_18_PrimalAugmentPlus_Nidalee",
+          "DA_18_PrimalAugmentPlus_Sivir"
+        ],
+        "Belt Overflow": [
+          "DA_BeltOverflow"
+        ],
+        "Big Grab Bag": [
+          "DA_18_BigGrabBag"
+        ],
+        "Birthday Present": [
+          "DA_BirthdayPresent"
+        ],
+        "Birthday Reunion": [
+          "DA_BirthdayReunion"
+        ],
+        "Blossom's Call": [
+          "DA_18_BlossomTraitAugment"
+        ],
+        "Bodyguard Training": [
+          "DA_BodyguardTraining"
+        ],
+        "Bonus Gift": [
+          "DA_BonusGift"
+        ],
+        "Bonus Gift+": [
+          "DA_BonusGiftPlus"
+        ],
+        "Booster Pack": [
+          "DA_BoosterPack"
+        ],
+        "Booster Pack+": [
+          "DA_BoosterPackPlus"
+        ],
+        "Booster Pack++": [
+          "DA_BoosterPackPlusPlus"
+        ],
+        "Boxing Lessons": [
+          "DA_BoxingLessons"
+        ],
+        "Branching Out": [
+          "DA_18_BranchingOut"
+        ],
+        "Branching Out+": [
+          "DA_18_BranchingOutPlus"
+        ],
+        "Bronze For Life I": [
+          "DA_BronzeForLifeI"
+        ],
+        "Bronze For Life II": [
+          "DA_BronzeForLifeII"
+        ],
+        "Build A Bud": [
+          "DA_BuildABud"
+        ],
+        "Buried Treasures III": [
+          "DA_BuriedTreasuresIII"
+        ],
+        "Calculated Loss": [
+          "DA_CalculatedLoss"
+        ],
+        "Call To Chaos": [
+          "DA_CallToChaos"
+        ],
+        "Called Shot": [
+          "DA_CalledShot"
+        ],
+        "Capital Gains I": [
+          "DA_CapitalGainsI"
+        ],
+        "Capital Gains II": [
+          "DA_CapitalGainsII"
+        ],
+        "Caretaker's Ally": [
+          "DA_18_CaretakersAlly"
+        ],
+        "Caretaker's Favor": [
+          "DA_CaretakersFavor"
+        ],
+        "Carve a Path": [
+          "DA_CarveAPath"
+        ],
+        "Celestial Blessing I": [
+          "DA_CelestialBlessingI"
+        ],
+        "Celestial Blessing II": [
+          "DA_CelestialBlessingII"
+        ],
+        "Celestial Blessing III": [
+          "DA_CelestialBlessingIII"
+        ],
+        "Challenger's Grace": [
+          "DA_ChallengersGrace"
+        ],
+        "Champ Delivery": [
+          "DA_ChampDelivery"
+        ],
+        "Champ Delivery+": [
+          "DA_ChampDeliveryPlus"
+        ],
+        "Champ Delivery++": [
+          "DA_ChampDeliveryPlusPlus"
+        ],
+        "Chosen of the Sun": [
+          "DA_18_SolarTraitAugment"
+        ],
+        "Clear Mind": [
+          "DA_ClearMind"
+        ],
+        "Clockwork Accelerator": [
+          "DA_ClockworkAccelerator"
+        ],
+        "Cluttered Mind": [
+          "DA_ClutteredMind"
+        ],
+        "Cognitive Overload": [
+          "DA_CognitiveOverload"
+        ],
+        "Cognitive Tax": [
+          "DA_CognitiveTax"
+        ],
+        "Cognitive Tax+": [
+          "DA_CognitiveTaxPlus"
+        ],
+        "Comeback Story": [
+          "DA_ComebackStory"
+        ],
+        "Commerce Core": [
+          "DA_CommerceCore"
+        ],
+        "Component Buffet": [
+          "DA_ComponentBuffet"
+        ],
+        "Component Quest": [
+          "DA_ComponentQuest"
+        ],
+        "Construct a Companion": [
+          "DA_ConstructACompanion"
+        ],
+        "Consuming Flora": [
+          "DA_18_FloraFatalisAugment",
+          "DA_18_FloraFatalisAugmentPlus"
+        ],
+        "Cooking Pot": [
+          "DA_CookingPot"
+        ],
+        "Coronation": [
+          "DA_Coronation"
+        ],
+        "Corrosion": [
+          "DA_Corrosion"
+        ],
+        "Coven Acolyte": [
+          "DA_18_CovenTraitAugment"
+        ],
+        "Crafted Crafting": [
+          "DA_CraftedCrafting"
+        ],
+        "Cry Me A River": [
+          "DA_CryMeARiver"
+        ],
+        "Cursed Crown": [
+          "DA_CursedCrown"
+        ],
+        "Cybernetic Implants": [
+          "DA_CyberneticImplants_Gold"
+        ],
+        "Cybernetic Uplink": [
+          "DA_CyberneticUplink_Gold"
+        ],
+        "Dark Ritual": [
+          "DA_18_CovenTraitAugment_LootToAP"
+        ],
+        "Deadlier Blades": [
+          "DA_DeadlierBlades"
+        ],
+        "Deadlier Caps": [
+          "DA_DeadlierCaps"
+        ],
+        "Double Trouble": [
+          "DA_DoubleTrouble"
+        ],
+        "Dummify": [
+          "DA_Dummify"
+        ],
+        "Duo Queue": [
+          "DA_18_DuoQueue"
+        ],
+        "Early Learnings": [
+          "DA_EarlyLearnings"
+        ],
+        "Electrocharge I": [
+          "DA_ElectrochargeI"
+        ],
+        "Electrocharge II": [
+          "DA_ElectrochargeII"
+        ],
+        "Embiggen": [
+          "DA_18_FaeTraitAugment"
+        ],
+        "Epic Rolldown": [
+          "DA_EpicRolldown"
+        ],
+        "Epoch": [
+          "DA_Epoch"
+        ],
+        "Epoch+": [
+          "DA_EpochPlus"
+        ],
+        "Exclusive Customization": [
+          "DA_ExclusiveCustomization"
+        ],
+        "Expedition": [
+          "DA_Expedition"
+        ],
+        "Explosive Growth": [
+          "DA_ExplosiveGrowth"
+        ],
+        "Explosive Growth+": [
+          "DA_ExplosiveGrowthPlus"
+        ],
+        "Extra Buckles": [
+          "DA_ExtraBuckles"
+        ],
+        "FOURcing": [
+          "DA_18_FOURcing"
+        ],
+        "Feeling Lucky": [
+          "DA_FeelingLucky"
+        ],
+        "Find Your Center": [
+          "DA_FindYourCenter"
+        ],
+        "Flame On": [
+          "DA_18_InfernoTraitAugment"
+        ],
+        "Flexible": [
+          "DA_Flexible"
+        ],
+        "Flowing Tears": [
+          "DA_FlowingTears"
+        ],
+        "Focused Fire": [
+          "DA_FocusedFire"
+        ],
+        "Forge A Friend": [
+          "DA_ForgeAFriend"
+        ],
+        "Forged In Strength": [
+          "DA_ForgedInStrength"
+        ],
+        "Frontline Foundation": [
+          "DA_FrontlineFoundation"
+        ],
+        "Future Focused": [
+          "DA_FutureFocused"
+        ],
+        "Gain 21 Gold": [
+          "DA_GainGold"
+        ],
+        "Giant and Mighty": [
+          "DA_GiantAndMighty"
+        ],
+        "Gilded Steel": [
+          "DA_GildedSteel"
+        ],
+        "Glass Cannon I": [
+          "DA_GlassCannon_Silver"
+        ],
+        "Glass Cannon II": [
+          "DA_GlassCannon_Gold"
+        ],
+        "Going Long": [
+          "DA_GoingLong"
+        ],
+        "Gold Destiny": [
+          "DA_GoldDestiny"
+        ],
+        "Gold Destiny+": [
+          "DA_GoldDestinyPlus"
+        ],
+        "Golden Gamble": [
+          "DA_GoldenGamble"
+        ],
+        "Golden Gamble+": [
+          "DA_GoldenGamblePlus"
+        ],
+        "Golden Gamble++": [
+          "DA_GoldenGamblePlusPlus"
+        ],
+        "Good For Something I": [
+          "DA_18_GoodForSomethingI"
+        ],
+        "Group Hug I": [
+          "DA_GroupHugI"
+        ],
+        "Group Hug II": [
+          "DA_GroupHugII"
+        ],
+        "Hard Bargain": [
+          "DA_HardBargain"
+        ],
+        "Hard Commit": [
+          "DA_HardCommit"
+        ],
+        "Healing Orbs I": [
+          "DA_HealingOrbsI"
+        ],
+        "Healing Orbs II": [
+          "DA_HealingOrbsII"
+        ],
+        "Heart of Steel": [
+          "DA_HeartOfSteel"
+        ],
+        "Hedge Fund": [
+          "DA_HedgeFund"
+        ],
+        "Heroic Grab Bag": [
+          "DA_HeroicGrabBag"
+        ],
+        "Heroic Grab Bag+": [
+          "DA_HeroicGrabBagPlus"
+        ],
+        "Heroic Grab Bag++": [
+          "DA_HeroicGrabBagPlusPlus"
+        ],
+        "Hold the Line": [
+          "DA_HoldTheLine"
+        ],
+        "Hustler": [
+          "DA_Hustler"
+        ],
+        "Infinity Protection": [
+          "DA_InfinityProtection"
+        ],
+        "Invested+": [
+          "DA_InvestedPlus"
+        ],
+        "Invested++": [
+          "DA_InvestedPlusPlus"
+        ],
+        "Investment Strategy I": [
+          "DA_InvestmentStrategyI"
+        ],
+        "Investment Strategy II": [
+          "DA_InvestmentStrategy"
+        ],
+        "Iron Assets": [
+          "DA_IronAssets"
+        ],
+        "It's Me, Baby": [
+          "DA_ItsMeBaby"
+        ],
+        "Item Extraction": [
+          "DA_BlackthornTraitAugment"
+        ],
+        "Item Grab Bag I": [
+          "DA_ItemGrabBag"
+        ],
+        "Jeweled Lotus I": [
+          "DA_JeweledLotus_I"
+        ],
+        "Jeweled Lotus II": [
+          "DA_JeweledLotus_II"
+        ],
+        "Kick Start": [
+          "DA_KickStart"
+        ],
+        "Kingslayer": [
+          "DA_Kingslayer"
+        ],
+        "Late Game Scaling": [
+          "DA_LateGameScaling"
+        ],
+        "Late Game Specialist": [
+          "DA_LateGameSpecialist"
+        ],
+        "Latent Forge": [
+          "DA_LatentForge"
+        ],
+        "Legion Of Threes": [
+          "DA_LegionOfThrees"
+        ],
+        "Level Up!": [
+          "DA_LevelUp"
+        ],
+        "Living Forge": [
+          "DA_LivingForge"
+        ],
+        "Loaded Dice": [
+          "DA_LoadedDice"
+        ],
+        "Lucky Gloves": [
+          "DA_LuckyGloves"
+        ],
+        "Lucky Gloves+": [
+          "DA_LuckyGlovesPlus"
+        ],
+        "Luxury Subscription": [
+          "DA_LuxurySubscription"
+        ],
+        "Magic Roll": [
+          "DA_MagicRoll"
+        ],
+        "Makeshift Armor I": [
+          "DA_MakeshiftArmorI"
+        ],
+        "Makeshift Armor II": [
+          "DA_MakeshiftArmorII"
+        ],
+        "Malicious Monetization": [
+          "DA_MaliciousMonetization"
+        ],
+        "Master of All Origins": [
+          "DA_18_LuxAugmentII"
+        ],
+        "Max Build": [
+          "DA_MaxBuild"
+        ],
+        "Min-Max": [
+          "DA_Min_Max"
+        ],
+        "Missed Connections": [
+          "DA_MissedConnections"
+        ],
+        "Money Hungry": [
+          "DA_MoneyHungry_NotBroken"
+        ],
+        "Money Hungry+": [
+          "DA_MoneyHungryPlus"
+        ],
+        "Money Monsoon": [
+          "DA_MoneyMonsoon"
+        ],
+        "NO SCOUT NO PIVOT": [
+          "DA_NoScoutNoPivot"
+        ],
+        "Nature's Shelter": [
+          "DA_18_ElderwoodTraitAugment"
+        ],
+        "Nesting Anvils": [
+          "DA_NestingAnvils"
+        ],
+        "Nesting Anvils+": [
+          "DA_NestingAnvilsPlus"
+        ],
+        "Nesting Dolls": [
+          "DA_NestingDollsPlus",
+          "DA_NestingDollsPlusPlus"
+        ],
+        "Omega Riftbeast": [
+          "DA_18_RiftbeastTraitAugment"
+        ],
+        "One Buff Two Buff": [
+          "DA_OneBuffTwoBuff"
+        ],
+        "One, Two, Five!": [
+          "DA_18_OneTwoFive"
+        ],
+        "Ones Two Three": [
+          "DA_18_OnesTwosThree"
+        ],
+        "Pandora's Bench": [
+          "DA_PandorasBench"
+        ],
+        "Pandora's Items I": [
+          "DA_PandorasItemsI"
+        ],
+        "Pandora's Items II": [
+          "DA_PandorasItemsII"
+        ],
+        "Pandora's Items III": [
+          "DA_PandorasItemsIII"
+        ],
+        "Partial Ascension": [
+          "DA_PartialAscension"
+        ],
+        "Patience Is A Virtue": [
+          "DA_PatienceIsAVirtue"
+        ],
+        "Patient Study": [
+          "DA_PatientStudy"
+        ],
+        "Pilfer": [
+          "DA_Pilfer"
+        ],
+        "Plot Armor": [
+          "DA_PlotArmor"
+        ],
+        "Portable Forge": [
+          "DA_PortableForge"
+        ],
+        "Prismatic Destiny": [
+          "DA_PrismaticDestiny"
+        ],
+        "Prismatic Destiny+": [
+          "DA_PrismaticDestinyPlus"
+        ],
+        "Prismatic Ticket": [
+          "DA_PrismaticTicket"
+        ],
+        "Promised Protection": [
+          "DA_PromisedProtection"
+        ],
+        "Quick Streaks": [
+          "DA_QuickStreaks"
+        ],
+        "Radiant Rascal": [
+          "DA_RadiantRascal"
+        ],
+        "Radiant Relics": [
+          "DA_RadiantRelic"
+        ],
+        "Recombobulator": [
+          "DA_Recombobulator"
+        ],
+        "Replication": [
+          "DA_Replication"
+        ],
+        "Residual Magic": [
+          "DA_18_ResidualMagic"
+        ],
+        "Residual Magic +": [
+          "DA_18_ResidualMagicPlus"
+        ],
+        "Residual Magic ++": [
+          "DA_18_ResidualMagicPlusPlus"
+        ],
+        "Retribution": [
+          "DA_Retribution"
+        ],
+        "Rolling For Days": [
+          "DA_RollingForDays"
+        ],
+        "Salvage Bin": [
+          "DA_SalvageBin"
+        ],
+        "Salvage Bin+": [
+          "DA_SalvageBinPlus"
+        ],
+        "Seraphim's Staff": [
+          "DA_SeraphimsStaff"
+        ],
+        "Shimmerscale Essence": [
+          "DA_ShimmerscaleEssence"
+        ],
+        "Shopping Spree": [
+          "DA_ShoppingSpree"
+        ],
+        "Silver Destiny": [
+          "DA_SilverDestiny"
+        ],
+        "Silver Destiny+": [
+          "DA_SilverDestinyPlus"
+        ],
+        "Silver Destiny++": [
+          "DA_SilverDestinyPlusPlus"
+        ],
+        "Silver Spoon": [
+          "DA_SilverSpoon"
+        ],
+        "Slammin'": [
+          "DA_Slammin"
+        ],
+        "Slammin'+": [
+          "DA_SlamminPlus"
+        ],
+        "Slice of Life": [
+          "DA_SliceOfLife"
+        ],
+        "Slightly Magic Roll": [
+          "DA_SlightlyMagicRoll"
+        ],
+        "Small Furry Friend": [
+          "DA_18_SprykinAugment"
+        ],
+        "Small Grab Bag": [
+          "DA_SmallGrabBag"
+        ],
+        "Solo Leveling": [
+          "DA_SoloLeveling"
+        ],
+        "Solo Plate": [
+          "DA_SoloPlate"
+        ],
+        "Soul Awakening": [
+          "DA_SoulAwakening"
+        ],
+        "Speedy Double Kill": [
+          "DA_SpeedyDoubleKill"
+        ],
+        "Spirit Of Redemption": [
+          "DA_SpiritOfRedemption"
+        ],
+        "Spreading Roots": [
+          "DA_SpreadingRoots"
+        ],
+        "Spreading Roots+": [
+          "DA_SpreadingRootsPlus"
+        ],
+        "Staffsmith": [
+          "DA_Staffsmith"
+        ],
+        "Stand United": [
+          "DA_StandUnited"
+        ],
+        "Sun and Moon": [
+          "DA_18_LunarTraitAugment"
+        ],
+        "Sun and Moon+": [
+          "DA_18_LunarTraitAugmentPlus"
+        ],
+        "Sweet Treats": [
+          "DA_SweetTreats"
+        ],
+        "Sword Overflow": [
+          "DA_SwordOverflow"
+        ],
+        "Swordsmith": [
+          "DA_Swordsmith"
+        ],
+        "TONS of Stats!": [
+          "DA_TonsOfStatsII"
+        ],
+        "Tactician's Kitchen": [
+          "DA_TacticiansKitchen"
+        ],
+        "Team Building": [
+          "DA_TeamBuilding"
+        ],
+        "The Golden Dragon": [
+          "DA_TheGoldenDragon"
+        ],
+        "The Golden Egg": [
+          "DA_GoldenEgg"
+        ],
+        "The Tower": [
+          "DA_TheTower"
+        ],
+        "The Trait Tree": [
+          "DA_TheTraitTree"
+        ],
+        "The Trait Tree+": [
+          "DA_TheTraitTreePlus"
+        ],
+        "Time Skip": [
+          "DA_TimeSkip"
+        ],
+        "Tons of Stats!": [
+          "DA_TonsOfStatsI"
+        ],
+        "Trade Sector": [
+          "DA_TradeSector"
+        ],
+        "Trade Sector+": [
+          "DA_TradeSectorPlus"
+        ],
+        "Trait Ladder": [
+          "DA_TraitLadder"
+        ],
+        "Twin Guardians": [
+          "DA_TwinGuardians"
+        ],
+        "U.R.F": [
+          "DA_URF"
+        ],
+        "Unrivaled": [
+          "DA_18_RivalsAugment"
+        ],
+        "Upward Mobility": [
+          "DA_UpwardMobility"
+        ],
+        "Urf's Grab Bag": [
+          "DA_UrfsGrabBag"
+        ],
+        "Verticality I": [
+          "DA_VerticalityI"
+        ],
+        "Verticality II": [
+          "DA_VerticalityII"
+        ],
+        "Verticality III": [
+          "DA_VerticalityIII"
+        ],
+        "Wand Overflow": [
+          "DA_WandOverflow"
+        ],
+        "Warpath": [
+          "DA_Warpath"
+        ],
+        "We Stick Together": [
+          "DA_WeStickTogether"
+        ],
+        "Weight The Worth": [
+          "DA_18_WeightTheWorth"
+        ],
+        "Wisp Rebate": [
+          "DA_18_WispRebatePlus"
+        ],
+        "Wisp Rebate+": [
+          "DA_18_WispRebatePlusPlus"
+        ],
+        "Worth the Wait": [
+          "DA_WorththeWait"
+        ],
+        "Worth the Wait II": [
+          "DA_WorththeWaitII"
+        ],
+        "Woven Magic": [
+          "DA_WovenMagic"
+        ],
+        "Young and Wild and Free": [
+          "DA_YoungAndWildAndFree"
+        ]
+      },
+      "vi": {
+        "Arcane Viktor-y": [
+          "DA_ArcaneViktory"
+        ],
+        "Bài Học Sơ Khai": [
+          "DA_EarlyLearnings"
+        ],
+        "Bán Thăng Hoa": [
+          "DA_PartialAscension"
+        ],
+        "Báo Oán": [
+          "DA_Retribution"
+        ],
+        "Bão Vàng": [
+          "DA_MoneyMonsoon"
+        ],
+        "Bùng Cháy": [
+          "DA_18_InfernoTraitAugment"
+        ],
+        "Búp Bê Xây Tổ": [
+          "DA_NestingDollsPlus",
+          "DA_NestingDollsPlusPlus"
+        ],
+        "Băng Trộm": [
+          "DA_BandOfThieves"
+        ],
+        "Băng Trộm II": [
+          "DA_BandOfThievesII"
+        ],
+        "Băng Trộm II+": [
+          "DA_BandOfThievesIIPlus"
+        ],
+        "Băng Trộm II++": [
+          "DA_BandOfThievesIIPlusPlus"
+        ],
+        "Bảo Hộ Vô Tận": [
+          "DA_InfinityProtection"
+        ],
+        "Bừa Bộn": [
+          "DA_ClutteredMind"
+        ],
+        "Chiến Thuật Đầu Tư I": [
+          "DA_InvestmentStrategyI"
+        ],
+        "Chiến Thuật Đầu Tư II": [
+          "DA_InvestmentStrategy"
+        ],
+        "Chiết Xuất Trang Bị": [
+          "DA_BlackthornTraitAugment"
+        ],
+        "Chuyện Đời Thường": [
+          "DA_SliceOfLife"
+        ],
+        "Chúc Phúc Của Bụt": [
+          "DA_CaretakersFavor"
+        ],
+        "Chế Tạo Bằng Hữu": [
+          "DA_ForgeAFriend"
+        ],
+        "Chế Tạo Tại Chỗ": [
+          "DA_LivingForge"
+        ],
+        "Chỉ Một Con Đường": [
+          "DA_HardCommit"
+        ],
+        "Chỉ Một Con Đường I": [
+          "DA_VerticalityI"
+        ],
+        "Chỉ Một Con Đường II": [
+          "DA_VerticalityII"
+        ],
+        "Chỉ Một Con Đường III": [
+          "DA_VerticalityIII"
+        ],
+        "Chờ Đợi Xứng Đáng": [
+          "DA_WorththeWait"
+        ],
+        "Chờ Đợi Xứng Đáng II": [
+          "DA_WorththeWaitII"
+        ],
+        "Cung Dự Phòng": [
+          "DA_BackupBows"
+        ],
+        "Cuộc Viễn Chinh": [
+          "DA_Expedition"
+        ],
+        "Cây Tộc/Hệ": [
+          "DA_TheTraitTree"
+        ],
+        "Cây Tộc/Hệ+": [
+          "DA_TheTraitTreePlus"
+        ],
+        "Cơn Khát Vàng": [
+          "DA_MoneyHungry_NotBroken"
+        ],
+        "Cơn Khát Vàng+": [
+          "DA_MoneyHungryPlus"
+        ],
+        "Cảm Thấy May Mắn": [
+          "DA_FeelingLucky"
+        ],
+        "Cấy Ghép Siêu Công Nghệ": [
+          "DA_CyberneticImplants_Gold"
+        ],
+        "Cầu Hồi Phục I": [
+          "DA_HealingOrbsI"
+        ],
+        "Cầu Hồi Phục II": [
+          "DA_HealingOrbsII"
+        ],
+        "Cắm Rễ Phân Tán": [
+          "DA_SpreadingRoots"
+        ],
+        "Cắm Rễ Phân Tán+": [
+          "DA_SpreadingRootsPlus"
+        ],
+        "Cặp Đôi Hoàn Cảnh": [
+          "DA_DoubleTrouble"
+        ],
+        "Cố Gắng Lật Kèo": [
+          "DA_ComebackStory"
+        ],
+        "Cộng Mệt Nghỉ!": [
+          "DA_TonsOfStatsI",
+          "DA_TonsOfStatsII"
+        ],
+        "Củng Cố Tuyến Trước": [
+          "DA_FrontlineFoundation"
+        ],
+        "Dòng Tiền Mờ Ám": [
+          "DA_MaliciousMonetization"
+        ],
+        "Dư Âm Ma Thuật": [
+          "DA_18_ResidualMagic"
+        ],
+        "Dư Âm Ma Thuật +": [
+          "DA_18_ResidualMagicPlus"
+        ],
+        "Dư Âm Ma Thuật ++": [
+          "DA_18_ResidualMagicPlusPlus"
+        ],
+        "Gian Lận": [
+          "DA_LoadedDice"
+        ],
+        "Giáp Tự Chế I": [
+          "DA_MakeshiftArmorI"
+        ],
+        "Giáp Tự Chế II": [
+          "DA_MakeshiftArmorII"
+        ],
+        "Giọt Lệ Bi Ai": [
+          "DA_CryMeARiver"
+        ],
+        "Giữ Vững Hàng Ngũ": [
+          "DA_HoldTheLine"
+        ],
+        "Gói Trang Bị Bất Ngờ": [
+          "DA_NestingAnvils"
+        ],
+        "Gói Trang Bị Bất Ngờ+": [
+          "DA_NestingAnvilsPlus"
+        ],
+        "Gói Tăng Cường": [
+          "DA_BoosterPack"
+        ],
+        "Gói Tăng Cường+": [
+          "DA_BoosterPackPlus"
+        ],
+        "Gói Tăng Cường++": [
+          "DA_BoosterPackPlusPlus"
+        ],
+        "Gói Đăng Ký Hạng Sang": [
+          "DA_LuxurySubscription"
+        ],
+        "Hang Ổ Baron": [
+          "DA_BaronsLair"
+        ],
+        "Huấn Luyện Cận Vệ": [
+          "DA_BodyguardTraining"
+        ],
+        "Hàng Chờ Pandora": [
+          "DA_PandorasBench"
+        ],
+        "Hàng Chờ Đấu Đôi": [
+          "DA_18_DuoQueue"
+        ],
+        "Hào Quang Nhân Vật Chính": [
+          "DA_PlotArmor"
+        ],
+        "Hình Nhân Hóa": [
+          "DA_Dummify"
+        ],
+        "Hóa Lớn": [
+          "DA_18_FaeTraitAugment"
+        ],
+        "Hướng Đến Hồi Kết": [
+          "DA_LateGameSpecialist"
+        ],
+        "Hạ Đo Ván": [
+          "DA_Slammin"
+        ],
+        "Hạ Đo Ván+": [
+          "DA_SlamminPlus"
+        ],
+        "Hộp Pandora I": [
+          "DA_PandorasItemsI"
+        ],
+        "Hộp Pandora II": [
+          "DA_PandorasItemsII"
+        ],
+        "Hộp Pandora III": [
+          "DA_PandorasItemsIII"
+        ],
+        "Khiên Đơn Đấu": [
+          "DA_SoloPlate"
+        ],
+        "Kho Báu Chôn Giấu III": [
+          "DA_BuriedTreasuresIII"
+        ],
+        "Kho Báu Sắt": [
+          "DA_IronAssets"
+        ],
+        "Kho Thần Tích": [
+          "DA_RadiantRelic"
+        ],
+        "Khu Giao Dịch": [
+          "DA_TradeSector"
+        ],
+        "Khu Giao Dịch+": [
+          "DA_TradeSectorPlus"
+        ],
+        "Khéo Tay Hay Làm": [
+          "DA_CraftedCrafting"
+        ],
+        "Khóa Dự Phòng": [
+          "DA_ExtraBuckles"
+        ],
+        "Không Đối Thủ": [
+          "DA_18_RivalsAugment"
+        ],
+        "Khảm Bảo Thạch I": [
+          "DA_JeweledLotus_I"
+        ],
+        "Khảm Bảo Thạch II": [
+          "DA_JeweledLotus_II"
+        ],
+        "Khởi Động Nhanh": [
+          "DA_KickStart"
+        ],
+        "Kim Long": [
+          "DA_TheGoldenDragon"
+        ],
+        "Kiên Nhẫn Học Tập": [
+          "DA_PatientStudy"
+        ],
+        "Kiên Nhẫn Là Một Đức Tính": [
+          "DA_PatienceIsAVirtue"
+        ],
+        "Kiếm Tử Thần": [
+          "DA_DeadlierBlades"
+        ],
+        "Kết Nối Gián Đoạn": [
+          "DA_MissedConnections"
+        ],
+        "Kề Vai Sát Cánh": [
+          "DA_WeStickTogether"
+        ],
+        "Kỷ Nguyên": [
+          "DA_Epoch"
+        ],
+        "Kỷ Nguyên+": [
+          "DA_EpochPlus"
+        ],
+        "Linh Hoạt": [
+          "DA_Flexible"
+        ],
+        "Linh Hồn Chuộc Tội": [
+          "DA_SpiritOfRedemption"
+        ],
+        "Linh Thú Vào Bếp": [
+          "DA_TacticiansKitchen"
+        ],
+        "Là Ta Đây": [
+          "DA_ItsMeBaby"
+        ],
+        "Lên Ngôi Vương": [
+          "DA_Coronation"
+        ],
+        "Lò Rèn Thần Thoại": [
+          "DA_PortableForge"
+        ],
+        "Lò Rèn Tiềm Ẩn": [
+          "DA_LatentForge"
+        ],
+        "Lông Xù Bé Nhỏ": [
+          "DA_18_SprykinAugment"
+        ],
+        "Lấy Công Bù Thủ I": [
+          "DA_GlassCannon_Silver"
+        ],
+        "Lấy Công Bù Thủ II": [
+          "DA_GlassCannon_Gold"
+        ],
+        "Lệ Lưu Ly": [
+          "DA_FlowingTears"
+        ],
+        "Lựa Chọn Độc Quyền": [
+          "DA_ExclusiveCustomization"
+        ],
+        "Ma Thuật Đan Kết": [
+          "DA_WovenMagic"
+        ],
+        "Món Quà Ngọt Ngào": [
+          "DA_SweetTreats"
+        ],
+        "Mũ Tử Thần": [
+          "DA_DeadlierCaps"
+        ],
+        "Mặt Trời và Mặt Trăng": [
+          "DA_18_LunarTraitAugment"
+        ],
+        "Mặt Trời và Mặt Trăng+": [
+          "DA_18_LunarTraitAugmentPlus"
+        ],
+        "Một Bùa, Hai Bùa": [
+          "DA_OneBuffTwoBuff"
+        ],
+        "Một, Hai, Ba": [
+          "DA_18_OnesTwosThree"
+        ],
+        "Một, Hai, Năm!": [
+          "DA_18_OneTwoFive"
+        ],
+        "Mở Lối": [
+          "DA_CarveAPath"
+        ],
+        "NHẮM MẮT CHƠI BỪA": [
+          "DA_NoScoutNoPivot"
+        ],
+        "Người Bạn Vàng": [
+          "DA_ConstructACompanion"
+        ],
+        "Nhiệm Vụ Trang Bị": [
+          "DA_ComponentQuest"
+        ],
+        "Nhà Máy Tái Chế": [
+          "DA_SalvageBin"
+        ],
+        "Nhà Máy Tái Chế+": [
+          "DA_SalvageBinPlus"
+        ],
+        "Nhân Bản": [
+          "DA_Replication"
+        ],
+        "Nhất Thống": [
+          "DA_StandUnited"
+        ],
+        "Nhận 21 Vàng": [
+          "DA_GainGold"
+        ],
+        "Nâng Tầm Uy Lực": [
+          "DA_AugmentedPower"
+        ],
+        "Nồi Nấu Ăn": [
+          "DA_CookingPot"
+        ],
+        "Phân Nhánh": [
+          "DA_18_BranchingOut"
+        ],
+        "Phân Nhánh+": [
+          "DA_18_BranchingOutPlus"
+        ],
+        "Phân Phối Tướng": [
+          "DA_ChampDelivery"
+        ],
+        "Phân Phối Tướng+": [
+          "DA_ChampDeliveryPlus"
+        ],
+        "Phân Phối Tướng++": [
+          "DA_ChampDeliveryPlusPlus"
+        ],
+        "Phước Lành Vũ Trụ I": [
+          "DA_CelestialBlessingI"
+        ],
+        "Phước Lành Vũ Trụ II": [
+          "DA_CelestialBlessingII"
+        ],
+        "Phước Lành Vũ Trụ III": [
+          "DA_CelestialBlessingIII"
+        ],
+        "Quang Lân Tiểu Yêu": [
+          "DA_RadiantRascal"
+        ],
+        "Quay Trúng Thưởng": [
+          "DA_SlightlyMagicRoll"
+        ],
+        "Quà Sinh Nhật": [
+          "DA_BirthdayPresent"
+        ],
+        "Quà Tặng Thêm": [
+          "DA_BonusGift"
+        ],
+        "Quà Tặng Thêm+": [
+          "DA_BonusGiftPlus"
+        ],
+        "Quá Tải Tư Duy": [
+          "DA_CognitiveOverload"
+        ],
+        "Quái Rừng Omega": [
+          "DA_18_RiftbeastTraitAugment"
+        ],
+        "Quái Thú Bên Trong": [
+          "DA_18_PrimalAugment_Nidalee",
+          "DA_18_PrimalAugment_Sivir"
+        ],
+        "Quái Thú Bên Trong+": [
+          "DA_18_PrimalAugmentPlus_Nidalee",
+          "DA_18_PrimalAugmentPlus_Sivir"
+        ],
+        "Quân Đoàn 3 Sao": [
+          "DA_LegionOfThrees"
+        ],
+        "Quỹ Phòng Hộ": [
+          "DA_HedgeFund"
+        ],
+        "Rồng Đẻ Trứng Vàng": [
+          "DA_GoldenEgg"
+        ],
+        "Sinh Nhật Đoàn Tụ": [
+          "DA_BirthdayReunion"
+        ],
+        "Song Sát Tốc Hành": [
+          "DA_SpeedyDoubleKill"
+        ],
+        "Song Vệ": [
+          "DA_TwinGuardians"
+        ],
+        "Sơ Đồ Tuyến Sau": [
+          "DA_BacklineBlueprint"
+        ],
+        "Sống Vội": [
+          "DA_Hustler"
+        ],
+        "Sự Lựa Chọn của Mặt Trời": [
+          "DA_18_SolarTraitAugment"
+        ],
+        "Thiên Nhiên Che Chở": [
+          "DA_18_ElderwoodTraitAugment"
+        ],
+        "Thua Có Tính Toán": [
+          "DA_CalculatedLoss"
+        ],
+        "Thuế Nhận Thức": [
+          "DA_CognitiveTax"
+        ],
+        "Thuế Nhận Thức+": [
+          "DA_CognitiveTaxPlus"
+        ],
+        "Thép Mạ Vàng": [
+          "DA_GildedSteel"
+        ],
+        "Thích Mở Rộng": [
+          "DA_GoingLong"
+        ],
+        "Thông Thoáng": [
+          "DA_ClearMind"
+        ],
+        "Thăng Cấp!": [
+          "DA_LevelUp"
+        ],
+        "Thăng Hoa": [
+          "DA_Ascension"
+        ],
+        "Thăng Tiến Cuối Trận": [
+          "DA_LateGameScaling"
+        ],
+        "Thương Vụ Khó Xơi": [
+          "DA_HardBargain"
+        ],
+        "Thệ Ước Bảo Hộ": [
+          "DA_PromisedProtection"
+        ],
+        "Thợ Rèn Gậy": [
+          "DA_Staffsmith"
+        ],
+        "Thợ Rèn Kiếm": [
+          "DA_Swordsmith"
+        ],
+        "Thứ Hạng Tộc Hệ": [
+          "DA_TraitLadder"
+        ],
+        "Thức Tỉnh Linh Hồn": [
+          "DA_SoulAwakening"
+        ],
+        "Thực Vật Hấp Thụ": [
+          "DA_18_FloraFatalisAugment",
+          "DA_18_FloraFatalisAugmentPlus"
+        ],
+        "Tinh Linh Hoàn Tiền": [
+          "DA_18_WispRebatePlus"
+        ],
+        "Tinh Linh Hoàn Tiền+": [
+          "DA_18_WispRebatePlusPlus"
+        ],
+        "Tinh Thông Mọi Tộc": [
+          "DA_18_LuxAugmentII"
+        ],
+        "Tinh Túy Kim Long": [
+          "DA_ShimmerscaleEssence"
+        ],
+        "Tiếng Gọi Hoa Linh": [
+          "DA_18_BlossomTraitAugment"
+        ],
+        "Tiếp Tế Trang Bị I": [
+          "DA_ItemGrabBag"
+        ],
+        "Tiền Vệ Trung Tâm": [
+          "DA_FindYourCenter"
+        ],
+        "To Lớn & Mạnh Mẽ": [
+          "DA_GiantAndMighty"
+        ],
+        "Triệu Gọi Hỗn Mang": [
+          "DA_CallToChaos"
+        ],
+        "Trung Tâm Thương Mại": [
+          "DA_CommerceCore"
+        ],
+        "Trái Tim Sắt Đá": [
+          "DA_HeartOfSteel"
+        ],
+        "Trí Tuệ Siêu Công Nghệ": [
+          "DA_CyberneticUplink_Gold"
+        ],
+        "Trượng Đại Thiên Sứ": [
+          "DA_SeraphimsStaff"
+        ],
+        "Trẻ, Khỏe & Tự Do": [
+          "DA_YoungAndWildAndFree"
+        ],
+        "Tà Thuật": [
+          "DA_18_CovenTraitAugment_LootToAP"
+        ],
+        "Tích Chuỗi Nhanh": [
+          "DA_QuickStreaks"
+        ],
+        "Tín Đồ Mua Sắm": [
+          "DA_ShoppingSpree"
+        ],
+        "Tín Đồ Tiên Hắc Ám": [
+          "DA_18_CovenTraitAugment"
+        ],
+        "Tòa Tháp": [
+          "DA_TheTower"
+        ],
+        "Tôi Luyện Sức Mạnh": [
+          "DA_ForgedInStrength"
+        ],
+        "Tôi Thăng Cấp Một Mình": [
+          "DA_SoloLeveling"
+        ],
+        "Túi Đồ Cỡ Nhỏ": [
+          "DA_SmallGrabBag"
+        ],
+        "Túi Đồ Cỡ Đại": [
+          "DA_18_BigGrabBag"
+        ],
+        "Túi Đồ Siêu Hùng": [
+          "DA_HeroicGrabBag"
+        ],
+        "Túi Đồ Siêu Hùng+": [
+          "DA_HeroicGrabBagPlus"
+        ],
+        "Túi Đồ Siêu Hùng++": [
+          "DA_HeroicGrabBagPlusPlus"
+        ],
+        "Túi Đồ Urf": [
+          "DA_UrfsGrabBag"
+        ],
+        "Tăng Trưởng Bùng Nổ": [
+          "DA_ExplosiveGrowth"
+        ],
+        "Tăng Trưởng Bùng Nổ+": [
+          "DA_ExplosiveGrowthPlus"
+        ],
+        "Tăng Vốn I": [
+          "DA_CapitalGainsI"
+        ],
+        "Tăng Vốn II": [
+          "DA_CapitalGainsII"
+        ],
+        "Tất Tay Bậc Đồng I": [
+          "DA_BronzeForLifeI"
+        ],
+        "Tất Tay Bậc Đồng II": [
+          "DA_BronzeForLifeII"
+        ],
+        "Tập Chịu Đòn": [
+          "DA_BoxingLessons"
+        ],
+        "Tập Trung Hỏa Lực": [
+          "DA_FocusedFire"
+        ],
+        "Tối Đa Hóa": [
+          "DA_Min_Max"
+        ],
+        "Tụ Điện I": [
+          "DA_ElectrochargeI"
+        ],
+        "Tụ Điện II": [
+          "DA_ElectrochargeII"
+        ],
+        "Tự Lập Đội": [
+          "DA_BuildABud"
+        ],
+        "U.R.F.": [
+          "DA_URF"
+        ],
+        "Vay Tạm Ứng": [
+          "DA_AdvancedLoan"
+        ],
+        "Vay Tạm Ứng+": [
+          "DA_AdvancedLoanPlus"
+        ],
+        "Ván Cược Hoàng Kim": [
+          "DA_GoldenGamble"
+        ],
+        "Ván Cược Hoàng Kim+": [
+          "DA_GoldenGamblePlus"
+        ],
+        "Ván Cược Hoàng Kim++": [
+          "DA_GoldenGamblePlusPlus"
+        ],
+        "Vé Kim Cương": [
+          "DA_PrismaticTicket"
+        ],
+        "Vương Miện Hắc Hóa": [
+          "DA_CursedCrown"
+        ],
+        "Vượt Thời Gian": [
+          "DA_TimeSkip"
+        ],
+        "Vận Mệnh Bạc": [
+          "DA_SilverDestiny"
+        ],
+        "Vận Mệnh Bạc+": [
+          "DA_SilverDestinyPlus"
+        ],
+        "Vận Mệnh Bạc++": [
+          "DA_SilverDestinyPlusPlus"
+        ],
+        "Vận Mệnh Kim Cương": [
+          "DA_PrismaticDestiny"
+        ],
+        "Vận Mệnh Kim Cương+": [
+          "DA_PrismaticDestinyPlus"
+        ],
+        "Vận Mệnh Vàng": [
+          "DA_GoldDestiny"
+        ],
+        "Vận Mệnh Vàng+": [
+          "DA_GoldDestinyPlus"
+        ],
+        "Xoay Bài Tự Động": [
+          "DA_Recombobulator"
+        ],
+        "Xây Dựng Đội Hình": [
+          "DA_TeamBuilding"
+        ],
+        "Xúc Xắc Hoành Tráng": [
+          "DA_EpicRolldown"
+        ],
+        "Xúc Xắc Ma Pháp": [
+          "DA_MagicRoll"
+        ],
+        "Xúc Xắc Vô Tận": [
+          "DA_RollingForDays"
+        ],
+        "Xứng Đáng Chờ Đợi": [
+          "DA_18_WeightTheWorth"
+        ],
+        "Ân Huệ Thách Đấu": [
+          "DA_ChallengersGrace"
+        ],
+        "Ép Bốn": [
+          "DA_18_FOURcing"
+        ],
+        "Ôm Tập Thể I": [
+          "DA_GroupHugI"
+        ],
+        "Ôm Tập Thể II": [
+          "DA_GroupHugII"
+        ],
+        "Ăn Mòn": [
+          "DA_Corrosion"
+        ],
+        "Ăn Trộm": [
+          "DA_Pilfer"
+        ],
+        "Đam Mê Gậy": [
+          "DA_WandOverflow"
+        ],
+        "Đam Mê Kiếm": [
+          "DA_SwordOverflow"
+        ],
+        "Đam Mê Đai Lưng": [
+          "DA_BeltOverflow"
+        ],
+        "Đo Ni Đóng Giày": [
+          "DA_LuckyGloves"
+        ],
+        "Đo Ni Đóng Giày+": [
+          "DA_LuckyGlovesPlus"
+        ],
+        "Đòn Quyết Định": [
+          "DA_CalledShot"
+        ],
+        "Đường Ra Trận": [
+          "DA_Warpath"
+        ],
+        "Được Cái Này Mất Cái Kia I": [
+          "DA_18_GoodForSomethingI"
+        ],
+        "Đại Tiệc Trang Bị": [
+          "DA_ComponentBuffet"
+        ],
+        "Đầu Tư+": [
+          "DA_InvestedPlus"
+        ],
+        "Đầu Tư++": [
+          "DA_InvestedPlusPlus"
+        ],
+        "Đẩy Nhanh Tiến Độ": [
+          "DA_UpwardMobility"
+        ],
+        "Đặc Quyền Phú Gia": [
+          "DA_SilverSpoon"
+        ],
+        "Định Hướng Tương Lai": [
+          "DA_FutureFocused"
+        ],
+        "Đồ Vương": [
+          "DA_Kingslayer"
+        ],
+        "Đồng Minh Của Bụt": [
+          "DA_18_CaretakersAlly"
+        ],
+        "Đội Hình Tối Ưu": [
+          "DA_MaxBuild"
+        ],
+        "Động Cơ Tăng Tốc": [
+          "DA_ClockworkAccelerator"
+        ]
+      }
+    },
+    "champions": {
+      "en": {
+        "Ahri": [
+          "DA_18_Ahri"
+        ],
+        "Akali": [
+          "DA_18_Akali_AD"
+        ],
+        "Alistar": [
+          "DA_18_Alistar"
+        ],
+        "Alune": [
+          "DA_18_Alune"
+        ],
+        "Amumu": [
+          "DA_Amumu18"
+        ],
+        "Aphelios": [
+          "DA_18_Aphelios"
+        ],
+        "Ashe": [
+          "DA_18_Ashe"
+        ],
+        "Azir": [
+          "DA_18_Azir"
+        ],
+        "Brambleback": [
+          "DA_Brambleback18"
+        ],
+        "Caitlyn": [
+          "DA_18_Caitlyn"
+        ],
+        "Camille": [
+          "DA_18_Camille"
+        ],
+        "Cassiopeia": [
+          "DA_18_Cassiopeia"
+        ],
+        "Cinderling": [
+          "DA_Cinderling18"
+        ],
+        "Diana": [
+          "DA_18_Diana"
+        ],
+        "Draven": [
+          "DA_Draven18"
+        ],
+        "Elder Dragon": [
+          "DA_18_ElderDragon"
+        ],
+        "Elise": [
+          "DA_18_Elise"
+        ],
+        "Ezreal": [
+          "DA_18_Ezreal"
+        ],
+        "Fiddlesticks": [
+          "DA_Fiddlesticks18"
+        ],
+        "Gnar": [
+          "DA_18_GnarSmall"
+        ],
+        "Gromp": [
+          "DA_Gromp18_AP"
+        ],
+        "Hecarim": [
+          "DA_18_Hecarim"
+        ],
+        "Ivern": [
+          "DA_18_Ivern"
+        ],
+        "Karma": [
+          "DA_Karma18"
+        ],
+        "Kayle": [
+          "DA_18_Kayle"
+        ],
+        "Kennen": [
+          "DA_18_Kennen"
+        ],
+        "Kha'Zix": [
+          "DA_18_KhaZix"
+        ],
+        "Kobuko": [
+          "DA_18_Kobuko"
+        ],
+        "Kog'Maw": [
+          "DA_KogMaw18_AD"
+        ],
+        "Krug": [
+          "DA_Krug18"
+        ],
+        "LeBlanc": [
+          "DA_18_LeBlanc"
+        ],
+        "Leona": [
+          "DA_18_Leona"
+        ],
+        "Lillia": [
+          "DA_18_Lillia"
+        ],
+        "Lux": [
+          "DA_Lux18_Base"
+        ],
+        "Malphite": [
+          "DA_18_Malphite"
+        ],
+        "Mama Beak": [
+          "DA_CrimsonRaptor18"
+        ],
+        "Maokai": [
+          "DA_18_Maokai"
+        ],
+        "Master Yi": [
+          "DA_18_MasterYi_AD"
+        ],
+        "Morgana": [
+          "DA_18_Morgana"
+        ],
+        "Murkwolf": [
+          "DA_Murkwolf18"
+        ],
+        "Nidalee": [
+          "DA_Nidalee18_AP"
+        ],
+        "Ornn": [
+          "DA_18_Ornn"
+        ],
+        "Pebbles": [
+          "DA_18_Sentry"
+        ],
+        "Rakan": [
+          "DA_18_Rakan"
+        ],
+        "Rammus": [
+          "DA_18_Rammus"
+        ],
+        "Rek'Sai": [
+          "DA_18_RekSai"
+        ],
+        "Rengar": [
+          "DA_18_Rengar"
+        ],
+        "Scuttlecrab": [
+          "DA_Scuttlecrab18"
+        ],
+        "Sejuani": [
+          "DA_18_Sejuani"
+        ],
+        "Sentinel": [
+          "DA_Sentinel18"
+        ],
+        "Sett": [
+          "DA_18_Sett"
+        ],
+        "Shen": [
+          "DA_18_Shen"
+        ],
+        "Sivir": [
+          "DA_18_Sivir"
+        ],
+        "Soraka": [
+          "DA_18_Soraka"
+        ],
+        "Taric": [
+          "DA_Taric18"
+        ],
+        "Teemo": [
+          "DA_18_Teemo"
+        ],
+        "Tristana": [
+          "DA_18_Tristana"
+        ],
+        "Varus": [
+          "DA_18_Varus"
+        ],
+        "Veigar": [
+          "DA_18_Veigar"
+        ],
+        "Vi": [
+          "DA_Vi18"
+        ],
+        "Warwick": [
+          "DA_18_Warwick"
+        ],
+        "Xayah": [
+          "DA_18_Xayah"
+        ],
+        "Yorick": [
+          "DA_18_Yorick"
+        ],
+        "Yunara": [
+          "DA_18_Yunara"
+        ],
+        "Zyra": [
+          "DA_18_Zyra"
+        ]
+      },
+      "vi": {
+        "Ahri": [
+          "DA_18_Ahri"
+        ],
+        "Akali": [
+          "DA_18_Akali_AD"
+        ],
+        "Alistar": [
+          "DA_18_Alistar"
+        ],
+        "Alune": [
+          "DA_18_Alune"
+        ],
+        "Amumu": [
+          "DA_Amumu18"
+        ],
+        "Aphelios": [
+          "DA_18_Aphelios"
+        ],
+        "Ashe": [
+          "DA_18_Ashe"
+        ],
+        "Azir": [
+          "DA_18_Azir"
+        ],
+        "Bụi Gai Đỏ": [
+          "DA_Brambleback18"
+        ],
+        "Caitlyn": [
+          "DA_18_Caitlyn"
+        ],
+        "Camille": [
+          "DA_18_Camille"
+        ],
+        "Cassiopeia": [
+          "DA_18_Cassiopeia"
+        ],
+        "Chim Mẹ": [
+          "DA_CrimsonRaptor18"
+        ],
+        "Cua Kỳ Cục": [
+          "DA_Scuttlecrab18"
+        ],
+        "Cóc Thành Tinh": [
+          "DA_Gromp18_AP"
+        ],
+        "Diana": [
+          "DA_18_Diana"
+        ],
+        "Draven": [
+          "DA_Draven18"
+        ],
+        "Elise": [
+          "DA_18_Elise"
+        ],
+        "Ezreal": [
+          "DA_18_Ezreal"
+        ],
+        "Fiddlesticks": [
+          "DA_Fiddlesticks18"
+        ],
+        "Gnar": [
+          "DA_18_GnarSmall"
+        ],
+        "Hecarim": [
+          "DA_18_Hecarim"
+        ],
+        "Ivern": [
+          "DA_18_Ivern"
+        ],
+        "Karma": [
+          "DA_Karma18"
+        ],
+        "Kayle": [
+          "DA_18_Kayle"
+        ],
+        "Kennen": [
+          "DA_18_Kennen"
+        ],
+        "Kha'Zix": [
+          "DA_18_KhaZix"
+        ],
+        "Kobuko": [
+          "DA_18_Kobuko"
+        ],
+        "Kog'Maw": [
+          "DA_KogMaw18_AD"
+        ],
+        "LeBlanc": [
+          "DA_18_LeBlanc"
+        ],
+        "Leona": [
+          "DA_18_Leona"
+        ],
+        "Lillia": [
+          "DA_18_Lillia"
+        ],
+        "Lux": [
+          "DA_Lux18_Base"
+        ],
+        "Malphite": [
+          "DA_18_Malphite"
+        ],
+        "Maokai": [
+          "DA_18_Maokai"
+        ],
+        "Master Yi": [
+          "DA_18_MasterYi_AD"
+        ],
+        "Morgana": [
+          "DA_18_Morgana"
+        ],
+        "Mầm Non": [
+          "DA_Cinderling18"
+        ],
+        "Người Đá": [
+          "DA_Sentinel18"
+        ],
+        "Nidalee": [
+          "DA_Nidalee18_AP"
+        ],
+        "Ornn": [
+          "DA_18_Ornn"
+        ],
+        "Quái Đá Krug": [
+          "DA_Krug18"
+        ],
+        "Rakan": [
+          "DA_18_Rakan"
+        ],
+        "Rammus": [
+          "DA_18_Rammus"
+        ],
+        "Rek'Sai": [
+          "DA_18_RekSai"
+        ],
+        "Rengar": [
+          "DA_18_Rengar"
+        ],
+        "Rồng Ngàn Tuổi": [
+          "DA_18_ElderDragon"
+        ],
+        "Sejuani": [
+          "DA_18_Sejuani"
+        ],
+        "Sett": [
+          "DA_18_Sett"
+        ],
+        "Shen": [
+          "DA_18_Shen"
+        ],
+        "Sivir": [
+          "DA_18_Sivir"
+        ],
+        "Soraka": [
+          "DA_18_Soraka"
+        ],
+        "Sói Hắc Ám": [
+          "DA_Murkwolf18"
+        ],
+        "Sỏi": [
+          "DA_18_Sentry"
+        ],
+        "Taric": [
+          "DA_Taric18"
+        ],
+        "Teemo": [
+          "DA_18_Teemo"
+        ],
+        "Tristana": [
+          "DA_18_Tristana"
+        ],
+        "Varus": [
+          "DA_18_Varus"
+        ],
+        "Veigar": [
+          "DA_18_Veigar"
+        ],
+        "Vi": [
+          "DA_Vi18"
+        ],
+        "Warwick": [
+          "DA_18_Warwick"
+        ],
+        "Xayah": [
+          "DA_18_Xayah"
+        ],
+        "Yorick": [
+          "DA_18_Yorick"
+        ],
+        "Yunara": [
+          "DA_18_Yunara"
+        ],
+        "Zyra": [
+          "DA_18_Zyra"
+        ]
+      }
+    },
+    "traits": {
+      "en": {
+        "Adaptor": [
+          "DA_18_Adaptor"
+        ],
+        "Apex Predator": [
+          "DA_18_ApexPredator"
+        ],
+        "Attuned": [
+          "DA_AluneUniqueTrait18"
+        ],
+        "Avatar": [
+          "DA_18_LuxUniqueTrait"
+        ],
+        "Blackthorn": [
+          "DA_18_Blackthorn"
+        ],
+        "Blossom": [
+          "DA_18_Blossom"
+        ],
+        "Bounty Seeker": [
+          "DA_DravenUniqueTrait18"
+        ],
+        "Brawler": [
+          "DA_18_Brawler"
+        ],
+        "Caustic": [
+          "DA_18_Caustic"
+        ],
+        "Coven": [
+          "DA_18_Coven"
+        ],
+        "Defender": [
+          "DA_18_Defender"
+        ],
+        "Eclipse": [
+          "DA_18_Eclipse"
+        ],
+        "Elderwood": [
+          "DA_18_Elderwood"
+        ],
+        "Emerald Aspect": [
+          "DA_Emerald18"
+        ],
+        "Executioner": [
+          "DA_18_Executioner"
+        ],
+        "Fae": [
+          "DA_18_Fae"
+        ],
+        "Flora Fatalis": [
+          "DA_FloraFatalis18"
+        ],
+        "Greenfather": [
+          "DA_18_Greenfather"
+        ],
+        "Hunter": [
+          "DA_18_Hunter"
+        ],
+        "Inferno": [
+          "DA_18_Inferno"
+        ],
+        "Invoker": [
+          "DA_18_Invoker"
+        ],
+        "Juggernaut": [
+          "DA_Juggernaut18"
+        ],
+        "Lunar": [
+          "DA_18_Lunar"
+        ],
+        "Monolith": [
+          "DA_18_Battlemage"
+        ],
+        "Old Growth": [
+          "DA_18_Maokai_UniqueTrait"
+        ],
+        "Primal": [
+          "DA_Primal18"
+        ],
+        "Rapidfire": [
+          "DA_18_Rapidfire"
+        ],
+        "Ravager": [
+          "DA_18_Slayer"
+        ],
+        "Riftbeast": [
+          "DA_Riftbeast18"
+        ],
+        "Rival": [
+          "DA_18_Rival"
+        ],
+        "Solar": [
+          "DA_18_Solar"
+        ],
+        "Spellweaver": [
+          "DA_18_Spellweaver"
+        ],
+        "Sprykin": [
+          "DA_18_Sprykin"
+        ],
+        "Summoner": [
+          "DA_18_Summoner"
+        ],
+        "Thornmaiden": [
+          "DA_18_ZyraUniqueTrait"
+        ],
+        "Vanguard": [
+          "DA_18_Vanguard"
+        ]
+      },
+      "vi": {
+        "Bá Chủ": [
+          "DA_18_ApexPredator"
+        ],
+        "Cổ Thụ": [
+          "DA_18_Maokai_UniqueTrait"
+        ],
+        "Cự Thạch": [
+          "DA_18_Battlemage"
+        ],
+        "Dũng Sĩ": [
+          "DA_Juggernaut18"
+        ],
+        "Gai Đen": [
+          "DA_18_Blackthorn"
+        ],
+        "Hoa Linh": [
+          "DA_18_Blossom"
+        ],
+        "Hòa Hợp": [
+          "DA_AluneUniqueTrait18"
+        ],
+        "Hỏa Ngục": [
+          "DA_18_Inferno"
+        ],
+        "Khắc Tinh": [
+          "DA_18_Rival"
+        ],
+        "Liên Kích": [
+          "DA_18_Rapidfire"
+        ],
+        "Lục Bảo": [
+          "DA_Emerald18"
+        ],
+        "Mặt Trăng": [
+          "DA_18_Lunar"
+        ],
+        "Mặt Trời": [
+          "DA_18_Solar"
+        ],
+        "Nguyên Sinh": [
+          "DA_Primal18"
+        ],
+        "Quái Rừng": [
+          "DA_Riftbeast18"
+        ],
+        "Săn Thưởng": [
+          "DA_DravenUniqueTrait18"
+        ],
+        "Thiên Thực": [
+          "DA_18_Eclipse"
+        ],
+        "Thuật Sĩ": [
+          "DA_18_Invoker"
+        ],
+        "Thuật Sư": [
+          "DA_18_Spellweaver"
+        ],
+        "Thích Ứng": [
+          "DA_18_Adaptor"
+        ],
+        "Thần Rừng": [
+          "DA_18_Elderwood"
+        ],
+        "Thế Thần": [
+          "DA_18_LuxUniqueTrait"
+        ],
+        "Thợ Săn": [
+          "DA_18_Hunter"
+        ],
+        "Thụ Thần": [
+          "DA_18_Greenfather"
+        ],
+        "Thực Vật": [
+          "DA_FloraFatalis18"
+        ],
+        "Tinh Nghịch": [
+          "DA_18_Sprykin"
+        ],
+        "Tiên Hắc Ám": [
+          "DA_18_Coven"
+        ],
+        "Tiên Linh": [
+          "DA_18_Fae"
+        ],
+        "Tiên Phong": [
+          "DA_18_Vanguard"
+        ],
+        "Triệu Hồi": [
+          "DA_18_Summoner"
+        ],
+        "Tàn Phá": [
+          "DA_18_Slayer"
+        ],
+        "Vườn Gai": [
+          "DA_18_ZyraUniqueTrait"
+        ],
+        "Vệ Quân": [
+          "DA_18_Defender"
+        ],
+        "Ăn Mòn": [
+          "DA_18_Caustic"
+        ],
+        "Đao Phủ": [
+          "DA_18_Executioner"
+        ],
+        "Đấu Sĩ": [
+          "DA_18_Brawler"
+        ]
+      }
+    }
+  },
+  "meta": {
+    "ambiguous_group_counts": {
+      "augments": {
+        "en": 5,
+        "vi": 5
+      },
+      "champions": {
+        "en": 0,
+        "vi": 0
+      },
+      "traits": {
+        "en": 0,
+        "vi": 0
+      }
+    },
+    "counts": {
+      "augments": {
+        "en": 254,
+        "vi": 254
+      },
+      "champions": {
+        "en": 65,
+        "vi": 65
+      },
+      "traits": {
+        "en": 36,
+        "vi": 36
+      }
+    },
+    "generated_at": "2026-08-31T18:01:46+00:00",
+    "set": "TFTSet18",
+    "source": {
+      "en": "cdragon:en_us",
+      "vi": "cdragon:vi_vn"
+    }
+  }
+}

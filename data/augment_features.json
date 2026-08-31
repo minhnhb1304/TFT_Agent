@@ -2,8 +2,8 @@
   "meta": {
     "set": "TFTSet18",
     "source_locale": "en_us",
-    "source_file": "tests/fixtures/cdragon/en_us.trimmed.json",
-    "generated_at": "2026-08-29T17:35:48+00:00",
+    "source_file": "cdragon:en_us",
+    "generated_at": "2026-08-31T17:54:05+00:00",
     "extractor_version": "deterministic-v1",
     "llm_refined": false,
     "n": 254

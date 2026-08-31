@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable, Sequence
@@ -254,7 +255,20 @@ def _demo_state() -> GameState:
     )
 
 
+def _force_utf8_stdout() -> None:
+    """Ep stdout/stderr sang UTF-8 neu console dang dung codec hep hon."""
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            reconfigure(encoding="utf-8", errors="replace")
+
+
 def main(argv: list[str] | None = None) -> int:
+    # Console Windows mac dinh la cp1252 -> moi reason string tieng Viet co
+    # dau deu lam script chet bang UnicodeEncodeError. Reason string la san
+    # pham chinh cua module nay, nen khong in duoc no la hong that.
+    _force_utf8_stdout()
+
     ap = argparse.ArgumentParser(description="Demo Augment Advisor khong can game")
     ap.add_argument("--features", default="data/augment_features.json")
     ap.add_argument("--weights", default="config/scoring_weights.yaml")
