@@ -92,9 +92,28 @@ Build an explicit four-column table keyed on `apiName`. Both verified HTTP 200 o
 | Roll odds, XP costs, pool/bag sizes | `ShopOdds` / `TierOdds` / `ChampionTierOdds` / `LevelXP` = **0 hits** in the live Set 18 payload. Launch did **not** publish them |
 | Augment / Wisp icon templates | 345 `DA_*` share one sprite; 48/254 `isAugment` carry `missing-t*` placeholders — see [augments](vision-stack/augments.md) |
 | Meaningful augment win rates | Stats sites are days into cold start after 2026-08-26 |
+| **Augment data from `tft-match-v1`** — measured 2026-09-01 | **The `augments` field is gone.** A Set 18 participant on `vn2` carries `companion, gold_left, last_round, level, missions, placement, players_eliminated, puuid, riotIdGameName, riotIdTagline, time_eliminated, total_damage_to_players, traits, units, win` — and the string `"augment"` appears **nowhere** in the whole match payload (checked across 3 ranked Set 18 matches). This closes the "self-crawl your own augment stats" route |
 
 **Consequence unchanged:** do not ship hardcoded odds. Gate the Economy Advisor behind verified 18.1
 numbers or label it "unverified".
+
+### What the match API *can* still supply
+
+The augment loss is specific, not total. `units` (with `itemNames`), `traits` (with `style` /
+`num_units`), `placement`, `level` and `gold_left` are all intact. So:
+
+| Wanted | From `tft-match-v1`? |
+|---|---|
+| Augment avg-placement / top-4 | ❌ Field removed |
+| **Meta comps** (units, items, traits, placement) | ✅ **Yes** — this is what `scripts/crawl_meta_comps.py` uses |
+| Back-fill `final_placement` for [SPEC §12.2](../SPEC.md) | ✅ Yes |
+
+> **Consequence for the thesis.** `SPEC §3.4.2` lists `RiotApiProvider` as *"the strongest defence
+> before the examiners"* for augment statistics. That route is **closed for Set 18** — not by rate
+> limits or by effort, but because Riot stopped publishing the field. `data/augment_stats.csv` must
+> therefore stay synthetic (and self-declaring) until another source appears, while
+> `data/meta_comps.json` becomes genuinely measured. State both facts plainly in the report; the
+> asymmetry is a finding, not a gap.
 
 ## Related
 

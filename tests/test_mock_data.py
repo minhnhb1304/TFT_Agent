@@ -1,4 +1,9 @@
-"""Test du lieu gia lap (feedback Tier 1 #1 va #2).
+"""Test du lieu augment gia lap (feedback Tier 1 #1).
+
+⚠️ Chi con AUGMENT la gia lap. data/meta_comps.json da chuyen sang du lieu
+THAT (tft-match-v1) va duoc test o tests/test_meta_comps.py - ly do: do
+2026-09-01, Riot da go truong `augments` khoi participant Set 18 nen chi
+augment moi khong crawl duoc.
 
 Ba bat bien duoc bao ve o day, theo thu tu quan trong:
 
@@ -36,21 +41,14 @@ from scripts.build_mock_stats import (
 from src.decision.scoring.base import BaseScorer
 from src.decision.scoring.types import ScoringConfig
 from src.game_state.models import GameState
-from src.knowledge.comp_database import CompDatabase, MetaComp
 from src.knowledge.stats_provider import CsvProvider, default_provider
 
 STATS_CSV = Path("data/augment_stats.csv")
-META_COMPS = Path("data/meta_comps.json")
 FEATURES = Path("data/augment_features.json")
 
 needs_stats = pytest.mark.skipif(
     not STATS_CSV.exists(), reason="chua chay scripts/build_mock_stats.py"
 )
-needs_comps = pytest.mark.skipif(
-    not META_COMPS.exists(), reason="chua chay scripts/build_mock_comps.py"
-)
-
-
 def _api_names() -> list[str]:
     """apiName trong file mock, theo dung thu tu ghi."""
     with STATS_CSV.open(encoding="utf-8", newline="") as fh:
@@ -108,14 +106,6 @@ def test_mock_source_reaches_the_overlay_reason_string() -> None:
     score = scorer(_api_names()[0], None, GameState())
     assert MOCK_SOURCE in score.reason
     assert score.detail["source"] == MOCK_SOURCE
-
-
-@needs_comps
-def test_every_comp_declares_itself_as_mock() -> None:
-    db = CompDatabase.load(META_COMPS)
-    assert len(db) > 0
-    assert db.sources == [MOCK_SOURCE]
-    assert all(MOCK_SOURCE in c.positioning_notes for c in db)
 
 
 # --- w1 phai thuc su song lai ---------------------------------------------
@@ -181,34 +171,3 @@ def test_stats_are_internally_consistent() -> None:
     for r in rows:
         assert 3.5 <= float(r["avg_place"]) <= 5.0
         assert 0.0 < float(r["win_rate"]) < float(r["top4_rate"]) < 1.0
-
-
-@needs_comps
-def test_comps_load_without_unexpected_keys() -> None:
-    """MetaComp(**c) splat thang JSON - thua mot key la TypeError luc nap."""
-    payload = json.loads(META_COMPS.read_text(encoding="utf-8"))
-    allowed = set(MetaComp.__dataclass_fields__)
-    for comp in payload["comps"]:
-        assert set(comp) <= allowed, set(comp) - allowed
-    assert len(CompDatabase.load(META_COMPS)) == payload["meta"]["n"]
-
-
-@needs_comps
-def test_comps_use_real_set18_identifiers() -> None:
-    """Unit/trait la apiName THAT cua Set 18 - chi con so thong ke la gia.
-
-    Do la ranh gioi giua "mock" va "bia": cam nguon meta that vao chi phai
-    doi so, khong phai doi code, va OCR khop duoc voi core_units.
-    """
-    db = CompDatabase.load(META_COMPS)
-    for comp in db:
-        assert comp.core_units
-        assert all(u.startswith("DA") for u in comp.core_units), comp.name
-        assert all(t.startswith("DA") for t in comp.traits), comp.name
-        assert all(i.startswith("TFT_Item_") for i in comp.core_items), comp.name
-
-
-@needs_comps
-def test_comp_sample_sizes_count_as_evidence() -> None:
-    """sample_n >= 200 -> MetaComp.is_evidence, meta_score khong bi keo ve 0.5."""
-    assert all(c.is_evidence for c in CompDatabase.load(META_COMPS))
