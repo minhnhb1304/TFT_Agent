@@ -61,6 +61,8 @@ ngoài đều có fixture trong `tests/fixtures/`.
 | A12 Riot API client | ✅ | `src/knowledge/riot_api.py` — rate limit 2 cửa sổ, lọc `tft_set_number`, 42 test offline |
 | A13 Meta comp **đo thật** | ✅ | `scripts/crawl_meta_comps.py` → `data/meta_comps.json` (VN2 hạng cao, kèm `match_id`) |
 | A14 Tinh chỉnh đặc trưng bằng LLM | ✅ | `build_augment_features.py --llm` trên `gemini-3.5-flash-lite` |
+| A15 Nguồn bên thứ ba | ✅ | `scripts/crawl_tactics_tools.py` → `data/meta_comps_tactics.json` + `data/tactics_tools_stats.json` |
+| A16 Bảng tier do người xếp | ✅ | `scripts/import_augment_tiers.py` → `data/augment_tiers.json` (thứ tự, **không** phải số đo) |
 
 **Track B — cần máy có game đang chạy**: capture, calibrate ROI, OCR, đọc `OpponentBoard`, và chạy
 overlay thật. Bắt đầu bằng `tools/probe_environment.py` (chưa viết). Phần quyết định của overlay
@@ -70,11 +72,14 @@ overlay thật. Bắt đầu bằng `tools/probe_environment.py` (chưa viết).
 
 ## ⚠️ Nguồn dữ liệu — đọc trước khi trích số
 
-Hai file thống kê **không cùng độ tin cậy**. Phải phân biệt khi viết báo cáo.
+Các file dữ liệu **không cùng độ tin cậy**. Phải phân biệt khi viết báo cáo.
 
 | File | Nguồn | Dùng được cho báo cáo? |
 |---|---|---|
 | `data/meta_comps.json` | **Đo thật** — `tft-match-v1`, hạng cao VN2, có `match_id` truy ngược | ✅ Có, kèm cỡ mẫu |
+| `data/meta_comps_tactics.json` | **Bên thứ ba** — tactics.tools, cỡ mẫu triệu ván nhưng **không công bố phương pháp** | ⚠️ Có, phải nêu rõ là số của bên thứ ba |
+| `data/tactics_tools_stats.json` | Như trên. Unit/trait/item. **Chưa nối vào scoring engine** | ⚠️ Như trên |
+| `data/augment_tiers.json` | **Ý kiến người chơi** — thứ tự S/A/B/C/D, `sample_n` = 0, `is_evidence` luôn False | ⚠️ Chỉ như tri thức tiên nghiệm, không phải bằng chứng |
 | `data/augment_stats.csv` | **GIẢ LẬP** — `source` = `MOCK-NOT-REAL` | ❌ **Tuyệt đối không** |
 
 ### Vì sao augment vẫn phải giả lập
@@ -82,6 +87,13 @@ Hai file thống kê **không cùng độ tin cậy**. Phải phân biệt khi v
 Đo trực tiếp bằng key thật ngày **2026-09-01**: participant của `tft-match-v1` ở Set 18
 **không còn trường `augments`**, và cả payload trận đấu không chứa chuỗi `"augment"` nào. Riot đã
 gỡ nó. Đây không phải giới hạn rate limit hay công sức — **đường đó đã đóng**.
+
+Ngày **2026-09-02**, kiểm chứng lại trên nguồn ngoài: tactics.tools có sẵn bốn trường augment
+(`augmentSingles`, `aug1s`, `aug2s`, `aug3s`) và **cả bốn đều rỗng** ở mọi rank group, kể cả nhóm
+`all` với **1.752.735 ván**; trang `/augments` của họ cũng trả `{"singles": [], "pairs": [],
+"trios": []}`. Nghĩa là đây **không phải giới hạn của đồ án này** — trang thống kê công khai lớn
+nhất cũng không có. `scripts/crawl_tactics_tools.py` in lại con số đó sau mỗi lần chạy, và
+`tests/test_tactics_tools.py` khoá kết luận lại theo cả hai chiều.
 
 Còn lại `units`, `traits`, `placement`, `level` thì nguyên vẹn, nên **đội hình meta đo thật được** —
 và `crawl_meta_comps.py` làm đúng việc đó.
@@ -113,6 +125,12 @@ python scripts/build_mock_stats.py --overwrite      # augment: vẫn phải gi�
 python scripts/build_augment_features.py --locale en_us --offline --llm --diff
 python scripts/crawl_meta_comps.py --dry-run        # xem ngân sách request trước
 python scripts/crawl_meta_comps.py --matches 250 --overwrite
+
+# Không cần key — nguồn bên thứ ba (ghi ra file RIÊNG, không đè bản tự crawl)
+python scripts/crawl_tactics_tools.py --rank all --overwrite
+
+# Bảng tier do người xếp: đọc bằng mắt, dán vào file, rồi KÝ TÊN vào provenance
+python scripts/import_augment_tiers.py bang.txt     --rated-by "TFT Academy" --source-url https://tftacademy.com/tierlist/augments --patch 18.1
 
 # Chạy
 python -m src.decision.augment_advisor                        # xếp hạng 3 augment + lý do
