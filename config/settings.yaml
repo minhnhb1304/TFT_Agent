@@ -6,7 +6,10 @@
 paths:
   augment_features: data/augment_features.json
   augment_stats_csv: data/augment_stats.csv     # co the chua ton tai -> NullProvider
+  augment_tiers: data/augment_tiers.json        # bang tier do NGUOI xep, chi la thu tu
   scoring_weights: config/scoring_weights.yaml
+  # Doi sang data/meta_comps_tactics.json de dung so cua tactics.tools (co mau
+  # trieu van, nhung khong truy nguoc duoc). Mac dinh la file TU CRAWL.
   meta_comps: data/meta_comps.json              # co the chua ton tai -> comp DB rong
   item_recipes: data/item_recipes.json          # SINH RA tu locale, khong sua tay
   name_index: data/name_index.json              # SINH RA boi scripts/build_name_index.py

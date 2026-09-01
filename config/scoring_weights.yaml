@@ -23,6 +23,10 @@ tuning:
     worst_place: 5.0
     # Duoi nguong co mau nay, diem bi keo ve trung tinh thay vi tin tuong.
     min_sample_n: 200
+    # Muc tin cho tin hieu THU TU (bang tier do nguoi xep, khong co co mau).
+    # 0.35 nghia la mot bac S keo diem duoc khoang mot phan ba so voi cung
+    # con so do tu 200+ van. Day la phan xet doan, chua fit tren du lieu nao.
+    ordinal_trust: 0.35
   board_fit:
     trait_weight: 0.6
     carry_weight: 0.4

@@ -25,6 +25,11 @@ class BaseScorer:
         self.best_place = float(tune.get("best_place", 3.5))
         self.worst_place = float(tune.get("worst_place", 5.0))
         self.min_sample_n = int(tune.get("min_sample_n", 200))
+        # Muc tin toi da cho mot tin hieu THU TU (bang tier do nguoi xep).
+        # Khong the suy tu co mau vi bang tier khong co co mau - day la mot
+        # phan xet doan, va no phai nam trong file config de ablation thay
+        # duoc no dang dong gop bao nhieu.
+        self.ordinal_trust = clamp01(float(tune.get("ordinal_trust", 0.35)))
 
     def __call__(
         self, api_name: str, feature: AugmentFeature | None, state: GameState
@@ -42,17 +47,28 @@ class BaseScorer:
         span = self.worst_place - self.best_place
         raw = clamp01((self.worst_place - stats.avg_place) / span) if span else 0.5
 
-        # Co mau nho thi keo diem ve trung tinh thay vi tin han vao no. Day la
-        # shrinkage co chu y: mot augment 12 tran khong duoc phep dieu khien
-        # xep hang chi vi tinh co dep so.
-        trust = clamp01(stats.sample_n / self.min_sample_n) if self.min_sample_n else 1.0
-        score = 0.5 + (raw - 0.5) * trust
+        if stats.is_ordinal:
+            # Bang tier khong co co mau, nen cong thuc shrinkage theo n khong
+            # ap dung duoc: no se cho trust = 0 va tin hieu bien mat hoan toan.
+            # Thay bang mot tran co dinh, doc tu config. Ly do phai hien thi
+            # khac han: day la THU TU do nguoi xep, khong phai so do duoc.
+            trust = self.ordinal_trust
+            reason = (
+                f"Bậc {stats.tier} theo bảng tier của người chơi "
+                f"({stats.source}) — xếp hạng chủ quan, KHÔNG phải số đo"
+            )
+        else:
+            # Co mau nho thi keo diem ve trung tinh thay vi tin han vao no. Day la
+            # shrinkage co chu y: mot augment 12 tran khong duoc phep dieu khien
+            # xep hang chi vi tinh co dep so.
+            trust = clamp01(stats.sample_n / self.min_sample_n) if self.min_sample_n else 1.0
+            evidence = "" if stats.is_evidence else " ⚠ cỡ mẫu nhỏ"
+            reason = (
+                f"Vị trí trung bình {stats.avg_place:.2f} "
+                f"(n={stats.sample_n}, nguồn: {stats.source}){evidence}"
+            )
 
-        evidence = "" if stats.is_evidence else " ⚠ cỡ mẫu nhỏ"
-        reason = (
-            f"Vị trí trung bình {stats.avg_place:.2f} "
-            f"(n={stats.sample_n}, nguồn: {stats.source}){evidence}"
-        )
+        score = 0.5 + (raw - 0.5) * trust
         return ComponentScore(
             NAME,
             score,
@@ -62,6 +78,8 @@ class BaseScorer:
                 "top4_rate": stats.top4_rate,
                 "sample_n": stats.sample_n,
                 "source": stats.source,
+                "tier": stats.tier,
+                "is_ordinal": stats.is_ordinal,
                 "trust": round(trust, 3),
             },
         )
