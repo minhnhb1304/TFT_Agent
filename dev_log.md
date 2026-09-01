@@ -3,7 +3,7 @@
 > Trạng thái **thực tế** của dự án. Checkbox trong [`SPEC.md §7`](SPEC.md) đã lỗi thời ở vài chỗ —
 > file này mới là nguồn đúng.
 >
-> Cập nhật: **2026-09-01** · 290 test xanh, chạy hoàn toàn offline · 69 file Python
+> Cập nhật: **2026-09-02** · 332 test xanh, chạy hoàn toàn offline · 74 file Python
 
 ---
 
@@ -29,6 +29,7 @@
 | 09-01 | `160fdf8` | Nạp key từ `.env` |
 | 09-01 | `96dda89` | Tinh chỉnh đặc trưng bằng Gemini |
 | 09-01 | `c3ddd6c` | Crawl đội hình meta thật; augment thì **không lấy được** |
+| 09-02 | — | Nguồn tactics.tools + bảng tier do người xếp; **xác nhận augment tắc ở mọi nguồn** |
 
 ---
 
@@ -43,7 +44,10 @@
 | Bảng đặc trưng augment | 254/254, tầng 1 tất định + tầng 2 LLM (175 dòng tinh chỉnh) |
 | Ánh xạ tên → `apiName` | `name_index.json` — 254 augment · 36 trait · 65 champion, VI + EN |
 | Đội hình meta | **Đo thật** — 249 trận, 1988 participant, 12 đội hình |
-| Stats augment | ⚠️ **Giả lập** — Riot đã gỡ trường `augments`, xem bên dưới |
+| Đội hình meta (bên thứ ba) | tactics.tools — 456.572 ván, 12 đội hình, cỡ mẫu 819–46.091. Ghi ra **file riêng** |
+| Stats unit/trait/item | tactics.tools — 74 unit · 91 trait · 131 item. **Chưa nối vào scoring engine** |
+| Bảng tier augment | Khung đã có (`ExpertTierListProvider` + importer). **Repo không kèm dữ liệu** — xem lý do bên dưới |
+| Stats augment | ⚠️ **Giả lập** — không nguồn nào còn cấp, xem bên dưới |
 
 ### Thuật toán (trọng tâm đồ án)
 
@@ -78,7 +82,7 @@ có `name = "Set10"`. Lấy nhầm thì bảng trait thành của Set 14, `trait
 > Fixture trimmed chỉ giữ một khối, nên bug này xanh hết test cho đến ngày gặp file thật.
 > **Bài học**: fixture là tập con có thể giấu cái bẫy nằm ở *hình dạng* dữ liệu.
 
-### 2. Riot đã gỡ trường `augments`
+### 2. Riot đã gỡ trường `augments` — và không nguồn nào khác lấp được
 
 Participant Set 18 của `tft-match-v1` **không còn `augments`**; cả payload không có chuỗi
 `"augment"` nào (kiểm tra 3 trận ranked, vn2).
@@ -88,6 +92,12 @@ SPEC §3.4.2 gọi `RiotApiProvider` là *"bảo vệ tốt nhất trước hộ
 
 Nhưng `units` / `traits` / `placement` còn nguyên → **đội hình meta đo thật được**. Đó là lý do
 `meta_comps.json` là thật còn `augment_stats.csv` vẫn giả.
+
+**Kiểm chứng ngoài (09-02).** tactics.tools có sẵn bốn trường augment và **cả bốn đều rỗng** ở mọi
+rank group, kể cả nhóm `all` với 1.752.735 ván. datatft nhúng bảng tier **hardcode trong bundle JS**
+do ba người chơi xếp; tftacademy chỉ có S/A/B/C, không con số nào. Nghĩa là câu trả lời cho hội đồng
+đổi từ *"chúng tôi không crawl được"* thành *"trang thống kê công khai lớn nhất cũng không có"* —
+mạnh hơn hẳn. `augment_row_count()` đo lại điều này sau mỗi lần crawl.
 
 ### 3. `gemini-2.5-flash-lite` đã bị gỡ
 
@@ -144,7 +154,9 @@ owner-window. PBE báo cáo ~09-09. **Đây là lý do việc #1 ở trên phả
 
 | Vấn đề | Ảnh hưởng |
 |---|---|
-| `augment_stats.csv` giả lập | Không trích được vào báo cáo. Cần nguồn khác hoặc Riot trả lại trường |
+| `augment_stats.csv` giả lập | Không trích được vào báo cáo. Đã loại trừ ba nguồn ngoài (09-02) — chỉ còn chờ Riot trả lại trường |
+| `data/augment_tiers.json` chưa có dữ liệu | Khung chạy được nhưng rỗng: phải đọc bảng tier bằng mắt rồi nạp tay. Cố tình — cùng nguyên tắc với `comp_database.py`, không nhét bảng tier từ bìa vào repo |
+| `tactics_tools_stats.json` chưa có ai đọc | Số unit/trait/item đã đo được nhưng chưa nối vào `item_advisor` / `board_fit`. Nối vào là thêm một đường ảnh hưởng chưa đo được trong ablation |
 | Cỡ mẫu vn2 nhỏ (2 challenger / 160 apex) | Số đội hình mang bất định. Crawl lại gần deadline sẽ tốt hơn |
 | Riot Personal Key hết hạn 24h | Mỗi lần crawl phải lấy key mới |
 | `roll_odds.py` chưa có importer nào | Đã gắn nhãn `Unverified Data (Set 18.1)` nhưng chưa nối vào `rules_engine` |
