@@ -1,0 +1,2837 @@
+{
+  "total_entries": 2699951,
+  "last_updated": 1788277580,
+  "units": [
+    {
+      "api_name": "DA_18_Ahri",
+      "count": 505340,
+      "avg_place": 4.41,
+      "top4_rate": 0.5178,
+      "win_rate": 0.1214,
+      "top_items": [
+        "DA_StrikersFlail",
+        "DA_SpearOfShojin",
+        "DA_NashorsTooth",
+        "DA_GiantSlayer",
+        "DA_VoidStaff"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Akali_AD",
+      "count": 40597,
+      "avg_place": 5.09,
+      "top4_rate": 0.3923,
+      "win_rate": 0.075,
+      "top_items": [
+        "DA_EdgeOfNight",
+        "DA_InfinityEdge",
+        "DA_GiantSlayer",
+        "DA_SteraksGage",
+        "DA_Bloodthirster"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Alistar",
+      "count": 311464,
+      "avg_place": 4.6,
+      "top4_rate": 0.471,
+      "win_rate": 0.145,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Alune",
+      "count": 347660,
+      "avg_place": 3.77,
+      "top4_rate": 0.6389,
+      "win_rate": 0.1911,
+      "top_items": [
+        "DA_VoidStaff",
+        "DA_RedBuff",
+        "DA_SpearOfShojin",
+        "DA_NashorsTooth",
+        "DA_GiantSlayer"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Aphelios",
+      "count": 440664,
+      "avg_place": 4.47,
+      "top4_rate": 0.5073,
+      "win_rate": 0.1143,
+      "top_items": [
+        "DA_InfinityEdge",
+        "DA_KrakensFury",
+        "DA_LastWhisper",
+        "DA_GiantSlayer",
+        "DA_RedBuff"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Ashe",
+      "count": 258005,
+      "avg_place": 3.89,
+      "top4_rate": 0.6126,
+      "win_rate": 0.1885,
+      "top_items": [
+        "DA_RedBuff",
+        "DA_LastWhisper",
+        "DA_SpearOfShojin",
+        "DA_GiantSlayer",
+        "DA_HextechGunblade"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Azir",
+      "count": 248154,
+      "avg_place": 4.74,
+      "top4_rate": 0.4587,
+      "win_rate": 0.0898,
+      "top_items": [
+        "DA_GiantSlayer",
+        "DA_RedBuff",
+        "DA_StrikersFlail",
+        "DA_GuinsoosRageblade",
+        "DA_HextechGunblade"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Caitlyn",
+      "count": 70076,
+      "avg_place": 5.14,
+      "top4_rate": 0.3954,
+      "win_rate": 0.0719,
+      "top_items": [
+        "DA_GuinsoosRageblade",
+        "DA_HextechGunblade",
+        "DA_KrakensFury",
+        "DA_GiantSlayer",
+        "DA_InfinityEdge"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Camille",
+      "count": 32876,
+      "avg_place": 6.3,
+      "top4_rate": 0.1814,
+      "win_rate": 0.0377,
+      "top_items": [
+        "DA_TitansResolve",
+        "DA_SteraksGage",
+        "DA_Bloodthirster",
+        "DA_InfinityEdge",
+        "DA_GiantSlayer"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Cassiopeia",
+      "count": 313977,
+      "avg_place": 4.48,
+      "top4_rate": 0.505,
+      "win_rate": 0.1201,
+      "top_items": [
+        "DA_HextechGunblade",
+        "DA_SpearOfShojin",
+        "DA_GiantSlayer",
+        "DA_VoidStaff",
+        "DA_NashorsTooth"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Diana",
+      "count": 604624,
+      "avg_place": 4.65,
+      "top4_rate": 0.4719,
+      "win_rate": 0.1015,
+      "top_items": [
+        "DA_TitansResolve",
+        "DA_Bloodthirster",
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_ElderDragon",
+      "count": 246988,
+      "avg_place": 3.88,
+      "top4_rate": 0.6049,
+      "win_rate": 0.2088,
+      "top_items": [
+        "DA_LastWhisper",
+        "DA_StrikersFlail",
+        "DA_GiantSlayer",
+        "DA_InfinityEdge",
+        "DA_SteraksGage"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Elise",
+      "count": 172254,
+      "avg_place": 5.23,
+      "top4_rate": 0.3622,
+      "win_rate": 0.0836,
+      "top_items": [
+        "DA_TitansResolve",
+        "DA_GuinsoosRageblade",
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Ezreal",
+      "count": 330847,
+      "avg_place": 4.51,
+      "top4_rate": 0.4854,
+      "win_rate": 0.1525,
+      "top_items": [
+        "DA_LastWhisper",
+        "DA_StrikersFlail",
+        "DA_GiantSlayer",
+        "DA_InfinityEdge",
+        "DA_RedBuff"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_GnarSmall",
+      "count": 557594,
+      "avg_place": 3.72,
+      "top4_rate": 0.6407,
+      "win_rate": 0.2124,
+      "top_items": [
+        "DA_SteraksGage",
+        "DA_EdgeOfNight",
+        "DA_Bloodthirster",
+        "DA_TitansResolve",
+        "DA_GiantSlayer"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Hecarim",
+      "count": 603373,
+      "avg_place": 4.59,
+      "top4_rate": 0.4831,
+      "win_rate": 0.1095,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Ivern",
+      "count": 385210,
+      "avg_place": 3.84,
+      "top4_rate": 0.6096,
+      "win_rate": 0.2284,
+      "top_items": [
+        "DA_RedBuff",
+        "DA_VoidStaff",
+        "DA_SpearOfShojin",
+        "DA_NashorsTooth",
+        "DA_GuinsoosRageblade"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Kayle",
+      "count": 200337,
+      "avg_place": 4.66,
+      "top4_rate": 0.4767,
+      "win_rate": 0.1536,
+      "top_items": [
+        "DA_GuinsoosRageblade",
+        "DA_GiantSlayer",
+        "DA_RedBuff",
+        "DA_HextechGunblade",
+        "DA_StrikersFlail"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Kennen",
+      "count": 428627,
+      "avg_place": 4.0,
+      "top4_rate": 0.5826,
+      "win_rate": 0.1973,
+      "top_items": [
+        "DA_EdgeOfNight",
+        "DA_VoidStaff",
+        "DA_StrikersFlail",
+        "DA_HextechGunblade",
+        "DA_GiantSlayer"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_KhaZix",
+      "count": 96116,
+      "avg_place": 4.71,
+      "top4_rate": 0.4604,
+      "win_rate": 0.1213,
+      "top_items": [
+        "DA_EdgeOfNight",
+        "DA_StrikersFlail",
+        "DA_GiantSlayer",
+        "DA_Bloodthirster",
+        "DA_HextechGunblade"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Kobuko",
+      "count": 191658,
+      "avg_place": 4.46,
+      "top4_rate": 0.5087,
+      "win_rate": 0.1266,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_LeBlanc",
+      "count": 219650,
+      "avg_place": 4.64,
+      "top4_rate": 0.4676,
+      "win_rate": 0.1406,
+      "top_items": [
+        "DA_GiantSlayer",
+        "DA_RedBuff",
+        "DA_HextechGunblade",
+        "DA_VoidStaff",
+        "DA_SpearOfShojin"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Leona",
+      "count": 388554,
+      "avg_place": 4.44,
+      "top4_rate": 0.5165,
+      "win_rate": 0.1413,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Lillia",
+      "count": 462229,
+      "avg_place": 4.3,
+      "top4_rate": 0.5342,
+      "win_rate": 0.1379,
+      "top_items": [
+        "DA_ThiefsGloves",
+        "DA_WarmogsArmor"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Lux_Coven",
+      "count": 15973,
+      "avg_place": 4.84,
+      "top4_rate": 0.4214,
+      "win_rate": 0.1804,
+      "top_items": [
+        "DA_GiantSlayer",
+        "DA_VoidStaff",
+        "DA_HextechGunblade",
+        "DA_NashorsTooth",
+        "DA_StrikersFlail"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Lux_Elderwood",
+      "count": 45683,
+      "avg_place": 3.28,
+      "top4_rate": 0.7105,
+      "win_rate": 0.3002,
+      "top_items": [
+        "DA_RedBuff",
+        "DA_VoidStaff",
+        "DA_GiantSlayer",
+        "DA_HextechGunblade",
+        "DA_NashorsTooth"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Lux_Fae",
+      "count": 9980,
+      "avg_place": 3.78,
+      "top4_rate": 0.6219,
+      "win_rate": 0.2379,
+      "top_items": [
+        "DA_VoidStaff",
+        "DA_RedBuff",
+        "DA_GiantSlayer",
+        "DA_NashorsTooth",
+        "DA_SpearOfShojin"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Lux_Inferno",
+      "count": 21893,
+      "avg_place": 3.72,
+      "top4_rate": 0.6361,
+      "win_rate": 0.2413,
+      "top_items": [
+        "DA_VoidStaff",
+        "DA_NashorsTooth",
+        "DA_HextechGunblade",
+        "DA_GiantSlayer",
+        "DA_StrikersFlail"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Lux_Moonbeam",
+      "count": 43167,
+      "avg_place": 3.27,
+      "top4_rate": 0.7281,
+      "win_rate": 0.2587,
+      "top_items": [
+        "DA_RedBuff",
+        "DA_VoidStaff",
+        "DA_GiantSlayer",
+        "DA_NashorsTooth",
+        "DA_StrikersFlail"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Lux_Primal",
+      "count": 33647,
+      "avg_place": 3.44,
+      "top4_rate": 0.6947,
+      "win_rate": 0.2492,
+      "top_items": [
+        "DA_NashorsTooth",
+        "DA_GiantSlayer",
+        "DA_VoidStaff",
+        "DA_RedBuff",
+        "DA_HextechGunblade"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Lux_Sunbeam",
+      "count": 3220,
+      "avg_place": 3.78,
+      "top4_rate": 0.6199,
+      "win_rate": 0.2463,
+      "top_items": [
+        "DA_RedBuff",
+        "DA_HextechGunblade",
+        "DA_GiantSlayer",
+        "DA_VoidStaff",
+        "DA_NashorsTooth"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Malphite",
+      "count": 279036,
+      "avg_place": 4.7,
+      "top4_rate": 0.4662,
+      "win_rate": 0.0883,
+      "top_items": [
+        "DA_WarmogsArmor"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Maokai",
+      "count": 373264,
+      "avg_place": 4.15,
+      "top4_rate": 0.549,
+      "win_rate": 0.2046,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_MasterYi_AD",
+      "count": 187990,
+      "avg_place": 4.44,
+      "top4_rate": 0.5092,
+      "win_rate": 0.123,
+      "top_items": [
+        "DA_GuinsoosRageblade",
+        "DA_EdgeOfNight",
+        "DA_TitansResolve",
+        "DA_GiantSlayer",
+        "DA_Bloodthirster"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Morgana",
+      "count": 512968,
+      "avg_place": 4.45,
+      "top4_rate": 0.5135,
+      "win_rate": 0.1169,
+      "top_items": [
+        "DA_VoidStaff",
+        "DA_RedBuff",
+        "DA_HextechGunblade",
+        "DA_GiantSlayer",
+        "DA_SpearOfShojin"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Ornn",
+      "count": 540670,
+      "avg_place": 4.53,
+      "top4_rate": 0.496,
+      "win_rate": 0.1323,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Rakan",
+      "count": 408467,
+      "avg_place": 4.68,
+      "top4_rate": 0.4679,
+      "win_rate": 0.1355,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Rammus",
+      "count": 437521,
+      "avg_place": 4.28,
+      "top4_rate": 0.5404,
+      "win_rate": 0.1379,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_RekSai",
+      "count": 194478,
+      "avg_place": 4.53,
+      "top4_rate": 0.5008,
+      "win_rate": 0.1021,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Rengar",
+      "count": 153194,
+      "avg_place": 4.33,
+      "top4_rate": 0.5253,
+      "win_rate": 0.1788,
+      "top_items": [
+        "DA_TitansResolve",
+        "DA_EdgeOfNight",
+        "DA_GuinsoosRageblade",
+        "DA_SteraksGage",
+        "DA_Bloodthirster"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Sejuani",
+      "count": 232935,
+      "avg_place": 4.62,
+      "top4_rate": 0.4838,
+      "win_rate": 0.1438,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Sentry",
+      "count": 543735,
+      "avg_place": 4.25,
+      "top4_rate": 0.5526,
+      "win_rate": 0.1255,
+      "top_items": [
+        "DA_VoidStaff",
+        "DA_GiantSlayer",
+        "DA_HextechGunblade",
+        "DA_StrikersFlail",
+        "DA_SpearOfShojin"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Sett",
+      "count": 647976,
+      "avg_place": 4.25,
+      "top4_rate": 0.5494,
+      "win_rate": 0.1307,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Shen",
+      "count": 310624,
+      "avg_place": 4.39,
+      "top4_rate": 0.5208,
+      "win_rate": 0.1213,
+      "top_items": [
+        "DA_SteraksGage",
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Sivir",
+      "count": 320965,
+      "avg_place": 4.4,
+      "top4_rate": 0.5158,
+      "win_rate": 0.1363,
+      "top_items": [
+        "DA_LastWhisper",
+        "DA_RedBuff",
+        "DA_StrikersFlail",
+        "DA_InfinityEdge",
+        "DA_SpearOfShojin"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Soraka",
+      "count": 361555,
+      "avg_place": 4.34,
+      "top4_rate": 0.5332,
+      "win_rate": 0.1228,
+      "top_items": [
+        "DA_SpearOfShojin",
+        "DA_HextechGunblade",
+        "DA_VoidStaff",
+        "DA_NashorsTooth",
+        "DA_GiantSlayer"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Teemo",
+      "count": 122356,
+      "avg_place": 4.23,
+      "top4_rate": 0.5574,
+      "win_rate": 0.1282,
+      "top_items": [
+        "DA_VoidStaff",
+        "DA_RedBuff",
+        "DA_SpearOfShojin",
+        "DA_GiantSlayer",
+        "DA_HextechGunblade"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Tristana",
+      "count": 224053,
+      "avg_place": 4.53,
+      "top4_rate": 0.4919,
+      "win_rate": 0.1277,
+      "top_items": [
+        "DA_HextechGunblade",
+        "DA_GiantSlayer",
+        "DA_KrakensFury",
+        "DA_GuinsoosRageblade",
+        "DA_StrikersFlail"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Varus",
+      "count": 49570,
+      "avg_place": 4.96,
+      "top4_rate": 0.4162,
+      "win_rate": 0.1041,
+      "top_items": [
+        "DA_GiantSlayer",
+        "DA_SpearOfShojin",
+        "DA_InfinityEdge",
+        "DA_StrikersFlail",
+        "DA_LastWhisper"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Veigar",
+      "count": 150349,
+      "avg_place": 4.45,
+      "top4_rate": 0.5141,
+      "win_rate": 0.1165,
+      "top_items": [
+        "DA_HextechGunblade",
+        "DA_SpearOfShojin",
+        "DA_GiantSlayer",
+        "DA_StrikersFlail",
+        "DA_NashorsTooth"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Warwick",
+      "count": 40546,
+      "avg_place": 5.16,
+      "top4_rate": 0.3798,
+      "win_rate": 0.0585,
+      "top_items": [
+        "DA_TitansResolve",
+        "DA_SteraksGage",
+        "DA_SpearOfShojin",
+        "DA_GuinsoosRageblade",
+        "DA_GiantSlayer"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Xayah",
+      "count": 346624,
+      "avg_place": 4.73,
+      "top4_rate": 0.4587,
+      "win_rate": 0.134,
+      "top_items": [
+        "DA_GiantSlayer",
+        "DA_RedBuff",
+        "DA_InfinityEdge",
+        "DA_KrakensFury",
+        "DA_HextechGunblade"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Yorick",
+      "count": 439200,
+      "avg_place": 4.56,
+      "top4_rate": 0.4895,
+      "win_rate": 0.1119,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Yunara",
+      "count": 90533,
+      "avg_place": 4.91,
+      "top4_rate": 0.4221,
+      "win_rate": 0.0975,
+      "top_items": [
+        "DA_StrikersFlail",
+        "DA_SpearOfShojin",
+        "DA_LastWhisper",
+        "DA_GiantSlayer",
+        "DA_InfinityEdge"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Zyra",
+      "count": 401306,
+      "avg_place": 4.54,
+      "top4_rate": 0.4973,
+      "win_rate": 0.0978,
+      "top_items": [
+        "DA_VoidStaff",
+        "DA_SpearOfShojin",
+        "DA_RedBuff",
+        "DA_NashorsTooth",
+        "DA_HextechGunblade"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Amumu18",
+      "count": 531406,
+      "avg_place": 4.45,
+      "top4_rate": 0.4994,
+      "win_rate": 0.1537,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Brambleback18",
+      "count": 501969,
+      "avg_place": 4.42,
+      "top4_rate": 0.5195,
+      "win_rate": 0.1028,
+      "top_items": [
+        "DA_SteraksGage",
+        "DA_EdgeOfNight",
+        "DA_GiantSlayer",
+        "DA_Bloodthirster",
+        "DA_LastWhisper"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Cinderling18",
+      "count": 271541,
+      "avg_place": 4.24,
+      "top4_rate": 0.5553,
+      "win_rate": 0.1249,
+      "top_items": [
+        "DA_LastWhisper",
+        "DA_InfinityEdge",
+        "DA_SpearOfShojin",
+        "DA_GiantSlayer",
+        "DA_StrikersFlail"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_CrimsonRaptor18",
+      "count": 303187,
+      "avg_place": 4.62,
+      "top4_rate": 0.4827,
+      "win_rate": 0.0903,
+      "top_items": [
+        "DA_LastWhisper",
+        "DA_RedBuff",
+        "DA_GiantSlayer",
+        "DA_HextechGunblade",
+        "DA_GuinsoosRageblade"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Draven18",
+      "count": 208910,
+      "avg_place": 4.32,
+      "top4_rate": 0.5083,
+      "win_rate": 0.2145,
+      "top_items": [
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_InfinityEdge",
+        "DA_RedBuff",
+        "DA_GiantSlayer"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Fiddlesticks18",
+      "count": 655511,
+      "avg_place": 4.48,
+      "top4_rate": 0.5059,
+      "win_rate": 0.1142,
+      "top_items": [
+        "DA_TitansResolve",
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Gromp18_AP",
+      "count": 131027,
+      "avg_place": 4.32,
+      "top4_rate": 0.536,
+      "win_rate": 0.1322,
+      "top_items": [
+        "DA_VoidStaff",
+        "DA_GiantSlayer",
+        "DA_RedBuff",
+        "DA_SpearOfShojin",
+        "DA_NashorsTooth"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Karma18",
+      "count": 339868,
+      "avg_place": 4.48,
+      "top4_rate": 0.5079,
+      "win_rate": 0.1123,
+      "top_items": [
+        "DA_GiantSlayer",
+        "DA_HextechGunblade",
+        "DA_NashorsTooth",
+        "DA_RedBuff",
+        "DA_SpearOfShojin"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_KogMaw18_AD",
+      "count": 307448,
+      "avg_place": 4.3,
+      "top4_rate": 0.5433,
+      "win_rate": 0.1204,
+      "top_items": [
+        "DA_RedBuff",
+        "DA_SpearOfShojin",
+        "DA_GiantSlayer",
+        "DA_StrikersFlail",
+        "DA_InfinityEdge"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Krug18",
+      "count": 707835,
+      "avg_place": 4.29,
+      "top4_rate": 0.5444,
+      "win_rate": 0.1228,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Lux18_Base",
+      "count": 1648,
+      "avg_place": 3.77,
+      "top4_rate": 0.6954,
+      "win_rate": 0.0437,
+      "top_items": [
+        "DA_StrikersFlail",
+        "DA_VoidStaff",
+        "DA_SpearOfShojin",
+        "DA_HextechGunblade",
+        "DA_NashorsTooth"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Lux18_Blackthorn",
+      "count": 22415,
+      "avg_place": 3.48,
+      "top4_rate": 0.69,
+      "win_rate": 0.2343,
+      "top_items": [
+        "DA_RedBuff",
+        "DA_VoidStaff",
+        "DA_GiantSlayer",
+        "DA_NashorsTooth",
+        "DA_SpearOfShojin"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Lux18_Blossom",
+      "count": 41672,
+      "avg_place": 3.52,
+      "top4_rate": 0.6794,
+      "win_rate": 0.2416,
+      "top_items": [
+        "DA_GiantSlayer",
+        "DA_VoidStaff",
+        "DA_StrikersFlail",
+        "DA_NashorsTooth",
+        "DA_SpearOfShojin"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Murkwolf18",
+      "count": 259516,
+      "avg_place": 4.35,
+      "top4_rate": 0.5312,
+      "win_rate": 0.1178,
+      "top_items": [
+        "DA_SteraksGage",
+        "DA_EdgeOfNight",
+        "DA_TitansResolve",
+        "DA_Bloodthirster",
+        "DA_GiantSlayer"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Nidalee18_AP",
+      "count": 222814,
+      "avg_place": 4.35,
+      "top4_rate": 0.5309,
+      "win_rate": 0.1143,
+      "top_items": [
+        "DA_RedBuff",
+        "DA_SteraksGage",
+        "DA_GiantSlayer",
+        "DA_EdgeOfNight",
+        "DA_HextechGunblade"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Scuttlecrab18",
+      "count": 344429,
+      "avg_place": 4.4,
+      "top4_rate": 0.5219,
+      "win_rate": 0.113,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Sentinel18",
+      "count": 1063725,
+      "avg_place": 4.33,
+      "top4_rate": 0.5328,
+      "win_rate": 0.1254,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Taric18",
+      "count": 727118,
+      "avg_place": 3.88,
+      "top4_rate": 0.6135,
+      "win_rate": 0.1892,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Vi18",
+      "count": 479677,
+      "avg_place": 4.51,
+      "top4_rate": 0.4968,
+      "win_rate": 0.1251,
+      "top_items": [
+        "DA_WarmogsArmor",
+        "DA_ThiefsGloves"
+      ],
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    }
+  ],
+  "traits": [
+    {
+      "api_name": "DA_18_Adaptor__1",
+      "count": 114351,
+      "avg_place": 4.69,
+      "top4_rate": 0.4672,
+      "win_rate": 0.0833,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Adaptor__2",
+      "count": 86127,
+      "avg_place": 4.31,
+      "top4_rate": 0.5367,
+      "win_rate": 0.1206,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Adaptor__3",
+      "count": 36527,
+      "avg_place": 3.61,
+      "top4_rate": 0.6761,
+      "win_rate": 0.1773,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_ApexPredator__1",
+      "count": 246606,
+      "avg_place": 3.88,
+      "top4_rate": 0.6044,
+      "win_rate": 0.2091,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Battlemage__1",
+      "count": 278889,
+      "avg_place": 4.7,
+      "top4_rate": 0.466,
+      "win_rate": 0.0884,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Blackthorn__1",
+      "count": 317220,
+      "avg_place": 4.57,
+      "top4_rate": 0.4936,
+      "win_rate": 0.0969,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Blackthorn__2",
+      "count": 42894,
+      "avg_place": 4.38,
+      "top4_rate": 0.5226,
+      "win_rate": 0.1198,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Blackthorn__3",
+      "count": 12797,
+      "avg_place": 4.48,
+      "top4_rate": 0.4964,
+      "win_rate": 0.146,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Blossom__1",
+      "count": 408060,
+      "avg_place": 4.28,
+      "top4_rate": 0.5464,
+      "win_rate": 0.1232,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Blossom__2",
+      "count": 104159,
+      "avg_place": 4.4,
+      "top4_rate": 0.5183,
+      "win_rate": 0.124,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Blossom__3",
+      "count": 33954,
+      "avg_place": 4.42,
+      "top4_rate": 0.503,
+      "win_rate": 0.1469,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Blossom__4",
+      "count": 7355,
+      "avg_place": 3.56,
+      "top4_rate": 0.6639,
+      "win_rate": 0.2424,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Blossom__5",
+      "count": 973,
+      "avg_place": 1.29,
+      "top4_rate": 0.9712,
+      "win_rate": 0.8777,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Brawler__1",
+      "count": 943260,
+      "avg_place": 4.12,
+      "top4_rate": 0.5706,
+      "win_rate": 0.1534,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Brawler__2",
+      "count": 80568,
+      "avg_place": 3.49,
+      "top4_rate": 0.6971,
+      "win_rate": 0.1945,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Brawler__3",
+      "count": 8665,
+      "avg_place": 3.63,
+      "top4_rate": 0.6692,
+      "win_rate": 0.1904,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Caustic__1",
+      "count": 307428,
+      "avg_place": 4.3,
+      "top4_rate": 0.5433,
+      "win_rate": 0.1204,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Coven__1",
+      "count": 71248,
+      "avg_place": 4.93,
+      "top4_rate": 0.4216,
+      "win_rate": 0.0977,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Coven__2",
+      "count": 11538,
+      "avg_place": 5.95,
+      "top4_rate": 0.2395,
+      "win_rate": 0.0703,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Coven__3",
+      "count": 12848,
+      "avg_place": 5.96,
+      "top4_rate": 0.2288,
+      "win_rate": 0.0784,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Coven__4",
+      "count": 4916,
+      "avg_place": 5.72,
+      "top4_rate": 0.2537,
+      "win_rate": 0.1194,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Defender__1",
+      "count": 621922,
+      "avg_place": 4.54,
+      "top4_rate": 0.4933,
+      "win_rate": 0.137,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Defender__2",
+      "count": 43447,
+      "avg_place": 5.19,
+      "top4_rate": 0.361,
+      "win_rate": 0.0766,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Defender__3",
+      "count": 186947,
+      "avg_place": 3.93,
+      "top4_rate": 0.6098,
+      "win_rate": 0.1461,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Eclipse__1",
+      "count": 11749,
+      "avg_place": 3.03,
+      "top4_rate": 0.7532,
+      "win_rate": 0.3322,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Elderwood__1",
+      "count": 368312,
+      "avg_place": 4.31,
+      "top4_rate": 0.5298,
+      "win_rate": 0.1711,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Elderwood__2",
+      "count": 93018,
+      "avg_place": 4.68,
+      "top4_rate": 0.4583,
+      "win_rate": 0.1189,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Elderwood__3",
+      "count": 42567,
+      "avg_place": 4.19,
+      "top4_rate": 0.5517,
+      "win_rate": 0.1472,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Elderwood__4",
+      "count": 10210,
+      "avg_place": 2.77,
+      "top4_rate": 0.807,
+      "win_rate": 0.3458,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Elderwood__5",
+      "count": 1148,
+      "avg_place": 1.08,
+      "top4_rate": 0.9983,
+      "win_rate": 0.9512,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Executioner__1",
+      "count": 286855,
+      "avg_place": 4.66,
+      "top4_rate": 0.4556,
+      "win_rate": 0.1393,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Executioner__2",
+      "count": 140364,
+      "avg_place": 4.29,
+      "top4_rate": 0.5367,
+      "win_rate": 0.1396,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Executioner__3",
+      "count": 75053,
+      "avg_place": 3.73,
+      "top4_rate": 0.6532,
+      "win_rate": 0.1723,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Fae__1",
+      "count": 358582,
+      "avg_place": 4.59,
+      "top4_rate": 0.4858,
+      "win_rate": 0.1304,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Fae__2",
+      "count": 84229,
+      "avg_place": 4.2,
+      "top4_rate": 0.5417,
+      "win_rate": 0.2113,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Greenfather__1",
+      "count": 383233,
+      "avg_place": 3.85,
+      "top4_rate": 0.6079,
+      "win_rate": 0.2281,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Hunter__1",
+      "count": 233848,
+      "avg_place": 4.37,
+      "top4_rate": 0.5213,
+      "win_rate": 0.1441,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Hunter__2",
+      "count": 78735,
+      "avg_place": 4.09,
+      "top4_rate": 0.5733,
+      "win_rate": 0.1563,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Hunter__3",
+      "count": 23281,
+      "avg_place": 3.66,
+      "top4_rate": 0.6724,
+      "win_rate": 0.1726,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Hunter__4",
+      "count": 5303,
+      "avg_place": 3.35,
+      "top4_rate": 0.7283,
+      "win_rate": 0.2042,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Inferno__1",
+      "count": 368102,
+      "avg_place": 4.13,
+      "top4_rate": 0.5575,
+      "win_rate": 0.1837,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Inferno__2",
+      "count": 65917,
+      "avg_place": 4.37,
+      "top4_rate": 0.5202,
+      "win_rate": 0.1483,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Inferno__3",
+      "count": 10904,
+      "avg_place": 4.1,
+      "top4_rate": 0.556,
+      "win_rate": 0.2039,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Inferno__4",
+      "count": 2284,
+      "avg_place": 4.15,
+      "top4_rate": 0.5468,
+      "win_rate": 0.1821,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Invoker__1",
+      "count": 479062,
+      "avg_place": 4.26,
+      "top4_rate": 0.5473,
+      "win_rate": 0.1333,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Invoker__2",
+      "count": 207911,
+      "avg_place": 4.41,
+      "top4_rate": 0.5236,
+      "win_rate": 0.1048,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Invoker__3",
+      "count": 96797,
+      "avg_place": 4.18,
+      "top4_rate": 0.5674,
+      "win_rate": 0.1266,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Invoker__4",
+      "count": 33000,
+      "avg_place": 3.49,
+      "top4_rate": 0.6947,
+      "win_rate": 0.2131,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Lunar__1",
+      "count": 392224,
+      "avg_place": 4.57,
+      "top4_rate": 0.4848,
+      "win_rate": 0.1069,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Lunar__2",
+      "count": 112895,
+      "avg_place": 3.9,
+      "top4_rate": 0.6195,
+      "win_rate": 0.1606,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Lunar__3",
+      "count": 28278,
+      "avg_place": 3.59,
+      "top4_rate": 0.6716,
+      "win_rate": 0.1985,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Lunar__4",
+      "count": 12196,
+      "avg_place": 3.11,
+      "top4_rate": 0.7619,
+      "win_rate": 0.2616,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_LuxUniqueTrait__1",
+      "count": 239203,
+      "avg_place": 3.54,
+      "top4_rate": 0.6729,
+      "win_rate": 0.2508,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Maokai_UniqueTrait__1",
+      "count": 371043,
+      "avg_place": 4.15,
+      "top4_rate": 0.5468,
+      "win_rate": 0.2043,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Rapidfire__1",
+      "count": 470782,
+      "avg_place": 4.75,
+      "top4_rate": 0.4578,
+      "win_rate": 0.1012,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Rapidfire__2",
+      "count": 85044,
+      "avg_place": 3.8,
+      "top4_rate": 0.6348,
+      "win_rate": 0.1937,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Rapidfire__3",
+      "count": 11035,
+      "avg_place": 3.13,
+      "top4_rate": 0.7483,
+      "win_rate": 0.2942,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Rapidfire__4",
+      "count": 2399,
+      "avg_place": 2.79,
+      "top4_rate": 0.8091,
+      "win_rate": 0.3335,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Rival__1",
+      "count": 135751,
+      "avg_place": 4.48,
+      "top4_rate": 0.4971,
+      "win_rate": 0.1706,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Rival__2",
+      "count": 111,
+      "avg_place": 5.32,
+      "top4_rate": 0.3514,
+      "win_rate": 0.027,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Rival__3",
+      "count": 56561,
+      "avg_place": 4.46,
+      "top4_rate": 0.5052,
+      "win_rate": 0.1404,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Slayer__1",
+      "count": 541679,
+      "avg_place": 4.46,
+      "top4_rate": 0.5097,
+      "win_rate": 0.1083,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Slayer__2",
+      "count": 21505,
+      "avg_place": 4.42,
+      "top4_rate": 0.5186,
+      "win_rate": 0.0942,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Slayer__3",
+      "count": 4189,
+      "avg_place": 4.4,
+      "top4_rate": 0.5211,
+      "win_rate": 0.0814,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Solar__1",
+      "count": 194336,
+      "avg_place": 4.58,
+      "top4_rate": 0.4894,
+      "win_rate": 0.159,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Spellweaver__1",
+      "count": 873755,
+      "avg_place": 4.34,
+      "top4_rate": 0.5317,
+      "win_rate": 0.1287,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Spellweaver__2",
+      "count": 93283,
+      "avg_place": 4.04,
+      "top4_rate": 0.588,
+      "win_rate": 0.1598,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Spellweaver__3",
+      "count": 7662,
+      "avg_place": 3.85,
+      "top4_rate": 0.6171,
+      "win_rate": 0.1832,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Sprykin__1",
+      "count": 123234,
+      "avg_place": 4.56,
+      "top4_rate": 0.4821,
+      "win_rate": 0.1422,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Sprykin__2",
+      "count": 84360,
+      "avg_place": 3.91,
+      "top4_rate": 0.6146,
+      "win_rate": 0.1531,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Sprykin__3",
+      "count": 8237,
+      "avg_place": 3.32,
+      "top4_rate": 0.7363,
+      "win_rate": 0.2121,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Summoner__1",
+      "count": 274135,
+      "avg_place": 4.63,
+      "top4_rate": 0.4813,
+      "win_rate": 0.0889,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Summoner__2",
+      "count": 130234,
+      "avg_place": 4.57,
+      "top4_rate": 0.4915,
+      "win_rate": 0.0917,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Vanguard__1",
+      "count": 858236,
+      "avg_place": 4.25,
+      "top4_rate": 0.5446,
+      "win_rate": 0.159,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Vanguard__2",
+      "count": 287227,
+      "avg_place": 4.41,
+      "top4_rate": 0.5214,
+      "win_rate": 0.1047,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_Vanguard__3",
+      "count": 13403,
+      "avg_place": 3.92,
+      "top4_rate": 0.6167,
+      "win_rate": 0.1404,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_ZyraUniqueTrait__1",
+      "count": 401249,
+      "avg_place": 4.54,
+      "top4_rate": 0.4972,
+      "win_rate": 0.0978,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_AluneUniqueTrait18__1",
+      "count": 345479,
+      "avg_place": 3.77,
+      "top4_rate": 0.6371,
+      "win_rate": 0.1906,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_DravenUniqueTrait18__1",
+      "count": 206727,
+      "avg_place": 4.34,
+      "top4_rate": 0.5037,
+      "win_rate": 0.2135,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Emerald18__1",
+      "count": 725524,
+      "avg_place": 3.88,
+      "top4_rate": 0.6128,
+      "win_rate": 0.1891,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_FloraFatalis18__1",
+      "count": 362381,
+      "avg_place": 4.8,
+      "top4_rate": 0.442,
+      "win_rate": 0.0985,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_FloraFatalis18__2",
+      "count": 391506,
+      "avg_place": 4.18,
+      "top4_rate": 0.5631,
+      "win_rate": 0.135,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Juggernaut18__1",
+      "count": 1029596,
+      "avg_place": 4.39,
+      "top4_rate": 0.5151,
+      "win_rate": 0.1533,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Juggernaut18__2",
+      "count": 68036,
+      "avg_place": 4.22,
+      "top4_rate": 0.5512,
+      "win_rate": 0.1439,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Juggernaut18__3",
+      "count": 8187,
+      "avg_place": 3.54,
+      "top4_rate": 0.6844,
+      "win_rate": 0.2116,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Primal18__1",
+      "count": 449017,
+      "avg_place": 4.33,
+      "top4_rate": 0.5301,
+      "win_rate": 0.1352,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Primal18__2",
+      "count": 34276,
+      "avg_place": 4.03,
+      "top4_rate": 0.5884,
+      "win_rate": 0.1638,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Riftbeast18__1",
+      "count": 609638,
+      "avg_place": 4.36,
+      "top4_rate": 0.5297,
+      "win_rate": 0.1178,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Riftbeast18__2",
+      "count": 20372,
+      "avg_place": 6.14,
+      "top4_rate": 0.2088,
+      "win_rate": 0.0264,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Riftbeast18__3",
+      "count": 235822,
+      "avg_place": 4.29,
+      "top4_rate": 0.5411,
+      "win_rate": 0.1058,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Riftbeast18__4",
+      "count": 31366,
+      "avg_place": 2.29,
+      "top4_rate": 0.8964,
+      "win_rate": 0.4175,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    }
+  ],
+  "items": [
+    {
+      "api_name": "DA_18_EmblemBlackthorn",
+      "count": 43589,
+      "avg_place": 4.66,
+      "top4_rate": 0.4681,
+      "win_rate": 0.1137,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemBlossom",
+      "count": 79871,
+      "avg_place": 4.45,
+      "top4_rate": 0.5035,
+      "win_rate": 0.1386,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemBrawler",
+      "count": 114160,
+      "avg_place": 3.97,
+      "top4_rate": 0.5978,
+      "win_rate": 0.1636,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemCoven",
+      "count": 25036,
+      "avg_place": 5.06,
+      "top4_rate": 0.3974,
+      "win_rate": 0.1074,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemDefender",
+      "count": 70739,
+      "avg_place": 4.09,
+      "top4_rate": 0.5756,
+      "win_rate": 0.163,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemElderwood",
+      "count": 72559,
+      "avg_place": 4.26,
+      "top4_rate": 0.5366,
+      "win_rate": 0.1627,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemExecutioner",
+      "count": 106137,
+      "avg_place": 4.24,
+      "top4_rate": 0.5462,
+      "win_rate": 0.1606,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemFae",
+      "count": 82151,
+      "avg_place": 4.19,
+      "top4_rate": 0.5438,
+      "win_rate": 0.2102,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemFloraFatalis",
+      "count": 59937,
+      "avg_place": 4.21,
+      "top4_rate": 0.5548,
+      "win_rate": 0.1447,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemFloraFatalisAugment",
+      "count": 82811,
+      "avg_place": 3.81,
+      "top4_rate": 0.6288,
+      "win_rate": 0.1898,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemHunter",
+      "count": 71985,
+      "avg_place": 4.25,
+      "top4_rate": 0.5432,
+      "win_rate": 0.1512,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemInferno",
+      "count": 53628,
+      "avg_place": 4.3,
+      "top4_rate": 0.5328,
+      "win_rate": 0.153,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemInvoker",
+      "count": 128307,
+      "avg_place": 4.1,
+      "top4_rate": 0.5756,
+      "win_rate": 0.1573,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemJuggernaut",
+      "count": 54852,
+      "avg_place": 3.94,
+      "top4_rate": 0.6001,
+      "win_rate": 0.189,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemLunar",
+      "count": 73377,
+      "avg_place": 4.31,
+      "top4_rate": 0.5335,
+      "win_rate": 0.1365,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemPrimal",
+      "count": 48591,
+      "avg_place": 4.48,
+      "top4_rate": 0.5038,
+      "win_rate": 0.1228,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemRapidfire",
+      "count": 72347,
+      "avg_place": 4.16,
+      "top4_rate": 0.5642,
+      "win_rate": 0.1497,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemSlayer",
+      "count": 46441,
+      "avg_place": 4.43,
+      "top4_rate": 0.5116,
+      "win_rate": 0.1292,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemSpellweaver",
+      "count": 75527,
+      "avg_place": 4.2,
+      "top4_rate": 0.5533,
+      "win_rate": 0.1539,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemSprykin",
+      "count": 52234,
+      "avg_place": 4.25,
+      "top4_rate": 0.5429,
+      "win_rate": 0.1538,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_18_EmblemVanguard",
+      "count": 83879,
+      "avg_place": 4.1,
+      "top4_rate": 0.5728,
+      "win_rate": 0.1558,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_AdaptiveHelm",
+      "count": 733721,
+      "avg_place": 4.07,
+      "top4_rate": 0.5847,
+      "win_rate": 0.1517,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_AdaptiveHelm_Radiant",
+      "count": 9844,
+      "avg_place": 4.1,
+      "top4_rate": 0.5728,
+      "win_rate": 0.1598,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_ArchangelsStaff",
+      "count": 520672,
+      "avg_place": 4.08,
+      "top4_rate": 0.5801,
+      "win_rate": 0.1445,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_ArchangelsStaffRadiant",
+      "count": 8472,
+      "avg_place": 4.15,
+      "top4_rate": 0.5644,
+      "win_rate": 0.1517,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_AegisOfDawn",
+      "count": 27314,
+      "avg_place": 4.47,
+      "top4_rate": 0.5082,
+      "win_rate": 0.1253,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_AegisOfDusk",
+      "count": 28705,
+      "avg_place": 4.41,
+      "top4_rate": 0.5168,
+      "win_rate": 0.1286,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_BlightingJewel",
+      "count": 44020,
+      "avg_place": 3.93,
+      "top4_rate": 0.607,
+      "win_rate": 0.1767,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_Dawncore",
+      "count": 44618,
+      "avg_place": 4.23,
+      "top4_rate": 0.5493,
+      "win_rate": 0.1438,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_EternalPact",
+      "count": 28507,
+      "avg_place": 4.12,
+      "top4_rate": 0.5758,
+      "win_rate": 0.1446,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_Fishbones",
+      "count": 27607,
+      "avg_place": 4.4,
+      "top4_rate": 0.5164,
+      "win_rate": 0.1389,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_ForbiddenIdol",
+      "count": 22777,
+      "avg_place": 4.47,
+      "top4_rate": 0.5046,
+      "win_rate": 0.1387,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_GamblersBlade",
+      "count": 17451,
+      "avg_place": 4.56,
+      "top4_rate": 0.4858,
+      "win_rate": 0.1317,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_GoldCollector",
+      "count": 21057,
+      "avg_place": 4.21,
+      "top4_rate": 0.5488,
+      "win_rate": 0.1693,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_HellfireHatchet",
+      "count": 17717,
+      "avg_place": 4.13,
+      "top4_rate": 0.5677,
+      "win_rate": 0.1556,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_HorizonFocus",
+      "count": 11577,
+      "avg_place": 4.32,
+      "top4_rate": 0.5341,
+      "win_rate": 0.1388,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_InfinityForce",
+      "count": 23400,
+      "avg_place": 4.41,
+      "top4_rate": 0.5131,
+      "win_rate": 0.1321,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_LichBane",
+      "count": 14967,
+      "avg_place": 4.33,
+      "top4_rate": 0.5358,
+      "win_rate": 0.1257,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_LightshieldCrest",
+      "count": 46442,
+      "avg_place": 4.11,
+      "top4_rate": 0.5708,
+      "win_rate": 0.1614,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_LudensTempest",
+      "count": 20370,
+      "avg_place": 4.46,
+      "top4_rate": 0.5109,
+      "win_rate": 0.1157,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_Manazane",
+      "count": 36361,
+      "avg_place": 4.45,
+      "top4_rate": 0.5095,
+      "win_rate": 0.1185,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_Mittens",
+      "count": 25018,
+      "avg_place": 4.36,
+      "top4_rate": 0.5245,
+      "win_rate": 0.1454,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_MogulsMail",
+      "count": 45485,
+      "avg_place": 4.43,
+      "top4_rate": 0.5106,
+      "win_rate": 0.1385,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_NavoriFlickerblade",
+      "count": 66999,
+      "avg_place": 3.83,
+      "top4_rate": 0.6185,
+      "win_rate": 0.2116,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_RapidFireCannon",
+      "count": 33157,
+      "avg_place": 4.3,
+      "top4_rate": 0.5331,
+      "win_rate": 0.1532,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_SeekersArmguard",
+      "count": 33098,
+      "avg_place": 4.13,
+      "top4_rate": 0.5652,
+      "win_rate": 0.1809,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_SilvermereDawn",
+      "count": 12464,
+      "avg_place": 4.56,
+      "top4_rate": 0.4885,
+      "win_rate": 0.1152,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_StatikkShiv",
+      "count": 25742,
+      "avg_place": 4.35,
+      "top4_rate": 0.5283,
+      "win_rate": 0.1499,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_TheIndomitable",
+      "count": 48739,
+      "avg_place": 4.39,
+      "top4_rate": 0.5193,
+      "win_rate": 0.1336,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_TitanicHydra",
+      "count": 15396,
+      "avg_place": 4.37,
+      "top4_rate": 0.5255,
+      "win_rate": 0.132,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_VoidGauntlet",
+      "count": 24286,
+      "avg_place": 4.34,
+      "top4_rate": 0.5301,
+      "win_rate": 0.138,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_WitsEnd",
+      "count": 39523,
+      "avg_place": 3.66,
+      "top4_rate": 0.6506,
+      "win_rate": 0.2297,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Artifact_ZhonyasParadox",
+      "count": 18335,
+      "avg_place": 4.43,
+      "top4_rate": 0.5148,
+      "win_rate": 0.133,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_BlastPotion18",
+      "count": 5246,
+      "avg_place": 4.64,
+      "top4_rate": 0.5042,
+      "win_rate": 0.0913,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_BlastPotion18_Radiant",
+      "count": 1844,
+      "avg_place": 3.97,
+      "top4_rate": 0.6296,
+      "win_rate": 0.115,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Bloodthirster",
+      "count": 352234,
+      "avg_place": 4.06,
+      "top4_rate": 0.5808,
+      "win_rate": 0.157,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_BloodthirsterRadiant",
+      "count": 3233,
+      "avg_place": 4.34,
+      "top4_rate": 0.5193,
+      "win_rate": 0.171,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_BlueBuff",
+      "count": 673038,
+      "avg_place": 4.12,
+      "top4_rate": 0.5726,
+      "win_rate": 0.1462,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_BlueBuffRadiant",
+      "count": 15657,
+      "avg_place": 4.03,
+      "top4_rate": 0.5902,
+      "win_rate": 0.1685,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_BrambleVest",
+      "count": 409880,
+      "avg_place": 4.02,
+      "top4_rate": 0.5947,
+      "win_rate": 0.1525,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_BrambleVestRadiant",
+      "count": 3309,
+      "avg_place": 4.09,
+      "top4_rate": 0.5666,
+      "win_rate": 0.1729,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Crownguard",
+      "count": 527869,
+      "avg_place": 4.01,
+      "top4_rate": 0.5952,
+      "win_rate": 0.1568,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_CrownguardRadiant",
+      "count": 2925,
+      "avg_place": 4.3,
+      "top4_rate": 0.5292,
+      "win_rate": 0.1497,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Deathblade",
+      "count": 599546,
+      "avg_place": 4.22,
+      "top4_rate": 0.5494,
+      "win_rate": 0.151,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_DeathbladeRadiant",
+      "count": 12115,
+      "avg_place": 4.34,
+      "top4_rate": 0.5279,
+      "win_rate": 0.1377,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_DragonsClaw",
+      "count": 616648,
+      "avg_place": 4.16,
+      "top4_rate": 0.5658,
+      "win_rate": 0.1433,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_DragonsClawRadiant",
+      "count": 4672,
+      "avg_place": 4.37,
+      "top4_rate": 0.5158,
+      "win_rate": 0.1466,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_EdgeOfNight",
+      "count": 542281,
+      "avg_place": 4.11,
+      "top4_rate": 0.5724,
+      "win_rate": 0.1536,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_EdgeOfNightRadiant",
+      "count": 5252,
+      "avg_place": 4.3,
+      "top4_rate": 0.5267,
+      "win_rate": 0.1571,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Evenshroud",
+      "count": 414134,
+      "avg_place": 4.03,
+      "top4_rate": 0.5859,
+      "win_rate": 0.1678,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_EvenshroudRadiant",
+      "count": 2326,
+      "avg_place": 4.11,
+      "top4_rate": 0.5662,
+      "win_rate": 0.1763,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_GargoyleStoneplate",
+      "count": 1804431,
+      "avg_place": 4.39,
+      "top4_rate": 0.5198,
+      "win_rate": 0.1314,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_GargoyleStoneplate_Radiant",
+      "count": 14030,
+      "avg_place": 4.46,
+      "top4_rate": 0.5044,
+      "win_rate": 0.1279,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_GiantSlayer",
+      "count": 804829,
+      "avg_place": 4.19,
+      "top4_rate": 0.5588,
+      "win_rate": 0.1462,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_GiantSlayer_Radiant",
+      "count": 13085,
+      "avg_place": 4.12,
+      "top4_rate": 0.5661,
+      "win_rate": 0.1624,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_GuinsoosRageblade",
+      "count": 1194135,
+      "avg_place": 4.5,
+      "top4_rate": 0.4967,
+      "win_rate": 0.1363,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_GuinsoosRagebladeRadiant",
+      "count": 19822,
+      "avg_place": 4.22,
+      "top4_rate": 0.5473,
+      "win_rate": 0.1802,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_HandOfJustice",
+      "count": 361621,
+      "avg_place": 4.15,
+      "top4_rate": 0.5665,
+      "win_rate": 0.1529,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_HandOfJusticeRadiant",
+      "count": 5204,
+      "avg_place": 4.28,
+      "top4_rate": 0.5311,
+      "win_rate": 0.1645,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_HealthPotion18",
+      "count": 1680,
+      "avg_place": 2.9,
+      "top4_rate": 0.7536,
+      "win_rate": 0.4768,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_HealthPotion18_Radiant",
+      "count": 441,
+      "avg_place": 2.73,
+      "top4_rate": 0.7868,
+      "win_rate": 0.4558,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_HextechGunblade",
+      "count": 653732,
+      "avg_place": 4.14,
+      "top4_rate": 0.5675,
+      "win_rate": 0.148,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_HextechGunbladeRadiant",
+      "count": 9027,
+      "avg_place": 4.29,
+      "top4_rate": 0.5373,
+      "win_rate": 0.1416,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_InfinityEdge",
+      "count": 871500,
+      "avg_place": 4.28,
+      "top4_rate": 0.5381,
+      "win_rate": 0.1453,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_InfinityEdgeRadiant",
+      "count": 11078,
+      "avg_place": 4.25,
+      "top4_rate": 0.5434,
+      "win_rate": 0.1548,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_IonicSpark",
+      "count": 410448,
+      "avg_place": 3.98,
+      "top4_rate": 0.5982,
+      "win_rate": 0.1585,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_IonicSparkRadiant",
+      "count": 2662,
+      "avg_place": 4.1,
+      "top4_rate": 0.559,
+      "win_rate": 0.1867,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Item_Artifact_TalismanOfAscension",
+      "count": 18262,
+      "avg_place": 4.06,
+      "top4_rate": 0.582,
+      "win_rate": 0.166,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_JeweledGauntlet",
+      "count": 1197202,
+      "avg_place": 4.34,
+      "top4_rate": 0.5303,
+      "win_rate": 0.1306,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_JeweledGauntletRadiant",
+      "count": 20016,
+      "avg_place": 4.27,
+      "top4_rate": 0.5395,
+      "win_rate": 0.152,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_KrakensFury",
+      "count": 497080,
+      "avg_place": 4.31,
+      "top4_rate": 0.5315,
+      "win_rate": 0.1469,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_KrakensFury_Radiant",
+      "count": 8810,
+      "avg_place": 4.29,
+      "top4_rate": 0.5348,
+      "win_rate": 0.1499,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_LastWhisper",
+      "count": 685894,
+      "avg_place": 4.2,
+      "top4_rate": 0.5526,
+      "win_rate": 0.1531,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_LastWhisperRadiant",
+      "count": 4527,
+      "avg_place": 4.18,
+      "top4_rate": 0.5553,
+      "win_rate": 0.1546,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_ManaPotion18",
+      "count": 1378,
+      "avg_place": 4.42,
+      "top4_rate": 0.5341,
+      "win_rate": 0.1045,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_ManaPotion18_Radiant",
+      "count": 241,
+      "avg_place": 4.03,
+      "top4_rate": 0.6266,
+      "win_rate": 0.1037,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Morellonomicon",
+      "count": 612078,
+      "avg_place": 4.13,
+      "top4_rate": 0.5718,
+      "win_rate": 0.1445,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_MorellonomiconRadiant",
+      "count": 4544,
+      "avg_place": 4.17,
+      "top4_rate": 0.5623,
+      "win_rate": 0.1618,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_NashorsTooth",
+      "count": 392151,
+      "avg_place": 4.17,
+      "top4_rate": 0.5621,
+      "win_rate": 0.1395,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_NashorsToothRadiant",
+      "count": 6587,
+      "avg_place": 4.26,
+      "top4_rate": 0.54,
+      "win_rate": 0.153,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_ProtectorsVow",
+      "count": 797466,
+      "avg_place": 4.16,
+      "top4_rate": 0.5649,
+      "win_rate": 0.1471,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_ProtectorsVowRadiant",
+      "count": 5347,
+      "avg_place": 4.28,
+      "top4_rate": 0.533,
+      "win_rate": 0.1524,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_Quicksilver",
+      "count": 300612,
+      "avg_place": 4.08,
+      "top4_rate": 0.5794,
+      "win_rate": 0.1511,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_QuicksilverRadiant",
+      "count": 3115,
+      "avg_place": 4.21,
+      "top4_rate": 0.5457,
+      "win_rate": 0.1653,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_RabadonsDeathcap",
+      "count": 661007,
+      "avg_place": 4.16,
+      "top4_rate": 0.5656,
+      "win_rate": 0.145,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_RabadonsDeathcap_Radiant",
+      "count": 18941,
+      "avg_place": 4.14,
+      "top4_rate": 0.5658,
+      "win_rate": 0.1606,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_RedBuff",
+      "count": 678881,
+      "avg_place": 4.12,
+      "top4_rate": 0.5703,
+      "win_rate": 0.1529,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_RedBuffRadiant",
+      "count": 5864,
+      "avg_place": 4.27,
+      "top4_rate": 0.5414,
+      "win_rate": 0.1494,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_SpearOfShojin",
+      "count": 1161201,
+      "avg_place": 4.3,
+      "top4_rate": 0.5371,
+      "win_rate": 0.1355,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_SpearOfShojinRadiant",
+      "count": 11046,
+      "avg_place": 4.37,
+      "top4_rate": 0.523,
+      "win_rate": 0.1332,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_SpiritVisage",
+      "count": 1014688,
+      "avg_place": 4.28,
+      "top4_rate": 0.5419,
+      "win_rate": 0.1414,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_SpiritVisage_Radiant",
+      "count": 7861,
+      "avg_place": 4.33,
+      "top4_rate": 0.5268,
+      "win_rate": 0.1401,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_SteadfastHeart",
+      "count": 570232,
+      "avg_place": 4.08,
+      "top4_rate": 0.5831,
+      "win_rate": 0.1497,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_SteadfastHeartRadiant",
+      "count": 3658,
+      "avg_place": 4.39,
+      "top4_rate": 0.5107,
+      "win_rate": 0.1457,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_SteraksGage",
+      "count": 467107,
+      "avg_place": 3.98,
+      "top4_rate": 0.5987,
+      "win_rate": 0.1601,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_SteraksGageRadiant",
+      "count": 4099,
+      "avg_place": 4.26,
+      "top4_rate": 0.5367,
+      "win_rate": 0.162,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_StrikersFlail",
+      "count": 623838,
+      "avg_place": 4.16,
+      "top4_rate": 0.5648,
+      "win_rate": 0.146,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_StrikersFlailRadiant",
+      "count": 8956,
+      "avg_place": 4.21,
+      "top4_rate": 0.5545,
+      "win_rate": 0.1476,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_SunfireCape",
+      "count": 712698,
+      "avg_place": 4.17,
+      "top4_rate": 0.5617,
+      "win_rate": 0.1448,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_SunfireCape_Radiant",
+      "count": 3209,
+      "avg_place": 4.31,
+      "top4_rate": 0.5263,
+      "win_rate": 0.149,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_TacticiansCape",
+      "count": 36965,
+      "avg_place": 4.15,
+      "top4_rate": 0.5613,
+      "win_rate": 0.1618,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_TacticiansCrown",
+      "count": 73752,
+      "avg_place": 4.01,
+      "top4_rate": 0.5858,
+      "win_rate": 0.1849,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_TacticiansShield",
+      "count": 11551,
+      "avg_place": 3.76,
+      "top4_rate": 0.6251,
+      "win_rate": 0.228,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_ThiefsGloves",
+      "count": 789758,
+      "avg_place": 4.05,
+      "top4_rate": 0.5817,
+      "win_rate": 0.1608,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_ThiefsGlovesRadiant",
+      "count": 18472,
+      "avg_place": 4.0,
+      "top4_rate": 0.5823,
+      "win_rate": 0.1849,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_TitansResolve",
+      "count": 432077,
+      "avg_place": 4.13,
+      "top4_rate": 0.5681,
+      "win_rate": 0.1509,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_TitansResolve_Radiant",
+      "count": 5810,
+      "avg_place": 4.19,
+      "top4_rate": 0.5544,
+      "win_rate": 0.1614,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_VoidStaff",
+      "count": 739329,
+      "avg_place": 4.15,
+      "top4_rate": 0.5683,
+      "win_rate": 0.1409,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_VoidStaffRadiant",
+      "count": 5425,
+      "avg_place": 4.27,
+      "top4_rate": 0.5419,
+      "win_rate": 0.1429,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_WarmogsArmor",
+      "count": 1374540,
+      "avg_place": 4.29,
+      "top4_rate": 0.54,
+      "win_rate": 0.1372,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    },
+    {
+      "api_name": "DA_WarmogsArmorRadiant",
+      "count": 13243,
+      "avg_place": 4.37,
+      "top4_rate": 0.5242,
+      "win_rate": 0.1333,
+      "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951"
+    }
+  ],
+  "meta": {
+    "source": "tactics.tools:stats2/general/all/patch=16170/n=2699951",
+    "provider": "tactics.tools",
+    "rank_group": "all",
+    "patch": 16170,
+    "generated_at": "2026-09-01T17:50:20+00:00",
+    "note": "CHUA noi vao scoring engine - du lieu tho, xem general_records()."
+  }
+}
