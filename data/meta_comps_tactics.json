@@ -1,0 +1,474 @@
+{
+  "meta": {
+    "set": "TFTSet18",
+    "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+    "provider": "tactics.tools",
+    "rank_group": "all",
+    "patch": 16170,
+    "queue_id": 1100,
+    "generated_at": "2026-09-01T17:50:20+00:00",
+    "grouping": "nhom cua tactics.tools - phuong phap KHONG duoc cong bo",
+    "note": "So cua ben thu ba: khong truy nguoc duoc den match_id nao. Truong augment trong payload: 0 ban ghi.",
+    "total_games": 456572,
+    "n": 12
+  },
+  "comps": [
+    {
+      "name": "DA_Sentinel18 / DA_18_Slayer",
+      "tier": "S",
+      "core_units": [
+        "DA_Sentinel18",
+        "DA_Brambleback18",
+        "DA_18_ElderDragon",
+        "DA_18_Sentry"
+      ],
+      "flex_units": [
+        "DA_Krug18",
+        "DA_Murkwolf18"
+      ],
+      "core_items": [
+        "DA_InfinityEdge",
+        "DA_GargoyleStoneplate",
+        "DA_LastWhisper"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Slayer": 1,
+        "DA_18_Invoker": 1,
+        "DA_Riftbeast18": 3,
+        "DA_18_ApexPredator": 1,
+        "DA_18_Vanguard": 1,
+        "DA_18_Brawler": 1,
+        "DA_Emerald18": 1
+      },
+      "avg_placement": 3.733,
+      "top4_rate": 0.6459,
+      "win_rate": 0.1773,
+      "play_rate": 0.0078,
+      "level_timing": {
+        "9": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Tong hop boi tactics.tools tu 3564 van. Ho KHONG cong bo phuong phap nhom doi hinh va khong truy nguoc duoc den match_id - khac voi nguon Riot tu crawl. Doc so nay nhu so cua ben thu ba.",
+      "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+      "sample_n": 3564
+    },
+    {
+      "name": "DA_Sentinel18 / DA_Riftbeast18",
+      "tier": "S",
+      "core_units": [
+        "DA_Sentinel18",
+        "DA_18_Sentry",
+        "DA_18_ElderDragon",
+        "DA_Krug18"
+      ],
+      "flex_units": [
+        "DA_Scuttlecrab18"
+      ],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_InfinityEdge",
+        "DA_WarmogsArmor"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_Riftbeast18": 3,
+        "DA_18_Invoker": 1,
+        "DA_18_ApexPredator": 1,
+        "DA_18_Brawler": 1,
+        "DA_18_Vanguard": 1
+      },
+      "avg_placement": 3.848,
+      "top4_rate": 0.6205,
+      "win_rate": 0.1753,
+      "play_rate": 0.0072,
+      "level_timing": {
+        "9": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Tong hop boi tactics.tools tu 3302 van. Ho KHONG cong bo phuong phap nhom doi hinh va khong truy nguoc duoc den match_id - khac voi nguon Riot tu crawl. Doc so nay nhu so cua ben thu ba.",
+      "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+      "sample_n": 3302
+    },
+    {
+      "name": "DA_Krug18 / DA_Riftbeast18",
+      "tier": "A",
+      "core_units": [
+        "DA_Krug18",
+        "DA_Brambleback18",
+        "DA_Cinderling18",
+        "DA_18_Sentry"
+      ],
+      "flex_units": [
+        "DA_Murkwolf18",
+        "DA_Scuttlecrab18",
+        "DA_Sentinel18"
+      ],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_InfinityEdge",
+        "DA_LastWhisper"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_Riftbeast18": 3,
+        "DA_18_Slayer": 1,
+        "DA_18_Invoker": 1,
+        "DA_18_Brawler": 1
+      },
+      "avg_placement": 4.104,
+      "top4_rate": 0.5796,
+      "win_rate": 0.1183,
+      "play_rate": 0.0076,
+      "level_timing": {
+        "8": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Tong hop boi tactics.tools tu 3473 van. Ho KHONG cong bo phuong phap nhom doi hinh va khong truy nguoc duoc den match_id - khac voi nguon Riot tu crawl. Doc so nay nhu so cua ben thu ba.",
+      "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+      "sample_n": 3473
+    },
+    {
+      "name": "DA_Cinderling18 / DA_Riftbeast18",
+      "tier": "A",
+      "core_units": [
+        "DA_Cinderling18",
+        "DA_18_Sentry",
+        "DA_Krug18",
+        "DA_Scuttlecrab18"
+      ],
+      "flex_units": [
+        "DA_Sentinel18",
+        "DA_Murkwolf18"
+      ],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_InfinityEdge",
+        "DA_WarmogsArmor"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_Riftbeast18": 3,
+        "DA_18_Invoker": 1,
+        "DA_18_Slayer": 1,
+        "DA_18_Brawler": 1
+      },
+      "avg_placement": 4.107,
+      "top4_rate": 0.5765,
+      "win_rate": 0.133,
+      "play_rate": 0.051,
+      "level_timing": {
+        "8": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Tong hop boi tactics.tools tu 23278 van. Ho KHONG cong bo phuong phap nhom doi hinh va khong truy nguoc duoc den match_id - khac voi nguon Riot tu crawl. Doc so nay nhu so cua ben thu ba.",
+      "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+      "sample_n": 23278
+    },
+    {
+      "name": "DA_18_MasterYi_AD / DA_Juggernaut18",
+      "tier": "A",
+      "core_units": [
+        "DA_18_MasterYi_AD",
+        "DA_Vi18",
+        "DA_KogMaw18_AD",
+        "DA_Nidalee18_AP"
+      ],
+      "flex_units": [
+        "DA_18_Yorick",
+        "DA_Krug18"
+      ],
+      "core_items": [
+        "DA_GuinsoosRageblade",
+        "DA_EdgeOfNight",
+        "DA_GargoyleStoneplate"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_Juggernaut18": 1,
+        "DA_18_Blossom": 1,
+        "DA_18_Caustic": 1,
+        "DA_Primal18": 1,
+        "DA_18_Brawler": 1,
+        "DA_18_Adaptor": 2
+      },
+      "avg_placement": 4.129,
+      "top4_rate": 0.5687,
+      "win_rate": 0.1523,
+      "play_rate": 0.0431,
+      "level_timing": {
+        "7": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Tong hop boi tactics.tools tu 19677 van. Ho KHONG cong bo phuong phap nhom doi hinh va khong truy nguoc duoc den match_id - khac voi nguon Riot tu crawl. Doc so nay nhu so cua ben thu ba.",
+      "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+      "sample_n": 19677
+    },
+    {
+      "name": "DA_18_Cassiopeia / DA_18_Spellweaver",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Cassiopeia",
+        "DA_Fiddlesticks18",
+        "DA_18_Rammus",
+        "DA_18_Lillia"
+      ],
+      "flex_units": [
+        "DA_18_Shen",
+        "DA_18_Ornn",
+        "DA_18_Leona"
+      ],
+      "core_items": [
+        "DA_HextechGunblade",
+        "DA_ArchangelsStaff",
+        "DA_SunfireCape"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Spellweaver": 1,
+        "DA_18_Defender": 3,
+        "DA_FloraFatalis18": 2
+      },
+      "avg_placement": 4.169,
+      "top4_rate": 0.5633,
+      "win_rate": 0.1388,
+      "play_rate": 0.0667,
+      "level_timing": {
+        "7": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Tong hop boi tactics.tools tu 30461 van. Ho KHONG cong bo phuong phap nhom doi hinh va khong truy nguoc duoc den match_id - khac voi nguon Riot tu crawl. Doc so nay nhu so cua ben thu ba.",
+      "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+      "sample_n": 30461
+    },
+    {
+      "name": "DA_18_Ezreal / DA_18_Brawler",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Ezreal",
+        "DA_18_Aphelios",
+        "DA_Draven18",
+        "DA_18_Hecarim"
+      ],
+      "flex_units": [
+        "DA_18_Alistar"
+      ],
+      "core_items": [
+        "DA_GuinsoosRageblade",
+        "DA_InfinityEdge",
+        "DA_LastWhisper"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Brawler": 1,
+        "DA_18_Vanguard": 1,
+        "DA_18_Executioner": 1
+      },
+      "avg_placement": 4.252,
+      "top4_rate": 0.5242,
+      "win_rate": 0.1968,
+      "play_rate": 0.009,
+      "level_timing": {
+        "9": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Tong hop boi tactics.tools tu 4115 van. Ho KHONG cong bo phuong phap nhom doi hinh va khong truy nguoc duoc den match_id - khac voi nguon Riot tu crawl. Doc so nay nhu so cua ben thu ba.",
+      "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+      "sample_n": 4115
+    },
+    {
+      "name": "DA_18_Ahri / DA_18_Brawler",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Ahri",
+        "DA_18_Morgana",
+        "DA_18_Sett",
+        "DA_Sentinel18"
+      ],
+      "flex_units": [
+        "DA_Krug18",
+        "DA_Karma18",
+        "DA_18_Sentry"
+      ],
+      "core_items": [
+        "DA_JeweledGauntlet",
+        "DA_VoidStaff",
+        "DA_GargoyleStoneplate"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Brawler": 1,
+        "DA_18_Spellweaver": 1,
+        "DA_Riftbeast18": 1,
+        "DA_18_Blossom": 1,
+        "DA_18_Vanguard": 1,
+        "DA_18_Invoker": 2,
+        "DA_Emerald18": 1
+      },
+      "avg_placement": 4.357,
+      "top4_rate": 0.5339,
+      "win_rate": 0.1051,
+      "play_rate": 0.101,
+      "level_timing": {
+        "8": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Tong hop boi tactics.tools tu 46091 van. Ho KHONG cong bo phuong phap nhom doi hinh va khong truy nguoc duoc den match_id - khac voi nguon Riot tu crawl. Doc so nay nhu so cua ben thu ba.",
+      "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+      "sample_n": 46091
+    },
+    {
+      "name": "DA_18_ElderDragon / DA_18_ApexPredator",
+      "tier": "B",
+      "core_units": [
+        "DA_18_ElderDragon",
+        "DA_Sentinel18",
+        "DA_Draven18",
+        "DA_18_Kennen"
+      ],
+      "flex_units": [
+        "DA_Amumu18"
+      ],
+      "core_items": [
+        "DA_GuinsoosRageblade",
+        "DA_InfinityEdge",
+        "DA_GargoyleStoneplate"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_ApexPredator": 1,
+        "DA_18_Vanguard": 1,
+        "DA_Emerald18": 1,
+        "DA_Riftbeast18": 1,
+        "DA_Juggernaut18": 1,
+        "DA_18_Maokai_UniqueTrait": 1,
+        "DA_18_Greenfather": 1,
+        "DA_DravenUniqueTrait18": 1,
+        "DA_18_Inferno": 1
+      },
+      "avg_placement": 4.37,
+      "top4_rate": 0.4974,
+      "win_rate": 0.1921,
+      "play_rate": 0.0089,
+      "level_timing": {
+        "9": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Tong hop boi tactics.tools tu 4051 van. Ho KHONG cong bo phuong phap nhom doi hinh va khong truy nguoc duoc den match_id - khac voi nguon Riot tu crawl. Doc so nay nhu so cua ben thu ba.",
+      "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+      "sample_n": 4051
+    },
+    {
+      "name": "DA_18_Veigar / DA_18_Defender",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Veigar",
+        "DA_18_RekSai",
+        "DA_18_Teemo",
+        "DA_Fiddlesticks18"
+      ],
+      "flex_units": [
+        "DA_18_Kobuko",
+        "DA_18_Rammus"
+      ],
+      "core_items": [
+        "DA_JeweledGauntlet",
+        "DA_GargoyleStoneplate",
+        "DA_BlueBuff"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Defender": 1,
+        "DA_18_Spellweaver": 1,
+        "DA_18_Blackthorn": 1,
+        "DA_18_Sprykin": 2,
+        "DA_18_Brawler": 1,
+        "DA_FloraFatalis18": 1
+      },
+      "avg_placement": 4.38,
+      "top4_rate": 0.5261,
+      "win_rate": 0.1141,
+      "play_rate": 0.0218,
+      "level_timing": {
+        "8": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Tong hop boi tactics.tools tu 9947 van. Ho KHONG cong bo phuong phap nhom doi hinh va khong truy nguoc duoc den match_id - khac voi nguon Riot tu crawl. Doc so nay nhu so cua ben thu ba.",
+      "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+      "sample_n": 9947
+    },
+    {
+      "name": "DA_18_Tristana / DA_Juggernaut18",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Tristana",
+        "DA_18_Sivir",
+        "DA_Vi18",
+        "DA_18_Rammus"
+      ],
+      "flex_units": [
+        "DA_18_Rakan",
+        "DA_18_Lillia"
+      ],
+      "core_items": [
+        "DA_GuinsoosRageblade",
+        "DA_18_EmblemFae",
+        "DA_GargoyleStoneplate"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_Juggernaut18": 1,
+        "DA_18_Defender": 1,
+        "DA_18_Fae": 2,
+        "DA_Primal18": 1,
+        "DA_18_Sprykin": 1,
+        "DA_18_Hunter": 1
+      },
+      "avg_placement": 4.422,
+      "top4_rate": 0.4981,
+      "win_rate": 0.2072,
+      "play_rate": 0.0146,
+      "level_timing": {
+        "7": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Tong hop boi tactics.tools tu 6651 van. Ho KHONG cong bo phuong phap nhom doi hinh va khong truy nguoc duoc den match_id - khac voi nguon Riot tu crawl. Doc so nay nhu so cua ben thu ba.",
+      "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+      "sample_n": 6651
+    },
+    {
+      "name": "DA_18_Yunara / DA_18_Blossom",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Yunara",
+        "DA_18_Ezreal",
+        "DA_18_Alistar",
+        "DA_18_Sett"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_SpearOfShojin",
+        "DA_GargoyleStoneplate",
+        "DA_LastWhisper"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blossom": 1,
+        "DA_18_Elderwood": 1,
+        "DA_18_Brawler": 1,
+        "DA_18_Executioner": 2
+      },
+      "avg_placement": 4.428,
+      "top4_rate": 0.5246,
+      "win_rate": 0.0942,
+      "play_rate": 0.001,
+      "level_timing": {
+        "8": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Tong hop boi tactics.tools tu 467 van. Ho KHONG cong bo phuong phap nhom doi hinh va khong truy nguoc duoc den match_id - khac voi nguon Riot tu crawl. Doc so nay nhu so cua ben thu ba.",
+      "source": "tactics.tools:team-compositions/all/patch=16170/n=456572",
+      "sample_n": 467
+    }
+  ]
+}
