@@ -20,6 +20,7 @@ DEFAULTS: dict[str, Any] = {
     "paths": {
         "augment_features": "data/augment_features.json",
         "augment_stats_csv": "data/augment_stats.csv",
+        "augment_tiers": "data/augment_tiers.json",
         "scoring_weights": "config/scoring_weights.yaml",
         "meta_comps": "data/meta_comps.json",
         "item_recipes": "data/item_recipes.json",

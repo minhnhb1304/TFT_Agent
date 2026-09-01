@@ -273,6 +273,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--features", default="data/augment_features.json")
     ap.add_argument("--weights", default="config/scoring_weights.yaml")
     ap.add_argument("--stats-csv", default="data/augment_stats.csv")
+    ap.add_argument("--tiers", default="data/augment_tiers.json")
     ap.add_argument("--augments", nargs="*", help="danh sach apiName can xep hang")
     ap.add_argument("--json", action="store_true", help="in JSON thay vi van ban")
     args = ap.parse_args(argv)
@@ -289,7 +290,9 @@ def main(argv: list[str] | None = None) -> int:
         if Path(args.weights).exists()
         else ScoringConfig.default()
     )
-    advisor = AugmentAdvisor(features, default_provider(args.stats_csv), config)
+    advisor = AugmentAdvisor(
+        features, default_provider(args.stats_csv, args.tiers), config
+    )
 
     state = _demo_state()
     picks = args.augments or _pick_demo_augments(features)

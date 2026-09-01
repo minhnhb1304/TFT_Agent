@@ -97,7 +97,10 @@ class ScoringConfig:
                 "item_fit": 0.15, "tempo_fit": 0.10,
             },
             tuning={
-                "base": {"best_place": 3.5, "worst_place": 5.0, "min_sample_n": 200},
+                "base": {
+                    "best_place": 3.5, "worst_place": 5.0, "min_sample_n": 200,
+                    "ordinal_trust": 0.35,
+                },
                 "board_fit": {
                     "trait_weight": 0.6, "carry_weight": 0.4,
                     "active_trait_min_units": 2,

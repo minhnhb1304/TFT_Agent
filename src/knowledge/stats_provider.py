@@ -16,6 +16,7 @@ Hai quy tac khong duoc pha:
 from __future__ import annotations
 
 import csv
+import json
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable, Protocol, runtime_checkable
@@ -34,6 +35,11 @@ class AugmentStats:
     win_rate: float = 0.0
     sample_n: int = 0
     source: str = "unknown"
+    # Bac trong mot bang tier do NGUOI xep (S/A/B/C/D), rong neu khong co.
+    tier: str = ""
+    # True = `avg_place` SUY RA tu `tier`, khong phai so do duoc. Xem
+    # ExpertTierListProvider. BaseScorer doc co nay de khong tin no nhu so do.
+    is_ordinal: bool = False
 
     @property
     def is_evidence(self) -> bool:
@@ -42,8 +48,11 @@ class AugmentStats:
         Nguong 200 tran la quy uoc cua du an nay, khong phai chuan nganh: duoi
         muc do, sai so mot placement trung binh con lon hon khoang cach giua
         mot augment tot va mot augment te.
+
+        Bang tier cua chuyen gia KHONG BAO GIO dat nguong nay: sample_n = 0.
+        Do la ket qua dung - mot y kien, du sac sao, khong phai bang chung.
         """
-        return self.sample_n >= 200
+        return self.sample_n >= 200 and not self.is_ordinal
 
 
 @runtime_checkable
@@ -106,6 +115,98 @@ class CsvProvider:
                     sample_n=int(float(row.get("sample_n") or 0)),
                     source=(row.get("source") or self.source).strip(),
                 )
+
+    def __len__(self) -> int:
+        return len(self._rows)
+
+    def get(self, api_name: str) -> AugmentStats | None:
+        return self._rows.get(api_name)
+
+
+class ExpertTierListProvider:
+    """Bang tier do NGUOI xep - tin hieu THU TU, khong phai so do.
+
+    VI SAO CAN DEN NO
+        Riot da go truong `augments` khoi participant Set 18, va tactics.tools
+        - trang stats lon nhat cong khai - cung tra ve rong tren 1,75 trieu
+        van (do 2026-09-01). Khong con nguon DO DUOC nao. Thu con lai la y
+        kien chuyen gia: datatft.com nhung bang cua Horox / 九九 / 云顶精神力
+        thang vao bundle JS, tftacademy.com xep S/A/B/C theo silver-gold-
+        prismatic. Ca hai deu khong kem co mau, va do khong phai thieu sot cua
+        ho: ho khong dem, ho danh gia.
+
+    BA RANG BUOC KHONG DUOC PHA
+        1. `sample_n` LUON = 0. Khong bao gio bia mot co mau de tin hieu nay
+           nang len - do la cach mot y kien tro thanh "so lieu" trong bao cao.
+        2. `is_ordinal` = True, nen `is_evidence` LUON False. BaseScorer nhin
+           co nay va ha muc tin xuong `ordinal_trust`, thay vi tin nhu so do.
+        3. `avg_place` chi la MA HOA DON DIEU cua bac, khong phai placement do
+           duoc. No ton tai vi BaseScorer nhan placement; `tier` moi la du
+           lieu that. Reason string phai noi ro dieu do.
+
+    MODULE NAY KHONG DI KEM DU LIEU - cung ly do voi comp_database.py: nhet
+    mot bang tier tu bia vao repo cho ra mot he thong chay muot va tu van sai.
+    File khong ton tai -> provider rong -> BaseScorer trung tinh.
+    """
+
+    name = "expert-tierlist"
+
+    # Bac -> placement dai dien. KHONG PHAI SO DO. Chi can don dieu (S tot
+    # nhat) va nam trong khoang [best_place, worst_place] cua BaseScorer
+    # (3.5 - 5.0) de bac cao khong bi ep ve bien. Doi cac so nay khong lam
+    # thay doi THU TU xep hang, chi lam thay doi do doc cua no.
+    TIER_PLACEMENT: dict[str, float] = {
+        "S": 4.05,
+        "A": 4.30,
+        "B": 4.50,
+        "C": 4.70,
+        "D": 4.90,
+    }
+
+    def __init__(
+        self,
+        tiers: dict[str, Iterable[str]] | None = None,
+        source: str | None = None,
+    ) -> None:
+        self.source = source or self.name
+        self._rows: dict[str, AugmentStats] = {}
+        for tier, api_names in (tiers or {}).items():
+            key = str(tier).strip().upper()
+            if key not in self.TIER_PLACEMENT:
+                raise ValueError(
+                    f"bac '{tier}' khong hop le. Chi chap nhan: "
+                    f"{', '.join(self.TIER_PLACEMENT)}"
+                )
+            for api_name in api_names:
+                api = str(api_name).strip()
+                if api:
+                    self._rows[api] = AugmentStats(
+                        api_name=api,
+                        avg_place=self.TIER_PLACEMENT[key],
+                        sample_n=0,
+                        source=self.source,
+                        tier=key,
+                        is_ordinal=True,
+                    )
+
+    @classmethod
+    def load(cls, path: str | Path) -> "ExpertTierListProvider":
+        """Nap tu JSON do scripts/import_augment_tiers.py sinh ra.
+
+        File khong ton tai -> provider RONG, khong raise. Giong CompDatabase:
+        thieu du lieu lam giam chat luong khuyen nghi nhung khong duoc phep
+        lam sap advisor.
+        """
+        p = Path(path)
+        if not p.exists():
+            return cls()
+        payload = json.loads(p.read_text(encoding="utf-8"))
+        meta = payload.get("meta") or {}
+        # Nguoi danh gia phai co ten trong provenance. Mot bang tier khong ai
+        # ky ten thi khong hon gi bia ra.
+        rated_by = str(meta.get("rated_by") or "khong ro nguoi danh gia")
+        patch = str(meta.get("patch") or "?")
+        return cls(payload.get("tiers") or {}, source=f"{cls.name}:{rated_by}/patch={patch}")
 
     def __len__(self) -> int:
         return len(self._rows)
@@ -201,11 +302,25 @@ class OpggMcpProvider:
         )
 
 
-def default_provider(csv_path: str | Path | None = None) -> AugmentStatsProvider:
-    """Nguon mac dinh: CSV neu file ton tai, nguoc lai Null.
+def default_provider(
+    csv_path: str | Path | None = None,
+    tiers_path: str | Path | None = None,
+) -> AugmentStatsProvider:
+    """Nguon mac dinh, theo THU TU UU TIEN: CSV -> bang tier -> Null.
+
+    Thu tu nay la mot phat bieu ve gia tri bang chung, khong phai tien lop:
+    mot so DO DUOC luon thang mot y kien, du y kien do den tu nguoi choi gioi
+    hon. Bang tier chi duoc dung o nhung augment ma CSV khong co.
 
     Day la ham duy nhat trong du an duoc phep quyet dinh nguon nao dang dung.
     """
+    providers: list[AugmentStatsProvider] = []
     if csv_path and Path(csv_path).exists():
-        return CompositeProvider([CsvProvider(csv_path), NullProvider()])
-    return NullProvider()
+        providers.append(CsvProvider(csv_path))
+    if tiers_path and Path(tiers_path).exists():
+        tiers = ExpertTierListProvider.load(tiers_path)
+        if len(tiers):
+            providers.append(tiers)
+    if not providers:
+        return NullProvider()
+    return CompositeProvider(providers + [NullProvider()])

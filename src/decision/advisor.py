@@ -83,7 +83,9 @@ class Advisor:
         self.features = features or (
             FeatureTable.load(feature_path) if feature_path.exists() else FeatureTable.empty()
         )
-        self.stats = stats or default_provider(s.path("augment_stats_csv"))
+        self.stats = stats or default_provider(
+            s.path("augment_stats_csv"), s.path("augment_tiers")
+        )
         self.augment_advisor = AugmentAdvisor(self.features, self.stats, config)
 
         self.comp_selector = CompSelector(
