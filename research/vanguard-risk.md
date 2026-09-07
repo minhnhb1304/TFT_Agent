@@ -3,6 +3,12 @@
 > **Verified:** 2026-08-28. All eight policy quotes below were re-fetched and confirmed verbatim.
 > Two were **truncated** in the previous pass and are now completed — the omissions mattered.
 
+> 🔄 **Superseded in part (2026-09-04).** A dedicated Vanguard pass (8 agents, EN + ZH + RU)
+> **corrected two rows** in the table below and added a Riot primary source this file was missing.
+> The **Vanguard/technical** half now lives in [`vanguard/overview.md`](vanguard/overview.md) —
+> read that first. This file remains the source of truth for **Riot policy**, which that pass
+> did not revisit.
+
 > 📌 **Scope note (SPEC v3, 2026-08-29).** The project is an unpublished single-user thesis artifact,
 > so the **developer-policy** half below is no longer a build constraint ([SPEC §11](../SPEC.md)) — it
 > is retained as the evidence base should the tool ever be distributed. The **ToS / Vanguard** half
@@ -19,8 +25,10 @@ is **refuted** by Riot's own text.
 
 | Element | Status | Evidence |
 |---|---|---|
-| DXGI desktop duplication (read-only) | **Confirmed outside the documented detection surface** | Vanguard's own taxonomy targets tampering, DMA, pixelbots, bootkits, internal + kernel cheats; a pixelbot is defined as *"a computer vision cheat that injects player input"* ([Vanguard On-Demand, 2026-06-24](https://www.riotgames.com/en/news/vanguard-on-demand)) |
-| `WS_EX_LAYERED / TRANSPARENT / NOACTIVATE` overlay | **Confirmed** — never appears on any documented blocking list (which covers vulnerable kernel drivers `rtcore64.sys`, `ene.sys`, `inpoutx64.sys`, `WinRing0`, injection hooks, input-layer software) | same |
+| **Overlays as a category** | **Confirmed safe — Riot primary statement** | *"Overlays and internal tools using the API, game client, and in-game APIs should continue to function."* Also: *"External tools reading memory will no longer work"* and *"There is absolutely no allow list for Vanguard."* ([Vanguard FAQ for Third Party Applications](https://www.riotgames.com/en/DevRel/vanguard-faq)) — **added 2026-09-04; its absence was the largest gap in this table** |
+| DXGI desktop duplication (read-only) | ⚠️ **Corrected 2026-09-04** — was "Confirmed outside the documented detection surface", which is now overstated. Read as: *no evidence of use for detection; driver is hooked at the syscall, hook body unanalysed* | Riot's taxonomy still defines a pixelbot as *"a computer vision cheat that injects player input"* ([Vanguard On-Demand](https://www.riotgames.com/en/news/vanguard-on-demand)) — but `vgk.sys` carries a dispatch hook on `NtGdiDdDDIOutputDuplGetFrameInfo`, the syscall behind `IDXGIOutputDuplication::GetFrameInfo` ([archie-osu, 2025-04](https://archie-osu.github.io/2025/04/11/vanguard-research.html)). The RE author deferred analysing what the hook does. See [vanguard/detection-surface.md](vanguard/detection-surface.md) |
+| `WS_EX_LAYERED / TRANSPARENT / NOACTIVATE` overlay | ⚠️ **Corrected 2026-09-04** — was "Confirmed — never appears on any documented blocking list". Read as: *documented enumeration heuristic; benign under second-stage filtering*. The previous pass searched for **blocking lists**; this is an **enumeration heuristic**, a different artifact, so the search missed it | `EnumWindows` + `WS_EX_LAYERED\|TRANSPARENT\|TOPMOST` + geometry overlap is documented for EAC and BattlEye ([secret.club](https://secret.club/2019/02/10/battleye-anticheat.html)) and Tencent CrossFire ([52xuejishu](https://www.52xuejishu.com/forum-post/1799.html), ZH). But it is always a *signal*, never a standalone trigger — BattlEye pairs it with a title blacklist and module checks, and its FAQ states *"No one is banned for using non-hack programs (like Fraps, overlays, etc.)"*. No Vanguard-specific evidence in any language |
+| Own-overlay `SetWindowDisplayAffinity(WDA_EXCLUDEFROMCAPTURE)` | **Removed from the design 2026-09-04** — not proven dangerous, but avoidable | Queryable *"from any process"* with no elevation ([MSDN](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getwindowdisplayaffinity)); `vgk.sys` hooks `NtUserGetWindowDisplayAffinity`; Activision's TAC collects and uploads the value ([ssno.cc](https://ssno.cc/posts/reversing-tac-1-4-2025/)). See [vanguard/capture-design.md](vanguard/capture-design.md) |
 | §1.3 forbidden list (no RPM, no DLL injection, no D3D hook, no `SendInput`) | **Correctly calibrated — do not weaken** | Kyrluckechuck/TFT-Bot README states Vanguard makes it *"a liability against any accounts it's run by"* — and that bot automates input ([repo](https://github.com/Kyrluckechuck/TFT-Bot)) |
 | Client capture protection (`SetWindowDisplayAffinity` on the game) | **Assumed safe only.** Absence of evidence across 4 languages; no researcher ran a capture test | [ZeroLP/External-Mitigations](https://github.com/ZeroLP/External-Mitigations) is a public blueprint for exactly this counter-move |
 | "We touch no Riot API so the policy doesn't apply" | **REFUTED** | *"If your product serves players, you must register it with us regardless of whether or not your product uses official documented APIs."* ([docs/tft](https://developer.riotgames.com/docs/tft)) |
@@ -100,6 +108,7 @@ reads *"archived by the owner on Apr 9, 2026"*; all three researchers conflated 
 ## Related
 
 - [Research overview](overview.md)
+- [Vanguard risk assessment](vanguard/overview.md) — supersedes the Vanguard half of this file
 - [Set 18 status & data sources](set-data.md)
 - [Vision stack](vision-stack/overview.md) · [Augment pipeline](vision-stack/augments.md)
 - [Prior art, overlay UI & LLM layer](prior-art.md)
