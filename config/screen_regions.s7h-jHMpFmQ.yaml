@@ -1,0 +1,63 @@
+meta:
+  set: TFTSet18
+  engine: unreal
+  reference_size:
+  - 1920
+  - 1080
+  calibrated_from: vod:s7h-jHMpFmQ
+  method: do tay tren frame midfeed_tpc_final
+  generated_at: '2026-09-07T04:17:00+00:00'
+  generated_by: tools/calibrate.py
+screens:
+  hud:
+    stage:
+      x: 0.4
+      y: 0.00463
+      w: 0.024479
+      h: 0.026852
+    gold:
+      x: 0.532292
+      y: 0.816667
+      w: 0.01875
+      h: 0.025926
+    level:
+      x: 0.18125
+      y: 0.816667
+      w: 0.034896
+      h: 0.02963
+    xp:
+      x: 0.236979
+      y: 0.816667
+      w: 0.033854
+      h: 0.02963
+    traits:
+      x: 0.0
+      y: 0.238889
+      w: 0.123958
+      h: 0.494444
+    shop:
+      x: 0.179688
+      y: 0.856481
+      w: 0.642188
+      h: 0.143519
+    bench:
+      x: 0.15625
+      y: 0.648148
+      w: 0.6875
+      h: 0.12037
+    board:
+      x: 0.197917
+      y: 0.212963
+      w: 0.614583
+      h: 0.435185
+    opponents:
+      x: 0.885417
+      y: 0.157407
+      w: 0.114583
+      h: 0.583333
+blockers:
+  stream_chat:
+    x: 0.0
+    y: 0.0
+    w: 0.22
+    h: 0.213

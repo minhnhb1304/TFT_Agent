@@ -48,6 +48,16 @@ logs/
 data/cdragon_cache/
 data/scenarios/
 data/frames/
+# Cache quet VOD: thumbs.npy ~168 MB moi VOD, sinh lai duoc trong ~15 phut.
+# timeline.json thi nho va DANG commit - xem ghi chu duoi.
+data/vod_index/*/thumbs.npy
+data/vod_index/*/times.npy
+data/vod_index/*/keyframes.json
+# VOD downloads & temporary probe data
+downloads/
+vod_info.json
 
-# Generated config
+# Generated config (base screen_regions.yaml is generated, but per-streamer configs are tracked)
 config/screen_regions.yaml
+!config/screen_regions.*.yaml
+

@@ -55,14 +55,15 @@ LLM stack is **end-of-life**.
 | §8 MetaTFT/lolchess/TFTactics scraping | Superseded | OP.GG MCP, MIT, `https://mcp-api.op.gg/mcp` — but see its ToS conflict in [prior-art](prior-art.md) |
 | §9 decision #4 priority order | Augment Advisor as specified is a named prohibition | **Comp Selector → Economy → Augment (static stats only, unranked)** |
 | §9 decision #5 "Overwolf — khảo sát thêm" | Its GEP already returns `board`, `bench`, `store`, `augments` | Spike it for one day before writing board-reading CV |
-| §3.6 Overlay | `SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE)` is absent — the overlay composites into its own capture | Add it (`0x11`), gate on Win10 2004+ ([MS Learn](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowdisplayaffinity)) |
-| §3.1 Capture | `dxcam` is *desktop*-scoped | Evaluate `windows-capture` 2.0.1 (WGC, **window**-scoped, non-hooking) |
+| §3.6 Overlay | ~~`SetWindowDisplayAffinity` is absent — add it~~ ⚠️ **Reversed 2026-09-04.** The self-capture problem is real, but the fix was aimed at the symptom | **Do not add it.** Window-scoped capture makes the feedback loop structurally impossible, so the call is unnecessary — and it is the one call in the stack whose shape resembles evasion. Implemented as `overlay_capture_protection: false`; see [vanguard/capture-design.md](vanguard/capture-design.md) |
+| §3.1 Capture | `dxcam` is *desktop*-scoped | **Confirmed and now decided.** Use `windows-capture` 2.0.1 (WGC, **window**-scoped, non-hooking). The 2026-09-04 Vanguard pass reached the same conclusion independently, for a second reason: it avoids `NtGdiDdDDIOutputDuplGetFrameInfo`, on which `vgk.sys` carries a dispatch hook |
 | §1.3 "Riot Official API" listed as safe live source | No live TFT state API exists ([issue #373](https://github.com/RiotGames/developer-relations/issues/373)) | Mark as post-game aggregation only |
 
 **Not a change:** §8's `tft-match-v1` is correct. `tft-match-v5` does not exist.
 
 ## Related
 
+- [Vanguard risk assessment](vanguard/overview.md) — detection surface, capture design, testing protocol
 - [Ban risk & Riot policy](vanguard-risk.md)
 - [Set 18 status & data sources](set-data.md)
 - [Vision stack](vision-stack/overview.md) · [OCR & matching](vision-stack/ocr.md) · [Augment pipeline](vision-stack/augments.md)

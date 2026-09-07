@@ -1,0 +1,248 @@
+{
+  "meta": {
+    "source": "D:\\workspace\\TFT_Agent\\downloads\\CK TPC1 NE  l 6⧸09⧸2026 !boxboxbootcamp [5tshRxYLwv8].mkv",
+    "video_id": "5tshRxYLwv8",
+    "role": "development",
+    "size": [
+      1920,
+      1080
+    ],
+    "duration_s": 14360.822,
+    "codec": "h264",
+    "profile": "High",
+    "bit_rate": 3273281,
+    "threshold": 0.78,
+    "merge_gap_s": 45.0,
+    "exemplars": {
+      "client_windowed": 2822.0,
+      "augment_select": 3980.0
+    },
+    "derive_games_from": "client_windowed",
+    "regions": "config/screen_regions.5tshRxYLwv8.yaml",
+    "generated_at": "2026-09-07T05:37:22+00:00",
+    "generated_by": "scripts/scan_vod.py --detect"
+  },
+  "events": [
+    {
+      "type": "client_windowed",
+      "t_start": 71.267,
+      "t_end": 71.267,
+      "frame_ref": "vod:5tshRxYLwv8@00:01:11.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 491.267,
+      "t_end": 569.267,
+      "frame_ref": "vod:5tshRxYLwv8@00:08:11.000"
+    },
+    {
+      "type": "game",
+      "game_index": 1,
+      "t_start": 569.267,
+      "t_end": 2792.367,
+      "frame_ref": "vod:5tshRxYLwv8@00:09:29.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 713.267,
+      "t_end": 743.267,
+      "frame_ref": "vod:5tshRxYLwv8@00:11:53.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 1258.3,
+      "t_end": 1258.3,
+      "frame_ref": "vod:5tshRxYLwv8@00:20:58.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 1696.3,
+      "t_end": 1708.3,
+      "frame_ref": "vod:5tshRxYLwv8@00:28:16.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 2792.367,
+      "t_end": 2834.367,
+      "frame_ref": "vod:5tshRxYLwv8@00:46:32.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 2900.367,
+      "t_end": 2924.367,
+      "frame_ref": "vod:5tshRxYLwv8@00:48:20.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 3014.367,
+      "t_end": 3050.367,
+      "frame_ref": "vod:5tshRxYLwv8@00:50:14.000"
+    },
+    {
+      "type": "game",
+      "game_index": 2,
+      "t_start": 3050.367,
+      "t_end": 5669.467,
+      "frame_ref": "vod:5tshRxYLwv8@00:50:50.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 3452.367,
+      "t_end": 3452.367,
+      "frame_ref": "vod:5tshRxYLwv8@00:57:32.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 3979.4,
+      "t_end": 3985.4,
+      "frame_ref": "vod:5tshRxYLwv8@01:06:19.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 4423.4,
+      "t_end": 4423.4,
+      "frame_ref": "vod:5tshRxYLwv8@01:13:43.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 5669.467,
+      "t_end": 5669.467,
+      "frame_ref": "vod:5tshRxYLwv8@01:34:29.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 5729.467,
+      "t_end": 5729.467,
+      "frame_ref": "vod:5tshRxYLwv8@01:35:29.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 5789.467,
+      "t_end": 5855.467,
+      "frame_ref": "vod:5tshRxYLwv8@01:36:29.000"
+    },
+    {
+      "type": "game",
+      "game_index": 3,
+      "t_start": 5855.467,
+      "t_end": 8410.533,
+      "frame_ref": "vod:5tshRxYLwv8@01:37:35.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 6281.5,
+      "t_end": 6281.5,
+      "frame_ref": "vod:5tshRxYLwv8@01:44:41.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 6785.5,
+      "t_end": 6791.5,
+      "frame_ref": "vod:5tshRxYLwv8@01:53:05.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 7247.5,
+      "t_end": 7247.5,
+      "frame_ref": "vod:5tshRxYLwv8@02:00:47.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 8410.533,
+      "t_end": 8416.533,
+      "frame_ref": "vod:5tshRxYLwv8@02:20:10.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 8506.533,
+      "t_end": 8506.533,
+      "frame_ref": "vod:5tshRxYLwv8@02:21:46.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 8638.567,
+      "t_end": 8692.567,
+      "frame_ref": "vod:5tshRxYLwv8@02:23:58.000"
+    },
+    {
+      "type": "game",
+      "game_index": 4,
+      "t_start": 8692.567,
+      "t_end": 11102.667,
+      "frame_ref": "vod:5tshRxYLwv8@02:24:52.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 8866.567,
+      "t_end": 8866.567,
+      "frame_ref": "vod:5tshRxYLwv8@02:27:46.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 9363.6,
+      "t_end": 9363.6,
+      "frame_ref": "vod:5tshRxYLwv8@02:36:03.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 9813.6,
+      "t_end": 9819.6,
+      "frame_ref": "vod:5tshRxYLwv8@02:43:33.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 11102.667,
+      "t_end": 11102.667,
+      "frame_ref": "vod:5tshRxYLwv8@03:05:02.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 11180.667,
+      "t_end": 11180.667,
+      "frame_ref": "vod:5tshRxYLwv8@03:06:20.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 11420.667,
+      "t_end": 11438.667,
+      "frame_ref": "vod:5tshRxYLwv8@03:10:20.000"
+    },
+    {
+      "type": "game",
+      "game_index": 5,
+      "t_start": 11438.667,
+      "t_end": 13715.767,
+      "frame_ref": "vod:5tshRxYLwv8@03:10:38.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 11762.667,
+      "t_end": 11762.667,
+      "frame_ref": "vod:5tshRxYLwv8@03:16:02.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 12253.7,
+      "t_end": 12259.7,
+      "frame_ref": "vod:5tshRxYLwv8@03:24:13.000"
+    },
+    {
+      "type": "augment_select",
+      "t_start": 12697.7,
+      "t_end": 12697.7,
+      "frame_ref": "vod:5tshRxYLwv8@03:31:37.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 13715.767,
+      "t_end": 13715.767,
+      "frame_ref": "vod:5tshRxYLwv8@03:48:35.000"
+    },
+    {
+      "type": "client_windowed",
+      "t_start": 13955.767,
+      "t_end": 13955.767,
+      "frame_ref": "vod:5tshRxYLwv8@03:52:35.000"
+    }
+  ]
+}
