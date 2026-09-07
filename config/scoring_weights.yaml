@@ -24,9 +24,20 @@ tuning:
     # Duoi nguong co mau nay, diem bi keo ve trung tinh thay vi tin tuong.
     min_sample_n: 200
     # Muc tin cho tin hieu THU TU (bang tier do nguoi xep, khong co co mau).
-    # 0.35 nghia la mot bac S keo diem duoc khoang mot phan ba so voi cung
-    # con so do tu 200+ van. Day la phan xet doan, chua fit tren du lieu nao.
-    ordinal_trust: 0.35
+    #
+    # NANG 0.35 -> 0.65 (2026-09-07). 0.35 duoc dat khi bang tier chi la
+    # phuong an DU PHONG dung sau so lieu do duoc. Riot da go truong `augments`
+    # o Set 18 va khong nguon cong khai nao con cap, nen bang tier do nguoi
+    # xep gio la nguon DUY NHAT cua w1 - de o 0.35 nghia la 30% tong diem chi
+    # dong gop mot phan ba bien do cua no.
+    #
+    # KHONG dat 1.0, va do la co y: day van la mot Y KIEN. Phan co ngot chinh
+    # la cho trung thuc cua thiet ke. `is_ordinal` van True, `is_evidence` van
+    # False, va reason string van noi ro day khong phai so do.
+    #
+    # 0.65 la mot lua chon, chua fit tren du lieu nao. No la mot truc ablation:
+    # do do nhay cua xep hang theo {0.2, 0.35, 0.65, 1.0} roi bao cao.
+    ordinal_trust: 0.65
   board_fit:
     trait_weight: 0.6
     carry_weight: 0.4
@@ -64,3 +75,42 @@ comp_selector:
     pivot_sell_threshold: 3
     # Duoi nguong nay thi comp hien tai bi danh dau la nen doi huong.
     pivot_flag_below: 0.30
+
+# Chinh sach reroll augment - SPEC 3.5.5. Cung ly do de o day voi `weights`:
+# ablation phai bat/tat duoc tu file.
+reroll_policy:
+  # Thoa dung mu: >0 ngai rui ro, <0 ua rui ro, 0 trung lap.
+  # MAC DINH 0 CO CHU DICH. Anh huong cua HP len GIA TRI cua augment da nam o
+  # tempo_fit (low_hp/high_hp); dua HP vao ca nguong dung nua la dem hai lan.
+  risk_lambda: 0.0
+
+  # Trong so tailoring: TFT chao uu tien augment trung trait dang bat, nen coi
+  # pool la deu se danh gia THAP gia tri cua mot lan doi va lam may so reroll
+  # mot cach nhan tao. `w = 1 + beta` neu trung trait, `1` neu khong.
+  # beta = 0 tra ve phan bo deu - nhanh doi chung cua ablation.
+  tailoring_beta: 1.0
+
+  # GIA DINH, chua nguon cong khai nao xac nhan: augment da hien ra (ke ca bi
+  # doi di) bi go khoi pool cua nguoi choi o cac chang sau.
+  # Xem docs/augment-reroll/mechanics-assumptions.md truoc khi tin so nay.
+  burn_on_reveal: true
+
+  # DON VI cua cost_matrix. `sigma` = boi cua do lech chuan diem cua chinh
+  # pool do; `absolute` = don vi diem tho.
+  # PHAI la sigma: do 2026-09-07 cho thay sd(Score) tren mot bac chi ~0,05 va
+  # tich phan duoi voi the dan dau thuc te chi 0,002-0,009. Doc bang so duoi
+  # day nhu tuyet doi thi MOI o deu lon hon moi loi ich co the co -> khong bao
+  # gio doi the, trai han y do. Doc nhu boi sigma thi chung roi dung cho.
+  cost_unit: sigma
+
+  # c(tier, stage) - gia phai tra cho viec lo them mot the, tinh theo sigma.
+  # DAY LA TIEN NGHIEM DO NGUOI DAT, KHONG PHAI SO DO. Lap luan sinh ra hinh
+  # dang cua bang nam o docs/augment-reroll/depletion-cost.md:
+  #   - prismatic pool nho nhat (60) va so augment S-tier cho mot loi choi chi
+  #     3-5 cai -> lo them mot the tot ma khong lay duoc la dot that.
+  #   - gold (132) / silver (62) pool lon -> dot ~1%, khong dang ke.
+  #   - chang 4-2 la chang cuoi: khong con gi de dot, c = 0 tuyet doi.
+  cost_matrix:
+    prismatic: {stage_2: 0.08, stage_3: 0.04, stage_4: 0.00}
+    gold:      {stage_2: 0.01, stage_3: 0.01, stage_4: 0.00}
+    silver:    {stage_2: 0.01, stage_3: 0.01, stage_4: 0.00}

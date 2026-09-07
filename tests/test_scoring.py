@@ -141,9 +141,17 @@ def test_infer_carry_type_reads_items_not_champion_names() -> None:
 
 
 def test_infer_carry_type_unknown_without_items() -> None:
-    """Board trang tay -> unknown, va unknown phai duoc coi la THIEU tin hieu."""
+    """Board trang tay va khong co role -> unknown, coi la THIEU tin hieu."""
     state = GameState(board=[Champion(name="X", cost=1, position=(1, 1))])
     assert infer_carry_type(state)[0] == "unknown"
+
+
+def test_infer_carry_type_falls_back_to_champion_role() -> None:
+    """Khi board chua co item nhung tuong co role (CDragon role): dung role lam fallback."""
+    state = GameState(board=[Champion(name="Ahri", cost=4, role="APCaster", position=(1, 1))])
+    carry_type, evidence = infer_carry_type(state)
+    assert carry_type == "AP"
+    assert "Ahri" in evidence and "APCaster" in evidence
 
 
 def test_board_fit_penalizes_carry_type_mismatch(config) -> None:

@@ -30,6 +30,17 @@ from ..game_state.models import GameState
 from ..knowledge.augment_catalog import MatchResult
 from ..knowledge.augment_features import AugmentFeature, FeatureTable
 from ..knowledge.stats_provider import AugmentStatsProvider, NullProvider
+from .reroll_policy import (
+    EvidenceLevel,
+    PoolDistribution,
+    RerollAdvice,
+    RerollState,
+    RerollTuning,
+    build_advice,
+    is_fabricated,
+    slot_views,
+    tailoring_weight,
+)
 from .scoring import (
     BaseScorer,
     BoardFitScorer,
@@ -210,6 +221,102 @@ class AugmentAdvisor:
         # tai lap duoc 100% - ablation study can dieu do.
         entries.sort(key=lambda e: (-e.total, e.api_name))
         return Ranking(entries, dict(self.config.weights))
+
+    # -- reroll (SPEC 3.5.5) -----------------------------------------------
+
+    def pool_distribution(
+        self, tier: int, state: GameState, exclude: Iterable[str] = ()
+    ) -> PoolDistribution:
+        """Phan bo diem cua ca MOT BAC augment duoi trang thai hien tai.
+
+        Goi MOT LAN moi man chon augment roi cache lai. Do duoc tren may nay:
+        1.39 ms p50 / 2.18 ms p95 cho bac dong nhat (N=132) - vua ngan sach
+        5 ms. Cham ca 254 augment thi 4.5 ms p50 / 12.2 ms p95, tuc VO ngan
+        sach: luon phai loc theo bac truoc, dung bao gio quet ca bang.
+        """
+        skip = {str(x) for x in exclude}
+        tuning = RerollTuning.from_config(self.config)
+        active = state.active_traits or {}
+
+        rows: list[tuple[float, float, str]] = []
+        sample_n = 0
+        n_measured = 0
+        n_ordinal = 0
+        sources: set[str] = set()
+
+        for api_name, feature in self.features.features.items():
+            if feature.tier != tier or api_name in skip:
+                continue
+            total, _ = self.score_one(api_name, state)
+            rows.append((total, tailoring_weight(feature, active, tuning.tailoring_beta), api_name))
+            stats = self.stats.get(api_name)
+            if stats is not None:
+                sample_n += int(stats.sample_n)
+                sources.add(stats.source)
+                if stats.is_evidence and not is_fabricated(stats.source):
+                    n_measured += 1
+                elif stats.is_ordinal:
+                    n_ordinal += 1
+
+        # Sap theo diem, hoa thi theo apiName - de ket qua tai lap 100%.
+        rows.sort(key=lambda r: (r[0], r[2]))
+        total_w = sum(r[1] for r in rows) or 1.0
+
+        if n_measured:
+            evidence: EvidenceLevel = "measured"
+        elif n_ordinal:
+            evidence = "ordinal"
+        else:
+            evidence = "uncalibrated"
+
+        return PoolDistribution(
+            tier=tier,
+            scores=tuple(r[0] for r in rows),
+            weights=tuple(r[1] / total_w for r in rows),
+            api_names=tuple(r[2] for r in rows),
+            source=",".join(sorted(sources)) or getattr(self.stats, "name", "unknown"),
+            sample_n=sample_n,
+            is_evidence=evidence == "measured",
+            evidence=evidence,
+        )
+
+    def advise_reroll(
+        self,
+        ranking: Ranking,
+        state: GameState,
+        rerolls: RerollState | None = None,
+        pool: PoolDistribution | None = None,
+    ) -> RerollAdvice:
+        """Mot buoc: nen doi the nao, hay chot the nao.
+
+        Goi lai sau moi lan doi - `ranking` va `rerolls` moi phan anh man hinh
+        moi. `pool` truyen vao de tai su dung cache giua cac buoc trong cung
+        mot man; None thi tu dung.
+        """
+        rerolls = rerolls or RerollState()
+        views = slot_views(ranking)
+        tuning = RerollTuning.from_config(self.config)
+
+        if pool is None:
+            exclude = {a for v in views for a in v.api_names}
+            if tuning.burn_on_reveal:
+                exclude |= set(rerolls.burned)
+            pool = self.pool_distribution(self._offered_tier(ranking), state, exclude)
+
+        return build_advice(views, rerolls, pool, tuning, state.stage_number)
+
+    def _offered_tier(self, ranking: Ranking) -> int:
+        """Bac dang duoc chao. Ca ba the mot chang cung mot bac (da doi chieu
+        tren frame Set 18 that o 3-2), nhung van lay da so phong khi mot the
+        khong co trong bang dac trung."""
+        counts: dict[int, int] = {}
+        for entry in ranking.entries:
+            feature = self.features.get(entry.api_name)
+            if feature and feature.tier:
+                counts[feature.tier] = counts.get(feature.tier, 0) + 1
+        if not counts:
+            return 2
+        return max(counts.items(), key=lambda kv: (kv[1], -kv[0]))[0]
 
     # -- trinh bay ---------------------------------------------------------
 
