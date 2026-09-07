@@ -25,6 +25,22 @@ from typing import Any, Iterable, Protocol, runtime_checkable
 NEUTRAL_PLACEMENT = 4.5
 
 
+def is_fabricated(source: str) -> bool:
+    """Nguon co chu MOCK la du lieu gia TU KHAI BAO.
+
+    Quy uoc nay do scripts/build_mock_stats.py va build_mock_comps.py dat ra:
+    so gia phai tu khai bao la gia, va no chay suot toi tan reason string tren
+    overlay. `tests/test_meta_comps.py` da dung dung phep thu nay.
+
+    Can mot ham rieng vi `AugmentStats.is_evidence` KHONG bat duoc truong hop
+    nay: bo so gia lap bia san `sample_n` tren 200 nen no tra True. Voi
+    BaseScorer thi vo hai - no in thang `source` ra man hinh. Nhung khi phai
+    XEP HANG cac nguon voi nhau thi con so bia do se de mot cai gia thang mot
+    y kien co nguoi ky ten, va do la dieu khong duoc phep xay ra.
+    """
+    return "MOCK" in str(source).upper()
+
+
 @dataclass(frozen=True)
 class AugmentStats:
     """So lieu thong ke cua mot augment, LUON kem provenance."""
@@ -91,9 +107,21 @@ class CsvProvider:
 
     REQUIRED = ("api_name", "avg_place")
 
-    def __init__(self, path: str | Path, source: str | None = None) -> None:
+    def __init__(
+        self,
+        path: str | Path,
+        source: str | None = None,
+        allow_fabricated: bool = True,
+    ) -> None:
+        """`allow_fabricated=False` bo cac dong tu khai bao la gia ngay luc nap.
+
+        Mac dinh True vi lop nay la mot trinh DOC file trung thanh - doc gi ra
+        nay. Viec quyet dinh co dung mot nguon hay khong thuoc ve
+        `default_provider()`, va chinh no la cho truyen False vao.
+        """
         self.path = Path(path)
         self.source = source or f"csv:{self.path.name}"
+        self.allow_fabricated = allow_fabricated
         self._rows: dict[str, AugmentStats] = {}
         self._load()
 
@@ -107,13 +135,16 @@ class CsvProvider:
                 api = (row.get("api_name") or "").strip()
                 if not api:
                     continue
+                source = (row.get("source") or self.source).strip()
+                if not self.allow_fabricated and is_fabricated(source):
+                    continue
                 self._rows[api] = AugmentStats(
                     api_name=api,
                     avg_place=float(row["avg_place"]),
                     top4_rate=float(row.get("top4_rate") or 0.0),
                     win_rate=float(row.get("win_rate") or 0.0),
                     sample_n=int(float(row.get("sample_n") or 0)),
-                    source=(row.get("source") or self.source).strip(),
+                    source=source,
                 )
 
     def __len__(self) -> int:
@@ -305,6 +336,7 @@ class OpggMcpProvider:
 def default_provider(
     csv_path: str | Path | None = None,
     tiers_path: str | Path | None = None,
+    allow_fabricated: bool = False,
 ) -> AugmentStatsProvider:
     """Nguon mac dinh, theo THU TU UU TIEN: CSV -> bang tier -> Null.
 
@@ -312,11 +344,21 @@ def default_provider(
     mot so DO DUOC luon thang mot y kien, du y kien do den tu nguoi choi gioi
     hon. Bang tier chi duoc dung o nhung augment ma CSV khong co.
 
+    NHUNG MOT SO GIA THI KHONG THANG GI CA (sua 2026-09-07). `AugmentStats.
+    is_evidence` chi nhin `sample_n`, ma bo so gia lap bia san sample_n tren
+    200. Hau qua: `data/augment_stats.csv` phu du 254 augment nen no CHE HET
+    bang tier - tha mot bang tier that vao repo cung khong doi duoc gi, va
+    khong co gi bao ca. Vi the mac dinh `allow_fabricated=False`: dong nao tu
+    khai bao la gia thi bi bo ngay luc nap, va neu ca file deu gia thi nguon
+    do khong duoc tinh la mot nguon.
+
     Day la ham duy nhat trong du an duoc phep quyet dinh nguon nao dang dung.
     """
     providers: list[AugmentStatsProvider] = []
     if csv_path and Path(csv_path).exists():
-        providers.append(CsvProvider(csv_path))
+        csv_provider = CsvProvider(csv_path, allow_fabricated=allow_fabricated)
+        if len(csv_provider):
+            providers.append(csv_provider)
     if tiers_path and Path(tiers_path).exists():
         tiers = ExpertTierListProvider.load(tiers_path)
         if len(tiers):

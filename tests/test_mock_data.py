@@ -141,12 +141,46 @@ def test_base_component_actually_separates_augments() -> None:
 
 
 @needs_stats
-def test_default_provider_picks_up_the_csv() -> None:
-    """Co file -> CompositeProvider(Csv, Null). Khong co -> NullProvider."""
+def test_default_provider_refuses_a_self_declared_fake() -> None:
+    """Bat bien then chot (2026-09-07): so gia KHONG di qua duong mac dinh.
+
+    Truoc day `default_provider` chi hoi "file co ton tai khong". Vi bo so gia
+    lap bia san `sample_n` tren 200 nen `is_evidence` tra True cho no, va vi no
+    phu du ca 254 augment nen no CHE HET bang tier chuyen gia: tha mot bang
+    tier that vao repo cung khong doi duoc gi, ma khong co gi bao ca.
+
+    Gio moi dong tu khai bao la gia bi bo ngay luc nap; ca file deu gia thi
+    nguon do khong duoc tinh la mot nguon.
+    """
     provider = default_provider(STATS_CSV)
+    assert provider.name == "null"
+    assert provider.get("DA_18_BigGrabBag") is None
+    assert default_provider("data/khong_ton_tai.csv").name == "null"
+
+
+@needs_stats
+def test_the_fake_is_still_readable_when_asked_for_explicitly() -> None:
+    """Cong tat, khong phai xoa file. `build_mock_stats.py` van co ly do ton
+    tai: no chung minh duong w1 chay duoc truoc khi co du lieu that."""
+    provider = default_provider(STATS_CSV, allow_fabricated=True)
     assert provider.name == "composite"
     assert provider.get("DA_18_BigGrabBag") is not None
-    assert default_provider("data/khong_ton_tai.csv").name == "null"
+
+
+@needs_stats
+def test_a_fake_csv_no_longer_shadows_an_expert_tier_list(tmp_path) -> None:
+    """Hoi quy cho chinh cai bay o tren, do o dung cho no gay hai nhat."""
+    import json as _json
+
+    from src.knowledge.stats_provider import ExpertTierListProvider  # noqa: F401
+
+    tiers = tmp_path / "tiers.json"
+    tiers.write_text(
+        _json.dumps({"meta": {"rated_by": "x"}, "tiers": {"S": ["DA_18_BigGrabBag"]}}),
+        encoding="utf-8",
+    )
+    stats = default_provider(STATS_CSV, tiers).get("DA_18_BigGrabBag")
+    assert stats is not None and stats.tier == "S" and stats.is_ordinal is True
 
 
 # --- Cau truc du lieu ------------------------------------------------------

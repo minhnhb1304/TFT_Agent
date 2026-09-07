@@ -29,7 +29,7 @@ class BaseScorer:
         # Khong the suy tu co mau vi bang tier khong co co mau - day la mot
         # phan xet doan, va no phai nam trong file config de ablation thay
         # duoc no dang dong gop bao nhieu.
-        self.ordinal_trust = clamp01(float(tune.get("ordinal_trust", 0.35)))
+        self.ordinal_trust = clamp01(float(tune.get("ordinal_trust", 0.65)))
 
     def __call__(
         self, api_name: str, feature: AugmentFeature | None, state: GameState
