@@ -13,6 +13,7 @@ from src.knowledge.augment_features import AugmentFeature, FeatureTable
 from src.overlay.widgets.augment_panel import (
     AMBIGUOUS_LABEL,
     MAX_REASONS,
+    build_reroll_line,
     build_rows,
     render_text,
 )
@@ -67,3 +68,59 @@ def test_render_text_contains_name_and_score() -> None:
     text = render_text(build_rows(ranking))
     assert "Augment A" in text
     assert f"{ranking.entries[0].total:.3f}" in text
+
+
+# --- Dong hanh dong cho khuyen nghi doi the (SPEC 3.5.5) --------------------
+
+
+def _advice(**kwargs):
+    from src.decision.reroll_policy import RerollAdvice
+
+    base = dict(
+        action="REROLL",
+        target_slot=0,
+        fallback_slot=2,
+        expected_gain=0.0123,
+        reason="ly do",
+        threshold=0.6,
+        depletion_cost=0.0,
+        pool_source="test",
+        pool_n=100,
+        evidence="measured",
+    )
+    base.update(kwargs)
+    return RerollAdvice(**base)
+
+
+def test_reroll_line_names_the_slot_to_click_in_human_numbering() -> None:
+    """O danh so tu 0 trong code, tu 1 tren man hinh. Nhieu nhat mot cho lech."""
+    line = build_reroll_line(_advice(target_slot=0, fallback_slot=2))
+    assert "ô 1" in line
+    assert "giữ ô 3" in line
+
+
+def test_reroll_line_shows_the_action_word_first() -> None:
+    assert build_reroll_line(_advice(action="REROLL")).startswith("▶ ĐỔI")
+    assert build_reroll_line(_advice(action="PICK")).startswith("▶ CHỌN")
+
+
+def test_reroll_line_marks_a_recommendation_built_on_uncalibrated_data() -> None:
+    """Ha giong khuyen nghi, KHONG giau khuyen nghi."""
+    weak = build_reroll_line(_advice(evidence="uncalibrated"))
+    strong = build_reroll_line(_advice(evidence="measured"))
+    assert weak.endswith("?")
+    assert not strong.endswith("?")
+    assert "ĐỔI ô 1" in weak  # hanh dong van con nguyen
+
+
+def test_panel_without_advice_renders_exactly_as_before() -> None:
+    """Hoi quy: moi cho goi cu khong truyen `advice` phai khong doi mot ky tu."""
+    ranking = _advisor().rank(["A", "B"], GameState(stage="2-1", hp=90))
+    rows = build_rows(ranking)
+    assert render_text(rows, None) == render_text(rows)
+
+
+def test_advice_line_sits_above_the_ranking() -> None:
+    rows = build_rows(_advisor().rank(["A", "B"], GameState(stage="2-1", hp=90)))
+    text = render_text(rows, _advice())
+    assert text.splitlines()[0].startswith("▶")

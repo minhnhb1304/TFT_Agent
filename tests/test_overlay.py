@@ -32,3 +32,25 @@ def test_non_windows_degrades_loudly_not_silently() -> None:
 
 def test_windows_build_probe_is_safe_everywhere() -> None:
     assert windows_build() >= 0
+
+
+def test_capture_protection_is_off_by_default() -> None:
+    """Mac dinh TAT phai la thuoc tinh kiem chung duoc, khong phai y dinh.
+
+    Danh gia rui ro 2026-09-04 ket luan: chup theo cua so game lam vong lap tu
+    chup khong hinh thanh ve cau truc, nen khong can goi
+    SetWindowDisplayAffinity - loi goi duy nhat trong stack co hinh dang giong
+    ne tranh. Neu ai do doi mac dinh nay tro lai True, test do va buoc ho doc
+    lai ly do thay vi doi am tham.
+
+    Dung inspect thay vi goi create_windows() vi ham do can Qt + man hinh.
+    """
+    import inspect
+
+    from src.overlay.overlay_window import create_windows
+
+    default = inspect.signature(create_windows).parameters["capture_protection"].default
+    assert default is False, (
+        "capture_protection phai mac dinh False - xem docstring overlay_window "
+        "va research/vanguard/ truoc khi doi"
+    )

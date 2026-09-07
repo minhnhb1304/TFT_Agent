@@ -6,14 +6,31 @@ HAI CUA SO, KHONG PHAI MOT:
     - `interactive`: nhan chuot, danh cho panel cai dat.
 Gop lam mot thi hoac chan mat thao tac cua nguoi choi, hoac khong bam duoc gi.
 
-WDA_EXCLUDEFROMCAPTURE LA BAT BUOC, KHONG PHAI TUY CHON:
-Neu thieu, overlay se lot vao chinh anh ma no chup - roi vision doc lai chu cua
-chinh minh va khuyen nghi tu boi duong chinh no. Kieu hong nay im lang va rat
-kho truy nguoc, nen o day no duoc kiem tra tuong minh va bao that bai ro rang.
+WDA_EXCLUDEFROMCAPTURE: MAC DINH TAT (doi o ban danh gia rui ro 2026-09-04):
+Truoc day co nay BAT BUOC, de overlay khong lot vao chinh anh ma no chup (vision
+doc lai chu cua chinh minh -> khuyen nghi tu boi duong chinh no). Van de la that,
+nhung cach chua thi sai:
 
-Yeu cau: Windows 10 build 19041 (2004) tro len. Duoi muc do, ha xuong WDA_MONITOR
-(che bang o den trong anh chup) - van dung, chi xau hon, va PHAI bao cho nguoi
-dung biet thay vi im lang bo qua.
+    - Vong lap tu chup duoc GIAI QUYET TAN GOC bang cach chup THEO CUA SO GAME
+      thay vi chup ca desktop. Chup theo cua so khong lay overlay cua tien trinh
+      khac, nen vong lap khong hinh thanh - khong can goi API nao ca.
+    - Ban than loi goi nay la thu duy nhat trong stack co HINH DANG giong ne
+      tranh: `GetWindowDisplayAffinity` doc duoc "from any process" khong can
+      quyen gi, vgk.sys co hook o `NtUserGetWindowDisplayAffinity`, va mot
+      anti-cheat cung nganh (TAC cua Activision) da thu thap va gui gia tri nay
+      ve server. Khong co bang chung Vanguard lam dieu do - nhung cung khong co
+      ly do phai chiu rui ro khi da co cach khac.
+    - Rieng ve mat trinh bay: Riot xac nhan (05-2024) ho CHUP vung man hinh ma
+      client chiem, de tim ESP hack. Mot panel tu van HIEN RA se bi danh gia
+      theo NOI DUNG (vo hai). Mot cua so co tinh an khoi anh chup bi danh gia
+      theo HANH VI. Hien ra la lua chon dung voi chuan trung thuc cua SPEC 11.5.
+
+Ham `apply_capture_protection()` duoc GIU LAI nguyen ven va van test day du: no
+la duong lui cho may khong chup theo cua so duoc. Chi co MAC DINH la doi.
+
+Yeu cau khi bat: Windows 10 build 19041 (2004) tro len. Duoi muc do, ha xuong
+WDA_MONITOR (che bang o den trong anh chup) - van dung, chi xau hon, va PHAI bao
+cho nguoi dung biet thay vi im lang bo qua.
 
 TRACK B: file nay chi kiem tra duoc tren may co man hinh va co game dang chay.
 Phan logic trinh bay da duoc tach sang widgets/augment_panel.py de test duoc.
@@ -106,11 +123,21 @@ def _qt():
     return QtCore, QtWidgets
 
 
-def create_windows(parent_app: Any = None) -> dict[str, Any]:
-    """Tao ca hai cua so overlay va dat co bao ve.
+def create_windows(
+    parent_app: Any = None, capture_protection: bool = False
+) -> dict[str, Any]:
+    """Tao ca hai cua so overlay.
+
+    Args:
+        parent_app: QApplication dang chay, neu co.
+        capture_protection: bat SetWindowDisplayAffinity. MAC DINH TAT - xem
+            docstring dau module. Chi bat khi khong chup theo cua so game duoc;
+            khi do overlay phai duoc che khoi anh chup bang cach khac.
 
     Returns:
         {"passthrough": w1, "interactive": w2, "protection": {...}}
+        `protection` rong khi capture_protection=False - khong co loi goi nao
+        duoc thuc hien, khong phai "goi roi that bai".
     """
     QtCore, QtWidgets = _qt()
 
@@ -130,10 +157,10 @@ def create_windows(parent_app: Any = None) -> dict[str, Any]:
     interactive.setWindowFlags(base_flags)
     interactive.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
 
-    protection = {}
-    for name, window in (("passthrough", passthrough), ("interactive", interactive)):
-        # winId() buoc Qt tao hwnd that - phai goi truoc khi dat affinity.
-        result = apply_capture_protection(int(window.winId()))
-        protection[name] = result
+    protection: dict[str, CaptureProtection] = {}
+    if capture_protection:
+        for name, window in (("passthrough", passthrough), ("interactive", interactive)):
+            # winId() buoc Qt tao hwnd that - phai goi truoc khi dat affinity.
+            protection[name] = apply_capture_protection(int(window.winId()))
 
     return {"passthrough": passthrough, "interactive": interactive, "protection": protection}
