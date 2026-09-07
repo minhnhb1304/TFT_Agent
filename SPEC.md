@@ -97,6 +97,16 @@ player input**"*, tức **injection** mới là dấu hiệu định danh):
 phải có low-level hook, nên đây là đánh đổi thật, không phải lỗi. Nếu chấp nhận hotkey chỉ hoạt động khi
 overlay được focus → dùng `RegisterHotKey` qua Qt, **không cần hook**. Mặc định v2: ưu tiên `RegisterHotKey`.
 
+> ✅ **Đã giải quyết (2026-09-04) — đánh đổi này không còn tồn tại.** `src/utils/hotkeys.py` chứng minh
+> `RegisterHotKey(NULL, ...)` + `QAbstractNativeEventFilter` đọc `WM_HOTKEY` hoạt động **kể cả khi game
+> đang focus** — vì nó chặn ở tầng OS chứ không phải tầng cửa sổ. Không hook, không cần admin.
+>
+> Vì thế `keyboard` giờ **bị cấm hoàn toàn** trong `FORBIDDEN_MODULES`, không chỉ cấm các hàm gửi input.
+> Trước đây `import keyboard; keyboard.add_hotkey(...)` vẫn qua được test trong khi nó cài
+> `WH_KEYBOARD_LL` thật — tức là mục này gọi tên đúng mối nguy nhưng test lại không chặn. Đã bịt:
+> `SetWindowsHookEx{,A,W}`, `SetWinEventHook`, `WH_KEYBOARD_LL`, `WH_MOUSE_LL` nằm trong
+> `FORBIDDEN_SYMBOLS`, và test quét thêm cả file `.py` ở gốc repo (entry point tương lai).
+
 ---
 
 ## 2. Kiến Trúc Hệ Thống
@@ -211,8 +221,22 @@ fail loudly, thay vì để pipeline im lặng trả về rác.
 
 | File | Mô tả |
 |---|---|
-| `screen_capture.py` | `dxcam` (DXGI, mặc định) → `dxcam` WinRT backend → `mss` (fallback cuối) |
+| `screen_capture.py` | **WGC theo cửa sổ game** (`windows-capture`, mặc định) → `dxcam` DXGI desktop-scoped (fallback) → `mss` (fallback cuối) |
 | `region_detector.py` | Auto-detect resolution, tính ROI theo tỉ lệ client rect |
+
+> 🔄 **Đổi quyết định (2026-09-04) — chụp THEO CỬA SỔ, không chụp desktop.** Cờ
+> `capture.window_scoped` trong `settings.yaml`. Hai lý do độc lập cùng chỉ về một hướng:
+>
+> 1. **Đã có sẵn từ research trước:** [`research/overview.md`](research/overview.md) đã ghi `dxcam` là
+>    *desktop*-scoped và đề xuất `windows-capture` 2.0.1 (WGC, window-scoped, non-hooking).
+> 2. **Mới từ đánh giá rủi ro:** chụp theo cửa sổ không lấy overlay của tiến trình khác → vòng lặp
+>    tự chụp không hình thành, nên §3.6 không cần `WDA_EXCLUDEFROMCAPTURE` nữa. Đồng thời tránh
+>    `NtGdiDdDDIOutputDuplGetFrameInfo` — syscall của Desktop Duplication mà `vgk.sys` có hook.
+>    Không có bằng chứng hook đó dùng để phát hiện; cũng không có lý do phải đi qua nó.
+>
+> ROI của OCR **phải không giao** với vùng overlay. `tools/calibrate.py` sẽ assert điều này
+> (`capture.assert_roi_disjoint_from_overlay`) — lớp phòng thủ thứ hai nếu có lúc phải rơi về
+> desktop capture. Chi tiết: [`research/vanguard/capture-design.md`](research/vanguard/capture-design.md).
 
 **Yêu cầu kỹ thuật:**
 - Game phải chạy **Borderless Windowed** (Fullscreen exclusive → không overlay được)
@@ -297,6 +321,7 @@ class Champion:
     items: list[str]                 # max 3 items
     position: tuple[int, int] | None # hex (row, col) or None if bench
     traits: list[str]
+    role: str | None = None          # ADCarry, APCaster, APTank... (từ CDragon khi Riot cập nhật Set 18)
 
 @dataclass
 class GameState:
@@ -424,10 +449,27 @@ class AugmentStats:
 | `CsvProvider` | Nạp file CSV tự chuẩn bị — mặc định hiện tại |
 | `RiotApiProvider` | ❌ **Bất khả thi cho Set 18** — đo 2026-09-01 với key thật: participant của `tft-match-v1` **không còn trường `augments`**, cả payload không có chuỗi `"augment"` nào. Lớp code vẫn giữ (có test) và sẽ chạy ngay khi Riot trả trường này về. Xem [set-data](research/set-data.md) |
 | `OpggMcpProvider` | `https://mcp-api.op.gg/mcp`. Nhanh nhưng là hộp đen — xem [prior-art](research/prior-art.md) |
+| `ExpertTierListProvider` | **Nguồn chính của w₁ từ 2026-09-07.** Bảng S/A/B/C/D do người chơi giỏi xếp → `avg_place` là **mã hoá đơn điệu** của bậc. `sample_n` luôn 0, `is_ordinal` luôn True, nên `is_evidence` **luôn False** |
 | `CompositeProvider` | Gộp nhiều nguồn theo thứ tự ưu tiên, **giữ nguyên provenance** |
 
 > **Thêm nguồn mới = thêm 1 file, KHÔNG sửa scoring engine.** Mọi số hiển thị trên overlay phải kèm
 > `source` và `sample_n` — không có cỡ mẫu thì không phải bằng chứng.
+
+**Chuyển hướng 2026-09-07 — w₁ đứng trên tiên nghiệm chuyên gia**
+
+Không còn nguồn **đo được** nào ở bất kỳ mức rank nào (Riot gỡ trường; `d3.tft.tools` trả
+`{"singles": []}` trên mọi patch Set 18; datatft hardcode trong JS; tftacademy Disallow). Vì vậy
+w₁ chuyển sang bảng tier do người xếp, với `ordinal_trust: 0.65` thay cho co ngót theo cỡ mẫu.
+
+Phát biểu đúng là *"không còn nguồn đo được nên dùng tiên nghiệm thứ tự có ký tên, kèm hệ số co
+ngót tường minh"* — **không phải** *"bảng tier tốt hơn placement thô"*. Cách chuẩn xử lý nhiễu kỹ
+năng (kiểu `Cruel Pact`) là **lọc theo nhóm rank**, không phải bỏ phép đo; đường đó đóng vì thiếu
+dữ liệu, chứ không phải vì nó sai.
+
+> ⚠️ `default_provider(..., allow_fabricated=False)` là **mặc định**. Bộ số giả lập bịa `sample_n`
+> trên 200 nên `is_evidence` trả True cho nó, và vì nó phủ đủ 254 augment nên nó **che hết** bảng
+> tier — thả một bảng tier thật vào repo cũng không đổi được gì mà không có gì báo. Xem
+> [docs/expert-prior/](docs/expert-prior/overview.md).
 
 **⚠️ Roll Odds / Pool Size — CHƯA XÁC MINH CHO SET 18**
 
@@ -563,7 +605,7 @@ Score(a | S) = w₁·Base(a)        stats tĩnh, từ StatsProvider (§3.4.2)
 | Thành phần | Nguồn dữ liệu | Trả về |
 |---|---|---|
 | `Base` | `StatsProvider.get(api_name)` | Điểm chuẩn hoá + `source` + `sample_n`. Không có stats → trung tính |
-| `BoardFit` | `augment_features.trait_affinity` ∩ `state.active_traits`; `carry_type` vs carry hiện tại | Điểm + *"khớp 2/3 unit Thần Rừng đang có"* |
+| `BoardFit` | `augment_features.trait_affinity` ∩ `state.active_traits`; `carry_type` suy từ item (fallback: `Champion.role`) vs carry hiện tại | Điểm + *"khớp 2/3 unit Thần Rừng đang có"* |
 | `EconFit` | `augment_features.econ_value` × hệ số theo `state.stage` | Điểm + *"augment econ ở 2-1 còn kịp sinh lời"* |
 | `ItemFit` | `augment_features.item_grants` vs `state.item_components` | Điểm + *"cho 1 Kiếm, đang thiếu đúng Kiếm"* |
 | `TempoFit` | `augment_features.tempo` × `state.hp` | Điểm + *"HP 22 — cần sức mạnh ngay, không scaling"* |
@@ -581,6 +623,41 @@ không giấu đi.
 
 > Trọng số `w₁..w₅` nằm ở `config/scoring_weights.yaml`. **Không hardcode** — ablation study cần
 > tắt/bật được từng cái từ file config.
+
+#### 3.5.5 Chính sách reroll augment (`src/decision/reroll_policy.py`)
+
+§3.5.4 trả lời *"thẻ nào tốt nhất trong ba thẻ đang hiện"*. Set 18 cho **mỗi ô một nút đổi riêng**
+(đã đối chiếu trên frame VOD thật), nên còn một câu hỏi thứ hai: *đổi hay chốt, và đổi ô nào*.
+
+Đây là bài toán **dừng tối ưu hữu hạn có nhớ** (McCall sequential search — **không** phải secretary
+problem, cũng **không** phải Cayley–Moser; cả hai đều là mô hình *không* nhớ lại). Nó sụp xuống còn
+một phép so sánh:
+
+```
+REROLL  ⟺  g(R) − c > B          g(R) = E[max(R, σ)] trên pool cùng bậc
+```
+
+Ba kết quả chứng minh được, đều bị khoá bằng test:
+
+| | Nội dung |
+|---|---|
+| **T1** | Đổi ô **tệ nhất** trong các ô còn lượt là tối ưu |
+| **T2** | `c = 0` và còn ≥2 lượt ⟹ REROLL **trội hơn yếu** PICK — dừng sớm là lỗ EV |
+| **T3** | Vế phải giảm đơn điệu theo `B` ⟹ vùng dừng liên thông ⟹ **luật một bước là luật tối ưu** |
+
+**Ràng buộc kiến trúc:**
+
+- `rank()` và `score_one()` **không đổi**. Module này chỉ **cộng thêm**.
+- `F_S` là hàm phân bố thực nghiệm **có trọng số tailoring** của cả một bậc, dựng **một lần**
+  mỗi màn chọn (đo được: 2,18 ms p95 cho bậc lớn nhất), sau đó mỗi quyết định là `O(log N)`.
+  **Không bao giờ chấm cả 254 augment** — đó là 12,24 ms p95, vỡ ngân sách §3.5.3.
+- Số lượt đổi còn lại **không hiển thị trên màn hình**, nên `RerollState` là tham số truyền vào.
+- Mức độ tin cậy của số liệu **KHÔNG chặn hành động**: `B` và `F_S` cùng sinh từ một hàm điểm nên
+  phép so sánh bất biến qua mọi hiệu chỉnh đơn điệu. Trường `evidence` hạ giọng *câu chữ*, không
+  hạ *hành động*.
+
+> Tham số nằm ở khối `reroll_policy:` trong `config/scoring_weights.yaml`, cùng lý do với `w₁..w₅`.
+> Phân tích đầy đủ + trạng thái kiểm chứng cơ chế: [docs/augment-reroll/](docs/augment-reroll/overview.md).
 
 ### 3.6 Overlay UI (`src/overlay/`)
 
@@ -603,7 +680,7 @@ không giấu đi.
 #   FramelessWindowHint | WindowStaysOnTopHint | Tool | WindowTransparentForInput
 #   + WA_TranslucentBackground + WA_ShowWithoutActivating
 
-# BẮT BUỘC — nếu thiếu, overlay tự lọt vào ảnh nó chụp:
+# MẶC ĐỊNH TẮT kể từ 2026-09-04 — xem hộp cảnh báo bên dưới:
 SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE)   # 0x00000011
 #   · hwnd phải là top-level và thuộc chính process này
 #   · cần DWM compositing
@@ -611,6 +688,24 @@ SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE)   # 0x00000011
 
 SetProcessDpiAwareness(2)   # TRƯỚC khi khởi tạo QApplication
 ```
+
+> 🔄 **Đổi quyết định (2026-09-04)** — `create_windows(capture_protection=False)`, cờ
+> `capture.overlay_capture_protection` trong `settings.yaml`. Đánh giá rủi ro:
+> [`research/vanguard/capture-design.md`](research/vanguard/capture-design.md).
+>
+> Vấn đề "overlay tự lọt vào ảnh nó chụp" là **có thật**, nhưng cách chữa nhắm vào triệu chứng.
+> Chụp **theo cửa sổ game** thay vì chụp cả desktop (§3.1) khiến vòng lặp đó **không hình thành được
+> về mặt cấu trúc** — không cần gọi API nào để chặn. Đồng thời loại bỏ lời gọi duy nhất trong stack
+> có *hình dạng* giống né tránh: `GetWindowDisplayAffinity` đọc được *"from any process"* không cần
+> quyền gì, `vgk.sys` có hook ở `NtUserGetWindowDisplayAffinity`, và một anti-cheat cùng ngành (TAC
+> của Activision) thu thập rồi gửi giá trị này về server.
+>
+> Riot xác nhận (05-2024) họ **chụp vùng màn hình mà client chiếm**, để tìm ESP hack. Một panel tư vấn
+> **hiện ra** bị đánh giá theo *nội dung* — vô hại. Một cửa sổ **cố tình ẩn** khỏi đúng bức ảnh đó bị
+> đánh giá theo *hành vi*. Hiện ra là lựa chọn đúng với chuẩn trung thực của §11.5.
+>
+> `apply_capture_protection()` **giữ nguyên và vẫn test đầy đủ** — nó là đường lui cho máy không chụp
+> theo cửa sổ được. Chỉ mặc định đổi, và `tests/test_overlay.py` khoá mặc định đó lại.
 
 > **Hai cửa sổ, ngay từ đầu**: `WS_EX_TRANSPARENT` là all-or-nothing — một cửa sổ không thể vừa
 > click-through vừa có widget bấm được. Retrofit sau rất đau.
@@ -1167,8 +1262,16 @@ Trên N trận đã log: tính **Spearman ρ** giữa *thứ hạng advisor gán
 | Mục | Chi tiết |
 |---|---|
 | Cách làm | Export ~50 scenario (ảnh + tóm tắt state) → người chơi rank cao xếp hạng độc lập |
-| Chỉ số | **Top-1 agreement** + **Cohen's κ** giữa advisor và chuyên gia |
+| Chỉ số | **Top-1 agreement** + **Brennan–Prediger S** giữa advisor và chuyên gia |
 | Đối chứng | So thêm với baseline "chỉ dùng stats tĩnh" để thấy phần board-state đóng góp gì |
+
+> ⚠️ **Sửa 2026-09-06 — mục này trước đây ghi Cohen's κ và đã sai.** Cohen's κ ước lượng đồng thuận
+> ngẫu nhiên từ phân phối biên trên **một** không gian nhãn chung. Ở đây mỗi tình huống chào 3
+> augment **khác nhau**, gần như rời nhau, nên không gian đó không tồn tại: với `n = 18` và
+> `p_o = 0,60`, công thức cũ trả 0,577 ("khá") trong khi giá trị đúng là 0,40 ("trung bình").
+> Code đã thay bằng **Brennan–Prediger S** (`p_e` = trung bình của `1/kᵢ`) — xem
+> `src/eval/expert_study.py:12-29`. Với không gian nhị phân ĐỔI/CHỌN của §3.5.5 thì `k = 2` nên
+> `p_e = 0,5`; vẫn là S, không phải κ.
 
 ### 12.4 Ablation study
 

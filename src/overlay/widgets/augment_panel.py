@@ -76,9 +76,42 @@ def build_rows(ranking: Any, min_confidence: float = 0.75) -> list[PanelRow]:
     return rows
 
 
-def render_text(rows: list[PanelRow]) -> str:
-    """Ban ve bang van ban - dung cho log, test va che do khong overlay."""
+ACTION_LABELS = {"PICK": "CHỌN", "REROLL": "ĐỔI"}
+
+
+def build_reroll_line(advice: Any) -> str:
+    """Mot dong HANH DONG cho khuyen nghi doi the (SPEC 3.5.5).
+
+    Dong nay dat tren cung panel vi no la thu nguoi choi can doc truoc: xep
+    hang tra loi "the nao tot nhat", con dong nay tra loi "bam vao dau".
+
+    Dau `?` xuat hien khi nen phan bo chua phai so DO DUOC. No ha giong cua
+    khuyen nghi chu khong giau khuyen nghi di - phep so sanh giua the dan dau
+    va pool van hop le khi ca hai cung sinh ra tu mot ham diem.
+    """
+    if advice is None:
+        return ""
+    label = ACTION_LABELS.get(advice.action, advice.action)
+    mark = "" if advice.evidence == "measured" else " ?"
+    gain = f"  (+{advice.expected_gain:.3f})" if advice.action == "REROLL" else ""
+    keep = (
+        f", giữ ô {advice.fallback_slot + 1}"
+        if advice.action == "REROLL"
+        else ""
+    )
+    return f"▶ {label} ô {advice.target_slot + 1}{keep}{gain}{mark}"
+
+
+def render_text(rows: list[PanelRow], advice: Any = None) -> str:
+    """Ban ve bang van ban - dung cho log, test va che do khong overlay.
+
+    `advice` la tuy chon de moi cho goi cu khong phai doi - panel van dung
+    duoc khi chua co lop nhan dang trang thai nut doi.
+    """
     lines: list[str] = []
+    line = build_reroll_line(advice)
+    if line:
+        lines.append(line)
     for row in rows:
         badge = f"  [{' · '.join(row.badges)}]" if row.badges else ""
         lines.append(f"{row.rank}. {row.name}  {row.score:.3f}{badge}")
@@ -115,11 +148,17 @@ def create_panel(parent: Any = None):
         def __init__(self, parent=None) -> None:
             super().__init__(parent)
             self._rows: list[PanelRow] = []
-            self.setMinimumWidth(360)
+            self._advice: Any = None
+            self.setMinimumWidth(380)
 
-        def set_ranking(self, ranking: Any) -> None:
+        def set_ranking(self, ranking: Any, advice: Any = None) -> None:
             """Cap nhat noi dung. Goi tu luong chinh cua Qt."""
             self._rows = build_rows(ranking)
+            self._advice = advice
+            self.update()
+
+        def set_advice(self, advice: Any) -> None:
+            self._advice = advice
             self.update()
 
         def rows(self) -> list[PanelRow]:
@@ -128,9 +167,21 @@ def create_panel(parent: Any = None):
         def paintEvent(self, event) -> None:  # noqa: N802 - ten do Qt quy dinh
             painter = QtGui.QPainter(self)
             painter.setRenderHint(QtGui.QPainter.RenderHint.Antialiasing)
-            painter.fillRect(self.rect(), QtGui.QColor(12, 14, 20, 205))
+            painter.fillRect(self.rect(), QtGui.QColor(12, 14, 20, 215))
 
             y = 14
+            reroll_line = build_reroll_line(self._advice)
+            if reroll_line:
+                painter.fillRect(14, y - 2, self.width() - 28, 26, QtGui.QColor(35, 48, 65, 230))
+                painter.setPen(QtGui.QColor(255, 215, 60))
+                font = painter.font()
+                font.setBold(True)
+                painter.setFont(font)
+                painter.drawText(20, y + 16, reroll_line)
+                font.setBold(False)
+                painter.setFont(font)
+                y += 34
+
             for row in self._rows:
                 y = self._paint_row(painter, QtGui, row, y)
             painter.end()
