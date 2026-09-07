@@ -7,6 +7,17 @@ SPEC 12.2 (tuong quan placement), 12.3 (dong thuan chuyen gia) va 12.4
 cuoi thi den luc danh gia se khong co du lieu, va deadline do an khong tha cho
 viec do. Logger chay som = dataset tu tich luy trong luc con dang code phan khac.
 
+SCHEMA 2 - THEM `game_id` (2026-09-06)
+
+`final_placement` la dai luong CUA MOT TRAN, khong phai cua mot quyet dinh.
+Ba scenario trong cung mot van deu mang dung mot gia tri Y. Neu SPEC 12.2 coi
+chung la ba quan sat doc lap thi sai so chuan bi danh gia thap va p-value tro
+nen de dai (anti-conservative). Muon hoan vi theo khoi cho dung thi phai biet
+scenario nao thuoc van nao - do la viec cua `game_id`.
+
+Doc file schema 1 van chay: `game_id` khuyet thi bang None, va `correlation`
+se bao ro la khong gom cum duoc thay vi im lang gia vo la doc lap.
+
 MOI BAN GHI PHAI TU DU DE CHAM DIEM LAI
 
 Ablation study cham diem lai toan bo dataset voi trong so khac. Muon lam duoc
@@ -24,7 +35,7 @@ from typing import Any, Callable, Iterable, Iterator
 
 from ..game_state.models import GameState, state_from_dict
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 3
 
 
 @dataclass
@@ -56,6 +67,10 @@ class Scenario:
     frame_ref: str | None = None
     player_pick: str | None = None
     final_placement: int | None = None
+    game_id: str | None = None
+    # Khuyen nghi doi the tai thoi diem nay (schema 3, SPEC 3.5.5). None khi
+    # chinh sach reroll khong chay - moi ban ghi schema 1/2 deu nhu vay.
+    reroll: dict[str, Any] | None = None
     path: Path | None = None
     schema_version: int = SCHEMA_VERSION
 
@@ -82,6 +97,8 @@ class Scenario:
             "weights": self.weights,
             "player_pick": self.player_pick,
             "final_placement": self.final_placement,
+            "game_id": self.game_id,
+            "reroll": self.reroll,
         }
 
     @classmethod
@@ -96,6 +113,8 @@ class Scenario:
             frame_ref=data.get("frame_ref"),
             player_pick=data.get("player_pick"),
             final_placement=data.get("final_placement"),
+            game_id=data.get("game_id"),
+            reroll=data.get("reroll"),
             path=path,
             schema_version=int(data.get("schema_version", 1)),
         )
@@ -123,6 +142,8 @@ class ScenarioLogger:
         recognized: Iterable[RecognizedAugment] | None = None,
         frame_ref: str | None = None,
         player_pick: str | None = None,
+        game_id: str | None = None,
+        reroll: Any = None,
     ) -> Path | None:
         """Ghi mot scenario. Tra ve duong dan, hoac None khi logger dang tat."""
         if not self.enabled:
@@ -138,6 +159,8 @@ class ScenarioLogger:
             weights=dict(getattr(ranking, "weights", {})),
             frame_ref=frame_ref,
             player_pick=player_pick,
+            game_id=game_id,
+            reroll=reroll.to_dict() if hasattr(reroll, "to_dict") else reroll,
         )
 
         self.directory.mkdir(parents=True, exist_ok=True)

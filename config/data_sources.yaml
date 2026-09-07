@@ -1,0 +1,159 @@
+# So dia chi nguon du lieu - kiem lai moi ban va cua TFT.
+#
+# VI SAO FILE NAY TON TAI
+# -----------------------
+# Cac nguon du lieu TFT chet lang le: Riot go mot truong khoi API, mot trang
+# doi bundle JS, mot endpoint tra ve mang rong thay vi 404. Khong co cho nao
+# ghi lai "da thu, da hong, ngay nao" thi cu vai thang lai co nguoi di do lai
+# dung cai da do roi.
+#
+# Vi the o day ghi CA nguon dung duoc LAN nguon da xac nhan la hong. Muc
+# `status: dead` co gia tri khong kem gi `status: live` - no tiet kiem dung
+# lan do lai tiep theo.
+#
+# QUY UOC
+#   status: live     - da lay duoc du lieu that
+#   status: dead     - da do, KHONG co du lieu. Kem `evidence` noi ro do the nao
+#   status: untested - chua do bao gio
+#   last_verified    - ngay do gan nhat (YYYY-MM-DD). Cu hon mot ban va thi phai do lai.
+
+meta:
+  set: TFTSet18
+  patch: "18.1"
+  updated: 2026-09-07
+
+# --- Dac trung tinh cua augment (ten, bac, mo ta) --------------------------
+# Day la nhanh DUY NHAT dang chay duoc dau-den-cuoi.
+static:
+  cdragon:
+    url: https://raw.communitydragon.org/latest/cdragon/tft/{locale}.json
+    provides: [augment_names, augment_tiers, augment_descriptions, traits, champions]
+    status: live
+    last_verified: 2026-08-31
+    note: >-
+      Nguon cua data/augment_features.json (254/254). Locale vi_vn va en_us
+      deu lay duoc. Xem scripts/build_augment_features.py.
+
+  ddragon_augments:
+    url: https://ddragon.leagueoflegends.com/cdn/{version}/data/en_US/tft-augments.json
+    provides: [augment_ids, augment_names, icons]
+    status: untested
+    last_verified: null
+    note: Nguon du phong cho cdragon. Chua doi chieu voi Set 18.
+
+# --- So lieu placement theo augment ----------------------------------------
+# KHONG CO NGUON NAO DUNG DUOC. Day la ly do data/augment_stats.csv van la
+# MOCK-NOT-REAL va vi sao Base (w1, 30% diem) dang trung tinh o ca 254 augment.
+placement_stats:
+  riot_match_v1:
+    url: https://{platform}.api.riotgames.com/tft/match/v1/matches/{matchId}
+    provides: [augments_per_participant, placement]
+    status: dead
+    last_verified: 2026-09-01
+    evidence: >-
+      Riot da go truong `augments` khoi ParticipantDto o Set 18. Xem dev_log.md
+      muc 2. Truoc Set 18 truong nay co that (developer-relations issue #749).
+
+  tactics_tools:
+    url: https://d3.tft.tools/  # endpoint JSON dung sau trang /augments
+    provides: [avg_place_per_augment, per_stage_columns]
+    status: dead
+    last_verified: 2026-09-07
+    evidence: >-
+      Do truc tiep tren MOI nhom rank va MOI ban va Set 18: payload tra ve
+      dung `{"singles": []}`. Trang HTML co du tieu de cot ("At 2-1", "At 3-2",
+      "At 4-2") nhung KHONG co du lieu dang sau. Doc tieu de cot roi ket luan
+      la co du lieu chinh la cai bay o day - phai do payload.
+    do_not_retry_before: "18.2"
+
+  metatft:
+    url: https://www.metatft.com/augments
+    provides: [augment_tier_list, per_slot_stats]
+    status: untested
+    last_verified: null
+    evidence: Trang render bang JS; chua tim duoc endpoint JSON. Khong co API cong khai.
+
+  datatft:
+    url: https://www.datatft.com/
+    status: dead
+    last_verified: 2026-09-01
+    evidence: >-
+      Bang tier nam HARDCODE trong bundle JS, ma hoa bang ma hai ky tu roi
+      dung lai o runtime. Giai duoc nhung vo moi lan ho build lai.
+
+  tftacademy:
+    url: https://tftacademy.com/
+    status: dead
+    last_verified: 2026-09-01
+    evidence: Du lieu duoi /_app/, va chinh robots.txt cua ho ghi Disallow.
+
+# --- Bang xep hang do NGUOI dat --------------------------------------------
+# NGUON CHINH CUA w1 tu 2026-09-07. Khong phai vi no tot hon so do, ma vi
+# khong con so do nao ton tai (xem `placement_stats` o tren, tat ca deu dead).
+#
+# Chi dung duoc lam TIEN NGHIEM THU TU. `sample_n` luon = 0, `is_ordinal` luon
+# True, nen `AugmentStats.is_evidence` luon False. `ordinal_trust: 0.65` trong
+# config/scoring_weights.yaml quyet dinh no keo diem duoc bao nhieu.
+# Xem docs/expert-prior/overview.md.
+expert_tier_lists:
+  status: awaiting_data
+  active_file: data/augment_tiers.json   # CHUA TON TAI - dang cho du lieu
+  # Quy uoc: MOT nguoi xep moi file, dat ten data/augment_tiers.<slug>.json.
+  # Chua xay phan gop nhieu nguoi - hai cao thu bat dong ve mot augment la tin
+  # hieu that, khong duoc lay trung binh cho em. Xem docs/expert-prior/ingestion.md.
+  #
+  # Moi muc PHAI co `rated_by`, `source_url`, `patch` - importer bat buoc ca ba.
+  candidates:
+    - name: TFT Academy
+      url: https://tftacademy.com/tierlist/augments
+      rated_by: "TFT Academy (Dishsoap / Frodan)"
+      status: untested
+      note: >-
+        Trang render qua /_app/ va robots.txt ghi Disallow -> NAP TAY, khong crawl.
+        Doc bang mat, dan vao file van ban, ky ten vao provenance.
+    - name: MetaTFT
+      url: https://www.metatft.com/augments
+      rated_by: null
+      status: untested
+      note: Co bang tier + loc theo o thu 1/2/3. Khong co API cong khai.
+  imported: []
+
+# --- Tham so co che chua kiem chung -----------------------------------------
+# Nhung so nay chinh sach reroll CAN nhung khong nguon cong khai nao xac nhan
+# cho Set 18. Chung dang duoc thay bang gia dinh trong config/scoring_weights.yaml.
+unverified_mechanics:
+  tier_transition:
+    description: >-
+      Xac suat lien hop cua bac augment qua ba chang (2-1, 3-2, 4-2). Can cho
+      tham so gamma neu muon TINH c(tier, stage) thay vi tra bang.
+    status: dead
+    last_verified: 2026-09-07
+    evidence: >-
+      Chi tim duoc bang so cua Set 16 (tftodds.com: 28/62/10, 35/45/20,
+      6/74/20). Khong co ban Set 18 o bat ky nguon nao. Cac chang KHONG doc
+      lap - phai la bang lien hop, khong duoc nhan bien.
+    consequence: >-
+      Vi the c(tier, stage) la mot BANG TRA trong scoring_weights.yaml chu
+      khong phai mot dai luong tinh duoc luc chay.
+
+  burn_on_reveal:
+    description: >-
+      Augment da hien ra (ke ca bi doi di) co bi go khoi pool cua nguoi choi
+      o cac chang sau khong.
+    status: untested
+    evidence: >-
+      Khong nguon cong khai nao xac nhan. Nguon tieng Trung chi xac nhan cho
+      RIENG english/hero augment ("重随机会将总会提供一批全新且独特的英雄强化符文").
+      wiki.leagueoflegends.com va fandom deu tra 403/402.
+    consequence: Co `reroll_policy.burn_on_reveal` de tat duoc neu gia dinh sai.
+
+  reroll_budget:
+    description: Moi o mot luot doi, ba luot moi chang, khong don sang chang sau.
+    status: partial
+    last_verified: 2026-09-07
+    evidence: >-
+      DA DOI CHIEU BANG MAT tren frame Set 18 that
+      (data/frames/s7h-jHMpFmQ/augment_select/augment_select_023_011007.png,
+      chang 3-2): ba nut doi RIENG tung the, ba the CUNG MOT BAC, va khong co
+      bo dem so nao tren man hinh. Chua xac nhan duoc: so luot moi o, va viec
+      co don sang chang sau hay khong.

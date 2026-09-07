@@ -44,6 +44,7 @@ class Champion:
     items: list[str] = field(default_factory=list)
     position: tuple[int, int] | None = None  # (row, col) hex; None = tren bench
     traits: list[str] = field(default_factory=list)
+    role: str | None = None  # Vai tro tu Riot/CDragon (ADCarry, APCaster,...), None neu chua cap nhat
 
     @property
     def on_bench(self) -> bool:

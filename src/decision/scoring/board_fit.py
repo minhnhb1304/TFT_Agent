@@ -81,6 +81,29 @@ def infer_carry_type(state: GameState) -> tuple[str, str]:
 
     best = max(votes.values())
     if best == 0:
+        # Fallback tu vai tro tuong (Riot champion roles: ADCarry, APCaster,...)
+        # khi board chua co trang bi va Riot da cap nhat truong role vao CDragon.
+        role_votes: dict[str, int] = {"AD": 0, "AP": 0, "tank": 0}
+        role_ev: list[str] = []
+        for champ in state.carries:
+            r = getattr(champ, "role", None)
+            if not r:
+                continue
+            r_upper = r.upper()
+            if "TANK" in r_upper:
+                role_votes["tank"] += 1
+                role_ev.append(f"{champ.name} ({r})")
+            elif r_upper.startswith("AD"):
+                role_votes["AD"] += 1
+                role_ev.append(f"{champ.name} ({r})")
+            elif r_upper.startswith("AP"):
+                role_votes["AP"] += 1
+                role_ev.append(f"{champ.name} ({r})")
+        r_best = max(role_votes.values(), default=0)
+        if r_best > 0:
+            r_winners = [k for k, v in role_votes.items() if v == r_best]
+            if len(r_winners) == 1:
+                return r_winners[0], f"vai trò tướng: {', '.join(role_ev)}"
         return "unknown", ""
     winners = [k for k, v in votes.items() if v == best]
     if len(winners) > 1:

@@ -4,7 +4,7 @@ Cac test o day chay tren scenario TONG HOP, va do la ca diem: bo cong cu danh
 gia phai duoc kiem chung TRUOC khi co du lieu that. Neu doi den luc co dataset
 that moi viet, thi den luc phat hien Spearman cai sai se khong con thoi gian.
 
-Moi ham thong ke tu cai (Spearman co dong hang, Kendall tau, Cohen's kappa,
+Moi ham thong ke tu cai (Spearman co dong hang, Kendall tau, Brennan-Prediger S,
 phan vi) deu duoc doi chieu voi mot vi du tinh tay.
 """
 
@@ -23,7 +23,8 @@ from src.eval.correlation import rank_with_ties, spearman
 from src.eval.expert_study import (
     ExpertEntry,
     analyze as analyze_experts,
-    cohen_kappa,
+    bootstrap_ci,
+    chance_corrected_agreement,
     export_scenarios,
     load_expert_entries,
 )
@@ -300,6 +301,7 @@ def test_export_hides_advisor_ranking_to_avoid_anchoring(tmp_path) -> None:
     assert all(row["expert_ranking"] == [] for row in payload)
     assert all("ranking" not in row for row in payload)
     assert all("tinh_huong" in row and "candidates" in row for row in payload)
+    # Bo khoa thoi thi chua du - xem test ben duoi ve THU TU.
 
 
 def test_unfilled_rows_are_skipped_not_guessed(tmp_path) -> None:
@@ -320,24 +322,28 @@ def test_kappa_is_one_on_perfect_agreement() -> None:
     entries = [
         ExpertEntry(f"s{i}", ["A", "B"], ["A", "B"], ["A", "B"]) for i in range(3)
     ] + [ExpertEntry("s4", ["A", "B"], ["B", "A"], ["B", "A"])]
-    kappa, observed, _ = cohen_kappa(entries)
+    kappa, observed, _ = chance_corrected_agreement(entries)
     assert observed == pytest.approx(1.0)
     assert kappa == pytest.approx(1.0)
 
 
-def test_kappa_punishes_agreement_that_chance_explains() -> None:
-    """Voi 3 lua chon, doan bua da trung 33% - ti le tho mot minh la vo nghia."""
+def test_agreement_is_zero_when_there_was_only_one_choice() -> None:
+    """Chi chao mot augment thi dong thuan 100% khong noi len dieu gi.
+
+    Ban cu tra 1.0 o day trong khi chinh comment cua no viet "khong co thong
+    tin" - tuc la test khang dinh dung dieu ma no vua phu nhan.
+    """
     entries = [ExpertEntry(f"s{i}", ["A"], ["A"], ["A"]) for i in range(10)]
-    kappa, observed, expected = cohen_kappa(entries)
+    s, observed, expected = chance_corrected_agreement(entries)
     assert observed == pytest.approx(1.0)
     assert expected == pytest.approx(1.0)
-    assert kappa == pytest.approx(1.0)   # ca hai luon chon A -> khong co thong tin
+    assert s == pytest.approx(0.0)
 
 
 def test_expert_report_states_the_agreement_level() -> None:
     entries = [ExpertEntry("s1", ["A", "B"], ["A", "B"], ["B", "A"])]
     text = analyze_experts(entries).report()
-    assert "Cohen's kappa" in text and "Muc do dong thuan" in text
+    assert "Brennan-Prediger S" in text and "Muc do dong thuan" in text
 
 
 def test_expert_report_tracks_each_expert_separately() -> None:
@@ -347,3 +353,203 @@ def test_expert_report_tracks_each_expert_separately() -> None:
     ]
     report = analyze_experts(entries)
     assert report.per_expert == {"e1": 1.0, "e2": 0.0}
+
+
+def _disjoint_entries(n: int, n_agree: int) -> list[ExpertEntry]:
+    """n tinh huong, moi cai chao BA augment KHAC NHAU - giong du lieu that.
+
+    Day chinh la hinh dang da lam hong cong thuc cu: khong tinh huong nao dung
+    chung nhan voi tinh huong nao.
+    """
+    out = []
+    for i in range(n):
+        cands = [f"A{i}", f"B{i}", f"C{i}"]
+        expert_top = f"A{i}" if i < n_agree else f"B{i}"
+        out.append(ExpertEntry(
+            f"s{i}", cands, [f"A{i}", f"B{i}", f"C{i}"],
+            [expert_top] + [c for c in cands if c != expert_top],
+        ))
+    return out
+
+
+def test_export_shuffles_candidates_so_order_does_not_leak_ranking(tmp_path) -> None:
+    """Giau khoa "ranking" nhung giu thu tu thi chuyen gia van bi neo y het.
+
+    Ban cu ghi candidates = list(scenario.ranking), nen lua chon so 1 cua
+    advisor LUON nam dau danh sach. Test cu chi kiem tra khoa vang mat nen no
+    xanh trong khi loi con nguyen.
+    """
+    scenarios = [
+        Scenario(ts=f"t{i}", game_state=GameState(), ranking=["TOP", "MID", "LOW"],
+                 path=tmp_path / f"s{i:02d}.json")
+        for i in range(24)
+    ]
+    out = export_scenarios(scenarios, tmp_path / "export.json")
+    payload = json.loads(out.read_text(encoding="utf-8"))
+
+    assert all(sorted(r["candidates"]) == ["LOW", "MID", "TOP"] for r in payload)
+    first_is_advisor_top = sum(1 for r in payload if r["candidates"][0] == "TOP")
+    assert first_is_advisor_top < len(payload)
+
+
+def test_export_shuffle_is_reproducible(tmp_path) -> None:
+    """Ban xuat phai tai lap duoc, neu khong thi khong kiem chung lai duoc."""
+    def build(name: str) -> list[dict]:
+        scenarios = [
+            Scenario(ts=f"t{i}", game_state=GameState(), ranking=["A", "B", "C"],
+                     path=tmp_path / f"s{i:02d}.json")
+            for i in range(8)
+        ]
+        out = export_scenarios(scenarios, tmp_path / name)
+        return json.loads(out.read_text(encoding="utf-8"))
+
+    a, b = build("one.json"), build("two.json")
+    assert [r["candidates"] for r in a] == [r["candidates"] for r in b]
+    assert all("candidate_seed" in r for r in a)
+
+
+def test_expected_agreement_is_one_third_when_three_are_offered() -> None:
+    """Voi 3 lua chon, doan bua trung 33% - dung con so docstring da hua."""
+    _, _, expected = chance_corrected_agreement(_disjoint_entries(18, 12))
+    assert expected == pytest.approx(1 / 3)
+
+
+def test_agreement_is_not_inflated_by_disjoint_label_sets() -> None:
+    """Hoi quy cho loi thoi phong kappa (sua 2026-09-06).
+
+    18 tinh huong, moi cai chao 3 augment rieng, dong thuan tho 12/18 = 0.667.
+    Cong thuc cu gop moi apiName vao MOT khong gian nhan chung -> p_e = 0.037
+    -> kappa = 0.654 ("rat cao"). Gia tri dung: p_e = 1/3 -> S = 0.5.
+    """
+    s, observed, expected = chance_corrected_agreement(_disjoint_entries(18, 12))
+    assert observed == pytest.approx(2 / 3)
+    assert expected == pytest.approx(1 / 3)
+    assert s == pytest.approx(0.5)
+    assert s < 0.654
+
+
+def test_verdict_is_withheld_when_the_interval_spans_bands() -> None:
+    """Co mau nho: in mot bac Landis-Koch duy nhat la tu lua."""
+    text = analyze_experts(_disjoint_entries(18, 12)).report()
+    assert "KTC 95%" in text
+    assert "CHUA KET LUAN DUOC" in text
+
+
+def test_verdict_is_given_when_the_interval_is_tight() -> None:
+    """Dong thuan tuyet doi tren co mau lon thi duoc phep ket luan."""
+    text = analyze_experts(_disjoint_entries(200, 200)).report()
+    assert "CHUA KET LUAN DUOC" not in text
+    assert "rat cao" in text
+
+
+def test_bootstrap_interval_brackets_the_point_estimate() -> None:
+    entries = _disjoint_entries(30, 20)
+    s, _, _ = chance_corrected_agreement(entries)
+    lo, hi = bootstrap_ci(entries)
+    assert lo <= s <= hi
+
+
+# --- Gom cum theo van (SPEC 12.2, sua 2026-09-06) --------------------------
+
+
+def _clustered_scenarios(with_game_id: bool) -> list[Scenario]:
+    """6 van, moi van 3 quyet dinh dung CHUNG mot placement.
+
+    Day la hinh dang that cua du lieu: `final_placement` la dai luong cua mot
+    VAN, khong phai cua mot quyet dinh.
+    """
+    plan = [
+        (1, "AAA"), (2, "AAB"), (3, "ABB"),
+        (5, "BBC"), (6, "BCC"), (8, "CCC"),
+    ]
+    out = []
+    for game, (place, picks) in enumerate(plan, start=1):
+        for j, pick in enumerate(picks):
+            out.append(Scenario(
+                ts=f"g{game}d{j}", game_state=GameState(), ranking=["A", "B", "C"],
+                player_pick=pick, final_placement=place,
+                game_id=f"game-{game}" if with_game_id else None,
+            ))
+    return out
+
+
+def test_game_id_survives_the_json_round_trip(tmp_path) -> None:
+    logger = make_logger(tmp_path)
+    advisor = AugmentAdvisor(features())
+    ranking = advisor.rank(["ECON", "TRAIT"], GameState(stage="2-1"))
+    path = logger.log(ranking, GameState(stage="2-1"), game_id="vod-abc-g3")
+
+    assert path is not None
+    reloaded = load_scenarios(tmp_path)
+    assert reloaded[0].game_id == "vod-abc-g3"
+    assert json.loads(path.read_text(encoding="utf-8"))["schema_version"] == 3
+
+
+def test_schema_3_records_the_reroll_advice(tmp_path) -> None:
+    """Advisor tinh ra khuyen nghi doi the roi vut di thi khong danh gia duoc.
+
+    Truong nay se rong cho den khi Track B doc duoc `player_pick` - nhung so
+    do cua advisor phai duoc ghi lai TU BAY GIO, khong the ghi hoi to.
+    """
+    from src.decision.reroll_policy import RerollState
+
+    logger = make_logger(tmp_path)
+    advisor = AugmentAdvisor(features())
+    state = GameState(stage="2-1")
+    ranking = advisor.rank(["ECON", "TRAIT"], state)
+    advice = advisor.advise_reroll(ranking, state, RerollState())
+
+    path = logger.log(ranking, state, reroll=advice)
+    assert path is not None
+    written = json.loads(path.read_text(encoding="utf-8"))["reroll"]
+    assert written["action"] in ("PICK", "REROLL")
+    assert written["pool_source"]
+    assert load_scenarios(tmp_path)[0].reroll == written
+
+
+def test_scenario_without_reroll_advice_is_still_valid(tmp_path) -> None:
+    """Chinh sach reroll khong chay (khong phai man chon, hoac no hong) thi
+    ban ghi van phai hop le - `reroll` chi la None."""
+    logger = make_logger(tmp_path)
+    advisor = AugmentAdvisor(features())
+    logger.log(advisor.rank(["ECON"], GameState(stage="2-1")), GameState(stage="2-1"))
+    assert load_scenarios(tmp_path)[0].reroll is None
+
+
+def test_schema_1_file_still_loads_with_no_game_id(tmp_path) -> None:
+    """File cu khong co `game_id` van doc duoc - khong duoc vo khi nang schema."""
+    old = {
+        "schema_version": 1, "ts": "t", "frame_ref": None, "recognized": [],
+        "game_state": GameState().to_dict(), "component_scores": {},
+        "ranking": ["A"], "weights": {}, "player_pick": "A", "final_placement": 1,
+    }
+    (tmp_path / "old.json").write_text(json.dumps(old), encoding="utf-8")
+    loaded = load_scenarios(tmp_path)
+    assert len(loaded) == 1 and loaded[0].game_id is None
+
+
+def test_analyze_counts_independent_games_not_decisions() -> None:
+    """18 quyet dinh nhung chi 6 quan sat doc lap."""
+    result = analyze_correlation(_clustered_scenarios(with_game_id=True))
+    assert result.n == 18
+    assert result.n_games == 6
+    assert "6 van" in result.report()
+
+
+def test_missing_game_id_is_reported_not_silently_assumed_independent() -> None:
+    """Thieu nhan cum thi phai NOI, khong duoc lang le coi la doc lap."""
+    result = analyze_correlation(_clustered_scenarios(with_game_id=False))
+    assert result.n_games is None
+    assert "CANH BAO" in result.report()
+
+
+def test_block_permutation_is_not_anti_conservative() -> None:
+    """Hoan vi tu do tren du lieu co cum tao ra p nho hon that.
+
+    Cung mot dataset: hoan vi theo khoi chi co 6! cach gan placement cho van,
+    con hoan vi tu do co 18! cach - phan phoi null hep gia tao.
+    """
+    clustered = analyze_correlation(_clustered_scenarios(with_game_id=True))
+    free = analyze_correlation(_clustered_scenarios(with_game_id=False))
+    assert clustered.rho == pytest.approx(free.rho)   # rho khong doi
+    assert clustered.p_value > free.p_value           # chi p-value trung thuc hon

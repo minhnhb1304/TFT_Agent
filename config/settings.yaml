@@ -43,6 +43,28 @@ hotkeys:
   toggle_detail: F4
   quit: Ctrl+Q
 
+capture:
+  # Chup THEO CUA SO game, khong chup ca desktop. Day la mac dinh va la lua
+  # chon co y (danh gia rui ro 2026-09-04, research/vanguard/):
+  #   - Chup theo cua so khong lay overlay cua tien trinh khac -> vong lap
+  #     "vision doc lai chu cua chinh minh" khong hinh thanh ve mat cau truc,
+  #     khong can SetWindowDisplayAffinity de chua.
+  #   - Tranh luon syscall Desktop Duplication (NtGdiDdDDIOutputDuplGetFrameInfo)
+  #     ma vgk.sys co hook. Khong co bang chung hook do dung de phat hien, nhung
+  #     khong co ly do phai di qua no khi co duong khac.
+  window_scoped: true
+
+  # SetWindowDisplayAffinity(WDA_EXCLUDEFROMCAPTURE) tren overlay CUA CHINH TA.
+  # MAC DINH TAT. Chi bat khi window_scoped khong dung duoc, va khi do phai
+  # chap nhan: day la loi goi duy nhat trong stack co hinh dang giong ne tranh
+  # (doc duoc "from any process", vgk.sys hook NtUserGetWindowDisplayAffinity,
+  # TAC cua Activision thu thap va gui gia tri nay ve server).
+  overlay_capture_protection: false
+
+  # ROI cua OCR phai KHONG giao voi vung overlay. tools/calibrate.py se assert
+  # dieu nay - bien mot quy uoc bo tri thanh mot bat bien kiem chung duoc.
+  assert_roi_disjoint_from_overlay: true
+
 features:
   # Phase 7 - doc board doi thu. MAC DINH TAT: khoi luong CV lon, do nhieu cao,
   # va no khong duoc phep an vao thoi gian cua Augment Advisor (SPEC 3.3).

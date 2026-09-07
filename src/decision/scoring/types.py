@@ -74,7 +74,7 @@ class ScoringConfig:
     # la CONFIG CHET - sua so trong file khong co tac dung gi, CompSelector im
     # lang dung DEFAULT_WEIGHTS trong code. Khong test nao bat duoc vi hai bo
     # gia tri tinh co trung nhau.
-    TOP_LEVEL_TUNING = ("comp_selector",)
+    TOP_LEVEL_TUNING = ("comp_selector", "reroll_policy")
 
     @classmethod
     def load(cls, path: str | Path) -> "ScoringConfig":
@@ -99,7 +99,7 @@ class ScoringConfig:
             tuning={
                 "base": {
                     "best_place": 3.5, "worst_place": 5.0, "min_sample_n": 200,
-                    "ordinal_trust": 0.35,
+                    "ordinal_trust": 0.65,
                 },
                 "board_fit": {
                     "trait_weight": 0.6, "carry_weight": 0.4,

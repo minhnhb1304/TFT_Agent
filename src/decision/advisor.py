@@ -27,6 +27,7 @@ from .comp_selector import CompAdvice, CompSelector
 from .item_advisor import ItemAdvice, ItemAdvisor, ItemRecipes
 from .llm_reasoner import LlmReasoner
 from .position_advisor import PositionAdvice, PositionAdvisor
+from .reroll_policy import RerollAdvice, RerollState
 from .rules_engine import Advice, EconomyRules
 from .scoring.types import ScoringConfig
 
@@ -36,6 +37,7 @@ class AdviceBundle:
     """Toan bo dau ra cua mot chu ky tu van."""
 
     ranking: Ranking | None = None
+    reroll: RerollAdvice | None = None
     comp: CompAdvice | None = None
     economy: list[Advice] = field(default_factory=list)
     items: ItemAdvice | None = None
@@ -48,6 +50,7 @@ class AdviceBundle:
 
         return {
             "augment": self.ranking.to_dict() if self.ranking else None,
+            "reroll": self.reroll.to_dict() if self.reroll else None,
             "comp": comp_as_dict(self.comp) if self.comp else None,
             "economy": [a.to_dict() for a in self.economy],
             "items": self.items.to_dict() if self.items else None,
@@ -110,12 +113,16 @@ class Advisor:
         state: GameState,
         choices: Sequence[AugmentChoice | str] | None = None,
         frame_ref: str | None = None,
+        rerolls: RerollState | None = None,
     ) -> AdviceBundle:
         """Chay mot chu ky tu van day du.
 
         Args:
             choices: cac augment dang duoc chao. None nghia la khong phai man
                 chon augment - bo qua augment advisor, van tu van phan con lai.
+            rerolls: o nao con luot doi. Man hinh KHONG hien so dem nao nen
+                thong tin nay phai duoc truyen vao; None thi coi nhu con du
+                ba luot, tuc la trang thai vua vao man chon.
         """
         bundle = AdviceBundle()
 
@@ -124,6 +131,17 @@ class Advisor:
         if choices:
             bundle.ranking = self.augment_advisor.rank(choices, state)
             bundle.ranking = self.reasoner.refine(bundle.ranking, state)
+
+            # Khuyen nghi doi the la PHAN THEM tren xep hang, khong phai thay
+            # the no. Neu no hong thi bang xep hang van phai hien ra - vi the
+            # day la cho DUY NHAT tren duong co han gio duoc boc _safe().
+            bundle.reroll = self._safe(
+                bundle,
+                "reroll",
+                lambda: self.augment_advisor.advise_reroll(
+                    bundle.ranking, state, rerolls or RerollState()
+                ),
+            )
 
         # 2. Cac advisor phu - moi cai duoc phep hong rieng.
         bundle.comp = self._safe(bundle, "comp", lambda: self.comp_selector.select(state, self._previous_comp))
@@ -136,7 +154,9 @@ class Advisor:
 
         # 3. Log - chi khi that su co mot quyet dinh augment de ghi.
         if bundle.ranking is not None:
-            path = self.logger.log(bundle.ranking, state, frame_ref=frame_ref)
+            path = self.logger.log(
+                bundle.ranking, state, frame_ref=frame_ref, reroll=bundle.reroll
+            )
             bundle.scenario_path = str(path) if path else None
 
         return bundle
