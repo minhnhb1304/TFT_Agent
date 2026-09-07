@@ -181,8 +181,36 @@ def test_ordinal_trust_replaces_the_sample_size_shrinkage() -> None:
     """sample_n = 0 -> cong thuc theo co mau se cho trust 0 va tin hieu bien
     mat hoan toan. Nhanh ordinal phai thay bang tran co dinh tu config."""
     result = score(provider(), "DA_18_Best")
-    assert result.detail["trust"] == pytest.approx(0.35)
+    assert result.detail["trust"] == pytest.approx(0.65)
     assert result.score > 0.5, "bac S phai keo diem len, khong duoc trung tinh"
+
+
+def test_shipped_config_and_code_default_agree_on_ordinal_trust() -> None:
+    """Hai cho ghi cung mot con so thi phai bang nhau.
+
+    `ScoringConfig.default()` la cau hinh dung khi khong co file. Neu no lech
+    voi `config/scoring_weights.yaml` thi test chay mot the gioi con nguoi
+    dung chay mot the gioi khac - dung kieu lech da tung xay ra voi
+    comp_selector, va cung kho thay y het.
+    """
+    shipped = ScoringConfig.load("config/scoring_weights.yaml").tune("base")
+    coded = ScoringConfig.default().tune("base")
+    assert shipped["ordinal_trust"] == coded["ordinal_trust"]
+
+
+def test_ordinal_trust_is_below_one_on_purpose() -> None:
+    """Bang tier van la mot Y KIEN, du no den tu nguoi choi rat gioi.
+
+    Nang 0.35 -> 0.65 vi no da tro thanh nguon DUY NHAT cua w1, khong phai vi
+    no da tro thanh so do. Phan co ngot chinh la cho trung thuc cua thiet ke:
+    dat 1.0 la tuyen bo mot xep hang chu quan ngang mot phep do.
+    """
+    trust = ScoringConfig.load("config/scoring_weights.yaml").tune("base")["ordinal_trust"]
+    assert 0.0 < trust < 1.0
+    stats = provider().get("DA_18_Best")
+    assert stats.is_ordinal is True
+    assert stats.is_evidence is False
+    assert stats.sample_n == 0
 
 
 def test_a_bad_tier_pulls_the_score_down() -> None:
