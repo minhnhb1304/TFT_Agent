@@ -1,10 +1,11 @@
 # Kế Hoạch & Nhiệm Vụ Tiếp Theo (Next Steps)
 
-> **Cập nhật ngày:** 2026-09-08  
+> **Cập nhật ngày:** 2026-09-09  
 > **Trạng thái hiện tại:**  
 > - Thuật toán **Sequential Augment Reroll Policy** (`src/decision/reroll_policy.py`) đã hoàn thành, vượt qua **597/597 bài test** (`pytest` pass 100%).  
 > - Đường ống dữ liệu đã chặn hoàn toàn Mock data (`allow_fabricated=False`), độ tin cậy Bảng Tier `ordinal_trust` đã được nâng lên **0.65**.  
 > - **Nhiệm vụ 1 hoàn thành 100%**: Đã xây dựng crawler tự động `scripts/crawl_tftacademy_tiers.py` cào trực tiếp 245 lõi Set 18 từ TFT Academy API (Dishsoap & Frodan, Patch 18.1d), tạo thành công `data/augment_tiers.json` và `data/augment_tiers_raw.txt`. Bộ neo `TIER_PLACEMENT` đã được hiệu chuẩn lại theo hình dạng thật của bảng, thành phần điểm $w_1$ đã được kích hoạt và phân hóa rõ rệt.
+> - **Nhiệm vụ 2 hoàn thành 100%**: Đã chạy đối chứng Monte-Carlo $N = 10.000$ trên cả ba bậc và cả hai nhánh $\beta$. Chính sách tuần tự hơn mốc **+0,01844** [KTC 95%: +0,01783, +0,01907] ở bậc gold và lấy được **89,7%** khoảng cách tới trần biết trước; trần được kiểm chứng độc lập bằng công thức giải tích. Báo cáo: `docs/augment-reroll/ablation-results.md` và `tailoring-beta-sweep.md`.
 > - Script demo live overlay sẵn sàng tại `scripts/demo_overlay.py`.
 
 ---
@@ -63,21 +64,49 @@ Bộ neo cũ được đặt khi **chưa có bảng tier thật**, nên nó gi�
 
 ---
 
-## 2. Nhiệm vụ 2: Chạy Thử Nghiệm Mô Phỏng Monte-Carlo (Deliverable D.2)
+## 2. Nhiệm vụ 2: Chạy Thử Nghiệm Mô Phỏng Monte-Carlo (Đã hoàn thành ✅)
 
 Mục tiêu: Chứng minh tính tối ưu toán học của chính sách Reroll tuần tự và cơ chế Tailoring.
 
-### Các bước thực hiện:
-1. Chạy simulator với $N = 10,000$ ván đấu giả lập:
-   ```powershell
-   .\.venv\Scripts\python -m src.eval.reroll_ablation --n 10000
-   ```
-2. Thu thập các kết quả định lượng:
-   - Đo mức tăng kỳ vọng $\Delta E[S]$ của $\pi_{\text{sequential}}$ so với $\pi_{\text{first\_look}}$ (không roll) và $\pi_{\text{random}}$.
-   - So sánh hai nhánh: $\beta = 1.0$ (có tính đến Tailoring) vs $\beta = 0.0$ (rút ngẫu nhiên đồng đều).
-   - Kiểm tra khoảng tin cậy Bootstrap 95% và trần lý thuyết giải tích.
-3. Xuất kết quả vào tài liệu báo cáo đồ án.
+### Kết quả thực hiện
 
+Đã chạy $N = 10.000$ tình huống cho mỗi cấu hình, `seed = 20260907`, bootstrap 2.000 vòng trên chênh lệch **đã ghép cặp**. Cờ đúng là `--trials` (không phải `--n` như bản kế hoạch ghi):
+
+```powershell
+.\.venv\Scripts\python -m src.eval.reroll_ablation --tier 2 --stage 2 --trials 10000
+```
+
+**Bậc gold (tier 2, N = 132), chặng 2-1:**
+
+| chính sách | điểm TB | số lần đổi | $\Delta$ so với mốc [KTC 95%] |
+|---|---|---|---|
+| không đổi (mốc) | 0,59808 | 0,00 | — |
+| chọn bừa | 0,54896 | 0,00 | −0,04912 [−0,05029, −0,04794] |
+| vét hết ba lượt | 0,59845 | 3,00 | +0,00037 [−0,00064, +0,00143] |
+| **tuần tự** | **0,61652** | **2,12** | **+0,01844 [+0,01783, +0,01907]** |
+| biết trước (trần) | 0,61864 | 0,96 | +0,02056 [+0,01995, +0,02118] |
+
+- **$\Delta$ dương chắc chắn ở cả ba bậc**: silver +0,02197, gold +0,01844, prismatic +0,01898 — cận dưới KTC 95% đều cách 0 rất xa. Tuần tự lấy được **78–90%** khoảng cách tới trần biết trước.
+- **Vét hết ba lượt không phân biệt được với không roll** — KTC chứa 0 ở cả ba bậc. Giá trị nằm ở *luật dừng*, không ở việc roll nhiều.
+- **Trần được kiểm chứng độc lập bằng công thức đóng** $E[\max_6] = \sum_k s_{(k)} \cdot C(k-1,5)/C(N,6)$: Monte-Carlo lệch $< 5 \cdot 10^{-4}$ ở $n = 10.000$ và $< 1{,}3 \cdot 10^{-4}$ ở $n = 200.000$, giảm đúng theo $1/\sqrt{n}$.
+- **Nhánh $\beta$ — $\beta$ dịch mặt bằng, không dịch kết luận**: ở kịch bản mặc định $\Delta$ gần như không đổi (+0,01844 với $\beta = 1$ so với +0,01832 với $\beta = 0$, hai KTC chồng nhau); ở silver/prismatic hai nhánh **trùng khít từng chữ số** vì không lõi nào trong pool mang `trait_affinity` khớp. Ngay cả ở kịch bản áp lực tối đa (5 trait cùng bật, 11/132 lõi được nhân trọng số), $\beta$ chỉ dịch $\Delta$ đi **+0,00238**. Dấu vết rõ nhất của $\beta$ nằm ở **số lần đổi**: 2,26 ($\beta = 1$) so với 2,38 ($\beta = 0$) — bỏ qua tailoring làm pool nghèo đi nên chính sách phải đổi nhiều hơn để bù.
+
+### Báo cáo đã xuất
+
+- [`docs/augment-reroll/ablation-results.md`](augment-reroll/ablation-results.md) — bảng ba bậc, KTC bootstrap, kiểm chứng trần giải tích.
+- [`docs/augment-reroll/tailoring-beta-sweep.md`](augment-reroll/tailoring-beta-sweep.md) — nhánh $\beta = 1$ vs $\beta = 0$.
+- `evaluation.md` và `overview.md` đã cập nhật số mới — số cũ (n = 20.000) chạy **trước** khi hiệu chuẩn bộ neo `TIER_PLACEMENT` ở Nhiệm vụ 1, nên không còn dùng được.
+
+### Hai sửa đổi nhỏ trong `src/eval/reroll_ablation.py`
+
+1. Ép `sys.stdout` sang UTF-8. Console Windows mặc định (cp1252) làm lệnh trong tài liệu **crash** với `UnicodeEncodeError` khi in chuỗi provenance tiếng Việt có dấu (`bậc kế thừa từ ...`).
+2. Thêm cờ `--traits "key:count,..."` (mặc định `DA_Primal18:3`, giữ nguyên hành vi cũ). Trait đang bật là **cần gạt duy nhất** của `--tailoring-beta`, nên nếu không có cờ này thì kịch bản áp lực tối đa của nhánh $\beta$ không tái lập được.
+
+Bộ test suite vẫn **597/597 pass**.
+
+### Còn lại: phép đo "thiên lệch sợ-reroll" thật sự
+
+Lần quét trên đổi $\beta$ ở **cả** quá trình rút bài **lẫn** niềm tin của chính sách, nên nó trả lời *"thế giới có tailoring khác thế giới không có bao nhiêu"*, chứ chưa phải *"mô hình sai tailoring thì chính sách lỗ bao nhiêu"*. Câu sau cần một lần chạy **lệch pha**: rút bài với $\beta = 1$ nhưng cho `decide()` tin là $\beta = 0$. Bộ mô phỏng chưa có đường vào cho cấu hình đó.
 ---
 
 ## 3. Nhiệm vụ 3: Hoàn thiện Tầng Thị Giác (Track B - Vision Pipeline)

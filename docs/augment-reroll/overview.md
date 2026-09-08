@@ -32,21 +32,22 @@ giữa các bậc, xem [depletion-cost.md](depletion-cost.md).
 
 ## Nhưng vét hết lượt cũng sai
 
-Đo bằng mô phỏng (n = 20.000, bậc gold): chính sách **vét hết ba lượt** không hơn gì
-chính sách **không đổi lần nào** — chênh lệch +0,0001 với khoảng tin cậy ôm lấy 0.
+Đo bằng mô phỏng (n = 10.000, bậc gold): chính sách **vét hết ba lượt** không hơn gì
+chính sách **không đổi lần nào** — chênh lệch +0,0004 với khoảng tin cậy ôm lấy 0.
 
 Lý do là một ràng buộc cơ chế dễ bỏ quên: lượt đổi thứ ba bắt buộc phải đổi chính ô đang
 giữ thẻ tốt nhất, nên nó trả lại gần hết phần lợi của hai lượt đầu.
 
 | chính sách | điểm TB | số lần đổi | Δ so với không đổi |
 |---|---|---|---|
-| không đổi (first_look) | 0,56594 | 0,00 | (mốc) |
-| chọn bừa | 0,52073 | 0,00 | −0,04521 |
-| vét hết ba lượt | 0,56604 | 3,00 | +0,00010 *(không phân biệt được với mốc)* |
-| **tuần tự (module này)** | **0,58385** | **2,22** | **+0,01791** |
-| biết trước (trần) | 0,58592 | — | +0,01998 |
+| không đổi (first_look) | 0,59808 | 0,00 | (mốc) |
+| chọn bừa | 0,54896 | 0,00 | −0,04912 |
+| vét hết ba lượt | 0,59845 | 3,00 | +0,00037 *(không phân biệt được với mốc)* |
+| **tuần tự (module này)** | **0,61652** | **2,12** | **+0,01844** |
+| biết trước (trần) | 0,61864 | 0,96 | +0,02056 |
 
-Chính sách tuần tự lấy được **89,6%** khoảng cách tới trần biết trước.
+Chính sách tuần tự lấy được **89,7%** khoảng cách tới trần biết trước. Bảng đầy đủ cả ba bậc:
+[ablation-results.md](ablation-results.md).
 
 ⚠️ Đây là **chính sách so với chính sách trên chính hàm Score của hệ thống**, không phải
 bằng chứng về placement. Xem [evaluation.md](evaluation.md).
@@ -62,6 +63,8 @@ bằng chứng về placement. Xem [evaluation.md](evaluation.md).
 | [heuristic-analysis.md](heuristic-analysis.md) | Khi nào trực giác của cao thủ đúng, khi nào hỏng |
 | [architecture.md](architecture.md) | Hợp đồng dữ liệu, cache, ngân sách 5 ms |
 | [evaluation.md](evaluation.md) | Đối chứng phản thực + phần bị chặn bởi Track B |
+| [ablation-results.md](ablation-results.md) | Kết quả D.2: bảng ba bậc, KTC, trần giải tích |
+| [tailoring-beta-sweep.md](tailoring-beta-sweep.md) | Nhánh β = 1 vs β = 0 |
 | [mechanics-assumptions.md](mechanics-assumptions.md) | Cái gì đã kiểm chứng, cái gì là giả định |
 
 ## Related
