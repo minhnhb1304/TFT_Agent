@@ -283,3 +283,100 @@ def test_the_same_augment_cannot_sit_in_two_tiers() -> None:
     )
     assert resolved == {"S": ["DA_18_Best"]}
     assert any("da xuat hien o bac S" in p for p in problems)
+
+
+# --- Bac ke thua cho ban nang cap Plus/PlusPlus ---------------------------
+
+
+def inherit_provider() -> ExpertTierListProvider:
+    """Mo phong dung hinh dang that: TFT Academy xep mot dang dai dien, con
+    CDragon liet ke du moi bien the."""
+    return ExpertTierListProvider(
+        {"S": ["DA_Flora"], "B": ["DA_Lunar", "DA_DollsPlus"]},
+        source="expert-tierlist:tester/patch=18.1",
+    )
+
+
+def test_an_unrated_plus_variant_inherits_the_base_tier() -> None:
+    """Khong ke thua thi ban nang cap roi ve 0.5 trung tinh, tuc la dung TREN
+    chinh ban goc bac B cua no. Do la loi xep hang, khong phai thieu du lieu."""
+    stats = inherit_provider().get("DA_LunarPlus")
+    assert stats is not None
+    assert stats.tier == "B"
+    assert stats.api_name == "DA_LunarPlus"
+
+
+def test_plusplus_falls_back_through_plus_before_the_base_form() -> None:
+    """`DA_DollsPlusPlus` -> `DA_DollsPlus` (co trong bang) chu KHONG phai
+    `DA_Dolls` (khong co). Boc dan tung hau to, dung o dang dau tien tim thay."""
+    stats = inherit_provider().get("DA_DollsPlusPlus")
+    assert stats is not None
+    assert stats.tier == "B"
+
+
+def test_an_inherited_tier_says_so_in_its_provenance() -> None:
+    """Bat bien 3 ap dung cho ca suy dien nay: mot bac di muon phai noi ro no
+    muon tu dau, va chuoi do phai chay den tan reason string tren overlay."""
+    stats = inherit_provider().get("DA_FloraPlus")
+    assert stats is not None
+    assert "DA_Flora" in stats.source
+
+    reason = BaseScorer(inherit_provider(), ScoringConfig.default())(
+        "DA_FloraPlus", None, GameState()
+    ).reason
+    assert "DA_Flora" in reason
+
+
+def test_inheritance_keeps_the_ordinal_invariants() -> None:
+    """Mot dong ke thua van la y kien: khong duoc phep sinh ra co mau."""
+    stats = inherit_provider().get("DA_FloraPlus")
+    assert stats is not None
+    assert stats.sample_n == 0
+    assert stats.is_ordinal is True
+    assert stats.is_evidence is False
+
+
+def test_inheritance_never_invents_a_tier_out_of_nothing() -> None:
+    """Bay augment doc lap chua ai xep phai o nguyen trung tinh - khong doan."""
+    p = inherit_provider()
+    assert p.get("DA_KhongAiXep") is None
+    assert p.get("DA_KhongAiXepPlus") is None
+
+
+def test_inherited_rows_do_not_enter_the_table() -> None:
+    """`len()` dem cac bac THAT duoc xep, khong dem suy dien."""
+    p = inherit_provider()
+    assert len(p) == 3
+    p.get("DA_FloraPlus")
+    assert len(p) == 3
+
+
+# --- Hieu chuan neo theo hinh dang that cua bang --------------------------
+
+
+def test_tier_a_lands_exactly_on_neutral() -> None:
+    """A la bac dong dao nhat (105/245). No phai doc la "mot lua chon binh
+    thuong", khong phai mot tin hieu duong."""
+    score_a = BaseScorer(
+        ExpertTierListProvider({"A": ["DA_X"]}), ScoringConfig.default()
+    )("DA_X", None, GameState()).score
+    assert score_a == pytest.approx(0.5)
+
+
+def test_tier_c_is_punished_as_the_real_floor() -> None:
+    """TFT Academy khong xep bac D; C (5/245) dang giu vai tro "khong nen cam"
+    cua D, nen no phai bi phat sau hon B mot khoang ro rang."""
+    cfg = ScoringConfig.default()
+    score_b = BaseScorer(ExpertTierListProvider({"B": ["DA_X"]}), cfg)(
+        "DA_X", None, GameState()
+    ).score
+    score_c = BaseScorer(ExpertTierListProvider({"C": ["DA_X"]}), cfg)(
+        "DA_X", None, GameState()
+    ).score
+    assert score_c < score_b - 0.10
+
+
+def test_placements_stay_strictly_monotone_across_all_tiers() -> None:
+    places = [ExpertTierListProvider.TIER_PLACEMENT[t] for t in "SABCD"]
+    assert places == sorted(places)
+    assert len(set(places)) == len(places)
