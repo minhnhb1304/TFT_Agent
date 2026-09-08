@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import csv
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import Any, Iterable, Protocol, runtime_checkable
 
@@ -186,13 +186,31 @@ class ExpertTierListProvider:
     # nhat) va nam trong khoang [best_place, worst_place] cua BaseScorer
     # (3.5 - 5.0) de bac cao khong bi ep ve bien. Doi cac so nay khong lam
     # thay doi THU TU xep hang, chi lam thay doi do doc cua no.
+    #
+    # HIEU CHUAN LAI 2026-09-08 theo HINH DANG THAT cua bang TFT Academy.
+    # Bo neo cu (4.05/4.30/4.50/4.70/4.90) duoc dat khi chua co bang tier that,
+    # va no gia dinh nam bac trai deu nhau. Bang that thi khong:
+    #     S 50/245 (20%)  A 105/245 (43%)  B 85/245 (35%)  C 5/245 (2%)
+    # Hai he qua bat buoc phai sua:
+    #   1. A la bac DONG DAO nhat, nen A phai roi dung 0.5 - "mot lua chon
+    #      binh thuong", chu khong phai mot tin hieu duong. Neo 4.25 cho ra
+    #      dung 0.5 voi ordinal_trust = 0.65.
+    #   2. TFT Academy KHONG xep bac D. Chi 5 augment nam o C, va do la bac
+    #      "khong nen cam" cua ho - tuc la C dang giu vai tro cua D. Neo C
+    #      phai xuong san (4.90) de phat dung muc, con D lui ve 4.95 chi de
+    #      giu don dieu S < A < B < C < D cho cac bang tier khac.
+    # Diem w1 tuong ung (ordinal_trust = 0.65): S 0.630 > A 0.500 > B 0.370
+    # > C 0.218 > D 0.197.
     TIER_PLACEMENT: dict[str, float] = {
-        "S": 4.05,
-        "A": 4.30,
-        "B": 4.50,
-        "C": 4.70,
-        "D": 4.90,
+        "S": 3.95,
+        "A": 4.25,
+        "B": 4.55,
+        "C": 4.90,
+        "D": 4.95,
     }
+
+    # Hau to cua cac ban NANG CAP trong du lieu CDragon (X, X Plus, X PlusPlus).
+    UPGRADE_SUFFIX = "Plus"
 
     def __init__(
         self,
@@ -243,7 +261,44 @@ class ExpertTierListProvider:
         return len(self._rows)
 
     def get(self, api_name: str) -> AugmentStats | None:
-        return self._rows.get(api_name)
+        row = self._rows.get(api_name)
+        if row is not None:
+            return row
+        return self._inherit_from_base(api_name)
+
+    def _inherit_from_base(self, api_name: str) -> AugmentStats | None:
+        """Ban Plus/PlusPlus chua duoc xep -> muon bac cua dang goc.
+
+        VI SAO CAN
+            `data/augment_features.json` lay tu CDragon nen liet ke DU moi bien
+            the, con TFT Academy chi xep mot dang dai dien. Ba ban nang cap roi
+            ra ngoai bang va bi cham 0.5 trung tinh - tuc la dung TREN chinh ban
+            goc bac B cua no. Do la mot loi xep hang, khong phai mot khoang
+            trong du lieu.
+
+        CACH LAM
+            Boc dan tung hau to `Plus`: `X PlusPlus` -> `X Plus` -> `X`, dung o
+            dang DAU TIEN co trong bang. Mot ban nang cap khong bao gio te hon
+            ban goc, nen day la suy dien BAO THU: no chi keo diem ve dung bang
+            ban goc, khong bao gio doan cao hon.
+
+        RANG BUOC
+            `source` phai noi ro bac nay di muon tu dau. Mot bac ke thua van la
+            mot suy dien, va suy dien do phai chay den tan reason string tren
+            overlay - giong het cach `is_ordinal` khong cho mot y kien di qua
+            duoi lop mot so do.
+        """
+        name = str(api_name).strip()
+        while name.endswith(self.UPGRADE_SUFFIX):
+            name = name[: -len(self.UPGRADE_SUFFIX)]
+            base = self._rows.get(name)
+            if base is not None:
+                return replace(
+                    base,
+                    api_name=api_name,
+                    source=f"{base.source} (bậc kế thừa từ {name})",
+                )
+        return None
 
 
 class CompositeProvider:
