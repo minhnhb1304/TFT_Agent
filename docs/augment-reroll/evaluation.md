@@ -7,29 +7,31 @@
 chính sách khác trên cùng một hàm điểm**. Không cần nhãn của người chơi, cỡ mẫu tuỳ ý.
 
 ```
-python -m src.eval.reroll_ablation --tier 2 --stage 2 --trials 20000
+python -m src.eval.reroll_ablation --tier 2 --stage 2 --trials 10000
 ```
 
-Thiết kế **ghép cặp**: sáu thẻ được rút trước, rồi mọi chính sách gặp **cùng một tay bài**.
-Nhờ vậy delta không lẫn nhiễu của việc chính sách này may hơn chính sách kia. Khoảng tin
-cậy là bootstrap trên chênh lệch đã ghép cặp.
+Thiết kế **ghép cặp**: sáu thẻ được rút trước, rồi mọi chính sách gặp **cùng một tay bài**,
+nên delta không lẫn nhiễu của việc chính sách này may hơn chính sách kia. Khoảng tin cậy là
+bootstrap trên chênh lệch đã ghép cặp.
 
-### Kết quả (bậc gold, chặng 2-1, n = 20.000)
+### Kết quả (bậc gold, chặng 2-1, n = 10.000)
 
 | chính sách | điểm TB | số lần đổi | Δ so với mốc [KTC 95%] |
 |---|---|---|---|
-| không đổi (mốc) | 0,56594 | 0,00 | — |
-| chọn bừa | 0,52073 | 0,00 | −0,04521 [−0,04591, −0,04451] |
-| vét hết ba lượt | 0,56604 | 3,00 | +0,00010 [−0,00056, +0,00080] |
-| **tuần tự** | **0,58385** | **2,22** | **+0,01791 [+0,01752, +0,01830]** |
-| biết trước (trần) | 0,58592 | — | +0,01998 |
+| không đổi (mốc) | 0,59808 | 0,00 | — |
+| chọn bừa | 0,54896 | 0,00 | −0,04912 [−0,05029, −0,04794] |
+| vét hết ba lượt | 0,59845 | 3,00 | +0,00037 [−0,00064, +0,00143] |
+| **tuần tự** | **0,61652** | **2,12** | **+0,01844 [+0,01783, +0,01907]** |
+| biết trước (trần) | 0,61864 | 0,96 | +0,02056 [+0,01995, +0,02118] |
 
-Bậc prismatic: tuần tự +0,01941, và chỉ dùng **1,33** lượt đổi thay vì 2,22 — đúng chế độ
-mà `cost_matrix` mô tả.
+Bậc prismatic: tuần tự +0,01898, và chỉ dùng **1,15** lượt đổi thay vì 2,12 — đúng chế độ
+mà `cost_matrix` mô tả. Dòng **vét hết ba lượt** là kết quả đáng chú ý nhất: nó không phân
+biệt được với việc không đổi lần nào, vì lượt thứ ba bắt buộc đổi chính ô đang giữ thẻ tốt
+nhất nên trả lại gần hết phần lợi của hai lượt đầu.
 
-Dòng **vét hết ba lượt** là kết quả đáng chú ý nhất: nó không phân biệt được với việc không
-đổi lần nào. Lượt thứ ba bắt buộc đổi chính ô đang giữ thẻ tốt nhất, nên nó trả lại gần hết
-phần lợi của hai lượt đầu.
+> Bảng ba bậc, kiểm chứng trần bằng công thức đóng và nhánh β:
+> [ablation-results.md](ablation-results.md), [tailoring-beta-sweep.md](tailoring-beta-sweep.md).
+> Số ở đây đã chạy lại **sau** khi hiệu chuẩn bộ neo `TIER_PLACEMENT`.
 
 ### Trần và một đồng nhất thức
 
@@ -76,20 +78,23 @@ thức cũ trả 0,577 ("khá") trong khi giá trị đúng là 0,40 ("trung bì
 Với không gian nhị phân ĐỔI/CHỌN thì `k = 2` nên `p_e = 0,5`. Vẫn là **S**, không phải
 kappa. Báo cáo cả hai không gian nhãn kèm `k` của chúng.
 
-Dùng lại `expert_study.chance_corrected_agreement` và
-`correlation.permutation_p_value(groups=game_id)` cho hoán vị theo khối.
+Dùng lại `expert_study.chance_corrected_agreement` và `correlation.permutation_p_value(groups=game_id)`.
 
 > ⚠️ SPEC §12.3 vẫn ghi "Cohen kappa" và đã **lỗi thời**.
 
 ## Việc tiếp theo, theo thứ tự
 
-1. Quét `--tailoring-beta 0` vs `1` để định lượng thiên lệch sợ-reroll.
+1. Chạy **lệch pha** β: rút bài với β = 1 nhưng cho `decide()` tin là β = 0. Lần quét đã làm
+   ([tailoring-beta-sweep.md](tailoring-beta-sweep.md)) đổi β ở **cả hai** chỗ nên chưa tách
+   được thiên lệch sợ-reroll ra khỏi việc pool đổi.
 2. Đo độ nhạy theo `cost_matrix` — thứ tự đã kiểm chứng, độ lớn thì chưa.
 3. Đo độ trễ **khi game đang chạy** (SPEC §12.1), không đo trên máy rảnh.
 4. Khi Track B xong: nhật ký `reroll_trace` → đồng thuận chuyên gia.
 
 ## Related
 
+- [ablation-results.md](ablation-results.md) — bảng kết quả D.2 đầy đủ
+- [tailoring-beta-sweep.md](tailoring-beta-sweep.md) — nhánh β = 1 vs β = 0
 - [overview.md](overview.md) — bảng kết quả tóm tắt
 - [depletion-cost.md](depletion-cost.md) — tham số đang cần hiệu chỉnh
 - [architecture.md](architecture.md) — ngân sách độ trễ

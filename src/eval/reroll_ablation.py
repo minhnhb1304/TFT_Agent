@@ -48,6 +48,7 @@ from __future__ import annotations
 import argparse
 import json
 import random
+import sys
 from dataclasses import dataclass, field
 from typing import Any, Callable, Sequence
 
@@ -356,8 +357,27 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--trials", type=int, default=DEFAULT_TRIALS)
     parser.add_argument("--seed", type=int, default=SEED)
     parser.add_argument("--tailoring-beta", type=float, default=None)
+    parser.add_argument(
+        "--traits",
+        default="DA_Primal18:3",
+        help="Trait dang bat, dang 'key:count,key:count'. Quyet dinh augment nao "
+        "duoc tailoring nhan trong so - nen la can gat duy nhat cua --tailoring-beta.",
+    )
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args(argv)
+
+    # Bang ma console Windows mac dinh (cp1252) khong in duoc tieng Viet co dau
+    # trong chuoi provenance. Ep utf-8 de lenh trong tai lieu chay duoc nhu la.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+    active_traits = {}
+    for chunk in args.traits.split(","):
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        key, _, count = chunk.partition(":")
+        active_traits[key.strip()] = int(count) if count.strip() else 1
 
     config = ScoringConfig.load(args.weights)
     advisor = AugmentAdvisor(
@@ -387,13 +407,13 @@ def main(argv: Sequence[str] | None = None) -> int:
                 star_level=2,
                 items=["BFSword", "RecurveBow"],
                 position=(3, 3),
-                traits=["DA_Primal18"],
+                traits=list(active_traits),
             )
         ],
         item_components=["BFSword"],
         # Trait CO THAT cua Set 18. Dung ten set cu ("Ravager") thi khong khop
         # augment nao ca va nhanh tailoring im lang khong lam gi.
-        active_traits={"DA_Primal18": 3},
+        active_traits=active_traits,
     )
     # Pool phai dung `tailoring_beta` cua tuning nay, nen dung advisor voi
     # config da sua thay vi goi thang pool_distribution.
