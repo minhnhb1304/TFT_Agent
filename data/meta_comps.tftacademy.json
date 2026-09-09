@@ -1,0 +1,3359 @@
+{
+  "meta": {
+    "set": "TFTSet18",
+    "provider": "tftacademy.com",
+    "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+    "patch": "18.1d",
+    "generated_at": "2026-09-09T05:01:26.409613+00:00",
+    "total_comps": 53,
+    "note": "Biên soạn bởi chuyên gia TFT Academy (Dishsoap & Frodan). Đầy đủ core_items, best_augments và early_game."
+  },
+  "comps": [
+    {
+      "name": "Malphite AP Flex",
+      "tier": "A",
+      "core_units": [
+        "DA_18_Yorick",
+        "DA_18_Azir",
+        "DA_Fiddlesticks18",
+        "DA_Amumu18",
+        "DA_18_Malphite",
+        "DA_18_Soraka",
+        "DA_18_Zyra",
+        "DA_18_Kennen"
+      ],
+      "flex_units": [
+        "DA_18_Lillia",
+        "DA_18_Ahri",
+        "DA_18_Ezreal",
+        "DA_18_Maokai"
+      ],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_Crownguard",
+        "DA_RabadonsDeathcap",
+        "DA_AdaptiveHelm",
+        "DA_JeweledGauntlet",
+        "DA_SpearOfShojin",
+        "DA_VoidStaff",
+        "DA_ArchangelsStaff"
+      ],
+      "best_augments": [
+        "DA_BlackthornTraitAugment",
+        "DA_FlowingTears",
+        "DA_SoloPlate",
+        "DA_SmallGrabBag",
+        "DA_18_BigGrabBag",
+        "DA_CyberneticUplink_Gold",
+        "DA_BuriedTreasuresIII",
+        "DA_CommerceCore"
+      ],
+      "traits": {
+        "Blossom": 1,
+        "Juggernaut": 2,
+        "Summoner": 3,
+        "Blackthorn": 2,
+        "Executioner": 3,
+        "Flora Fatalis": 2,
+        "Defender": 1,
+        "Spellweaver": 1,
+        "Inferno": 2,
+        "Monolith": 1,
+        "Thornmaiden": 1
+      },
+      "avg_placement": 4.25,
+      "top4_rate": 0.6,
+      "win_rate": 0.14,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_18_Rakan",
+        "DA_18_Yorick",
+        "DA_Karma18",
+        "DA_18_Yunara"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Core is Malphite + Azir + 2 Flora Fatalis for healing. Can play Ahri/Zyra/Ezreal as additional carries and Lillia/Amumu/Kennen/Maokai as supporting frontline. | Stage 2: Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak. · Stage 3: Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units. · Stage 4: Level and roll for Malphite. You will often have to itemize and work with whoever you hit so don't overly tunnel on your roll down.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Yi Rengar",
+      "tier": "A",
+      "core_units": [
+        "DA_18_Yorick",
+        "DA_Krug18",
+        "DA_18_MasterYi_AD",
+        "DA_18_Rengar",
+        "DA_Vi18",
+        "DA_18_Sett",
+        "DA_Nidalee18_AP"
+      ],
+      "flex_units": [
+        "DA_KogMaw18_AD"
+      ],
+      "core_items": [
+        "DA_EdgeOfNight",
+        "DA_TitansResolve",
+        "DA_KrakensFury",
+        "DA_GuinsoosRageblade",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_Evenshroud",
+        "DA_SpearOfShojin",
+        "DA_RabadonsDeathcap"
+      ],
+      "best_augments": [
+        "DA_LatentForge",
+        "DA_PortableForge",
+        "DA_ForgedInStrength",
+        "DA_LivingForge",
+        "DA_NestingAnvils",
+        "DA_HeroicGrabBag",
+        "DA_LegionOfThrees",
+        "DA_18_BigGrabBag"
+      ],
+      "traits": {
+        "Blossom": 3,
+        "Juggernaut": 2,
+        "Summoner": 1,
+        "Riftbeast": 1,
+        "Brawler": 2,
+        "Adaptor": 2,
+        "Rival": 1,
+        "Primal": 2
+      },
+      "avg_placement": 4.25,
+      "top4_rate": 0.6,
+      "win_rate": 0.14,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_Karma18",
+        "DA_18_Yorick",
+        "DA_Gromp18_AP",
+        "DA_18_MasterYi_AD"
+      ],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: MEDIUM | Lõi: +1 tier in strength with Artifact.  VI 3 is stronger than Krug 3. Item priority: Master Yi/Rengar > Tank > Nidalee. Only take Phoenix Primal buff if ahead. Otherwise, Execute / Healing Primal. Rengar and Yi have the exact same BIS. Yi is stronger but itemize whoever is upgraded first. | Stage 2: Ideally play around a Rengar opener that can win streak. Blossom is very powerful to get early econ or item wisps. · Stage 3: Add more Adaptors and frontline as you go. Finish Yi/Rengar items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs. · Stage 4: Level to 7 and roll for Master Yi 2, Rengar 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Kog or a flex unit in at 8.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Solar Kayle",
+      "tier": "A",
+      "core_units": [
+        "DA_Elderwood18_Lifeblossom",
+        "DA_Elderwood18_StonebarkTree",
+        "DA_18_Leona",
+        "DA_18_Rakan",
+        "DA_18_Ornn",
+        "DA_18_Xayah",
+        "DA_18_Sejuani",
+        "DA_18_Kayle",
+        "DA_18_Hecarim"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_GuinsoosRageblade",
+        "DA_RedBuff",
+        "DA_Deathblade",
+        "DA_Artifact_NavoriFlickerblade",
+        "DA_RabadonsDeathcap"
+      ],
+      "best_augments": [
+        "DA_18_SolarTraitAugment",
+        "DA_PandorasBench",
+        "DA_PrismaticTicket",
+        "DA_NoScoutNoPivot",
+        "DA_HeroicGrabBagPlus",
+        "DA_MissedConnections",
+        "DA_PortableForge",
+        "DA_18_ElderwoodTraitAugment"
+      ],
+      "traits": {
+        "Solar": 3,
+        "Defender": 2,
+        "Fae": 2,
+        "Juggernaut": 2,
+        "Vanguard": 2,
+        "Elderwood": 3,
+        "Rapidfire": 2
+      },
+      "avg_placement": 4.25,
+      "top4_rate": 0.6,
+      "win_rate": 0.14,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Leona",
+        "DA_18_Ornn",
+        "DA_18_Sejuani",
+        "DA_18_Kayle"
+      ],
+      "positioning_notes": "Phong cách: 2-Cost Reroll | Độ khó: EASY | Lõi: Roll on 3-1 to try and finish a 3* 1 cost for bench space -> Slow roll above 50g on level 5. Ornn Artifact print is very strong but only scales quickly once you get him to 3*. Kayle has built in 20% Shred at 2*. | Stage 2: Ideally open with Kayle and upgraded Ornn. After Rageblade, prioritize tank items on Ornn so he can begin reliably stacking Artifact scaling. · Stage 3: Bench priority: Kayle 3 > Ornn 3 > Xayah / Leona > Sejuani > Rakan. Once you finish 1 costs, move up to level 6 for 2 costs. · Stage 4: Finish your 3* and level for Elderwood. Cap with any 5 costs like Lux, Ivern, Taric, etc.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Primal Jungle",
+      "tier": "A",
+      "core_units": [
+        "DA_Cinderling18",
+        "DA_18_RekSai",
+        "DA_KogMaw18_AD",
+        "DA_Krug18",
+        "DA_Sentinel18",
+        "DA_18_Malphite",
+        "DA_Nidalee18_AP",
+        "DA_18_Sivir"
+      ],
+      "flex_units": [
+        "DA_18_Ashe",
+        "DA_18_GnarSmall",
+        "DA_Taric18",
+        "DA_18_Sett"
+      ],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_Crownguard",
+        "DA_InfinityEdge",
+        "DA_SteraksGage",
+        "DA_SpearOfShojin",
+        "DA_RedBuff",
+        "DA_StrikersFlail"
+      ],
+      "best_augments": [
+        "DA_18_BigGrabBag",
+        "DA_18_PrimalAugmentPlus_Nidalee",
+        "DA_CaretakersFavor",
+        "DA_Swordsmith",
+        "DA_18_PrimalAugmentPlus_Sivir",
+        "DA_CarveAPath",
+        "DA_18_FOURcing",
+        "DA_DeadlierBlades"
+      ],
+      "traits": {
+        "Riftbeast": 3,
+        "Hunter": 2,
+        "Blackthorn": 2,
+        "Brawler": 2,
+        "Caustic": 1,
+        "Adaptor": 2,
+        "Invoker": 2,
+        "Vanguard": 1,
+        "Monolith": 1,
+        "Primal": 2
+      },
+      "avg_placement": 4.25,
+      "top4_rate": 0.6,
+      "win_rate": 0.14,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_18_Yorick",
+        "DA_Cinderling18",
+        "DA_Gromp18_AP",
+        "DA_Scuttlecrab18"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Krug on the Blackthorn hex. Prioritize Nidalee > Sivir items. Kogmaw provides free Shred and Sunder. Max cap is drop riftbeasts for Gnar + Ashe + Taric. Hunter emblem is incredible on Nidalee. Can also drop Malphite for Sett + Vanguard. | Stage 2: Play around a strong AD opener around Cinderling 2 with Riftbeasts. Slam all your AD and tank items aggressively for win streak. · Stage 3: Comp is very Sword hungry so keep taking them off augments / carousels when possible. You can flex in 5 Riftbeast for better shops or more generic frontline. · Stage 4: Level to 8 and roll for Nidalee, Sivir, and Malphite / tank. If Malphite is too contested, consider Sentinel or Krug tank instead.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Draven AD 9",
+      "tier": "A",
+      "core_units": [
+        "DA_Elderwood18_Lifeblossom",
+        "DA_Elderwood18_StonebarkTree",
+        "DA_18_Alistar",
+        "DA_Amumu18",
+        "DA_Draven18",
+        "DA_18_Ivern",
+        "DA_Taric18",
+        "DA_18_GnarSmall",
+        "DA_18_Kennen",
+        "DA_18_Maokai",
+        "DA_18_Ezreal"
+      ],
+      "flex_units": [
+        "DA_Sentinel18",
+        "DA_18_Hecarim",
+        "DA_Lux18_Base"
+      ],
+      "core_items": [
+        "DA_KrakensFury",
+        "DA_GuinsoosRageblade",
+        "DA_Deathblade",
+        "DA_ThiefsGloves",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_BrambleVest",
+        "DA_SpearOfShojin",
+        "DA_LastWhisper"
+      ],
+      "best_augments": [
+        "DA_LevelUp",
+        "DA_LateGameSpecialist",
+        "DA_InvestedPlusPlus",
+        "DA_LuxurySubscription",
+        "DA_18_DuoQueue",
+        "DA_LateGameScaling",
+        "DA_ExplosiveGrowthPlus",
+        "DA_BirthdayPresent"
+      ],
+      "traits": {
+        "Elderwood": 3,
+        "Brawler": 2,
+        "Inferno": 2,
+        "Juggernaut": 2,
+        "Bounty Seeker": 1,
+        "Greenfather": 1,
+        "Emerald Aspect": 1,
+        "Vanguard": 1,
+        "Sprykin": 1,
+        "Executioner": 2,
+        "Old Growth": 1
+      },
+      "avg_placement": 4.25,
+      "top4_rate": 0.6,
+      "win_rate": 0.14,
+      "play_rate": 0.03,
+      "level_timing": {
+        "9": 5
+      },
+      "early_game": [
+        "DA_18_Rengar",
+        "DA_18_RekSai",
+        "DA_18_Alistar",
+        "DA_18_Warwick"
+      ],
+      "positioning_notes": "Phong cách: Fast 9 | Độ khó: HARD | Lõi: Only play from early win streak and lots of gold. Because you are aiming for scaling 5 costs, aim to level 9 around end of Stage 4 / beginning of Stage 5. Best Draven quests are dealing damage for gold, but avoid the 10k damage in 1 round because you can get trapped. | Stage 2: Slam items aggressively and play for full win streak with Draven items. Ideal opener will be some kind of resource engine like Rengar or Blossom. · Stage 3: Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed. · Stage 4: You can start losing rounds while focusing on econ. Fast 9 end of Stage 4 and look for the scaling 5 costs like Draven, Maokai, and Ivern. ",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Aphelios Rapidfire",
+      "tier": "A",
+      "core_units": [
+        "DA_18_Rakan",
+        "DA_18_Varus",
+        "DA_18_Xayah",
+        "DA_CrimsonRaptor18",
+        "DA_Sentinel18",
+        "DA_Amumu18",
+        "DA_18_Aphelios",
+        "DA_Brambleback18"
+      ],
+      "flex_units": [
+        "DA_18_Diana"
+      ],
+      "core_items": [
+        "DA_LastWhisper",
+        "DA_ProtectorsVow",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_BrambleVest",
+        "DA_InfinityEdge",
+        "DA_KrakensFury",
+        "DA_StrikersFlail",
+        "DA_18_EmblemRapidfire",
+        "DA_EdgeOfNight",
+        "DA_Quicksilver"
+      ],
+      "best_augments": [
+        "DA_Swordsmith",
+        "DA_CarveAPath",
+        "DA_SwordOverflow",
+        "DA_BacklineBlueprint",
+        "DA_CookingPot",
+        "DA_SpreadingRoots",
+        "DA_TheTraitTree",
+        "DA_FutureFocused"
+      ],
+      "traits": {
+        "Fae": 2,
+        "Juggernaut": 2,
+        "Vanguard": 2,
+        "Inferno": 2,
+        "Rapidfire": 4,
+        "Elderwood": 1,
+        "Riftbeast": 3,
+        "Summoner": 1,
+        "Invoker": 1,
+        "Lunar": 1,
+        "Ravager": 1
+      },
+      "avg_placement": 4.25,
+      "top4_rate": 0.6,
+      "win_rate": 0.14,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_18_Ornn",
+        "DA_18_Xayah",
+        "DA_18_Varus",
+        "DA_18_Shen"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Only strong with +1 Rapidfire, play another version if you have it. Don't need much attack speed with 5 rapidfire. | Stage 2: Open with a strong win streak AD tempo around Rapidfires. All ad items are good slams besides rageblade. · Stage 3: Comp can use many items so take item augment if you don't have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online. · Stage 4: Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Defender Cassio",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Leona",
+        "DA_18_Ornn",
+        "DA_18_Shen",
+        "DA_18_Cassiopeia",
+        "DA_Fiddlesticks18",
+        "DA_18_Rammus",
+        "DA_18_Lillia"
+      ],
+      "flex_units": [
+        "DA_18_Rengar",
+        "DA_18_Soraka",
+        "DA_18_Alune"
+      ],
+      "core_items": [
+        "DA_SpearOfShojin",
+        "DA_HextechGunblade",
+        "DA_ArchangelsStaff",
+        "DA_TitansResolve",
+        "DA_AdaptiveHelm",
+        "DA_Crownguard",
+        "DA_IonicSpark",
+        "DA_SunfireCape",
+        "DA_SteadfastHeart",
+        "DA_ThiefsGloves"
+      ],
+      "best_augments": [
+        "DA_Ascension",
+        "DA_18_FloraFatalisAugment",
+        "DA_SpiritOfRedemption",
+        "DA_ItsMeBaby",
+        "DA_WovenMagic",
+        "DA_HeroicGrabBagPlusPlus",
+        "DA_FlowingTears",
+        "DA_CookingPot"
+      ],
+      "traits": {
+        "Solar": 1,
+        "Defender": 6,
+        "Elderwood": 1,
+        "Inferno": 1,
+        "Coven": 1,
+        "Spellweaver": 2,
+        "Flora Fatalis": 1,
+        "Sprykin": 1,
+        "Fae": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_Karma18",
+        "DA_18_Leona",
+        "DA_18_Ornn",
+        "DA_18_LeBlanc"
+      ],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: EASY | Lõi: Very BIS dependent. Can play from Coven Cashout. Can also play for Ornn 3 to potentially farm Artifacts. Always play 6 Defender. Duo carry on 8 is any 4 or 5 cost AP carry. Titans on fiddle because we have no other use for bow. | Stage 2: Open with a strong AP opener, preferably around Invokers. Karma is an example shown but you can also play Invokers or Coven lose streak. · Stage 3: If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ. · Stage 4: Cash out / roll on level 7 for Cassio 2 / Fiddle 2. Then econ up and slow roll above 50g for 3* units. Then level to 8 for a duo carry.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Dragon 9",
+      "tier": "B",
+      "core_units": [
+        "DA_Amumu18",
+        "DA_Sentinel18",
+        "DA_18_Morgana",
+        "DA_18_Ivern",
+        "DA_Taric18",
+        "DA_18_Kennen",
+        "DA_18_ElderDragon",
+        "DA_18_Maokai"
+      ],
+      "flex_units": [
+        "DA_18_Ashe",
+        "DA_Draven18",
+        "DA_18_Alune",
+        "DA_Lux18_Base"
+      ],
+      "core_items": [
+        "DA_ProtectorsVow",
+        "DA_VoidStaff",
+        "DA_RabadonsDeathcap",
+        "DA_JeweledGauntlet",
+        "DA_ThiefsGloves",
+        "DA_InfinityEdge",
+        "DA_Deathblade",
+        "DA_StrikersFlail",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_Crownguard"
+      ],
+      "best_augments": [
+        "DA_BirthdayReunion",
+        "DA_BirthdayPresent",
+        "DA_LevelUp",
+        "DA_LuxurySubscription",
+        "DA_18_DuoQueue",
+        "DA_LateGameSpecialist",
+        "DA_LateGameScaling",
+        "DA_Swordsmith"
+      ],
+      "traits": {
+        "Inferno": 2,
+        "Juggernaut": 2,
+        "Riftbeast": 2,
+        "Vanguard": 2,
+        "Invoker": 2,
+        "Coven": 1,
+        "Greenfather": 1,
+        "Emerald Aspect": 1,
+        "Executioner": 1,
+        "Apex Predator": 1,
+        "Old Growth": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "9": 5
+      },
+      "early_game": [
+        "DA_Cinderling18",
+        "DA_18_Sentry",
+        "DA_18_Yorick",
+        "DA_Scuttlecrab18"
+      ],
+      "positioning_notes": "Phong cách: Fast 9 | Độ khó: HARD | Lõi: Alpha Mark the Elder Dragon. Your duo carry with Elder Dragon is highly flexible. Can replace Morgana for Lux, Alune, Soraka for AP options. Can also play AD duo carry: Ashe, Draven, Ezreal, etc. | Stage 2: Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry. · Stage 3: Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed. · Stage 4: You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Riftbeast Reroll",
+      "tier": "B",
+      "core_units": [
+        "DA_Cinderling18",
+        "DA_18_Sentry",
+        "DA_Murkwolf18",
+        "DA_Scuttlecrab18",
+        "DA_Krug18",
+        "DA_Sentinel18",
+        "DA_Brambleback18",
+        "DA_18_GnarSmall"
+      ],
+      "flex_units": [
+        "DA_Gromp18_AP",
+        "DA_18_ElderDragon"
+      ],
+      "core_items": [
+        "DA_InfinityEdge",
+        "DA_BlueBuff",
+        "DA_LastWhisper",
+        "DA_RabadonsDeathcap",
+        "DA_JeweledGauntlet",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_SpiritVisage",
+        "DA_ThiefsGloves"
+      ],
+      "best_augments": [
+        "DA_18_RiftbeastTraitAugment",
+        "DA_18_RiftbeastTraitAugmentStampede",
+        "DA_JeweledLotus_I",
+        "DA_GlassCannon_Silver",
+        "DA_WorththeWaitII",
+        "DA_18_CaretakersAlly",
+        "DA_LuckyGlovesPlus",
+        "DA_NestingDolls"
+      ],
+      "traits": {
+        "Riftbeast": 7,
+        "Hunter": 1,
+        "Invoker": 2,
+        "Ravager": 2,
+        "Juggernaut": 1,
+        "Brawler": 2,
+        "Vanguard": 1,
+        "Elderwood": 1,
+        "Sprykin": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_Cinderling18",
+        "DA_18_Sentry",
+        "DA_18_Yorick",
+        "DA_Scuttlecrab18"
+      ],
+      "positioning_notes": "Phong cách: 1-Cost Reroll | Độ khó: EASY | Lõi: Use 5 Riftbeast shops to finish your 3* because you want to rush 7 Riftbeast on Level 7 ASAP. You can carry ALL of the riftbeast carries besides Mama Beak if you have items. Krug 3 is the best tank but you can also tank Sentinel 2 > Scuttle Crab 3. Alpha Mark Cinderling early > Crab late. | Stage 2: Slam items aggressively and play for full win streak with Pebbles items. Alpha Mark Crab or Gromp. · Stage 3: Save up econ and try to go level 7  for 7 riftbeast on 3-5, if you're poor wait until 4-1. · Stage 4: Once you have your 3*, level to 8 and field 7 Riftbeast. If you can get to 9, you can ditch 1* Ravagers for Elder Dragon.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Invoker Morgana",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Sentry",
+        "DA_18_Diana",
+        "DA_18_Hecarim",
+        "DA_KogMaw18_AD",
+        "DA_Brambleback18",
+        "DA_18_Morgana",
+        "DA_Sentinel18",
+        "DA_Taric18",
+        "DA_18_Alune"
+      ],
+      "flex_units": [
+        "DA_18_Ivern"
+      ],
+      "core_items": [
+        "DA_EdgeOfNight",
+        "DA_GiantSlayer",
+        "DA_Quicksilver",
+        "DA_Morellonomicon",
+        "DA_RabadonsDeathcap",
+        "DA_VoidStaff",
+        "DA_ProtectorsVow",
+        "DA_WarmogsArmor",
+        "DA_AdaptiveHelm",
+        "DA_18_EmblemInvoker"
+      ],
+      "best_augments": [
+        "DA_18_CovenTraitAugment_LootToAP",
+        "DA_18_CovenTraitAugment",
+        "DA_WandOverflow",
+        "DA_SeraphimsStaff",
+        "DA_Staffsmith",
+        "DA_DeadlierCaps",
+        "DA_BoosterPack",
+        "DA_18_OnesTwosThree"
+      ],
+      "traits": {
+        "Riftbeast": 3,
+        "Invoker": 4,
+        "Lunar": 2,
+        "Ravager": 2,
+        "Vanguard": 4,
+        "Elderwood": 1,
+        "Caustic": 1,
+        "Adaptor": 1,
+        "Coven": 1,
+        "Emerald Aspect": 1,
+        "Attuned": 1,
+        "Spellweaver": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {},
+      "early_game": [
+        "DA_18_Kobuko",
+        "DA_18_Sentry",
+        "DA_18_Teemo",
+        "DA_18_Rammus"
+      ],
+      "positioning_notes": "Phong cách: Lose Streak | Độ khó: HARD | Lõi: Can play from Coven Cashout. Aim for 250 + essence for chance at Morgana 2 + item cashout. Void staff still okay with Kog since he doesn't hit backline. | Stage 2: Open with a strong AP opener, preferably around Invokers. Teemo is an example shown but you can also play Pebbles, Spellweavers, or Coven. · Stage 3: If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ. · Stage 4: Cash out / roll down on level 8 for Morgana 2, Sentinel, and 4 Invoker. If you don't have Bramble items, flex in another AP carry like Ahri / Nidalee.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Ahri Morgana",
+      "tier": "B",
+      "core_units": [
+        "DA_Karma18",
+        "DA_18_Sentry",
+        "DA_Krug18",
+        "DA_Sentinel18",
+        "DA_18_Morgana",
+        "DA_18_Ahri",
+        "DA_18_Sett",
+        "DA_Taric18"
+      ],
+      "flex_units": [
+        "DA_18_Hecarim",
+        "DA_KogMaw18_AD",
+        "DA_Lux18_Base"
+      ],
+      "core_items": [
+        "DA_VoidStaff",
+        "DA_Morellonomicon",
+        "DA_JeweledGauntlet",
+        "DA_StrikersFlail",
+        "DA_SpearOfShojin",
+        "DA_BrambleVest",
+        "DA_WarmogsArmor",
+        "DA_DragonsClaw"
+      ],
+      "best_augments": [
+        "DA_JeweledLotus_I",
+        "DA_JeweledLotus_II",
+        "DA_GlassCannon_Silver",
+        "DA_GlassCannon_Gold",
+        "DA_18_FOURcing",
+        "DA_Staffsmith",
+        "DA_CyberneticUplink_Gold",
+        "DA_WandOverflow"
+      ],
+      "traits": {
+        "Blossom": 3,
+        "Spellweaver": 2,
+        "Riftbeast": 3,
+        "Invoker": 3,
+        "Brawler": 2,
+        "Vanguard": 2,
+        "Coven": 1,
+        "Emerald Aspect": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_18_Rakan",
+        "DA_18_Yorick",
+        "DA_Karma18",
+        "DA_18_Yunara"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Morgana holds utility items. You can tank either Sentinel or Sett. Best emblem = Invoker on Ahri. Blossom emblem can go on frontline or Morgana. | Stage 2: Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. · Stage 3: Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards. · Stage 4: Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Caitlyn Hunters",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Rakan",
+        "DA_18_Sejuani",
+        "DA_18_Caitlyn",
+        "DA_Scuttlecrab18",
+        "DA_18_Tristana",
+        "DA_Vi18",
+        "DA_18_Sivir"
+      ],
+      "flex_units": [
+        "DA_Amumu18",
+        "DA_18_Maokai"
+      ],
+      "core_items": [
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_HextechGunblade",
+        "DA_SpiritVisage",
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_InfinityEdge",
+        "DA_LastWhisper",
+        "DA_RedBuff"
+      ],
+      "best_augments": [
+        "DA_Expedition",
+        "DA_SpeedyDoubleKill",
+        "DA_BackupBows",
+        "DA_PrismaticTicket",
+        "DA_Replication",
+        "DA_ShimmerscaleEssence",
+        "DA_TradeSector",
+        "DA_HeroicGrabBag"
+      ],
+      "traits": {
+        "Fae": 2,
+        "Juggernaut": 4,
+        "Vanguard": 1,
+        "Solar": 1,
+        "Coven": 1,
+        "Hunter": 3,
+        "Riftbeast": 1,
+        "Sprykin": 1,
+        "Primal": 2
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Rakan",
+        "DA_18_Yorick",
+        "DA_18_Caitlyn",
+        "DA_18_Tristana"
+      ],
+      "positioning_notes": "Phong cách: 2-Cost Reroll | Độ khó: EASY | Lõi: Can also tank Sejuani 3. Tank whoever you can hit first. Can also play 4 Vanguard version with Elise. Sivir takes leftover utility / AD items (red buff highly impractical so oftentimes you play Morello). | Stage 2: Slam Rageblade and bow items on Caitlyn for a winstreak. BIS Caitlyn is often hard to get so you can also slam items like Gunblade or Giant Slayer. · Stage 3: Level to 6 and roll for 4 Juggernaut + 2 Hunter. Ideally upgrade Caitlyn 2 and 2 cost Juggernaut then econ up -> slow roll above 50g for 3* units. · Stage 4: Finish your 3* ideally by mid Stage 4. Level for more Hunters. Take Execute or Tank Primal unless you are super high rolling and can take items.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Pebbles 3 Tempo",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Sentry",
+        "DA_Scuttlecrab18",
+        "DA_18_Teemo",
+        "DA_KogMaw18_AD",
+        "DA_18_Morgana",
+        "DA_Sentinel18",
+        "DA_18_Ivern",
+        "DA_18_Maokai",
+        "DA_Taric18"
+      ],
+      "flex_units": [
+        "DA_Nidalee18_AP",
+        "DA_Vi18"
+      ],
+      "core_items": [
+        "DA_BlueBuff",
+        "DA_RabadonsDeathcap",
+        "DA_HextechGunblade",
+        "DA_Morellonomicon",
+        "DA_ProtectorsVow",
+        "DA_WarmogsArmor",
+        "DA_AdaptiveHelm"
+      ],
+      "best_augments": [
+        "DA_SeraphimsStaff",
+        "DA_DeadlierCaps",
+        "DA_WandOverflow",
+        "DA_Replication",
+        "DA_FlowingTears",
+        "DA_MissedConnections",
+        "DA_18_RiftbeastTraitAugment",
+        "DA_WorththeWait"
+      ],
+      "traits": {
+        "Riftbeast": 3,
+        "Invoker": 5,
+        "Juggernaut": 2,
+        "Sprykin": 1,
+        "Caustic": 1,
+        "Adaptor": 1,
+        "Coven": 1,
+        "Vanguard": 2,
+        "Greenfather": 1,
+        "Old Growth": 1,
+        "Emerald Aspect": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Sentry",
+        "DA_Gromp18_AP",
+        "DA_Scuttlecrab18",
+        "DA_KogMaw18_AD"
+      ],
+      "positioning_notes": "Phong cách: 1-Cost Reroll | Độ khó: EASY | Lõi: Only play if you have lots of Pebbles copies on stage 2 (4+). Pebbles can go \"infinite\" when he has 22 mana per second regen. Use 5 riftbeast shop guarantees to finish 3*. Chasing entire 3* board is often bait so only focus on units that will hold items. Only play the 3x Archangels build with Seraphim's Staff. | Stage 2: Slam items aggressively and play for full win streak with Pebbles items. Alpha Mark Pebbles. · Stage 3: Finish Pebbles 3 quickly. If you have many copies of Pebbles, you can level for 5 Riftbeast and use the shops to finish Pebbles 3. · Stage 4: Level to 8 and look for your 4 cost Invokers. If you still don't have Pebbles 3 and hit Morgana 2, abort and aim for Invoker Morgana.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Blossom Fast 9",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Ahri",
+        "DA_18_Ashe",
+        "DA_18_GnarSmall",
+        "DA_18_Tristana",
+        "DA_18_Rammus",
+        "DA_18_Sett",
+        "DA_18_Alune",
+        "DA_18_Lillia",
+        "DA_18_Diana"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_NashorsTooth",
+        "DA_JeweledGauntlet",
+        "DA_SpearOfShojin",
+        "DA_RedBuff",
+        "DA_LastWhisper",
+        "DA_Bloodthirster",
+        "DA_SteraksGage",
+        "DA_TitansResolve",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_SteadfastHeart",
+        "DA_ProtectorsVow"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Blossom": 3,
+        "Spellweaver": 2,
+        "Hunter": 2,
+        "Elderwood": 1,
+        "Sprykin": 3,
+        "Brawler": 2,
+        "Fae": 2,
+        "Defender": 2,
+        "Attuned": 1,
+        "Lunar": 2,
+        "Ravager": 1,
+        "Vanguard": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "9": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Phong cách: Fast 9 | Độ khó: HARD",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Legendary Ap Flex",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Alune",
+        "DA_Taric18",
+        "DA_18_Diana",
+        "DA_18_Kennen",
+        "DA_Amumu18",
+        "DA_18_Ivern",
+        "DA_18_Maokai",
+        "DA_18_Soraka",
+        "DA_Fiddlesticks18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_SpearOfShojin",
+        "DA_ArchangelsStaff",
+        "DA_JeweledGauntlet",
+        "DA_VoidStaff",
+        "DA_EdgeOfNight",
+        "DA_HandOfJustice",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_Crownguard",
+        "DA_StrikersFlail",
+        "DA_NashorsTooth"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Attuned": 1,
+        "Lunar": 2,
+        "Spellweaver": 2,
+        "Emerald Aspect": 1,
+        "Vanguard": 2,
+        "Ravager": 1,
+        "Inferno": 2,
+        "Executioner": 2,
+        "Juggernaut": 2,
+        "Greenfather": 1,
+        "Old Growth": 1,
+        "Flora Fatalis": 2,
+        "Defender": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "9": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Phong cách: Fast 9 | Độ khó: HARD | Lõi: Coming Soon | Stage 2: Coming Soon · Stage 3: Coming Soon · Stage 4: Coming Soon",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Solar Melee",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Leona",
+        "DA_18_Ornn",
+        "DA_18_Akali_AD",
+        "DA_18_Camille",
+        "DA_18_Varus",
+        "DA_18_Kayle",
+        "DA_18_Sejuani"
+      ],
+      "flex_units": [
+        "DA_18_Rakan",
+        "DA_18_Yorick"
+      ],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_Crownguard",
+        "DA_WarmogsArmor",
+        "DA_JeweledGauntlet",
+        "DA_HandOfJustice",
+        "DA_EdgeOfNight",
+        "DA_SteraksGage",
+        "DA_Quicksilver",
+        "DA_InfinityEdge",
+        "DA_SpearOfShojin",
+        "DA_LastWhisper"
+      ],
+      "best_augments": [
+        "DA_PandorasBench",
+        "DA_PrismaticTicket",
+        "DA_NoScoutNoPivot",
+        "DA_EarlyLearnings",
+        "DA_WorththeWait",
+        "DA_LuckyGlovesPlus",
+        "DA_SoloPlate",
+        "DA_CursedCrown"
+      ],
+      "traits": {
+        "Solar": 3,
+        "Defender": 2,
+        "Elderwood": 1,
+        "Inferno": 2,
+        "Adaptor": 1,
+        "Ravager": 2,
+        "Coven": 1,
+        "Rapidfire": 2,
+        "Juggernaut": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Akali_AD",
+        "DA_18_Camille",
+        "DA_18_Leona",
+        "DA_18_Ornn"
+      ],
+      "positioning_notes": "Phong cách: 1-Cost Reroll | Độ khó: EASY | Lõi: Akali can be AD or AP (Flex IE/JG) Itemize Tank + 3star melee first -> 2nd melee -> Varus items. Only go for Kayle and Sej 3 with lots of money. Can  Swap out Ornn for Yorick/Rakan. | Stage 2: Look to play with lots of early copies of 1 cost + good reroll augment. · Stage 3: Roll to 30 on 3-1 level 4 for extra 1 cost copies. Then slow roll on 5 until you have 5 3 stars for solar bonus. · Stage 4: Make sure you keep your econ high because you need to be level 7 to fit solar on this board. Try to be Level to 7 somewhere on stage 4.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Invoker Nidalee",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Sentry",
+        "DA_Scuttlecrab18",
+        "DA_KogMaw18_AD",
+        "DA_Vi18",
+        "DA_18_Morgana",
+        "DA_Nidalee18_AP",
+        "DA_Sentinel18",
+        "DA_Taric18"
+      ],
+      "flex_units": [
+        "DA_18_Rakan",
+        "DA_18_Hecarim"
+      ],
+      "core_items": [
+        "DA_Morellonomicon",
+        "DA_ArchangelsStaff",
+        "DA_AdaptiveHelm",
+        "DA_JeweledGauntlet",
+        "DA_GuinsoosRageblade",
+        "DA_StrikersFlail",
+        "DA_ProtectorsVow",
+        "DA_WarmogsArmor"
+      ],
+      "best_augments": [
+        "DA_WandOverflow",
+        "DA_SpeedyDoubleKill",
+        "DA_Staffsmith",
+        "DA_18_BigGrabBag",
+        "DA_18_PrimalAugmentPlus_Nidalee",
+        "DA_CaretakersFavor",
+        "DA_BuriedTreasuresIII",
+        "DA_TimeSkip"
+      ],
+      "traits": {
+        "Riftbeast": 3,
+        "Invoker": 4,
+        "Juggernaut": 2,
+        "Caustic": 1,
+        "Adaptor": 2,
+        "Primal": 2,
+        "Coven": 1,
+        "Vanguard": 2,
+        "Emerald Aspect": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_18_Rakan",
+        "DA_18_Xayah",
+        "DA_Scuttlecrab18",
+        "DA_18_Kayle"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Prioritize Nidalee > Morello on Morgana + Tank > leftover AP on Morgana. If above 50HP with Nidalee, choose Phoenix Primal (item). Otherwise, go for Execute Primal. Riftbeast Alpha Mark the Scuttle Crab. Kogmaw provides free Sunder / Shred. | Stage 2: Play any strong Rageblade opener on an AP carry such as Kayle, Master Yi, or a Spellweaver. Opener is very flexible. · Stage 3: Comp is very Rod hungry so keep taking them off augments / carousels when possible. If you are not playing Invokers, hold onto cheap units like Pebbles for later. · Stage 4: Level to 8 and roll for 4 Invoker. Avoid tunneling only on 4 Vanguard frontline. You can also flex Brawlers or Juggernauts as needed.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Rengar Reroll",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Diana",
+        "DA_18_Hecarim",
+        "DA_CrimsonRaptor18",
+        "DA_18_Rengar",
+        "DA_18_Aphelios",
+        "DA_Brambleback18",
+        "DA_Sentinel18",
+        "DA_Taric18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_ThiefsGloves",
+        "DA_ProtectorsVow",
+        "DA_SunfireCape",
+        "DA_WarmogsArmor",
+        "DA_LastWhisper",
+        "DA_KrakensFury",
+        "DA_GuinsoosRageblade",
+        "DA_EdgeOfNight",
+        "DA_TitansResolve"
+      ],
+      "best_augments": [
+        "DA_ChampDelivery",
+        "DA_SpeedyDoubleKill",
+        "DA_HeroicGrabBagPlus",
+        "DA_TradeSector",
+        "DA_BoosterPack",
+        "DA_ExclusiveCustomization",
+        "DA_LatentForge",
+        "DA_LegionOfThrees"
+      ],
+      "traits": {
+        "Lunar": 2,
+        "Ravager": 2,
+        "Vanguard": 4,
+        "Elderwood": 1,
+        "Riftbeast": 3,
+        "Summoner": 1,
+        "Rapidfire": 2,
+        "Rival": 1,
+        "Invoker": 1,
+        "Emerald Aspect": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Rakan",
+        "DA_18_Yorick",
+        "DA_18_Elise",
+        "DA_18_Rengar"
+      ],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: MEDIUM | Lõi: Strong with artifacts. Rengar prefers to be paired with other carries that can use AD scaling. But he is a flexible unit with no traits so you can play him with whatever you hit. | Stage 2: Only play this comp with an early Rengar with items so you can snowball Rival. Play any upgraded frontline tank to stall for Kha'zix. · Stage 3: If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise. · Stage 4: Slow roll on 7 for 3* upgrades on whatever 3 costs you're chasing. In this example, if you can't hit Mama Beak 3, look for Aphelios duo instead.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Warwick Reroll",
+      "tier": "C",
+      "core_units": [
+        "DA_18_RekSai",
+        "DA_Murkwolf18",
+        "DA_18_Warwick",
+        "DA_18_Azir",
+        "DA_Krug18",
+        "DA_Brambleback18",
+        "DA_18_Malphite"
+      ],
+      "flex_units": [
+        "DA_18_Diana",
+        "DA_Sentinel18"
+      ],
+      "core_items": [
+        "DA_Deathblade",
+        "DA_EdgeOfNight",
+        "DA_HandOfJustice",
+        "DA_SteraksGage",
+        "DA_TitansResolve",
+        "DA_SpearOfShojin",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_Crownguard"
+      ],
+      "best_augments": [
+        "DA_18_CaretakersAlly",
+        "DA_WorththeWaitII",
+        "DA_LatentForge",
+        "DA_PortableForge",
+        "DA_ForgedInStrength",
+        "DA_LivingForge",
+        "DA_HeroicGrabBagPlus",
+        "DA_NestingAnvils"
+      ],
+      "traits": {
+        "Blackthorn": 4,
+        "Brawler": 2,
+        "Riftbeast": 3,
+        "Ravager": 3,
+        "Executioner": 1,
+        "Summoner": 1,
+        "Monolith": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_RekSai",
+        "DA_18_Warwick",
+        "DA_18_Kobuko",
+        "DA_Murkwolf18"
+      ],
+      "positioning_notes": "Phong cách: 2-Cost Reroll | Độ khó: MEDIUM | Lõi: Aim to play a 3* unit in the Blackthorn center hex for max stats, preferably Krug 3. Leftover AD items on Murkwolf. Can also tank Rek'sai 3 if you can't find Malphite 2. | Stage 2: If you don't have Shojin, consider lose streak to guarantee it on carousel. If you have Shojin + good component, play for win streak instead. · Stage 3: Level to 6 and roll for Warwick 2 with 4 Blackthorn + 2 Ravager. Econ up and slow roll for 3*. You can also play 4 Ravager temporarily if needed. · Stage 4: Finish Warwick 3 and push levels. If you don't have Murkwolf 3, look for Brambleback as your duo carry. ",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Fae Xayah",
+      "tier": "C",
+      "core_units": [
+        "DA_Elderwood18_Lifeblossom",
+        "DA_Elderwood18_StonebarkTree",
+        "DA_18_Rakan",
+        "DA_18_Ornn",
+        "DA_18_Xayah",
+        "DA_18_Diana",
+        "DA_18_Tristana",
+        "DA_18_Lillia",
+        "DA_18_Aphelios",
+        "DA_18_GnarSmall"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_GargoyleStoneplate",
+        "DA_KrakensFury",
+        "DA_GuinsoosRageblade",
+        "DA_HextechGunblade",
+        "DA_LastWhisper",
+        "DA_RedBuff"
+      ],
+      "best_augments": [
+        "DA_EarlyLearnings",
+        "DA_NoScoutNoPivot",
+        "DA_MissedConnections",
+        "DA_PandorasBench",
+        "DA_SoloPlate",
+        "DA_PrismaticTicket",
+        "DA_18_ElderwoodTraitAugment",
+        "DA_WorththeWait"
+      ],
+      "traits": {
+        "Fae": 4,
+        "Juggernaut": 1,
+        "Vanguard": 2,
+        "Elderwood": 3,
+        "Defender": 2,
+        "Rapidfire": 2,
+        "Lunar": 2,
+        "Ravager": 1,
+        "Sprykin": 2,
+        "Hunter": 1,
+        "Brawler": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Ornn",
+        "DA_18_Rakan",
+        "DA_18_Varus",
+        "DA_18_Xayah"
+      ],
+      "positioning_notes": "Phong cách: 1-Cost Reroll | Độ khó: EASY | Lõi: 3* Priority: Xayah 3 / Ornn 3 > Rakan 3. Ornn stacks Artifact Forge Power much faster at 3*. S | Stage 2: Only play around this opener with early upgrades or strong scaling combat augment. Begin gathering Fae stacks. · Stage 3: Slow roll above 50g for 3* until you hit at least Xayah 3 and Ornn 3. Take econ or item augments as necessary. · Stage 4: Push levels for 4 Fae. You can also play more Defenders, Inferno, or Elderwood until you find the Faes.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Elderwood Executioners",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Ornn",
+        "DA_18_Alistar",
+        "DA_Taric18",
+        "DA_Fiddlesticks18",
+        "DA_18_Ezreal",
+        "DA_18_Soraka",
+        "DA_Lux18_Base",
+        "DA_Elderwood18_StonebarkTree",
+        "DA_18_GnarSmall",
+        "DA_18_Hecarim",
+        "DA_Elderwood18_Lifeblossom"
+      ],
+      "flex_units": [
+        "DA_18_Kennen",
+        "DA_18_LeBlanc"
+      ],
+      "core_items": [
+        "DA_SpearOfShojin",
+        "DA_LastWhisper",
+        "DA_Deathblade",
+        "DA_RabadonsDeathcap",
+        "DA_VoidStaff",
+        "DA_18_EmblemExecutioner",
+        "DA_DragonsClaw",
+        "DA_BrambleVest",
+        "DA_SunfireCape"
+      ],
+      "best_augments": [
+        "DA_18_ElderwoodTraitAugment",
+        "DA_BodyguardTraining",
+        "DA_18_LuxAugmentII",
+        "DA_SwordOverflow",
+        "DA_Swordsmith",
+        "DA_Staffsmith",
+        "DA_WandOverflow",
+        "DA_CommerceCore"
+      ],
+      "traits": {
+        "Elderwood": 5,
+        "Defender": 2,
+        "Brawler": 2,
+        "Emerald Aspect": 1,
+        "Vanguard": 2,
+        "Flora Fatalis": 2,
+        "Spellweaver": 1,
+        "Executioner": 2,
+        "Avatar": 1,
+        "Sprykin": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_18_Ornn",
+        "DA_18_Xayah",
+        "DA_18_LeBlanc",
+        "DA_18_Shen"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Look for Elderwood Lux. 3 Executioner is a big spike so always look to play around it if possible. Can also chase 9 Elderwood if you have Elderwood Lux. | Stage 2: Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units. · Stage 3: Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires. · Stage 4: Level to 8 and look for Ezreal and Soraka with 7 Elderwood. Try not to roll to 0g because we need gold to get to level 9.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Moo-nara",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Alistar",
+        "DA_18_Yunara",
+        "DA_18_Ezreal",
+        "DA_18_Azir",
+        "DA_18_GnarSmall",
+        "DA_18_Yorick",
+        "DA_Elderwood18_Lifeblossom",
+        "DA_18_Sett",
+        "DA_18_RekSai",
+        "DA_Elderwood18_StonebarkTree"
+      ],
+      "flex_units": [
+        "DA_18_Kennen"
+      ],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_SpiritVisage",
+        "DA_WarmogsArmor",
+        "DA_Deathblade",
+        "DA_SpearOfShojin",
+        "DA_StrikersFlail",
+        "DA_LastWhisper",
+        "DA_RedBuff"
+      ],
+      "best_augments": [
+        "DA_WorththeWaitII",
+        "DA_18_CaretakersAlly",
+        "DA_KickStart",
+        "DA_Swordsmith",
+        "DA_GlassCannon_Silver",
+        "DA_SwordOverflow",
+        "DA_HeroicGrabBag",
+        "DA_SoloPlate"
+      ],
+      "traits": {
+        "Elderwood": 3,
+        "Brawler": 4,
+        "Blossom": 3,
+        "Executioner": 3,
+        "Blackthorn": 2,
+        "Summoner": 2,
+        "Sprykin": 1,
+        "Juggernaut": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_Karma18",
+        "DA_18_Yorick",
+        "DA_18_Yunara",
+        "DA_18_Azir"
+      ],
+      "positioning_notes": "Phong cách: 2-Cost Reroll | Độ khó: MEDIUM | Lõi: Play when you have lots of copies of Yunara with sword items. Leftover AD on Ezreal. Can also play 3* Leblanc / Ahri 2* as an AP duo carry if you have the items for it. Play Azir + Reksai on 6 before you find Ezreal + Sett. Level for more executioners. | Stage 2: Slam items for Yunara and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Alistar. · Stage 3: Level at 3-2 and roll for 2* upgrades then econ up. The level 6 board plays Azir + Rek'Sai until you find Sett / Ezreal. Skip Azir 2, too expensive. · Stage 4: Finish your 3* then level for Executioners. Your biggest spike is 3 Executioner, but Kennen caps your board. Gnar is nice but not important.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Lunarwood Kha'zix",
+      "tier": "C",
+      "core_units": [
+        "DA_Elderwood18_Lifeblossom",
+        "DA_Elderwood18_StonebarkTree",
+        "DA_18_LeBlanc",
+        "DA_18_Diana",
+        "DA_18_Hecarim",
+        "DA_18_KhaZix",
+        "DA_18_Aphelios",
+        "DA_18_Ezreal",
+        "DA_18_Alune"
+      ],
+      "flex_units": [
+        "DA_Sentinel18",
+        "DA_18_GnarSmall",
+        "DA_Taric18"
+      ],
+      "core_items": [
+        "DA_JeweledGauntlet",
+        "DA_HandOfJustice",
+        "DA_IonicSpark",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_SpiritVisage",
+        "DA_RabadonsDeathcap",
+        "DA_EdgeOfNight",
+        "DA_RedBuff",
+        "DA_SpearOfShojin",
+        "DA_Deathblade"
+      ],
+      "best_augments": [
+        "DA_ChampDelivery",
+        "DA_PandorasBench",
+        "DA_FlowingTears",
+        "DA_AdvancedLoanPlus",
+        "DA_HeroicGrabBagPlusPlus",
+        "DA_LegionOfThrees",
+        "DA_LuckyGlovesPlus",
+        "DA_PrismaticTicket"
+      ],
+      "traits": {
+        "Elderwood": 3,
+        "Spellweaver": 2,
+        "Lunar": 3,
+        "Ravager": 1,
+        "Vanguard": 2,
+        "Rival": 1,
+        "Rapidfire": 1,
+        "Executioner": 1,
+        "Attuned": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Ornn",
+        "DA_18_Alistar",
+        "DA_18_LeBlanc",
+        "DA_18_KhaZix"
+      ],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: MEDIUM | Lõi: Ideally, Khazix gains Ravager > Executioner > Rapidfire > Spellweaver with takedowns. Can play 3rd Executioner/Lux/Ivern or another executioner before Alune. | Stage 2: Only play this comp with an early Kha'zix with items so you can snowball Rival. Play any upgraded frontline tank to stall for Rengar to Rageblade scale. · Stage 3: If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise. · Stage 4: Slow roll on 7 for 3* upgrades on whatever 3 costs you're chasing. In this example, give leftover AP items to Diana.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Infinite Elise",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Rakan",
+        "DA_18_Elise",
+        "DA_18_Diana",
+        "DA_18_Hecarim",
+        "DA_18_Aphelios",
+        "DA_Sentinel18",
+        "DA_18_Morgana",
+        "DA_18_Alune",
+        "DA_Taric18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_TitansResolve",
+        "DA_GuinsoosRageblade",
+        "DA_ArchangelsStaff",
+        "DA_JeweledGauntlet",
+        "DA_StrikersFlail",
+        "DA_HandOfJustice",
+        "DA_WarmogsArmor",
+        "DA_ProtectorsVow",
+        "DA_DragonsClaw",
+        "DA_VoidStaff",
+        "DA_Morellonomicon"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Fae": 1,
+        "Juggernaut": 1,
+        "Vanguard": 6,
+        "Coven": 2,
+        "Lunar": 3,
+        "Ravager": 1,
+        "Elderwood": 1,
+        "Rapidfire": 1,
+        "Riftbeast": 1,
+        "Invoker": 2,
+        "Attuned": 1,
+        "Spellweaver": 1,
+        "Emerald Aspect": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Phong cách: 2-Cost Reroll | Độ khó: MEDIUM",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Riftbeasts",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Sentry",
+        "DA_Murkwolf18",
+        "DA_Krug18",
+        "DA_Brambleback18",
+        "DA_Sentinel18",
+        "DA_18_GnarSmall",
+        "DA_Taric18",
+        "DA_18_ElderDragon"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_GargoyleStoneplate",
+        "DA_EdgeOfNight",
+        "DA_GiantSlayer",
+        "DA_Quicksilver",
+        "DA_ProtectorsVow",
+        "DA_SunfireCape",
+        "DA_Evenshroud",
+        "DA_SteraksGage",
+        "DA_Bloodthirster",
+        "DA_InfinityEdge"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Riftbeast": 6,
+        "Invoker": 2,
+        "Ravager": 2,
+        "Brawler": 2,
+        "Vanguard": 2,
+        "Elderwood": 1,
+        "Sprykin": 1,
+        "Emerald Aspect": 1,
+        "Apex Predator": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "9": 5
+      },
+      "early_game": [],
+      "positioning_notes": "Phong cách: Fast 9 | Độ khó: EASY | Lõi: Rift buff on Krug",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Sprykin Teemo",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Rammus",
+        "DA_Fiddlesticks18",
+        "DA_18_Veigar",
+        "DA_18_Teemo",
+        "DA_KogMaw18_AD",
+        "DA_18_Kobuko",
+        "DA_18_RekSai"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_SpearOfShojin",
+        "DA_RabadonsDeathcap",
+        "DA_JeweledGauntlet",
+        "DA_Morellonomicon",
+        "DA_18_EmblemSprykin",
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor"
+      ],
+      "best_augments": [
+        "DA_WorththeWaitII",
+        "DA_18_CaretakersAlly",
+        "DA_DeadlierCaps",
+        "DA_18_SprykinAugment",
+        "DA_SoloPlate",
+        "DA_TradeSector",
+        "DA_URF",
+        "DA_UrfsGrabBag"
+      ],
+      "traits": {
+        "Sprykin": 4,
+        "Defender": 2,
+        "Flora Fatalis": 1,
+        "Spellweaver": 2,
+        "Blackthorn": 2,
+        "Invoker": 2,
+        "Caustic": 1,
+        "Adaptor": 1,
+        "Brawler": 2
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Kobuko",
+        "DA_18_Veigar",
+        "DA_18_Teemo",
+        "DA_18_RekSai"
+      ],
+      "positioning_notes": "Phong cách: 2-Cost Reroll | Độ khó: EASY | Lõi: Best with Sprykin emblem and lots of copies of Teemo early. Sacrifice a 3* unit (ideally Kobuko) to give Rek'Sai big stats. Can also tank Rammus 3 if very rich / high rolling. Kog'maw provides free Shred / Sunder. | Stage 2: Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms. · Stage 3: Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*. · Stage 4: Finish Teemo 3* and your tank then push levels for more Sprykins. Cap the board with Gnar or another 5 cost.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "LeBlanc Weavers",
+      "tier": "C",
+      "core_units": [
+        "DA_18_LeBlanc",
+        "DA_18_Hecarim",
+        "DA_18_Ornn",
+        "DA_Fiddlesticks18",
+        "DA_18_Alistar",
+        "DA_18_Alune",
+        "DA_18_GnarSmall"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_SpearOfShojin",
+        "DA_JeweledGauntlet",
+        "DA_StrikersFlail",
+        "DA_WarmogsArmor",
+        "DA_SunfireCape",
+        "DA_ProtectorsVow"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Elderwood": 5,
+        "Spellweaver": 3,
+        "Vanguard": 1,
+        "Defender": 2,
+        "Flora Fatalis": 1,
+        "Brawler": 2,
+        "Attuned": 1,
+        "Lunar": 1,
+        "Sprykin": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Phong cách: 2-Cost Reroll | Độ khó: EASY",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Coven Reroll",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Caitlyn",
+        "DA_18_Morgana",
+        "DA_18_Sivir",
+        "DA_18_Rakan",
+        "DA_Vi18",
+        "DA_Sentinel18",
+        "DA_18_Elise",
+        "DA_18_Diana"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_GiantSlayer",
+        "DA_Morellonomicon",
+        "DA_VoidStaff",
+        "DA_ArchangelsStaff",
+        "DA_LastWhisper",
+        "DA_SteadfastHeart",
+        "DA_WarmogsArmor",
+        "DA_Crownguard"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Coven": 3,
+        "Hunter": 2,
+        "Invoker": 2,
+        "Primal": 2,
+        "Fae": 1,
+        "Juggernaut": 2,
+        "Vanguard": 4,
+        "Riftbeast": 1,
+        "Lunar": 1,
+        "Ravager": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {},
+      "early_game": [],
+      "positioning_notes": "",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Veigar Consuming Flora",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Kobuko",
+        "DA_18_RekSai",
+        "DA_18_Veigar",
+        "DA_18_Teemo",
+        "DA_Fiddlesticks18",
+        "DA_18_Rammus",
+        "DA_18_Sett",
+        "DA_18_GnarSmall"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_JeweledGauntlet",
+        "DA_BlueBuff",
+        "DA_18_EmblemFloraFatalisAugment"
+      ],
+      "best_augments": [
+        "DA_LivingForge",
+        "DA_ForgedInStrength",
+        "DA_PortableForge",
+        "DA_LatentForge",
+        "DA_18_FloraFatalisAugment",
+        "DA_MissedConnections",
+        "DA_PandorasBench",
+        "DA_DeadlierCaps"
+      ],
+      "traits": {
+        "Sprykin": 5,
+        "Brawler": 4,
+        "Blackthorn": 2,
+        "Spellweaver": 2,
+        "Invoker": 1,
+        "Flora Fatalis": 1,
+        "Defender": 2,
+        "Blossom": 1,
+        "Elderwood": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Kobuko",
+        "DA_18_RekSai",
+        "DA_18_Veigar",
+        "DA_18_Teemo"
+      ],
+      "positioning_notes": "Phong cách: 1-Cost Reroll | Độ khó: EASY | Lõi: Very strong with Dawncore and Ludens as well. Sacrifice a 3* unit for maximum Blackthorn stats. | Stage 2: Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items. · Stage 3: If you are close to Veigar 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*. · Stage 4: Once you finish your 3*, push levels for more Spyrkin, Blackthorn, or Brawlers. ",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Cursed Crown Kayle",
+      "tier": "B",
+      "core_units": [
+        "DA_Elderwood18_Lifeblossom",
+        "DA_Elderwood18_StonebarkTree",
+        "DA_18_Leona",
+        "DA_18_Rakan",
+        "DA_18_Ornn",
+        "DA_18_Xayah",
+        "DA_18_Elise",
+        "DA_18_LeBlanc",
+        "DA_18_Sejuani",
+        "DA_18_Kayle"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_Deathblade",
+        "DA_JeweledGauntlet",
+        "DA_StrikersFlail"
+      ],
+      "best_augments": [
+        "DA_CursedCrown",
+        "DA_WorththeWait",
+        "DA_WorththeWaitII",
+        "DA_SpeedyDoubleKill",
+        "DA_PrismaticTicket",
+        "DA_MissedConnections",
+        "DA_CommerceCore",
+        "DA_PandorasBench"
+      ],
+      "traits": {
+        "Solar": 3,
+        "Defender": 2,
+        "Fae": 2,
+        "Juggernaut": 2,
+        "Vanguard": 2,
+        "Elderwood": 3,
+        "Rapidfire": 2,
+        "Coven": 1,
+        "Spellweaver": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Kayle",
+        "DA_18_Leona",
+        "DA_18_Sejuani",
+        "DA_18_Ornn"
+      ],
+      "positioning_notes": "Phong cách: 2-Cost Reroll | Độ khó: EASY | Lõi: With Cursed Crown, we can go for the big 8 unit 3-star Solar bonus. Roll on 5 for 1 costs and 6 for the 2 costs. Sell LB and Elise if you need bench space. | Stage 2: Play aroud early Solar, Elderwood, and Inferno. Prioritize Kayle and Ornn items. Cursed Crown is very expensive so every gold interest counts. · Stage 3: You will likely be poor so consider an econ augment. Slow roll above 50g for 3* units. Prioritize Solars > 1 costs > 2 costs. · Stage 4: You can stay on 6 to finish all your 3* because of Cursed Crown. If you natural level to 7, add in any Spellweaver or 5 cost.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Trait Ladder",
+      "tier": "B",
+      "core_units": [
+        "DA_Elderwood18_Lifeblossom",
+        "DA_Elderwood18_StonebarkTree",
+        "DA_18_Ornn",
+        "DA_Fiddlesticks18",
+        "DA_18_Xayah",
+        "DA_18_LeBlanc",
+        "DA_18_Diana",
+        "DA_18_Rakan",
+        "DA_18_KhaZix",
+        "DA_18_Aphelios"
+      ],
+      "flex_units": [
+        "DA_Amumu18",
+        "DA_Draven18",
+        "DA_18_Kennen",
+        "DA_Lux18_Base"
+      ],
+      "core_items": [
+        "DA_WarmogsArmor",
+        "DA_SunfireCape",
+        "DA_SpiritVisage",
+        "DA_SpearOfShojin",
+        "DA_RabadonsDeathcap",
+        "DA_18_EmblemSlayer",
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_LastWhisper"
+      ],
+      "best_augments": [
+        "DA_TraitLadder",
+        "DA_Coronation",
+        "DA_CursedCrown",
+        "DA_MagicRoll",
+        "DA_UrfsGrabBag",
+        "DA_URF",
+        "DA_SpreadingRootsPlus",
+        "DA_18_BranchingOutPlus"
+      ],
+      "traits": {
+        "Elderwood": 3,
+        "Defender": 2,
+        "Flora Fatalis": 1,
+        "Spellweaver": 2,
+        "Fae": 2,
+        "Rapidfire": 2,
+        "Lunar": 2,
+        "Ravager": 1,
+        "Vanguard": 2,
+        "Juggernaut": 1,
+        "Rival": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "9": 5
+      },
+      "early_game": [
+        "DA_18_Ornn",
+        "DA_18_KhaZix",
+        "DA_18_Shen",
+        "DA_18_Varus"
+      ],
+      "positioning_notes": "Phong cách: Fast 9 | Độ khó: HARD | Lõi: Hard flex composition, but very strong when played well. Any emblem start is fine. Get Khazix 10 takedowns for ravager evolution while gathering the early 2-8 trait cashouts in the midgame. The key interval to plan for is 10 traits for the Tactician Crown -> pivot to legendaries or go for even more cashouts if healthy. | Stage 2: Ideally start with Khazix to get 10 takedowns ASAP. Add in the cheap 1-2 cost units to activate traits. Otherwise, flex around your best upgraded unit. · Stage 3: Continue adding and flexing in more traits. +1 team size augments like Coronation or Cursed Crown are very OP here. · Stage 4: After you hit 10 traits, add Amumu with the Tactician's Crown you get and then level for Kennen. Then pivot to 5 costs at level 9.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Fae Tristana",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Kobuko",
+        "DA_18_Rakan",
+        "DA_18_Rammus",
+        "DA_18_Tristana",
+        "DA_18_Lillia",
+        "DA_18_Sivir",
+        "DA_Vi18"
+      ],
+      "flex_units": [
+        "DA_18_Ashe"
+      ],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_SpiritVisage",
+        "DA_WarmogsArmor",
+        "DA_GuinsoosRageblade",
+        "DA_HextechGunblade",
+        "DA_GiantSlayer",
+        "DA_18_EmblemFae",
+        "DA_LastWhisper",
+        "DA_RedBuff"
+      ],
+      "best_augments": [
+        "DA_URF",
+        "DA_UrfsGrabBag",
+        "DA_18_BranchingOut",
+        "DA_18_BranchingOutPlus",
+        "DA_SpreadingRoots",
+        "DA_SpreadingRootsPlus",
+        "DA_HeroicGrabBagPlusPlus",
+        "DA_Swordsmith"
+      ],
+      "traits": {
+        "Sprykin": 3,
+        "Brawler": 1,
+        "Fae": 3,
+        "Juggernaut": 2,
+        "Vanguard": 1,
+        "Defender": 2,
+        "Hunter": 2,
+        "Primal": 2
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Rakan",
+        "DA_18_Varus",
+        "DA_18_Xayah",
+        "DA_18_Hecarim"
+      ],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: MEDIUM | Lõi: Only play when you have Fae emblem. Stacking 4 Fae ASAP is important so you can get a gold engine. Can also tank Vi primary if you can't find Rammus. Execute Primal > Item Primal unless very far ahead / win streaking. | Stage 2: Play for win streak with upgraded Rageblade holder. Start stacking Fae since getting to 7 ASAP is crucial for success. · Stage 3: Itemize and play Tristana as soon as you find her. Sprykin is more important than Hunter. If you spike very early Primal from ahead, you can consider items. · Stage 4: Level to 7 and roll above 50g for 3* Tristana and Rammus. Use your 4 Fae cash outs to push levels. Give Sivir leftover AD items.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Bronze For Life AP",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Akali_AD",
+        "DA_18_Azir",
+        "DA_Vi18",
+        "DA_Amumu18",
+        "DA_18_Soraka",
+        "DA_18_Malphite",
+        "DA_Nidalee18_AP",
+        "DA_18_Zyra"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_Crownguard",
+        "DA_JeweledGauntlet",
+        "DA_GuinsoosRageblade",
+        "DA_StrikersFlail",
+        "DA_SpearOfShojin",
+        "DA_VoidStaff",
+        "DA_RabadonsDeathcap"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Inferno": 2,
+        "Adaptor": 2,
+        "Ravager": 1,
+        "Blackthorn": 2,
+        "Executioner": 2,
+        "Summoner": 2,
+        "Primal": 2,
+        "Juggernaut": 2,
+        "Flora Fatalis": 1,
+        "Monolith": 1,
+        "Thornmaiden": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Unrivaled Reroll",
+      "tier": "B",
+      "core_units": [
+        "DA_Elderwood18_Lifeblossom",
+        "DA_Elderwood18_StonebarkTree",
+        "DA_18_LeBlanc",
+        "DA_18_Diana",
+        "DA_18_Hecarim",
+        "DA_18_KhaZix",
+        "DA_18_Rengar",
+        "DA_18_Ezreal",
+        "DA_18_Aphelios"
+      ],
+      "flex_units": [
+        "DA_18_Kennen",
+        "DA_18_Ahri",
+        "DA_18_Soraka"
+      ],
+      "core_items": [
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_SpiritVisage",
+        "DA_HandOfJustice",
+        "DA_RabadonsDeathcap",
+        "DA_EdgeOfNight",
+        "DA_TitansResolve",
+        "DA_GuinsoosRageblade",
+        "DA_LastWhisper",
+        "DA_RedBuff"
+      ],
+      "best_augments": [
+        "DA_18_RivalsAugment",
+        "DA_HeroicGrabBagPlus",
+        "DA_HeroicGrabBagPlusPlus",
+        "DA_Swordsmith",
+        "DA_18_BigGrabBag",
+        "DA_GoldenGamblePlus",
+        "DA_SmallGrabBag",
+        "DA_SalvageBinPlus"
+      ],
+      "traits": {
+        "Elderwood": 3,
+        "Spellweaver": 1,
+        "Lunar": 2,
+        "Ravager": 1,
+        "Vanguard": 2,
+        "Rival": 2,
+        "Executioner": 1,
+        "Rapidfire": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_KhaZix",
+        "DA_18_Rengar",
+        "DA_18_Kobuko",
+        "DA_18_RekSai"
+      ],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: CONDITIONAL | Lõi: Ideally, Khazix gains Ravager > Executioner > Rapidfire > Spellweaver with takedowns. | Stage 2: Items are crucial for this composition so focus on Edge of Night first. Play any upgraded frontline tank to stall for Khazix + Rengar. · Stage 3: Keep adding more frontline. Rengar and Khazix will only be effective as your best tank. Item augments are huge to keep your momentum. · Stage 4: Level to 7 and roll for the 2* upgrades. Then econ up and slow roll above 50g for 3* units. Once you finish 3* tank + Khazix 3 / Rengar 3, add 5 costs.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Emblem Rengar",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Kobuko",
+        "DA_18_Rammus",
+        "DA_18_Rengar",
+        "DA_18_Tristana",
+        "DA_18_Lillia",
+        "DA_18_Sivir",
+        "DA_18_GnarSmall"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_SpiritVisage",
+        "DA_WarmogsArmor",
+        "DA_18_EmblemSprykin",
+        "DA_EdgeOfNight",
+        "DA_GuinsoosRageblade",
+        "DA_LastWhisper",
+        "DA_Deathblade"
+      ],
+      "best_augments": [
+        "DA_SpreadingRoots",
+        "DA_SpreadingRootsPlus",
+        "DA_18_BranchingOut",
+        "DA_18_BranchingOutPlus",
+        "DA_TheTraitTree",
+        "DA_HeroicGrabBagPlusPlus",
+        "DA_LegionOfThrees",
+        "DA_18_BigGrabBag"
+      ],
+      "traits": {
+        "Sprykin": 4,
+        "Brawler": 2,
+        "Defender": 2,
+        "Rival": 1,
+        "Fae": 2,
+        "Hunter": 2,
+        "Primal": 1,
+        "Elderwood": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Rakan",
+        "DA_18_Xayah",
+        "DA_18_Yorick",
+        "DA_18_Rengar"
+      ],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: MEDIUM | Lõi: Only play when you have emblem for Rengar. Stacking 4 Fae ASAP is important so you can get a gold engine. Can also tank Lillia primary if you can't find Rammus. Can flex in Primal as well if you have emblem. | Stage 2: Play for win streak with Rengar and the emblem. Position him same side as enemy carries to get backline snipes. · Stage 3: Keep snowballing with Rengar. Take an item augment if you aren't on track to get 3 items by end of Stage. Rengar only performs as well as your best tank so prioritize frontline too. · Stage 4: Level to 7 and roll above 50g for 3* Rengar and 3* Rammus. Use your 4 Fae cash outs to push levels. Tristana takes leftover items.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Sprykin Rengar (copy)",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Kobuko",
+        "DA_18_Rammus",
+        "DA_18_Rengar",
+        "DA_18_Tristana",
+        "DA_18_Lillia",
+        "DA_18_Sivir",
+        "DA_18_GnarSmall"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_SpiritVisage",
+        "DA_WarmogsArmor",
+        "DA_18_EmblemSprykin",
+        "DA_EdgeOfNight",
+        "DA_GuinsoosRageblade",
+        "DA_LastWhisper",
+        "DA_Deathblade"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Sprykin": 4,
+        "Brawler": 2,
+        "Defender": 2,
+        "Rival": 1,
+        "Fae": 2,
+        "Hunter": 2,
+        "Primal": 1,
+        "Elderwood": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: MEDIUM",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Double Trouble Cass",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Cassiopeia",
+        "DA_Fiddlesticks18",
+        "DA_18_Rammus",
+        "DA_18_Soraka"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_VoidStaff",
+        "DA_Morellonomicon",
+        "DA_SpearOfShojin",
+        "DA_JeweledGauntlet",
+        "DA_HextechGunblade",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_SpiritVisage"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Coven": 1,
+        "Spellweaver": 2,
+        "Flora Fatalis": 2,
+        "Defender": 2,
+        "Sprykin": 1,
+        "Executioner": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: MEDIUM | Lõi: Can play Coven early for cash out",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Blackthorn Khazix",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Azir",
+        "DA_18_Veigar",
+        "DA_18_Sett",
+        "DA_18_Zyra",
+        "DA_18_Malphite",
+        "DA_18_RekSai",
+        "DA_18_KhaZix",
+        "DA_18_Warwick"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_VoidStaff",
+        "DA_GuinsoosRageblade",
+        "DA_RabadonsDeathcap",
+        "DA_Crownguard",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_HandOfJustice",
+        "DA_18_EmblemBlackthorn"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Blackthorn": 5,
+        "Executioner": 1,
+        "Summoner": 2,
+        "Sprykin": 1,
+        "Spellweaver": 1,
+        "Blossom": 1,
+        "Brawler": 2,
+        "Thornmaiden": 1,
+        "Monolith": 1,
+        "Rival": 1,
+        "Ravager": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: MEDIUM | Lõi: Khazix gains Executioner, Ravager, Spellweaver, and Rapidfire traits with takedowns, get those traits in that order.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Spirit Blossom",
+      "tier": "B",
+      "core_units": [
+        "DA_Karma18",
+        "DA_18_Yorick",
+        "DA_Vi18",
+        "DA_18_Sivir",
+        "DA_18_Zyra",
+        "DA_18_Ahri",
+        "DA_18_Sett",
+        "DA_18_GnarSmall",
+        "DA_18_Ashe"
+      ],
+      "flex_units": [
+        "DA_18_Alune",
+        "DA_18_Ivern",
+        "DA_18_Maokai"
+      ],
+      "core_items": [
+        "DA_SpearOfShojin",
+        "DA_JeweledGauntlet",
+        "DA_StrikersFlail",
+        "DA_BrambleVest",
+        "DA_DragonsClaw",
+        "DA_WarmogsArmor",
+        "DA_RedBuff",
+        "DA_LastWhisper"
+      ],
+      "best_augments": [
+        "DA_Slammin",
+        "DA_JeweledLotus_I",
+        "DA_CommerceCore",
+        "DA_18_BigGrabBag",
+        "DA_FeelingLucky",
+        "DA_ExclusiveCustomization",
+        "DA_Staffsmith",
+        "DA_18_WispRebatePlus"
+      ],
+      "traits": {
+        "Blossom": 5,
+        "Spellweaver": 2,
+        "Juggernaut": 2,
+        "Summoner": 2,
+        "Primal": 2,
+        "Hunter": 2,
+        "Thornmaiden": 1,
+        "Brawler": 2,
+        "Elderwood": 1,
+        "Sprykin": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_Karma18",
+        "DA_18_Rakan",
+        "DA_18_Yorick",
+        "DA_18_Yunara"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: EASY | Lõi: Core of the comp is Ahri + Sett + Ashe. The rest of the units are flexible. If itemizing Sivir, go for Execute Primal. If far ahead and win streaking, you can play for Phoenix Primal. | Stage 2: Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. · Stage 3: Add 5 Blossom when you can. Flex in Blackthorn (Veigar / Azir), Fiddlesticks + Defender, or other frontline while stacking econ. Always play Ahri 1 and itemize her. · Stage 4: Level and roll for Ahri, Sett, and at least 5 Blossom. You can also temporarily play 7 Blossom for econ while going to 9. End game cap = replace Yorick / Karma.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Forest Fire",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Rakan",
+        "DA_18_Ornn",
+        "DA_18_Varus",
+        "DA_18_Xayah",
+        "DA_18_Hecarim",
+        "DA_18_Tristana",
+        "DA_Amumu18",
+        "DA_18_Lillia"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_GargoyleStoneplate",
+        "DA_InfinityEdge",
+        "DA_SpearOfShojin",
+        "DA_LastWhisper",
+        "DA_KrakensFury",
+        "DA_GuinsoosRageblade",
+        "DA_Deathblade"
+      ],
+      "best_augments": [
+        "DA_EarlyLearnings",
+        "DA_NoScoutNoPivot",
+        "DA_MissedConnections",
+        "DA_PandorasBench",
+        "DA_SoloPlate",
+        "DA_PrismaticTicket",
+        "DA_18_ElderwoodTraitAugment",
+        "DA_WorththeWait"
+      ],
+      "traits": {
+        "Fae": 4,
+        "Juggernaut": 2,
+        "Vanguard": 2,
+        "Elderwood": 3,
+        "Defender": 2,
+        "Inferno": 2,
+        "Rapidfire": 2,
+        "Sprykin": 1,
+        "Hunter": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_Ornn",
+        "DA_18_Xayah",
+        "DA_18_Varus",
+        "DA_18_Rakan"
+      ],
+      "positioning_notes": "Phong cách: 1-Cost Reroll | Độ khó: EASY | Lõi: 3* Priority: Xayah 3 / Ornn 3 > Varus 3 > Rakan 3. Ornn stacks Artifact Forge Power much faster at 3*. | Stage 2: Only play around this opener with early upgrades or strong scaling combat augment. Begin gathering Fae stacks. · Stage 3: Slow roll above 50g for 3* until you hit at least Xayah 3 and Ornn 3. Varus 3 is nice but not mandatory.  · Stage 4: Push levels for more Fae. You can also play more Defenders, Inferno, or Elderwood until you find the Faes.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Infernal Khazix",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Akali_AD",
+        "DA_18_Varus",
+        "DA_18_Shen",
+        "DA_Vi18",
+        "DA_Fiddlesticks18",
+        "DA_18_KhaZix",
+        "DA_Amumu18",
+        "DA_Nidalee18_AP",
+        "DA_18_Kennen"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_Crownguard",
+        "DA_WarmogsArmor",
+        "DA_IonicSpark",
+        "DA_JeweledGauntlet",
+        "DA_HandOfJustice",
+        "DA_RabadonsDeathcap"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Inferno": 5,
+        "Adaptor": 2,
+        "Ravager": 1,
+        "Rapidfire": 1,
+        "Defender": 2,
+        "Primal": 2,
+        "Juggernaut": 2,
+        "Flora Fatalis": 1,
+        "Spellweaver": 1,
+        "Rival": 1,
+        "Executioner": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: MEDIUM | Lõi: Khazix gains Ravager, Spellweaver, Rapidfire, and Executioner traits with takedowns, get those traits in that order.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Adaptor Reroll",
+      "tier": "A",
+      "core_units": [
+        "DA_18_Yorick",
+        "DA_Krug18",
+        "DA_KogMaw18_AD",
+        "DA_18_MasterYi_AD",
+        "DA_Vi18",
+        "DA_18_Sett",
+        "DA_Nidalee18_AP"
+      ],
+      "flex_units": [
+        "DA_Gromp18_AP",
+        "DA_Sentinel18"
+      ],
+      "core_items": [
+        "DA_SpearOfShojin",
+        "DA_RabadonsDeathcap",
+        "DA_JeweledGauntlet",
+        "DA_GuinsoosRageblade",
+        "DA_EdgeOfNight",
+        "DA_TitansResolve",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate"
+      ],
+      "best_augments": [
+        "DA_LatentForge",
+        "DA_PortableForge",
+        "DA_ForgedInStrength",
+        "DA_LivingForge",
+        "DA_URF",
+        "DA_NestingAnvils",
+        "DA_HeroicGrabBag",
+        "DA_LegionOfThrees"
+      ],
+      "traits": {
+        "Blossom": 3,
+        "Juggernaut": 2,
+        "Summoner": 1,
+        "Riftbeast": 1,
+        "Brawler": 2,
+        "Caustic": 1,
+        "Adaptor": 3,
+        "Invoker": 1,
+        "Primal": 2
+      },
+      "avg_placement": 4.25,
+      "top4_rate": 0.6,
+      "win_rate": 0.14,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [
+        "DA_18_MasterYi_AD",
+        "DA_Karma18",
+        "DA_18_Yorick",
+        "DA_Gromp18_AP"
+      ],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: MEDIUM | Lõi: +1 tier in strength with Artifact or Brawler emblem. Level 7 board is no Gromp. VI 3 is stronger than Krug 3, but harder to hit because of Vi's popularity. Item priority: Master Yi > Tank > Kogmaw > Nidalee. Only take Phoenix Primal buff if ahead. Otherwise, Execute / Healing Primal. | Stage 2: Ideally play around a Master Yi opener that can win streak. Blossom is very powerful to get early econ or item wisps. · Stage 3: Add more Adaptors and frontline as you go. Finish Yi items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs. · Stage 4: Level to 7 and roll for Master Yi 2, Kogmaw 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Gromp or a flex unit in at 8.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "10 Riftbeast",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Sentry",
+        "DA_Gromp18_AP",
+        "DA_Murkwolf18",
+        "DA_Scuttlecrab18",
+        "DA_Krug18",
+        "DA_CrimsonRaptor18",
+        "DA_Brambleback18",
+        "DA_Sentinel18",
+        "DA_Taric18",
+        "DA_18_GnarSmall",
+        "DA_18_ElderDragon"
+      ],
+      "flex_units": [
+        "DA_Lux18_Base",
+        "DA_18_Ivern",
+        "DA_Draven18"
+      ],
+      "core_items": [
+        "DA_EdgeOfNight",
+        "DA_Quicksilver",
+        "DA_GiantSlayer",
+        "DA_WarmogsArmor",
+        "DA_ProtectorsVow",
+        "DA_Crownguard",
+        "DA_ThiefsGloves",
+        "DA_InfinityEdge",
+        "DA_StrikersFlail",
+        "DA_Deathblade"
+      ],
+      "best_augments": [
+        "DA_18_RiftbeastTraitAugment",
+        "DA_18_RiftbeastTraitAugmentStampede",
+        "DA_Coronation",
+        "DA_LevelUp",
+        "DA_LateGameSpecialist",
+        "DA_Swordsmith",
+        "DA_ExplosiveGrowthPlus",
+        "DA_CursedCrown"
+      ],
+      "traits": {
+        "Riftbeast": 9,
+        "Invoker": 2,
+        "Adaptor": 1,
+        "Ravager": 2,
+        "Juggernaut": 1,
+        "Brawler": 2,
+        "Summoner": 1,
+        "Rapidfire": 1,
+        "Vanguard": 2,
+        "Emerald Aspect": 1,
+        "Elderwood": 1,
+        "Sprykin": 1,
+        "Apex Predator": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "9": 5
+      },
+      "early_game": [
+        "DA_Cinderling18",
+        "DA_18_Sentry",
+        "DA_Scuttlecrab18",
+        "DA_18_Yorick"
+      ],
+      "positioning_notes": "Phong cách: Fast 9 | Độ khó: MEDIUM | Lõi: Alpha Mark the Elder Dragon. Strong with any augment that gives you +1 team size so you can fit in another carry. | Stage 2: Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry. · Stage 3: Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed. · Stage 4: You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Primal Flex",
+      "tier": "A",
+      "core_units": [
+        "DA_Cinderling18",
+        "DA_KogMaw18_AD",
+        "DA_Nidalee18_AP",
+        "DA_18_Sivir",
+        "DA_Amumu18",
+        "DA_Sentinel18",
+        "DA_Taric18",
+        "DA_Scuttlecrab18"
+      ],
+      "flex_units": [
+        "DA_18_Ashe",
+        "DA_18_Maokai",
+        "DA_18_Kennen",
+        "DA_18_Hecarim"
+      ],
+      "core_items": [
+        "DA_InfinityEdge",
+        "DA_SteraksGage",
+        "DA_SpearOfShojin",
+        "DA_RedBuff",
+        "DA_StrikersFlail",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_BrambleVest",
+        "DA_ProtectorsVow"
+      ],
+      "best_augments": [
+        "DA_18_BigGrabBag",
+        "DA_18_PrimalAugmentPlus_Nidalee",
+        "DA_CaretakersFavor",
+        "DA_Swordsmith",
+        "DA_18_PrimalAugmentPlus_Sivir",
+        "DA_CarveAPath",
+        "DA_18_FOURcing",
+        "DA_DeadlierBlades"
+      ],
+      "traits": {
+        "Riftbeast": 3,
+        "Hunter": 2,
+        "Caustic": 1,
+        "Adaptor": 2,
+        "Invoker": 2,
+        "Primal": 2,
+        "Inferno": 1,
+        "Juggernaut": 2,
+        "Vanguard": 2,
+        "Emerald Aspect": 1
+      },
+      "avg_placement": 4.25,
+      "top4_rate": 0.6,
+      "win_rate": 0.14,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_18_Yorick",
+        "DA_Cinderling18",
+        "DA_Gromp18_AP",
+        "DA_Scuttlecrab18"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Just a small variation on the malphite board, play Amumu + Vanguard over Blackthorn/Brawler. Prioritize Nidalee > Sivir items. Kogmaw provides free Shred and Sunder. Max cap is drop riftbeasts for Maokai + Ashe + Kennen. Hunter emblem is incredible on Nidalee. | Stage 2: Play around a strong AD opener around Cinderling 2 with Riftbeasts. Slam all your AD and tank items aggressively for win streak. · Stage 3: Comp is very Sword hungry so keep taking them off augments / carousels when possible. You can flex in 5 Riftbeast for better shops or more generic frontline. · Stage 4: Level to 8 and roll for Nidalee, Sivir, and Amumu/Sentinel. Buy Hecarim on Rolldown as well if you miss taric and itemize him over 1 star 4 costs.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Aphelios Nidalee",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Diana",
+        "DA_18_Aphelios",
+        "DA_Vi18",
+        "DA_CrimsonRaptor18",
+        "DA_Scuttlecrab18",
+        "DA_Sentinel18",
+        "DA_Nidalee18_AP",
+        "DA_KogMaw18_AD"
+      ],
+      "flex_units": [
+        "DA_Amumu18",
+        "DA_Taric18",
+        "DA_18_Hecarim"
+      ],
+      "core_items": [
+        "DA_RedBuff",
+        "DA_Deathblade",
+        "DA_GiantSlayer",
+        "DA_ProtectorsVow",
+        "DA_WarmogsArmor",
+        "DA_InfinityEdge",
+        "DA_SpearOfShojin",
+        "DA_SteraksGage"
+      ],
+      "best_augments": [
+        "DA_BackupBows",
+        "DA_OneBuffTwoBuff",
+        "DA_Swordsmith",
+        "DA_CarveAPath",
+        "DA_SwordOverflow",
+        "DA_CaretakersFavor",
+        "DA_BuriedTreasuresIII",
+        "DA_18_FOURcing"
+      ],
+      "traits": {
+        "Lunar": 2,
+        "Ravager": 1,
+        "Vanguard": 2,
+        "Rapidfire": 2,
+        "Primal": 2,
+        "Juggernaut": 2,
+        "Riftbeast": 3,
+        "Summoner": 1,
+        "Invoker": 2,
+        "Adaptor": 2,
+        "Caustic": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_18_Ornn",
+        "DA_18_Varus",
+        "DA_18_Xayah",
+        "DA_18_Shen"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Red Buff is BIS Aphelios but you can also play Rageblade build. Can play Upgraded Amumu + Hecarim over Riftbeast 1stars. Kogmaw Provides Free Shred + Sunder. | Stage 2: Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. · Stage 3: Comp can use many items so take item augment if you don't have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online. · Stage 4: Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Yazir",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Yorick",
+        "DA_18_Yunara",
+        "DA_18_Azir",
+        "DA_18_MasterYi_AD",
+        "DA_Vi18",
+        "DA_18_Malphite",
+        "DA_Nidalee18_AP"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GuinsoosRageblade",
+        "DA_VoidStaff",
+        "DA_RabadonsDeathcap",
+        "DA_TitansResolve",
+        "DA_GiantSlayer",
+        "DA_EdgeOfNight",
+        "DA_SunfireCape",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Blossom": 3,
+        "Juggernaut": 2,
+        "Summoner": 2,
+        "Executioner": 2,
+        "Blackthorn": 2,
+        "Adaptor": 2,
+        "Primal": 2,
+        "Monolith": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "6": 3,
+        "7": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Phong cách: 3-Cost Reroll | Độ khó: EASY | Lõi: Coming Soon | Stage 2: Coming Soon · Stage 3: Coming Soon · Stage 4: Coming Soon",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Primal Hunters",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Tristana",
+        "DA_Amumu18",
+        "DA_18_Sivir",
+        "DA_18_Ivern",
+        "DA_18_Ashe",
+        "DA_18_Lillia",
+        "DA_Vi18",
+        "DA_18_Shen",
+        "DA_18_Kennen"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate",
+        "DA_SpiritVisage",
+        "DA_InfinityEdge",
+        "DA_Deathblade",
+        "DA_BlueBuff",
+        "DA_SpearOfShojin",
+        "DA_RedBuff",
+        "DA_LastWhisper",
+        "DA_ThiefsGloves"
+      ],
+      "best_augments": [
+        "DA_18_PrimalAugment_Sivir",
+        "DA_Swordsmith",
+        "DA_SwordOverflow",
+        "DA_CarveAPath",
+        "DA_JeweledLotus_II",
+        "DA_GildedSteel",
+        "DA_BoosterPackPlusPlus",
+        "DA_CyberneticImplants_Gold"
+      ],
+      "traits": {
+        "Fae": 2,
+        "Sprykin": 1,
+        "Hunter": 3,
+        "Inferno": 3,
+        "Juggernaut": 2,
+        "Primal": 2,
+        "Greenfather": 1,
+        "Blossom": 1,
+        "Defender": 2,
+        "Executioner": 1
+      },
+      "avg_placement": 4.9,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_Cinderling18",
+        "DA_Gromp18_AP",
+        "DA_Scuttlecrab18",
+        "DA_18_Yorick"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Must find a way to get to Ashe to cap the board, otherwise you fall off hard. Choose Execute Primal > Item Primal if very far ahead. Ashe is great with utility items because she has big AOE spell. | Stage 2: Play from a strong AD opener, preferably around Cinderling and Riftbeasts. Alpha Mark the Cinderling 2 and win streak. · Stage 3: Add in more Hunters and frontline as necessary. If you high roll a very early Sivir and Vi, you can start farming items. · Stage 4: Level to 8 and roll down for Sivir and upgraded frontline. Always play Ashe if you hit. Can also flex in 3 Blossom if you hit Sett. Go 9 once stable.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Coven Ahri",
+      "tier": "B",
+      "core_units": [
+        "DA_Sentinel18",
+        "DA_Taric18",
+        "DA_18_Morgana",
+        "DA_18_Diana",
+        "DA_18_Ahri",
+        "DA_18_Alune",
+        "DA_18_Cassiopeia",
+        "DA_Fiddlesticks18",
+        "DA_18_Elise"
+      ],
+      "flex_units": [
+        "DA_18_Hecarim"
+      ],
+      "core_items": [
+        "DA_Crownguard",
+        "DA_ProtectorsVow",
+        "DA_WarmogsArmor",
+        "DA_VoidStaff",
+        "DA_Morellonomicon",
+        "DA_JeweledGauntlet",
+        "DA_StrikersFlail",
+        "DA_SpearOfShojin"
+      ],
+      "best_augments": [
+        "DA_JeweledLotus_I",
+        "DA_JeweledLotus_II",
+        "DA_18_FOURcing",
+        "DA_Staffsmith",
+        "DA_CyberneticUplink_Gold",
+        "DA_WandOverflow",
+        "DA_18_CovenTraitAugment_LootToAP",
+        "DA_TimeSkip"
+      ],
+      "traits": {
+        "Riftbeast": 1,
+        "Vanguard": 4,
+        "Invoker": 2,
+        "Emerald Aspect": 1,
+        "Coven": 3,
+        "Lunar": 2,
+        "Ravager": 1,
+        "Blossom": 1,
+        "Spellweaver": 4,
+        "Attuned": 1,
+        "Flora Fatalis": 1,
+        "Defender": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_18_Rakan",
+        "DA_18_Yorick",
+        "DA_Karma18",
+        "DA_18_Yunara"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Play Coven throughout the game but still using strongest board, try to greed for a 250 cash-out. Spellweaver emblem on Morgana->Drop Fiddle is really strong, so is Invoker emblem on Ahri. | Stage 2: Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. · Stage 3: Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards. · Stage 4: Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Aphelios Flex",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Diana",
+        "DA_KogMaw18_AD",
+        "DA_Krug18",
+        "DA_CrimsonRaptor18",
+        "DA_18_Zyra",
+        "DA_Sentinel18",
+        "DA_18_Aphelios",
+        "DA_18_Sett"
+      ],
+      "flex_units": [
+        "DA_18_Morgana",
+        "DA_18_Alune",
+        "DA_Amumu18",
+        "DA_Scuttlecrab18"
+      ],
+      "core_items": [
+        "DA_ProtectorsVow",
+        "DA_RedBuff",
+        "DA_Deathblade",
+        "DA_GiantSlayer",
+        "DA_WarmogsArmor",
+        "DA_BrambleVest",
+        "DA_DragonsClaw"
+      ],
+      "best_augments": [
+        "DA_BackupBows",
+        "DA_OneBuffTwoBuff",
+        "DA_Swordsmith",
+        "DA_CarveAPath",
+        "DA_SwordOverflow",
+        "DA_CaretakersFavor",
+        "DA_BuriedTreasuresIII",
+        "DA_18_FOURcing"
+      ],
+      "traits": {
+        "Lunar": 2,
+        "Ravager": 1,
+        "Vanguard": 2,
+        "Caustic": 1,
+        "Adaptor": 1,
+        "Invoker": 2,
+        "Riftbeast": 3,
+        "Brawler": 2,
+        "Summoner": 2,
+        "Rapidfire": 2,
+        "Thornmaiden": 1,
+        "Blossom": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_18_Ornn",
+        "DA_18_Varus",
+        "DA_18_Xayah",
+        "DA_18_Shen"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Core units are Aphelios + Diana + Sentinel + Mama Beak. This is a variation of Aphelios to play with AP items instead of melee items. Red Buff is BIS Aphelios but you can also play Rageblade build. Frontline is either Amumu+Scuttlecrab or Sett + Krug. | Stage 2: Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. · Stage 3: Comp can use many items so take item augment if you don't have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online. · Stage 4: Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Aphelios Vanguards",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Diana",
+        "DA_18_Hecarim",
+        "DA_CrimsonRaptor18",
+        "DA_18_Zyra",
+        "DA_18_Aphelios",
+        "DA_Brambleback18",
+        "DA_Sentinel18",
+        "DA_Taric18"
+      ],
+      "flex_units": [
+        "DA_18_Rakan",
+        "DA_Scuttlecrab18",
+        "DA_18_Morgana",
+        "DA_18_Alune"
+      ],
+      "core_items": [
+        "DA_LastWhisper",
+        "DA_RedBuff",
+        "DA_Deathblade",
+        "DA_GiantSlayer",
+        "DA_EdgeOfNight",
+        "DA_Quicksilver",
+        "DA_SteraksGage",
+        "DA_ProtectorsVow",
+        "DA_WarmogsArmor"
+      ],
+      "best_augments": [
+        "DA_BackupBows",
+        "DA_OneBuffTwoBuff",
+        "DA_Swordsmith",
+        "DA_CarveAPath",
+        "DA_SwordOverflow",
+        "DA_CaretakersFavor",
+        "DA_BuriedTreasuresIII",
+        "DA_18_FOURcing"
+      ],
+      "traits": {
+        "Lunar": 2,
+        "Ravager": 2,
+        "Vanguard": 4,
+        "Elderwood": 1,
+        "Riftbeast": 3,
+        "Summoner": 2,
+        "Rapidfire": 2,
+        "Thornmaiden": 1,
+        "Invoker": 1,
+        "Emerald Aspect": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_18_Ornn",
+        "DA_18_Varus",
+        "DA_18_Xayah",
+        "DA_18_Shen"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Core units are Aphelios + Diana + Sentinel + Mama Beak. Red Buff is BIS Aphelios but you can also play Rageblade build. Play Scuttlecrab + Rakan over Brambleback if no melee items. Can duo carry Zyra or Morgana if extra AP items. | Stage 2: Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. · Stage 3: Comp can use many items so take item augment if you don't have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online. · Stage 4: Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Ahri Zyra",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Ahri",
+        "DA_18_Zyra",
+        "DA_18_GnarSmall",
+        "DA_18_Sett",
+        "DA_18_Yorick",
+        "DA_18_Alune",
+        "DA_18_Diana",
+        "DA_Taric18",
+        "DA_Amumu18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_JeweledGauntlet",
+        "DA_StrikersFlail",
+        "DA_SpearOfShojin",
+        "DA_VoidStaff",
+        "DA_Morellonomicon",
+        "DA_ThiefsGloves",
+        "DA_WarmogsArmor",
+        "DA_DragonsClaw",
+        "DA_BrambleVest"
+      ],
+      "best_augments": [
+        "DA_JeweledLotus_I",
+        "DA_JeweledLotus_II",
+        "DA_GlassCannon_Silver",
+        "DA_GlassCannon_Gold",
+        "DA_18_FOURcing",
+        "DA_Staffsmith",
+        "DA_18_FloraFatalisAugment",
+        "DA_CyberneticUplink_Gold"
+      ],
+      "traits": {
+        "Blossom": 3,
+        "Spellweaver": 2,
+        "Thornmaiden": 1,
+        "Summoner": 2,
+        "Elderwood": 1,
+        "Sprykin": 1,
+        "Brawler": 2,
+        "Juggernaut": 2,
+        "Attuned": 1,
+        "Lunar": 2,
+        "Ravager": 1,
+        "Vanguard": 2,
+        "Emerald Aspect": 1,
+        "Inferno": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_Karma18",
+        "DA_18_Rakan",
+        "DA_18_Yorick",
+        "DA_18_Yunara"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Play when you hit Zyra 2 on your Ahri rolldown instead of Morgana. Play 5 blossom on level 8 with Karma+1 then try to go 9 for the 5 costs, itemize alune 2 lategame. | Stage 2: Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. · Stage 3: Flex in more Spellweavers + frontline as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards. · Stage 4: Level and roll for Ahri, Zyra, and the 4 Spellweavers. Play Cassio or LeBlanc until you find Alune.",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Blackthorn Ahri",
+      "tier": "B",
+      "core_units": [
+        "DA_18_RekSai",
+        "DA_18_Yunara",
+        "DA_18_Warwick",
+        "DA_18_Azir",
+        "DA_18_Sett",
+        "DA_18_Ahri",
+        "DA_18_Malphite",
+        "DA_18_Veigar"
+      ],
+      "flex_units": [
+        "DA_18_Zyra",
+        "DA_18_Kennen"
+      ],
+      "core_items": [
+        "DA_VoidStaff",
+        "DA_18_EmblemBlackthorn",
+        "DA_JeweledGauntlet",
+        "DA_BlueBuff",
+        "DA_Crownguard",
+        "DA_WarmogsArmor",
+        "DA_GargoyleStoneplate"
+      ],
+      "best_augments": [],
+      "traits": {
+        "Blackthorn": 5,
+        "Brawler": 2,
+        "Blossom": 3,
+        "Executioner": 2,
+        "Ravager": 1,
+        "Summoner": 1,
+        "Spellweaver": 2,
+        "Monolith": 1,
+        "Sprykin": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Only position Ahri in Blackthorn hex when you hit 6 Blackthorn",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    },
+    {
+      "name": "Aphelios Elderwood",
+      "tier": "B",
+      "core_units": [
+        "DA_Elderwood18_Lifeblossom",
+        "DA_Elderwood18_StonebarkTree",
+        "DA_18_Ornn",
+        "DA_18_Xayah",
+        "DA_18_Alistar",
+        "DA_18_Diana",
+        "DA_18_Hecarim",
+        "DA_18_Lillia",
+        "DA_18_Aphelios",
+        "DA_18_GnarSmall",
+        "DA_18_Alune"
+      ],
+      "flex_units": [
+        "DA_18_LeBlanc",
+        "DA_18_Ivern",
+        "DA_Lux18_Base"
+      ],
+      "core_items": [
+        "DA_ThiefsGloves",
+        "DA_Crownguard",
+        "DA_WarmogsArmor",
+        "DA_Evenshroud",
+        "DA_ProtectorsVow",
+        "DA_RedBuff",
+        "DA_Deathblade",
+        "DA_GiantSlayer",
+        "DA_SpearOfShojin",
+        "DA_RabadonsDeathcap",
+        "DA_JeweledGauntlet"
+      ],
+      "best_augments": [
+        "DA_BackupBows",
+        "DA_OneBuffTwoBuff",
+        "DA_Swordsmith",
+        "DA_Replication",
+        "DA_BlackthornTraitAugment",
+        "DA_CaretakersFavor",
+        "DA_SalvageBinPlus",
+        "DA_ShoppingSpree"
+      ],
+      "traits": {
+        "Elderwood": 5,
+        "Defender": 2,
+        "Fae": 2,
+        "Rapidfire": 2,
+        "Brawler": 2,
+        "Lunar": 3,
+        "Ravager": 1,
+        "Vanguard": 2,
+        "Sprykin": 1,
+        "Attuned": 1,
+        "Spellweaver": 1
+      },
+      "avg_placement": 4.55,
+      "top4_rate": 0.5,
+      "win_rate": 0.1,
+      "play_rate": 0.03,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [
+        "DA_18_Ornn",
+        "DA_18_Varus",
+        "DA_18_Xayah",
+        "DA_18_Shen"
+      ],
+      "positioning_notes": "Phong cách: 4-Cost Fast 8 | Độ khó: MEDIUM | Lõi: Cheap version of Aphelios to push to level 9, but falls off hard if you end the game on this comp. Red Buff is BIS Aphelios but you can also play Rageblade build. Alune spot is flexible for any duo carry or 5 cost. | Stage 2: Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. · Stage 3: Comp can use many items so take item augment if you don't have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online. · Stage 4: Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ",
+      "source": "tftacademy:Dishsoap & Frodan/patch=18.1d",
+      "sample_n": 0
+    }
+  ]
+}

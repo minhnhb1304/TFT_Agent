@@ -196,6 +196,7 @@ def test_shipped_config_and_code_default_agree_on_ordinal_trust() -> None:
     shipped = ScoringConfig.load("config/scoring_weights.yaml").tune("base")
     coded = ScoringConfig.default().tune("base")
     assert shipped["ordinal_trust"] == coded["ordinal_trust"]
+    assert shipped["unknown_score"] == coded["unknown_score"] == 0.35
 
 
 def test_ordinal_trust_is_below_one_on_purpose() -> None:

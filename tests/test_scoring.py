@@ -60,12 +60,14 @@ def feature(**kwargs) -> AugmentFeature:
 # --- Base (w1) -------------------------------------------------------------
 
 
-def test_base_is_neutral_without_stats(config) -> None:
-    """Khong co so lieu la trang thai BINH THUONG, khong phai diem xau."""
+def test_base_is_penalized_without_stats(config) -> None:
+    """Lõi chưa có data/tier list chính xác bị hạ điểm xuống 0.35 kèm chú thích."""
     scorer = BaseScorer(NullProvider(), config)
     result = scorer("DA_Test", feature(), GameState())
-    assert result.score == 0.5
-    assert result.is_neutral
+    assert result.score == 0.35
+    assert not result.is_neutral
+    assert "Chưa có data/tier list chính xác" in result.reason
+    assert result.detail["is_unknown"] is True
 
 
 def test_base_rewards_lower_placement(config) -> None:
@@ -358,10 +360,16 @@ def test_advisor_scores_both_halves_of_an_ambiguous_pair(advisor) -> None:
 
 
 def test_advisor_handles_augment_missing_from_feature_table(advisor) -> None:
-    """Augment moi ra ma bang chua sinh lai -> trung tinh, khong crash."""
+    """Augment moi ra ma bang chua sinh lai -> khong crash, phan con lai van hoat dong."""
     ranking = advisor.rank(["KHONG_CO_TRONG_BANG"], GameState())
     assert len(ranking) == 1
-    assert all(c.is_neutral for c in ranking.entries[0].components.values())
+    # Base component bi phat xuong 0.35 do khong co stats trong NullProvider
+    assert ranking.entries[0].components["base"].score == 0.35
+    assert "Chưa có data/tier list chính xác" in ranking.entries[0].components["base"].reason
+    # Cac thanh phan khac deu trung tinh vi khong co feature
+    for name, c in ranking.entries[0].components.items():
+        if name != "base":
+            assert c.is_neutral
 
 
 def test_every_component_returns_a_reason(advisor) -> None:

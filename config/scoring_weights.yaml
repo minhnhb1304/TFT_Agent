@@ -38,6 +38,9 @@ tuning:
     # 0.65 la mot lua chon, chua fit tren du lieu nao. No la mot truc ablation:
     # do do nhay cua xep hang theo {0.2, 0.35, 0.65, 1.0} roi bao cao.
     ordinal_trust: 0.65
+    # Diem cho loi chua biet / chua co data/tier list chinh xac.
+    # Dat 0.35 (duoi bac B = 0.370) de phat rui ro thieu thong tin, tao dong co reroll.
+    unknown_score: 0.35
   board_fit:
     trait_weight: 0.6
     carry_weight: 0.4

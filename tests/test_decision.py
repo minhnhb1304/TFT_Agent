@@ -179,6 +179,30 @@ def test_meta_score_ignores_tiny_samples() -> None:
     assert trusted > unproven
 
 
+def test_augment_score_rewards_matching_augments() -> None:
+    """Comp co best_augments khop voi augment dang cam phai duoc diem cao."""
+    selector = CompSelector(CompDatabase())
+    comp_with_augs = comp("A", best_augments=["Augment_AP_1", "Augment_AP_2", "Augment_Econ"])
+
+    # Khong cam augment nao -> 0.0
+    assert selector.augment_score(comp_with_augs, GameState(augments=[])) == 0.0
+
+    # Cam 1 augment trung -> 1/1 = 1.0
+    assert selector.augment_score(comp_with_augs, GameState(augments=["Augment_AP_1"])) == 1.0
+
+    # Cam 2 augment, 1 trung 1 trat -> 1/2 = 0.5
+    assert (
+        selector.augment_score(
+            comp_with_augs, GameState(augments=["Augment_AP_1", "Augment_AD_1"])
+        )
+        == 0.5
+    )
+
+    # Comp khong co best_augments -> luon 0.0
+    empty_comp = comp("B", best_augments=[])
+    assert selector.augment_score(empty_comp, GameState(augments=["Augment_AP_1"])) == 0.0
+
+
 # --- Contest / scouting (Phase 7) ------------------------------------------
 
 
