@@ -1,0 +1,2438 @@
+{
+  "meta": {
+    "set": "TFTSet18",
+    "provider": "metatft.com",
+    "source": "metatft:META Spencer/patch=18.1d",
+    "patch": "18.1d",
+    "generated_at": "2026-09-09T05:01:34.793518+00:00",
+    "total_comps": 53,
+    "note": "Phân cụm máy học từ MetaTFT (META Spencer). Cung cấp cỡ mẫu thực và avg placement đo được."
+  },
+  "comps": [
+    {
+      "name": "MetaTFT: DA_18_Fae, DA_18_Rengar",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Kobuko",
+        "DA_18_Rakan",
+        "DA_18_Rengar",
+        "DA_18_Lillia",
+        "DA_18_Tristana",
+        "DA_Vi18",
+        "DA_18_Rammus",
+        "DA_18_Sivir"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemFae",
+        "DA_18_EmblemHunter",
+        "DA_18_EmblemSprykin",
+        "DA_EdgeOfNight",
+        "DA_TitansResolve",
+        "DA_Deathblade"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Defender": 1,
+        "DA_18_Fae": 1,
+        "DA_18_Hunter": 1,
+        "DA_Primal18": 1,
+        "DA_18_Rival": 1,
+        "DA_18_Sprykin": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.4785,
+      "top4_rate": 0.5054,
+      "win_rate": 0.1267,
+      "play_rate": 0.0402,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=40,230 trận). Avg: 4.48",
+      "source": "metatft:META Spencer/cluster=422000/patch=18.1d",
+      "sample_n": 40230
+    },
+    {
+      "name": "MetaTFT: DA_18_Executioner, DA_18_Sett",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Ahri",
+        "DA_18_Soraka",
+        "DA_Fiddlesticks18",
+        "DA_18_Ezreal",
+        "DA_18_Sett",
+        "DA_18_Yunara",
+        "DA_18_Kennen",
+        "DA_18_Ornn",
+        "DA_18_GnarSmall"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemExecutioner",
+        "DA_NashorsTooth",
+        "DA_StrikersFlail",
+        "DA_GargoyleStoneplate",
+        "DA_SunfireCape",
+        "DA_WarmogsArmor"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blossom": 1,
+        "DA_18_Brawler": 1,
+        "DA_18_Defender": 1,
+        "DA_18_Elderwood": 1,
+        "DA_18_Executioner": 3,
+        "DA_18_Spellweaver": 1,
+        "DA_FloraFatalis18": 2
+      },
+      "avg_placement": 4.5568,
+      "top4_rate": 0.4858,
+      "win_rate": 0.1205,
+      "play_rate": 0.0067,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=6,735 trận). Avg: 4.56",
+      "source": "metatft:META Spencer/cluster=422001/patch=18.1d",
+      "sample_n": 6735
+    },
+    {
+      "name": "MetaTFT: DA_18_Elderwood, DA_18_Ezreal, DA_Amumu18",
+      "tier": "A",
+      "core_units": [
+        "DA_18_Alistar",
+        "DA_18_Maokai",
+        "DA_18_Ivern",
+        "DA_18_Ezreal",
+        "DA_18_Kennen",
+        "DA_Draven18",
+        "DA_18_GnarSmall",
+        "DA_Amumu18",
+        "DA_Taric18",
+        "DA_18_Soraka"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_Deathblade",
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_18_EmblemExecutioner",
+        "DA_InfinityEdge",
+        "DA_GargoyleStoneplate"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Brawler": 1,
+        "DA_18_Elderwood": 1,
+        "DA_18_Inferno": 1,
+        "DA_18_Executioner": 2,
+        "DA_FloraFatalis18": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.3559,
+      "top4_rate": 0.536,
+      "win_rate": 0.1365,
+      "play_rate": 0.125,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=125,046 trận). Avg: 4.36",
+      "source": "metatft:META Spencer/cluster=422002/patch=18.1d",
+      "sample_n": 125046
+    },
+    {
+      "name": "MetaTFT: DA_18_Defender, DA_18_Cassiopeia",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Cassiopeia",
+        "DA_18_Ornn",
+        "DA_18_Leona",
+        "DA_18_Lillia",
+        "DA_18_Rammus",
+        "DA_18_Shen",
+        "DA_Fiddlesticks18",
+        "DA_18_Soraka"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_ArchangelsStaff",
+        "DA_HextechGunblade",
+        "DA_BlueBuff",
+        "DA_18_EmblemFloraFatalisAugment",
+        "DA_SpearOfShojin",
+        "DA_AdaptiveHelm"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Defender": 3,
+        "DA_18_Spellweaver": 1,
+        "DA_FloraFatalis18": 2
+      },
+      "avg_placement": 4.4537,
+      "top4_rate": 0.5116,
+      "win_rate": 0.1287,
+      "play_rate": 0.0721,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=72,073 trận). Avg: 4.45",
+      "source": "metatft:META Spencer/cluster=422003/patch=18.1d",
+      "sample_n": 72073
+    },
+    {
+      "name": "MetaTFT: DA_18_Spellweaver, DA_18_Cassiopeia",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Leona",
+        "DA_18_Rammus",
+        "DA_18_Cassiopeia",
+        "DA_18_Ornn",
+        "DA_Fiddlesticks18",
+        "DA_18_Ahri",
+        "DA_18_Shen",
+        "DA_18_Lillia",
+        "DA_18_Soraka"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemFloraFatalisAugment",
+        "DA_ArchangelsStaff",
+        "DA_HextechGunblade",
+        "DA_SpearOfShojin",
+        "DA_VoidStaff",
+        "DA_BlueBuff"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Defender": 3,
+        "DA_18_Spellweaver": 2,
+        "DA_FloraFatalis18": 2
+      },
+      "avg_placement": 4.9131,
+      "top4_rate": 0.3967,
+      "win_rate": 0.092,
+      "play_rate": 0.0027,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=2,715 trận). Avg: 4.91",
+      "source": "metatft:META Spencer/cluster=422004/patch=18.1d",
+      "sample_n": 2715
+    },
+    {
+      "name": "MetaTFT: DA_Juggernaut18, DA_18_Caitlyn",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Sejuani",
+        "DA_18_Caitlyn",
+        "DA_Scuttlecrab18",
+        "DA_18_Tristana",
+        "DA_18_Rakan",
+        "DA_Vi18",
+        "DA_18_Sivir",
+        "DA_Amumu18",
+        "DA_18_Maokai"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GiantSlayer",
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_InfinityEdge",
+        "DA_LastWhisper",
+        "DA_RedBuff"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Fae": 1,
+        "DA_18_Hunter": 2,
+        "DA_Primal18": 1,
+        "DA_Juggernaut18": 3
+      },
+      "avg_placement": 4.4062,
+      "top4_rate": 0.5234,
+      "win_rate": 0.1325,
+      "play_rate": 0.0264,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=26,381 trận). Avg: 4.41",
+      "source": "metatft:META Spencer/cluster=422005/patch=18.1d",
+      "sample_n": 26381
+    },
+    {
+      "name": "MetaTFT: DA_18_Elderwood, DA_18_Aphelios",
+      "tier": "B",
+      "core_units": [
+        "DA_18_LeBlanc",
+        "DA_18_Alistar",
+        "DA_18_Ornn",
+        "DA_18_Xayah",
+        "DA_18_Aphelios",
+        "DA_18_Lillia",
+        "DA_18_GnarSmall",
+        "DA_18_Ivern",
+        "DA_18_Alune"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemElderwood",
+        "DA_GuinsoosRageblade",
+        "DA_InfinityEdge",
+        "DA_KrakensFury",
+        "DA_Deathblade"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Brawler": 1,
+        "DA_18_Defender": 1,
+        "DA_18_Elderwood": 2,
+        "DA_18_Fae": 1,
+        "DA_18_Lunar": 1,
+        "DA_18_Rapidfire": 1,
+        "DA_18_Spellweaver": 1
+      },
+      "avg_placement": 4.5065,
+      "top4_rate": 0.4984,
+      "win_rate": 0.1245,
+      "play_rate": 0.0511,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=51,068 trận). Avg: 4.51",
+      "source": "metatft:META Spencer/cluster=422006/patch=18.1d",
+      "sample_n": 51068
+    },
+    {
+      "name": "MetaTFT: DA_18_Blossom, DA_18_Sett",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Yorick",
+        "DA_Karma18",
+        "DA_Vi18",
+        "DA_18_Ashe",
+        "DA_18_Zyra",
+        "DA_18_Ahri",
+        "DA_18_GnarSmall",
+        "DA_18_Sivir",
+        "DA_18_Sett"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemJuggernaut",
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_LastWhisper",
+        "DA_RedBuff"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blossom": 2,
+        "DA_18_Brawler": 1,
+        "DA_18_Hunter": 1,
+        "DA_Primal18": 1,
+        "DA_18_Spellweaver": 1,
+        "DA_18_Summoner": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.6127,
+      "top4_rate": 0.4718,
+      "win_rate": 0.116,
+      "play_rate": 0.0344,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=34,417 trận). Avg: 4.61",
+      "source": "metatft:META Spencer/cluster=422007/patch=18.1d",
+      "sample_n": 34417
+    },
+    {
+      "name": "MetaTFT: DA_18_Elderwood, DA_18_KhaZix",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Hecarim",
+        "DA_18_Rengar",
+        "DA_18_KhaZix",
+        "DA_18_LeBlanc",
+        "DA_18_Diana",
+        "DA_18_Zyra",
+        "DA_18_Ezreal",
+        "DA_18_Aphelios"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_EdgeOfNight",
+        "DA_GuinsoosRageblade",
+        "DA_TitansResolve",
+        "DA_HandOfJustice",
+        "DA_RabadonsDeathcap",
+        "DA_JeweledGauntlet"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Elderwood": 1,
+        "DA_18_Lunar": 1,
+        "DA_18_Rapidfire": 2,
+        "DA_18_Rival": 3,
+        "DA_18_Executioner": 1,
+        "DA_18_Slayer": 1,
+        "DA_18_Spellweaver": 1,
+        "DA_18_Vanguard": 1
+      },
+      "avg_placement": 4.6234,
+      "top4_rate": 0.4691,
+      "win_rate": 0.1151,
+      "play_rate": 0.0381,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=38,141 trận). Avg: 4.62",
+      "source": "metatft:META Spencer/cluster=422008/patch=18.1d",
+      "sample_n": 38141
+    },
+    {
+      "name": "MetaTFT: DA_18_Adaptor, DA_18_MasterYi_AD",
+      "tier": "S",
+      "core_units": [
+        "DA_18_MasterYi_AD",
+        "DA_18_Yorick",
+        "DA_Krug18",
+        "DA_18_Sett",
+        "DA_Nidalee18_AP",
+        "DA_Vi18",
+        "DA_KogMaw18_AD",
+        "DA_Gromp18_AP"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemBrawler",
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_EdgeOfNight",
+        "DA_GuinsoosRageblade",
+        "DA_SpiritVisage"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blossom": 1,
+        "DA_18_Brawler": 1,
+        "DA_18_Adaptor": 3,
+        "DA_Primal18": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.0164,
+      "top4_rate": 0.6209,
+      "win_rate": 0.1637,
+      "play_rate": 0.129,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=128,960 trận). Avg: 4.02",
+      "source": "metatft:META Spencer/cluster=422009/patch=18.1d",
+      "sample_n": 128960
+    },
+    {
+      "name": "MetaTFT: DA_Juggernaut18, DA_18_Sivir",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Shen",
+        "DA_18_Sivir",
+        "DA_Vi18",
+        "DA_18_Ashe",
+        "DA_18_Tristana",
+        "DA_Amumu18",
+        "DA_18_Lillia",
+        "DA_18_Ivern",
+        "DA_18_Kennen",
+        "DA_18_Sentry",
+        "DA_Murkwolf18",
+        "DA_Gromp18_AP"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_InfinityEdge",
+        "DA_SpearOfShojin",
+        "DA_StrikersFlail",
+        "DA_LastWhisper",
+        "DA_RedBuff",
+        "DA_Deathblade"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Defender": 1,
+        "DA_18_Fae": 1,
+        "DA_18_Hunter": 2,
+        "DA_18_Inferno": 2,
+        "DA_Primal18": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.5315,
+      "top4_rate": 0.4921,
+      "win_rate": 0.1225,
+      "play_rate": 0.0279,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=27,905 trận). Avg: 4.53",
+      "source": "metatft:META Spencer/cluster=422010/patch=18.1d",
+      "sample_n": 27905
+    },
+    {
+      "name": "MetaTFT: DA_18_Invoker, DA_18_Sentry",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Sentry",
+        "DA_Scuttlecrab18",
+        "DA_18_Teemo",
+        "DA_18_Morgana",
+        "DA_KogMaw18_AD",
+        "DA_18_Maokai",
+        "DA_Taric18",
+        "DA_18_Ivern",
+        "DA_Sentinel18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_AdaptiveHelm",
+        "DA_GargoyleStoneplate",
+        "DA_SteadfastHeart",
+        "DA_BlueBuff",
+        "DA_RabadonsDeathcap",
+        "DA_VoidStaff"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Invoker": 4,
+        "DA_Riftbeast18": 1,
+        "DA_18_Vanguard": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.4023,
+      "top4_rate": 0.5244,
+      "win_rate": 0.1328,
+      "play_rate": 0.0051,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=5,059 trận). Avg: 4.40",
+      "source": "metatft:META Spencer/cluster=422011/patch=18.1d",
+      "sample_n": 5059
+    },
+    {
+      "name": "MetaTFT: DA_18_Invoker, DA_18_Morgana",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Hecarim",
+        "DA_18_Sentry",
+        "DA_18_Morgana",
+        "DA_Sentinel18",
+        "DA_KogMaw18_AD",
+        "DA_Brambleback18",
+        "DA_18_Diana",
+        "DA_Taric18",
+        "DA_18_Alune"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemSpellweaver",
+        "DA_Morellonomicon",
+        "DA_VoidStaff",
+        "DA_18_EmblemVanguard",
+        "DA_HextechGunblade",
+        "DA_RedBuff"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Invoker": 3,
+        "DA_18_Lunar": 1,
+        "DA_Riftbeast18": 1,
+        "DA_18_Slayer": 1,
+        "DA_18_Vanguard": 2
+      },
+      "avg_placement": 4.6089,
+      "top4_rate": 0.4728,
+      "win_rate": 0.1163,
+      "play_rate": 0.0236,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=23,606 trận). Avg: 4.61",
+      "source": "metatft:META Spencer/cluster=422012/patch=18.1d",
+      "sample_n": 23606
+    },
+    {
+      "name": "MetaTFT: DA_18_Vanguard, DA_18_Aphelios",
+      "tier": "B",
+      "core_units": [
+        "DA_CrimsonRaptor18",
+        "DA_Brambleback18",
+        "DA_18_Diana",
+        "DA_Taric18",
+        "DA_18_Hecarim",
+        "DA_18_Zyra",
+        "DA_Sentinel18",
+        "DA_18_Aphelios",
+        "DA_18_Sivir",
+        "DA_Gromp18_AP",
+        "DA_CrimsonRaptor18",
+        "DA_Cinderling18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_InfinityEdge",
+        "DA_KrakensFury",
+        "DA_StrikersFlail",
+        "DA_Deathblade",
+        "DA_GiantSlayer",
+        "DA_LastWhisper"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Lunar": 1,
+        "DA_18_Rapidfire": 1,
+        "DA_Riftbeast18": 1,
+        "DA_18_Slayer": 1,
+        "DA_18_Summoner": 1,
+        "DA_18_Vanguard": 2
+      },
+      "avg_placement": 4.5716,
+      "top4_rate": 0.4821,
+      "win_rate": 0.1193,
+      "play_rate": 0.1249,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=124,907 trận). Avg: 4.57",
+      "source": "metatft:META Spencer/cluster=422013/patch=18.1d",
+      "sample_n": 124907
+    },
+    {
+      "name": "MetaTFT: DA_18_Vanguard, DA_18_Rengar",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Rengar",
+        "DA_18_Diana",
+        "DA_CrimsonRaptor18",
+        "DA_18_Hecarim",
+        "DA_Sentinel18",
+        "DA_18_Aphelios",
+        "DA_Taric18",
+        "DA_Brambleback18",
+        "DA_Brambleback18",
+        "DA_Scuttlecrab18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemSlayer",
+        "DA_EdgeOfNight",
+        "DA_GuinsoosRageblade",
+        "DA_Evenshroud",
+        "DA_SunfireCape",
+        "DA_WarmogsArmor"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Lunar": 1,
+        "DA_18_Rapidfire": 1,
+        "DA_Riftbeast18": 1,
+        "DA_18_Rival": 1,
+        "DA_18_Slayer": 1,
+        "DA_18_Vanguard": 2
+      },
+      "avg_placement": 4.9272,
+      "top4_rate": 0.3932,
+      "win_rate": 0.0908,
+      "play_rate": 0.0068,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=6,842 trận). Avg: 4.93",
+      "source": "metatft:META Spencer/cluster=422014/patch=18.1d",
+      "sample_n": 6842
+    },
+    {
+      "name": "MetaTFT: DA_18_Sprykin, DA_18_Veigar",
+      "tier": "A",
+      "core_units": [
+        "DA_18_Veigar",
+        "DA_18_Kobuko",
+        "DA_18_RekSai",
+        "DA_18_Teemo",
+        "DA_Fiddlesticks18",
+        "DA_18_Rammus",
+        "DA_18_Sett",
+        "DA_Taric18",
+        "DA_18_GnarSmall",
+        "DA_Brambleback18",
+        "DA_18_Sentry",
+        "DA_Murkwolf18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemFloraFatalisAugment",
+        "DA_BlueBuff",
+        "DA_JeweledGauntlet",
+        "DA_GiantSlayer",
+        "DA_RabadonsDeathcap",
+        "DA_SpearOfShojin"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blackthorn": 1,
+        "DA_18_Brawler": 2,
+        "DA_18_Defender": 1,
+        "DA_18_Spellweaver": 1,
+        "DA_18_Sprykin": 2,
+        "DA_FloraFatalis18": 1
+      },
+      "avg_placement": 4.1662,
+      "top4_rate": 0.5835,
+      "win_rate": 0.1517,
+      "play_rate": 0.073,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=73,002 trận). Avg: 4.17",
+      "source": "metatft:META Spencer/cluster=422015/patch=18.1d",
+      "sample_n": 73002
+    },
+    {
+      "name": "MetaTFT: DA_18_Vanguard, DA_18_Caitlyn",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Elise",
+        "DA_18_Caitlyn",
+        "DA_18_Rakan",
+        "DA_18_Hecarim",
+        "DA_Sentinel18",
+        "DA_18_Sivir",
+        "DA_Vi18",
+        "DA_18_Tristana",
+        "DA_18_Ashe"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_TitansResolve",
+        "DA_WarmogsArmor",
+        "DA_Crownguard",
+        "DA_Deathblade",
+        "DA_GuinsoosRageblade"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Fae": 1,
+        "DA_18_Hunter": 3,
+        "DA_Primal18": 1,
+        "DA_18_Vanguard": 2,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 5.2311,
+      "top4_rate": 0.3172,
+      "win_rate": 0.0665,
+      "play_rate": 0.005,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=4,963 trận). Avg: 5.23",
+      "source": "metatft:META Spencer/cluster=422016/patch=18.1d",
+      "sample_n": 4963
+    },
+    {
+      "name": "MetaTFT: DA_18_Invoker, DA_Nidalee18_AP",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Rakan",
+        "DA_18_Diana",
+        "DA_Vi18",
+        "DA_KogMaw18_AD",
+        "DA_Sentinel18",
+        "DA_18_Morgana",
+        "DA_Nidalee18_AP",
+        "DA_Taric18",
+        "DA_Scuttlecrab18",
+        "DA_Murkwolf18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_InfinityEdge",
+        "DA_SpearOfShojin",
+        "DA_SteraksGage",
+        "DA_EdgeOfNight",
+        "DA_StrikersFlail",
+        "DA_18_EmblemHunter"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Adaptor": 1,
+        "DA_18_Invoker": 2,
+        "DA_Primal18": 1,
+        "DA_18_Vanguard": 2,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.6036,
+      "top4_rate": 0.4741,
+      "win_rate": 0.1167,
+      "play_rate": 0.009,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=8,999 trận). Avg: 4.60",
+      "source": "metatft:META Spencer/cluster=422017/patch=18.1d",
+      "sample_n": 8999
+    },
+    {
+      "name": "MetaTFT: DA_18_Adaptor, DA_Nidalee18_AP",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Akali_AD",
+        "DA_KogMaw18_AD",
+        "DA_Vi18",
+        "DA_Brambleback18",
+        "DA_Sentinel18",
+        "DA_Nidalee18_AP",
+        "DA_Amumu18",
+        "DA_Gromp18_AP",
+        "DA_Gromp18_AP"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_InfinityEdge",
+        "DA_SteraksGage",
+        "DA_StrikersFlail",
+        "DA_EdgeOfNight",
+        "DA_18_EmblemSlayer",
+        "DA_HextechGunblade"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Adaptor": 3,
+        "DA_18_Inferno": 1,
+        "DA_18_Invoker": 1,
+        "DA_Primal18": 1,
+        "DA_Riftbeast18": 1,
+        "DA_18_Slayer": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.5184,
+      "top4_rate": 0.4954,
+      "win_rate": 0.1235,
+      "play_rate": 0.0064,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=6,447 trận). Avg: 4.52",
+      "source": "metatft:META Spencer/cluster=422018/patch=18.1d",
+      "sample_n": 6447
+    },
+    {
+      "name": "MetaTFT: DA_18_Executioner, DA_18_Malphite, DA_18_Ezreal",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Soraka",
+        "DA_18_Azir",
+        "DA_18_Yorick",
+        "DA_Amumu18",
+        "DA_Fiddlesticks18",
+        "DA_18_Malphite",
+        "DA_18_Ezreal",
+        "DA_18_Zyra",
+        "DA_18_Yunara"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_Crownguard",
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SteadfastHeart",
+        "DA_SpiritVisage",
+        "DA_BrambleVest"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blackthorn": 1,
+        "DA_18_Executioner": 3,
+        "DA_18_Summoner": 2,
+        "DA_FloraFatalis18": 2,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.7572,
+      "top4_rate": 0.4357,
+      "win_rate": 0.1044,
+      "play_rate": 0.0134,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=13,448 trận). Avg: 4.76",
+      "source": "metatft:META Spencer/cluster=422019/patch=18.1d",
+      "sample_n": 13448
+    },
+    {
+      "name": "MetaTFT: DA_18_Fae, DA_18_Tristana, DA_18_Rammus",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Xayah",
+        "DA_18_Rakan",
+        "DA_18_Tristana",
+        "DA_18_Rammus",
+        "DA_18_Lillia",
+        "DA_18_Kobuko",
+        "DA_18_Lillia",
+        "DA_18_Sivir",
+        "DA_Vi18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemFae",
+        "DA_LastWhisper",
+        "DA_RedBuff",
+        "DA_GiantSlayer",
+        "DA_GuinsoosRageblade",
+        "DA_HextechGunblade"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Defender": 1,
+        "DA_18_Fae": 2,
+        "DA_18_Hunter": 1,
+        "DA_Primal18": 1,
+        "DA_18_Sprykin": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.7447,
+      "top4_rate": 0.4388,
+      "win_rate": 0.1054,
+      "play_rate": 0.0273,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=27,320 trận). Avg: 4.74",
+      "source": "metatft:META Spencer/cluster=422020/patch=18.1d",
+      "sample_n": 27320
+    },
+    {
+      "name": "MetaTFT: DA_18_Vanguard, DA_18_Ahri",
+      "tier": "A",
+      "core_units": [
+        "DA_Amumu18",
+        "DA_18_Hecarim",
+        "DA_18_Diana",
+        "DA_18_Morgana",
+        "DA_Sentinel18",
+        "DA_Taric18",
+        "DA_18_Alune",
+        "DA_18_Maokai",
+        "DA_18_Ahri",
+        "DA_Cinderling18",
+        "DA_Gromp18_AP",
+        "DA_Murkwolf18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemInvoker",
+        "DA_JeweledGauntlet",
+        "DA_StrikersFlail",
+        "DA_RabadonsDeathcap",
+        "DA_Morellonomicon",
+        "DA_VoidStaff"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Invoker": 1,
+        "DA_18_Lunar": 1,
+        "DA_18_Spellweaver": 1,
+        "DA_18_Vanguard": 2,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.2975,
+      "top4_rate": 0.5506,
+      "win_rate": 0.1412,
+      "play_rate": 0.0802,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=80,185 trận). Avg: 4.30",
+      "source": "metatft:META Spencer/cluster=422021/patch=18.1d",
+      "sample_n": 80185
+    },
+    {
+      "name": "MetaTFT: DA_18_Executioner, DA_18_Malphite, DA_18_Zyra",
+      "tier": "A",
+      "core_units": [
+        "DA_18_Yorick",
+        "DA_Fiddlesticks18",
+        "DA_18_Malphite",
+        "DA_18_Zyra",
+        "DA_18_Kennen",
+        "DA_18_Azir",
+        "DA_Amumu18",
+        "DA_18_Soraka",
+        "DA_18_Alune"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemExecutioner",
+        "DA_SpearOfShojin",
+        "DA_VoidStaff",
+        "DA_Crownguard",
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blackthorn": 1,
+        "DA_18_Inferno": 1,
+        "DA_18_Executioner": 2,
+        "DA_18_Spellweaver": 1,
+        "DA_18_Summoner": 2,
+        "DA_FloraFatalis18": 2,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.3895,
+      "top4_rate": 0.5276,
+      "win_rate": 0.1338,
+      "play_rate": 0.2702,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=270,161 trận). Avg: 4.39",
+      "source": "metatft:META Spencer/cluster=422022/patch=18.1d",
+      "sample_n": 270161
+    },
+    {
+      "name": "MetaTFT: DA_18_Executioner, DA_18_Yunara",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Yunara",
+        "DA_18_Alistar",
+        "DA_18_LeBlanc",
+        "DA_18_Ahri",
+        "DA_18_Sett",
+        "DA_18_Soraka",
+        "DA_18_Ezreal",
+        "DA_18_Kennen",
+        "DA_18_Alistar",
+        "DA_18_Sett",
+        "DA_18_Alistar",
+        "DA_18_LeBlanc",
+        "DA_18_Yunara",
+        "DA_18_LeBlanc",
+        "DA_18_Yunara",
+        "DA_18_Ahri"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_Deathblade",
+        "DA_SpearOfShojin",
+        "DA_StrikersFlail",
+        "DA_InfinityEdge",
+        "DA_KrakensFury",
+        "DA_GiantSlayer"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blossom": 1,
+        "DA_18_Brawler": 1,
+        "DA_18_Elderwood": 1,
+        "DA_18_Executioner": 3,
+        "DA_18_Spellweaver": 1,
+        "DA_FloraFatalis18": 1
+      },
+      "avg_placement": 5.124,
+      "top4_rate": 0.344,
+      "win_rate": 0.0751,
+      "play_rate": 0.0041,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=4,130 trận). Avg: 5.12",
+      "source": "metatft:META Spencer/cluster=422023/patch=18.1d",
+      "sample_n": 4130
+    },
+    {
+      "name": "MetaTFT: DA_Riftbeast18, DA_Sentinel18",
+      "tier": "A",
+      "core_units": [
+        "DA_Scuttlecrab18",
+        "DA_18_Hecarim",
+        "DA_Sentinel18",
+        "DA_Krug18",
+        "DA_Murkwolf18",
+        "DA_Brambleback18",
+        "DA_18_ElderDragon",
+        "DA_18_Maokai",
+        "DA_18_Sentry",
+        "DA_Brambleback18",
+        "DA_Gromp18_AP"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_InfinityEdge",
+        "DA_LastWhisper",
+        "DA_StrikersFlail",
+        "DA_Deathblade",
+        "DA_HandOfJustice",
+        "DA_GiantSlayer"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_Riftbeast18": 3,
+        "DA_18_Slayer": 1,
+        "DA_18_Vanguard": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.2277,
+      "top4_rate": 0.5681,
+      "win_rate": 0.1468,
+      "play_rate": 0.0344,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=34,395 trận). Avg: 4.23",
+      "source": "metatft:META Spencer/cluster=422024/patch=18.1d",
+      "sample_n": 34395
+    },
+    {
+      "name": "MetaTFT: DA_18_Blossom, DA_18_Ahri, DA_18_Malphite",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Yorick",
+        "DA_18_Ahri",
+        "DA_18_Sett",
+        "DA_18_Azir",
+        "DA_Fiddlesticks18",
+        "DA_18_Soraka",
+        "DA_Amumu18",
+        "DA_18_Zyra",
+        "DA_18_Malphite"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemBrawler",
+        "DA_Crownguard",
+        "DA_GargoyleStoneplate",
+        "DA_18_EmblemExecutioner",
+        "DA_NashorsTooth",
+        "DA_StrikersFlail"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blackthorn": 1,
+        "DA_18_Blossom": 1,
+        "DA_18_Executioner": 1,
+        "DA_18_Spellweaver": 1,
+        "DA_18_Summoner": 2,
+        "DA_FloraFatalis18": 2,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 5.1636,
+      "top4_rate": 0.3341,
+      "win_rate": 0.0719,
+      "play_rate": 0.0083,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=8,272 trận). Avg: 5.16",
+      "source": "metatft:META Spencer/cluster=422025/patch=18.1d",
+      "sample_n": 8272
+    },
+    {
+      "name": "MetaTFT: DA_Riftbeast18, DA_18_Malphite",
+      "tier": "A",
+      "core_units": [
+        "DA_18_RekSai",
+        "DA_KogMaw18_AD",
+        "DA_Cinderling18",
+        "DA_Krug18",
+        "DA_18_Malphite",
+        "DA_18_Sivir",
+        "DA_Nidalee18_AP",
+        "DA_Sentinel18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_InfinityEdge",
+        "DA_RedBuff",
+        "DA_StrikersFlail",
+        "DA_SpearOfShojin",
+        "DA_SteraksGage",
+        "DA_Crownguard"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blackthorn": 1,
+        "DA_18_Brawler": 1,
+        "DA_18_Adaptor": 1,
+        "DA_18_Hunter": 1,
+        "DA_18_Invoker": 1,
+        "DA_Primal18": 1,
+        "DA_Riftbeast18": 1
+      },
+      "avg_placement": 4.3463,
+      "top4_rate": 0.5384,
+      "win_rate": 0.1373,
+      "play_rate": 0.1564,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=156,405 trận). Avg: 4.35",
+      "source": "metatft:META Spencer/cluster=422026/patch=18.1d",
+      "sample_n": 156405
+    },
+    {
+      "name": "MetaTFT: DA_18_Spellweaver, DA_18_Lillia",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Rakan",
+        "DA_18_Yorick",
+        "DA_18_Diana",
+        "DA_18_Ahri",
+        "DA_18_Lillia",
+        "DA_Fiddlesticks18",
+        "DA_18_Zyra",
+        "DA_18_Alune",
+        "DA_Karma18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_Morellonomicon",
+        "DA_SpearOfShojin",
+        "DA_VoidStaff",
+        "DA_BrambleVest",
+        "DA_DragonsClaw",
+        "DA_WarmogsArmor"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blossom": 1,
+        "DA_18_Defender": 1,
+        "DA_18_Fae": 1,
+        "DA_18_Lunar": 1,
+        "DA_18_Spellweaver": 2,
+        "DA_18_Summoner": 1,
+        "DA_18_Vanguard": 1,
+        "DA_FloraFatalis18": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 5.0334,
+      "top4_rate": 0.3666,
+      "win_rate": 0.0823,
+      "play_rate": 0.0038,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=3,835 trận). Avg: 5.03",
+      "source": "metatft:META Spencer/cluster=422027/patch=18.1d",
+      "sample_n": 3835
+    },
+    {
+      "name": "MetaTFT: DA_18_Sprykin, DA_18_Teemo",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Kobuko",
+        "DA_18_Teemo",
+        "DA_18_Veigar",
+        "DA_18_RekSai",
+        "DA_KogMaw18_AD",
+        "DA_18_Rammus",
+        "DA_Draven18",
+        "DA_18_Tristana",
+        "DA_18_Maokai",
+        "DA_18_RekSai",
+        "DA_18_Rammus",
+        "DA_18_Kobuko",
+        "DA_KogMaw18_AD",
+        "DA_18_Teemo",
+        "DA_18_Tristana",
+        "DA_Draven18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_JeweledGauntlet",
+        "DA_RabadonsDeathcap",
+        "DA_SpearOfShojin",
+        "DA_BlueBuff",
+        "DA_GiantSlayer",
+        "DA_StrikersFlail"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blackthorn": 1,
+        "DA_18_Brawler": 1,
+        "DA_18_Invoker": 1,
+        "DA_18_Sprykin": 2
+      },
+      "avg_placement": 4.6583,
+      "top4_rate": 0.4604,
+      "win_rate": 0.1123,
+      "play_rate": 0.007,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=7,015 trận). Avg: 4.66",
+      "source": "metatft:META Spencer/cluster=422028/patch=18.1d",
+      "sample_n": 7015
+    },
+    {
+      "name": "MetaTFT: DA_18_Elderwood, DA_18_Kayle",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Leona",
+        "DA_18_Rakan",
+        "DA_18_Xayah",
+        "DA_18_Sejuani",
+        "DA_18_Ornn",
+        "DA_18_Kayle",
+        "DA_18_Hecarim",
+        "DA_18_Aphelios",
+        "DA_18_Rakan",
+        "DA_18_Ornn",
+        "DA_18_Ornn",
+        "DA_18_Hecarim",
+        "DA_18_Leona",
+        "DA_18_Sejuani",
+        "DA_18_Leona",
+        "DA_18_Sejuani",
+        "DA_18_Kayle",
+        "DA_18_Xayah",
+        "DA_18_Xayah",
+        "DA_18_Kayle"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GiantSlayer",
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_Deathblade",
+        "DA_RedBuff",
+        "DA_InfinityEdge"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Defender": 1,
+        "DA_18_Elderwood": 1,
+        "DA_18_Fae": 1,
+        "DA_18_Rapidfire": 2,
+        "DA_18_Vanguard": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.6338,
+      "top4_rate": 0.4666,
+      "win_rate": 0.1143,
+      "play_rate": 0.118,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=117,954 trận). Avg: 4.63",
+      "source": "metatft:META Spencer/cluster=422029/patch=18.1d",
+      "sample_n": 117954
+    },
+    {
+      "name": "MetaTFT: DA_18_Inferno, DA_18_Kayle",
+      "tier": "B",
+      "core_units": [
+        "DA_18_Shen",
+        "DA_18_Leona",
+        "DA_18_Kayle",
+        "DA_18_Sejuani",
+        "DA_18_Varus",
+        "DA_Amumu18",
+        "DA_18_Diana",
+        "DA_18_Aphelios",
+        "DA_18_Elise",
+        "DA_Amumu18",
+        "DA_18_Shen",
+        "DA_18_Diana",
+        "DA_18_Leona"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_HandOfJustice",
+        "DA_InfinityEdge",
+        "DA_SteraksGage",
+        "DA_EdgeOfNight",
+        "DA_Quicksilver",
+        "DA_Crownguard"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Defender": 1,
+        "DA_18_Inferno": 2,
+        "DA_18_Lunar": 1,
+        "DA_18_Rapidfire": 2,
+        "DA_18_Vanguard": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.4013,
+      "top4_rate": 0.5247,
+      "win_rate": 0.1329,
+      "play_rate": 0.0656,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=65,602 trận). Avg: 4.40",
+      "source": "metatft:META Spencer/cluster=422030/patch=18.1d",
+      "sample_n": 65602
+    },
+    {
+      "name": "MetaTFT: DA_18_Spellweaver, DA_18_Ahri",
+      "tier": "C",
+      "core_units": [
+        "DA_Karma18",
+        "DA_Fiddlesticks18",
+        "DA_18_Yorick",
+        "DA_18_Lillia",
+        "DA_18_Alune",
+        "DA_18_Rakan",
+        "DA_18_Diana",
+        "DA_18_Ahri",
+        "DA_18_Zyra"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_RedBuff",
+        "DA_SpearOfShojin",
+        "DA_VoidStaff",
+        "DA_JeweledGauntlet",
+        "DA_NashorsTooth",
+        "DA_StrikersFlail"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blossom": 1,
+        "DA_18_Defender": 1,
+        "DA_18_Fae": 1,
+        "DA_18_Lunar": 1,
+        "DA_18_Spellweaver": 2,
+        "DA_18_Summoner": 1,
+        "DA_18_Vanguard": 1,
+        "DA_FloraFatalis18": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.9293,
+      "top4_rate": 0.3927,
+      "win_rate": 0.0907,
+      "play_rate": 0.0088,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=8,836 trận). Avg: 4.93",
+      "source": "metatft:META Spencer/cluster=422031/patch=18.1d",
+      "sample_n": 8836
+    },
+    {
+      "name": "MetaTFT: DA_18_Blackthorn, DA_18_Warwick",
+      "tier": "C",
+      "core_units": [
+        "DA_18_RekSai",
+        "DA_18_Warwick",
+        "DA_Murkwolf18",
+        "DA_Krug18",
+        "DA_18_Veigar",
+        "DA_18_Azir",
+        "DA_18_Malphite",
+        "DA_18_Diana",
+        "DA_Brambleback18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_SpearOfShojin",
+        "DA_SteraksGage",
+        "DA_TitansResolve",
+        "DA_18_EmblemSlayer",
+        "DA_EdgeOfNight",
+        "DA_GuinsoosRageblade"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blackthorn": 2,
+        "DA_18_Brawler": 1,
+        "DA_Riftbeast18": 1,
+        "DA_18_Slayer": 2
+      },
+      "avg_placement": 4.9902,
+      "top4_rate": 0.3775,
+      "win_rate": 0.0858,
+      "play_rate": 0.0066,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=6,551 trận). Avg: 4.99",
+      "source": "metatft:META Spencer/cluster=422032/patch=18.1d",
+      "sample_n": 6551
+    },
+    {
+      "name": "MetaTFT: DA_Riftbeast18",
+      "tier": "B",
+      "core_units": [
+        "DA_Murkwolf18",
+        "DA_18_Sentry",
+        "DA_Cinderling18",
+        "DA_Gromp18_AP",
+        "DA_Scuttlecrab18",
+        "DA_Krug18",
+        "DA_CrimsonRaptor18",
+        "DA_Sentinel18",
+        "DA_Brambleback18",
+        "DA_18_GnarSmall",
+        "DA_18_ElderDragon"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_BlueBuff",
+        "DA_JeweledGauntlet",
+        "DA_RabadonsDeathcap",
+        "DA_GargoyleStoneplate",
+        "DA_SpiritVisage",
+        "DA_WarmogsArmor"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Brawler": 1,
+        "DA_18_Invoker": 1,
+        "DA_Riftbeast18": 4,
+        "DA_18_Slayer": 1
+      },
+      "avg_placement": 4.6317,
+      "top4_rate": 0.4671,
+      "win_rate": 0.1145,
+      "play_rate": 0.0655,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=65,480 trận). Avg: 4.63",
+      "source": "metatft:META Spencer/cluster=422033/patch=18.1d",
+      "sample_n": 65480
+    },
+    {
+      "name": "MetaTFT: DA_18_Elderwood, DA_18_Sett",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Yunara",
+        "DA_18_Sett",
+        "DA_Fiddlesticks18",
+        "DA_18_Soraka",
+        "DA_18_Ornn",
+        "DA_18_GnarSmall",
+        "DA_18_Ahri",
+        "DA_18_Ezreal",
+        "DA_18_Kennen"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemBrawler",
+        "DA_EdgeOfNight",
+        "DA_GuinsoosRageblade",
+        "DA_AdaptiveHelm",
+        "DA_GargoyleStoneplate",
+        "DA_SunfireCape"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blossom": 1,
+        "DA_18_Brawler": 1,
+        "DA_18_Defender": 1,
+        "DA_18_Elderwood": 1,
+        "DA_18_Executioner": 3,
+        "DA_18_Spellweaver": 1,
+        "DA_FloraFatalis18": 2
+      },
+      "avg_placement": 5.2277,
+      "top4_rate": 0.3181,
+      "win_rate": 0.0668,
+      "play_rate": 0.0047,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=4,660 trận). Avg: 5.23",
+      "source": "metatft:META Spencer/cluster=422034/patch=18.1d",
+      "sample_n": 4660
+    },
+    {
+      "name": "MetaTFT: DA_18_Rival, DA_18_Rengar",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Rengar",
+        "DA_18_KhaZix",
+        "DA_18_Alistar",
+        "DA_18_Diana",
+        "DA_Fiddlesticks18",
+        "DA_18_Soraka",
+        "DA_18_Ezreal",
+        "DA_18_Kennen",
+        "DA_18_Sett"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_EdgeOfNight",
+        "DA_GuinsoosRageblade",
+        "DA_InfinityEdge",
+        "DA_HandOfJustice",
+        "DA_RabadonsDeathcap",
+        "DA_Bloodthirster"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Brawler": 1,
+        "DA_18_Rival": 3,
+        "DA_18_Executioner": 3,
+        "DA_18_Slayer": 1,
+        "DA_18_Spellweaver": 1,
+        "DA_FloraFatalis18": 2
+      },
+      "avg_placement": 5.3626,
+      "top4_rate": 0.2844,
+      "win_rate": 0.056,
+      "play_rate": 0.0016,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=1,594 trận). Avg: 5.36",
+      "source": "metatft:META Spencer/cluster=422035/patch=18.1d",
+      "sample_n": 1594
+    },
+    {
+      "name": "MetaTFT: DA_18_Blossom, DA_18_Ahri, DA_18_Sett",
+      "tier": "C",
+      "core_units": [
+        "DA_Karma18",
+        "DA_18_Yorick",
+        "DA_18_Yunara",
+        "DA_18_MasterYi_AD",
+        "DA_18_Sett",
+        "DA_18_Ashe",
+        "DA_18_Ahri",
+        "DA_18_Maokai",
+        "DA_18_Yorick",
+        "TFT18_MasterYi",
+        "DA_18_Yunara",
+        "DA_Karma18",
+        "DA_Karma18",
+        "DA_18_Ahri"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_SteadfastHeart",
+        "DA_WarmogsArmor",
+        "DA_18_EmblemExecutioner",
+        "DA_BlueBuff",
+        "DA_RabadonsDeathcap"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blossom": 3,
+        "DA_18_Spellweaver": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 5.0429,
+      "top4_rate": 0.3643,
+      "win_rate": 0.0816,
+      "play_rate": 0.0166,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=16,592 trận). Avg: 5.04",
+      "source": "metatft:META Spencer/cluster=422036/patch=18.1d",
+      "sample_n": 16592
+    },
+    {
+      "name": "MetaTFT: DA_18_Elderwood, DA_18_Ezreal, DA_18_Alistar",
+      "tier": "C",
+      "core_units": [
+        "DA_18_LeBlanc",
+        "DA_18_Ornn",
+        "DA_18_Xayah",
+        "DA_18_Hecarim",
+        "DA_18_Alistar",
+        "DA_18_GnarSmall",
+        "DA_18_Ezreal",
+        "DA_18_Aphelios",
+        "DA_18_Lillia",
+        "DA_18_Alune",
+        "DA_18_Ivern"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GiantSlayer",
+        "DA_LastWhisper",
+        "DA_StrikersFlail",
+        "DA_InfinityEdge",
+        "DA_Deathblade",
+        "DA_SpearOfShojin"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Brawler": 1,
+        "DA_18_Defender": 1,
+        "DA_18_Elderwood": 3,
+        "DA_18_Fae": 1,
+        "DA_18_Lunar": 1,
+        "DA_18_Rapidfire": 2,
+        "DA_18_Spellweaver": 1
+      },
+      "avg_placement": 4.7329,
+      "top4_rate": 0.4418,
+      "win_rate": 0.1064,
+      "play_rate": 0.0256,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=25,600 trận). Avg: 4.73",
+      "source": "metatft:META Spencer/cluster=422037/patch=18.1d",
+      "sample_n": 25600
+    },
+    {
+      "name": "MetaTFT: DA_18_Rapidfire, DA_18_Kayle",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Kayle",
+        "DA_18_Leona",
+        "DA_18_Varus",
+        "DA_18_Sejuani",
+        "DA_18_Shen",
+        "DA_18_Diana",
+        "DA_18_Aphelios",
+        "DA_Amumu18",
+        "DA_18_Leona",
+        "DA_18_Shen",
+        "DA_18_Leona",
+        "DA_18_Shen",
+        "DA_Amumu18",
+        "DA_18_Diana",
+        "DA_18_Sejuani",
+        "DA_18_Sejuani",
+        "DA_18_Aphelios",
+        "DA_18_Varus",
+        "DA_18_Kayle",
+        "DA_18_Kayle",
+        "DA_18_Kayle"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_LastWhisper",
+        "DA_Deathblade",
+        "DA_GiantSlayer",
+        "DA_RedBuff"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Defender": 1,
+        "DA_18_Inferno": 2,
+        "DA_18_Lunar": 1,
+        "DA_18_Rapidfire": 2,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.8195,
+      "top4_rate": 0.4201,
+      "win_rate": 0.0994,
+      "play_rate": 0.0033,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=3,341 trận). Avg: 4.82",
+      "source": "metatft:META Spencer/cluster=422038/patch=18.1d",
+      "sample_n": 3341
+    },
+    {
+      "name": "MetaTFT: DA_18_Fae, DA_18_Xayah",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Ornn",
+        "DA_18_Xayah",
+        "DA_18_Rakan",
+        "DA_18_Varus",
+        "DA_18_Hecarim",
+        "DA_Amumu18",
+        "DA_18_Tristana",
+        "DA_18_Lillia",
+        "DA_18_Ornn",
+        "DA_Amumu18",
+        "DA_18_Xayah",
+        "DA_18_Ornn",
+        "DA_18_Rakan",
+        "DA_18_Hecarim",
+        "DA_18_Lillia",
+        "DA_18_Rakan",
+        "DA_18_Varus",
+        "DA_18_Xayah",
+        "DA_18_Varus",
+        "DA_18_Tristana"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemFae",
+        "DA_GuinsoosRageblade",
+        "DA_TitansResolve",
+        "DA_Deathblade",
+        "DA_HextechGunblade",
+        "DA_StrikersFlail"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Defender": 1,
+        "DA_18_Elderwood": 1,
+        "DA_18_Fae": 2,
+        "DA_18_Inferno": 1,
+        "DA_18_Rapidfire": 1,
+        "DA_18_Vanguard": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 6.1607,
+      "top4_rate": 0.0848,
+      "win_rate": 0.0,
+      "play_rate": 0.004,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=4,025 trận). Avg: 6.16",
+      "source": "metatft:META Spencer/cluster=422039/patch=18.1d",
+      "sample_n": 4025
+    },
+    {
+      "name": "MetaTFT: DA_Juggernaut18, DA_Nidalee18_AP",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Rakan",
+        "DA_18_Ivern",
+        "DA_Amumu18",
+        "DA_Vi18",
+        "DA_Nidalee18_AP",
+        "DA_18_Sivir",
+        "DA_18_Ashe",
+        "DA_18_Maokai",
+        "DA_Taric18",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_EdgeOfNight",
+        "DA_GiantSlayer",
+        "DA_InfinityEdge",
+        "DA_GuinsoosRageblade",
+        "DA_TitansResolve",
+        "DA_SteraksGage"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Hunter": 1,
+        "DA_Primal18": 2,
+        "DA_18_Vanguard": 1,
+        "DA_Juggernaut18": 2
+      },
+      "avg_placement": 4.8739,
+      "top4_rate": 0.4065,
+      "win_rate": 0.0951,
+      "play_rate": 0.0073,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=7,272 trận). Avg: 4.87",
+      "source": "metatft:META Spencer/cluster=422040/patch=18.1d",
+      "sample_n": 7272
+    },
+    {
+      "name": "MetaTFT: DA_18_Executioner, DA_18_Soraka",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Maokai",
+        "DA_18_Cassiopeia",
+        "DA_Taric18",
+        "DA_Amumu18",
+        "DA_18_Malphite",
+        "DA_18_Soraka",
+        "DA_Sentinel18",
+        "DA_18_Kennen",
+        "DA_18_Morgana",
+        "DA_Scuttlecrab18",
+        "DA_Krug18",
+        "DA_Sentinel18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_AdaptiveHelm",
+        "DA_GiantSlayer",
+        "DA_RabadonsDeathcap",
+        "DA_ArchangelsStaff",
+        "DA_BlueBuff",
+        "DA_StrikersFlail"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Inferno": 1,
+        "DA_18_Invoker": 1,
+        "DA_18_Executioner": 1,
+        "DA_18_Vanguard": 1,
+        "DA_FloraFatalis18": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.9595,
+      "top4_rate": 0.3851,
+      "win_rate": 0.0882,
+      "play_rate": 0.0067,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=6,709 trận). Avg: 4.96",
+      "source": "metatft:META Spencer/cluster=422041/patch=18.1d",
+      "sample_n": 6709
+    },
+    {
+      "name": "MetaTFT: DA_18_Inferno, DA_Amumu18",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Varus",
+        "DA_18_Akali_AD",
+        "DA_18_Shen",
+        "DA_18_Ivern",
+        "DA_Amumu18",
+        "DA_18_Maokai",
+        "DA_Taric18",
+        "DA_Draven18",
+        "DA_18_Kennen",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_Deathblade",
+        "DA_InfinityEdge",
+        "DA_KrakensFury",
+        "DA_18_EmblemDefender",
+        "DA_GargoyleStoneplate",
+        "DA_SpiritVisage"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Inferno": 3,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 5.1767,
+      "top4_rate": 0.3308,
+      "win_rate": 0.0709,
+      "play_rate": 0.0062,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=6,201 trận). Avg: 5.18",
+      "source": "metatft:META Spencer/cluster=422042/patch=18.1d",
+      "sample_n": 6201
+    },
+    {
+      "name": "MetaTFT: DA_18_Blackthorn, DA_18_KhaZix",
+      "tier": "C",
+      "core_units": [
+        "DA_18_RekSai",
+        "DA_18_KhaZix",
+        "DA_18_Veigar",
+        "DA_18_Sett",
+        "DA_18_Azir",
+        "DA_18_Warwick",
+        "DA_CrimsonRaptor18",
+        "DA_18_Malphite",
+        "DA_18_Warwick",
+        "DA_18_Veigar",
+        "DA_CrimsonRaptor18",
+        "DA_18_Malphite",
+        "DA_18_KhaZix",
+        "DA_18_KhaZix",
+        "DA_18_Sett",
+        "DA_18_Azir"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_18_EmblemBlackthorn",
+        "DA_ArchangelsStaff",
+        "DA_HandOfJustice",
+        "DA_EdgeOfNight",
+        "DA_GuinsoosRageblade",
+        "DA_TitansResolve"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blackthorn": 3,
+        "DA_18_Brawler": 1,
+        "DA_18_Rival": 1,
+        "DA_18_Executioner": 1,
+        "DA_18_Spellweaver": 1,
+        "DA_18_Summoner": 1
+      },
+      "avg_placement": 5.5268,
+      "top4_rate": 0.2433,
+      "win_rate": 0.0429,
+      "play_rate": 0.0046,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=4,622 trận). Avg: 5.53",
+      "source": "metatft:META Spencer/cluster=422043/patch=18.1d",
+      "sample_n": 4622
+    },
+    {
+      "name": "MetaTFT: DA_18_Lunar, DA_18_Aphelios",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Xayah",
+        "DA_18_Aphelios",
+        "DA_18_Alistar",
+        "DA_18_LeBlanc",
+        "DA_Taric18",
+        "DA_18_Lillia",
+        "DA_18_Alune",
+        "DA_18_GnarSmall",
+        "DA_18_Diana"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_InfinityEdge",
+        "DA_LastWhisper",
+        "DA_RedBuff",
+        "DA_Deathblade",
+        "DA_GiantSlayer",
+        "DA_18_EmblemFae"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Brawler": 1,
+        "DA_18_Elderwood": 2,
+        "DA_18_Fae": 1,
+        "DA_18_Lunar": 2,
+        "DA_18_Rapidfire": 1,
+        "DA_18_Spellweaver": 1,
+        "DA_18_Vanguard": 1
+      },
+      "avg_placement": 5.1286,
+      "top4_rate": 0.3429,
+      "win_rate": 0.0747,
+      "play_rate": 0.0103,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=10,320 trận). Avg: 5.13",
+      "source": "metatft:META Spencer/cluster=422044/patch=18.1d",
+      "sample_n": 10320
+    },
+    {
+      "name": "MetaTFT: DA_18_Spellweaver, DA_18_KhaZix",
+      "tier": "C",
+      "core_units": [
+        "DA_18_KhaZix",
+        "DA_18_Rakan",
+        "DA_18_Diana",
+        "DA_Fiddlesticks18",
+        "DA_18_Alune",
+        "DA_Draven18",
+        "DA_18_Ivern",
+        "DA_Taric18",
+        "DA_Taric18",
+        "DA_Gromp18_AP"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_EdgeOfNight",
+        "DA_HandOfJustice",
+        "DA_HextechGunblade",
+        "DA_JeweledGauntlet",
+        "DA_StrikersFlail",
+        "DA_18_EmblemBlackthorn"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Lunar": 1,
+        "DA_18_Rival": 1,
+        "DA_18_Slayer": 1,
+        "DA_18_Spellweaver": 1,
+        "DA_18_Vanguard": 1,
+        "DA_FloraFatalis18": 1
+      },
+      "avg_placement": 5.4943,
+      "top4_rate": 0.2514,
+      "win_rate": 0.0455,
+      "play_rate": 0.0053,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=5,298 trận). Avg: 5.49",
+      "source": "metatft:META Spencer/cluster=422045/patch=18.1d",
+      "sample_n": 5298
+    },
+    {
+      "name": "MetaTFT: DA_Juggernaut18, DA_Draven18",
+      "tier": "C",
+      "core_units": [
+        "DA_Amumu18",
+        "DA_18_Alistar",
+        "DA_Draven18",
+        "DA_18_Ezreal",
+        "DA_18_Kennen",
+        "DA_Taric18",
+        "DA_18_GnarSmall",
+        "DA_18_Maokai",
+        "DA_18_Ivern",
+        "DA_Brambleback18",
+        "DA_CrimsonRaptor18",
+        "DA_Cinderling18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_InfinityEdge",
+        "DA_LastWhisper",
+        "DA_StrikersFlail",
+        "DA_Deathblade",
+        "DA_SteraksGage",
+        "DA_GuinsoosRageblade"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Brawler": 1,
+        "DA_18_Elderwood": 1,
+        "DA_18_Inferno": 1,
+        "DA_18_Executioner": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 4.6699,
+      "top4_rate": 0.4575,
+      "win_rate": 0.1114,
+      "play_rate": 0.1263,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=126,260 trận). Avg: 4.67",
+      "source": "metatft:META Spencer/cluster=422046/patch=18.1d",
+      "sample_n": 126260
+    },
+    {
+      "name": "MetaTFT: DA_18_Fae, DA_18_Tristana, DA_18_Xayah",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Rakan",
+        "DA_18_Xayah",
+        "DA_18_Elise",
+        "DA_18_Diana",
+        "DA_18_Tristana",
+        "DA_18_Hecarim",
+        "DA_18_Hecarim",
+        "DA_Taric18",
+        "DA_18_Hecarim",
+        "DA_18_Rakan",
+        "DA_18_Rakan",
+        "DA_18_Hecarim",
+        "DA_18_Diana",
+        "DA_18_Tristana",
+        "DA_18_EliseSpider",
+        "DA_18_Xayah"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GuinsoosRageblade",
+        "DA_InfinityEdge",
+        "DA_RedBuff",
+        "DA_LastWhisper",
+        "DA_KrakensFury",
+        "DA_18_EmblemFae"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Fae": 1,
+        "DA_18_Vanguard": 2
+      },
+      "avg_placement": 5.7067,
+      "top4_rate": 0.1983,
+      "win_rate": 0.0285,
+      "play_rate": 0.0025,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=2,520 trận). Avg: 5.71",
+      "source": "metatft:META Spencer/cluster=422047/patch=18.1d",
+      "sample_n": 2520
+    },
+    {
+      "name": "MetaTFT: DA_18_Blackthorn, DA_18_Azir",
+      "tier": "C",
+      "core_units": [
+        "DA_18_RekSai",
+        "DA_18_Warwick",
+        "DA_Krug18",
+        "DA_18_Azir",
+        "DA_Murkwolf18",
+        "DA_18_Malphite",
+        "DA_Brambleback18",
+        "DA_18_Diana"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_Crownguard",
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_18_EmblemFloraFatalisAugment",
+        "DA_BlueBuff",
+        "DA_JeweledGauntlet"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Blackthorn": 2,
+        "DA_18_Brawler": 1,
+        "DA_Riftbeast18": 1,
+        "DA_18_Slayer": 2
+      },
+      "avg_placement": 4.8732,
+      "top4_rate": 0.4067,
+      "win_rate": 0.0951,
+      "play_rate": 0.0031,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=3,069 trận). Avg: 4.87",
+      "source": "metatft:META Spencer/cluster=422048/patch=18.1d",
+      "sample_n": 3069
+    },
+    {
+      "name": "MetaTFT: DA_18_Defender, DA_18_Rammus",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Shen",
+        "DA_18_Rammus",
+        "DA_18_Ivern",
+        "DA_18_Teemo",
+        "DA_18_Morgana",
+        "DA_18_Kennen",
+        "DA_18_Soraka",
+        "DA_18_Lillia",
+        "DA_Fiddlesticks18",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern",
+        "DA_18_Ivern"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GargoyleStoneplate",
+        "DA_SteadfastHeart",
+        "DA_WarmogsArmor",
+        "DA_SunfireCape",
+        "DA_DragonsClaw",
+        "DA_18_EmblemDefender"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Defender": 3,
+        "DA_18_Inferno": 1,
+        "DA_18_Invoker": 1,
+        "DA_18_Executioner": 1,
+        "DA_18_Sprykin": 1,
+        "DA_FloraFatalis18": 2
+      },
+      "avg_placement": 6.2453,
+      "top4_rate": 0.0637,
+      "win_rate": 0.0,
+      "play_rate": 0.0007,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=697 trận). Avg: 6.25",
+      "source": "metatft:META Spencer/cluster=422049/patch=18.1d",
+      "sample_n": 697
+    },
+    {
+      "name": "MetaTFT: DA_18_Coven, DA_18_Morgana",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Elise",
+        "DA_18_Rakan",
+        "DA_18_Camille",
+        "DA_Sentinel18",
+        "DA_18_Morgana",
+        "DA_18_Cassiopeia",
+        "DA_18_Caitlyn",
+        "DA_18_Diana",
+        "DA_18_Diana",
+        "DA_18_Rakan",
+        "DA_18_Camille",
+        "DA_18_EliseSpider",
+        "DA_18_Cassiopeia",
+        "DA_18_Caitlyn"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_AdaptiveHelm",
+        "DA_Morellonomicon",
+        "DA_VoidStaff",
+        "DA_18_EmblemSpellweaver",
+        "DA_RabadonsDeathcap",
+        "DA_RedBuff"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Coven": 3,
+        "DA_18_Invoker": 1,
+        "DA_18_Slayer": 1,
+        "DA_18_Vanguard": 2
+      },
+      "avg_placement": 5.981,
+      "top4_rate": 0.1298,
+      "win_rate": 0.0065,
+      "play_rate": 0.0178,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=17,759 trận). Avg: 5.98",
+      "source": "metatft:META Spencer/cluster=422050/patch=18.1d",
+      "sample_n": 17759
+    },
+    {
+      "name": "MetaTFT: DA_18_Elderwood, DA_18_LeBlanc",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Alistar",
+        "DA_18_Ornn",
+        "DA_18_Xayah",
+        "DA_18_LeBlanc",
+        "DA_Fiddlesticks18",
+        "DA_18_Hecarim",
+        "DA_18_Sett",
+        "DA_Draven18",
+        "DA_18_Elise",
+        "DA_18_GnarSmall"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_Morellonomicon",
+        "DA_SpearOfShojin",
+        "DA_VoidStaff",
+        "DA_GiantSlayer",
+        "DA_RedBuff",
+        "DA_ArchangelsStaff"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_18_Brawler": 1,
+        "DA_18_Defender": 1,
+        "DA_18_Elderwood": 2,
+        "DA_18_Spellweaver": 1,
+        "DA_18_Vanguard": 1,
+        "DA_FloraFatalis18": 1
+      },
+      "avg_placement": 5.3384,
+      "top4_rate": 0.2904,
+      "win_rate": 0.0579,
+      "play_rate": 0.0062,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=6,168 trận). Avg: 5.34",
+      "source": "metatft:META Spencer/cluster=422051/patch=18.1d",
+      "sample_n": 6168
+    },
+    {
+      "name": "MetaTFT: DA_Riftbeast18, DA_CrimsonRaptor18",
+      "tier": "C",
+      "core_units": [
+        "DA_18_Rakan",
+        "DA_18_Yorick",
+        "DA_Cinderling18",
+        "DA_Gromp18_AP",
+        "DA_CrimsonRaptor18",
+        "DA_Scuttlecrab18",
+        "DA_18_Sentry",
+        "DA_Krug18",
+        "DA_18_Sentry",
+        "DA_Krug18"
+      ],
+      "flex_units": [],
+      "core_items": [
+        "DA_GuinsoosRageblade",
+        "DA_HextechGunblade",
+        "DA_KrakensFury",
+        "DA_GiantSlayer",
+        "DA_Deathblade",
+        "DA_InfinityEdge"
+      ],
+      "best_augments": [],
+      "traits": {
+        "DA_Riftbeast18": 2,
+        "DA_18_Summoner": 1,
+        "DA_Juggernaut18": 1
+      },
+      "avg_placement": 5.9355,
+      "top4_rate": 0.1411,
+      "win_rate": 0.0102,
+      "play_rate": 0.0014,
+      "level_timing": {
+        "8": 4
+      },
+      "early_game": [],
+      "positioning_notes": "Cụm thống kê K-means MetaTFT (n=1,396 trận). Avg: 5.94",
+      "source": "metatft:META Spencer/cluster=422052/patch=18.1d",
+      "sample_n": 1396
+    }
+  ]
+}

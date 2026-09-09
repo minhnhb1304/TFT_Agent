@@ -99,7 +99,7 @@ class ScoringConfig:
             tuning={
                 "base": {
                     "best_place": 3.5, "worst_place": 5.0, "min_sample_n": 200,
-                    "ordinal_trust": 0.65,
+                    "ordinal_trust": 0.65, "unknown_score": 0.35,
                 },
                 "board_fit": {
                     "trait_weight": 0.6, "carry_weight": 0.4,

@@ -87,12 +87,21 @@ class Advisor:
             FeatureTable.load(feature_path) if feature_path.exists() else FeatureTable.empty()
         )
         self.stats = stats or default_provider(
-            s.path("augment_stats_csv"), s.path("augment_tiers")
+            s.path("augment_stats_csv"),
+            s.path("augment_tiers"),
+            s.path("augment_tiers_backup"),
         )
         self.augment_advisor = AugmentAdvisor(self.features, self.stats, config)
 
+        primary_comps_path = s.path("meta_comps")
+        if not primary_comps_path.exists():
+            legacy_path = s.root / "data" / "meta_comps.json"
+            if legacy_path.exists():
+                primary_comps_path = legacy_path
+
+        backup_comps_path = s.path("meta_comps_backup")
         self.comp_selector = CompSelector(
-            comps or CompDatabase.load(s.path("meta_comps")),
+            comps or CompDatabase.load_composite(primary_comps_path, backup_comps_path),
             config,
             enable_scouting=s.enable_scouting,
         )

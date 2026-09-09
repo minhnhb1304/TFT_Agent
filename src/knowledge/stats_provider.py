@@ -391,13 +391,15 @@ class OpggMcpProvider:
 def default_provider(
     csv_path: str | Path | None = None,
     tiers_path: str | Path | None = None,
+    backup_tiers_path: str | Path | None = None,
     allow_fabricated: bool = False,
 ) -> AugmentStatsProvider:
-    """Nguon mac dinh, theo THU TU UU TIEN: CSV -> bang tier -> Null.
+    """Nguon mac dinh, theo THU TU UU TIEN: CSV -> bang tier (TFT Academy) -> du phong (MetaTFT) -> Null.
 
     Thu tu nay la mot phat bieu ve gia tri bang chung, khong phai tien lop:
     mot so DO DUOC luon thang mot y kien, du y kien do den tu nguoi choi gioi
-    hon. Bang tier chi duoc dung o nhung augment ma CSV khong co.
+    hon. Bang tier chi duoc dung o nhung augment ma CSV khong co. MetaTFT chi duoc
+    dung o nhung augment ma ca CSV lan TFT Academy deu khong co.
 
     NHUNG MOT SO GIA THI KHONG THANG GI CA (sua 2026-09-07). `AugmentStats.
     is_evidence` chi nhin `sample_n`, ma bo so gia lap bia san sample_n tren
@@ -409,6 +411,10 @@ def default_provider(
 
     Day la ham duy nhat trong du an duoc phep quyet dinh nguon nao dang dung.
     """
+    if isinstance(backup_tiers_path, bool):
+        allow_fabricated = backup_tiers_path
+        backup_tiers_path = None
+
     providers: list[AugmentStatsProvider] = []
     if csv_path and Path(csv_path).exists():
         csv_provider = CsvProvider(csv_path, allow_fabricated=allow_fabricated)
@@ -418,6 +424,11 @@ def default_provider(
         tiers = ExpertTierListProvider.load(tiers_path)
         if len(tiers):
             providers.append(tiers)
+    if backup_tiers_path and Path(backup_tiers_path).exists():
+        backup_tiers = ExpertTierListProvider.load(backup_tiers_path)
+        if len(backup_tiers):
+            providers.append(backup_tiers)
     if not providers:
         return NullProvider()
     return CompositeProvider(providers + [NullProvider()])
+

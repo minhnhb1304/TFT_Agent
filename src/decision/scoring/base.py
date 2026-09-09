@@ -30,17 +30,29 @@ class BaseScorer:
         # phan xet doan, va no phai nam trong file config de ablation thay
         # duoc no dang dong gop bao nhieu.
         self.ordinal_trust = clamp01(float(tune.get("ordinal_trust", 0.65)))
+        # Diem cho loi chua biet / chua co data/tier list chinh xac.
+        # Dat 0.35 (duoi bac B = 0.370) de phat rui ro thieu thong tin, tao dong co reroll.
+        self.unknown_score = clamp01(float(tune.get("unknown_score", 0.35)))
 
     def __call__(
         self, api_name: str, feature: AugmentFeature | None, state: GameState
     ) -> ComponentScore:
         stats = self.provider.get(api_name)
         if stats is None:
-            return neutral(
+            return ComponentScore(
                 NAME,
-                f"Chưa có số liệu ({getattr(self.provider, 'name', 'unknown')}) — điểm trung tính",
-                source=getattr(self.provider, "name", "unknown"),
-                sample_n=0,
+                self.unknown_score,
+                f"Chưa có data/tier list chính xác ({getattr(self.provider, 'name', 'unknown')}) — hạ điểm xuống {self.unknown_score:.2f}",
+                {
+                    "avg_place": None,
+                    "top4_rate": 0.0,
+                    "sample_n": 0,
+                    "source": getattr(self.provider, "name", "unknown"),
+                    "tier": "",
+                    "is_ordinal": False,
+                    "trust": 0.0,
+                    "is_unknown": True,
+                },
             )
 
         # Placement thap = tot, nen dao chieu khi chuan hoa.

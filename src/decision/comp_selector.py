@@ -136,7 +136,7 @@ class CompSelector:
             return 0.0
         best = {a.lower() for a in comp.best_augments}
         have = {a.lower() for a in state.augments}
-        return len(best & have) / len(best)
+        return len(best & have) / len(have) if have else 0.0
 
     # -- tong hop ----------------------------------------------------------
 
