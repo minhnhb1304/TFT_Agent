@@ -21,8 +21,10 @@ DEFAULTS: dict[str, Any] = {
         "augment_features": "data/augment_features.json",
         "augment_stats_csv": "data/augment_stats.csv",
         "augment_tiers": "data/augment_tiers.json",
+        "augment_tiers_backup": "data/augment_tiers.metatft.json",
         "scoring_weights": "config/scoring_weights.yaml",
-        "meta_comps": "data/meta_comps.json",
+        "meta_comps": "data/meta_comps.tftacademy.json",
+        "meta_comps_backup": "data/meta_comps.metatft.json",
         "item_recipes": "data/item_recipes.json",
         "name_index": "data/name_index.json",
         "scenarios": "data/scenarios",
@@ -50,6 +52,12 @@ DEFAULTS: dict[str, Any] = {
         "allow_unverified_roll_odds": False,
     },
     "logging": {"log_scenarios": True, "save_frames": False},
+    "vision": {
+        "gemini_model": "gemini-3.5-flash-lite",
+        "gemini_timeout_s": 12.0,
+        "enable_gemini_vision": True,
+        "vote_window": 5,
+    },
 }
 
 
@@ -101,6 +109,22 @@ class Settings:
     @property
     def log_scenarios(self) -> bool:
         return bool(self.get("logging", "log_scenarios", True))
+
+    @property
+    def enable_gemini_vision(self) -> bool:
+        return bool(self.get("vision", "enable_gemini_vision", True))
+
+    @property
+    def gemini_model(self) -> str:
+        return str(self.get("vision", "gemini_model", "gemini-3.5-flash-lite"))
+
+    @property
+    def gemini_timeout_s(self) -> float:
+        return float(self.get("vision", "gemini_timeout_s", 6.0))
+
+    @property
+    def vote_window(self) -> int:
+        return int(self.get("vision", "vote_window", 5))
 
 
 def _deep_copy(data: dict[str, Any]) -> dict[str, Any]:
