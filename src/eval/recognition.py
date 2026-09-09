@@ -9,9 +9,10 @@ BA DIEU NHAY CAM PHAI LAM DUNG:
    stage). Gop chung lai se giau mat viec augment - thu quan trong nhat - co
    the dang te hon han cac truong so de doc.
 
-2. Bao cao RIENG 4 cap augment map mo. Chung khong the phan biet duoc bang bat
-   ky phuong phap nao; tron vao chi so chung se lam mot GIOI HAN DU LIEU trong
-   giong nhu mot LOI MODEL.
+2. Bao cao RIENG cac cap augment map mo (5 cap o Set 18, doc dong tu
+   data/name_index.json). Chung khong the phan biet duoc bang bat ky phuong
+   phap nao; tron vao chi so chung se lam mot GIOI HAN DU LIEU trong giong
+   nhu mot LOI MODEL.
 
 3. Latency do khi GAME DANG CHAY. Moi con so latency san co deu do tren may
    ranh, va vi the deu la so lac quan.
@@ -19,7 +20,9 @@ BA DIEU NHAY CAM PHAI LAM DUNG:
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any, Iterable, Sequence
 
 
@@ -85,6 +88,29 @@ def percentile(values: Sequence[float], q: float) -> float:
     return ordered[low] + (ordered[high] - ordered[low]) * (pos - low)
 
 
+def _load_ambiguous_count(path: str | Path | None = None) -> int:
+    """Doc so cap augment map mo tu data/name_index.json neu co, fallback la 5."""
+    p = (
+        Path(path)
+        if path
+        else Path(__file__).resolve().parent.parent.parent / "data" / "name_index.json"
+    )
+    if p.is_file():
+        try:
+            data = json.loads(p.read_text(encoding="utf-8"))
+            count = (
+                data.get("meta", {})
+                .get("ambiguous_group_counts", {})
+                .get("augments", {})
+                .get("vi")
+            )
+            if isinstance(count, int):
+                return count
+        except Exception:
+            pass
+    return 5
+
+
 @dataclass
 class RecognitionReport:
     """Bao cao 12.1 day du."""
@@ -93,6 +119,7 @@ class RecognitionReport:
     ambiguous: EntityMetrics = field(default_factory=lambda: EntityMetrics("augment/map-mo"))
     latencies: dict[str, list[float]] = field(default_factory=dict)
     n: int = 0
+    ambiguous_count: int | None = None
 
     def latency_stats(self, entity: str) -> dict[str, float]:
         values = self.latencies.get(entity, [])
@@ -114,9 +141,14 @@ class RecognitionReport:
             )
         if self.ambiguous.support:
             m = self.ambiguous
+            count = (
+                self.ambiguous_count
+                if self.ambiguous_count is not None
+                else _load_ambiguous_count()
+            )
             lines.append("")
             lines.append(
-                f"{'4 cap map mo':<20}{m.precision:>8.3f}{m.recall:>8.3f}{m.f1:>8.3f}"
+                f"{f'{count} cap map mo':<20}{m.precision:>8.3f}{m.recall:>8.3f}{m.f1:>8.3f}"
                 f"{m.support:>7}"
             )
             lines.append(
@@ -125,15 +157,25 @@ class RecognitionReport:
         return "\n".join(lines)
 
     def to_dict(self) -> dict[str, Any]:
+        count = (
+            self.ambiguous_count
+            if self.ambiguous_count is not None
+            else _load_ambiguous_count()
+        )
         return {
             "n": self.n,
             "per_entity": {k: v.to_dict() for k, v in self.per_entity.items()},
             "ambiguous_pairs": self.ambiguous.to_dict(),
+            "ambiguous_count": count,
             "latency": {k: self.latency_stats(k) for k in self.latencies},
         }
 
 
-def evaluate(predictions: Iterable[Prediction]) -> RecognitionReport:
+def evaluate(
+    predictions: Iterable[Prediction],
+    *,
+    ambiguous_count: int | None = None,
+) -> RecognitionReport:
     """Doi chieu du doan voi nhan tay, tra ve bao cao 12.1.
 
     Quy uoc dem:
@@ -144,7 +186,9 @@ def evaluate(predictions: Iterable[Prediction]) -> RecognitionReport:
         truth None, predicted co   -> FP
         ca hai None                -> TN
     """
-    report = RecognitionReport()
+    report = RecognitionReport(
+        ambiguous_count=ambiguous_count if ambiguous_count is not None else _load_ambiguous_count()
+    )
 
     for p in predictions:
         report.n += 1

@@ -275,6 +275,23 @@ def test_ambiguous_pairs_are_reported_separately() -> None:
     assert report.ambiguous.support == 1
     assert report.ambiguous.f1 == 0.0
     assert "GIOI HAN DU LIEU" in report.table()
+    assert "5 cap map mo" in report.table()
+
+
+def test_ambiguous_pairs_count_derived_from_name_index() -> None:
+    """So cap map mo duoc doc tu name_index.json (5 cap o Set 18) hoac nhan qua tham so."""
+    report = evaluate_recognition([
+        Prediction("augment", "X", "Y", ambiguous_pair=True),
+    ])
+    assert "5 cap map mo" in report.table()
+    assert report.ambiguous_count == 5
+
+    custom_report = evaluate_recognition(
+        [Prediction("augment", "X", "Y", ambiguous_pair=True)],
+        ambiguous_count=7,
+    )
+    assert "7 cap map mo" in custom_report.table()
+    assert custom_report.ambiguous_count == 7
 
 
 def test_latency_percentiles_are_per_entity() -> None:

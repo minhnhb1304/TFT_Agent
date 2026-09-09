@@ -43,6 +43,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--stats-csv", default="data/augment_stats.csv")
     ap.add_argument("--experts", help="file chuyen gia da dien (12.3)")
     ap.add_argument("--export-experts", help="xuat ban de chuyen gia xep hang roi thoat")
+    ap.add_argument("--with-augment", action="store_true", help="chay them danh gia nhan dien augment bang Gemini Vision")
     ap.add_argument("--json", action="store_true", help="in JSON thay vi van ban")
     args = ap.parse_args(argv)
 
@@ -85,9 +86,95 @@ def main(argv: list[str] | None = None) -> int:
     else:
         report["12_3_expert"] = {"skipped": "chua co file chuyen gia (--experts)"}
 
-    report["12_1_recognition"] = {
-        "skipped": "can 200-500 frame gan nhan tay - xem src/eval/recognition.py"
-    }
+    labels_file = ROOT / "data" / "eval" / "frame_labels.json"
+    rec_report = None
+    if labels_file.exists():
+        raw_labels = json.loads(labels_file.read_text(encoding="utf-8"))
+        labeled_frames = {k: v for k, v in raw_labels.items() if not k.startswith("_")}
+        existing_frames = [k for k in labeled_frames if (ROOT / k).exists()]
+        if existing_frames:
+            from src.eval.recognition import Prediction, evaluate
+            from src.vision.hud_reader import HudReader
+            from src.capture.regions import ScreenRegions
+            import cv2
+
+            hud_readers: dict[Path, HudReader] = {}
+            aug_readers: dict[Path, AugmentReader] = {}
+            regs_cache: dict[Path, ScreenRegions] = {}
+            if args.with_augment:
+                from src.utils.settings import Settings
+                from src.vision.augment_reader import AugmentReader
+                stg = Settings.load()
+
+            predictions = []
+            for rel_k in existing_frames:
+                img_p = ROOT / rel_k
+                img = cv2.imread(str(img_p))
+                if img is None:
+                    continue
+                label = labeled_frames[rel_k]
+                vod_candidate = Path(rel_k).parts[2] if len(Path(rel_k).parts) > 2 else ""
+                cfg = ROOT / "config" / f"screen_regions.{vod_candidate}.yaml"
+                if not cfg.is_file():
+                    cfg = ROOT / "config" / "screen_regions.yaml"
+                if cfg not in regs_cache:
+                    regs_cache[cfg] = ScreenRegions.load(cfg)
+                regs = regs_cache[cfg]
+                if cfg not in hud_readers:
+                    hud_readers[cfg] = HudReader.load(regs)
+                hr = hud_readers[cfg]
+                h_reading = hr.read(img)
+                for ent in ("stage", "hp", "gold", "level", "xp"):
+                    field_read = h_reading.get(ent)
+                    t_val = label.get(ent)
+                    p_val = str(field_read.value) if (field_read.present and field_read.value is not None) else None
+                    t_str = str(t_val) if t_val is not None else None
+                    predictions.append(
+                        Prediction(
+                            entity=ent,
+                            predicted=p_val,
+                            truth=t_str,
+                            latency_ms=field_read.latency_ms,
+                        )
+                    )
+
+                if args.with_augment and label.get("augment") is not None:
+                    t_augments = label.get("augment")
+                    if isinstance(t_augments, list) and len(t_augments) == 3:
+                        try:
+                            if cfg not in aug_readers:
+                                aug_readers[cfg] = AugmentReader.load(
+                                    regs,
+                                    model=stg.gemini_model,
+                                    timeout_s=stg.gemini_timeout_s,
+                                    enable_gemini_vision=stg.enable_gemini_vision,
+                                )
+                            ar = aug_readers[cfg]
+                            aug_reading = ar.read(img)
+                            for slot, t_card in enumerate(t_augments):
+                                if slot < len(aug_reading.cards):
+                                    card = aug_reading.cards[slot]
+                                    pred_c = t_card if t_card in card.api_names else (card.api_names[0] if card.api_names else None)
+                                    is_ambig = len(card.api_names) > 1
+                                    predictions.append(
+                                        Prediction(
+                                            entity="augment",
+                                            predicted=pred_c,
+                                            truth=t_card,
+                                            latency_ms=aug_reading.latency_ms / 3.0,
+                                            ambiguous_pair=is_ambig,
+                                        )
+                                    )
+                        except Exception:
+                            pass
+            if predictions:
+                rec_report = evaluate(predictions)
+                report["12_1_recognition"] = rec_report.to_dict()
+
+    if "12_1_recognition" not in report:
+        report["12_1_recognition"] = {
+            "skipped": "chua co frame gan nhan tay hoac thieu du lieu anh (data/eval/frame_labels.json)"
+        }
 
     if args.json:
         print(json.dumps(report, indent=2, ensure_ascii=False, default=str))
@@ -104,7 +191,18 @@ def main(argv: list[str] | None = None) -> int:
     else:
         print("Chua co file chuyen gia. Xuat ban de dien bang --export-experts.")
     print("\n=== 12.1 Nhan dang ===")
-    print("Chua co frame gan nhan. Harness da san sang o src/eval/recognition.py.")
+    if rec_report:
+        print("Luu y gioi han do dac:")
+        print("  1. Cac khung hinh nay thuoc tap phat trien (development set), dung de tinh chinh nguong.")
+        print("     Con so SPEC 12.1 chinh thuc can ban ghi tu quay theo research/vanguard/testing-protocol.md buoc 3.")
+        if args.with_augment:
+            print("  2. Cac cap augment map mo (trung ten & icon) duoc tach rieng vi la gioi han du lieu, khong phai loi model.")
+            print("  3. Chi so augment do muc DONG THUAN giua Gemini Vision va ban chep tay da doi chieu danh muc.\n")
+        else:
+            print()
+        print(rec_report.table())
+    else:
+        print("Chua co frame gan nhan hoac thieu du lieu anh. Harness da san sang o src/eval/recognition.py.")
     return 0
 
 
