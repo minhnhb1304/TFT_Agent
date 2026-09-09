@@ -6,8 +6,9 @@ meta:
   - 1080
   calibrated_from: vod:s7h-jHMpFmQ
   method: do tay tren frame midfeed_tpc_final
-  generated_at: '2026-09-07T04:17:00+00:00'
-  generated_by: tools/calibrate.py
+  generated_at: '2026-09-09T05:19:34+00:00'
+  generated_by: tools/calibrate.py + --add-screen --screen augment_select + --add-screen
+    --screen hud
 screens:
   hud:
     stage:
@@ -30,6 +31,11 @@ screens:
       y: 0.816667
       w: 0.033854
       h: 0.02963
+    hp:
+      x: 0.942708
+      y: 0.24537
+      w: 0.026042
+      h: 0.037037
     traits:
       x: 0.0
       y: 0.238889
@@ -55,6 +61,42 @@ screens:
       y: 0.157407
       w: 0.114583
       h: 0.583333
+  augment_select:
+    reroll_0:
+      x: 0.260417
+      y: 0.772222
+      w: 0.052083
+      h: 0.048148
+    reroll_1:
+      x: 0.473958
+      y: 0.772222
+      w: 0.052083
+      h: 0.048148
+    reroll_2:
+      x: 0.6875
+      y: 0.772222
+      w: 0.052083
+      h: 0.048148
+    card_text_0:
+      x: 0.213542
+      y: 0.476852
+      w: 0.145833
+      h: 0.171296
+    card_text_1:
+      x: 0.427083
+      y: 0.476852
+      w: 0.145833
+      h: 0.171296
+    card_text_2:
+      x: 0.640625
+      y: 0.476852
+      w: 0.145833
+      h: 0.171296
+    cards:
+      x: 0.213542
+      y: 0.476852
+      w: 0.572917
+      h: 0.171296
 blockers:
   stream_chat:
     x: 0.0

@@ -18,6 +18,10 @@ BA CHE DO
 
     --seed         Ghi bo so da do tay tren frame Set 18 dau tien. Diem xuat
                    phat, khong phai chan ly - luon chay --validate sau do.
+    --add-screen   Them MOT man hinh tu bo so mau vao file da co, giu nguyen
+                   phan con lai. Dung khi bo sung vung moi (vi du ba nut doi
+                   the) vao cac file da hieu chuan cho tung streamer - viet
+                   tay vao YAML thi file "sinh ra" khong con sinh lai duoc.
     --interactive  cv2.selectROI cho tung vung. Dung khi doi do phan giai,
                    doi HUD scale, hoac khi --validate bao sai.
     --validate     Kiem tra hai thu KHAC NHAU:
@@ -66,6 +70,7 @@ SEED_PIXELS: dict[str, dict[str, tuple[int, int, int, int]]] = {
         "gold":      (1022, 882, 1058,  910),
         "level":     (348,  882,  415,  914),
         "xp":        (455,  882,  520,  914),
+        "hp":        (1810, 265, 1860,  305),
         "traits":    (0,    258,  238,  792),
         "shop":      (345,  925, 1578, 1080),
         "bench":     (300,  700, 1620,  830),
@@ -73,6 +78,19 @@ SEED_PIXELS: dict[str, dict[str, tuple[int, int, int, int]]] = {
         # Phase 4 (nhan dien), chua ai dung o buoc tien xu ly nay.
         "board":     (380,  230, 1560,  700),
         "opponents": (1700, 170, 1920,  800),
+    },
+    # Ba nut doi the duoi ba the augment. KHONG do tay: chay Canny tren 255
+    # khung man chon augment cua ba VOD khac nhau roi lay cot/hang co canh -
+    # ca ba VOD tra ve dung mot bo so, cot 500/910/1320 va hang 834/885. Buoc
+    # nhay 410px giua ba o khop voi buoc nhay cua ba the bai.
+    "augment_select": {
+        "reroll_0":    (500,  834,  600,  886),
+        "reroll_1":    (910,  834, 1010,  886),
+        "reroll_2":    (1320, 834, 1420,  886),
+        "card_text_0": (410,  515,  690,  700),
+        "card_text_1": (820,  515,  1100, 700),
+        "card_text_2": (1230, 515,  1510, 700),
+        "cards":       (410,  515,  1510, 700),
     },
 }
 
@@ -190,14 +208,25 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--screen", default="hud", help="ten man hinh (mac dinh: hud)")
     parser.add_argument("--out", default=str(DEFAULT_OUT))
     parser.add_argument("--seed", action="store_true", help="ghi bo so do tay ban dau")
+    parser.add_argument("--add-screen", action="store_true",
+                        help="them man hinh --screen tu bo so mau vao file da co")
     parser.add_argument("--interactive", action="store_true", help="khoanh lai bang chuot")
     parser.add_argument("--validate", action="store_true", help="kiem tra ROI")
     parser.add_argument("--overlay", help="ghi anh co ve ROI de kiem bang mat")
     parser.add_argument("--overwrite", action="store_true", help="cho phep ghi de file da co")
     args = parser.parse_args(argv)
 
-    if not (args.seed or args.interactive or args.validate):
-        parser.error("chon it nhat mot trong --seed / --interactive / --validate")
+    if not (args.seed or args.add_screen or args.interactive or args.validate):
+        parser.error(
+            "chon it nhat mot trong --seed / --add-screen / --interactive / --validate"
+        )
+    if args.seed and args.add_screen:
+        parser.error("--seed ghi lai ca file, --add-screen chi them mot man hinh")
+    if args.add_screen and args.screen not in SEED_PIXELS:
+        parser.error(
+            f"khong co bo so mau cho man hinh '{args.screen}'. "
+            f"Co: {', '.join(sorted(SEED_PIXELS))}"
+        )
 
     # --- lay frame mau ---
     image = None
@@ -240,12 +269,33 @@ def main(argv: list[str] | None = None) -> int:
             print(f"khong nap duoc {out}: {exc}")
             return 1
 
+    if args.add_screen:
+        # Bo so mau la PIXEL do tren mot khung 1920x1080. File dich co the da
+        # hieu chuan o kich thuoc khac; quy doi qua reference_size cua chinh
+        # no chu khong gia dinh 1920x1080.
+        ref = regions.meta.get("reference_size") or list(REFERENCE_SIZE)
+        rw, rh = int(ref[0]), int(ref[1])
+        regions.screens[args.screen] = {
+            name: Region.from_pixels(*px, rw, rh)
+            for name, px in SEED_PIXELS[args.screen].items()
+        }
+        regions.meta["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        # NOI THEM, khong ghi de: `generated_by` la chuoi xuat xu. Ghi de no
+        # thi lan hieu chuan tay cho `hud` bien mat khoi ho so, va sau nay
+        # khong ai biet bo so do tu dau ra nua.
+        step = f"--add-screen --screen {args.screen}"
+        previous = str(regions.meta.get("generated_by") or "tools/calibrate.py")
+        regions.meta["generated_by"] = (
+            previous if step in previous else f"{previous} + {step}"
+        )
+        print(f"them {len(regions.screens[args.screen])} vung vao man '{args.screen}'")
+
     if args.interactive:
         if image is None:
             parser.error("--interactive can --from-video hoac --image")
         regions = _interactive(image, regions, args.screen)
 
-    if args.seed or args.interactive:
+    if args.seed or args.add_screen or args.interactive:
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(regions.to_yaml(), encoding="utf-8")
         print(f"da ghi {len(regions.screens.get(args.screen, {}))} vung -> {out}")
