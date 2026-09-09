@@ -7,10 +7,10 @@ paths:
   augment_features: data/augment_features.json
   augment_stats_csv: data/augment_stats.csv     # co the chua ton tai -> NullProvider
   augment_tiers: data/augment_tiers.json        # bang tier do NGUOI xep, chi la thu tu
+  augment_tiers_backup: data/augment_tiers.metatft.json  # bang tier du phong (MetaTFT)
   scoring_weights: config/scoring_weights.yaml
-  # Doi sang data/meta_comps_tactics.json de dung so cua tactics.tools (co mau
-  # trieu van, nhung khong truy nguoc duoc). Mac dinh la file TU CRAWL.
-  meta_comps: data/meta_comps.json              # co the chua ton tai -> comp DB rong
+  meta_comps: data/meta_comps.tftacademy.json   # primary: TFT Academy (co du best_augments, items)
+  meta_comps_backup: data/meta_comps.metatft.json  # backup/bo tro: MetaTFT (so lieu n, avg that)
   item_recipes: data/item_recipes.json          # SINH RA tu locale, khong sua tay
   name_index: data/name_index.json              # SINH RA boi scripts/build_name_index.py
   scenarios: data/scenarios
@@ -85,3 +85,11 @@ logging:
   log_scenarios: true
   # Luu anh frame ben canh JSON. Ton dia, nhung 12.1 can frame de gan nhan.
   save_frames: false
+
+vision:
+  # Nhan dien the augment va toc/he bang Gemini Vision (SPEC 9.1).
+  gemini_model: gemini-3.5-flash-lite
+  gemini_timeout_s: 12.0
+  enable_gemini_vision: true
+  vote_window: 5
+
