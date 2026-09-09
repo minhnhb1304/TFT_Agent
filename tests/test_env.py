@@ -91,6 +91,18 @@ def test_existing_environment_wins_over_the_file(
     assert os.environ["TFT_TEST_KEY"] == "tu-shell"
 
 
+def test_empty_environment_variable_wins_over_the_file(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Bien dat rong trong shell (vi du xoa key tam thoi) khong bi .env ghi de."""
+    monkeypatch.setenv("TFT_TEST_KEY", "")
+    p = tmp_path / ".env"
+    p.write_text("TFT_TEST_KEY=tu-file\n", encoding="utf-8")
+
+    assert load_env(p) == []
+    assert os.environ["TFT_TEST_KEY"] == ""
+
+
 def test_override_flag_reverses_that(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("TFT_TEST_KEY", "tu-shell")
     p = tmp_path / ".env"

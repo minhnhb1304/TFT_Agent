@@ -75,7 +75,7 @@ def load_env(path: str | Path = DEFAULT_ENV_FILE, override: bool = False) -> lis
 
     loaded: list[str] = []
     for key, value in parse_env(p.read_text(encoding="utf-8")).items():
-        if not override and os.environ.get(key):
+        if not override and key in os.environ:
             continue
         os.environ[key] = value
         loaded.append(key)
