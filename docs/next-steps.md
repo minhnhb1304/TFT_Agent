@@ -6,7 +6,7 @@
 > - Đường ống dữ liệu đã chặn hoàn toàn Mock data (`allow_fabricated=False`), độ tin cậy Bảng Tier `ordinal_trust` đã được nâng lên **0.65**, lõi chưa biết hạ điểm xuống **0.35** kèm chú thích rõ ràng.  
 > - **Nhiệm vụ 1 hoàn thành 100%**: Crawler tự động `scripts/crawl_tftacademy_tiers.py` cào trực tiếp 245 lõi Set 18 từ TFT Academy API (Dishsoap & Frodan, Patch 18.1d).
 > - **Nhiệm vụ 2 hoàn thành 100%**: Đối chứng Monte-Carlo $N = 10.000$ trên cả ba bậc và cả hai nhánh $\beta$.
-> - **Nhiệm vụ 3 — bước 1 & 2 hoàn thành 100%**: `src/vision/reroll_buttons.py` đọc trạng thái ba nút đổi thẻ thẳng từ khung hình. Đối chứng nhãn tay **105/105 ô = 100,00%**.
+> - **Nhiệm vụ 3 hoàn thành 100%**: Cả ba chân của tầng thị giác đã nối vào `Advisor.advise()` qua `src/vision/frame_reader.py`. Đối chứng nhãn tay: nút đổi thẻ **105/105 ô = 100,00%**; §12.1 trên 60 khung cho `augment` F1 **0,986** (n = 111), `stage` **0,911**, `hp` **0,904**. ⚠ Đây là số trên **tập phát triển** — xem [Nhiệm vụ 7](#7-việc-còn-lại-sau-khi-track-b-hoàn-thành).
 > - **Nhiệm vụ 5 hoàn thành 100%**: Tích hợp MetaTFT (`src/knowledge/metatft.py`, `scripts/crawl_metatft_tiers.py`) làm nguồn dự phòng thứ hai sau TFT Academy. Cào 258 lõi, đưa tỷ lệ lõi có bậc lên **253/254 (99.6%)**.
 > - **Nhiệm vụ 6 hoàn thành 100%**: Tích hợp Đội hình Meta (Meta Comps) song song từ TFT Academy (chính, 53 bài có đủ `best_augments` và `core_items`) và MetaTFT (bổ trợ/dự phòng, 53 cụm K-means từ 1.931.188 trận). Nạp kết hợp `CompDatabase.load_composite` tạo 78 đội hình tối ưu, làm giàu thực nghiệm cho 31 bài đấu chuyên gia, kích hoạt cơ chế chọn bài phù hợp với lõi 2 chiều.
 > - Script demo live overlay sẵn sàng tại `scripts/demo_overlay.py`.
@@ -271,3 +271,67 @@ Mục tiêu: Xây dựng cơ chế dữ liệu đội hình meta hai nguồn son
   - Bổ sung test kiểm thử công thức `augment_score` trong `tests/test_decision.py`.
   - Toàn bộ test suite dự án đạt **646/646 tests pass 100%**.
 
+
+---
+
+## 7. Việc Còn Lại Sau Khi Track B Hoàn Thành
+
+> Track B đã đóng, nhưng **mọi con số nhận diện hiện có đều đo trên tập phát triển**. Mục này ghi lại những việc còn thiếu, xếp theo giá trị mang lại cho đồ án.
+
+### Số đo hiện tại (để đối chiếu về sau)
+
+`scripts/run_evaluation.py --with-augment`, 60 khung gán nhãn, 3 VOD phát triển:
+
+| Thực thể | P | R | F1 | n | p50 ms | p95 ms |
+|---|---|---|---|---|---|---|
+| `augment` | 1,000 | 0,973 | **0,986** | 111 | 824,0 | 1103,1 |
+| `stage` | 0,981 | 0,850 | **0,911** | 60 | 172,9 | 227,2 |
+| `hp` | 0,945 | 0,867 | **0,904** | 60 | 158,9 | 190,8 |
+| 5 cặp mập mờ | 1,000 | 1,000 | 1,000 | 5 | — | — |
+
+`gold` / `level` / `xp` có $n = 0$ là **đúng**: thanh HUD dưới không hiển thị trên màn chọn augment.
+
+### 7.1 Tập đánh giá tự quay — ưu tiên cao nhất
+
+255 khung hiện dùng thuộc `role: development` trong `manifest.json` — **cùng bộ khung đã dùng để tinh chỉnh ngưỡng**. Vì thế không con số nào ở bảng trên được phép làm số liệu chính thức của SPEC §12.1.
+
+Đây cũng là việc **rẻ nhất còn lại**: toàn bộ công cụ đã dựng xong. Quay 20–30 phút ván của chính tác giả → `scripts/extract_frames.py` → gán nhãn theo đúng khuôn `data/eval/frame_labels.json` → chạy lại. Xem `research/vanguard/testing-protocol.md` bước 3.
+
+### 7.2 Đo độ trễ khi game đang chạy
+
+Mọi con số latency trong repo đều đo trên **máy rảnh**. Đây là con số dễ gây bất ngờ nhất lúc demo:
+
+- Đọc HUD 5 crop: **1,05–1,20 s** — gấp ~3,7× ngân sách ước tính 300 ms ban đầu.
+- Gemini Vision: **3,10 / 3,14 / 3,16 s** (timeout đang đặt 12,0 s, ~4× headroom).
+
+SPEC §12.1 yêu cầu đo **khi game đang chạy**; Unreal chiếm CPU/GPU nhiều hơn hẳn bản Hextech nên hai con số trên chắc chắn sẽ xấu đi.
+
+### 7.3 Xác minh xuất xứ ROI `hp`
+
+`tools/calibrate.py` hiện đặt `"hp": (1810, 265, 1860, 305)`. Bản kế hoạch ban đầu chỉ đưa ước lượng bằng mắt `(1785, 265, 1835, 305)` kèm ghi chú **bắt buộc đo lại**. Giá trị đang dùng lệch 25 px sang phải — có vẻ đã được đo lại, nhưng cần **xác nhận** chứ không suy đoán.
+
+Liên quan trực tiếp: `hp` có recall 0,867, thấp thứ nhì. Nếu ROI chưa qua phương pháp Canny như các vùng khác thì đây là chỗ sinh ra phần lớn số ca trượt.
+
+### 7.4 Recall mới là điểm yếu, không phải precision
+
+Precision xấp xỉ 1,0 ở mọi thực thể, còn recall chạy 0,85–0,97. Đó **đúng như thiết kế**: các reader từ chối thay vì đoán bừa. Nhưng 15% số lần đọc `stage` trả về rỗng là cao, và `stage` là đầu vào của chi phí cạn lượt (`depletion cost`) trong chính sách reroll — đọc trượt `stage` làm lệch ngưỡng đổi thẻ.
+
+Cần xem: đó là các khung **thật sự không đọc được** (chuyển cảnh, hiệu ứng đè) hay là một ngưỡng còn chỉnh được.
+
+### 7.5 Tộc/hệ vẫn chưa đo và vẫn phụ thuộc mạng
+
+`--entities traits` hiện **từ chối rõ ràng** thay vì im lặng trả rỗng — đó là toàn bộ cải thiện ở mảng này. Đọc tộc/hệ vẫn đi qua Gemini, tức là phụ thuộc mạng cho một trường cần dùng **ngoài** màn chọn augment nữa.
+
+Hướng offline theo đúng SPEC §9.2 (template matching icon) cần tải **36 icon tộc/hệ** từ CommunityDragon — `data/cdragon_cache/` hiện chỉ có file JSON locale, không có ảnh.
+
+### 7.6 Khả năng tái lập: `data/frames/` không nằm trong repo
+
+`.gitignore` loại `data/frames/`, nên `data/eval/frame_labels.json` trỏ tới các file **không có trong bản clone**. Người khác clone về **không dựng lại được bảng §12.1** nếu không có VOD gốc.
+
+Ba VOD nguồn nằm ở `downloads/*.mkv` (cũng bị ignore). Nếu chúng không được lưu trữ ở đâu đó thì toàn bộ ground truth trở thành không tái lập được — cần chốt phương án lưu VOD, hoặc ít nhất ghi lại URL + mốc thời gian đủ để tải lại.
+
+## Related
+
+- [vision/overview.md](vision/overview.md) — ba chân của tầng thị giác
+- [vision/hud-reader.md](vision/hud-reader.md) · [vision/augment-reader.md](vision/augment-reader.md) · [vision/reroll-buttons.md](vision/reroll-buttons.md)
+- [augment-reroll/evaluation.md](augment-reroll/evaluation.md) — phương pháp đánh giá và những gì chưa đo được
