@@ -68,8 +68,12 @@ class RerollState:
 
     Da doi chieu tren frame Set 18 that (`augment_select_023_011007.png`):
     ba nut doi rieng tung the, trang thai phan biet duoc bang hinh anh, va
-    KHONG co bo dem so o dau ca. Vi the lop nhan dang khong the suy ra con
-    bao nhieu luot tu mot khung hinh don le - no phai duoc truyen vao.
+    KHONG co bo dem so o dau ca - khong co gi de doc ra "con 2 luot".
+
+    `src/vision/reroll_buttons.py` doc BA cai nut do va rap lai vector nay.
+    Duong do khong phai luc nao cung tra loi duoc (khung nhay luc bam chuot,
+    khung khong phai man chon augment), nen tham so nay van la dau vao TUONG
+    MINH: goi bang gi thi day la trach nhiem cua nguoi goi.
     """
 
     available: tuple[bool, ...] = (True, True, True)

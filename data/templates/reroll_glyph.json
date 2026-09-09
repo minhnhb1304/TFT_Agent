@@ -1,0 +1,31 @@
+{
+  "source_frame": "data/frames/s7h-jHMpFmQ/augment_select/augment_select_021_011005.png",
+  "slot": 1,
+  "region": {
+    "x": 0.473958,
+    "y": 0.772222,
+    "w": 0.052083,
+    "h": 0.048148
+  },
+  "glyph_box_in_button": {
+    "top": 10,
+    "left": 16,
+    "height": 32,
+    "width": 68
+  },
+  "regions_file": "config/screen_regions.s7h-jHMpFmQ.yaml",
+  "regions_meta": {
+    "set": "TFTSet18",
+    "engine": "unreal",
+    "reference_size": [
+      1920,
+      1080
+    ],
+    "calibrated_from": "vod:s7h-jHMpFmQ",
+    "method": "do tay tren frame midfeed_tpc_final",
+    "generated_at": "2026-09-09T04:04:11+00:00",
+    "generated_by": "tools/calibrate.py --add-screen --screen augment_select"
+  },
+  "generated_at": "2026-09-09T04:04:16+00:00",
+  "generated_by": "scripts/build_reroll_template.py"
+}
