@@ -1,0 +1,708 @@
+{
+  "_meta": {
+    "what": "Nhan tay cac thuc the tren man chon augment (stage, hp, gold, level, xp, augment, traits).",
+    "how": "Nhin truc tiep tren khung hinh va crop ROI. Bottom bar khong hien thi tren man chon augment -> gold/level/xp la null.",
+    "entities": [
+      "stage",
+      "hp",
+      "gold",
+      "level",
+      "xp",
+      "augment",
+      "traits"
+    ],
+    "sampling": "60 khung hinh (20 khung moi VOD x 3 VOD) gom ca truong hop reroll transition va non-augment.",
+    "labeled_by": "chép tay có hỗ trợ + đối chiếu danh mục 254 lõi Set 18, 2026-09-09",
+    "augment_label_method": "Đọc tiêu đề thẻ trên khung hình, giải qua NameIndex.resolve(...,'augments','vi'). Tiêu đề không giải được thì đánh dấu để người soát, không đoán.",
+    "augment_caveat": "Đây KHÔNG phải nhãn người độc lập. Con số augment đo mức ĐỒNG THUẬN giữa Gemini Vision và một bản chép tay đã đối chiếu danh mục.",
+    "frames": 60
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_001_001635.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_EarlyLearnings",
+      "DA_18_RiftbeastTraitAugment",
+      "DA_CookingPot"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_002_001636.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_EarlyLearnings",
+      "DA_18_RiftbeastTraitAugment",
+      "DA_Hustler"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_008_002449.png": {
+    "stage": "3-2",
+    "hp": 92,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_RadiantRelic",
+      "DA_GoldenGamblePlus",
+      "DA_InvestedPlus"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_014_003214.png": {
+    "stage": "4-2",
+    "hp": 73,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_ItemGrabBag",
+      "DA_StandUnited",
+      "DA_ElectrochargeI"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_017_010118.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_020_010121.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_023_011007.png": {
+    "stage": "3-2",
+    "hp": 80,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_PortableForge",
+      "DA_MagicRoll",
+      "DA_GlassCannon_Gold"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_025_011009.png": {
+    "stage": "3-2",
+    "hp": 80,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_037_015700.png": {
+    "stage": "3-2",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_GainGold",
+      "DA_ExplosiveGrowth",
+      "DA_HeroicGrabBagPlus"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_039_015702.png": {
+    "stage": "3-2",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_044_020426.png": {
+    "stage": "4-2",
+    "hp": 69,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_CyberneticUplink_Gold",
+      "DA_ArcaneViktory",
+      "DA_TonsOfStatsI"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_051_023953.png": {
+    "stage": "3-2",
+    "hp": 86,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_EpochPlus",
+      "DA_EpicRolldown",
+      "DA_MoneyHungryPlus"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_055_023957.png": {
+    "stage": "3-2",
+    "hp": 5,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_EpochPlus",
+      "DA_18_BigGrabBag",
+      "DA_MoneyHungryPlus"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_068_032801.png": {
+    "stage": "3-2",
+    "hp": 96,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_ClockworkAccelerator",
+      "DA_SoloPlate",
+      "DA_SlamminPlus"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_071_033529.png": {
+    "stage": "4-2",
+    "hp": 75,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_CyberneticImplants_Gold",
+      "DA_HealingOrbsII",
+      "DA_ExclusiveCustomization"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_072_033530.png": {
+    "stage": "4-2",
+    "hp": 75,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_CyberneticImplants_Gold",
+      "DA_HealingOrbsII",
+      "DA_ExclusiveCustomization"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_077_040618.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_MakeshiftArmorII",
+      "DA_CaretakersFavor",
+      "DA_18_RivalsAugment"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_082_041448.png": {
+    "stage": "3-2",
+    "hp": 95,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_FindYourCenter",
+      "DA_HealingOrbsI",
+      "DA_RollingForDays"
+    ],
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_088_044237.png": {
+    "stage": "4-2",
+    "hp": 65,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/s7h-jHMpFmQ/augment_select/augment_select_089_044238.png": {
+    "stage": "4-2",
+    "hp": 65,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_GoldenGamblePlusPlus",
+      "DA_SoulAwakening",
+      "DA_GoldenEgg"
+    ],
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_001_000919.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_002_000920.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_003_000921.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_011_002556.png": {
+    "stage": "4-2",
+    "hp": 78,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_Coronation",
+      "DA_CelestialBlessingIII",
+      "DA_TonsOfStatsI"
+    ],
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_012_002558.png": {
+    "stage": "4-2",
+    "hp": 78,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_020_005556.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_Replication",
+      "DA_SpreadingRoots",
+      "DA_EarlyLearnings"
+    ],
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_021_010447.png": {
+    "stage": "3-2",
+    "hp": 95,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_029_011214.png": {
+    "stage": "4-2",
+    "hp": 93,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_033_015013.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_WorththeWait",
+      "DA_HardBargain",
+      "DA_18_FloraFatalisAugment"
+    ],
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_038_015829.png": {
+    "stage": "3-2",
+    "hp": 93,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_NestingAnvils",
+      "DA_UrfsGrabBag",
+      "DA_Retribution"
+    ],
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_046_024158.png": {
+    "stage": "1-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_054_025055.png": {
+    "stage": "3-2",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_058_025818.png": {
+    "stage": "4-2",
+    "hp": 88,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_MaxBuild",
+      "DA_Ascension",
+      "DA_18_SprykinAugment"
+    ],
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_063_033658.png": {
+    "stage": "1-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_LuckyGloves",
+      "DA_InvestmentStrategy",
+      "DA_ShimmerscaleEssence"
+    ],
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_064_033659.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_066_034553.png": {
+    "stage": "3-2",
+    "hp": 96,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_18_BranchingOutPlus",
+      "DA_PartialAscension",
+      "DA_ElectrochargeI"
+    ],
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_073_035330.png": {
+    "stage": "4-2",
+    "hp": 76,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_085_043129.png": {
+    "stage": "3-2",
+    "hp": 86,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_JeweledLotus_I",
+      "DA_SlamminPlus",
+      "DA_Ascension"
+    ],
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_087_043913.png": {
+    "stage": "4-2",
+    "hp": 65,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_GoldenGamblePlusPlus",
+      "DA_HoldTheLine",
+      "DA_InvestedPlusPlus"
+    ],
+    "traits": null
+  },
+  "data/frames/vQDqc9eiDpk/augment_select/augment_select_089_043916.png": {
+    "stage": "4-2",
+    "hp": 65,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_BronzeForLifeII",
+      "DA_HoldTheLine",
+      "DA_TonsOfStatsI"
+    ],
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_001_001158.png": {
+    "stage": "1-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_006_002058.png": {
+    "stage": "3-2",
+    "hp": 92,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_GiantAndMighty",
+      "DA_TheTraitTreePlus",
+      "DA_RadiantRascal"
+    ],
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_009_002058.png": {
+    "stage": "3-2",
+    "hp": 92,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_GiantAndMighty",
+      "DA_TheTraitTreePlus",
+      "DA_RadiantRascal"
+    ],
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_011_002818.png": {
+    "stage": "4-2",
+    "hp": 73,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_015_002826.png": {
+    "stage": "4-2",
+    "hp": 73,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_FindYourCenter",
+      "DA_RollingForDays",
+      "DA_18_WispRebatePlusPlus"
+    ],
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_018_005732.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_CapitalGainsI",
+      "DA_LoadedDice",
+      "DA_ElectrochargeI"
+    ],
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_021_010620.png": {
+    "stage": "3-2",
+    "hp": 80,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_PromisedProtection",
+      "DA_Replication",
+      "DA_TonsOfStatsI"
+    ],
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_022_010621.png": {
+    "stage": "3-2",
+    "hp": 80,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_025_010624.png": {
+    "stage": "3-2",
+    "hp": 80,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_PromisedProtection",
+      "DA_Replication",
+      "DA_MagicRoll"
+    ],
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_028_011343.png": {
+    "stage": "4-2",
+    "hp": 65,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_18_BigGrabBag",
+      "DA_18_DuoQueue",
+      "DA_MaxBuild"
+    ],
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_035_014441.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_041_020047.png": {
+    "stage": "4-2",
+    "hp": 69,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_BoosterPackPlusPlus",
+      "DA_ClockworkAccelerator",
+      "DA_MaliciousMonetization"
+    ],
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_043_020047.png": {
+    "stage": "4-2",
+    "hp": 69,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_BoosterPackPlusPlus",
+      "DA_ClockworkAccelerator",
+      "DA_MaliciousMonetization"
+    ],
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_047_022746.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_Hustler",
+      "DA_BodyguardTraining",
+      "DA_MakeshiftArmorII"
+    ],
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_051_023603.png": {
+    "stage": "3-2",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_057_024335.png": {
+    "stage": "4-2",
+    "hp": 75,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_059_024337.png": {
+    "stage": "4-2",
+    "hp": 75,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_061_031602.png": {
+    "stage": "2-1",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_GoldDestiny",
+      "DA_InfinityProtection",
+      "DA_SpeedyDoubleKill"
+    ],
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_067_032415.png": {
+    "stage": "3-2",
+    "hp": 100,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": null,
+    "traits": null
+  },
+  "data/frames/5tshRxYLwv8/augment_select/augment_select_073_033137.png": {
+    "stage": "4-2",
+    "hp": 75,
+    "gold": null,
+    "level": null,
+    "xp": null,
+    "augment": [
+      "DA_HealingOrbsII",
+      "DA_BoosterPackPlusPlus",
+      "DA_GlassCannon_Gold"
+    ],
+    "traits": null
+  }
+}

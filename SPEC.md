@@ -35,7 +35,7 @@ không thuộc cả hai. **Riot ToS + Vanguard vẫn ràng buộc đầy đủ**
 
 **Giữ nguyên từ v2.1** (đã re-verify 2026-08-28, xem [`research/`](research/overview.md)):
 `dxcam>=0.3.0` · `google-genai` · `rapidocr` PP-OCRv6 · Set 18 live dùng `/latest/` · tier augment tra từ
-`apiName`/`name` · 4 cặp augment không phân biệt được · đọc `icon` nguyên văn · `tft-match-v1`.
+`apiName`/`name` · 5 cặp augment không phân biệt được · đọc `icon` nguyên văn · `tft-match-v1`.
 
 > ✅ **Không đổi tuyệt đối**: danh sách cấm ở §1.3. Đổi hướng đồ án **không** nới lỏng bất kỳ dòng nào.
 
@@ -282,7 +282,7 @@ dùng được thì bài toán overlay tự chụp chính mình biến mất ho�
 | Normalize cả 2 phía | NFD + bỏ Mn + `đ→d`, lowercase, **trước** mọi so sánh |
 | Tách tier token trước | Bỏ hậu tố `I`/`II`/`III`/`+`/`++`, fuzzy match phần **gốc** |
 | Tier tra từ `apiName`/`name` | ⚠️ **ĐẢO so với v2**: icon art dùng lại giữa các tier — **19/254** icon path mâu thuẫn với tên augment. Icon chỉ là fallback. Regex phải bắt cả `_` lẫn `-`: `[-_](i{1,3})\.tex$`. Ladder đầy đủ: [augments](research/vision-stack/augments.md) |
-| Chấp nhận nhập nhằng | **4 cặp augment trùng cả tên lẫn icon** — không phương pháp nào tách được. Hiển thị cả hai, gắn nhãn, **không đoán** |
+| Chấp nhận nhập nhằng | **5 cặp augment trùng cả tên lẫn icon** — không phương pháp nào tách được. Hiển thị cả hai, gắn nhãn, **không đoán** |
 | Giới hạn charset | Chỉ nhận ký tự xuất hiện trong tên của set hiện tại |
 
 > ⚠️ **Không copy threshold của prior art.** `jfd02` dùng `SequenceMatcher >= 0.85` cho item. Áp lên
@@ -616,7 +616,7 @@ Score(a | S) = w₁·Base(a)        stats tĩnh, từ StatsProvider (§3.4.2)
 - Ablation study (§12.4) tắt từng `wᵢ` → đo đóng góp thật của từng thành phần.
 - Khi 2 augment điểm sát nhau, lý do là thứ giúp người chơi tự quyết.
 
-**Xử lý 4 cặp augment không phân biệt được** (xem [augments](research/vision-stack/augments.md)):
+**Xử lý 5 cặp augment không phân biệt được** (số đo thực tế 5 cặp, xem data/name_index.json; xem [augments](research/vision-stack/augments.md)):
 khi nhận diện ra một cặp mập mờ → **chấm điểm và hiển thị CẢ HAI, gắn nhãn "không phân biệt được"**,
 tuyệt đối không đoán bừa một tier. Đây là giới hạn dữ liệu có thật, phải báo cáo trong đồ án chứ
 không giấu đi.
@@ -916,7 +916,7 @@ pywin32>=306
 - [ ] `cdragon_client.py` — roster, traits, locale `vi_vn` (assert `Last-Modified`)
 - [ ] `scripts/sync_assets.py` — sinh icon templates tự động từ `/latest/`
 - [ ] Bảng join 4 cột: `trait_id` → EN → icon file → VI
-- [ ] Tier ladder 254/254 + xử lý 4 cặp mập mờ (§3.5.4)
+- [ ] Tier ladder 254/254 + xử lý 5 cặp mập mờ (§3.5.4)
 - [ ] **`scripts/build_augment_features.py` → `data/augment_features.json`** + audit tay
 - [ ] `stats_provider.py` — Protocol + `NullProvider` + `CsvProvider`
 - [ ] Roll odds / pool size — **vẫn gate**, 18.1 chưa public số
@@ -951,7 +951,7 @@ pywin32>=306
 
 ### Phase 6: Đánh giá (Tuần 8–10) 📊 — **§12**
 - [x] `eval/scenario_logger.py` — ghi đủ `GameState` để chấm điểm lại được
-- [x] `eval/recognition.py` — P/R/F1 theo thực thể + latency p50/p95, tách riêng 4 cặp mập mờ
+- [x] `eval/recognition.py` — P/R/F1 theo thực thể + latency p50/p95, tách riêng 5 cặp mập mờ
 - [x] `eval/correlation.py` — Spearman (có xử lý hạng đồng hạng) + p-value hoán vị
 - [x] `eval/expert_study.py` — export **không kèm** xếp hạng advisor, tính Cohen's κ
 - [x] `eval/ablation.py` — tắt từng `wᵢ`, lập bảng delta, có dòng "chỉ `w₁`"
@@ -1093,8 +1093,8 @@ Tier:     Ladder → 1) apiName/name token (75)  2) missing-t(N) (28)
                    3) [-_](i{1,3}).tex (135)  4) (digit).tex (16)   = 254/254
           → THỨ TỰ QUAN TRỌNG: đọc tên TRƯỚC, icon path chỉ là fallback.
             Đảo lại thì 19/254 augment bị gán SAI tier.
-Ambiguous: 4 cặp trùng cả tên lẫn icon → hiển thị CẢ HAI, gắn nhãn, KHÔNG đoán
-Fallback: OCR (RapidOCR PP-OCRv6) nếu Vision fail hoặc hết quota
+Ambiguous: 5 cặp trùng cả tên lẫn icon → hiển thị CẢ HAI, gắn nhãn, KHÔNG đoán (số đo thực tế 5 cặp)
+Fallback: Từ chối và báo lỗi có lý do, KHÔNG dùng RapidOCR đoán bừa (thực nghiệm đo được 82% tên lõi Set 18 chứa ký tự dấu tổ hợp thiếu trong charset PP-OCRv6 (33/35 thiếu), gây sai ngay cả trên ảnh 96px sạch)
 Output:   3 apiName + confidence → đẩy sang Augment Scoring Engine (§3.5.4)
           → XẾP HẠNG đầy đủ theo board state, kèm lý do từng thành phần
 ```
@@ -1243,10 +1243,10 @@ Mỗi lần màn hình chọn augment xuất hiện, ghi 1 file JSON vào `data/
 
 | Mục | Chi tiết |
 |---|---|
-| Dataset | **200–500 frame** gán nhãn tay, phủ đủ các stage và cả 4 cặp augment mập mờ |
+| Dataset | **200–500 frame** gán nhãn tay, phủ đủ các stage và cả 5 cặp augment mập mờ |
 | Chỉ số | Precision / Recall / **F1** theo từng loại thực thể (augment, champion, item, gold, level, HP, stage) |
 | Latency | p50 / p95, đo **khi game đang chạy** — không đo trên máy rảnh |
-| Ghi chú | Báo cáo riêng độ chính xác trên 4 cặp mập mờ; đây là **giới hạn dữ liệu**, không phải lỗi model |
+| Ghi chú | Báo cáo riêng độ chính xác trên 5 cặp mập mờ; đây là **giới hạn dữ liệu**, không phải lỗi model |
 
 ### 12.2 Tương quan với kết quả thật
 
