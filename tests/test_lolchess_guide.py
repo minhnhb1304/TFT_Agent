@@ -15,8 +15,10 @@ import json
 from pathlib import Path
 
 import pytest
+import yaml
 
 from src.decision import rules_engine
+from src.decision.comp_selector import DEFAULT_ADAPTIVE
 from src.knowledge import roll_odds
 from src.knowledge.lolchess_guide import (
     LolchessClient,
@@ -150,6 +152,13 @@ def test_economy_rules_match_crawled_guide(guide: dict) -> None:
         assert rules_engine.interest_income(row["min"]) == row["gold"]
 
 
+def test_xp_table_matches_crawled_guide_in_code_and_config(guide: dict) -> None:
+    crawled = {int(k): v for k, v in guide["economy"]["xp_to_next"].items() if v}
+    assert DEFAULT_ADAPTIVE["economy"]["xp_to_next"] == crawled
+    config = yaml.safe_load((ROOT / "config" / "scoring_weights.yaml").read_text(encoding="utf-8"))
+    assert config["comp_selector"]["economy"]["xp_to_next"] == crawled
+
+
 # --- 3. doi chieu cheo -----------------------------------------------------------------
 
 
@@ -167,3 +176,10 @@ def test_champion_costs_agree_with_cdragon(guide: dict) -> None:
     assert set(cdragon) <= set(lolchess)
     assert {k: lolchess[k] for k in cdragon} == cdragon
 
+
+def test_pivot_deadlines_follow_the_round_structure(guide: dict) -> None:
+    """Fast 8 xoay muon nhat ngay sau vong di cho stage 4; fast 9 muon nhat 5-1."""
+    carousel = guide["rounds"]["carousel_round"]["4"]
+    assert DEFAULT_ADAPTIVE["pivot"]["fast8"]["deadline"] == f"4-{carousel + 1}"
+    assert DEFAULT_ADAPTIVE["pivot"]["fast9"]["deadline"] == "5-1"
+    assert "4-2" in guide["rounds"]["augment_rounds"]
