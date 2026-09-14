@@ -22,6 +22,7 @@ def _make_reading(
     gold: tuple[int | None, bool] = (50, True),
     level: tuple[int | None, bool] = (7, True),
     xp: tuple[int | None, bool] = (20, True),
+    xp_needed: tuple[int | None, bool] = (56, True),
     hp: tuple[int | None, bool] = (85, True),
     bar_visible: bool = True,
 ) -> HudReading:
@@ -31,6 +32,7 @@ def _make_reading(
         FieldRead("gold", gold[0], str(gold[0] or ""), gold[1], "hợp lệ" if gold[1] else "ẩn", 1.0),
         FieldRead("level", level[0], str(level[0] or ""), level[1], "hợp lệ" if level[1] else "ẩn", 1.0),
         FieldRead("xp", xp[0], str(xp[0] or ""), xp[1], "hợp lệ" if xp[1] else "ẩn", 1.0),
+        FieldRead("xp_needed", xp_needed[0], str(xp_needed[0] or ""), xp_needed[1], "hợp lệ" if xp_needed[1] else "ẩn", 1.0),
         FieldRead("hp", hp[0], str(hp[0] or ""), hp[1], "hợp lệ" if hp[1] else "ẩn", 1.0),
     )
     return HudReading(fields=fields, _bar_visible=bar_visible)
@@ -38,7 +40,7 @@ def _make_reading(
 
 def test_initial_state_all_never_seen() -> None:
     tracker = GameStateTracker()
-    assert set(tracker.never_seen) == {"stage", "gold", "level", "xp", "hp"}
+    assert set(tracker.never_seen) == {"stage", "gold", "level", "xp", "xp_needed", "hp"}
     assert tracker.stale == ()
 
     state = tracker.state()
@@ -59,6 +61,7 @@ def test_single_png_augment_select_scenario() -> None:
         gold=(None, False),
         level=(None, False),
         xp=(None, False),
+        xp_needed=(None, False),
         bar_visible=False,
     )
     tracker.update(reading)
@@ -72,7 +75,7 @@ def test_single_png_augment_select_scenario() -> None:
     assert state.level == 1
     assert state.xp == 0
 
-    assert set(tracker.never_seen) == {"gold", "level", "xp"}
+    assert set(tracker.never_seen) == {"gold", "level", "xp", "xp_needed"}
     assert tracker.stale == ()
 
 
@@ -100,13 +103,14 @@ def test_carry_forward_and_stale() -> None:
         gold=(None, False),
         level=(None, False),
         xp=(None, False),
+        xp_needed=(None, False),
         bar_visible=False,
     )
     tracker.update(frame_augment)
 
     # gold, level, xp phai duoc carry-forward va danh dau la stale
     assert tracker.never_seen == ()
-    assert set(tracker.stale) == {"gold", "level", "xp"}
+    assert set(tracker.stale) == {"gold", "level", "xp", "xp_needed"}
 
     state = tracker.state()
     assert state.gold == 42
@@ -176,6 +180,19 @@ def test_reset() -> None:
     assert tracker.state().gold == 50
 
     tracker.reset()
-    assert set(tracker.never_seen) == {"stage", "gold", "level", "xp", "hp"}
+    assert set(tracker.never_seen) == {"stage", "gold", "level", "xp", "xp_needed", "hp"}
     assert tracker.stale == ()
     assert tracker.state().gold == 0
+
+
+def test_xp_needed_from_the_bar_reaches_game_state() -> None:
+    tracker = GameStateTracker()
+    tracker.update(_make_reading(level=(7, True), xp=(12, True), xp_needed=(56, True)))
+    state = tracker.state()
+    assert (state.level, state.xp, state.xp_needed) == (7, 12, 56)
+
+
+def test_xp_needed_stays_unknown_until_read() -> None:
+    tracker = GameStateTracker()
+    tracker.update(_make_reading(xp_needed=(None, False)))
+    assert tracker.state().xp_needed is None

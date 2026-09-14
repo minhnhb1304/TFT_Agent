@@ -210,3 +210,39 @@ def test_config_files_have_all_hud_regions(cfg_path: Path) -> None:
         region = regs.region("hud", field)
         assert region.w > 0
         assert region.h > 0
+
+
+# --- Thanh XP "hien_co/can" -----------------------------------------------------
+
+
+def _read_xp_text(text: str):
+    reader = HudReader(_make_test_regions(), call=lambda img: [text])
+    reading = reader.read(_make_frame(bar_visible=True))
+    return reading.get("xp"), reading.get("xp_needed")
+
+
+@pytest.mark.parametrize("text", ["12/56", "12 / 56", "12|56", "12l56", r"12\56"])
+def test_xp_bar_splits_current_and_needed(text: str) -> None:
+    """Mau so la so cua client - OCR hay doc nham "/" nen chap nhan cac bien the."""
+    xp, needed = _read_xp_text(text)
+    assert (xp.value, needed.value) == (12, 56)
+    assert needed.present is True
+
+
+def test_xp_current_not_below_needed_is_a_misread() -> None:
+    xp, needed = _read_xp_text("56/56")
+    assert xp.value is None and needed.value is None
+    assert "đọc nhầm" in xp.reason
+
+
+def test_xp_without_denominator_keeps_current_only() -> None:
+    xp, needed = _read_xp_text("20")
+    assert xp.value == 20
+    assert needed.value is None
+    assert "mẫu số" in needed.reason
+
+
+def test_hidden_bar_hides_xp_needed_too() -> None:
+    reader = HudReader(_make_test_regions(), call=lambda img: ["12/56"])
+    reading = reader.read(_make_frame(bar_visible=False))
+    assert reading.get("xp_needed").present is False

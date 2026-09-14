@@ -83,6 +83,9 @@ class GameState:
     level: int = 1
     hp: int = 100
     xp: int = 0
+    # Mau so tren thanh XP ("12/56" -> 56): XP can de len cap tiep theo, do
+    # CLIENT hien. None = chua doc duoc - khi do phai roi ve bang XP.
+    xp_needed: int | None = None
     stage: str = "1-1"
     streak: int = 0
 
