@@ -11,7 +11,9 @@ paths:
   scoring_weights: config/scoring_weights.yaml
   meta_comps: data/meta_comps.tftacademy.json   # primary: TFT Academy (co du best_augments, items)
   meta_comps_backup: data/meta_comps.metatft.json  # backup/bo tro: MetaTFT (so lieu n, avg that)
-  item_recipes: data/item_recipes.json          # SINH RA tu locale, khong sua tay
+  item_recipes: data/item_recipes.json          # SINH RA boi scripts/build_game_tables.py
+  champion_costs: data/champion_costs.json      # SINH RA boi scripts/build_game_tables.py
+  item_stats: data/tactics_tools_stats.json     # so thong ke item/an cua ben thu ba (tactics.tools)
   name_index: data/name_index.json              # SINH RA boi scripts/build_name_index.py
   scenarios: data/scenarios
   cdragon_cache: data/cdragon_cache             # SINH RA boi scripts/fetch_locale.py
