@@ -16,6 +16,8 @@ from pathlib import Path
 
 import pytest
 
+from src.decision import rules_engine
+from src.knowledge import roll_odds
 from src.knowledge.lolchess_guide import (
     LolchessClient,
     LolchessError,
@@ -117,6 +119,35 @@ def test_waf_challenge_is_reported_not_bypassed() -> None:
     with pytest.raises(LolchessError, match="--from-dir"):
         client.get("/guide/exp")
     assert "Mozilla" not in client.session.headers["User-Agent"]
+
+
+# --- 2. drift: hang so trong code == du lieu da crawl ------------------------------
+
+
+def test_roll_odds_match_crawled_guide(guide: dict) -> None:
+    crawled = {int(k): tuple(v) for k, v in guide["shop"]["shop_odds"].items()}
+    assert roll_odds.SHOP_ODDS == crawled
+    pool = tuple(guide["shop"]["pool_size"][str(c)] for c in range(1, 6))
+    assert roll_odds.POOL_SIZE_CANDIDATES["lolchess_guide"] == pool
+
+
+def test_roll_odds_stay_gated_for_single_third_party_source() -> None:
+    """Mot nguon ben thu ba + Wisp che o shop -> van chua duoc coi la da xac minh."""
+    assert roll_odds.VERIFIED_FOR_SET18 is False
+
+
+def test_economy_rules_match_crawled_guide(guide: dict) -> None:
+    eco = guide["economy"]
+    streak = {int(k): v for k, v in eco["streak_bonus"].items()}
+    top = max(streak)
+    assert {k: v for k, v in streak.items() if 2 <= k < top} == rules_engine.STREAK_BONUS
+    assert streak[top] == rules_engine.STREAK_MAX_BONUS
+    assert eco["pvp_win_gold"] == rules_engine.PVP_WIN_GOLD
+    fixed = {r["round"]: r["gold"] for r in eco["base_income"] if not r["round"].endswith("~")}
+    assert fixed == rules_engine.BASE_INCOME
+    assert eco["base_income"][-1]["gold"] == rules_engine.BASE_INCOME_DEFAULT
+    for row in eco["interest"]:
+        assert rules_engine.interest_income(row["min"]) == row["gold"]
 
 
 # --- 3. doi chieu cheo -----------------------------------------------------------------

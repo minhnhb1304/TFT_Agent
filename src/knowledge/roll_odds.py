@@ -6,8 +6,15 @@ Set 18 / patch 18.1. Da scan `map22.bin.json` (72.6 MB) tren PBE:
     ShopOdds / TierOdds / ChampionTierOdds / LevelXP  ->  0 hit
 
 Nghia la Riot khong con phat cac bang nay ra cho cong dong o dang doc duoc.
-Nhung so duoi day la chuan cua CAC SET TRUOC va dang duoc lan truyen, khong
-phai so do duoc cua 18.1.
+
+So duoi day lay tu lolchess.gg/guide/reroll (2026-09-14, patch 18.2). Truoc do
+file nay giu so cua cac set truoc va lech o cap 7, 8, 9, 10. Van CHUA xac
+minh, vi hai ly do:
+    1. Chi mot nguon ben thu ba; khong patch notes Set 18 nao nhac toi bang nay
+       (trang guide co cap nhat theo patch: bang XP khop 18.2, nhung do la XP).
+    2. Set 18: Wisp xuat hien moi shop thu hai va che mot tuong - ti le roll
+       hieu dung cua mot lan roll KHONG bang ti le tren tung o.
+tests/test_lolchess_guide.py so bang nay voi data/lolchess_guide.json.
 
 Vi the module nay KHONG cho doc so mot cach im lang. Muon dung thi phai noi ro
 `allow_unverified=True`, va moi ket qua tra ve deu keo theo nhan
@@ -30,11 +37,11 @@ VERIFIED_FOR_SET18 = False
 UNVERIFIED_LABEL = "Unverified Data (Set 18.1)"
 
 SOURCE_NOTE = (
-    "Chuan cua cac set truoc. Chua xac minh cho 18.1 - "
-    "khong tim thay ShopOdds/TierOdds/LevelXP trong du lieu PBE."
+    "lolchess.gg/guide/reroll (ben thu ba, patch 18.2). Chua xac minh tren client; "
+    "Wisp che mot o o moi shop thu hai nen ti le hieu dung thap hon."
 )
 
-# Level -> ti le shop theo cost (1..5).
+# Level -> ti le shop theo cost (1..5). Nguon: lolchess.gg/guide/reroll.
 SHOP_ODDS: dict[int, tuple[float, float, float, float, float]] = {
     1: (1.00, 0.00, 0.00, 0.00, 0.00),
     2: (1.00, 0.00, 0.00, 0.00, 0.00),
@@ -42,14 +49,18 @@ SHOP_ODDS: dict[int, tuple[float, float, float, float, float]] = {
     4: (0.55, 0.30, 0.15, 0.00, 0.00),
     5: (0.45, 0.33, 0.20, 0.02, 0.00),
     6: (0.30, 0.40, 0.25, 0.05, 0.00),
-    7: (0.19, 0.30, 0.35, 0.15, 0.01),
-    8: (0.18, 0.25, 0.32, 0.22, 0.03),
-    9: (0.10, 0.20, 0.25, 0.30, 0.15),
-    10: (0.05, 0.10, 0.20, 0.30, 0.35),
+    7: (0.16, 0.30, 0.43, 0.10, 0.01),
+    8: (0.15, 0.20, 0.32, 0.30, 0.03),
+    9: (0.10, 0.17, 0.25, 0.33, 0.15),
+    10: (0.05, 0.10, 0.20, 0.40, 0.25),
 }
 
-# Hai bang pool dang luu hanh MAU THUAN nhau. Giu ca hai, khong chon ho.
+# Cac bang pool MAU THUAN nhau. Giu ca ba, noi ro dang dung cai nao.
+# `lolchess_guide` la mac dinh: nguon duy nhat co gan voi Set 18 (patch 18.2).
+# Hai bang cu khong ro set, giu lai de bao cao thay su khac biet.
+DEFAULT_POOL_VARIANT = "lolchess_guide"
 POOL_SIZE_CANDIDATES = {
+    "lolchess_guide": (30, 25, 18, 10, 9),
     "pbe_character_wizard_default": (29, 22, 18, 11, 10),
     "community_reported": (29, 22, 16, 12, 10),
 }
@@ -109,7 +120,7 @@ def get_odds(level: int, allow_unverified: bool = False) -> RollOdds:
     )
 
 
-def pool_size(cost: int, variant: str = "community_reported") -> tuple[int, str]:
+def pool_size(cost: int, variant: str = DEFAULT_POOL_VARIANT) -> tuple[int, str]:
     """Kich thuoc pool cua mot cost, kem ten bien the dang dung.
 
     Tra ve ca ten bien the vi hai nguon mau thuan nhau va bao cao do an phai
