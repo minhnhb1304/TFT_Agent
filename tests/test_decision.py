@@ -21,7 +21,12 @@ from src.decision.contest_analyzer import analyze as analyze_contest
 from src.decision.item_advisor import ItemAdvisor, ItemRecipes, Recipe, build_recipes_from_locale
 from src.decision.llm_reasoner import LlmReasoner, RankingMutationError, assert_order_preserved
 from src.decision.position_advisor import PositionAdvisor
-from src.decision.rules_engine import EconomyRules, interest_income, projected_income, streak_income
+from src.decision.rules_engine import (
+    EconomyRules,
+    interest_income,
+    projected_income,
+    streak_income,
+)
 from src.eval.scenario_logger import ScenarioLogger
 from src.game_state.models import Champion, GameState, OpponentBoard
 from src.knowledge.augment_features import AugmentFeature, FeatureTable
@@ -53,14 +58,20 @@ def test_interest_caps_at_five() -> None:
 
 def test_streak_bonus_ignores_direction() -> None:
     """Chuoi thang va chuoi thua deu cho gold - dau cua streak khong quan trong."""
-    assert streak_income(3) == streak_income(-3) == 2
+    assert streak_income(3) == streak_income(-3) == 1
     assert streak_income(1) == 0
+    assert streak_income(5) == 2
     assert streak_income(9) == 3
 
 
 def test_projected_income_adds_up() -> None:
-    state = GameState(gold=50, streak=4)
-    assert projected_income(state) == 5 + 5 + 3
+    state = GameState(gold=50, streak=4, stage="3-2")
+    assert projected_income(state) == 5 + 5 + 1
+
+
+def test_early_rounds_have_lower_base_income() -> None:
+    assert projected_income(GameState(stage="1-4")) == 3
+    assert projected_income(GameState(stage="2-1")) == 4
 
 
 def test_low_hp_overrides_econ_advice() -> None:
@@ -94,7 +105,7 @@ def test_roll_odds_refuse_to_answer_by_default() -> None:
 def test_roll_odds_are_labelled_unverified_when_forced() -> None:
     odds = get_odds(7, allow_unverified=True)
     assert odds.verified is False
-    assert odds.chance_of(4) == pytest.approx(0.15)
+    assert odds.chance_of(4) == pytest.approx(0.10)
 
 
 def test_forced_odds_carry_the_exact_required_label() -> None:
@@ -121,11 +132,12 @@ def test_the_refusal_message_also_names_the_label() -> None:
 
 
 def test_pool_size_returns_the_variant_it_used() -> None:
-    """Hai nguon mau thuan nhau - bao cao phai noi ro dang trich cai nao."""
+    """Cac nguon mau thuan nhau - bao cao phai noi ro dang trich cai nao."""
     size_a, name_a = pool_size(3, "community_reported")
     size_b, name_b = pool_size(3, "pbe_character_wizard_default")
     assert (size_a, size_b) == (16, 18)
     assert name_a != name_b
+    assert pool_size(4) == (10, "lolchess_guide")
 
 
 # --- Comp selector (SPEC 3.5.2) --------------------------------------------

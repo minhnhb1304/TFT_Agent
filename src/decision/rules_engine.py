@@ -4,9 +4,12 @@ Cac moc trong file nay la CHUAN NHIEU SET, chua verify lai voi 18.1. Chung
 duoc giu o dang hang so co ten va co nhan `confidence` de phan biet ro voi
 nhung thu da do duoc (tier ladder, dac trung augment).
 
-Interest va streak thi khac: day la co che nen cua TFT, on dinh qua nhieu nam,
-va co the kiem chung ngay trong mot van dau bang cach doc gold. Chung duoc
-danh dau confidence cao hon, va co test khoa lai.
+Interest, streak va thu nhap co ban thi khac: lay tu lolchess.gg/guide/exp
+(Set 18, patch 18.2) va co the kiem chung ngay trong van bang cach doc gold.
+tests/test_lolchess_guide.py so cac hang so nay voi data/lolchess_guide.json.
+
+Ban cu ghi chuoi 2/3/4+ -> +1/+2/+3 theo "chuan nhieu set". Set 18 la
+2/3/4 -> +1, 5 -> +2, 6+ -> +3: thua 3 van lien tiep chi duoc +1, khong phai +2.
 """
 
 from __future__ import annotations
@@ -19,9 +22,16 @@ from ..game_state.models import GameState
 INTEREST_STEP = 10
 INTEREST_CAP = 5
 
-# Streak (thang hoac thua lien tiep) -> gold thuong.
-STREAK_BONUS = {2: 1, 3: 2, 4: 3}
+# Streak (thang hoac thua lien tiep) -> gold thuong. Tu 6 tro len: STREAK_MAX_BONUS.
+STREAK_BONUS = {2: 1, 3: 1, 4: 1, 5: 2}
 STREAK_MAX_BONUS = 3
+
+# Thu nhap co ban theo vong. Vong khong co trong bang (tu 2-2): BASE_INCOME_DEFAULT.
+BASE_INCOME = {"1-1": 0, "1-2": 2, "1-3": 2, "1-4": 3, "2-1": 4}
+BASE_INCOME_DEFAULT = 5
+
+# Thang mot vong PvP duoc them vang. Khong cong vao du kien vi chua biet ket qua.
+PVP_WIN_GOLD = 1
 
 # Nguong gold nen giu de an du interest.
 ECON_TARGET = 50
@@ -64,8 +74,14 @@ def streak_income(streak: int) -> int:
     return STREAK_BONUS.get(length, STREAK_MAX_BONUS)
 
 
-def projected_income(state: GameState, base: int = 5) -> int:
-    """Thu nhap du kien vong toi: co ban + lai + chuoi."""
+def base_income(stage: str) -> int:
+    """Thu nhap co ban cua mot vong theo bang Set 18."""
+    return BASE_INCOME.get(stage.replace(" ", ""), BASE_INCOME_DEFAULT)
+
+
+def projected_income(state: GameState, base: int | None = None) -> int:
+    """Thu nhap du kien vong toi: co ban + lai + chuoi (chua tinh vang thang PvP)."""
+    base = base_income(state.stage) if base is None else base
     return base + interest_income(state.gold) + streak_income(state.streak)
 
 
@@ -83,7 +99,8 @@ class EconomyRules:
             Advice(
                 "income",
                 f"Vòng tới dự kiến +{projected_income(state)} vàng",
-                f"lãi {interest_income(state.gold)} + chuỗi {streak_income(state.streak)}",
+                f"cơ bản {base_income(state.stage)} + lãi {interest_income(state.gold)} + "
+                f"chuỗi {streak_income(state.streak)} (+{PVP_WIN_GOLD} nếu thắng vòng PvP)",
                 confidence="đo được",
                 priority=6,
             )
