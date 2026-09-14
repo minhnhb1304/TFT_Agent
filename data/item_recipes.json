@@ -1,0 +1,390 @@
+{
+  "source": "cdragon:en_us/composition",
+  "recipes": [
+    {
+      "item": "DA_RedBuff",
+      "components": [
+        "DA_Component_RecurveBow",
+        "DA_Component_RecurveBow"
+      ]
+    },
+    {
+      "item": "DA_Evenshroud",
+      "components": [
+        "DA_Component_NegatronCloak",
+        "DA_Component_GiantsBelt"
+      ]
+    },
+    {
+      "item": "DA_SpearOfShojin",
+      "components": [
+        "DA_Component_TearOfTheGoddess",
+        "DA_Component_BFSword"
+      ]
+    },
+    {
+      "item": "DA_Quicksilver",
+      "components": [
+        "DA_Component_NegatronCloak",
+        "DA_Component_SparringGloves"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemVanguard",
+      "components": [
+        "DA_Component_FryingPan",
+        "DA_Component_ChainVest"
+      ]
+    },
+    {
+      "item": "DA_GargoyleStoneplate",
+      "components": [
+        "DA_Component_ChainVest",
+        "DA_Component_NegatronCloak"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemBlackthorn",
+      "components": [
+        "DA_Component_Spatula",
+        "DA_Component_GiantsBelt"
+      ]
+    },
+    {
+      "item": "DA_NashorsTooth",
+      "components": [
+        "DA_Component_RecurveBow",
+        "DA_Component_GiantsBelt"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemHunter",
+      "components": [
+        "DA_Component_FryingPan",
+        "DA_Component_BFSword"
+      ]
+    },
+    {
+      "item": "DA_ThiefsGloves",
+      "components": [
+        "DA_Component_SparringGloves",
+        "DA_Component_SparringGloves"
+      ]
+    },
+    {
+      "item": "DA_InfinityEdge",
+      "components": [
+        "DA_Component_BFSword",
+        "DA_Component_SparringGloves"
+      ]
+    },
+    {
+      "item": "DA_Morellonomicon",
+      "components": [
+        "DA_Component_GiantsBelt",
+        "DA_Component_NeedlesslyLargeRod"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemPrimal",
+      "components": [
+        "DA_Component_Spatula",
+        "DA_Component_SparringGloves"
+      ]
+    },
+    {
+      "item": "DA_ProtectorsVow",
+      "components": [
+        "DA_Component_ChainVest",
+        "DA_Component_TearOfTheGoddess"
+      ]
+    },
+    {
+      "item": "DA_WarmogsArmor",
+      "components": [
+        "DA_Component_GiantsBelt",
+        "DA_Component_GiantsBelt"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemSlayer",
+      "components": [
+        "DA_Component_FryingPan",
+        "DA_Component_NegatronCloak"
+      ]
+    },
+    {
+      "item": "DA_VoidStaff",
+      "components": [
+        "DA_Component_RecurveBow",
+        "DA_Component_TearOfTheGoddess"
+      ]
+    },
+    {
+      "item": "DA_DragonsClaw",
+      "components": [
+        "DA_Component_NegatronCloak",
+        "DA_Component_NegatronCloak"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemFae",
+      "components": [
+        "DA_Component_Spatula",
+        "DA_Component_BFSword"
+      ]
+    },
+    {
+      "item": "DA_SpiritVisage",
+      "components": [
+        "DA_Component_GiantsBelt",
+        "DA_Component_TearOfTheGoddess"
+      ]
+    },
+    {
+      "item": "DA_EdgeOfNight",
+      "components": [
+        "DA_Component_BFSword",
+        "DA_Component_ChainVest"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemSprykin",
+      "components": [
+        "DA_Component_Spatula",
+        "DA_Component_NegatronCloak"
+      ]
+    },
+    {
+      "item": "DA_TitansResolve",
+      "components": [
+        "DA_Component_RecurveBow",
+        "DA_Component_ChainVest"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemInvoker",
+      "components": [
+        "DA_Component_FryingPan",
+        "DA_Component_TearOfTheGoddess"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemBrawler",
+      "components": [
+        "DA_Component_FryingPan",
+        "DA_Component_GiantsBelt"
+      ]
+    },
+    {
+      "item": "DA_TacticiansCape",
+      "components": [
+        "DA_Component_Spatula",
+        "DA_Component_FryingPan"
+      ]
+    },
+    {
+      "item": "DA_HextechGunblade",
+      "components": [
+        "DA_Component_BFSword",
+        "DA_Component_NeedlesslyLargeRod"
+      ]
+    },
+    {
+      "item": "DA_HandOfJustice",
+      "components": [
+        "DA_Component_TearOfTheGoddess",
+        "DA_Component_SparringGloves"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemExecutioner",
+      "components": [
+        "DA_Component_FryingPan",
+        "DA_Component_SparringGloves"
+      ]
+    },
+    {
+      "item": "DA_StrikersFlail",
+      "components": [
+        "DA_Component_GiantsBelt",
+        "DA_Component_SparringGloves"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemLunar",
+      "components": [
+        "DA_Component_Spatula",
+        "DA_Component_TearOfTheGoddess"
+      ]
+    },
+    {
+      "item": "DA_SteadfastHeart",
+      "components": [
+        "DA_Component_ChainVest",
+        "DA_Component_SparringGloves"
+      ]
+    },
+    {
+      "item": "DA_GuinsoosRageblade",
+      "components": [
+        "DA_Component_RecurveBow",
+        "DA_Component_NeedlesslyLargeRod"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemRapidfire",
+      "components": [
+        "DA_Component_FryingPan",
+        "DA_Component_RecurveBow"
+      ]
+    },
+    {
+      "item": "DA_Bloodthirster",
+      "components": [
+        "DA_Component_BFSword",
+        "DA_Component_NegatronCloak"
+      ]
+    },
+    {
+      "item": "DA_IonicSpark",
+      "components": [
+        "DA_Component_NeedlesslyLargeRod",
+        "DA_Component_NegatronCloak"
+      ]
+    },
+    {
+      "item": "DA_RabadonsDeathcap",
+      "components": [
+        "DA_Component_NeedlesslyLargeRod",
+        "DA_Component_NeedlesslyLargeRod"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemElderwood",
+      "components": [
+        "DA_Component_Spatula",
+        "DA_Component_ChainVest"
+      ]
+    },
+    {
+      "item": "DA_TacticiansCrown",
+      "components": [
+        "DA_Component_Spatula",
+        "DA_Component_Spatula"
+      ]
+    },
+    {
+      "item": "DA_LastWhisper",
+      "components": [
+        "DA_Component_RecurveBow",
+        "DA_Component_SparringGloves"
+      ]
+    },
+    {
+      "item": "DA_Crownguard",
+      "components": [
+        "DA_Component_NeedlesslyLargeRod",
+        "DA_Component_ChainVest"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemSpellweaver",
+      "components": [
+        "DA_Component_FryingPan",
+        "DA_Component_NeedlesslyLargeRod"
+      ]
+    },
+    {
+      "item": "DA_SteraksGage",
+      "components": [
+        "DA_Component_BFSword",
+        "DA_Component_GiantsBelt"
+      ]
+    },
+    {
+      "item": "DA_SunfireCape",
+      "components": [
+        "DA_Component_ChainVest",
+        "DA_Component_GiantsBelt"
+      ]
+    },
+    {
+      "item": "DA_ArchangelsStaff",
+      "components": [
+        "DA_Component_NeedlesslyLargeRod",
+        "DA_Component_TearOfTheGoddess"
+      ]
+    },
+    {
+      "item": "DA_AdaptiveHelm",
+      "components": [
+        "DA_Component_TearOfTheGoddess",
+        "DA_Component_NegatronCloak"
+      ]
+    },
+    {
+      "item": "DA_BrambleVest",
+      "components": [
+        "DA_Component_ChainVest",
+        "DA_Component_ChainVest"
+      ]
+    },
+    {
+      "item": "DA_JeweledGauntlet",
+      "components": [
+        "DA_Component_SparringGloves",
+        "DA_Component_NeedlesslyLargeRod"
+      ]
+    },
+    {
+      "item": "DA_TacticiansShield",
+      "components": [
+        "DA_Component_FryingPan",
+        "DA_Component_FryingPan"
+      ]
+    },
+    {
+      "item": "DA_BlueBuff",
+      "components": [
+        "DA_Component_TearOfTheGoddess",
+        "DA_Component_TearOfTheGoddess"
+      ]
+    },
+    {
+      "item": "DA_KrakensFury",
+      "components": [
+        "DA_Component_RecurveBow",
+        "DA_Component_NegatronCloak"
+      ]
+    },
+    {
+      "item": "DA_GiantSlayer",
+      "components": [
+        "DA_Component_RecurveBow",
+        "DA_Component_BFSword"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemBlossom",
+      "components": [
+        "DA_Component_Spatula",
+        "DA_Component_NeedlesslyLargeRod"
+      ]
+    },
+    {
+      "item": "DA_Deathblade",
+      "components": [
+        "DA_Component_BFSword",
+        "DA_Component_BFSword"
+      ]
+    },
+    {
+      "item": "DA_18_EmblemInferno",
+      "components": [
+        "DA_Component_Spatula",
+        "DA_Component_RecurveBow"
+      ]
+    }
+  ]
+}
