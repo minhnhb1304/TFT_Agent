@@ -24,6 +24,7 @@ from ..knowledge.stats_provider import AugmentStatsProvider, default_provider
 from ..utils.settings import Settings
 from .augment_advisor import AugmentAdvisor, AugmentChoice, Ranking
 from .comp_selector import CompAdvice, CompSelector
+from .comp_signals import load_item_stats, load_unit_costs
 from .item_advisor import ItemAdvice, ItemAdvisor, ItemRecipes
 from .llm_reasoner import LlmReasoner
 from .position_advisor import PositionAdvice, PositionAdvisor
@@ -100,12 +101,16 @@ class Advisor:
                 primary_comps_path = legacy_path
 
         backup_comps_path = s.path("meta_comps_backup")
+        recipes = recipes or ItemRecipes.load(s.path("item_recipes"))
         self.comp_selector = CompSelector(
             comps or CompDatabase.load_composite(primary_comps_path, backup_comps_path),
             config,
             enable_scouting=s.enable_scouting,
+            recipes=recipes,
+            unit_costs=load_unit_costs(s.path("champion_costs")),
+            item_stats=load_item_stats(s.path("item_stats")),
         )
-        self.item_advisor = ItemAdvisor(recipes or ItemRecipes.load(s.path("item_recipes")))
+        self.item_advisor = ItemAdvisor(recipes)
         self.position_advisor = PositionAdvisor()
         self.economy = EconomyRules()
         self.reasoner = LlmReasoner(

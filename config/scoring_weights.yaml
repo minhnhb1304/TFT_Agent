@@ -62,10 +62,76 @@ tuning:
 # Comp Selection Algorithm - SPEC 3.5.2. De o day (khong hardcode) vi cung ly
 # do voi `weights`: phai doi duoc tu file khi hieu chinh hoac khi ablation.
 comp_selector:
+  # true  -> trong so theo KIEU DOI HINH x GIAI DOAN (khoi `profiles` ben duoi).
+  # false -> trong so CO DINH (unit/item/meta/augment ngay duoi) cho moi comp.
+  # Truc ablation: chay ca hai tren cung dataset, so dong thuan chuyen gia (12.3).
+  # Kieu doi hinh CHI lay tu nhan cua nguon (TFT Academy). Comp khong co nhan
+  # luon dung trong so co dinh - khong suy tu gia tuong (xem comp_signals).
+  adaptive: true
+
+  # Trong so CO DINH - dong doi chung, va la fallback cho comp khong ro kieu.
   unit: 0.40
   item: 0.25
   meta: 0.23
   augment: 0.12
+
+  # Trong so theo kieu doi hinh. GIA DINH TIEN NGHIEM tu kinh nghiem nguoi choi
+  # hang cao, CHUA fit tren du lieu - phai noi ro trong bao cao.
+  #   reroll       : tuong loi la tin hieu chot bai that ngay tu dau.
+  #   fast_holding : fast 8/9 truoc khi xoay bai - board chi la board tam de giu
+  #                  mau, tuong loi KHONG noi len gi (unit = 0). Huong nam o
+  #                  loai do (AP/AD) va an.
+  #   fast_pivoted : sau khi xoay bai - board phai la doi hinh that.
+  # Fast 8/9 chuyen tu fast_holding sang fast_pivoted khi DA xoay that: len cap
+  # muc tieu, hoac toi han chot. KHONG noi suy theo so vang - da thu va xep
+  # hang bi nguoc (comp cang thieu tien cang it bi tru vi thieu tuong loi).
+  profiles:
+    reroll:       {unit: 0.40, item: 0.20, emblem: 0.10, meta: 0.20, augment: 0.10}
+    fast_holding: {unit: 0.00, item: 0.40, emblem: 0.15, meta: 0.30, augment: 0.15}
+    fast_pivoted: {unit: 0.35, item: 0.25, emblem: 0.10, meta: 0.20, augment: 0.10}
+
+  # Cua so xoay bai. Trong cua so, overlay bao du tien xoay chua:
+  # vang dang co / (tien len cap + tien mua tuong loi con thieu) - tien roll
+  # KHONG tinh vi phu thuoc may man. So nay chi de HIEN THI, khong doi xep hang.
+  #   fast8: muon nhat 4-5 (sau vong di cho stage 4).
+  #   fast9: muon nhat 5-1. Mo tu 4-2 cho loi choi eco ban mau len 9 som -
+  #          loi choi mao hiem, nhung co that o hang cao.
+  pivot:
+    fast8: {window_start: "4-1", deadline: "4-5", target_level: 8}
+    fast9: {window_start: "4-2", deadline: "5-1", target_level: 9}
+
+  # Bang XP len cap, patch 18.2: lolchess.gg/guide/exp, khop patch notes 18.2
+  # ("60 => 56, 68 => 64, 68 => 64"). Ban cu 48/76/84 la so set truoc va SAI.
+  # tests/test_lolchess_guide.py so bang nay voi data/lolchess_guide.json.
+  economy:
+    xp_per_buy: 4
+    gold_per_buy: 4
+    xp_to_next: {2: 2, 3: 6, 4: 10, 5: 20, 6: 36, 7: 56, 8: 64, 9: 64}
+
+  # Loai do: tinh tu cong thuc ghep CDragon (data/item_recipes.json). Do tank
+  # KHONG chi huong - moi doi hinh deu can mot tank chinh + 2-3 tank phu.
+  #   component_weight   : manh do roi tinh bang bao nhieu mot manh trong do da ghep (0.5)
+  #   full_mass          : khoi luong do tan cong de tin hoan toan vao huong AP/AD
+  #   exact_match_weight : phan thuong khi trung dung TEN do loi cua doi hinh
+  item_type:
+    component_weight: 0.3
+    full_mass: 2.0
+    exact_match_weight: 0.2
+
+  # An: diem khi trait cua an nam trong doi hinh, manh yeu theo top4 thong ke
+  # (data/tactics_tools_stats.json - so cua ben thu ba).
+  emblem:
+    top4_low: 0.40
+    top4_high: 0.70
+    min_sample_n: 200
+
+  # Muc do chot bai hien tren overlay: "chua nen chot" / "nghieng ve" / "chot".
+  #   min_evidence : board phai ung ho comp #1 toi thieu chung nay (bo qua meta)
+  #   lean/lock    : khoang cach diem toi thieu giua comp #1 va #2
+  commitment:
+    min_evidence: 0.25
+    lean_margin: 0.05
+    lock_margin: 0.12
   # contest_score chi khac 0 khi enable_scouting = true (Phase 7). Khi scouting
   # tat, thanh phan nay bang 0 va cac trong so tren giu nguyen y het.
   contest: 0.20
