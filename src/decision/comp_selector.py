@@ -68,6 +68,8 @@ DEFAULT_ADAPTIVE: dict[str, Any] = {
     "economy": {
         "xp_per_buy": 4,
         "gold_per_buy": 4,
+        "passive_xp_per_round": 2,
+        "reroll_cost": 2,
         "xp_to_next": {2: 2, 3: 6, 4: 10, 5: 20, 6: 36, 7: 56, 8: 64, 9: 64},
     },
     "item_type": {"component_weight": 0.3, "full_mass": 2.0, "exact_match_weight": 0.2},

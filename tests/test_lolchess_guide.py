@@ -156,6 +156,7 @@ def test_economy_rules_match_crawled_guide(guide: dict) -> None:
 def test_xp_table_matches_crawled_guide_in_code_and_config(guide: dict) -> None:
     crawled = {int(k): v for k, v in guide["economy"]["xp_to_next"].items() if v}
     assert DEFAULT_ADAPTIVE["economy"]["xp_to_next"] == crawled
+    assert DEFAULT_ADAPTIVE["economy"]["passive_xp_per_round"] == guide["economy"]["passive_xp_per_round"]
     config = yaml.safe_load((ROOT / "config" / "scoring_weights.yaml").read_text(encoding="utf-8"))
     assert config["comp_selector"]["economy"]["xp_to_next"] == crawled
 

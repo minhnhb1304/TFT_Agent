@@ -39,6 +39,7 @@ XP_PER_BUY = 4
 GOLD_PER_BUY = 4
 PASSIVE_XP_PER_ROUND = 2
 MAX_LEVEL = 10
+REROLL_COST = 2
 
 # Nguong gold nen giu de an du interest.
 ECON_TARGET = 50
@@ -112,6 +113,13 @@ def xp_advice(state: GameState) -> Advice | None:
         bar,
         f"hoặc {math.ceil(remaining / PASSIVE_XP_PER_ROUND)} vòng XP tự nhiên",
     ]
+    # "Le XP": goi 4 XP vuot qua so can -> vang du, 2 vang = 1 luot roll.
+    waste = gold - remaining
+    if waste:
+        rolls = waste // REROLL_COST
+        reasons.append(
+            f"lẻ XP: mua ngay dư {waste} XP ({waste} vàng" + (f" = {rolls} lượt roll)" if rolls else ")")
+        )
     after_passive = gold_for_xp(remaining - PASSIVE_XP_PER_ROUND)
     if after_passive < gold:
         reasons.append(f"chờ +{PASSIVE_XP_PER_ROUND} XP vòng sau thì chỉ cần {after_passive} vàng")
