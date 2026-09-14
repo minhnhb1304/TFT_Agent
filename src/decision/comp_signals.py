@@ -157,17 +157,41 @@ def stage_index(stage: str) -> tuple[int, int]:
     return (int(m.group(1)), int(m.group(2))) if m else (1, 1)
 
 
-def gold_to_level(state: GameState, target_level: int, economy: Mapping[str, Any]) -> int:
-    """Tien mua XP de len `target_level` tu cap + XP hien tai. Bo qua XP tu nhien."""
+def _xp_table(economy: Mapping[str, Any]) -> dict[int, int]:
+    return {int(k): int(v) for k, v in (economy.get("xp_to_next") or {}).items()}
+
+
+def xp_to_level(state: GameState, target_level: int, economy: Mapping[str, Any]) -> int:
+    """XP con thieu de len `target_level`.
+
+    Cap dang dung: lay MAU SO TREN THANH XP (so cua client) neu doc duoc. Cac
+    cap sau do: bang XP - man hinh chi hien cap ke tiep.
+    """
     if state.level >= target_level:
         return 0
-    table = {int(k): int(v) for k, v in (economy.get("xp_to_next") or {}).items()}
-    need = sum(table.get(lvl, 0) for lvl in range(state.level, target_level)) - state.xp
-    if need <= 0:
-        return 0
+    table = _xp_table(economy)
+    current = state.xp_needed if state.xp_needed else table.get(state.level, 0)
+    later = sum(table.get(lvl, 0) for lvl in range(state.level + 1, target_level))
+    return max(0, current - state.xp) + later
+
+
+def gold_to_level(state: GameState, target_level: int, economy: Mapping[str, Any]) -> int:
+    """Tien mua XP de len `target_level`. Bo qua XP tu nhien (+2 moi vong)."""
+    need = xp_to_level(state, target_level, economy)
     xp_per_buy = int(economy.get("xp_per_buy", 4))
     gold_per_buy = int(economy.get("gold_per_buy", 4))
-    return math.ceil(need / xp_per_buy) * gold_per_buy
+    return math.ceil(need / xp_per_buy) * gold_per_buy if need > 0 else 0
+
+
+def xp_table_mismatch(state: GameState, economy: Mapping[str, Any]) -> str:
+    """So mau so tren thanh XP voi bang XP. Lech -> chuoi canh bao, khop -> ""."""
+    expected = _xp_table(economy).get(state.level)
+    if not state.xp_needed or expected is None or expected == state.xp_needed:
+        return ""
+    return (
+        f"Bảng XP lệch client: cấp {state.level}→{state.level + 1} trên màn hình cần "
+        f"{state.xp_needed}, bảng ghi {expected} — đang dùng số trên màn hình"
+    )
 
 
 @dataclass
@@ -224,9 +248,11 @@ def pivot_readiness(
     need = level_gold + unit_gold
     value = 1.0 if need <= 0 else clamp01(state.gold / need)
     verdict = "đủ tiền xoay bài" if value >= 1.0 else f"thiếu {need - state.gold} vàng"
-    return PivotReadiness(
-        False,
-        value,
+    xp_source = "thanh XP" if state.xp_needed else "bảng XP"
+    reason = (
         f"Trong giai đoạn xoay bài (muộn nhất {rule['deadline']}): có {state.gold}/{need} vàng, "
-        f"{verdict} (lên {target}: {level_gold}, mua tướng: {unit_gold}; chưa tính tiền roll)",
+        f"{verdict} (lên {target}: {level_gold} theo {xp_source}, mua tướng: {unit_gold}; "
+        "chưa tính tiền roll)"
     )
+    mismatch = xp_table_mismatch(state, economy)
+    return PivotReadiness(False, value, f"{reason}. {mismatch}" if mismatch else reason)

@@ -27,6 +27,8 @@ from src.decision.comp_signals import (
     gold_to_level,
     item_profile,
     pivot_readiness,
+    xp_table_mismatch,
+    xp_to_level,
 )
 from src.decision.item_advisor import ItemRecipes, Recipe
 from src.decision.scoring.types import ScoringConfig
@@ -290,4 +292,32 @@ def test_board_cost_share_cannot_tell_reroll_from_fast8() -> None:
         and sum(1 for u in c["core_units"] if costs.get(u, 0) >= 4) >= 3
     ]
     assert heavy_rerolls, "neu mat di thi co the xem lai viec suy kieu doi hinh tu gia tuong"
+
+
+# --- thanh XP -----------------------------------------------------------------------
+
+
+def test_xp_bar_denominator_beats_the_table_for_the_current_level() -> None:
+    """Man hinh "10/60" o cap 7: con 50 XP -> 52 vang, du bang ghi 56."""
+    economy = DEFAULT_ADAPTIVE["economy"]
+    state = GameState(level=7, xp=10, xp_needed=60)
+    assert xp_to_level(state, 8, economy) == 50
+    assert gold_to_level(state, 8, economy) == 52
+    assert xp_to_level(state, 9, economy) == 50 + economy["xp_to_next"][8]
+
+
+def test_xp_table_mismatch_with_client_is_reported() -> None:
+    economy = DEFAULT_ADAPTIVE["economy"]
+    assert "lệch client" in xp_table_mismatch(GameState(level=7, xp_needed=60), economy)
+    assert xp_table_mismatch(GameState(level=7, xp_needed=56), economy) == ""
+    assert xp_table_mismatch(GameState(level=7), economy) == ""
+
+
+def test_pivot_reason_names_the_xp_source() -> None:
+    pivot, economy = DEFAULT_ADAPTIVE["pivot"], DEFAULT_ADAPTIVE["economy"]
+    from_bar = pivot_readiness("fast8", GameState(stage="4-2", level=7, xp=10, xp_needed=60, gold=30),
+                               [], COSTS, pivot, economy)
+    from_table = pivot_readiness("fast8", GameState(stage="4-2", level=7, gold=30), [], COSTS, pivot, economy)
+    assert "theo thanh XP" in from_bar.reason and "lệch client" in from_bar.reason
+    assert "theo bảng XP" in from_table.reason
 

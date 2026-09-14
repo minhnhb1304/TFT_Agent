@@ -145,6 +145,7 @@ def test_economy_rules_match_crawled_guide(guide: dict) -> None:
     assert {k: v for k, v in streak.items() if 2 <= k < top} == rules_engine.STREAK_BONUS
     assert streak[top] == rules_engine.STREAK_MAX_BONUS
     assert eco["pvp_win_gold"] == rules_engine.PVP_WIN_GOLD
+    assert eco["passive_xp_per_round"] == rules_engine.PASSIVE_XP_PER_ROUND
     fixed = {r["round"]: r["gold"] for r in eco["base_income"] if not r["round"].endswith("~")}
     assert fixed == rules_engine.BASE_INCOME
     assert eco["base_income"][-1]["gold"] == rules_engine.BASE_INCOME_DEFAULT

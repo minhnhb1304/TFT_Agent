@@ -26,6 +26,7 @@ from src.decision.rules_engine import (
     interest_income,
     projected_income,
     streak_income,
+    xp_advice,
 )
 from src.eval.scenario_logger import ScenarioLogger
 from src.game_state.models import Champion, GameState, OpponentBoard
@@ -91,6 +92,38 @@ def test_every_advice_carries_confidence_label() -> None:
     """Moc quy uoc va so do duoc phai phan biet duoc tren giao dien."""
     for a in EconomyRules().evaluate(GameState()):
         assert a.confidence in ("đo được", "quy uoc nhieu set")
+
+
+def test_xp_advice_needs_the_bar_denominator() -> None:
+    assert xp_advice(GameState(level=7, xp=12)) is None
+
+
+def test_xp_advice_says_passive_xp_will_level_up() -> None:
+    advice = xp_advice(GameState(level=6, xp=34, xp_needed=36))
+    assert "tự lên cấp 7" in advice.message
+    assert advice.confidence == "đo được"
+
+
+def test_xp_advice_counts_gold_rounds_and_cheaper_wait() -> None:
+    """12/56 o cap 7: con 44 XP = 44 vang; cho +2 XP thi 42 XP = 44 vang (khong re hon)."""
+    advice = xp_advice(GameState(level=7, xp=12, xp_needed=56, gold=80))
+    assert "Còn 44 XP lên cấp 8: 44 vàng (11 lần mua)" == advice.message
+    assert "22 vòng XP tự nhiên" in advice.reason
+    assert "chờ" not in advice.reason
+    cheaper = xp_advice(GameState(level=5, xp=14, xp_needed=20, gold=80))
+    assert "chỉ cần 4 vàng" in cheaper.reason
+
+
+def test_xp_advice_warns_when_buying_breaks_an_interest_step() -> None:
+    advice = xp_advice(GameState(level=7, xp=48, xp_needed=56, gold=52))
+    assert "mất 1 vàng lãi" in advice.reason
+    poor = xp_advice(GameState(level=7, xp=0, xp_needed=56, gold=20))
+    assert "thiếu 36" in poor.reason
+
+
+def test_economy_rules_include_xp_advice_when_bar_is_read() -> None:
+    topics = {a.topic for a in EconomyRules().evaluate(GameState(level=7, xp=12, xp_needed=56, gold=40))}
+    assert "xp" in topics
 
 
 # --- Roll odds bi gate -----------------------------------------------------
