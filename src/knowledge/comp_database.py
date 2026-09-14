@@ -18,6 +18,22 @@ from dataclasses import dataclass, field, asdict, replace
 from pathlib import Path
 from typing import Any, Iterable
 
+# Kieu doi hinh. Khong co "standard lv7 danh 4 vang": nguoi choi hang cao
+# khong choi kieu do - lv7 la reroll 3 vang, 4 vang la fast 8.
+ARCHETYPES = ("reroll", "fast8", "fast9")
+
+
+def archetype_from_style(style: str) -> str:
+    """Nhan phong cach cua TFT Academy -> kieu doi hinh. Khong nhan ra -> ""."""
+    s = style.lower()
+    if "reroll" in s:
+        return "reroll"
+    if "fast 9" in s:
+        return "fast9"
+    if "fast 8" in s:
+        return "fast8"
+    return ""
+
 
 @dataclass
 class MetaComp:
@@ -39,6 +55,7 @@ class MetaComp:
     positioning_notes: str = ""
     source: str = "unknown"
     sample_n: int = 0
+    archetype: str = ""                   # reroll / fast8 / fast9; "" = nguon khong gan nhan
 
     @property
     def is_evidence(self) -> bool:

@@ -27,7 +27,7 @@ from typing import Any
 
 import requests
 
-from .comp_database import MetaComp
+from .comp_database import MetaComp, archetype_from_style
 
 TFTACADEMY_HOST = "https://tftacademy.com"
 COMPS_API_URL = f"{TFTACADEMY_HOST}/api/tierlist/comps"
@@ -237,6 +237,7 @@ def parse_tftacademy_comps(
             positioning_notes=positioning_notes,
             source=source,
             sample_n=0,
+            archetype=archetype_from_style(style),
         )
         out.append(comp)
 
