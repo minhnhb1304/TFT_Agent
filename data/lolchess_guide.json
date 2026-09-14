@@ -1,0 +1,1963 @@
+{
+  "meta": {
+    "source": "https://lolchess.gg/guide/{exp,reroll,rounds,role,patch-notes}",
+    "provider": "lolchess.gg (PlayXP) - ben thu ba, khong phai Riot",
+    "fetched_at": "2026-09-14T08:55:37+00:00",
+    "latest_patch": "18.2",
+    "reliability": {
+      "economy.xp_to_next": "Khop patch notes 18.2 tren lolchess (60=>56, 68=>64, 68=>64).",
+      "champions.cost": "Khop CDragon setData cho 65/65 tuong trong roster.",
+      "shop": "Chi co tren trang guide, khong patch notes Set 18 nao nhac toi. Chua doi chieu client. 18.1: Wisp xuat hien moi shop thu hai.",
+      "economy.streak_bonus/base_income/interest": "Chi co tren trang guide, chua doi chieu client.",
+      "rounds": "Chi co tren trang guide. Vong di cho x-4 khop mo ta cua nguoi choi."
+    }
+  },
+  "economy": {
+    "xp_to_next": {
+      "1": 0,
+      "2": 2,
+      "3": 6,
+      "4": 10,
+      "5": 20,
+      "6": 36,
+      "7": 56,
+      "8": 64,
+      "9": 64
+    },
+    "passive_xp_per_round": 2,
+    "pvp_win_gold": 1,
+    "base_income": [
+      {
+        "round": "1-1",
+        "gold": 0
+      },
+      {
+        "round": "1-2",
+        "gold": 2
+      },
+      {
+        "round": "1-3",
+        "gold": 2
+      },
+      {
+        "round": "1-4",
+        "gold": 3
+      },
+      {
+        "round": "2-1",
+        "gold": 4
+      },
+      {
+        "round": "2-2~",
+        "gold": 5
+      }
+    ],
+    "interest": [
+      {
+        "min": 0,
+        "max": 9,
+        "gold": 0
+      },
+      {
+        "min": 10,
+        "max": 19,
+        "gold": 1
+      },
+      {
+        "min": 20,
+        "max": 29,
+        "gold": 2
+      },
+      {
+        "min": 30,
+        "max": 39,
+        "gold": 3
+      },
+      {
+        "min": 40,
+        "max": 49,
+        "gold": 4
+      },
+      {
+        "min": 50,
+        "max": null,
+        "gold": 5
+      }
+    ],
+    "streak_bonus": {
+      "1": 0,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 2,
+      "6": 3
+    }
+  },
+  "shop": {
+    "pool_size": {
+      "1": 30,
+      "2": 25,
+      "3": 18,
+      "4": 10,
+      "5": 9
+    },
+    "shop_odds": {
+      "1": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "2": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "3": [
+        0.75,
+        0.25,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "4": [
+        0.55,
+        0.3,
+        0.15,
+        0.0,
+        0.0
+      ],
+      "5": [
+        0.45,
+        0.33,
+        0.2,
+        0.02,
+        0.0
+      ],
+      "6": [
+        0.3,
+        0.4,
+        0.25,
+        0.05,
+        0.0
+      ],
+      "7": [
+        0.16,
+        0.3,
+        0.43,
+        0.1,
+        0.01
+      ],
+      "8": [
+        0.15,
+        0.2,
+        0.32,
+        0.3,
+        0.03
+      ],
+      "9": [
+        0.1,
+        0.17,
+        0.25,
+        0.33,
+        0.15
+      ],
+      "10": [
+        0.05,
+        0.1,
+        0.2,
+        0.4,
+        0.25
+      ]
+    }
+  },
+  "rounds": {
+    "stages": {
+      "1": [
+        "Encounters",
+        "Minions",
+        "Minions",
+        "Minions",
+        "",
+        "",
+        ""
+      ],
+      "2": [
+        "PvP",
+        "PvP",
+        "PvP",
+        "Carousel",
+        "PvP",
+        "PvP",
+        "Nautilus"
+      ],
+      "3": [
+        "PvP",
+        "PvP",
+        "PvP",
+        "Carousel",
+        "PvP",
+        "PvP",
+        "Renekton"
+      ],
+      "4": [
+        "PvP",
+        "PvP",
+        "PvP",
+        "Carousel",
+        "PvP",
+        "PvP",
+        "Cho'Gath"
+      ],
+      "5": [
+        "PvP",
+        "PvP",
+        "PvP",
+        "Carousel",
+        "PvP",
+        "PvP",
+        "Xerath"
+      ],
+      "6": [
+        "PvP",
+        "PvP",
+        "PvP",
+        "Carousel",
+        "PvP",
+        "PvP",
+        "Xerath"
+      ],
+      "7": [
+        "PvP",
+        "PvP",
+        "PvP",
+        "Carousel",
+        "PvP",
+        "PvP",
+        "Xerath"
+      ]
+    },
+    "carousel_round": {
+      "2": 4,
+      "3": 4,
+      "4": 4,
+      "5": 4,
+      "6": 4,
+      "7": 4
+    },
+    "augment_rounds": [
+      "2-1",
+      "3-2",
+      "4-2"
+    ]
+  },
+  "roles": {
+    "Attack Assassin": [
+      "Attacks grant 10 Mana.",
+      "Take 15% less damage from all enemies except the current target."
+    ],
+    "Attack Caster": [
+      "Attacks grant 7 Mana.",
+      "Gain 2 Mana Regen."
+    ],
+    "Attack Fighter": [
+      "Attacks grant 10 Mana.",
+      "Gain 5-30% Attack Speed (based on Stage)."
+    ],
+    "Attack Marksman": [
+      "Attacks grant 10 Mana."
+    ],
+    "Attack Specialist": [
+      "Specialists generate resources in a unique way."
+    ],
+    "Attack Tank": [
+      "Attacks grant 5 Mana.",
+      "Gain Mana from taking damage.",
+      "More likely to be targeted."
+    ],
+    "Hybrid Fighter": [
+      "Attacks grant 10 Mana.",
+      "Gain 5-30% Attack Speed (based on Stage)."
+    ],
+    "Magic Assassin": [
+      "Attacks grant 10 Mana.",
+      "Take 15% less damage from all enemies except the current target."
+    ],
+    "Magic Caster": [
+      "Attacks grant 7 Mana.",
+      "Gain 2 Mana Regen."
+    ],
+    "Magic Fighter": [
+      "Attacks grant 10 Mana.",
+      "Gain 5-30% Attack Speed (based on Stage)."
+    ],
+    "Magic Marksman": [
+      "Attacks grant 10 Mana."
+    ],
+    "Magic Specialist": [
+      "Specialists generate resources in a unique way."
+    ],
+    "Magic Tank": [
+      "Attacks grant 5 Mana.",
+      "Gain Mana from taking damage.",
+      "More likely to be targeted."
+    ]
+  },
+  "champions": [
+    {
+      "api_name": "DA_18_Ahri",
+      "name": "Ahri",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Blossom",
+        "Spellweaver"
+      ],
+      "recommend_items": [
+        "DA_JeweledGauntlet",
+        "DA_SpearOfShojin",
+        "DA_StrikersFlail",
+        "DA_RabadonsDeathcap",
+        "DA_BlueBuff"
+      ]
+    },
+    {
+      "api_name": "DA_18_Akali_AD",
+      "name": "Akali",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "ADFighter",
+      "traits": [
+        "Adaptor",
+        "Inferno",
+        "Ravager"
+      ],
+      "recommend_items": [
+        "DA_EdgeOfNight",
+        "DA_HandOfJustice",
+        "DA_JeweledGauntlet",
+        "DA_InfinityEdge",
+        "DA_RabadonsDeathcap"
+      ]
+    },
+    {
+      "api_name": "DA_18_Alistar",
+      "name": "Alistar",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "APTank",
+      "traits": [
+        "Brawler",
+        "Elderwood"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_SunfireCape",
+        "DA_DragonsClaw"
+      ]
+    },
+    {
+      "api_name": "DA_18_Alune",
+      "name": "Alune",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Attuned",
+        "Lunar",
+        "Spellweaver"
+      ],
+      "recommend_items": [
+        "DA_SpearOfShojin",
+        "DA_JeweledGauntlet",
+        "DA_BlueBuff",
+        "DA_VoidStaff",
+        "DA_RabadonsDeathcap"
+      ]
+    },
+    {
+      "api_name": "DA_18_Aphelios",
+      "name": "Aphelios",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "ADCarry",
+      "traits": [
+        "Lunar",
+        "Rapidfire"
+      ],
+      "recommend_items": [
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_InfinityEdge",
+        "DA_Deathblade",
+        "DA_GiantSlayer"
+      ]
+    },
+    {
+      "api_name": "DA_18_Ashe",
+      "name": "Ashe",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "ADCaster",
+      "traits": [
+        "Blossom",
+        "Hunter"
+      ],
+      "recommend_items": [
+        "DA_SpearOfShojin",
+        "DA_RedBuff",
+        "DA_LastWhisper",
+        "DA_InfinityEdge",
+        "DA_GuinsoosRageblade"
+      ]
+    },
+    {
+      "api_name": "DA_18_Azir",
+      "name": "Azir",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "APCarry",
+      "traits": [
+        "Eldritch",
+        "Executioner",
+        "Summoner"
+      ],
+      "recommend_items": [
+        "DA_GuinsoosRageblade",
+        "DA_VoidStaff",
+        "DA_JeweledGauntlet",
+        "DA_GiantSlayer",
+        "DA_HextechGunblade"
+      ]
+    },
+    {
+      "api_name": "DA_18_Caitlyn",
+      "name": "Caitlyn",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "ADSpecialist",
+      "traits": [
+        "Coven",
+        "Hunter"
+      ],
+      "recommend_items": [
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_HextechGunblade",
+        "DA_InfinityEdge",
+        "DA_Deathblade"
+      ]
+    },
+    {
+      "api_name": "DA_18_Camille",
+      "name": "Camille",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "ADFighter",
+      "traits": [
+        "Coven",
+        "Ravager"
+      ],
+      "recommend_items": [
+        "DA_SteraksGage",
+        "DA_InfinityEdge",
+        "DA_EdgeOfNight",
+        "DA_Quicksilver",
+        "DA_TitansResolve"
+      ]
+    },
+    {
+      "api_name": "DA_18_Cassiopeia",
+      "name": "Cassiopeia",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Coven",
+        "Spellweaver"
+      ],
+      "recommend_items": [
+        "DA_HextechGunblade",
+        "DA_ArchangelsStaff",
+        "DA_BlueBuff",
+        "DA_SpearOfShojin",
+        "DA_JeweledGauntlet"
+      ]
+    },
+    {
+      "api_name": "DA_18_Diana",
+      "name": "Diana",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "APFighter",
+      "traits": [
+        "Lunar",
+        "Ravager",
+        "Vanguard"
+      ],
+      "recommend_items": [
+        "DA_HandOfJustice",
+        "DA_JeweledGauntlet",
+        "DA_IonicSpark",
+        "DA_Bloodthirster",
+        "DA_TitansResolve"
+      ]
+    },
+    {
+      "api_name": "DA_18_ElderDragon",
+      "name": "Elder Dragon",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "ADFighter",
+      "traits": [
+        "ApexPredator",
+        "Riftbeast"
+      ],
+      "recommend_items": [
+        "DA_InfinityEdge",
+        "DA_LastWhisper",
+        "DA_StrikersFlail",
+        "DA_Deathblade",
+        "DA_SteraksGage"
+      ]
+    },
+    {
+      "api_name": "DA_18_Elise",
+      "name": "Elise",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "APTank",
+      "traits": [
+        "Coven",
+        "Vanguard"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_TitansResolve",
+        "DA_GuinsoosRageblade"
+      ]
+    },
+    {
+      "api_name": "DA_18_Ezreal",
+      "name": "Ezreal",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "ADCaster",
+      "traits": [
+        "Elderwood",
+        "Executioner"
+      ],
+      "recommend_items": [
+        "DA_SpearOfShojin",
+        "DA_LastWhisper",
+        "DA_InfinityEdge",
+        "DA_Deathblade",
+        "DA_GiantSlayer"
+      ]
+    },
+    {
+      "api_name": "DA_18_GnarSmall",
+      "name": "Gnar",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "ADSpecialist",
+      "traits": [
+        "Brawler",
+        "Elderwood",
+        "Sprykin"
+      ],
+      "recommend_items": [
+        "DA_SteraksGage",
+        "DA_Bloodthirster",
+        "DA_TitansResolve",
+        "DA_EdgeOfNight",
+        "DA_HandOfJustice"
+      ]
+    },
+    {
+      "api_name": "DA_18_Hecarim",
+      "name": "Hecarim",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "APTank",
+      "traits": [
+        "Elderwood",
+        "Vanguard"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_SunfireCape",
+        "DA_ProtectorsVow"
+      ]
+    },
+    {
+      "api_name": "DA_18_Ivern",
+      "name": "Ivern",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Greenfather"
+      ],
+      "recommend_items": [
+        "DA_SpearOfShojin",
+        "DA_BlueBuff",
+        "DA_AdaptiveHelm",
+        "DA_GuinsoosRageblade",
+        "DA_JeweledGauntlet"
+      ]
+    },
+    {
+      "api_name": "DA_18_Kayle",
+      "name": "Kayle",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "APSpecialist",
+      "traits": [
+        "Rapidfire",
+        "Solar"
+      ],
+      "recommend_items": [
+        "DA_GuinsoosRageblade",
+        "DA_JeweledGauntlet",
+        "DA_RabadonsDeathcap",
+        "DA_GiantSlayer",
+        "DA_HextechGunblade"
+      ]
+    },
+    {
+      "api_name": "DA_18_Kennen",
+      "name": "Kennen",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APReaper",
+      "traits": [
+        "Executioner",
+        "Inferno"
+      ],
+      "recommend_items": [
+        "DA_HandOfJustice",
+        "DA_EdgeOfNight",
+        "DA_JeweledGauntlet",
+        "DA_RabadonsDeathcap",
+        "DA_Bloodthirster"
+      ]
+    },
+    {
+      "api_name": "DA_18_KhaZix",
+      "name": "Kha'Zix",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "APReaper",
+      "traits": [
+        "Rival"
+      ],
+      "recommend_items": [
+        "DA_HandOfJustice",
+        "DA_EdgeOfNight",
+        "DA_RabadonsDeathcap",
+        "DA_JeweledGauntlet",
+        "DA_Bloodthirster"
+      ]
+    },
+    {
+      "api_name": "DA_18_Kobuko",
+      "name": "Kobuko",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "APTank",
+      "traits": [
+        "Brawler",
+        "Sprykin"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_SunfireCape",
+        "DA_DragonsClaw"
+      ]
+    },
+    {
+      "api_name": "DA_18_LeBlanc",
+      "name": "LeBlanc",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Elderwood",
+        "Spellweaver"
+      ],
+      "recommend_items": [
+        "DA_JeweledGauntlet",
+        "DA_SpearOfShojin",
+        "DA_VoidStaff",
+        "DA_RabadonsDeathcap",
+        "DA_BlueBuff"
+      ]
+    },
+    {
+      "api_name": "DA_18_Leona",
+      "name": "Leona",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "APTank",
+      "traits": [
+        "Defender",
+        "Solar"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_SunfireCape",
+        "DA_DragonsClaw"
+      ]
+    },
+    {
+      "api_name": "DA_18_Lillia",
+      "name": "Lillia",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "APTank",
+      "traits": [
+        "Defender",
+        "Fae"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_ProtectorsVow",
+        "DA_SpiritVisage",
+        "DA_SunfireCape"
+      ]
+    },
+    {
+      "api_name": "DA_18_Lux_Coven",
+      "name": "Lux (Coven)",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Avatar",
+        "Coven"
+      ],
+      "recommend_items": []
+    },
+    {
+      "api_name": "DA_18_Lux_Elderwood",
+      "name": "Lux (Elderwood)",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Avatar",
+        "Elderwood"
+      ],
+      "recommend_items": []
+    },
+    {
+      "api_name": "DA_18_Lux_Fae",
+      "name": "Lux (Fae)",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Avatar",
+        "Fae"
+      ],
+      "recommend_items": []
+    },
+    {
+      "api_name": "DA_18_Lux_Inferno",
+      "name": "Lux (Inferno)",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Avatar",
+        "Inferno"
+      ],
+      "recommend_items": []
+    },
+    {
+      "api_name": "DA_18_Lux_Moonbeam",
+      "name": "Lux (Lunar)",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Avatar",
+        "Lunar"
+      ],
+      "recommend_items": [
+        "DA_GiantSlayer",
+        "DA_VoidStaff",
+        "DA_SpearOfShojin"
+      ]
+    },
+    {
+      "api_name": "DA_18_Lux_Primal",
+      "name": "Lux (Primal)",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Avatar",
+        "Primal"
+      ],
+      "recommend_items": []
+    },
+    {
+      "api_name": "DA_18_Lux_Sunbeam",
+      "name": "Lux (Solar)",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Avatar",
+        "Solar"
+      ],
+      "recommend_items": []
+    },
+    {
+      "api_name": "DA_18_Malphite",
+      "name": "Malphite",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "APTank",
+      "traits": [
+        "Eldritch",
+        "Monolith"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_Crownguard",
+        "DA_SpiritVisage",
+        "DA_DragonsClaw"
+      ]
+    },
+    {
+      "api_name": "DA_18_Maokai",
+      "name": "Maokai",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APTank",
+      "traits": [
+        "Juggernaut",
+        "OldGrowth"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_Crownguard",
+        "DA_ProtectorsVow"
+      ]
+    },
+    {
+      "api_name": "DA_18_MasterYi_AD",
+      "name": "Master Yi",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "ADSpecialist",
+      "traits": [
+        "Adaptor",
+        "Blossom"
+      ],
+      "recommend_items": [
+        "DA_GuinsoosRageblade",
+        "DA_EdgeOfNight",
+        "DA_TitansResolve",
+        "DA_18_EmblemBrawler",
+        "DA_Bloodthirster"
+      ]
+    },
+    {
+      "api_name": "DA_18_Morgana",
+      "name": "Morgana",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "APFighter",
+      "traits": [
+        "Coven",
+        "Invoker"
+      ],
+      "recommend_items": [
+        "DA_VoidStaff",
+        "DA_Morellonomicon",
+        "DA_RabadonsDeathcap",
+        "DA_JeweledGauntlet",
+        "DA_AdaptiveHelm"
+      ]
+    },
+    {
+      "api_name": "DA_18_Ornn",
+      "name": "Ornn",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "APTank",
+      "traits": [
+        "Defender",
+        "Elderwood"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_Crownguard",
+        "DA_SunfireCape"
+      ]
+    },
+    {
+      "api_name": "DA_18_Rakan",
+      "name": "Rakan",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "APTank",
+      "traits": [
+        "Fae",
+        "Juggernaut",
+        "Vanguard"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_SpiritVisage",
+        "DA_WarmogsArmor",
+        "DA_SunfireCape",
+        "DA_ProtectorsVow"
+      ]
+    },
+    {
+      "api_name": "DA_18_Rammus",
+      "name": "Rammus",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "ADTank",
+      "traits": [
+        "Defender",
+        "Sprykin"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_SunfireCape",
+        "DA_SteadfastHeart"
+      ]
+    },
+    {
+      "api_name": "DA_18_RekSai",
+      "name": "Rek'Sai",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "APTank",
+      "traits": [
+        "Brawler",
+        "Eldritch"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_SunfireCape",
+        "DA_DragonsClaw"
+      ]
+    },
+    {
+      "api_name": "DA_18_Rengar",
+      "name": "Rengar",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "ADFighter",
+      "traits": [
+        "Rival"
+      ],
+      "recommend_items": [
+        "DA_GuinsoosRageblade",
+        "DA_EdgeOfNight",
+        "DA_TitansResolve",
+        "DA_Bloodthirster",
+        "DA_18_EmblemFae"
+      ]
+    },
+    {
+      "api_name": "DA_18_Sejuani",
+      "name": "Sejuani",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "APTank",
+      "traits": [
+        "Juggernaut",
+        "Solar"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_SunfireCape",
+        "DA_ProtectorsVow"
+      ]
+    },
+    {
+      "api_name": "DA_18_Sentry",
+      "name": "Pebbles",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Invoker",
+        "Riftbeast"
+      ],
+      "recommend_items": [
+        "DA_BlueBuff",
+        "DA_JeweledGauntlet",
+        "DA_RabadonsDeathcap",
+        "DA_ArchangelsStaff",
+        "DA_VoidStaff"
+      ]
+    },
+    {
+      "api_name": "DA_18_Sett",
+      "name": "Sett",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "ADTank",
+      "traits": [
+        "Blossom",
+        "Brawler"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_DragonsClaw",
+        "DA_SteadfastHeart"
+      ]
+    },
+    {
+      "api_name": "DA_18_Shen",
+      "name": "Shen",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "APTank",
+      "traits": [
+        "Defender",
+        "Inferno"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_SunfireCape",
+        "DA_DragonsClaw"
+      ]
+    },
+    {
+      "api_name": "DA_18_Sivir",
+      "name": "Sivir",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "ADCaster",
+      "traits": [
+        "Hunter",
+        "Primal"
+      ],
+      "recommend_items": [
+        "DA_InfinityEdge",
+        "DA_RedBuff",
+        "DA_SpearOfShojin",
+        "DA_LastWhisper",
+        "DA_StrikersFlail"
+      ]
+    },
+    {
+      "api_name": "DA_18_Soraka",
+      "name": "Soraka",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Executioner",
+        "FloraFatalis"
+      ],
+      "recommend_items": [
+        "DA_SpearOfShojin",
+        "DA_RabadonsDeathcap",
+        "DA_JeweledGauntlet",
+        "DA_ArchangelsStaff",
+        "DA_NashorsTooth"
+      ]
+    },
+    {
+      "api_name": "DA_18_Teemo",
+      "name": "Teemo",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Invoker",
+        "Sprykin"
+      ],
+      "recommend_items": [
+        "DA_VoidStaff",
+        "DA_SpearOfShojin",
+        "DA_Morellonomicon",
+        "DA_JeweledGauntlet",
+        "DA_RedBuff"
+      ]
+    },
+    {
+      "api_name": "DA_18_Tristana",
+      "name": "Tristana",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "ADCarry",
+      "traits": [
+        "Fae",
+        "Hunter",
+        "Sprykin"
+      ],
+      "recommend_items": [
+        "DA_GuinsoosRageblade",
+        "DA_InfinityEdge",
+        "DA_GiantSlayer",
+        "DA_KrakensFury",
+        "DA_HextechGunblade"
+      ]
+    },
+    {
+      "api_name": "DA_18_Varus",
+      "name": "Varus",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "ADCaster",
+      "traits": [
+        "Inferno",
+        "Rapidfire"
+      ],
+      "recommend_items": [
+        "DA_SpearOfShojin",
+        "DA_InfinityEdge",
+        "DA_LastWhisper",
+        "DA_GuinsoosRageblade",
+        "DA_Deathblade"
+      ]
+    },
+    {
+      "api_name": "DA_18_Veigar",
+      "name": "Veigar",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Eldritch",
+        "Spellweaver",
+        "Sprykin"
+      ],
+      "recommend_items": [
+        "DA_JeweledGauntlet",
+        "DA_BlueBuff",
+        "DA_18_EmblemFloraFatalisAugment",
+        "DA_RabadonsDeathcap",
+        "DA_HextechGunblade"
+      ]
+    },
+    {
+      "api_name": "DA_18_Warwick",
+      "name": "Warwick",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "ADFighter",
+      "traits": [
+        "Eldritch",
+        "Ravager"
+      ],
+      "recommend_items": [
+        "DA_TitansResolve",
+        "DA_SteraksGage",
+        "DA_Bloodthirster",
+        "DA_SpearOfShojin",
+        "DA_GuinsoosRageblade"
+      ]
+    },
+    {
+      "api_name": "DA_18_Xayah",
+      "name": "Xayah",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "ADCarry",
+      "traits": [
+        "Elderwood",
+        "Fae",
+        "Rapidfire"
+      ],
+      "recommend_items": [
+        "DA_GuinsoosRageblade",
+        "DA_InfinityEdge",
+        "DA_Deathblade",
+        "DA_KrakensFury",
+        "DA_GiantSlayer"
+      ]
+    },
+    {
+      "api_name": "DA_18_Yorick",
+      "name": "Yorick",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "ADTank",
+      "traits": [
+        "Blossom",
+        "Juggernaut",
+        "Summoner"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SunfireCape",
+        "DA_SpiritVisage",
+        "DA_DragonsClaw"
+      ]
+    },
+    {
+      "api_name": "DA_18_Yunara",
+      "name": "Yunara",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "ADCaster",
+      "traits": [
+        "Blossom",
+        "Executioner"
+      ],
+      "recommend_items": [
+        "DA_SpearOfShojin",
+        "DA_Deathblade",
+        "DA_LastWhisper",
+        "DA_InfinityEdge",
+        "DA_StrikersFlail"
+      ]
+    },
+    {
+      "api_name": "DA_18_Zyra",
+      "name": "Zyra",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Summoner",
+        "Thornmaiden"
+      ],
+      "recommend_items": [
+        "DA_SpearOfShojin",
+        "DA_VoidStaff",
+        "DA_JeweledGauntlet",
+        "DA_ArchangelsStaff",
+        "DA_18_EmblemExecutioner"
+      ]
+    },
+    {
+      "api_name": "DA_Amumu18",
+      "name": "Amumu",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "APTank",
+      "traits": [
+        "Inferno",
+        "Juggernaut"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_Crownguard",
+        "DA_ProtectorsVow"
+      ]
+    },
+    {
+      "api_name": "DA_Brambleback18",
+      "name": "Brambleback",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "ADFighter",
+      "traits": [
+        "Ravager",
+        "Riftbeast"
+      ],
+      "recommend_items": [
+        "DA_EdgeOfNight",
+        "DA_SteraksGage",
+        "DA_Bloodthirster",
+        "DA_Quicksilver",
+        "DA_TitansResolve"
+      ]
+    },
+    {
+      "api_name": "DA_Cinderling18",
+      "name": "Cinderling",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "ADCaster",
+      "traits": [
+        "Hunter",
+        "Riftbeast"
+      ],
+      "recommend_items": [
+        "DA_InfinityEdge",
+        "DA_LastWhisper",
+        "DA_SpearOfShojin",
+        "DA_GuinsoosRageblade",
+        "DA_BlueBuff"
+      ]
+    },
+    {
+      "api_name": "DA_CrimsonRaptor18",
+      "name": "Mama Beak",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "ADCarry",
+      "traits": [
+        "Rapidfire",
+        "Riftbeast",
+        "Summoner"
+      ],
+      "recommend_items": [
+        "DA_GuinsoosRageblade",
+        "DA_LastWhisper",
+        "DA_InfinityEdge",
+        "DA_KrakensFury",
+        "DA_Deathblade"
+      ]
+    },
+    {
+      "api_name": "DA_Draven18",
+      "name": "Draven",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "ADCarry",
+      "traits": [
+        "BountySeeker"
+      ],
+      "recommend_items": [
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_Deathblade",
+        "DA_InfinityEdge",
+        "DA_GiantSlayer"
+      ]
+    },
+    {
+      "api_name": "DA_Fiddlesticks18",
+      "name": "Fiddlesticks",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "APTank",
+      "traits": [
+        "Defender",
+        "FloraFatalis",
+        "Spellweaver"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_IonicSpark",
+        "DA_WarmogsArmor",
+        "DA_SunfireCape",
+        "DA_SpiritVisage"
+      ]
+    },
+    {
+      "api_name": "DA_Gromp18_AP",
+      "name": "Gromp",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Adaptor",
+        "Riftbeast"
+      ],
+      "recommend_items": [
+        "DA_JeweledGauntlet",
+        "DA_BlueBuff",
+        "DA_SpearOfShojin",
+        "DA_RabadonsDeathcap",
+        "DA_VoidStaff"
+      ]
+    },
+    {
+      "api_name": "DA_Karma18",
+      "name": "Karma",
+      "cost": 1,
+      "cost_by_star": [
+        1,
+        3,
+        9
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Blossom",
+        "Spellweaver"
+      ],
+      "recommend_items": [
+        "DA_JeweledGauntlet",
+        "DA_SpearOfShojin",
+        "DA_VoidStaff",
+        "DA_RabadonsDeathcap",
+        "DA_BlueBuff"
+      ]
+    },
+    {
+      "api_name": "DA_KogMaw18_AD",
+      "name": "Kog'Maw",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "ADCaster",
+      "traits": [
+        "Adaptor",
+        "Caustic",
+        "Invoker"
+      ],
+      "recommend_items": [
+        "DA_SpearOfShojin",
+        "DA_RedBuff",
+        "DA_InfinityEdge",
+        "DA_GuinsoosRageblade",
+        "DA_BlueBuff"
+      ]
+    },
+    {
+      "api_name": "DA_Krug18",
+      "name": "Krug",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "ADTank",
+      "traits": [
+        "Brawler",
+        "Riftbeast"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_SunfireCape",
+        "DA_DragonsClaw"
+      ]
+    },
+    {
+      "api_name": "DA_Lux18_Base",
+      "name": "Lux",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Avatar"
+      ],
+      "recommend_items": [
+        "DA_SpearOfShojin",
+        "DA_JeweledGauntlet",
+        "DA_RabadonsDeathcap",
+        "DA_BlueBuff",
+        "DA_VoidStaff"
+      ]
+    },
+    {
+      "api_name": "DA_Lux18_Blackthorn",
+      "name": "Lux (Blackthorn)",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Avatar",
+        "Eldritch"
+      ],
+      "recommend_items": []
+    },
+    {
+      "api_name": "DA_Lux18_Blossom",
+      "name": "Lux (Blossom)",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APCaster",
+      "traits": [
+        "Avatar",
+        "Blossom"
+      ],
+      "recommend_items": []
+    },
+    {
+      "api_name": "DA_Murkwolf18",
+      "name": "Murkwolf",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "ADReaper",
+      "traits": [
+        "Ravager",
+        "Riftbeast"
+      ],
+      "recommend_items": [
+        "DA_HandOfJustice",
+        "DA_EdgeOfNight",
+        "DA_InfinityEdge",
+        "DA_Bloodthirster",
+        "DA_SteraksGage"
+      ]
+    },
+    {
+      "api_name": "DA_Nidalee18_AP",
+      "name": "Nidalee",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "APCarry",
+      "traits": [
+        "Adaptor",
+        "Primal"
+      ],
+      "recommend_items": [
+        "DA_InfinityEdge",
+        "DA_SpearOfShojin",
+        "DA_SteraksGage",
+        "DA_EdgeOfNight",
+        "DA_HandOfJustice"
+      ]
+    },
+    {
+      "api_name": "DA_Scuttlecrab18",
+      "name": "Scuttlecrab",
+      "cost": 2,
+      "cost_by_star": [
+        2,
+        5,
+        17
+      ],
+      "role": "ADTank",
+      "traits": [
+        "Juggernaut",
+        "Riftbeast"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_SunfireCape",
+        "DA_DragonsClaw"
+      ]
+    },
+    {
+      "api_name": "DA_Sentinel18",
+      "name": "Sentinel",
+      "cost": 4,
+      "cost_by_star": [
+        4,
+        11,
+        35
+      ],
+      "role": "APTank",
+      "traits": [
+        "Invoker",
+        "Riftbeast",
+        "Vanguard"
+      ],
+      "recommend_items": [
+        "DA_ProtectorsVow",
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_AdaptiveHelm"
+      ]
+    },
+    {
+      "api_name": "DA_Taric18",
+      "name": "Taric",
+      "cost": 5,
+      "cost_by_star": [
+        5,
+        14,
+        44
+      ],
+      "role": "APTank",
+      "traits": [
+        "EmeraldAspect",
+        "Vanguard"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_ProtectorsVow",
+        "DA_SunfireCape"
+      ]
+    },
+    {
+      "api_name": "DA_Vi18",
+      "name": "Vi",
+      "cost": 3,
+      "cost_by_star": [
+        3,
+        8,
+        26
+      ],
+      "role": "ADTank",
+      "traits": [
+        "Juggernaut",
+        "Primal"
+      ],
+      "recommend_items": [
+        "DA_GargoyleStoneplate",
+        "DA_WarmogsArmor",
+        "DA_SpiritVisage",
+        "DA_Evenshroud",
+        "DA_SunfireCape"
+      ]
+    }
+  ],
+  "patches": [
+    {
+      "id": 551,
+      "version": "18.1",
+      "registered_at": 1787727600000,
+      "systems": {
+        "SYSTEMS - SET MECHANIC: WISPS": [
+          "Wisps are split into 7 Categories (Champion, Combat, Misc, Shop, Gold/XP, Risky, Item). These categories have distinct coloring and icons to make rolling down and scouting as their icon will appear by a player's Tactician HP bar upon purchase.",
+          "Wisps can only be purchased during the planning phase. After the planning phase, the Wisp will be whisked away, revealing the unit that was hiding behind it.",
+          "Wisps appear in every other shop.",
+          "After stage 5, every other Wisp is guaranteed to be a Combat Wisp."
+        ],
+        "SYSTEMS - CAROUSEL": [
+          "The Carousel has returned!",
+          "Carousel now has a chance to contain more champions and/or champions with a higher costs than normal."
+        ],
+        "SYSTEMS - TARGETING": [
+          "Units will no longer retarget after returning from Crowd Control."
+        ],
+        "SYSTEMS - PVE LOOT": [
+          "Missed loot from Stage 4-7, or later PVE rounds, can now overflow to the next PVE round."
+        ],
+        "SYSTEMS - OPENING ENCOUNTERS": [
+          "New Encounters:",
+          "Completed Item Anvil Start: All players start with a Completed Item Anvil.",
+          "Reroll Subscription: Gain rerolls at the start of each stage.",
+          "Item Forge: All players start with 2 Completed Item Anvils.",
+          "Removed Encounters:",
+          "Loot Subscription",
+          "Artifact Anvil",
+          "Reroll Start"
+        ]
+      }
+    },
+    {
+      "id": 553,
+      "version": "18.1b",
+      "registered_at": 1787814000000,
+      "systems": {}
+    },
+    {
+      "id": 557,
+      "version": "18.1c",
+      "registered_at": 1787900400000,
+      "systems": {}
+    },
+    {
+      "id": 555,
+      "version": "18.1d",
+      "registered_at": 1788159600000,
+      "systems": {}
+    },
+    {
+      "id": 559,
+      "version": "18.2",
+      "registered_at": 1789023600000,
+      "systems": {
+        "SYSTEMS - XP PER LEVEL": [
+          "Level 7 to Level 8: 60 ⇒ 56",
+          "Level 8 to Level 9: 68 ⇒ 64",
+          "Level 9 to Level 10: 68 ⇒ 64"
+        ]
+      }
+    }
+  ]
+}
