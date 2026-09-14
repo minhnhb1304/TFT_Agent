@@ -8,6 +8,7 @@ Khong bao gio clamp gia tri. Neu sai khoang gia tri, tra ve value=None kem reaso
 
 from __future__ import annotations
 
+import re
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -20,10 +21,18 @@ from ..game_state.models import RE_STAGE
 from .ocr_engine import DigitRead, engine, read_digits
 from .preprocess import binarize_for_ocr, hud_bar_present, ocr_texts
 
-HudField = Literal["stage", "gold", "level", "xp", "hp"]
+HudField = Literal["stage", "gold", "level", "xp", "xp_needed", "hp"]
 
+# Truong co ROI rieng - moi truong mot lan goi OCR.
 HUD_FIELDS: tuple[HudField, ...] = ("stage", "gold", "level", "xp", "hp")
+# `xp_needed` KHONG co ROI: thanh XP hien "hien_co/can_de_len_cap" trong CUNG
+# mot o, nen ca hai tach ra tu mot lan doc cua ROI `xp`.
+DERIVED_FIELDS: tuple[HudField, ...] = ("xp_needed",)
 DEFAULT_REGIONS = "config/screen_regions.yaml"
+
+# "12/56". OCR hay doc nham dau "/" thanh "|", "\", "l" hoac "I".
+RE_XP = re.compile(r"(\d{1,2})\s*[/|\\lI]\s*(\d{1,3})")
+XP_NEEDED_RANGE = (2, 99)
 
 
 class HudReadError(RuntimeError):
@@ -56,10 +65,13 @@ class HudReading:
     _bar_visible: bool = True
 
     def get(self, field: HudField) -> FieldRead:
-        for f in self.fields:
-            if f.field == field:
-                return f
-        raise KeyError(f"field '{field}' khong ton tai trong HudReading")
+        found = self.find(field)
+        if found is None:
+            raise KeyError(f"field '{field}' khong ton tai trong HudReading")
+        return found
+
+    def find(self, field: HudField) -> FieldRead | None:
+        return next((f for f in self.fields if f.field == field), None)
 
     @property
     def bar_visible(self) -> bool:
@@ -118,15 +130,17 @@ class HudReader:
             t0 = time.perf_counter()
             if field in ("gold", "level", "xp") and not bar_vis:
                 latency = (time.perf_counter() - t0) * 1000.0
-                reads.append(
+                hidden = [field, "xp_needed"] if field == "xp" else [field]
+                reads.extend(
                     FieldRead(
-                        field=field,
+                        field=name,
                         value=None,
                         raw_text="",
                         present=False,
                         reason="thanh HUD không hiển thị",
                         latency_ms=latency,
                     )
+                    for name in hidden
                 )
                 continue
 
@@ -139,7 +153,8 @@ class HudReader:
             elif field == "level":
                 read = self._read_level(crop, t0)
             elif field == "xp":
-                read = self._read_xp(crop, t0)
+                reads.extend(self._read_xp(crop, t0))
+                continue
             elif field == "hp":
                 read = self._read_hp(crop, t0)
             else:
@@ -210,21 +225,55 @@ class HudReader:
             return FieldRead("level", d.value, d.text, True, "hợp lệ", latency)
         return FieldRead("level", None, d.text, True, f"cấp độ ngoài khoảng [1, 10]: {d.value}", latency)
 
-    def _read_xp(self, crop: np.ndarray, t0: float) -> FieldRead:
+    def _read_xp(self, crop: np.ndarray, t0: float) -> tuple[FieldRead, FieldRead]:
+        """Thanh XP "hien_co/can" -> (xp, xp_needed).
+
+        Mau so la so cua CLIENT, khong phai cua bang XP ben thu ba - no vua cho
+        phep tinh chinh xac, vua kiem chung duoc bang XP.
+        """
         try:
             d = read_digits(crop, call=self.call)
         except Exception as exc:
             latency = (time.perf_counter() - t0) * 1000.0
-            return FieldRead("xp", None, "", False, f"lỗi OCR: {exc}", latency)
+            return (
+                FieldRead("xp", None, "", False, f"lỗi OCR: {exc}", latency),
+                FieldRead("xp_needed", None, "", False, f"lỗi OCR: {exc}", latency),
+            )
 
         latency = (time.perf_counter() - t0) * 1000.0
         if not d.text:
-            return FieldRead("xp", None, "", False, d.reason, latency)
+            return (
+                FieldRead("xp", None, "", False, d.reason, latency),
+                FieldRead("xp_needed", None, "", False, d.reason, latency),
+            )
+
+        pair = RE_XP.search(d.text)
+        if pair:
+            current, needed = int(pair.group(1)), int(pair.group(2))
+            low, high = XP_NEEDED_RANGE
+            if not low <= needed <= high:
+                reason = f"XP cần ngoài khoảng [{low}, {high}]: {needed}"
+            elif current >= needed:
+                reason = f"XP hiện có {current} ≥ XP cần {needed} — đọc nhầm"
+            else:
+                return (
+                    FieldRead("xp", current, d.text, True, "hợp lệ", latency),
+                    FieldRead("xp_needed", needed, d.text, True, "hợp lệ", latency),
+                )
+            return (
+                FieldRead("xp", None, d.text, True, reason, latency),
+                FieldRead("xp_needed", None, d.text, True, reason, latency),
+            )
+
+        missing = FieldRead("xp_needed", None, d.text, True, f"không thấy mẫu số trong '{d.text}'", latency)
         if d.value is None:
-            return FieldRead("xp", None, d.text, True, d.reason, latency)
+            return FieldRead("xp", None, d.text, True, d.reason, latency), missing
         if 0 <= d.value <= 99:
-            return FieldRead("xp", d.value, d.text, True, "hợp lệ", latency)
-        return FieldRead("xp", None, d.text, True, f"kinh nghiệm ngoài khoảng [0, 99]: {d.value}", latency)
+            return FieldRead("xp", d.value, d.text, True, "hợp lệ", latency), missing
+        return (
+            FieldRead("xp", None, d.text, True, f"kinh nghiệm ngoài khoảng [0, 99]: {d.value}", latency),
+            missing,
+        )
 
     def _read_hp(self, crop: np.ndarray, t0: float) -> FieldRead:
         try:

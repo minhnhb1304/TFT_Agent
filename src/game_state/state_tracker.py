@@ -15,7 +15,15 @@ from ..vision.hud_reader import HUD_FIELDS, HudField, HudReading
 from .models import GameState
 
 # Cac truong HUD duoc theo doi va dong bo voi GameState
-HUD_TRACKED_FIELDS: tuple[HudField, ...] = ("stage", "gold", "level", "xp", "hp")
+HUD_TRACKED_FIELDS: tuple[HudField, ...] = ("stage", "gold", "level", "xp", "xp_needed", "hp")
+
+
+def _field(reading: HudReading, name: HudField) -> tuple[bool, Any]:
+    """(co gia tri hop le, gia tri). Reading cu khong co truong -> coi nhu vang mat."""
+    read = reading.find(name)
+    if read is None or not read.present or read.value is None:
+        return False, None
+    return True, read.value
 
 
 @dataclass
@@ -48,22 +56,15 @@ class GameStateTracker:
         never_seen: set[str] = set()
 
         for f_name in HUD_TRACKED_FIELDS:
-            read = current.get(f_name)
             # Truong co mat va co gia tri hop le o khung hien tai
-            if read.present and read.value is not None:
+            if _field(current, f_name)[0]:
                 # Majority vote trong window
-                valid_vals = [
-                    r.get(f_name).value
-                    for r in self._history
-                    if r.get(f_name).present and r.get(f_name).value is not None
-                ]
+                valid_vals = [v for ok, v in (_field(r, f_name) for r in self._history) if ok]
                 # Dem so phieu
                 counts = Counter(valid_vals)
                 # Tie-breaking: uu tien gia tri xuat hien gan nhat trong lich su
                 reversed_history_vals = [
-                    r.get(f_name).value
-                    for r in reversed(self._history)
-                    if r.get(f_name).present and r.get(f_name).value is not None
+                    v for ok, v in (_field(r, f_name) for r in reversed(self._history)) if ok
                 ]
                 # Tim count cao nhat
                 max_count = max(counts.values())
@@ -92,6 +93,7 @@ class GameStateTracker:
             "level": default_state.level,
             "hp": default_state.hp,
             "xp": default_state.xp,
+            "xp_needed": default_state.xp_needed,
             "stage": default_state.stage,
         }
 
@@ -107,6 +109,7 @@ class GameStateTracker:
             level=int(resolved["level"]),
             hp=int(resolved["hp"]),
             xp=int(resolved["xp"]),
+            xp_needed=None if resolved["xp_needed"] is None else int(resolved["xp_needed"]),
             stage=str(resolved["stage"]),
             active_traits=dict(traits or {}),
         )
