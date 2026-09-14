@@ -103,9 +103,17 @@ comp_selector:
   # Bang XP len cap, patch 18.2: lolchess.gg/guide/exp, khop patch notes 18.2
   # ("60 => 56, 68 => 64, 68 => 64"). Ban cu 48/76/84 la so set truoc va SAI.
   # tests/test_lolchess_guide.py so bang nay voi data/lolchess_guide.json.
+  #
+  # Chan/le XP: mua theo goi 4 XP, nen XP con thieu khong chia het cho 4 thi
+  # lan mua cuoi DU XP - 2 vang du = 1 luot roll it di luc xoay bai. Moi vong
+  # +2 XP tu nhien, nen du 2 vong nay thi vong sau chan. Nguoi choi fast 8/9
+  # xoay o 4-2 chinh vi lo trinh len cap chuan cho XP chan o vong do; overlay
+  # TINH tu thanh XP chu khong gan cung 4-2.
   economy:
     xp_per_buy: 4
     gold_per_buy: 4
+    passive_xp_per_round: 2
+    reroll_cost: 2
     xp_to_next: {2: 2, 3: 6, 4: 10, 5: 20, 6: 36, 7: 56, 8: 64, 9: 64}
 
   # Loai do: tinh tu cong thuc ghep CDragon (data/item_recipes.json). Do tank

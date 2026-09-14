@@ -27,6 +27,7 @@ from src.decision.comp_signals import (
     gold_to_level,
     item_profile,
     pivot_readiness,
+    xp_overshoot,
     xp_table_mismatch,
     xp_to_level,
 )
@@ -321,3 +322,37 @@ def test_pivot_reason_names_the_xp_source() -> None:
     assert "theo thanh XP" in from_bar.reason and "lệch client" in from_bar.reason
     assert "theo bảng XP" in from_table.reason
 
+
+# --- chan / le XP khi xoay bai ---------------------------------------------------
+
+
+def _pivot(state: GameState, archetype: str = "fast8"):
+    return pivot_readiness(archetype, state, [], COSTS, DEFAULT_ADAPTIVE["pivot"], DEFAULT_ADAPTIVE["economy"])
+
+
+def test_even_xp_bar_means_no_wasted_xp_on_pivot() -> None:
+    """16/56 o cap 7: con 40 XP = 10 goi, khong du XP nao."""
+    r = _pivot(GameState(stage="4-2", level=7, xp=16, xp_needed=56, gold=60))
+    assert r.xp_waste == 0
+    assert "XP chẵn" in r.reason
+
+
+def test_odd_by_two_says_wait_one_round_for_even() -> None:
+    """14/56: con 42 XP -> du 2 XP = 2 vang = 1 luot roll; vong sau +2 XP la chan."""
+    r = _pivot(GameState(stage="4-1", level=7, xp=14, xp_needed=56, gold=60))
+    assert r.xp_waste == 2
+    assert "1 lượt roll" in r.reason
+    assert "vòng sau +2 XP sẽ chẵn" in r.reason
+
+
+def test_odd_xp_that_passive_cannot_fix_is_reported_as_such() -> None:
+    r = _pivot(GameState(stage="4-1", level=7, xp=13, xp_needed=56, gold=60))
+    assert r.xp_waste == 1
+    assert "chờ thêm vòng cũng không chẵn" in r.reason
+
+
+def test_parity_counts_xp_across_levels_for_fast9() -> None:
+    """Fast 9 tu cap 7: con 40 XP toi cap 8 + 64 XP toi cap 9 = 104, chia het cho 4."""
+    r = _pivot(GameState(stage="4-2", level=7, xp=16, xp_needed=56, gold=60), "fast9")
+    assert r.xp_waste == 0
+    assert xp_overshoot(42, DEFAULT_ADAPTIVE["economy"]) == 2

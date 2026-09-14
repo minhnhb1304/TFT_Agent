@@ -126,6 +126,13 @@ def test_economy_rules_include_xp_advice_when_bar_is_read() -> None:
     assert "xp" in topics
 
 
+def test_xp_advice_flags_odd_xp_as_a_lost_reroll() -> None:
+    """Con 42 XP: mua 11 goi = 44 XP, du 2 XP = 2 vang = mot luot roll."""
+    advice = xp_advice(GameState(level=7, xp=14, xp_needed=56, gold=80))
+    assert "lẻ XP: mua ngay dư 2 XP (2 vàng = 1 lượt roll)" in advice.reason
+    assert "lẻ XP" not in xp_advice(GameState(level=7, xp=16, xp_needed=56, gold=80)).reason
+
+
 # --- Roll odds bi gate -----------------------------------------------------
 
 

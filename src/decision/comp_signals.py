@@ -183,6 +183,39 @@ def gold_to_level(state: GameState, target_level: int, economy: Mapping[str, Any
     return math.ceil(need / xp_per_buy) * gold_per_buy if need > 0 else 0
 
 
+def xp_overshoot(need: int, economy: Mapping[str, Any]) -> int:
+    """XP du khi mua theo goi de du `need` XP. 0 = "chan XP", > 0 = "le XP".
+
+    XP du van cong sang cap sau, nhung luc xoay bai no la vang da tieu ma chua
+    dung toi - 2 vang du la mot luot roll it di dung luc can roll nhat.
+    """
+    if need <= 0:
+        return 0
+    xp_per_buy = int(economy.get("xp_per_buy", 4))
+    return math.ceil(need / xp_per_buy) * xp_per_buy - need
+
+
+def xp_parity_note(state: GameState, target_level: int, economy: Mapping[str, Any]) -> tuple[int, str]:
+    """(XP du neu len cap ngay, cau giai thich) - chon vong xoay bai de khong du XP."""
+    need = xp_to_level(state, target_level, economy)
+    if need <= 0:
+        return 0, ""
+    passive = int(economy.get("passive_xp_per_round", 2))
+    waste = xp_overshoot(need, economy)
+    if waste == 0:
+        return 0, f"XP chẵn — lên {target_level} bây giờ không dư XP"
+    gold_per_xp = int(economy.get("gold_per_buy", 4)) / int(economy.get("xp_per_buy", 4))
+    waste_gold = round(waste * gold_per_xp)
+    rolls = waste_gold // int(economy.get("reroll_cost", 2))
+    cost = f"{waste_gold} vàng" + (f" = {rolls} lượt roll" if rolls else "")
+    if need > passive and xp_overshoot(need - passive, economy) == 0:
+        return waste, (
+            f"XP lẻ — lên {target_level} bây giờ dư {waste} XP ({cost}); "
+            f"vòng sau +{passive} XP sẽ chẵn"
+        )
+    return waste, f"XP lẻ — lên {target_level} dư {waste} XP ({cost}), chờ thêm vòng cũng không chẵn"
+
+
 def xp_table_mismatch(state: GameState, economy: Mapping[str, Any]) -> str:
     """So mau so tren thanh XP voi bang XP. Lech -> chuoi canh bao, khop -> ""."""
     expected = _xp_table(economy).get(state.level)
@@ -211,6 +244,7 @@ class PivotReadiness:
     pivoted: bool
     value: float
     reason: str
+    xp_waste: int = 0      # XP du neu len cap muc tieu ngay vong nay
 
 
 def pivot_readiness(
@@ -254,5 +288,6 @@ def pivot_readiness(
         f"{verdict} (lên {target}: {level_gold} theo {xp_source}, mua tướng: {unit_gold}; "
         "chưa tính tiền roll)"
     )
-    mismatch = xp_table_mismatch(state, economy)
-    return PivotReadiness(False, value, f"{reason}. {mismatch}" if mismatch else reason)
+    waste, parity = xp_parity_note(state, target, economy)
+    notes = [n for n in (parity, xp_table_mismatch(state, economy)) if n]
+    return PivotReadiness(False, value, ". ".join([reason, *notes]), waste)
