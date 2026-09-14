@@ -80,6 +80,7 @@ Các file dữ liệu **không cùng độ tin cậy**. Phải phân biệt khi 
 | `data/meta_comps_tactics.json` | **Bên thứ ba** — tactics.tools, cỡ mẫu triệu ván nhưng **không công bố phương pháp** | ⚠️ Có, phải nêu rõ là số của bên thứ ba |
 | `data/tactics_tools_stats.json` | Như trên. Unit/trait/item. **Chưa nối vào scoring engine** | ⚠️ Như trên |
 | `data/augment_tiers.json` | **Ý kiến người chơi** — thứ tự S/A/B/C/D, `sample_n` = 0, `is_evidence` luôn False | ⚠️ Chỉ như tri thức tiên nghiệm, không phải bằng chứng |
+| `data/lolchess_guide.json` | **Bên thứ ba** — lolchess.gg/guide: XP, thu nhập, chuỗi, tỉ lệ shop, pool, vòng đấu, vai trò, patch notes Set 18 | ✅ XP (khớp patch notes 18.2), giá tướng (khớp CDragon) · ⚠️ tỉ lệ shop/pool/chuỗi: một nguồn, chưa đối chiếu client |
 | `data/augment_stats.csv` | **GIẢ LẬP** — `source` = `MOCK-NOT-REAL` | ❌ **Tuyệt đối không** |
 
 ### Vì sao augment vẫn phải giả lập

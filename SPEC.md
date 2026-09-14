@@ -560,6 +560,29 @@ OUTPUT: top 3 comp directions
    Flag pivot nếu comp hiện tại < 0.3
 ```
 
+> 🔄 **Trọng số theo kiểu đội hình × giai đoạn** (`comp_selector.adaptive: true`, `src/decision/comp_signals.py`).
+> Trọng số cố định ở trên sai với cách người chơi hạng cao chốt bài: fast 8/9 cố tình giữ board tạm
+> tới lúc xoay bài, nên tỉ lệ tướng lõi = 0 ở stage 3 là **đúng kế hoạch**. Bộ cố định được giữ làm
+> dòng đối chứng cho ablation, và làm fallback cho comp không có nhãn kiểu đội hình.
+>
+> | Kiểu (nhãn TFT Academy) | Trước xoay bài | Sau xoay bài |
+> |---|---|---|
+> | `reroll` (carry 1–3 vàng) | tướng lõi là tín hiệu thật: `unit` 0.40 | như trước |
+> | `fast8` / `fast9` | `unit` = 0; hướng nằm ở **loại đồ** (0.40) + **ấn** (0.15) | `unit` 0.35 |
+>
+> - **Đã xoay** = lên cấp mục tiêu, hoặc tới hạn chót (fast8 `4-5`, fast9 `5-1`). Tiền (lên cấp + mua
+>   tướng; **không** tính tiền roll) chỉ để hiển thị thời điểm, **không** đổi xếp hạng — đã thử nội suy
+>   theo tiền và xếp hạng bị ngược (comp càng thiếu tiền càng ít bị trừ vì thiếu tướng).
+> - **Loại đồ** suy từ công thức ghép CDragon (`data/item_recipes.json`), không đoán theo tên. Đồ tank
+>   **không** chỉ hướng. Ấn tính khi trait nằm trong comp, mạnh yếu theo top4 của tactics.tools.
+> - Fast 8/9 **không** bị phạt khi đổi hướng phải bán board.
+> - Đầu ra thêm **mức chốt bài**: *chưa nên chốt / nghiêng về / chốt*, dựa trên bằng chứng từ board
+>   (không tính meta) và khoảng cách điểm giữa hướng #1 và #2.
+> - Kiểu đội hình **chỉ** lấy từ nhãn nguồn. Suy từ giá tướng đã đo trên 51 comp có nhãn: đúng 26,
+>   **sai 7**, không kết luận 18. Board reroll vẫn có 2–4 tướng 4–5 vàng để tròn form.
+>
+> Mọi con số là **giả định tiên nghiệm** từ kinh nghiệm người chơi, chưa fit trên dữ liệu.
+
 #### 3.5.3 LLM Reasoner — hai vai trò, cả hai đều NGOÀI critical path
 
 | Vai trò | Khi nào chạy | Vì sao an toàn |
@@ -1008,6 +1031,7 @@ không hardcode tên set.
 | Trait art / augment art | Đọc field `icon` **nguyên văn**, đổi `.tex`→`.png`, prefix `raw.communitydragon.org/latest/game/` — **36/36 OK**. ⚠️ Pattern ghép chuỗi `trait_icon_18_<en_name>.png` chỉ đúng **34/36** |
 | Meta decks / augments / items | `https://mcp-api.op.gg/mcp` (MIT) |
 | Match history (post-game) | `tft-match-v1` — [developer.riotgames.com/apis](https://developer.riotgames.com/apis) |
+| Cơ chế game (XP, thu nhập, chuỗi, tỉ lệ shop, pool, vòng đấu, vai trò) + patch notes | `lolchess.gg/guide/{exp,reroll,rounds,role,patch-notes}` → `data/lolchess_guide.json` qua `scripts/crawl_lolchess_guide.py`. Có **AWS WAF**: bị chặn thì lưu trang bằng trình duyệt, chạy `--from-dir`, **không** giả User-Agent. XP khớp patch notes 18.2; giá tướng khớp CDragon 65/65; tỉ lệ shop chỉ có một nguồn, vẫn gate |
 | ~~Data Dragon~~ | **Bỏ** — không có key Set 18 |
 | ~~Live TFT state API~~ | **Không tồn tại** |
 
