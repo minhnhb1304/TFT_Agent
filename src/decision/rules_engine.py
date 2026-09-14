@@ -14,6 +14,7 @@ Ban cu ghi chuoi 2/3/4+ -> +1/+2/+3 theo "chuan nhieu set". Set 18 la
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass, field
 
 from ..game_state.models import GameState
@@ -32,6 +33,12 @@ BASE_INCOME_DEFAULT = 5
 
 # Thang mot vong PvP duoc them vang. Khong cong vao du kien vi chua biet ket qua.
 PVP_WIN_GOLD = 1
+
+# Mua XP: 4 vang -> 4 XP. Moi vong duoc them XP tu nhien.
+XP_PER_BUY = 4
+GOLD_PER_BUY = 4
+PASSIVE_XP_PER_ROUND = 2
+MAX_LEVEL = 10
 
 # Nguong gold nen giu de an du interest.
 ECON_TARGET = 50
@@ -77,6 +84,50 @@ def streak_income(streak: int) -> int:
 def base_income(stage: str) -> int:
     """Thu nhap co ban cua mot vong theo bang Set 18."""
     return BASE_INCOME.get(stage.replace(" ", ""), BASE_INCOME_DEFAULT)
+
+
+def gold_for_xp(xp: int) -> int:
+    """Vang de mua du `xp` XP (mua theo goi 4)."""
+    return math.ceil(xp / XP_PER_BUY) * GOLD_PER_BUY if xp > 0 else 0
+
+
+def xp_advice(state: GameState) -> Advice | None:
+    """Tinh tu thanh XP "hien_co/can". Khong doc duoc mau so -> khong khuyen."""
+    if not state.xp_needed or state.level >= MAX_LEVEL:
+        return None
+    remaining = state.xp_needed - state.xp
+    nxt = state.level + 1
+    bar = f"thanh XP {state.xp}/{state.xp_needed}"
+    if remaining <= PASSIVE_XP_PER_ROUND:
+        return Advice(
+            "xp",
+            f"Vòng sau tự lên cấp {nxt} nhờ +{PASSIVE_XP_PER_ROUND} XP — không cần mua XP",
+            bar,
+            confidence="đo được",
+            priority=5,
+        )
+
+    gold = gold_for_xp(remaining)
+    reasons = [
+        bar,
+        f"hoặc {math.ceil(remaining / PASSIVE_XP_PER_ROUND)} vòng XP tự nhiên",
+    ]
+    after_passive = gold_for_xp(remaining - PASSIVE_XP_PER_ROUND)
+    if after_passive < gold:
+        reasons.append(f"chờ +{PASSIVE_XP_PER_ROUND} XP vòng sau thì chỉ cần {after_passive} vàng")
+    if gold > state.gold:
+        reasons.append(f"đang có {state.gold} vàng, thiếu {gold - state.gold}")
+    else:
+        lost = interest_income(state.gold) - interest_income(state.gold - gold)
+        if lost > 0:
+            reasons.append(f"mua ngay sẽ mất {lost} vàng lãi vòng tới")
+    return Advice(
+        "xp",
+        f"Còn {remaining} XP lên cấp {nxt}: {gold} vàng ({gold // GOLD_PER_BUY} lần mua)",
+        " · ".join(reasons),
+        confidence="đo được",
+        priority=5,
+    )
 
 
 def projected_income(state: GameState, base: int | None = None) -> int:
@@ -144,6 +195,9 @@ class EconomyRules:
             )
 
         advice.append(self._level_advice(state))
+        xp = xp_advice(state)
+        if xp:
+            advice.append(xp)
         return sorted(advice, key=lambda a: a.priority)
 
     @staticmethod
