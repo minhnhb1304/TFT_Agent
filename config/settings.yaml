@@ -17,6 +17,7 @@ paths:
   name_index: data/name_index.json              # SINH RA boi scripts/build_name_index.py
   scenarios: data/scenarios
   cdragon_cache: data/cdragon_cache             # SINH RA boi scripts/fetch_locale.py
+  patch_state: data/patch_state.json            # SINH RA boi scripts/refresh_data.py - patch hien tai
 
 locale:
   # vi_vn. TUYET DOI khong dung vn_vn (bay so 1 trong research/set-data.md).

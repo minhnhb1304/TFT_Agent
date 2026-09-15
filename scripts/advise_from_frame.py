@@ -259,6 +259,11 @@ def main(argv: list[str] | None = None) -> int:
         for d in reading.degraded:
             print(f"  - {d}")
 
+    if bundle.stale_data:
+        print(f"\nDữ liệu đã cũ so với patch hiện tại (chạy scripts/refresh_data.py):")
+        for d in bundle.stale_data:
+            print(f"  - {d}")
+
     return 0
 
 

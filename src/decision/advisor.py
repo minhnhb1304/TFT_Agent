@@ -20,6 +20,7 @@ from ..eval.scenario_logger import ScenarioLogger
 from ..game_state.models import GameState
 from ..knowledge.augment_features import FeatureTable
 from ..knowledge.comp_database import CompDatabase
+from ..knowledge.data_freshness import stale_warnings
 from ..knowledge.stats_provider import AugmentStatsProvider, default_provider
 from ..utils.settings import Settings
 from .augment_advisor import AugmentAdvisor, AugmentChoice, Ranking
@@ -44,6 +45,9 @@ class AdviceBundle:
     items: ItemAdvice | None = None
     position: PositionAdvice | None = None
     degraded: list[str] = field(default_factory=list)
+    # Bang du lieu da cu so voi patch hien tai. Tach khoi `degraded`: advisor
+    # van chay dung, chi la dang tu van tren so cua patch truoc.
+    stale_data: list[str] = field(default_factory=list)
     scenario_path: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,6 +61,7 @@ class AdviceBundle:
             "items": self.items.to_dict() if self.items else None,
             "position": self.position.to_dict() if self.position else None,
             "degraded": self.degraded,
+            "stale_data": self.stale_data,
             "scenario_path": self.scenario_path,
         }
 
@@ -119,6 +124,8 @@ class Advisor:
             timeout_s=float(s.get("features", "llm_hard_timeout_s", 2.0)),
         )
         self.logger = logger or ScenarioLogger(s.path("scenarios"), enabled=s.log_scenarios)
+        # Kiem mot lan luc khoi dong: file khong doi giua cac chu ky tu van.
+        self.stale_data = stale_warnings(s)
 
         self._previous_comp: str | None = None
 
@@ -138,7 +145,7 @@ class Advisor:
                 thong tin nay phai duoc truyen vao; None thi coi nhu con du
                 ba luot, tuc la trang thai vua vao man chon.
         """
-        bundle = AdviceBundle()
+        bundle = AdviceBundle(stale_data=list(self.stale_data))
 
         # 1. Augment - duong co han gio, chay truoc va khong bao boc try/except:
         #    that bai o day la that bai cua chinh do an, phai no ra chu khong nuot.
