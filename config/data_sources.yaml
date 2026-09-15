@@ -19,8 +19,8 @@
 
 meta:
   set: TFTSet18
-  patch: "18.1"
-  updated: 2026-09-07
+  patch: "18.2"
+  updated: 2026-09-15
 
 # --- Dac trung tinh cua augment (ten, bac, mo ta) --------------------------
 # Day la nhanh DUY NHAT dang chay duoc dau-den-cuoi.
