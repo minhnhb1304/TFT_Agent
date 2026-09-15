@@ -31,6 +31,7 @@ DEFAULTS: dict[str, Any] = {
         "name_index": "data/name_index.json",
         "scenarios": "data/scenarios",
         "cdragon_cache": "data/cdragon_cache",
+        "patch_state": "data/patch_state.json",
     },
     "locale": {"language": "vi_vn", "branch": "latest"},
     # Nguon crawl cho scripts/crawl_augment_stats.py. Chi dung OFFLINE luc
