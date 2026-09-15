@@ -1,0 +1,11 @@
+{
+  "current_patch": "18.2",
+  "released_at": "2026-09-10T07:00:00+00:00",
+  "released_at_source": "lolchess_patch_notes",
+  "detected_at": "2026-09-15T15:31:12+00:00",
+  "votes": {
+    "metatft": "18.2",
+    "tftacademy": "18.2",
+    "lolchess": null
+  }
+}
