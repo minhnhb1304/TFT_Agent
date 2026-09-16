@@ -61,3 +61,10 @@ vod_info.json
 config/screen_regions.yaml
 !config/screen_regions.*.yaml
 
+# Local runner batch scripts
+*.bat
+
+# Temporary debug dumps
+data/debug_augments/
+
+
