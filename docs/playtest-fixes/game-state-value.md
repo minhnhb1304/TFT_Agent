@@ -48,15 +48,15 @@ Phần lớn câu lặp ở [augment-commentary.md](augment-commentary.md) ("HP 
 | 0d | **R2**: ROI `hud/streak` + dấu theo màu biểu tượng | `hud_acc[streak]` ≥ 0.9 |
 | 0e | **R3**: đọc được HUD cả khi Team Planner làm tối màn | Khung 1126 s của game 2 ra đủ gold/level/xp |
 | 0f | Bỏ qua lần đọc HUD nếu các ô HUD không đổi (hash nhỏ) — đo được **~1 s mỗi lần đọc**, nên quét một video 36 phút mất ~12 phút chỉ vì HUD | Thời gian `--mode session` giảm; giá trị không đổi |
-| 1 | **Đo trước**: % màn chọn lõi mà thứ hạng có trạng thái ≠ thứ hạng với trạng thái trung tính | Baseline (dự kiến gần 0% với tiền/cấp) |
+| 1 | ✅ **Đo trước**: `scripts/state_effect_report.py --ablate` → **0/22 offer** đổi thứ hạng | đúng như dự đoán |
 | 2 | **Dòng trạng thái** trên `AugmentPanel`: `3-2 · Lv6 (4/10 XP) · 32g (+3 lãi) · HP 64 · thua 3` | Hiện trên replay khung record |
 | 3 | Thêm 1 câu từ `RulesEngine` dưới dòng trạng thái (XP lẻ, lãi, mốc tiền) | Test snapshot panel |
-| 4 | `econ_fit` theo **tiền + chuỗi**: đã kịch lãi → lõi tiền giảm giá trị; nghèo + chuỗi thua dài → tăng | Unit test từng vùng |
-| 5 | `tempo_fit` thêm **cấp/XP so với nhịp chuẩn của stage**: chậm nhịp → ưu tiên sức mạnh ngay | Unit test; nhịp chuẩn lấy từ `data/lolchess_guide.json` |
-| 6 | Nối với **archetype đội hình** (fast 8 / reroll) từ `comp_selector` | Lõi reroll bị trừ điểm khi đang fast 8 |
-| 7 | **Hiện ảnh hưởng**: chấm lại với trạng thái trung tính → "Vì 12 vàng + thua 4: lõi tiền +0.08 (từ #3 lên #1)" | Câu chỉ hiện khi chênh lệch vượt ngưỡng |
+| 4 | ✅ `econ_fit` theo **tiền + chuỗi** (kịch lãi → giảm; nghèo hoặc thua dài mà còn máu → tăng) | 16 test trong `test_state_effect.py` |
+| 5 | ✅ `tempo_fit` thêm **nhịp lên cấp** (chậm nhịp → ưu tiên sức mạnh ngay; nhanh nhịp không đổi gì) | nhịp chuẩn để trong config, ablation được |
+| 7 | ✅ **Hiện ảnh hưởng**: `src/decision/state_effect.py` chấm lại với trạng thái trung tính, sinh câu "Vì 55 vàng, chậm nhịp 2 cấp: X −0.02 (từ #1 xuống #2)" | im lặng khi chênh lệch < 0.02 và thứ hạng không đổi |
 | 8 | **Báo số cũ**: trường `stale`/`never_seen` hiện rõ trên dòng trạng thái, không dùng im lặng | Test với tracker thiếu dữ liệu |
-| 9 | Chạy lại bước 1 | % thay đổi thứ hạng tăng rõ; ablation bật/tắt từng trường |
+| 9 | ✅ Chạy lại bước 1 → **3/22 (14%)**, trong đó 3 lần đổi cả lựa chọn đầu | xem [eval-dataset.md](eval-dataset.md) |
+| 6 | ⏸ Nối archetype đội hình (fast 8 / reroll) | hoãn: cần chọn đội hình **trước** khi xếp hạng lõi, mà đường 30 giây đang chạy lõi trước |
 
 ## Lưu ý
 

@@ -28,21 +28,21 @@ Không có baseline thì không biết M2 sửa được bao nhiêu, và không 
 
 ## Công cụ (đã có)
 
-| Việc | File | Ghi chú |
-|---|---|---|
-| Schema + validate | `src/eval/playtest_labels.py` | `verified` kiểm chặt: đủ 3 ô, `rerolled_slot` = ô thực sự đổi, `picked` ∈ offer cuối |
-| Bộ chấm | `src/eval/playtest_metrics.py` | Thẻ "đang hiện" = lần đọc cuối trước khi offer kết thúc |
-| Tách offer + gợi ý tên | `src/eval/playtest_draft.py` | Reroll = nút đổi trạng thái; thẻ yên = lệch < 2 |
-| Sinh nhãn nháp | `scripts/draft_playtest_labels.py` | Ảnh mỗi offer vào `snapshots/` (gitignore) |
-| Xem lại / sửa nhãn | `scripts/review_playtest_labels.py` + `src/eval/playtest_review.py` | Trang 127.0.0.1; còn lỗi thì **không ghi** — xem [labeling-guide.md](labeling-guide.md) |
-| Đo | `scripts/eval_playtest.py` | `--mode baseline` (y hệt `run_replay.py` d537eb0) / `dense` (chẩn đoán) |
-| Test | `tests/test_playtest_eval.py` | 37 test, số kỳ vọng tính tay |
+| Việc | File |
+|---|---|
+| Schema + validate nhãn | `src/eval/playtest_labels.py` |
+| Bộ chấm | `src/eval/playtest_metrics.py` |
+| Tách offer + gợi ý tên | `src/eval/playtest_draft.py` |
+| Sinh nhãn nháp | `scripts/draft_playtest_labels.py` |
+.venv\Scripts\python scripts\review_playtest_labels.py data\eval\playtest\<id>.json --video "<record>.mp4"
+| Đo tầng đọc | `scripts/eval_playtest.py` (`--mode baseline \| session \| dense`) |
+| Đo ảnh hưởng trạng thái | `scripts/state_effect_report.py` (`--ablate` để lấy số trước M3) |
 
 ```powershell
 .venv\Scripts\python scripts\draft_playtest_labels.py --video "<record>.mp4"
 .venv\Scripts\python scripts\review_playtest_labels.py data\eval\playtest\<id>.json --video "<record>.mp4"
-.venv\Scripts\python scripts\eval_playtest.py data\eval\playtest\<id>.json --video "<record>.mp4" --mode baseline
-.venv\Scripts\python scripts\eval_playtest.py data\eval\playtest\<id>.json --video "<record>.mp4" --mode dense
+.venv\Scripts\python scripts\eval_playtest.py data\eval\playtest\<id>.json --video "<record>.mp4" --mode session
+.venv\Scripts\python scripts\state_effect_report.py data\eval\playtest\*.json
 ```
 
 `baseline` thấp + `dense` cao → lỗi ở **khi nào đọc**; cả hai thấp → lỗi ở **bộ đọc thẻ**.
@@ -67,9 +67,11 @@ từng ảnh (`verified`). Đo ngày 2026-09-18 tại commit `d537eb0`.
 |---|---|---|---|---|---|---|---|---|
 | 1 | baseline | 0.55 | 15 | 0 | **0/8** | 3.15 s | 0.00 | 0.36 |
 | 1 | **session (M1)** | **1.00** | 0 | 0 | **7/8** | 0.50 s | **1.00** | 0.36 |
+| 1 | **session (M2)** | **1.00** | 0 | 0 | **7/8** | 0.48 s | **1.00** | **1.00** |
 | 1 | dense | 1.00 | 0 | 0 | 7/8 | 2.15 s | 1.00 | 0.36 |
 | 2 | baseline | 0.18 | 3 | 24 | **0/8** | 0.75 s | 0.00 | 0.27 |
 | 2 | **session (M1)** | **1.00** | 0 | 0 | **6/8** | 2.01 s | 0.36–1.00 | 0.64 |
+| 2 | **session (M2)** | **1.00** | 0 | 0 | 5/8 | 0.51 s | 0.36–1.00 | **1.00** |
 | 2 | dense | 1.00 | 0 | 0 | 8/8 | 0.55 s | 0.64 | 0.64 |
 
 `streak` = 0.00 ở baseline/dense (chưa đọc trường này); `session` có 0.27–0.36 chỉ vì đoán
@@ -77,21 +79,37 @@ từng ảnh (`verified`). Đo ngày 2026-09-18 tại commit `d537eb0`.
 
 ### Đọc được gì từ bảng
 
-1. **Bộ đọc thẻ OCR không phải thủ phạm.** Cùng bộ đọc đó, chỉ đổi *khi nào* đọc, `card_acc`
-   nhảy từ 0.18-0.55 lên **1.00** và bắt được 13/16 lần reroll. Lỗi #2 nằm hoàn toàn ở tầng
-   kích hoạt - đã thay xong ở [core-session.md](core-session.md) (M1).
-2. **`wrong_silent` là kiểu hỏng nguy hiểm nhất**: 18 ô đọc ra lõi **khác** mà không báo gì.
-   Sau M1 còn **0**.
-3. **gold/level/xp = 0.00 ở baseline** vì chỉ đọc HUD đúng lúc màn chọn lõi che HUD; đọc
-   định kỳ bên ngoài màn thì lên 1.00.
+1. **Bộ đọc thẻ OCR không phải thủ phạm.** Cùng bộ đọc đó, chỉ đổi *khi nào* đọc thì `card_acc`
+   nhảy từ 0.18–0.55 lên **1.00**. Lỗi #2 nằm ở tầng kích hoạt, đã thay ở M1.
+2. **`wrong_silent` là kiểu hỏng nguy hiểm nhất**: baseline có 18 ô đọc ra lõi **khác** mà không
+   báo gì. Từ M1 trở đi: **0**.
+3. **gold/level/xp = 0.00 ở baseline** vì chỉ đọc HUD đúng lúc màn chọn lõi che HUD.
+4. **`hp` 0.36 → 1.00 ở M2**: lỗi ROI, không phải lỗi thời điểm.
+
+### M3: trạng thái trận đã đổi được xếp hạng
+
+`python scripts/state_effect_report.py data/eval/playtest/*.json [--ablate]`
+
+| Cấu hình | Offer đổi thứ hạng | Đổi cả lựa chọn đầu |
+|---|---|---|
+| Trước M3 (`--ablate`: tắt tiền, chuỗi, nhịp cấp) | **0/22** | 0 |
+| Sau M3 | **3/22 (14%)** | 3 |
+
+Đây là câu trả lời bằng số cho "đọc tiền/EXP để làm gì": trước M3, đọc đúng hay sai thì xếp
+hạng **không đổi một lần nào**. Con số 14% còn thấp vì hệ số M3 là **lựa chọn chưa fit**
+(`gold_swing`, `loss_streak_bonus`, `pace_weight` trong `config/scoring_weights.yaml`) — chúng
+là trục ablation, sẽ hiệu chỉnh khi có nhãn chuyên gia (M4).
 
 ### Còn lại sau M1
 
-| Việc | Mốc | Vì sao còn |
-|---|---|---|
-| `hp` 0.36–0.64, `streak` chưa đọc | M2 (0c, 0d) | Lỗi ROI, không phải lỗi thời điểm |
-| 3/16 lần reroll sót | M2 | Đều là roll ngay trước lúc màn đóng — thẻ chưa kịp đứng yên |
-| `gold` game 2 chỉ 0.36 | M2 (0e) | Team Planner làm tối HUD |
+| Việc | Trạng thái |
+|---|---|
+| ~~`hp` 0.36–0.64~~ | **Xong (M2)**: tìm dòng bằng vòng vàng → `hp` 1.00; không thấy vòng thì báo thiếu chứ không đọc dòng người khác |
+| ~~`streak` chưa đọc~~ | **Xong (M2)**: số + dấu theo màu biểu tượng → 0.82 |
+| ~~Team Planner làm tối HUD~~ | **Xong (M2)**: kéo sáng trước khi kiểm → đọc lại đủ 5 trường |
+| ~~Tộc/hệ luôn rỗng ở đường OCR~~ | **Xong (M2)**: đọc bảng bên trái, khớp tên qua `NameIndex` |
+| 4/16 lần reroll sót | Còn — đều là roll **ngay trước lúc màn đóng**: thẻ chưa kịp đứng yên đủ 2 khung thì màn đã tắt |
+| Đọc HUD tốn 3,1 s vì thêm chuỗi + máu động | Đã giảm còn 0,6–0,9 s bằng cache theo từng ô; vẫn cần theo dõi khi chạy live |
 
 ## Related
 

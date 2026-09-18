@@ -88,8 +88,14 @@ def run_baseline(src, regions, index, start: float = 0.0, end: float | None = No
     return events
 
 
-def run_session(src, regions, index, fps: float, start: float, end: float | None) -> list[ReadEvent]:
-    """Chay LiveSession tren ca video - dung y hanh vi se chay trong tran."""
+def run_session(src, regions, index, fps: float, start: float, end: float | None,
+                hud_every: float = 3.0, windows: list[tuple[float, float]] | None = None) -> list[ReadEvent]:
+    """Chay LiveSession - dung y hanh vi se chay trong tran.
+
+    `windows` (che do --around-labels) chi quet quanh cac man da gan nhan. Do la
+    CHAN DOAN cho tang doc, khong phai hanh vi san pham: no dung moc thoi gian
+    tu nhan de biet quet o dau. Khong bao cao no nhu ket qua dau-cuoi.
+    """
     from src.live.card_reader import OcrCardReader
     from src.live.events import AdviceReady
     from src.live.session import LiveSession
@@ -100,7 +106,19 @@ def run_session(src, regions, index, fps: float, start: float, end: float | None
         reroll_reader=RerollButtonReader.load(regions),
         advisor=_NullAdvisor(),
         regions=regions,
+        hud_every_s=hud_every,
     )
+    events: list[ReadEvent] = []
+    spans = windows if windows else [(start, end)]
+    for span_start, span_end in spans:
+        session.new_game()
+        events.extend(_run_span(session, src, fps, span_start, span_end))
+    return events
+
+
+def _run_span(session, src, fps, start, end) -> list[ReadEvent]:
+    from src.live.events import AdviceReady
+
     events: list[ReadEvent] = []
     for frame in src.frames(start=start, end=end, fps=fps):
         ev = session.step(frame)
@@ -154,6 +172,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--video", help="bắt buộc trừ khi dùng --run")
     ap.add_argument("--mode", choices=("baseline", "session", "dense"), default="session")
     ap.add_argument("--fps", type=float, default=5.0, help="mode session: nhịp lấy khung")
+    ap.add_argument("--around-labels", type=float, default=0.0, metavar="GIÂY",
+                    help="chẩn đoán: chỉ quét quanh các màn đã gắn nhãn, mở trước N giây")
+    ap.add_argument("--hud-every", type=float, default=3.0,
+                    help="mode session: giây video giữa hai lần đọc HUD. Trong trận là 3 s thời "
+                         "gian thực; khi đo trên video cả tiếng thì giãn ra cho nhanh")
     ap.add_argument("--run", help="chấm lại một run .jsonl đã lưu")
     ap.add_argument("--regions", default=DEFAULT_REGIONS)
     ap.add_argument("--name-index", default="data/name_index.json")
@@ -178,7 +201,12 @@ def main(argv: list[str] | None = None) -> int:
         if args.mode == "baseline":
             events = run_baseline(src, regions, index, args.start, args.end)
         elif args.mode == "session":
-            events = run_session(src, regions, index, args.fps, args.start, args.end)
+            windows = None
+            if args.around_labels:
+                windows = [(max(0.0, s.open_s - args.around_labels), s.close_s + 5.0)
+                           for s in labels.screens]
+            events = run_session(src, regions, index, args.fps, args.start, args.end,
+                                 args.hud_every, windows)
         else:
             events = run_dense(src, regions, index, labels)
         mode = args.mode
