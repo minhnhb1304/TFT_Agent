@@ -1,0 +1,301 @@
+{
+  "schema": 1,
+  "video": "Screen recorder_09-16-2026_22-26-36-983-002.mp4",
+  "video_sha256": "81488b403765b4902e446c2bbd752d8919abfc02641b54cb48d816527a559068",
+  "size": [
+    1920,
+    1080
+  ],
+  "screens": [
+    {
+      "stage": "2-1",
+      "status": "verified",
+      "open_s": 106.0,
+      "close_s": 128.75,
+      "hud": {
+        "gold": 10,
+        "level": 3,
+        "xp": 0,
+        "xp_needed": 6,
+        "hp": 100,
+        "streak": 0
+      },
+      "traits": null,
+      "offers": [
+        {
+          "at_s": 107.25,
+          "cards": [
+            [
+              "DA_Hustler"
+            ],
+            [
+              "DA_HardBargain"
+            ],
+            [
+              "DA_18_FloraFatalisAugment",
+              "DA_18_FloraFatalisAugmentPlus"
+            ]
+          ],
+          "rerolled_slot": null,
+          "ocr_raw": [
+            "ô 1: Sőng Vi / Bn không còn li tc, nhưng / s nhn 3 vàng khi bt đu / mi vòng giao tranh ngưi / chơi. Nhn ngay 3 vàng. / Ldi túxe là ludn a uàn s ban",
+            "ô 2: Thương V Khó Xơi / Bn không th chn phn / thưng trong Vòng Đi Ch. / Nhn thêm 6 máu ngưi chơi / và 8 vàng mi vòng đi ch. / Khi bn không chn Phn / Thưng  Vòng Đi Chơ, ban",
+            "ô 3: Thc Vt Hp Th / Nhn 1 n Thc Vt. Tưng / mang n s đưc tăng 50% / hiu ng t tc/h Thc Vt. / Nhn 3 vàng."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_22-26-36-983-002/manual_107.25.jpg"
+        },
+        {
+          "at_s": 120.0,
+          "cards": [
+            [
+              "DA_Hustler"
+            ],
+            [
+              "DA_BonusGift"
+            ],
+            [
+              "DA_18_FloraFatalisAugment",
+              "DA_18_FloraFatalisAugmentPlus"
+            ]
+          ],
+          "rerolled_slot": 1,
+          "ocr_raw": [
+            "(chèn tay)"
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_22-26-36-983-002/manual_120.00.jpg"
+        },
+        {
+          "at_s": 122.0,
+          "cards": [
+            [
+              "DA_BacklineBlueprint"
+            ],
+            [
+              "DA_BonusGift"
+            ],
+            [
+              "DA_18_FloraFatalisAugment",
+              "DA_18_FloraFatalisAugmentPlus"
+            ]
+          ],
+          "rerolled_slot": 0,
+          "ocr_raw": [
+            "ô 1: Sơ Đồ Tuyn Sau / Nhn 1 tưng 3 vàng không / phi Đõ Đòn và 1 n phù hp / vi h ca tưng đó.",
+            "ô 2: Quà Tng Thêm / Bt c khi nào bn m hp / vt phm, bn có 25% cơ hi / nhn đưc 1 hp vt phm / xám. Nhn 1 hp vt phm / xám.",
+            "ô 3: Thc Vt Hp Th / Nhn 1 n Thc Vt. Tưng / mang n s đưc tăng 50% / hiu ng t tc/h Thc Vt. / Nhn 3 vàng."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_22-26-36-983-002/manual_122.00.jpg"
+        }
+      ],
+      "picked": "DA_18_FloraFatalisAugment",
+      "expert": null,
+      "notes": "nháp tự động — kiểm ảnh snapshot rồi sửa; điền streak, traits, picked"
+    },
+    {
+      "stage": "3-2",
+      "status": "verified",
+      "open_s": 669.75,
+      "close_s": 699.5,
+      "hud": {
+        "gold": 53,
+        "level": 5,
+        "xp": 18,
+        "xp_needed": 20,
+        "hp": 73,
+        "streak": 1
+      },
+      "traits": null,
+      "offers": [
+        {
+          "at_s": 674.75,
+          "cards": [
+            [
+              "DA_BaronsLair"
+            ],
+            [
+              "DA_HoldTheLine"
+            ],
+            [
+              "DA_BronzeForLifeII"
+            ]
+          ],
+          "rerolled_slot": null,
+          "ocr_raw": [
+            "ô 1: Hang  Baron / Nhn 1 trang b Đõ Đòn ngu / nhiên. Sau 8 giây giao tranh, / đi ca bn nhn thêm 4% / Sc Mnh Công Kích và Sc / Mnh Phép Thut mi giây / she dn bêt giae tranh",
+            "ô 2: Gi Vng Hàng Ngũ / Các tưng  2 hàng sau nhn / 10% Sc Mnh Phép Thut và / 9% Sc Mnh Công Kích vi / mi tưng bt đu giao tranh /  hàng trên.",
+            "ô 3: Tt Tay Bc Đồng II / Đi ca bn nhn 2,5% / Khuch Đi Sát Thương và 4 / Giáp & Kháng Phép cho mői / tc/h bc Đồng."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_22-26-36-983-002/00669_3-2_offer1.jpg"
+        },
+        {
+          "at_s": 685.5,
+          "cards": [
+            [
+              "DA_BaronsLair"
+            ],
+            [
+              "DA_WandOverflow"
+            ],
+            [
+              "DA_BronzeForLifeII"
+            ]
+          ],
+          "rerolled_slot": 1,
+          "ocr_raw": [
+            "ô 1: Khm Bo Thach II / Đi ca bn nhn 25% Ti L / Chí Mng, 10% Sát Thương / Chí Mng và Chun Xác. / Chun Xác: Sát thương k / nžna sé th chi mans Chi s",
+            "ô 2: Đam Mê Gy / Nhn 4 Gy Quá Kh. Gy Quá / Kh ca bn s cho +5% Tc / Đ Đánh.",
+            "ô 3: Tt Tay Bc Đồng II / Đi ca bn nhn 2,5% / Khuch Đi Sát Thương và 4 / Giáp & Kháng Phép cho mői / tc/h bc Đồng."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_22-26-36-983-002/manual_685.50.jpg"
+        },
+        {
+          "at_s": 690.75,
+          "cards": [
+            [
+              "DA_JeweledLotus_II"
+            ],
+            [
+              "DA_WandOverflow"
+            ],
+            [
+              "DA_BronzeForLifeII"
+            ]
+          ],
+          "rerolled_slot": 0,
+          "ocr_raw": [
+            "(chèn tay)"
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_22-26-36-983-002/manual_690.75.jpg"
+        },
+        {
+          "at_s": 693.5,
+          "cards": [
+            [
+              "DA_JeweledLotus_II"
+            ],
+            [
+              "DA_WandOverflow"
+            ],
+            [
+              "DA_NestingAnvils"
+            ]
+          ],
+          "rerolled_slot": 2,
+          "ocr_raw": [
+            "ô 1: Khm Bo Thach II / Đi ca bn nhn 25% Ti L / Chí Mng, 10% Sát Thương / Chí Mng và Chun Xác. / Chun Xác: Sát thương k / nžns sé th chí mana Chi s",
+            "ô 2: Đam Mê Gy / Nhn 4 Gy Quá Kh. Gy Quá / Kh ca bn s cho +5% Tc / Đ Đánh.",
+            "ô 3: Gói Trang B Bt Ng / Nhn 1 Gói Trang B To Tác. / Sau khi bn m nó, nhn 1 / Gói Trang B Thành Phn. Sau / khi bn m th đó, nhn 4 / vàng."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_22-26-36-983-002/00669_3-2_offer3.jpg"
+        }
+      ],
+      "picked": "DA_WandOverflow",
+      "expert": null,
+      "notes": "sai hp, chưa ocr streak, chưa bắt được 2 động tác roll lõi nhanh tay liền nhau "
+    },
+    {
+      "stage": "4-2",
+      "status": "verified",
+      "open_s": 1129.25,
+      "close_s": 1155.5,
+      "hud": {
+        "gold": 57,
+        "level": 7,
+        "xp": 6,
+        "xp_needed": 56,
+        "hp": 73,
+        "streak": 6
+      },
+      "traits": null,
+      "offers": [
+        {
+          "at_s": 1130.5,
+          "cards": [
+            [
+              "DA_HealingOrbsI"
+            ],
+            [
+              "DA_BoxingLessons"
+            ],
+            [
+              "DA_FindYourCenter"
+            ]
+          ],
+          "rerolled_slot": null,
+          "ocr_raw": [
+            "ô 1: Cu Hồi Phc I / Khi 1 k đch b h gc, 1 / đng minh gn đó s đưc / hồi 250 Máu.",
+            "ô 2: Tp Chu Đòn / Đi ca bn nhn 30 Máu vi / mi tưng bt đu giao tranh /  hàng đu.",
+            "ô 3: Tin V Trung Tâm / Tưng bt đu giao tranh  / chính gia hà / trên sê đưc / nhn 15% ch Đi Sát / Thương và 25% Máu ti đa."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_22-26-36-983-002/01129_4-2_offer1.jpg"
+        },
+        {
+          "at_s": 1140.25,
+          "cards": [
+            [
+              "DA_HealingOrbsI"
+            ],
+            [
+              "DA_BoxingLessons"
+            ],
+            [
+              "DA_ChampDeliveryPlusPlus"
+            ]
+          ],
+          "rerolled_slot": 2,
+          "ocr_raw": [
+            "ô 1: Cu Hồi Phc I / Khi 1 k đch b h gc, 1 / đng minh gn đó s đưc / hi 250 Máu.",
+            "ô 2: Tp Chu Đòn / Đi ca bn nhn 30 Máu vi / mi tưng bt đu giao tranh /  hàng đu.",
+            "ô 3: Phân Phi Tưng++ / Nhn 3 tưng 4 vàng. Sau 6 / vòng, nhn thêm 3 tưng / cùng bc."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_22-26-36-983-002/01129_4-2_offer2.jpg"
+        },
+        {
+          "at_s": 1147.25,
+          "cards": [
+            [
+              "DA_HealingOrbsI"
+            ],
+            [
+              "DA_18_WispRebatePlusPlus"
+            ],
+            [
+              "DA_ChampDeliveryPlusPlus"
+            ]
+          ],
+          "rerolled_slot": 1,
+          "ocr_raw": [
+            "ô 1: Cu Hồi Phc I / Khi 1 k đch b h gc, 1 / đồng minh gn đó s đưc / hi 250 Máu.",
+            "ô 2: Tinh Linh Hoàn Tin+ / Mi ln bn mua mt Tinh / Linh, nhn đưc 2 vàng. Nhn / ngay 8 vàng.",
+            "ô 3: Phân Phi Tưng++ / Nhn 3 tưng 4 vàng. Sau 6 / vòng, nhn thêm 3 tưng / cùng bc."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_22-26-36-983-002/01129_4-2_offer3.jpg"
+        },
+        {
+          "at_s": 1152.5,
+          "cards": [
+            [
+              "DA_ItemGrabBag"
+            ],
+            [
+              "DA_18_WispRebatePlusPlus"
+            ],
+            [
+              "DA_ChampDeliveryPlusPlus"
+            ]
+          ],
+          "rerolled_slot": 0,
+          "ocr_raw": [
+            "ô 1: Tip T Trang B I / Nhn 1 trang b hoàn / chinh ngu nhiên.",
+            "ô 2: Tinh Linh Hoàn Tin+ / Mi ln bn mua mt Tinh / Linh, nhn đưc 2 vàng. Nhn / ngay 8 vàng.",
+            "ô 3: Phân Phi Tưng++ / Nhn 3 tưng 4 vàng. Sau 6 / vòng, nhn thêm 3 tưng / cùng bc."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_22-26-36-983-002/01129_4-2_offer4.jpg"
+        }
+      ],
+      "picked": "DA_ChampDeliveryPlusPlus",
+      "expert": null,
+      "notes": "game state của phase này chỉ nhận diện được đúng hp (nhưng thực chất chưa chắc đã đúng). Có lẽ lý do là do tôi bật team planer lên gây nhiễu thông tin. nhưng thực chất các chỉ số này vẫn xem được ở vì chúng không hề bi che mà chỉ bị làm tối đi 10-20%."
+    }
+  ]
+}
