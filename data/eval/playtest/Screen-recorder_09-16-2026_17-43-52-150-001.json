@@ -1,0 +1,303 @@
+{
+  "schema": 1,
+  "video": "Screen recorder_09-16-2026_17-43-52-150-001.mp4",
+  "video_sha256": "66855315bf10f80375b26e3d3a86151c086de2cf6af54cb8767e8d0714266a9e",
+  "size": [
+    1920,
+    1080
+  ],
+  "screens": [
+    {
+      "stage": "2-1",
+      "status": "verified",
+      "open_s": 111.0,
+      "close_s": 139.25,
+      "hud": {
+        "gold": 1,
+        "level": 3,
+        "xp": 0,
+        "xp_needed": 6,
+        "hp": 100,
+        "streak": 0
+      },
+      "traits": null,
+      "offers": [
+        {
+          "at_s": 114.25,
+          "cards": [
+            [
+              "DA_18_CovenTraitAugment"
+            ],
+            [
+              "DA_SalvageBin"
+            ],
+            [
+              "DA_SpiritOfRedemption"
+            ]
+          ],
+          "rerolled_slot": null,
+          "ocr_raw": [
+            "ô 1: Tín Đ Tiên Hc Ám / Khi bn chn tip tc thu / thp tinh hoa Tiên Hc Ám, / hi 2 máu Linh Thú. Nhn 1 / Camille, 1 Elise và 1 Caitlyn.",
+            "ô 2: Nhà Máy Tái Ch / Nhn 1 trang b hoàn chinh / ngu nhiên ngay lp tc, và 1 / trang b thành phn sau 8 / vòng giao tranh ngưi chơi. / Bán tưng s tách trang b / hoàn chinh ca tưng đó ra",
+            "ô 3: Linh Hồn Chuc Ti / Nhn 1 Giáp Tâm Linh. Mi 5 / giây, Giáp Tâm Linh hồi li / cho các đồng minh trong / phm vi 1 ô 7,5% Máu đã mt / ca ho."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_17-43-52-150-001/00111_2-1_offer1.jpg"
+        },
+        {
+          "at_s": 132.75,
+          "cards": [
+            [
+              "DA_EarlyLearnings"
+            ],
+            [
+              "DA_SalvageBin"
+            ],
+            [
+              "DA_SpiritOfRedemption"
+            ]
+          ],
+          "rerolled_slot": 0,
+          "ocr_raw": [
+            "ô 1: Bài Hc Sơ Khai / Đi ca bn nhn 5% Sc / Mnh Công Kích & Sc / Mnh Phép Thut. Lưng / này s tăng thêm 1% sau / mi giao tranh ngưi chơi. / Tuána 1 uàna nbân aên dôi",
+            "ô 2: Nhà Máy Tái Ch / Nhn 1 trang b hoàn chinh / ngu nhiên ngay lp tc, và 1 / trang b thành phn sau 8 / vòng giao tranh ngưi chơi. / Bán tưng s tách trang b / hoàn chinh ca tưng đó ra",
+            "ô 3: Linh Hồn Chuc Ti / Nhn 1 Giáp Tâm Linh. Mi 5 / giây, Giáp Tâm Linh hồi li / cho các đồng minh trong / phm vi 1 ô 7,5% Máu đã mt / ca ho."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_17-43-52-150-001/00111_2-1_offer2.jpg"
+        },
+        {
+          "at_s": 135.5,
+          "cards": [
+            [
+              "DA_EarlyLearnings"
+            ],
+            [
+              "DA_SalvageBin"
+            ],
+            [
+              "DA_WorththeWait"
+            ]
+          ],
+          "rerolled_slot": 2,
+          "ocr_raw": [
+            "ô 1: Bài Hc Sơ Khai / Đi ca bn nhn 5% Sc / Mnh Công Kích & Sc Mnh / Phép Thut. Lưng này s / tăng thêm 1% sau mõi giao / tranh ngưi chơi. Tưng 1 / uàna nbân aán đêi",
+            "ô 2: Nhà Máy Tái Ch / Nhn 1 trang b hoàn chinh / ngu nhiên ngay lp tc, và 1 / trang b thành phn sau 8 / vòng giao tranh ngưi chơi. / Bán tưng s tách trang b / hoàn chinh ca tưng đó ra",
+            "ô 3: Ch Đi Xng Đáng / Nhn 1 tưng 1 vàng ngu / nhiên. Nhn 1 bn sao nũa / ca tưng đó khi bt đu mi / vòng đu cho đn ht trn."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_17-43-52-150-001/00111_2-1_offer3.jpg"
+        },
+        {
+          "at_s": 138.0,
+          "cards": [
+            [
+              "DA_EarlyLearnings"
+            ],
+            [
+              "DA_BoosterPack"
+            ],
+            [
+              "DA_WorththeWait"
+            ]
+          ],
+          "rerolled_slot": 1,
+          "ocr_raw": [
+            "ô 1: Bài Hc Sơ Khai / Đi ca bn nhn 5% Sc / Mnh Công Kích & Sc Mnh / Phép Thut. Lưng này së / tăng thêm 1% sau mi giao / tranh ngưi chơi. Tưng 1 / uàna nbân aán đêi",
+            "ô 2: Gói Tăng Cưng / Nhn các tưng ngu nhiên / có tng giá là 12 vàng. (Đm / bo có ít nht mt tưng 3 / vàng!)",
+            "ô 3: Ch Đi Xng Đáng / Nhn 1 tưng 1 vàng ngu / nhiên. Nhn 1 bn sao nũa / ca tưng đó khi bt đu mi / vòng đu cho đn ht trn."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_17-43-52-150-001/00111_2-1_offer4.jpg"
+        }
+      ],
+      "picked": "DA_WorththeWait",
+      "expert": null,
+      "notes": "nháp tự động — kiểm ảnh snapshot rồi sửa; điền streak, traits, picked"
+    },
+    {
+      "stage": "3-2",
+      "status": "verified",
+      "open_s": 626.75,
+      "close_s": 647.0,
+      "hud": {
+        "gold": 55,
+        "level": 4,
+        "xp": 8,
+        "xp_needed": 10,
+        "hp": 88,
+        "streak": -1
+      },
+      "traits": null,
+      "offers": [
+        {
+          "at_s": 628.25,
+          "cards": [
+            [
+              "DA_FeelingLucky"
+            ],
+            [
+              "DA_18_ResidualMagicPlus"
+            ],
+            [
+              "DA_Recombobulator"
+            ]
+          ],
+          "rerolled_slot": null,
+          "ocr_raw": [
+            "ô 1: Cm Thy May Mn / Nhn 12 vàng, sau đó tung / đồng xu. Nu ra mt nga, / nhn thêm 4 vàng.",
+            "ô 2: Dư Âm Ma Thut + / Đi ca bn đưc tăng 75 / Máu. Mi khi bn mua mt / Tinh Linh, tăng hiu ng này / thêm 10.",
+            "ô 3: Xoay Bài T Đng / Tt c tưng trên sân đu ca / bn s vĩnh vin chuyn / thành tưng ngu nhiên vi / giá cao hơn 1 bc (ti đa 5). / Nhn 2 Nam Châm Ma Thut / và 2 luat di miõn nbí"
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_17-43-52-150-001/00626_3-2_offer1.jpg"
+        },
+        {
+          "at_s": 636.5,
+          "cards": [
+            [
+              "DA_FeelingLucky"
+            ],
+            [
+              "DA_18_ResidualMagicPlus"
+            ],
+            [
+              "DA_StandUnited"
+            ]
+          ],
+          "rerolled_slot": 2,
+          "ocr_raw": [
+            "ô 1: Cm Thy May Mn / Nhn 12 vàng, sau đó tung / đồng xu. Nu ra mt nga, / nhn thêm 4 vàng.",
+            "ô 2: Dư Âm Ma Thut + / Đi ca bn đưc tăng 75 / Máu. Mi khi bn mua mt / Tinh Linh, tăng hiu ng này / thêm 10.",
+            "ô 3: Nht Thng / Tưng ca bn nhn 1,5% / Sc Mnh Công Kích và 1,5% / Sc Mnh Phép Thut mi / Tc/H không phi duy nht / đưc kích hot trong đi hình."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_17-43-52-150-001/00626_3-2_offer2.jpg"
+        },
+        {
+          "at_s": 645.25,
+          "cards": [
+            [
+              "DA_VerticalityI"
+            ],
+            [
+              "DA_18_ResidualMagicPlus"
+            ],
+            [
+              "DA_StandUnited"
+            ]
+          ],
+          "rerolled_slot": 0,
+          "ocr_raw": [
+            "ô 1: Chi Mt Con Đưng I / Các Tưng nhn đưc 1,5% / Sc Mnh Công Kích, 1,5% / Sc Mnh Phép Thut, 1,5 / Giáp và 1,5 Kháng Phép cho / mi đồng minh có cùng tc/ / hê vái he",
+            "ô 2: Dư Âm Ma Thut + / Đi ca bn đưc tăng 75 / Máu. Mi khi bn mua mt / Tinh Linh, tăng hiu ng này / thêm 10.",
+            "ô 3: Nht Thng / Tưng ca bn nhn 1,5% Sc / Mnh Công Kích và 1,5% Sc / Mnh Phép Thut mi Tc/H / không phi duy nht đưc kích / hot trong đi hình."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_17-43-52-150-001/00626_3-2_offer3.jpg"
+        }
+      ],
+      "picked": "DA_18_ResidualMagicPlus",
+      "expert": null,
+      "notes": "sai streak - streak +4 là trước khi combat vòng 3.1 kết thúc, combat 3.1 thua thì streak đúng phải là -1, sai hp"
+    },
+    {
+      "stage": "4-2",
+      "status": "verified",
+      "open_s": 1091.0,
+      "close_s": 1101.75,
+      "hud": {
+        "gold": 62,
+        "level": 6,
+        "xp": 0,
+        "xp_needed": 36,
+        "hp": 78,
+        "streak": 3
+      },
+      "traits": null,
+      "offers": [
+        {
+          "at_s": 1092.5,
+          "cards": [
+            [
+              "DA_HealingOrbsII"
+            ],
+            [
+              "DA_PlotArmor"
+            ],
+            [
+              "DA_ExplosiveGrowthPlus"
+            ]
+          ],
+          "rerolled_slot": null,
+          "ocr_raw": [
+            "ô 1: Cu Hồi Phc II / Khi 1 k đch b h gc, 1 / đng minh gn đó s đưc / hi 575 Máu.",
+            "ô 2: Hào Quang Nhân Vt Chính / Đi ca bn nhn 8 Giáp và / Kháng Phép. Sau khi còn dưi / 50% Máu, tăng hiu ng này / lên thành 40 cho đn ht giao / tranh.",
+            "ô 3: Tăng Trưng Bùng N+ / Nhn 10 XP ngay bây gi và / khi bt đu 3 vòng đu tip / theo."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_17-43-52-150-001/01091_4-2_offer1.jpg"
+        },
+        {
+          "at_s": 1099.0,
+          "cards": [
+            [
+              "DA_HealingOrbsII"
+            ],
+            [
+              "DA_PlotArmor"
+            ],
+            [
+              "DA_18_BigGrabBag"
+            ]
+          ],
+          "rerolled_slot": 2,
+          "ocr_raw": [
+            "ô 1: Cu Hồi Phc II / Khi 1 k đch b h gc, 1 / đng minh gn đó s đưc / hồi 575 Máu.",
+            "ô 2: Hào Quang Nhân Vt Chính / Đi ca bn nhn 8 Giáp và / Kháng Phép. Sau khi còn dưi / 50% Máu, tăng hiu ng này / lên thành 40 cho đn ht giao / tranh.",
+            "ô 3: Túi Đ Cõ Đi / Nhn 3 trang b thành phn / ngu nhiên, 2 vàng và 1 Búa / Rèn."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_17-43-52-150-001/01091_4-2_offer2.jpg"
+        },
+        {
+          "at_s": 1100.5,
+          "cards": [
+            [
+              "DA_HealingOrbsII"
+            ],
+            [
+              "DA_ArcaneViktory"
+            ],
+            [
+              "DA_18_BigGrabBag"
+            ]
+          ],
+          "rerolled_slot": 1,
+          "ocr_raw": [
+            "ô 1: Cu Hồi Phc II / Khi 1 k đch b h gc, 1 / đng minh gn đó s đưc / hi 575 Máu.",
+            "ô 2: Arcane Viktor-y / Sau 8 giây giao tranh, làm / choáng đi đch trong 1,5 / giây. Lp li hiu ng này sau / 18 giây giao tranh. / DTCL Masaa Qnan2024",
+            "ô 3: Túi Đ Cõ Đi / Nhn 3 trang b thành phn / ngu nhiên, 2 vàng và 1 Búa / Rèn."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_17-43-52-150-001/01091_4-2_offer3.jpg"
+        },
+        {
+          "at_s": 1101.75,
+          "cards": [
+            [
+              "DA_JeweledLotus_I"
+            ],
+            [
+              "DA_ArcaneViktory"
+            ],
+            [
+              "DA_18_BigGrabBag"
+            ]
+          ],
+          "rerolled_slot": 0,
+          "ocr_raw": [
+            "CHƯA ỔN ĐỊNH — thẻ chưa kịp đứng yên, kiểm kỹ ảnh",
+            "ô 1: Khm Bo Thch I / Đi ca bn nhn 10% Ti / L Chí Mng và Chun / Xác. / Chun Xác: Sát thương k / năng có th chí mang, Chi",
+            "ô 2: Arcane Viktor-y / Sau 8 giây giao tranh, làm / choáng đi đch trong 1,5 / giây. Lp li hiu ng này sau / 18 giây giao tranh. / DTCL Masaa Qnan2024",
+            "ô 3: Túi Đ C Đi / Nhn 3 trang b thành phn / ngu nhiên, 2 vàng và 1 Búa / Rèn."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/Screen-recorder_09-16-2026_17-43-52-150-001/01091_4-2_offer4.jpg"
+        }
+      ],
+      "picked": "DA_18_BigGrabBag",
+      "expert": null,
+      "notes": "sai hp, chưa ocr được streak"
+    }
+  ]
+}
