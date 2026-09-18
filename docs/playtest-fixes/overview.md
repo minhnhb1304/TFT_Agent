@@ -32,6 +32,7 @@ Replay và live dev **song song trên một lõi chung** `src/live/` — [shared
 |---|---|---|---|---|
 | **M0** | Bộ nhãn từ record + script đo baseline | [eval-dataset.md](eval-dataset.md) | — | 1 d |
 | **M1** | Lõi `LiveSession` + `CardReader`; replay chạy trên lõi, hành vi tương đương | [core-session.md](core-session.md), [replay-shell.md](replay-shell.md) | M0 | 2.5 d |
+| **M1b** | Giao diện vỏ replay: ba cột theo ô, dải kết luận, dải thời gian | [replay-ui.md](replay-ui.md), [ui-tokens.md](ui-tokens.md) | M1 | 1 d |
 | **M2** | Đọc đúng: reroll, OCR nhiều dòng, tộc/hệ, HUD priming | [augment-reroll-rescan.md](augment-reroll-rescan.md), [game-state-value.md](game-state-value.md) bước 0 | M1 | 2 d |
 | **M3** | State vào điểm + dòng trạng thái | [game-state-value.md](game-state-value.md) bước 1–9 | M2 | 1.5 d |
 | **M4** | Nhận xét mức A + luật chuyên gia + pilot 20 màn | [augment-commentary.md](augment-commentary.md), [expert-knowledge.md](expert-knowledge.md) | M1 (M3 cho câu state) | 2 d |
