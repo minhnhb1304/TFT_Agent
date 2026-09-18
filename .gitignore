@@ -67,4 +67,8 @@ config/screen_regions.yaml
 # Temporary debug dumps
 data/debug_augments/
 
+# Playtest eval (M0): anh snapshot va run sinh lai duoc; file nhan .json thi commit
+data/eval/playtest/snapshots/
+data/eval/runs/
+
 
