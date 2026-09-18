@@ -53,12 +53,12 @@ sánh replay/live (G5).
 
 | # | Việc | Kiểm chứng |
 |---|---|---|
-| 1 | Tách `window.py`, `worker.py` từ `run_replay.py`, chưa đổi logic | App mở, phát được như cũ |
-| 2 | Thay phân tích bằng `LiveSession` qua worker | Trên record: panel tự đổi khi reroll |
-| 3 | Thay scanner bằng `scan.py` | Số mốc = số màn trong nhãn M0 |
-| 4 | `--headless` + JSONL output | `eval_playtest.py` đọc được |
-| 5 | Dòng trạng thái, hàng ô lỗi, `economy`/`comp` | Test `QT_QPA_PLATFORM=offscreen` |
-| 6 | `labeler.py` | Gắn nhãn 1 game < 20 phút |
+| 1 | ✅ `src/replay/{window,worker,scan}.py`, `run_replay.py` còn 65 dòng | 853 test xanh |
+| 2 | ✅ Phân tích chạy qua `LiveSession` trong `AnalysisWorker` (hộp thư 1 chỗ, bỏ khung cũ) | panel tự đổi khi reroll |
+| 3 | ✅ `scan.py` gộp lần ẩn màn (`merge_gap_s = 30 s`) | `tests/test_replay_shell.py` |
+| 4 | ✅ Thay bằng `eval_playtest.py --mode session` (cùng lõi, không cần Qt) | bảng trong [eval-dataset.md](eval-dataset.md) |
+| 5 | ✅ Dòng trạng thái, ô chưa đọc được, lời khuyên kinh tế | ranh giới khoá bằng AST test |
+| 6 | ⏸ `labeler.py` | đã có `scripts/review_playtest_labels.py` thay thế |
 
 ## Rủi ro riêng
 

@@ -19,10 +19,10 @@ Không có baseline thì không biết M2 sửa được bao nhiêu, và không 
     "picked": "DA_D", "expert": null }] }
 ```
 
-- `hud` ghi giá trị **ngay trước khi mở màn** (lúc HUD còn thấy).
-- `offers` có một mục cho mỗi trạng thái thẻ ổn định, gồm cả sau mỗi lần reroll.
-- `expert` bỏ trống ở M0; điền ở [expert-knowledge.md](expert-knowledge.md). `blind` = gắn
-  nhãn khi **chưa** thấy ranking của advisor.
+- `hud` ghi giá trị **ngay trước khi mở màn**; `offers` có một mục cho mỗi trạng thái thẻ
+  ổn định, gồm cả sau mỗi lần reroll.
+- `expert` bỏ trống ở M0; điền ở [expert-knowledge.md](expert-knowledge.md) (`blind` = gắn
+  nhãn khi chưa thấy ranking của advisor).
 - Video **không** commit (nặng, cá nhân); chỉ commit file nhãn, kèm `video_sha256` để biết
   đúng file khi chấm lại trên máy khác. Đường dẫn video truyền bằng `--video`.
 
@@ -30,9 +30,9 @@ Không có baseline thì không biết M2 sửa được bao nhiêu, và không 
 
 | Việc | File | Ghi chú |
 |---|---|---|
-| Schema + loader + validate | `src/eval/playtest_labels.py` | `verified` kiểm chặt: đủ 3 ô, `rerolled_slot` = ô thực sự đổi, `picked` ∈ offer cuối |
+| Schema + validate | `src/eval/playtest_labels.py` | `verified` kiểm chặt: đủ 3 ô, `rerolled_slot` = ô thực sự đổi, `picked` ∈ offer cuối |
 | Bộ chấm | `src/eval/playtest_metrics.py` | Thẻ "đang hiện" = lần đọc cuối trước khi offer kết thúc |
-| Tách offer + gợi ý tên | `src/eval/playtest_draft.py` | Reroll = nút `active → pressed/disabled`; thẻ yên = lệch < 2 |
+| Tách offer + gợi ý tên | `src/eval/playtest_draft.py` | Reroll = nút đổi trạng thái; thẻ yên = lệch < 2 |
 | Sinh nhãn nháp | `scripts/draft_playtest_labels.py` | Ảnh mỗi offer vào `snapshots/` (gitignore) |
 | Xem lại / sửa nhãn | `scripts/review_playtest_labels.py` + `src/eval/playtest_review.py` | Trang 127.0.0.1; còn lỗi thì **không ghi** — xem [labeling-guide.md](labeling-guide.md) |
 | Đo | `scripts/eval_playtest.py` | `--mode baseline` (y hệt `run_replay.py` d537eb0) / `dense` (chẩn đoán) |
@@ -47,8 +47,6 @@ Không có baseline thì không biết M2 sửa được bao nhiêu, và không 
 
 `baseline` thấp + `dense` cao → lỗi ở **khi nào đọc**; cả hai thấp → lỗi ở **bộ đọc thẻ**.
 
-Số đo tín hiệu dùng để đặt ngưỡng: [augment-reroll-rescan.md](augment-reroll-rescan.md#số-đo-tín-hiệu).
-
 ## Chỉ số
 
 | Chỉ số | Định nghĩa | Mốc dùng |
@@ -58,10 +56,7 @@ Số đo tín hiệu dùng để đặt ngưỡng: [augment-reroll-rescan.md](au
 | `reroll_recall` | Lần reroll bắt được / tổng lần reroll | M2 (đích 100%) |
 | `read_latency_s` | Từ lúc thẻ ổn định đến lúc có ranking | M2, M5 |
 | `hud_acc[field]` | Giá trị HUD mà lõi dùng ở mốc = nhãn | M2 |
-| `state_effect` | % màn mà ranking có state ≠ ranking với state trung tính | M3 |
-| `dup_reasons` | Số câu lý do trùng giữa các thẻ cùng màn | M4 (đích 0) |
-| `top1_agree` | Top-1 advisor = top-1 chuyên gia (chỉ nhãn `blind`) | M4, M6 |
-| `replay_live_diff` | Số màn ranking khác giữa vỏ replay và vỏ live | M5 (đích 0) |
+| `state_effect`, `dup_reasons`, `top1_agree`, `replay_live_diff` | dùng ở M3–M5, định nghĩa trong [overview.md](overview.md#mục-tiêu) | M3+ |
 
 ## Kết quả
 
@@ -71,23 +66,32 @@ từng ảnh (`verified`). Đo ngày 2026-09-18 tại commit `d537eb0`.
 | Game | Mode | card_acc | wrong_silent | missing | reroll_recall | latency p95 | gold/level/xp | hp |
 |---|---|---|---|---|---|---|---|---|
 | 1 | baseline | 0.55 | 15 | 0 | **0/8** | 3.15 s | 0.00 | 0.36 |
-| 1 | dense | **1.00** | 0 | 0 | 7/8 | 2.15 s | 1.00 | 0.36 |
+| 1 | **session (M1)** | **1.00** | 0 | 0 | **7/8** | 0.50 s | **1.00** | 0.36 |
+| 1 | dense | 1.00 | 0 | 0 | 7/8 | 2.15 s | 1.00 | 0.36 |
 | 2 | baseline | 0.18 | 3 | 24 | **0/8** | 0.75 s | 0.00 | 0.27 |
-| 2 | dense | **1.00** | 0 | 0 | **8/8** | 0.55 s | 0.64 | 0.64 |
+| 2 | **session (M1)** | **1.00** | 0 | 0 | **6/8** | 2.01 s | 0.36–1.00 | 0.64 |
+| 2 | dense | 1.00 | 0 | 0 | 8/8 | 0.55 s | 0.64 | 0.64 |
 
-`streak` = 0.00 ở mọi dòng: hiện chưa đọc trường này.
+`streak` = 0.00 ở baseline/dense (chưa đọc trường này); `session` có 0.27–0.36 chỉ vì đoán
+đúng khi chuỗi = 0. `session` là lõi `src/live/LiveSession` (mốc M1), chạy 5 khung/giây.
 
 ### Đọc được gì từ bảng
 
 1. **Bộ đọc thẻ OCR không phải thủ phạm.** Cùng bộ đọc đó, chỉ đổi *khi nào* đọc, `card_acc`
-   nhảy từ 0.18-0.55 lên **1.00** và bắt được 15/16 lần reroll. Lỗi #2 nằm hoàn toàn ở tầng
-   kích hoạt - đúng thứ [core-session.md](core-session.md) sẽ thay.
-2. **`wrong_silent` mới là kiểu hỏng nguy hiểm**: 18 ô đọc ra một lõi **khác** mà không báo -
-   người chơi không có cách nào biết mình đang xem lời khuyên cho thẻ đã bị đổi.
-3. **gold/level/xp = 0.00 ở baseline** vì chỉ đọc HUD đúng lúc màn chọn lõi che HUD. Dense
-   prime trước 15 s thì lên 1.00 (game 1); game 2 còn 0.64 vì Team Planner làm tối HUD.
-4. **hp <= 0.36 ở cả hai chế độ**: lỗi ROI chứ không phải lỗi thời điểm - xem
-   [game-state-value.md](game-state-value.md) R1.
+   nhảy từ 0.18-0.55 lên **1.00** và bắt được 13/16 lần reroll. Lỗi #2 nằm hoàn toàn ở tầng
+   kích hoạt - đã thay xong ở [core-session.md](core-session.md) (M1).
+2. **`wrong_silent` là kiểu hỏng nguy hiểm nhất**: 18 ô đọc ra lõi **khác** mà không báo gì.
+   Sau M1 còn **0**.
+3. **gold/level/xp = 0.00 ở baseline** vì chỉ đọc HUD đúng lúc màn chọn lõi che HUD; đọc
+   định kỳ bên ngoài màn thì lên 1.00.
+
+### Còn lại sau M1
+
+| Việc | Mốc | Vì sao còn |
+|---|---|---|
+| `hp` 0.36–0.64, `streak` chưa đọc | M2 (0c, 0d) | Lỗi ROI, không phải lỗi thời điểm |
+| 3/16 lần reroll sót | M2 | Đều là roll ngay trước lúc màn đóng — thẻ chưa kịp đứng yên |
+| `gold` game 2 chỉ 0.36 | M2 (0e) | Team Planner làm tối HUD |
 
 ## Related
 

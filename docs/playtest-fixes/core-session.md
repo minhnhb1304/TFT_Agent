@@ -10,9 +10,9 @@ và thay thế thiết kế `LiveSession` trong [live mode phase 2](../live-mode
 | `src/live/__init__.py` | Export công khai | Mới |
 | `src/live/events.py` | `LiveEvent`: `Idle`, `ScreenOpened`, `AdviceReady`, `Cleared`, `Status` | Mới |
 | `src/live/card_reader.py` | `CardReader` protocol, `OcrCardReader`, `GeminiCardReader` | Tách từ `run_replay.py`, bọc `AugmentReader` |
-| `src/live/screen_tracker.py` | `AugmentScreenTracker`: từng ô, hash, ổn định, reroll | Mới (M2 làm đầy đủ) |
+| `src/live/screen_tracker.py` | `AugmentScreenTracker`: từng ô, ổn định, sự kiện nút reroll | **Xong** |
 | `src/live/session.py` | `LiveSession`: máy trạng thái, HUD priming, gọi `Advisor` | Mới |
-| `src/live/pipeline.py` | Glue frame→advice tách từ `scripts/advise_from_frame.py` | Theo live-mode phase 2 |
+| `src/live/pipeline.py` | Glue frame→advice tách từ `scripts/advise_from_frame.py` | **Hoãn sang M2** — `advise_from_frame.py` vẫn chạy đường cũ |
 
 ## Interface
 
@@ -59,12 +59,12 @@ class LiveSession:
 
 | # | Việc | Kiểm chứng |
 |---|---|---|
-| 1 | Tách `DynamicCardRecognizer` → `OcrCardReader` **giữ nguyên hành vi** (1 dòng, cutoff 0.45) | Test so khớp output cũ trên khung `data/frames` |
-| 2 | `GeminiCardReader` bọc `AugmentReader` hiện có | `tests/test_frame_reader.py` vẫn xanh |
-| 3 | `events.py`, `session.py` với tracker đơn giản (đọc 3 ô khi mở màn) | `tests/test_live_session.py` (bảng dưới) |
-| 4 | Tách `pipeline.py` từ `advise_from_frame.py`; sửa mất `xp_needed`, bỏ đọc nút 2 lần | Script cho output như cũ |
-| 5 | Config `live.card_reader: ocr \| gemini`, `live.hud_every_s`, `live.stable_frames` | Settings test |
-| 6 | AST test: `src/live/` không import `PyQt*` | Test mới |
+| 1 | ✅ `OcrCardReader` giữ nguyên hành vi cũ (1 dòng, cutoff 0.45) — độ chính xác đọc thẻ để M2 sửa | `src/live/card_reader.py` |
+| 2 | ✅ `GeminiCardReader` bọc `AugmentReader` | đổi bằng `--card-reader gemini` |
+| 3 | ✅ `events.py`, `screen_tracker.py`, `session.py` | 17 test trong `tests/test_live_session.py` |
+| 4 | ⏸ `pipeline.py` từ `advise_from_frame.py` | hoãn sang M2 |
+| 5 | ✅ chọn bộ đọc bằng cờ dòng lệnh của `run_replay.py` | `live.*` trong settings để sau |
+| 6 | ✅ AST test: `src/live/` không import Qt | `test_live_core_never_imports_qt` |
 
 ## Test — `tests/test_live_session.py`
 

@@ -47,6 +47,7 @@ Phần lớn câu lặp ở [augment-commentary.md](augment-commentary.md) ("HP 
 | 0c | **R1**: `hud/hp` theo dòng có vòng vàng, không theo toạ độ cố định | `hud_acc[hp]` ≥ 0.9 trên nhãn |
 | 0d | **R2**: ROI `hud/streak` + dấu theo màu biểu tượng | `hud_acc[streak]` ≥ 0.9 |
 | 0e | **R3**: đọc được HUD cả khi Team Planner làm tối màn | Khung 1126 s của game 2 ra đủ gold/level/xp |
+| 0f | Bỏ qua lần đọc HUD nếu các ô HUD không đổi (hash nhỏ) — đo được **~1 s mỗi lần đọc**, nên quét một video 36 phút mất ~12 phút chỉ vì HUD | Thời gian `--mode session` giảm; giá trị không đổi |
 | 1 | **Đo trước**: % màn chọn lõi mà thứ hạng có trạng thái ≠ thứ hạng với trạng thái trung tính | Baseline (dự kiến gần 0% với tiền/cấp) |
 | 2 | **Dòng trạng thái** trên `AugmentPanel`: `3-2 · Lv6 (4/10 XP) · 32g (+3 lãi) · HP 64 · thua 3` | Hiện trên replay khung record |
 | 3 | Thêm 1 câu từ `RulesEngine` dưới dòng trạng thái (XP lẻ, lãi, mốc tiền) | Test snapshot panel |
