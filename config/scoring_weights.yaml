@@ -49,6 +49,14 @@ tuning:
   econ_fit:
     # He so theo stage: econ som con thoi gian sinh loi, econ muon thi khong.
     stage_curve: [1.0, 1.0, 0.8, 0.5, 0.25, 0.1]
+    # M3: hai dieu chinh theo trang thai tran, deu la LUA CHON chua fit tren du
+    # lieu. Dat `gold_swing: 0` / `loss_streak_bonus: 0` de tat han chung.
+    interest_cap_gold: 50      # tu day tro len: lai da kich tran
+    poor_gold: 20
+    gold_swing: 0.10
+    loss_streak: 3
+    loss_streak_bonus: 0.08
+    loss_streak_min_hp: 40
   item_fit:
     # Diem cho component khop dung thu dang thieu vs component bat ky.
     exact_component: 1.0
@@ -58,6 +66,9 @@ tuning:
     # Duoi nguong HP nay thi scaling bi phat nang - khong con thoi gian de no lon.
     low_hp: 35
     high_hp: 70
+    # M3: cap "dung nhip" theo stage (chi so 0 = stage 1). `pace_weight: 0` de tat.
+    level_pace: [3, 5, 6, 7, 8, 9]
+    pace_weight: 0.15
 
 # Comp Selection Algorithm - SPEC 3.5.2. De o day (khong hardcode) vi cung ly
 # do voi `weights`: phai doi duoc tu file khi hieu chinh hoac khi ablation.

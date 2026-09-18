@@ -55,6 +55,9 @@ class AdviceReady:
     rerolls: RerollState
     stale_fields: tuple[str, ...] = ()
     never_seen: tuple[str, ...] = ()
+    # Cau noi ro trang thai tran da doi xep hang the nao (M3). Rong = khong doi
+    # gi dang ke - im lang con hon mot cau "trang thai khong anh huong".
+    state_note: str = ""
     latency_ms: dict[str, float] = field(default_factory=dict)
 
     @property
