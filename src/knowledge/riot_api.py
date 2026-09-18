@@ -372,6 +372,14 @@ class AugmentAggregator:
 #
 # AugmentAggregator duoc GIU LAI: no dung, co test, va se chay ngay khi Riot
 # tra truong `augments` ve.
+#
+# HAI TRUONG LUON BANG 0 - DUNG XAY GI LEN CHUNG
+#
+# Do 2026-09-18 (7 match, 55 participant): `total_damage_to_players` va
+# `players_eliminated` bang 0 o MOI participant, ke ca nguoi ve nhat. Chung
+# con trong schema nhung Riot khong con dien. `game_version` cung vo dung:
+# chuoi that tra ve la "TFT Unreal Version ?.?.?.?", nen KHONG loc duoc theo
+# ban va - muon gioi han theo ban va thi dung `startTime` cua match ids.
 
 
 # Style cua trait: 0 = khong kich hoat. Chi dem trait dang thuc su bat.
@@ -428,6 +436,17 @@ class CompTally:
     wins: int = 0
     units: dict[str, int] = field(default_factory=lambda: defaultdict(int))
     items: dict[str, int] = field(default_factory=lambda: defaultdict(int))
+    # unit -> {item: so lan}. Dem RIENG theo unit vi `items` gop ca ban thi
+    # item tank va item carry tron lam mot - bang item khi do vo nghia.
+    unit_items: dict[str, dict[str, int]] = field(
+        default_factory=lambda: defaultdict(lambda: defaultdict(int))
+    )
+    # unit -> so van unit do cam it nhat mot item. Day la tin hieu chon carry:
+    # unit duoc trao item la unit doi hinh dinh cho an dame.
+    unit_carried: dict[str, int] = field(default_factory=lambda: defaultdict(int))
+    # unit -> tong so sao / so van xuat hien, de ra so sao trung binh.
+    unit_star_sum: dict[str, int] = field(default_factory=lambda: defaultdict(int))
+    last_rounds: list[int] = field(default_factory=list)
     # So unit tieu bieu cua moi trait (lay max qua cac van).
     traits: dict[str, int] = field(default_factory=lambda: defaultdict(int))
     # BAO NHIEU van co trait do bat. Can rieng bo dem nay vi `traits` mot minh
@@ -447,6 +466,46 @@ class CompTally:
     @property
     def win_rate(self) -> float:
         return self.wins / self.n if self.n else 0.0
+
+    @property
+    def avg_last_round(self) -> float:
+        return sum(self.last_rounds) / len(self.last_rounds) if self.last_rounds else 0.0
+
+    def carries(self, limit: int, item_weight: Callable[[str], float] | None = None) -> list[str]:
+        """Unit cam item nhieu nhat - xap xi cho "carry".
+
+        Khong co truong nao noi ai la carry. Nhung nguoi choi chi trao item
+        cho unit ho dinh danh, nen ty le cam item la tin hieu that.
+
+        CAI BAY DA DO DUOC (2026-09-18, 20 match vn2): dem THO so van cam item
+        thi TANK luon thang. Tank co mat o gan nhu moi van cua doi hinh va van
+        nao cung cam ba do, con carry that (Draven) it van hon - nen doi hinh
+        Emerald cho ra carry = Maokai va core_items = ba do tank.
+
+        `item_weight` sua dieu do: cham diem do theo khoi luong AD/AP (do tank
+        = 0). Truyen None thi ve lai cach dem tho - dung cho test va cho
+        truong hop khong co bang cong thuc.
+        """
+        if item_weight is None:
+            scores = {unit: float(n) for unit, n in self.unit_carried.items()}
+        else:
+            scores = {
+                unit: sum(item_weight(item) * n for item, n in counts.items())
+                for unit, counts in self.unit_items.items()
+            }
+        ranked = sorted(
+            ((unit, s) for unit, s in scores.items() if s > 0),
+            key=lambda kv: (-kv[1], kv[0]),
+        )
+        return [unit for unit, _ in ranked[:limit]]
+
+    def items_of(self, unit: str, limit: int) -> list[str]:
+        counts = self.unit_items.get(unit) or {}
+        return [i for i, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:limit]]
+
+    def avg_star(self, unit: str) -> float:
+        n = self.units.get(unit, 0)
+        return self.unit_star_sum.get(unit, 0) / n if n else 0.0
 
 
 class CompAggregator:
@@ -485,10 +544,19 @@ class CompAggregator:
             for name, num in active_traits(p).items():
                 tally.traits[name] = max(tally.traits[name], num)
                 tally.trait_seen[name] += 1
+            tally.last_rounds.append(int(p.get("last_round") or 0))
             for unit in p.get("units") or []:
-                tally.units[str(unit.get("character_id"))] += 1
-                for item in unit.get("itemNames") or []:
-                    tally.items[str(item)] += 1
+                unit_id = str(unit.get("character_id"))
+                tally.units[unit_id] += 1
+                # `tier` la SO SAO (1-3), khong phai gia tien; `rarity` moi la
+                # gia. Doc nham hai truong nay la cai bay cua tft-match-v1.
+                tally.unit_star_sum[unit_id] += int(unit.get("tier") or 0)
+                items = [str(i) for i in unit.get("itemNames") or []]
+                if items:
+                    tally.unit_carried[unit_id] += 1
+                for item in items:
+                    tally.items[item] += 1
+                    tally.unit_items[unit_id][item] += 1
 
         self.matches_used += 1
         match_id = (match.get("metadata") or {}).get("match_id")
@@ -505,6 +573,8 @@ class CompAggregator:
         n_items: int = 3,
         limit: int = 12,
         trait_share: float = 0.5,
+        n_carries: int = 2,
+        item_weight: Callable[[str], float] | None = None,
     ) -> list[dict[str, Any]]:
         """Ban ghi dung SCHEMA MetaComp. Them mot key la se TypeError luc nap."""
         eligible = sorted(
@@ -516,8 +586,26 @@ class CompAggregator:
         records: list[dict[str, Any]] = []
         for rank, comp in enumerate(eligible):
             units = [u for u, _ in sorted(comp.units.items(), key=lambda kv: (-kv[1], kv[0]))]
-            items = sorted(comp.items.items(), key=lambda kv: (-kv[1], kv[0]))
             avg_level = round(sum(comp.levels) / len(comp.levels)) if comp.levels else 8
+
+            # Item cua CARRY, khong phai item cua ca ban. Gop ca ban thi ba
+            # item dau bang luon la item tank (tank cam item o moi doi hinh),
+            # va CompSelector se nham muc tieu che do.
+            carry_items = {
+                carry: comp.items_of(carry, n_items)
+                for carry in comp.carries(n_carries, item_weight)
+            }
+            core_items: list[str] = []
+            for owned in carry_items.values():
+                for item in owned:
+                    if item not in core_items:
+                        core_items.append(item)
+
+            # Carry PHAI co trong bang sao, ke ca khi no khong nam trong nhom
+            # unit hay gap nhat: carry it van hon tank nhung so sao cua no moi
+            # la thu quyet dinh doi hinh an hay khong.
+            listed = list(dict.fromkeys(units[: n_core + n_flex] + list(carry_items)))
+            unit_stars = {u: round(comp.avg_star(u), 2) for u in listed if comp.avg_star(u)}
             tier = "S" if rank < 2 else "A" if rank < 5 else "B" if rank < 9 else "C"
 
             # Chi giu trait DINH NGHIA doi hinh: xuat hien o it nhat mot nua so
@@ -535,7 +623,10 @@ class CompAggregator:
                     "tier": tier,
                     "core_units": units[:n_core],
                     "flex_units": units[n_core : n_core + n_flex],
-                    "core_items": [i for i, _ in items[:n_items]],
+                    "core_items": core_items[:n_items],
+                    "carry_items": carry_items,
+                    "unit_stars": unit_stars,
+                    "avg_last_round": round(comp.avg_last_round, 2),
                     # Riot khong cap augment o Set 18 -> khong do duoc. De rong
                     # thay vi doan: CompSelector coi day la khong co tin hieu,
                     # dung hon la mot danh sach bia.

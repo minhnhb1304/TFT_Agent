@@ -39,6 +39,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
+from src.decision.comp_signals import item_profile  # noqa: E402
+from src.decision.item_advisor import ItemRecipes  # noqa: E402
 from src.knowledge.comp_database import CompDatabase, MetaComp  # noqa: E402
 from src.knowledge.riot_api import (  # noqa: E402
     APEX_TIERS,
@@ -52,6 +54,19 @@ from src.utils.env import load_env, require  # noqa: E402
 from src.utils.settings import Settings  # noqa: E402
 
 DEFAULT_OUT = ROOT / "data" / "meta_comps.json"
+RECIPES = ROOT / "data" / "item_recipes.json"
+
+
+def carry_item_weight(recipes: ItemRecipes):
+    """Do -> khoi luong AD/AP (do tank = 0). Khong co cong thuc -> None.
+
+    Dung de tach CARRY khoi TANK. Dem tho so van cam item thi tank luon thang:
+    tank co mat o moi van va van nao cung cam ba do, con carry that thi it van
+    hon. Cham diem theo khoi luong tan cong thi tank ve 0 va carry noi len.
+    """
+    if recipes.is_empty:
+        return None
+    return lambda item: item_profile([item], (), recipes, 0.0).mass
 
 
 def crawl(
@@ -155,7 +170,19 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     label = f"riot:tft-match-v1/{client.platform}/{'+'.join(t[:2] for t in tiers)}/n={agg.matches_used}"
-    records = agg.comp_records(label, min_sample_n=args.min_sample_n, limit=args.limit)
+    recipes = ItemRecipes.load(RECIPES)
+    if recipes.is_empty:
+        print(
+            f"  CANH BAO: khong doc duoc {RECIPES} - carry se chon theo so van "
+            "cam item, va do tank se lan at do carry.",
+            file=sys.stderr,
+        )
+    records = agg.comp_records(
+        label,
+        min_sample_n=args.min_sample_n,
+        limit=args.limit,
+        item_weight=carry_item_weight(recipes),
+    )
 
     if not records:
         print(
@@ -200,9 +227,12 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  {k:18s} {v}")
     print()
     for c in records:
+        carry = next(iter(c["carry_items"]), "?")
         print(
             f"  [{c['tier']}] {c['name']:28s} avg={c['avg_placement']:.2f} "
-            f"top4={c['top4_rate']:.0%} n={c['sample_n']}"
+            f"top4={c['top4_rate']:.0%} n={c['sample_n']} "
+            f"carry={carry} ({c['unit_stars'].get(carry, 0):.1f}*) "
+            f"vong={c['avg_last_round']:.0f}"
         )
 
     assert len(CompDatabase.load(out)) == len(records)

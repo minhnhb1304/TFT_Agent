@@ -536,7 +536,7 @@ owner-window. PBE báo cáo ~09-09. **Đây là lý do việc #1 ở trên phả
 | `roll_odds.py` chưa có importer nào | Đã gắn nhãn `Unverified Data (Set 18.1)` nhưng chưa nối vào `rules_engine` |
 | `styles.py` không ai import | `augment_panel` hardcode lại cùng giá trị — theme bị nhân đôi |
 | `data/item_recipes.json` chưa sinh | Sinh được từ locale đầy đủ, chưa cần tới |
-| `role` tướng CDragon Set 18 bị rỗng 63/65 tướng | Đã chuẩn bị `Champion.role` và fallback trong `infer_carry_type`; chờ CDragon cập nhật để nạp |
+| `role` tướng CDragon Set 18 bị rỗng 63/65 tướng | **Đã tìm được nguồn thay thế (2026-09-18):** datatft.com công bố đủ 12 role cho cả 65 tướng. Chưa nạp — xem [`research/unit-roles.md`](research/unit-roles.md) để biết cách crawl và ba việc cần làm |
 | Checkbox SPEC §7 lỗi thời | Nhiều mục Phase 1–3 đã xong nhưng chưa tick |
 
 ---

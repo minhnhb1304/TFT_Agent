@@ -36,6 +36,7 @@ LLM stack is **end-of-life**.
 | [Vision stack](vision-stack/overview.md) | **high** | Two dependency pins are unsatisfiable/dead. Vietnamese diacritics measured and refuted |
 | [Augment pipeline](vision-stack/augments.md) | **high** | **New.** Tier resolution rule was inverted; 4 augment pairs are unrecoverable by any recognition method |
 | [Prior art & LLM layer](prior-art.md) | **high** | Every open-source TFT overlay is dead. OP.GG MCP replaces the scraping layer, but its ToS contradicts its own MCP server |
+| [Unit roles](unit-roles.md) | **open — future work** | The `role` CDragon leaves empty on 63/65 units is published in full by DataTFT (12 roles, mana-generation rules). Unblocks `infer_carry_type`; fixes tank-as-carry in `CompAggregator`. Not imported |
 | [Open questions](open-questions.md) | — | Post-Unreal capture behaviour is now testable today and remains untested |
 
 ## Spec changes required
@@ -65,7 +66,7 @@ LLM stack is **end-of-life**.
 
 - [Vanguard risk assessment](vanguard/overview.md) — detection surface, capture design, testing protocol
 - [Ban risk & Riot policy](vanguard-risk.md)
-- [Set 18 status & data sources](set-data.md)
+- [Set 18 status & data sources](set-data.md) · [Unit roles](unit-roles.md)
 - [Vision stack](vision-stack/overview.md) · [OCR & matching](vision-stack/ocr.md) · [Augment pipeline](vision-stack/augments.md)
 - [Prior art, overlay UI & LLM layer](prior-art.md)
 - [Open questions](open-questions.md)
