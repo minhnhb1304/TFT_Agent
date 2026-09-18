@@ -393,8 +393,9 @@ def trait(name: str, style: int = 3, num_units: int = 4) -> dict[str, Any]:
     return {"name": name, "style": style, "num_units": num_units, "tier_current": 1}
 
 
-def unit(character_id: str, items: list[str] | None = None) -> dict[str, Any]:
-    return {"character_id": character_id, "itemNames": items or [], "tier": 2}
+def unit(character_id: str, items: list[str] | None = None, tier: int = 2) -> dict[str, Any]:
+    """`tier` la SO SAO (1-3). Gia tien nam o `rarity` - dung nham hai cai."""
+    return {"character_id": character_id, "itemNames": items or [], "tier": tier}
 
 
 def comp_participant(
@@ -402,12 +403,14 @@ def comp_participant(
     traits: list[dict[str, Any]],
     units: list[dict[str, Any]] | None = None,
     level: int = 8,
+    last_round: int = 30,
 ) -> dict[str, Any]:
     return {
         "placement": placement,
         "traits": traits,
         "units": units or [],
         "level": level,
+        "last_round": last_round,
     }
 
 
@@ -597,3 +600,133 @@ def test_trait_share_threshold_is_tunable() -> None:
     loose = agg.comp_records("s", min_sample_n=1, trait_share=0.2)[0]
     assert "hiem" not in strict["traits"]
     assert "hiem" in loose["traits"]
+
+
+# --- Carry, so sao, vong dau (do duoc tu units[].itemNames / tier / last_round)
+
+
+def test_carry_is_the_unit_that_holds_items() -> None:
+    """Khong co truong "carry". Unit duoc trao item la xap xi gan nhat."""
+    agg = CompAggregator()
+    for i in range(3):
+        agg.add_match(
+            match(
+                comp_participant(
+                    1,
+                    [trait("R")],
+                    [unit("DA_Carry", ["I1", "I2", "I3"]), unit("DA_Filler")],
+                ),
+                match_id=f"VN2_{i}",
+            )
+        )
+    assert agg.comps["R"].carries(2) == ["DA_Carry"]
+
+
+def test_core_items_are_the_carry_items_not_the_whole_board() -> None:
+    """Gop ca ban thi item tank nhan chim item carry - do la loi cu.
+
+    Tank xuat hien o moi van nen item tank luon nhieu hon; neu khong tach
+    theo unit thi core_items = toan item tank va CompSelector nham muc tieu.
+    """
+    agg = CompAggregator()
+    for i in range(3):
+        agg.add_match(
+            match(
+                comp_participant(
+                    1,
+                    [trait("R")],
+                    [
+                        unit("DA_Carry", ["Deathblade"]),
+                        unit("DA_Tank1", ["Warmog", "Bramble"]),
+                        unit("DA_Tank2", ["Warmog", "Bramble"]),
+                    ],
+                ),
+                match_id=f"VN2_{i}",
+            )
+        )
+    record = agg.comp_records("s", min_sample_n=1, n_carries=1)[0]
+    assert record["core_items"] == ["Deathblade"]
+    assert record["carry_items"] == {"DA_Carry": ["Deathblade"]}
+
+
+def test_tank_outranks_the_carry_when_items_are_counted_raw() -> None:
+    """Khoa lai cai bay do duoc tren du lieu that (2026-09-18, 20 match vn2).
+
+    Tank co mat o moi van, carry that thi it van hon - dem tho thi tank thang
+    va core_items thanh ba do tank. Test nay ghi lai HANH VI SAI de doi chung
+    voi test duoi; no la ly do `item_weight` ton tai.
+    """
+    agg = CompAggregator()
+    for i in range(4):
+        units = [unit("DA_Tank", ["Warmog"])]
+        if i == 0:
+            units.append(unit("DA_Carry", ["Deathblade"]))
+        agg.add_match(match(comp_participant(1, [trait("R")], units), match_id=f"VN2_{i}"))
+    assert agg.comps["R"].carries(1) == ["DA_Tank"]
+
+
+def test_item_weight_picks_the_carry_over_the_tank() -> None:
+    """Cham diem theo khoi luong AD/AP: do tank = 0 nen tank khong con la carry."""
+    agg = CompAggregator()
+    for i in range(4):
+        units = [unit("DA_Tank", ["Warmog"])]
+        if i == 0:
+            units.append(unit("DA_Carry", ["Deathblade"]))
+        agg.add_match(match(comp_participant(1, [trait("R")], units), match_id=f"VN2_{i}"))
+
+    weight = {"Deathblade": 1.0, "Warmog": 0.0}.get
+    record = agg.comp_records(
+        "s", min_sample_n=1, n_carries=1, item_weight=lambda i: weight(i, 0.0)
+    )[0]
+    assert record["carry_items"] == {"DA_Carry": ["Deathblade"]}
+    assert record["core_items"] == ["Deathblade"]
+
+
+def test_unit_stars_are_averaged_per_unit() -> None:
+    """Doi hinh chi an khi carry len 3 sao phai doc ra duoc o day."""
+    agg = CompAggregator()
+    for i, tier in enumerate((3, 3, 1)):
+        agg.add_match(
+            match(
+                comp_participant(1, [trait("R")], [unit("DA_Carry", ["I1"], tier=tier)]),
+                match_id=f"VN2_{i}",
+            )
+        )
+    record = agg.comp_records("s", min_sample_n=1)[0]
+    assert record["unit_stars"]["DA_Carry"] == pytest.approx(2.33, abs=0.01)
+
+
+def test_carry_star_is_listed_even_when_the_carry_is_not_a_common_unit() -> None:
+    """Carry it van hon tank, nhung so sao cua CARRY moi quyet dinh doi hinh."""
+    agg = CompAggregator()
+    common = [unit(f"DA_Filler{i}") for i in range(8)]
+    for i in range(4):
+        units = list(common)
+        if i == 0:
+            units.append(unit("DA_Carry", ["Deathblade"], tier=3))
+        agg.add_match(match(comp_participant(1, [trait("R")], units), match_id=f"VN2_{i}"))
+
+    record = agg.comp_records("s", min_sample_n=1, n_carries=1)[0]
+    assert "DA_Carry" not in record["core_units"] + record["flex_units"]
+    assert record["unit_stars"]["DA_Carry"] == pytest.approx(3.0)
+
+
+def test_avg_last_round_separates_early_from_late_comps() -> None:
+    agg = CompAggregator()
+    agg.add_match(
+        match(
+            comp_participant(1, [trait("cuoi_tran")], last_round=38),
+            comp_participant(8, [trait("chet_som")], last_round=22),
+        )
+    )
+    records = {r["name"]: r for r in agg.comp_records("s", min_sample_n=1)}
+    assert records["cuoi_tran Core"]["avg_last_round"] == pytest.approx(38.0)
+    assert records["chet_som Core"]["avg_last_round"] == pytest.approx(22.0)
+
+
+def test_units_without_items_never_become_a_carry() -> None:
+    agg = CompAggregator()
+    agg.add_match(match(comp_participant(1, [trait("R")], [unit("DA_Filler")])))
+    record = agg.comp_records("s", min_sample_n=1)[0]
+    assert record["carry_items"] == {}
+    assert record["core_items"] == []

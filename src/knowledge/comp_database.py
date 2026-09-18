@@ -44,6 +44,15 @@ class MetaComp:
     core_units: list[str] = field(default_factory=list)
     flex_units: list[str] = field(default_factory=list)
     core_items: list[str] = field(default_factory=list)
+    # Item do CARRY NAO cam, chu khong phai "item nao xuat hien tren ban".
+    # Dem gop ca ban thi item tank va item carry tron lam mot va bang item
+    # tro thanh vo nghia. Nguon khong tach duoc thi de rong.
+    carry_items: dict[str, list[str]] = field(default_factory=dict)
+    # unit -> so sao TRUNG BINH do duoc (1.0 - 3.0). Phan biet "doi hinh nay
+    # chi an khi carry len 3 sao" voi "2 sao la du".
+    unit_stars: dict[str, float] = field(default_factory=dict)
+    # Vong dau trung binh luc bi loai. Doi hinh vao cuoi tran co so cao hon.
+    avg_last_round: float = 0.0
     best_augments: list[str] = field(default_factory=list)
     traits: dict[str, int] = field(default_factory=dict)
     avg_placement: float = 4.5
