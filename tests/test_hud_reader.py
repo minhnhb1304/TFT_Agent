@@ -18,11 +18,13 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+import cv2
 import numpy as np
 import pytest
 
 from src.capture.regions import Region, ScreenRegions
 from src.vision.hud_reader import (
+    FRACTION_FIELDS,
     HUD_FIELDS,
     FieldRead,
     HudReadError,
@@ -59,9 +61,21 @@ def _make_test_regions(exclude_field: str | None = None) -> ScreenRegions:
     )
 
 
-def _make_frame(bar_visible: bool = True) -> np.ndarray:
+def _draw_player_ring(frame: np.ndarray, center_y: int = 400) -> None:
+    """Ve vong tron vang quanh avatar nguoi choi o cot ben phai.
+
+    Tu M2, o mau doc theo DONG co vong vang chu khong theo ROI co dinh (bang 8
+    nguoi sap lai theo mau). Khung test vi the phai co vong vang, neu khong bo
+    doc se bao "khong thay vong vang" - dung nhu tren khung that.
+    """
+    cv2.circle(frame, (1880, center_y), 24, (40, 190, 235), thickness=6)
+
+
+def _make_frame(bar_visible: bool = True, player_ring: bool = True) -> np.ndarray:
     """Tao frame 1920x1080 co hoac khong co thanh HUD o o gold."""
     frame = np.full((1080, 1920, 3), 120, dtype=np.uint8)  # Nen xam trung tinh
+    if player_ring:
+        _draw_player_ring(frame)
 
     if bar_visible:
         # To o gold: nen toi (den 0) va chu sang (trang 255) de thoa man hud_bar_present
@@ -207,6 +221,8 @@ def test_config_files_have_all_hud_regions(cfg_path: Path) -> None:
         pytest.skip(f"{cfg_path} chua ton tai")
     regs = ScreenRegions.load(cfg_path)
     for field in HUD_FIELDS:
+        if field in FRACTION_FIELDS:
+            continue        # doc theo ty le khung, khong co trong config
         region = regs.region("hud", field)
         assert region.w > 0
         assert region.h > 0
@@ -246,3 +262,52 @@ def test_hidden_bar_hides_xp_needed_too() -> None:
     reader = HudReader(_make_test_regions(), call=lambda img: ["12/56"])
     reading = reader.read(_make_frame(bar_visible=False))
     assert reading.get("xp_needed").present is False
+
+
+# --- Chuỗi thắng/thua (M2) --------------------------------------------------
+
+
+def _paint_streak_icon(frame: np.ndarray, hue: int) -> None:
+    """Vẽ biểu tượng lửa: hue 10 ≈ cam (thắng), hue 100 ≈ xanh (thua)."""
+    h, w = frame.shape[:2]
+    x0, x1 = int(0.578 * w), int(0.591 * w)
+    y0, y1 = int(0.812 * h), int(0.838 * h)
+    patch = np.zeros((y1 - y0, x1 - x0, 3), np.uint8)
+    patch[:, :] = (hue, 200, 220)
+    frame[y0:y1, x0:x1] = cv2.cvtColor(patch, cv2.COLOR_HSV2BGR)
+
+
+def _streak_reader(text: str) -> HudReader:
+    return HudReader(_make_test_regions(), call=lambda img: [text])
+
+
+def test_streak_orange_icon_is_a_win_streak() -> None:
+    frame = _make_frame()
+    _paint_streak_icon(frame, hue=10)
+    read = _streak_reader("3").read(frame).get("streak")
+    assert read.value == 3
+    assert "thắng" in read.reason
+
+
+def test_streak_blue_icon_is_a_loss_streak() -> None:
+    """Cùng con số, khác màu biểu tượng → khác dấu. Đo trên bản record 2026-09-16."""
+    frame = _make_frame()
+    _paint_streak_icon(frame, hue=100)
+    read = _streak_reader("1").read(frame).get("streak")
+    assert read.value == -1
+    assert "thua" in read.reason
+
+
+def test_streak_without_icon_is_zero() -> None:
+    read = _streak_reader("7").read(_make_frame()).get("streak")
+    assert read.value == 0
+    assert read.present is True
+
+
+def test_hp_without_player_ring_is_reported_missing() -> None:
+    """Không thấy vòng vàng thì bỏ trống, KHÔNG đọc ROI cố định — đó là máu người khác."""
+    frame = _make_frame(player_ring=False)
+    read = HudReader(_make_test_regions(), call=lambda img: ["85"]).read(frame).get("hp")
+    assert read.value is None
+    assert read.present is False
+    assert "vòng vàng" in read.reason

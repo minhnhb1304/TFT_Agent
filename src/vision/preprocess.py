@@ -133,6 +133,22 @@ def binarize_for_ocr(crop: np.ndarray, scale: int = DEFAULT_OCR_SCALE) -> np.nda
     return cv2.cvtColor(binary, cv2.COLOR_GRAY2BGR)
 
 
+def brighten_dimmed(crop: np.ndarray) -> np.ndarray:
+    """Keo sang mot crop bi panel phu lam toi, giu nguyen hinh chu.
+
+    Mo Team Planner trong game se phu mot lop toi len thanh HUD: chu van con,
+    chi la mo. Do tren ban record 2026-09-16: do sang toi da tut tu 240 xuong
+    107, va `hud_bar_present` ket luan "khong co gi de doc" -> mat sach vang,
+    cap, XP. Keo sang truoc khi kiem la du de doc lai.
+    """
+    if crop is None or crop.size == 0:
+        return crop
+    peak = int(crop.max())
+    if peak <= 0 or peak >= 200:
+        return crop
+    return cv2.convertScaleAbs(crop, alpha=235.0 / peak, beta=0)
+
+
 def hud_bar_present(crop: np.ndarray) -> bool:
     """Khung nay co dang hien thanh HUD khong?
 

@@ -24,6 +24,7 @@ def _make_reading(
     xp: tuple[int | None, bool] = (20, True),
     xp_needed: tuple[int | None, bool] = (56, True),
     hp: tuple[int | None, bool] = (85, True),
+    streak: tuple[int | None, bool] = (0, True),
     bar_visible: bool = True,
 ) -> HudReading:
     """Tao mot HudReading trong bo nho phuc vu test."""
@@ -32,6 +33,8 @@ def _make_reading(
         FieldRead("gold", gold[0], str(gold[0] or ""), gold[1], "hợp lệ" if gold[1] else "ẩn", 1.0),
         FieldRead("level", level[0], str(level[0] or ""), level[1], "hợp lệ" if level[1] else "ẩn", 1.0),
         FieldRead("xp", xp[0], str(xp[0] or ""), xp[1], "hợp lệ" if xp[1] else "ẩn", 1.0),
+        FieldRead("streak", streak[0], str(streak[0] or ""), streak[1],
+                  "hợp lệ" if streak[1] else "ẩn", 1.0),
         FieldRead("xp_needed", xp_needed[0], str(xp_needed[0] or ""), xp_needed[1], "hợp lệ" if xp_needed[1] else "ẩn", 1.0),
         FieldRead("hp", hp[0], str(hp[0] or ""), hp[1], "hợp lệ" if hp[1] else "ẩn", 1.0),
     )
@@ -40,7 +43,7 @@ def _make_reading(
 
 def test_initial_state_all_never_seen() -> None:
     tracker = GameStateTracker()
-    assert set(tracker.never_seen) == {"stage", "gold", "level", "xp", "xp_needed", "hp"}
+    assert set(tracker.never_seen) == {"stage", "gold", "level", "xp", "xp_needed", "hp", "streak"}
     assert tracker.stale == ()
 
     state = tracker.state()
@@ -180,7 +183,7 @@ def test_reset() -> None:
     assert tracker.state().gold == 50
 
     tracker.reset()
-    assert set(tracker.never_seen) == {"stage", "gold", "level", "xp", "xp_needed", "hp"}
+    assert set(tracker.never_seen) == {"stage", "gold", "level", "xp", "xp_needed", "hp", "streak"}
     assert tracker.stale == ()
     assert tracker.state().gold == 0
 

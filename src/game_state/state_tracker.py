@@ -15,7 +15,8 @@ from ..vision.hud_reader import HUD_FIELDS, HudField, HudReading
 from .models import GameState
 
 # Cac truong HUD duoc theo doi va dong bo voi GameState
-HUD_TRACKED_FIELDS: tuple[HudField, ...] = ("stage", "gold", "level", "xp", "xp_needed", "hp")
+HUD_TRACKED_FIELDS: tuple[HudField, ...] = ("stage", "gold", "level", "xp", "xp_needed",
+                                             "hp", "streak")
 
 
 def _field(reading: HudReading, name: HudField) -> tuple[bool, Any]:
@@ -95,6 +96,7 @@ class GameStateTracker:
             "xp": default_state.xp,
             "xp_needed": default_state.xp_needed,
             "stage": default_state.stage,
+            "streak": default_state.streak,
         }
 
         resolved: dict[str, Any] = {}
@@ -111,6 +113,7 @@ class GameStateTracker:
             xp=int(resolved["xp"]),
             xp_needed=None if resolved["xp_needed"] is None else int(resolved["xp_needed"]),
             stage=str(resolved["stage"]),
+            streak=int(resolved["streak"]),
             active_traits=dict(traits or {}),
         )
 
