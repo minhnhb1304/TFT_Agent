@@ -1,0 +1,212 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Xem lại nhãn playtest</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #0f1621; color: #d8e6f5; font: 14px/1.5 system-ui, sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; background: #142033; border-bottom: 1px solid #2b558c;
+           padding: 10px 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  h1 { font-size: 15px; margin: 0; font-weight: 600; }
+  main { padding: 16px; max-width: 1200px; }
+  .screen { border: 1px solid #24405f; border-radius: 6px; margin-bottom: 18px; background: #131f2f; }
+  .screen > h2 { font-size: 14px; margin: 0; padding: 8px 12px; background: #16283f; border-radius: 6px 6px 0 0; }
+  .body { padding: 12px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 10px; }
+  label { display: block; font-size: 12px; color: #86a5c4; margin-bottom: 2px; }
+  input, select, textarea { background: #0d1722; color: #e6f0fb; border: 1px solid #2b4a6f;
+    border-radius: 4px; padding: 5px 7px; font: inherit; }
+  input.num { width: 84px; }
+  input.name { width: 260px; }
+  .offer { border-top: 1px dashed #24405f; padding: 10px 0; display: flex; gap: 14px; }
+  .offer img { width: 300px; border-radius: 4px; border: 1px solid #24405f; cursor: zoom-in; }
+  .offer .fields { flex: 1; min-width: 320px; }
+  .warn { color: #ffcf6b; font-size: 12px; }
+  .ocr { color: #7f97ae; font-size: 11px; white-space: pre-wrap; margin-top: 6px; max-height: 64px; overflow: auto; }
+  button { background: #1a3c68; color: #dceaff; border: 1px solid #2b558c; border-radius: 4px;
+           padding: 6px 10px; font: inherit; cursor: pointer; }
+  button:hover { background: #0077b6; }
+  button.ghost { background: transparent; }
+  #status { font-size: 13px; }
+  #errors { color: #ff9c9c; font-size: 12px; white-space: pre-wrap; }
+  .ok { color: #8ff0a4; }
+</style>
+
+<header>
+  <h1 id="title">Đang tải…</h1>
+  <button id="save">Lưu</button>
+  <span id="status"></span>
+</header>
+<main>
+  <div id="errors"></div>
+  <div id="screens"></div>
+</main>
+<datalist id="augments"></datalist>
+
+<script>
+const $ = (sel, root = document) => root.querySelector(sel);
+let STATE = null, API2VI = new Map(), VI2API = new Map();
+
+const norm = (s) => String(s).normalize("NFD").replace(/\p{Mn}/gu, "")
+  .replace(/đ/g, "d").replace(/Đ/g, "D").toLowerCase().trim();
+
+function slotText(apis) {
+  const names = [];
+  for (const api of apis || []) {
+    const vi = API2VI.get(api) || api;
+    if (!names.includes(vi)) names.push(vi);
+  }
+  return names.join(", ");
+}
+
+function slotApis(text) {
+  const out = [];
+  for (const part of String(text).split(",").map((x) => x.trim()).filter(Boolean)) {
+    if (part.startsWith("DA_")) { out.push(part); continue; }
+    for (const api of VI2API.get(norm(part)) || []) if (!out.includes(api)) out.push(api);
+  }
+  return out;
+}
+
+function el(html) {
+  const t = document.createElement("template");
+  t.innerHTML = html.trim();
+  return t.content.firstElementChild;
+}
+
+function offerNode(screen, offer, index) {
+  const unsettled = (offer.ocr_raw || []).some((r) => r.startsWith("CHƯA"));
+  const node = el(`<div class="offer">
+    ${offer.snapshot ? `<a href="/file/${offer.snapshot}" target="_blank"><img src="/file/${offer.snapshot}"></a>` : "<div style='width:300px'></div>"}
+    <div class="fields">
+      ${unsettled ? '<div class="warn">⚠ Thẻ chưa kịp đứng yên khi chụp — kiểm kỹ ảnh</div>' : ""}
+      <div class="row">
+        <div><label>Giây</label><input class="num at" type="number" step="0.05" value="${offer.at_s}"></div>
+        <div><label>Ô vừa reroll</label><select class="reroll">
+          <option value="">— không —</option>
+          ${[0, 1, 2].map((i) => `<option value="${i}" ${offer.rerolled_slot === i ? "selected" : ""}>ô ${i + 1}</option>`).join("")}
+        </select></div>
+        <button class="ghost snap">Chụp ảnh tại giây này</button>
+        <button class="ghost dup">Chèn offer sau</button>
+        <button class="ghost del">Xoá offer</button>
+      </div>
+      <div class="row">
+        ${[0, 1, 2].map((i) => `<div><label>Ô ${i + 1}</label>
+          <input class="name card" list="augments" data-slot="${i}" value="${slotText(offer.cards[i])}"></div>`).join("")}
+      </div>
+      <div class="ocr">${(offer.ocr_raw || []).join("\n")}</div>
+    </div>
+  </div>`);
+
+  const read = () => {
+    offer.at_s = parseFloat($(".at", node).value);
+    const r = $(".reroll", node).value;
+    offer.rerolled_slot = r === "" ? null : Number(r);
+    node.querySelectorAll("input.card").forEach((inp) => { offer.cards[Number(inp.dataset.slot)] = slotApis(inp.value); });
+  };
+  node.querySelectorAll("input, select").forEach((inp) => inp.addEventListener("change", () => { read(); render(); }));
+
+  $(".del", node).onclick = () => { read(); screen.offers.splice(index, 1); render(); };
+  $(".dup", node).onclick = () => {
+    read();
+    screen.offers.splice(index + 1, 0, {
+      at_s: Math.min(offer.at_s + 1, screen.close_s), cards: offer.cards.map((c) => [...c]),
+      rerolled_slot: null, ocr_raw: ["(chèn tay)"], snapshot: null,
+    });
+    render();
+  };
+  $(".snap", node).onclick = async () => {
+    read();
+    if (!STATE.has_video) { setStatus("Chạy lại kèm --video để chụp được ảnh", true); return; }
+    setStatus("đang chụp…");
+    const res = await post("/api/snapshot", { at_s: offer.at_s });
+    if (res.error) { setStatus(res.error, true); return; }
+    offer.snapshot = res.snapshot;
+    setStatus("đã chụp ảnh");
+    render();
+  };
+  return node;
+}
+
+function screenNode(screen, si) {
+  const hud = screen.hud || {};
+  const node = el(`<section class="screen">
+    <h2>Màn #${si + 1} — ${screen.stage || "?"} · ${screen.open_s}s → ${screen.close_s}s · ${screen.offers.length} offer</h2>
+    <div class="body">
+      <div class="row">
+        <div><label>Stage</label><input class="num stage" value="${screen.stage || ""}"></div>
+        <div><label>Trạng thái</label><select class="status">
+          <option value="draft" ${screen.status === "draft" ? "selected" : ""}>draft (chưa kiểm)</option>
+          <option value="verified" ${screen.status === "verified" ? "selected" : ""}>verified (đã kiểm)</option>
+        </select></div>
+        ${["gold", "level", "xp", "xp_needed", "hp", "streak"].map((k) => `<div><label>${k}</label>
+          <input class="num hud" data-key="${k}" type="number" value="${hud[k] ?? ""}"></div>`).join("")}
+      </div>
+      <div class="row">
+        <div><label>Lõi đã chọn</label><input class="name picked" list="augments" value="${slotText(screen.picked ? [screen.picked] : [])}"></div>
+        <div style="flex:1"><label>Ghi chú</label><input class="notes" style="width:100%" value="${(screen.notes || "").replace(/"/g, "&quot;")}"></div>
+      </div>
+      <div class="offers"></div>
+    </div>
+  </section>`);
+
+  const read = () => {
+    screen.stage = $(".stage", node).value.trim();
+    screen.status = $(".status", node).value;
+    node.querySelectorAll("input.hud").forEach((inp) => {
+      screen.hud[inp.dataset.key] = inp.value === "" ? null : Number(inp.value);
+    });
+    const picked = slotApis($(".picked", node).value);
+    screen.picked = picked.length ? picked[0] : null;
+    screen.notes = $(".notes", node).value;
+  };
+  node.querySelectorAll(".body > .row input, .body > .row select").forEach((inp) =>
+    inp.addEventListener("change", () => { read(); render(); }));
+
+  const list = $(".offers", node);
+  screen.offers.forEach((offer, i) => list.appendChild(offerNode(screen, offer, i)));
+  return node;
+}
+
+function render() {
+  const box = $("#screens");
+  box.textContent = "";
+  STATE.labels.screens.forEach((s, i) => box.appendChild(screenNode(s, i)));
+  const done = STATE.labels.screens.filter((s) => s.status === "verified").length;
+  $("#title").textContent = `${STATE.labels.video} — ${done}/${STATE.labels.screens.length} màn đã kiểm`;
+}
+
+function setStatus(text, bad) {
+  const node = $("#status");
+  node.textContent = text;
+  node.className = bad ? "" : "ok";
+}
+
+async function post(url, body) {
+  const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  return res.json();
+}
+
+$("#save").onclick = async () => {
+  setStatus("đang lưu…");
+  const res = await post("/api/save", STATE.labels);
+  if (res.ok) {
+    $("#errors").textContent = "";
+    setStatus(`đã lưu — ${res.verified} màn verified`);
+  } else {
+    $("#errors").textContent = "CHƯA LƯU. Sửa các lỗi sau rồi bấm Lưu lại:\n- " + res.errors.join("\n- ");
+    setStatus("còn lỗi, chưa ghi file", true);
+  }
+};
+
+(async () => {
+  STATE = await (await fetch("/api/state")).json();
+  const dl = $("#augments");
+  for (const opt of STATE.options) {
+    for (const api of opt.api) API2VI.set(api, opt.vi);
+    VI2API.set(norm(opt.vi), opt.api);
+    dl.appendChild(el(`<option value="${opt.vi.replace(/"/g, "&quot;")}"></option>`));
+  }
+  render();
+  setStatus("sẵn sàng");
+})();
+</script>
