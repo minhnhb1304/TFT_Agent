@@ -3,6 +3,9 @@
     # Baseline: tai hien dung hanh vi run_replay.py @ d537eb0
     python scripts/eval_playtest.py data/eval/playtest/<id>.json --video <file> --mode baseline
 
+    # Loi moi (moc M1): LiveSession - dung lop se chay trong ca replay lan live
+    python scripts/eval_playtest.py data/eval/playtest/<id>.json --video <file> --mode session
+
     # Tran tren cua bo doc the: doc MOI giay trong man (bo qua loi kich hoat)
     python scripts/eval_playtest.py data/eval/playtest/<id>.json --video <file> --mode dense
 
@@ -85,6 +88,39 @@ def run_baseline(src, regions, index, start: float = 0.0, end: float | None = No
     return events
 
 
+def run_session(src, regions, index, fps: float, start: float, end: float | None) -> list[ReadEvent]:
+    """Chay LiveSession tren ca video - dung y hanh vi se chay trong tran."""
+    from src.live.card_reader import OcrCardReader
+    from src.live.events import AdviceReady
+    from src.live.session import LiveSession
+
+    session = LiveSession(
+        card_reader=OcrCardReader(regions, index),
+        hud_reader=HudReader.load(regions),
+        reroll_reader=RerollButtonReader.load(regions),
+        advisor=_NullAdvisor(),
+        regions=regions,
+    )
+    events: list[ReadEvent] = []
+    for frame in src.frames(start=start, end=end, fps=fps):
+        ev = session.step(frame)
+        if not isinstance(ev, AdviceReady):
+            continue
+        hud = {k: getattr(ev.state, k) for k in ("gold", "level", "xp", "xp_needed", "hp", "streak")}
+        for f in ev.never_seen:
+            hud[f] = None
+        events.append(ReadEvent(ev.t, tuple(tuple(c.api_names) for c in ev.cards), hud))
+        print(f"  session @{ev.t:.1f}s: {[c.title for c in ev.cards]}", flush=True)
+    return events
+
+
+class _NullAdvisor:
+    """Do chinh xac cua tang DOC, nen khong can chay tang quyet dinh."""
+
+    def advise(self, **_kwargs) -> None:
+        return None
+
+
 def run_dense(src, regions, index, labels) -> list[ReadEvent]:
     """Doc moi giay trong moi man da gan nhan, HUD lay tu tracker da prime truoc man."""
     buttons = RerollButtonReader.load(regions)
@@ -116,13 +152,14 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Chấm cách đọc video theo nhãn playtest")
     ap.add_argument("labels")
     ap.add_argument("--video", help="bắt buộc trừ khi dùng --run")
-    ap.add_argument("--mode", choices=("baseline", "dense"), default="baseline")
+    ap.add_argument("--mode", choices=("baseline", "session", "dense"), default="session")
+    ap.add_argument("--fps", type=float, default=5.0, help="mode session: nhịp lấy khung")
     ap.add_argument("--run", help="chấm lại một run .jsonl đã lưu")
     ap.add_argument("--regions", default=DEFAULT_REGIONS)
     ap.add_argument("--name-index", default="data/name_index.json")
     ap.add_argument("--allow-draft", action="store_true", help="vẫn chạy khi chưa có màn verified")
-    ap.add_argument("--start", type=float, default=0.0, help="baseline: chỉ quét từ giây này")
-    ap.add_argument("--end", type=float, help="baseline: chỉ quét tới giây này")
+    ap.add_argument("--start", type=float, default=0.0, help="baseline/session: chỉ quét từ giây này")
+    ap.add_argument("--end", type=float, help="baseline/session: chỉ quét tới giây này")
     args = ap.parse_args(argv)
 
     index = NameIndex.load(args.name_index)
@@ -138,7 +175,12 @@ def main(argv: list[str] | None = None) -> int:
             ap.error("cần --video hoặc --run")
         src = VideoFrameSource(args.video)
         regions = ScreenRegions.load(args.regions)
-        events = run_baseline(src, regions, index, args.start, args.end) if args.mode == "baseline" else run_dense(src, regions, index, labels)
+        if args.mode == "baseline":
+            events = run_baseline(src, regions, index, args.start, args.end)
+        elif args.mode == "session":
+            events = run_session(src, regions, index, args.fps, args.start, args.end)
+        else:
+            events = run_dense(src, regions, index, labels)
         mode = args.mode
         stamp = datetime.now().strftime("%Y%m%dT%H%M%S")
         run_path = ROOT / "data" / "eval" / "runs" / f"{Path(args.labels).stem}_{mode}_{stamp}.jsonl"
