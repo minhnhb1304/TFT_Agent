@@ -142,6 +142,7 @@ class LiveSession:
         )
         latency["advise"] = (time.perf_counter() - t0) * 1000.0
 
+        note = self._state_note(choices, state, bundle)
         key = self._emit_key(cards, state)
         if key == self._last_emit:
             return Idle(t)
@@ -156,6 +157,7 @@ class LiveSession:
             rerolls=self._rerolls,
             stale_fields=self.game_tracker.stale,
             never_seen=self.game_tracker.never_seen,
+            state_note=note,
             latency_ms=latency,
         )
 
@@ -200,6 +202,19 @@ class LiveSession:
         )
         self._hud_signature = signature
         return same
+
+    def _state_note(self, choices: Sequence[Any], state: Any, bundle: Any) -> str:
+        """Trang thai tran da doi xep hang the nao - de nguoi choi thay no co tac dung."""
+        engine = getattr(self.advisor, "augment_advisor", None)
+        ranking = getattr(bundle, "ranking", None)
+        if engine is None or ranking is None:
+            return ""
+        try:
+            from ..decision.state_effect import explain, measure  # noqa: PLC0415
+
+            return explain(measure(engine, choices, state), state, ranking)
+        except Exception:                             # noqa: BLE001 - phan phu, khong duoc lam hong chu ky
+            return ""
 
     def _detect_new_game(self, reading: Any) -> None:
         """Stage tut nguoc ve 1-x = van moi. Quen HUD cua van truoc."""

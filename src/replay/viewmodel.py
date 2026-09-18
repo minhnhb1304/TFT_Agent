@@ -194,6 +194,9 @@ def _strip(event, bundle, shared: list[str]) -> StripVM:
     )
     economy = list(getattr(bundle, "economy", None) or [])
     strip.econ = " · ".join(str(getattr(a, "message", a)) for a in economy[:2])
+    note = str(getattr(event, "state_note", "") or "")
+    if note:
+        strip.shared = [note] + list(strip.shared)
 
     available = getattr(getattr(event, "rerolls", None), "available", ())
     if available:
