@@ -323,11 +323,19 @@ class AugmentAdvisor:
     def explain(self, ranking: Ranking) -> str:
         """Ket xuat dang van ban - dung cho CLI demo va log."""
         lines: list[str] = []
+        caveats: list[str] = []
         for i, entry in enumerate(ranking, 1):
             flag = "  [KHÔNG PHÂN BIỆT ĐƯỢC]" if entry.ambiguous else ""
             lines.append(f"{i}. {entry.name}  ({entry.total:.3f}){flag}")
             for reason in entry.reasons:
                 lines.append(f"     - {reason}")
+            base = entry.components.get("base")
+            caveat = str((base.detail or {}).get("caveat") or "") if base else ""
+            if caveat and caveat not in caveats:
+                caveats.append(caveat)
+        # Xuat xu giong het nhau tren moi the nen in MOT lan o cuoi - nhung
+        # van phai in: duong headless khong duoc mat rao chan trung thuc.
+        lines.extend(f"({c})" for c in caveats)
         return "\n".join(lines)
 
 

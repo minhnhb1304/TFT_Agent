@@ -49,12 +49,12 @@ Phần lớn câu lặp ở [augment-commentary.md](augment-commentary.md) ("HP 
 | 0e | **R3**: đọc được HUD cả khi Team Planner làm tối màn | Khung 1126 s của game 2 ra đủ gold/level/xp |
 | 0f | Bỏ qua lần đọc HUD nếu các ô HUD không đổi (hash nhỏ) — đo được **~1 s mỗi lần đọc**, nên quét một video 36 phút mất ~12 phút chỉ vì HUD | Thời gian `--mode session` giảm; giá trị không đổi |
 | 1 | ✅ **Đo trước**: `scripts/state_effect_report.py --ablate` → **0/22 offer** đổi thứ hạng | đúng như dự đoán |
-| 2 | **Dòng trạng thái** trên `AugmentPanel`: `3-2 · Lv6 (4/10 XP) · 32g (+3 lãi) · HP 64 · thua 3` | Hiện trên replay khung record |
-| 3 | Thêm 1 câu từ `RulesEngine` dưới dòng trạng thái (XP lẻ, lãi, mốc tiền) | Test snapshot panel |
+| 2 | ✅ **Dòng trạng thái**: `StripVM.line` (`src/replay/viewmodel.py`) → `StateStrip.main` (`src/replay/widgets.py`) | hiện trên vỏ replay |
+| 3 | ✅ Câu từ `EconomyRules.evaluate()` (XP lẻ, lãi, mốc tiền) qua `bundle.economy` → `strip.econ` | hiện dưới dòng trạng thái |
 | 4 | ✅ `econ_fit` theo **tiền + chuỗi** (kịch lãi → giảm; nghèo hoặc thua dài mà còn máu → tăng) | 16 test trong `test_state_effect.py` |
 | 5 | ✅ `tempo_fit` thêm **nhịp lên cấp** (chậm nhịp → ưu tiên sức mạnh ngay; nhanh nhịp không đổi gì) | nhịp chuẩn để trong config, ablation được |
 | 7 | ✅ **Hiện ảnh hưởng**: `src/decision/state_effect.py` chấm lại với trạng thái trung tính, sinh câu "Vì 55 vàng, chậm nhịp 2 cấp: X −0.02 (từ #1 xuống #2)" | im lặng khi chênh lệch < 0.02 và thứ hạng không đổi |
-| 8 | **Báo số cũ**: trường `stale`/`never_seen` hiện rõ trên dòng trạng thái, không dùng im lặng | Test với tracker thiếu dữ liệu |
+| 8 | ✅ **Báo số cũ**: `stale`/`never_seen` → ô hiện `?` + cảnh báo "số chưa đọc được: …" | không im lặng |
 | 9 | ✅ Chạy lại bước 1 → **3/22 (14%)**, trong đó 3 lần đổi cả lựa chọn đầu | xem [eval-dataset.md](eval-dataset.md) |
 | 6 | ⏸ Nối archetype đội hình (fast 8 / reroll) | hoãn: cần chọn đội hình **trước** khi xếp hạng lõi, mà đường 30 giây đang chạy lõi trước |
 

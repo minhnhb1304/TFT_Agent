@@ -25,13 +25,43 @@ Track **L** và mốc **M5** của [playtest fixes](overview.md). Chạy song so
 
 | # | Việc | Phụ thuộc | Kiểm chứng |
 |---|---|---|---|
-| L0 | `tools/probe_environment.py` theo phase 0 | Máy game | Q1–Q7 có câu trả lời |
+| L0 | ✅ `tools/probe_environment.py` đã viết (2026-09-19) — **chờ chạy trên máy game** | Máy game | Q1–Q7 có câu trả lời |
 | L1 | `src/capture/game_window.py`, `screen_capture.py` theo phase 1 | L0 | Test fake backend; probe dùng source mới |
 | M5a.1 | `src/live/app.py` + `scripts/run_live.py` dùng `LiveSession` | M1, L1 | `--source video:<record>` chạy được |
 | M5a.2 | **Kiểm G5**: `run_live --source video` vs `run_replay --headless` cùng record | M5a.1, M2 | `replay_live_diff = 0` |
 | M5a.3 | Hotkey F1–F4, Ctrl+Q theo phase 3 | M5a.1 | Test dispatch |
 | M5b.1 | Checklist phase 4 + các dòng dưới | M5a | 1 game Normal |
 | M5b.2 | Record màn hình song song khi test live → thêm vào bộ nhãn | M5b.1 | File nhãn mới trong `data/eval/playtest/` |
+
+## L0 — cách chạy (chờ người chơi)
+
+```powershell
+# 1) Game ĐÓNG trước — bước 2 của testing-protocol: chỉ đo hệ thống + khoá API
+.venv\Scripts\python tools/probe_environment.py --closed
+
+# 2) Rồi chạy khi đang ở trong một ván Normal
+.venv\Scripts\python tools/probe_environment.py --seconds 5
+```
+
+Ghi ra `data/live_probe/<timestamp>/` (report.json + tối đa 3 PNG) và in thẳng câu trả lời
+cho Q1–Q7. Không đoán: thiếu dữ kiện thì in `?`.
+
+**Vì sao gấp:** client TFT standalone dự kiến **2026-10-09** có thể đổi process name / window
+class. Bảng đo này là bản ghi duy nhất về client hiện tại — không chụp bây giờ thì sau không
+còn mốc để so.
+
+Ba điều đã kiểm sẵn trước khi giao:
+
+| | |
+|---|---|
+| `windows-capture` chưa cài | **đúng ý đồ** — phase-0-spike.md nói chỉ thêm vào requirements *sau khi* Q1 đạt. Probe báo rõ và lùi sang `mss` để ít nhất trả lời được Q4 |
+| Không tìm thấy cửa sổ | liệt kê mọi cửa sổ đang hiện (tiêu đề + lớp) để tự đọc ra tên mới; `--title` ép một tiêu đề cụ thể |
+| Read-only | tìm cửa sổ bằng tiêu đề/lớp, không `OpenProcess`, không inject. `test_readonly_invariant.py` quét cả `tools/` nên ràng buộc này do test thi hành |
+
+Đã chạy thử trọn đường trên một cửa sổ thường (không phải game): tìm cửa sổ, client rect,
+chrome offset, 330 khung mss trong 2,0 s, khung không đen, cả `RerollButtonReader` lẫn
+`HudReader` chạy được trên khung thật — nút trả `unknown` đúng như mong đợi khi không phải
+màn chọn lõi. Con số trên máy game sẽ khác; đó chính là thứ cần đo.
 
 ## Check bổ sung trong trận (M5b)
 

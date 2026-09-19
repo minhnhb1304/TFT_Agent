@@ -38,7 +38,7 @@ from scripts.build_mock_stats import (
     unit_hash,
     write_csv,
 )
-from src.decision.scoring.base import BaseScorer
+from src.decision.scoring.base import BaseScorer, full_reason
 from src.decision.scoring.types import ScoringConfig
 from src.game_state.models import GameState
 from src.knowledge.stats_provider import CsvProvider, default_provider
@@ -104,7 +104,7 @@ def test_mock_source_reaches_the_overlay_reason_string() -> None:
     provider = CsvProvider(STATS_CSV)
     scorer = BaseScorer(provider, ScoringConfig.default())
     score = scorer(_api_names()[0], None, GameState())
-    assert MOCK_SOURCE in score.reason
+    assert MOCK_SOURCE in full_reason(score)
     assert score.detail["source"] == MOCK_SOURCE
 
 

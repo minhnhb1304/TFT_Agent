@@ -16,6 +16,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Callable, Sequence
 
+from ..decision import margin
+
 MAX_REASONS = 3
 LOW_CONFIDENCE = 0.75
 
@@ -53,6 +55,7 @@ class VerdictVM:
     name: str = ""
     delta: float | None = None       # chenh lech voi lua chon ke tiep
     note: str = ""
+    edge: str = ""                   # chenh lech do tach ve thanh phan (A2)
 
     @property
     def headline(self) -> str:
@@ -82,6 +85,7 @@ class StripVM:
     unknown: list[str] = field(default_factory=list)
     econ: str = ""
     shared: list[str] = field(default_factory=list)     # cau ly do chung cua ca ba the
+    sources: list[str] = field(default_factory=list)    # xuat xu bang diem - noi MOT lan
     warnings: list[str] = field(default_factory=list)
 
     @property
@@ -100,14 +104,32 @@ def build_view(
     order = [e.api_name for e in getattr(ranking, "entries", [])]
 
     slots = _slots(event, entries, order, rarity_of)
-    shared = _shared_reasons(slots)
+    shared, drop = _shared_reasons(slots)
     for s in slots:
-        s.reasons = [r for r in s.reasons if r not in shared][:MAX_REASONS]
+        s.reasons = [r for r in s.reasons if r not in drop][:MAX_REASONS]
 
-    verdict = _verdict(bundle, slots)
+    verdict = _verdict(bundle, slots, ranking)
     for s in slots:
         s.recommended = verdict.slot is not None and s.slot == verdict.slot
-    return _strip(event, bundle, shared), verdict, slots
+    strip = _strip(event, bundle, shared)
+    strip.sources = _sources(ranking)
+    return strip, verdict, slots
+
+
+def _sources(ranking) -> list[str]:
+    """Xuat xu cua bang diem - giong het nhau tren moi the, nen noi MOT lan.
+
+    Truoc khi tach ra, menh de nay nam trong chinh `reason` cua thanh phan
+    `base` va lap nguyen van tren tung cot: 10/33 o tren nhan playtest. Bo
+    han thi khong duoc - no la rao chan giua "y kien" va "so do".
+    """
+    out: list[str] = []
+    for entry in getattr(ranking, "entries", []) or []:
+        comp = entry.components.get("base")
+        text = str((comp.detail or {}).get("caveat") or "") if comp else ""
+        if text and text not in out:
+            out.append(text)
+    return out
 
 
 def _slots(event, entries, order, rarity_of) -> list[SlotVM]:
@@ -143,27 +165,55 @@ def _reroll_state(event, slot: int) -> str:
     return "available" if available[slot] else "used"
 
 
-def _shared_reasons(slots: Sequence[SlotVM]) -> list[str]:
-    """Cau xuat hien o MOI the co diem so - gom len dai trang thai."""
+def _shared_reasons(slots: Sequence[SlotVM]) -> tuple[list[str], set[str]]:
+    """Cau dung cho TU HAI O TRO LEN - gom len dai trang thai.
+
+    Nguong la HAI, khong phai "tat ca ba". Luat cu chi gom khi ca ba o deu co
+    cau do, ma dang lap thuong gap nhat lai la HAI the cung bac ("Bac B theo
+    bang tier") - no lot luoi va nguoi choi doc lai nguyen doan. Do duoc o
+    buoc A3 tren nhan playtest: 30/66 o mang cau trung.
+
+    Cau dung cho mot phan phai NOI RO O NAO. Khong noi thi dai trang thai
+    dang phat bieu mot dieu sai ve o con lai - do la mot loi nang hon lap.
+
+    Tra ve (dong hien tren dai, tap cau phai cat khoi cac cot).
+    """
     scored = [s for s in slots if s.score is not None]
     if len(scored) < 2:
-        return []
-    common = set(scored[0].reasons)
-    for s in scored[1:]:
-        common &= set(s.reasons)
-    return [r for r in scored[0].reasons if r in common]
+        return [], set()
+
+    owners: dict[str, list[int]] = {}
+    for s in scored:
+        for reason in s.reasons:
+            owners.setdefault(reason, []).append(s.slot)
+
+    lines: list[str] = []
+    drop: set[str] = set()
+    for reason in (r for s in scored for r in s.reasons):    # giu thu tu xuat hien
+        if reason in drop or len(owners[reason]) < 2:
+            continue
+        drop.add(reason)
+        if len(owners[reason]) == len(scored):
+            lines.append(reason)
+        else:
+            where = ", ".join(f"Ô {i + 1}" for i in owners[reason])
+            lines.append(f"{where}: {reason}")
+    return lines, drop
 
 
-def _verdict(bundle, slots: Sequence[SlotVM]) -> VerdictVM:
+def _verdict(bundle, slots: Sequence[SlotVM], ranking=None) -> VerdictVM:
     advice = getattr(bundle, "reroll", None)
     ranked = sorted((s for s in slots if s.score is not None), key=lambda s: -s.score)
     delta = (ranked[0].score - ranked[1].score) if len(ranked) >= 2 else None
+    # Cau nay noi ve XEP HANG, khong noi ve hanh dong - nen no dung ca khi
+    # khuyen nghi la DOI.
+    edge = margin.explain(margin.compare(ranking), ranking) if ranking is not None else ""
 
     if advice is None:
         if not ranked:
             return VerdictVM()
         best = ranked[0]
-        return VerdictVM("CHỌN", best.slot, best.name, delta)
+        return VerdictVM("CHỌN", best.slot, best.name, delta, edge=edge)
 
     slot = int(getattr(advice, "target_slot", 0))
     target = next((s for s in slots if s.slot == slot), None)
@@ -172,7 +222,7 @@ def _verdict(bundle, slots: Sequence[SlotVM]) -> VerdictVM:
         gain = getattr(advice, "expected_gain", None)
         delta = float(gain) if gain is not None else None
     return VerdictVM(action, slot, target.name if target else "", delta,
-                     str(getattr(advice, "reason", "") or ""))
+                     str(getattr(advice, "reason", "") or ""), edge)
 
 
 def _strip(event, bundle, shared: list[str]) -> StripVM:

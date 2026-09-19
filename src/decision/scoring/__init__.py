@@ -5,7 +5,7 @@ Chu ky giong het nhau la co y: augment_advisor duyet chung trong mot vong lap,
 va ablation study tat bat tung cai ma khong can biet cai nao lam gi.
 """
 
-from .base import BaseScorer
+from .base import BaseScorer, full_reason
 from .board_fit import BoardFitScorer, infer_carry_type, trait_key
 from .econ_fit import EconFitScorer
 from .item_fit import ItemFitScorer
@@ -14,6 +14,7 @@ from .types import NEUTRAL, ComponentScore, ScoringConfig, clamp01, neutral
 
 __all__ = [
     "BaseScorer",
+    "full_reason",
     "BoardFitScorer",
     "EconFitScorer",
     "ItemFitScorer",
