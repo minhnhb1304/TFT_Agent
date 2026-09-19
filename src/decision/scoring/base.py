@@ -16,6 +16,21 @@ from .types import ComponentScore, ScoringConfig, clamp01, neutral
 NAME = "base"
 
 
+def full_reason(component: ComponentScore) -> str:
+    """Toan bo chu ve thanh phan `base` ma nguoi choi doc duoc, ghep lai.
+
+    Hai manh nam o hai cho vi chung LAP khac nhau: `reason` khac nhau tung
+    the nen o lai tung cot; `caveat` giong het nhau tren moi the nen hien
+    MOT lan (dai trang thai o panel, mot dong cuoi o CLI).
+
+    Bat bien SPEC 3.4.2 - "chuoi hien len phai tu to cao xuat xu cua no" -
+    dat tren chuoi GHEP nay, khong dat tren rieng `reason`. Tach hai manh ma
+    khong co ham nay thi bat bien mat cho de kiem.
+    """
+    caveat = str((component.detail or {}).get("caveat") or "")
+    return f"{component.reason} ({caveat})" if caveat else component.reason
+
+
 class BaseScorer:
     """Chuan hoa avg placement thanh diem [0, 1], co xet co mau."""
 
@@ -42,7 +57,7 @@ class BaseScorer:
             return ComponentScore(
                 NAME,
                 self.unknown_score,
-                f"Chưa có data/tier list chính xác ({getattr(self.provider, 'name', 'unknown')}) — hạ điểm xuống {self.unknown_score:.2f}",
+                f"Chưa có bậc trong bảng tier — hạ điểm xuống {self.unknown_score:.2f}",
                 {
                     "avg_place": None,
                     "top4_rate": 0.0,
@@ -52,6 +67,7 @@ class BaseScorer:
                     "is_ordinal": False,
                     "trust": 0.0,
                     "is_unknown": True,
+                    "caveat": f"đã tra {getattr(self.provider, 'name', 'unknown')} — không có lõi này",
                 },
             )
 
@@ -65,20 +81,22 @@ class BaseScorer:
             # Thay bang mot tran co dinh, doc tu config. Ly do phai hien thi
             # khac han: day la THU TU do nguoi xep, khong phai so do duoc.
             trust = self.ordinal_trust
-            reason = (
-                f"Bậc {stats.tier} theo bảng tier của người chơi "
-                f"({stats.source}) — xếp hạng chủ quan, KHÔNG phải số đo"
-            )
+            # Menh de xuat xu GIONG HET NHAU tren moi the co bac, nen de no
+            # trong `reason` la tu tay tao ra cau lap: do duoc 10/33 o tren
+            # nhan playtest (A3). No di sang `caveat` de cac tang hien chi noi
+            # MOT lan - bo di thi khong duoc, day la rao chan trung thuc.
+            reason = f"Bậc {stats.tier} theo bảng tier của người chơi"
+            caveat = f"bậc lấy từ {stats.source} — xếp hạng chủ quan, KHÔNG phải số đo"
         else:
             # Co mau nho thi keo diem ve trung tinh thay vi tin han vao no. Day la
             # shrinkage co chu y: mot augment 12 tran khong duoc phep dieu khien
             # xep hang chi vi tinh co dep so.
             trust = clamp01(stats.sample_n / self.min_sample_n) if self.min_sample_n else 1.0
             evidence = "" if stats.is_evidence else " ⚠ cỡ mẫu nhỏ"
-            reason = (
-                f"Vị trí trung bình {stats.avg_place:.2f} "
-                f"(n={stats.sample_n}, nguồn: {stats.source}){evidence}"
-            )
+            # Con so o day KHAC nhau tung augment nen `reason` khong lap; chi
+            # ten nguon la chung, va no di theo `caveat` nhu nhanh tren.
+            reason = f"Vị trí trung bình {stats.avg_place:.2f} (n={stats.sample_n}){evidence}"
+            caveat = f"số đo lấy từ {stats.source}"
 
         score = 0.5 + (raw - 0.5) * trust
         return ComponentScore(
@@ -93,5 +111,6 @@ class BaseScorer:
                 "tier": stats.tier,
                 "is_ordinal": stats.is_ordinal,
                 "trust": round(trust, 3),
+                "caveat": caveat,
             },
         )

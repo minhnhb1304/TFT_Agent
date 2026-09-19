@@ -21,6 +21,7 @@ from src.decision.scoring import (
     ItemFitScorer,
     ScoringConfig,
     TempoFitScorer,
+    full_reason,
     infer_carry_type,
     trait_key,
 )
@@ -66,7 +67,7 @@ def test_base_is_penalized_without_stats(config) -> None:
     result = scorer("DA_Test", feature(), GameState())
     assert result.score == 0.35
     assert not result.is_neutral
-    assert "Chưa có data/tier list chính xác" in result.reason
+    assert "Chưa có bậc trong bảng tier" in result.reason
     assert result.detail["is_unknown"] is True
 
 
@@ -104,7 +105,9 @@ def test_base_reason_always_carries_provenance(config) -> None:
         FakeProvider({"X": AugmentStats("X", avg_place=4.0, sample_n=321, source="opgg")}),
         config,
     )
-    reason = scorer("X", feature(), GameState()).reason
+    # Bat bien dat tren chuoi GHEP: `caveat` (ten nguon) hien mot lan o
+    # dai trang thai, `reason` (co mau) o lai tung cot.
+    reason = full_reason(scorer("X", feature(), GameState()))
     assert "321" in reason and "opgg" in reason
 
 
@@ -365,7 +368,7 @@ def test_advisor_handles_augment_missing_from_feature_table(advisor) -> None:
     assert len(ranking) == 1
     # Base component bi phat xuong 0.35 do khong co stats trong NullProvider
     assert ranking.entries[0].components["base"].score == 0.35
-    assert "Chưa có data/tier list chính xác" in ranking.entries[0].components["base"].reason
+    assert "Chưa có bậc trong bảng tier" in ranking.entries[0].components["base"].reason
     # Cac thanh phan khac deu trung tinh vi khong co feature
     for name, c in ranking.entries[0].components.items():
         if name != "base":

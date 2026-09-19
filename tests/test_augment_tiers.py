@@ -24,7 +24,7 @@ import json
 import pytest
 
 from scripts.import_augment_tiers import parse_tier_file, resolve_all
-from src.decision.scoring.base import BaseScorer
+from src.decision.scoring.base import BaseScorer, full_reason
 from src.decision.scoring.types import ScoringConfig
 from src.game_state.models import GameState
 from src.knowledge.name_index import NameIndex
@@ -170,8 +170,10 @@ def score(stats_provider, api_name: str):
 
 def test_the_reason_string_says_it_is_not_a_measurement() -> None:
     result = score(provider(), "DA_18_Best")
-    # Chuoi nay hien thang len overlay - no phai tu to cao minh.
-    assert "KHÔNG phải số đo" in result.reason
+    # Chuoi nay hien thang len overlay - no phai tu to cao minh. Loi canh
+    # bao nam o `caveat` vi no giong het nhau tren moi the (hien MOT lan);
+    # bac nam o `reason` vi no khac nhau tung the.
+    assert "KHÔNG phải số đo" in full_reason(result)
     assert "Bậc S" in result.reason
     assert result.detail["tier"] == "S"
     assert result.detail["is_ordinal"] is True
@@ -322,9 +324,9 @@ def test_an_inherited_tier_says_so_in_its_provenance() -> None:
     assert stats is not None
     assert "DA_Flora" in stats.source
 
-    reason = BaseScorer(inherit_provider(), ScoringConfig.default())(
+    reason = full_reason(BaseScorer(inherit_provider(), ScoringConfig.default())(
         "DA_FloraPlus", None, GameState()
-    ).reason
+    ))
     assert "DA_Flora" in reason
 
 

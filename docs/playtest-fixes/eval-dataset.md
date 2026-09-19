@@ -37,6 +37,7 @@ Không có baseline thì không biết M2 sửa được bao nhiêu, và không 
 .venv\Scripts\python scripts\review_playtest_labels.py data\eval\playtest\<id>.json --video "<record>.mp4"
 | Đo tầng đọc | `scripts/eval_playtest.py` (`--mode baseline \| session \| dense`) |
 | Đo ảnh hưởng trạng thái | `scripts/state_effect_report.py` (`--ablate` để lấy số trước M3) |
+| Đo chất lượng câu lý do (G3) | `scripts/reason_quality_report.py` |
 
 ```powershell
 .venv\Scripts\python scripts\draft_playtest_labels.py --video "<record>.mp4"
@@ -56,7 +57,12 @@ Không có baseline thì không biết M2 sửa được bao nhiêu, và không 
 | `reroll_recall` | Lần reroll bắt được / tổng lần reroll | M2 (đích 100%) |
 | `read_latency_s` | Từ lúc thẻ ổn định đến lúc có ranking | M2, M5 |
 | `hud_acc[field]` | Giá trị HUD mà lõi dùng ở mốc = nhãn | M2 |
-| `state_effect`, `dup_reasons`, `top1_agree`, `replay_live_diff` | dùng ở M3–M5, định nghĩa trong [overview.md](overview.md#mục-tiêu) | M3+ |
+| `state_effect` | % offer mà trạng thái trận đổi thứ hạng | M3 |
+| `dup_reasons` | ô mang câu lý do trùng với ô khác (đích 0) | M4 |
+| `dup_chars` | **số chữ** bị lặp — rút ngắn một đoạn lặp là cải thiện thật mà `dup_reasons` không thấy | M4 |
+| `empty_slots` | cột không còn câu nào sau khi gom — im lặng cũng là một lỗi | M4 |
+| `edge_coverage` | % offer nói được **vì sao #1 hơn #2** | M4 |
+| `top1_agree`, `replay_live_diff` | dùng ở M4–M5, định nghĩa trong [overview.md](overview.md#mục-tiêu) | M4+ |
 
 ## Kết quả
 

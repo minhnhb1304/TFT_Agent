@@ -85,7 +85,7 @@ class StateStrip(QtWidgets.QFrame):
         lines = [strip.econ] + strip.shared
         self.econ.setText(" · ".join(x for x in lines if x))
         self.econ.setVisible(bool(self.econ.text()))
-        warnings = list(strip.warnings) + ([status] if status else [])
+        warnings = list(strip.warnings) + list(strip.sources) + ([status] if status else [])
         self.warn.setText(" · ".join(warnings))
         self.warn.setVisible(bool(warnings))
 
@@ -96,8 +96,11 @@ class VerdictBar(QtWidgets.QFrame):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self.setObjectName("verdict")
-        layout = QtWidgets.QHBoxLayout(self)
-        layout.setContentsMargins(16, 12, 16, 12)
+        outer = QtWidgets.QVBoxLayout(self)
+        outer.setContentsMargins(16, 12, 16, 12)
+        outer.setSpacing(4)
+        layout = QtWidgets.QHBoxLayout()
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(12)
         self.tag = _overline("khuyến nghị")
         layout.addWidget(self.tag)
@@ -107,6 +110,12 @@ class VerdictBar(QtWidgets.QFrame):
         layout.addStretch()
         self.delta = _label("", size=theme.SIZES["md"], color=theme.TEXT_2, mono=True, wrap=False)
         layout.addWidget(self.delta)
+        outer.addLayout(layout)
+        # Dong thu hai: chenh lech do tach ve thanh phan (A2). An khi rong,
+        # de dai ket luan tro lai dung mot dong nhu truoc.
+        self.edge = _label("", size=theme.SIZES["md"], color=theme.TEXT_2)
+        self.edge.setVisible(False)
+        outer.addWidget(self.edge)
         self.restyle()
 
     def restyle(self) -> None:
@@ -119,6 +128,8 @@ class VerdictBar(QtWidgets.QFrame):
     def set_data(self, verdict: VerdictVM) -> None:
         self.headline.setText(verdict.headline)
         self.delta.setText(verdict.delta_text)
+        self.edge.setText(verdict.edge)
+        self.edge.setVisible(bool(verdict.edge))
         self.setToolTip(verdict.note)
 
 

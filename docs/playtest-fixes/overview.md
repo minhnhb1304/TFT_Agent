@@ -35,7 +35,7 @@ Replay và live dev **song song trên một lõi chung** `src/live/` — [shared
 | **M1b** | Giao diện vỏ replay: ba cột theo ô, dải kết luận, dải thời gian | [replay-ui.md](replay-ui.md), [ui-tokens.md](ui-tokens.md) | M1 | 1 d |
 | **M2** | Đọc đúng: reroll, OCR nhiều dòng, tộc/hệ, HUD priming | [augment-reroll-rescan.md](augment-reroll-rescan.md), [game-state-value.md](game-state-value.md) bước 0 | M1 | 2 d |
 | **M3** | State vào điểm + dòng trạng thái | [game-state-value.md](game-state-value.md) bước 1–9 | M2 | 1.5 d |
-| **M4** | Nhận xét mức A + luật chuyên gia + pilot 20 màn | [augment-commentary.md](augment-commentary.md), [expert-knowledge.md](expert-knowledge.md) | M1 (M3 cho câu state) | 2 d |
+| **M4** | Nhận xét mức A ✅ (2026-09-19, `dup_reasons` 45% → **0**) · luật chuyên gia + pilot 20 màn còn lại | [augment-commentary.md](augment-commentary.md), [expert-knowledge.md](expert-knowledge.md) | M1 (M3 cho câu state) | 2 d |
 | **M5** | Vỏ live trên lõi chung, validate trong trận | [live-track.md](live-track.md) | M1 + L1 | 2 d |
 | **M6** | Ghi chú soạn trước, LLM không chặn, fit trọng số | C mức B/C, D bước 6 | M4 + ~150 nhãn | 3 d |
 
