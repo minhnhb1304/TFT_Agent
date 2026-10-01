@@ -33,7 +33,11 @@ from .viewmodel import build_view
 from .worker import AnalysisWorker, ScanWorker
 
 def build_session(
-    regions: ScreenRegions, settings: Settings, name_index: NameIndex, card_reader: str = "ocr"
+    regions: ScreenRegions,
+    settings: Settings,
+    name_index: NameIndex,
+    card_reader: str = "ocr",
+    source_id: str = "",
 ) -> LiveSession:
     """Dung LiveSession y het cach vo live se dung - do la diem cua M1."""
     if card_reader == "gemini":
@@ -48,6 +52,7 @@ def build_session(
         reroll_reader=RerollButtonReader.load(regions),
         advisor=Advisor(settings=settings),
         regions=regions,
+        source_id=source_id,
     )
 
 
@@ -83,7 +88,13 @@ class ReplayWindow(QtWidgets.QMainWindow):
         self.timer = QtCore.QTimer(self)
         self.timer.timeout.connect(self._next_frame)
 
-        session = build_session(self.regions, self.settings, self.name_index, card_reader)
+        session = build_session(
+            self.regions,
+            self.settings,
+            self.name_index,
+            card_reader,
+            source_id=Path(video_path).stem,
+        )
         self.features = getattr(getattr(session.advisor, "augment_advisor", None), "features", None)
         self.worker = AnalysisWorker(session)
         self.worker.event.connect(self._on_event)
@@ -211,7 +222,10 @@ class ReplayWindow(QtWidgets.QMainWindow):
         self.slider.setRange(0, max(0, self.total_frames - 1))
         self.setWindowTitle(f"TFT Advisory Agent — Replay — {Path(path).name}")
         self._update_timer()
-        self.worker.new_game()
+        # Doi video = doi nguon: dat lai ca `source_id` lan bo dem van, khong chi
+        # reset state. Chi goi `new_game()` thi video thu hai se mang khoa khoi
+        # cua video thu nhat.
+        self.worker.set_source(Path(path).stem)
         self.seek_to_frame(0)
         self.start_scan()
 

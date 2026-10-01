@@ -103,9 +103,11 @@ class FakeCardReader:
 class FakeAdvisor:
     def __init__(self) -> None:
         self.states = []
+        self.game_ids = []
 
-    def advise(self, state, choices=None, frame_ref=None, rerolls=None):
+    def advise(self, state, choices=None, frame_ref=None, rerolls=None, game_id=None):
         self.states.append(state)
+        self.game_ids.append(game_id)
         return {"choices": [c.api_names[0] for c in choices or []], "rerolls": rerolls}
 
 
@@ -303,6 +305,70 @@ def test_seek_backwards_starts_a_new_game():
     reroll.present = True
     ev = feed(s, 11.0, 4)
     assert isinstance(ev, AdviceReady) and ev.state.gold == 99
+
+
+# --- game_id: khoá khối cấp ván (SPEC 12.2) ---------------------------------
+
+
+def test_game_id_carries_source_and_game_number():
+    s, *_ = session(source_id="duc_01")
+    ev = feed(s, 0.0, 4)
+    assert isinstance(ev, AdviceReady)
+    assert s.advisor.game_ids[-1] == "duc_01#1"
+
+
+def test_no_source_id_means_no_game_id_not_a_guessed_one():
+    """Thà không có khoá khối hơn là có một khoá bịa.
+
+    Một khoá bịa ra thì `correlation` sẽ TIN nó và gộp các ván khác nhau vào
+    cùng một khối — p-value dễ dãi hơn thật mà không lỗi nào nổ ra.
+    """
+    s, *_ = session()                      # source_id rỗng
+    feed(s, 0.0, 4)
+    assert s.advisor.game_ids[-1] is None
+
+
+def test_detected_new_game_advances_the_block_key():
+    s, reroll, cards, hud = session(source_id="duc_01")
+    # Mồi HUD ở stage 3-2 trước: phát hiện ván mới cần biết ván CŨ đã tới đâu.
+    reroll.present = False
+    s.step(frame(0.0))
+    reroll.present = True
+    feed(s, 4.0, 4)
+    assert s.advisor.game_ids[-1] == "duc_01#1"
+
+    # Ra ngoài màn chọn lõi rồi stage tụt về 1-x = ván mới.
+    reroll.present = False
+    hud.values["stage"] = "1-2"
+    s.step(frame(100.0))
+    reroll.present = True
+    feed(s, 104.0, 4, cards=(70, 70, 70))
+    assert s.advisor.game_ids[-1] == "duc_01#2"
+
+
+def test_seek_backwards_does_not_advance_the_block_key():
+    """Tua lui gọi `new_game()` để reset state, nhưng KHÔNG phải ván mới.
+
+    Tăng bộ đếm ở đây thì cùng một ván mang khoá khối khác nhau mỗi lần tua, và
+    `correlation` sẽ đếm một ván thành nhiều khối độc lập.
+    """
+    s, reroll, cards, hud = session(source_id="duc_01")
+    feed(s, 100.0, 4)
+    s.seek(10.0)
+    reroll.present = False
+    s.step(frame(10.0))
+    reroll.present = True
+    feed(s, 11.0, 4, cards=(70, 70, 70))
+    assert s.advisor.game_ids[-1] == "duc_01#1"
+
+
+def test_set_source_resets_the_game_counter():
+    """Video thứ hai phải bắt đầu lại từ ván 1, không tiếp số của video trước."""
+    s, *_ = session(source_id="duc_01")
+    s._game_index = 3                      # đã sang ván thứ ba của video này
+    s.set_source("nam_01")
+    feed(s, 0.0, 4)
+    assert s.advisor.game_ids[-1] == "nam_01#1"
 
 
 def test_reader_failure_becomes_status_not_crash():

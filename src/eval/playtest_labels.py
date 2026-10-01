@@ -27,10 +27,18 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable, Literal
 
-SCHEMA_VERSION = 1
+from .scenario_logger import GAME_ID_RE
+
+SCHEMA_VERSION = 2
+# Doc file schema 1 van chay: bon truong cap file cua schema 2 deu khuyet duoc.
+# File schema 1 chi khong dung duoc cho 12.2 (thieu game_id / final_placement),
+# va `missing_for_correlation` noi thang ra dieu do thay vi de no im lang.
+SUPPORTED_SCHEMAS = (1, 2)
 SLOTS = 3
 HUD_KEYS = ("gold", "level", "xp", "xp_needed", "hp", "streak")
 STAGE_RE = re.compile(r"^\d-\d$")
+CAPTURE_KEYS = ("tool", "size", "lang", "fps", "original_name")
+PLACEMENT_RANGE = (1, 8)
 
 LabelStatus = Literal["draft", "verified"]
 
@@ -83,12 +91,33 @@ class ScreenLabel:
 
 @dataclass
 class PlaytestLabels:
-    """Toan bo nhan cua mot video."""
+    """Toan bo nhan cua mot video.
+
+    BON TRUONG CAP FILE (schema 2, 2026-09-30) - mot lan cho ca video:
+
+        game_id          khoa khoi cua phep hoan vi (SPEC 12.2). PHAI khop dung
+                         gia tri `ScenarioLogger` ghi o runtime, neu khong thi
+                         `correlation` khong join duoc va NO KHONG BAO LOI - chi
+                         tra n_games = None roi coi moi quyet dinh la doc lap,
+                         dung cai bay dev_log 8c da sua.
+        player_id        tang khoi THU HAI. Nhieu nguoi choi thi ky nang thanh
+                         confound cua 12.2, nen hoan vi phai nam TRONG tung nguoi.
+        final_placement  nguoi choi TU KHAI. Khong back-fill qua Riot API
+                         (bo han 2026-09-30, SPEC 12.0).
+        capture_profile  chuoi capture la mot BIEN: OBS Display Capture va
+                         Overwolf/Outplayed nen khac nhau co the lam so 12.1
+                         lech co he thong. Khong ghi lai thi khong tach duoc
+                         "OCR cua ta yeu" khoi "ban thu cua ta nhieu".
+    """
 
     video: str
     screens: list[ScreenLabel]
     size: tuple[int, int] | None = None
     video_sha256: str | None = None
+    game_id: str | None = None
+    player_id: str | None = None
+    final_placement: int | None = None
+    capture_profile: dict[str, Any] | None = None
     schema: int = SCHEMA_VERSION
 
     @property
@@ -101,6 +130,10 @@ class PlaytestLabels:
             "video": self.video,
             "video_sha256": self.video_sha256,
             "size": list(self.size) if self.size else None,
+            "game_id": self.game_id,
+            "player_id": self.player_id,
+            "final_placement": self.final_placement,
+            "capture_profile": self.capture_profile,
             "screens": [_screen_to_dict(s) for s in self.screens],
         }
 
@@ -136,12 +169,20 @@ def from_dict(data: dict[str, Any]) -> PlaytestLabels:
             )
         )
     size = data.get("size")
+    placement = data.get("final_placement")
     return PlaytestLabels(
         video=str(data.get("video", "")),
         screens=screens,
         size=(int(size[0]), int(size[1])) if size else None,
         video_sha256=data.get("video_sha256"),
-        schema=int(data.get("schema", SCHEMA_VERSION)),
+        game_id=data.get("game_id"),
+        player_id=data.get("player_id"),
+        final_placement=int(placement) if placement is not None else None,
+        capture_profile=data.get("capture_profile"),
+        # Khong co khoa `schema` = file soan tay truoc schema 2. Mac dinh 1, KHONG
+        # phai SCHEMA_VERSION: mac dinh vao ban moi nhat la tu nhan cho mot file cu
+        # la file moi, roi bo qua dung nhung truong no thieu.
+        schema=int(data.get("schema", 1)),
     )
 
 
@@ -178,10 +219,11 @@ def validate(
     augments = set(known_augments) if known_augments is not None else None
     traits = set(known_traits) if known_traits is not None else None
 
-    if labels.schema != SCHEMA_VERSION:
-        errors.append(f"schema {labels.schema} không hỗ trợ (cần {SCHEMA_VERSION})")
+    if labels.schema not in SUPPORTED_SCHEMAS:
+        errors.append(f"schema {labels.schema} không hỗ trợ (đọc được {SUPPORTED_SCHEMAS})")
     if not labels.video:
         errors.append("thiếu 'video'")
+    errors.extend(_validate_file_fields(labels))
 
     prev_close = -1.0
     for i, s in enumerate(labels.screens):
@@ -191,6 +233,53 @@ def validate(
             errors.append(f"{where}: open_s {s.open_s} chồng lên màn trước (đóng lúc {prev_close})")
         prev_close = max(prev_close, s.close_s)
     return errors
+
+
+def _validate_file_fields(labels: PlaytestLabels) -> list[str]:
+    """Kiem bon truong cap file cua schema 2.
+
+    KHUYET thi KHONG phai loi - file schema 1 hop le va van dung duoc cho 12.1.
+    Chi kiem DINH DANG khi co mat. Thieu truong de chay 12.2 thi
+    `missing_for_correlation` bao, va no bao o cho nguoi doc so nhin thay.
+    """
+    errors: list[str] = []
+    lo, hi = PLACEMENT_RANGE
+
+    if labels.game_id is not None and not GAME_ID_RE.match(labels.game_id):
+        errors.append(
+            f"game_id '{labels.game_id}' phải có dạng '<video_id>#<số ván>', ví dụ 'nam_01#1'"
+        )
+    if labels.player_id is not None and not str(labels.player_id).strip():
+        errors.append("player_id rỗng — bỏ hẳn khoá này còn rõ hơn là để chuỗi rỗng")
+    if labels.final_placement is not None and not lo <= labels.final_placement <= hi:
+        errors.append(f"final_placement {labels.final_placement} ngoài khoảng {lo}-{hi}")
+    if labels.capture_profile is not None:
+        if not isinstance(labels.capture_profile, dict):
+            errors.append("capture_profile phải là object")
+        else:
+            for key in labels.capture_profile:
+                if key not in CAPTURE_KEYS:
+                    errors.append(f"capture_profile.{key} không nằm trong {CAPTURE_KEYS}")
+    return errors
+
+
+def missing_for_correlation(labels: PlaytestLabels) -> list[str]:
+    """Truong nao con thieu de file nay dung duoc cho SPEC 12.2 / 12.3.
+
+    Tach khoi `validate` co chu y: mot file thieu `final_placement` van la nhan
+    HOP LE va van chay duoc 12.1. Gop hai thu lam mot thi hoac chan oan bo nhan
+    cu, hoac de 12.2 chay tren du lieu khong du ma khong ai biet.
+    """
+    gaps: list[str] = []
+    if not labels.game_id:
+        gaps.append("game_id (khoá khối của phép hoán vị)")
+    if not labels.player_id:
+        gaps.append("player_id (tầng khối thứ hai khi nhiều người chơi)")
+    if labels.final_placement is None:
+        gaps.append("final_placement (người chơi tự khai)")
+    if not any(s.verified and s.picked for s in labels.screens):
+        gaps.append("chưa màn verified nào có 'picked'")
+    return gaps
 
 
 def _validate_screen(

@@ -28,6 +28,7 @@ the thi ban ghi phai chua DU GameState, khong phai chi ket qua. Do la ly do
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -120,6 +121,35 @@ class Scenario:
         )
 
 
+# `<source_id>#<so van trong nguon>`. Dinh dang nay la NGUON DUY NHAT, dung boi
+# ca runtime (ScenarioLogger) lan cong cu gan nhan (playtest_labels) - lech nhau
+# thi `correlation` khong join duoc va no KHONG BAO LOI.
+GAME_ID_RE = re.compile(r"^[A-Za-z0-9._\-]+#\d+$")
+
+
+def derive_game_id(source_id: str, game_index: int = 1) -> str:
+    """Khoa khoi cho phep hoan vi cap van (SPEC 12.2).
+
+    `source_id` la thu dinh danh nguon khung hinh: `video_id` khi phat lai ban
+    record, mot moc thoi gian phien khi choi truc tiep.
+
+    NEM khi source_id rong thay vi tra ve "#1": mot id rong lam MOI van doi vao
+    cung mot khoi, tuc `correlation` coi ca bo du lieu la mot van duy nhat. Do
+    la dung cai bay 8c quay lai qua cua sau, va no khong lo ra o bat ky test
+    nao - chi lam p-value de dai hon that. Cung bai hoc voi bug 11g
+    (`video_id` rong lam moi VOD do chung mot thu muc).
+    """
+    sid = str(source_id).strip()
+    if not sid:
+        raise ValueError("derive_game_id: source_id rỗng — không suy ra khoá khối được")
+    if game_index < 1:
+        raise ValueError(f"derive_game_id: game_index phải >= 1, nhận {game_index}")
+    sid = re.sub(r"[^A-Za-z0-9._\-]+", "-", sid).strip("-")
+    if not sid:
+        raise ValueError(f"derive_game_id: source_id {source_id!r} không còn ký tự dùng được")
+    return f"{sid}#{int(game_index)}"
+
+
 class ScenarioLogger:
     """Ghi mot file JSON cho moi quyet dinh augment."""
 
@@ -187,14 +217,50 @@ class ScenarioLogger:
         return load_scenarios(self.directory)
 
     def back_fill_placement(self, path: str | Path, placement: int) -> Scenario:
-        """Dien ket qua that sau tran (SPEC 12.0 - lay tu tft-match-v1).
+        """Dien ket qua that sau tran (SPEC 12.0).
+
+        NGUON: nguoi choi tu khai, gan tay vao file nhan. Duong back-fill qua
+        `tft-match-v1` da BO HAN 2026-09-30 - key het han 24h, can PUUID cua
+        nguoi khac, va tran tuy chinh khong len match-v1. Ham nay nhan mot so
+        nguyen va khong quan tam so do tu dau, nen chi NGUON doi, khong phai
+        co che.
 
         Ghi de tai cho: mot scenario chi co dung mot placement that, va giu hai
         ban sao cua cung mot su kien la cach chac chan de sau nay dem trung.
         """
+        return self.back_fill(path, final_placement=placement)
+
+    def back_fill(
+        self,
+        path: str | Path,
+        player_pick: str | None = None,
+        final_placement: int | None = None,
+        game_id: str | None = None,
+    ) -> Scenario:
+        """Dien cac truong chi bo nhan biet duoc, tai cho.
+
+        VI SAO `player_pick` KHONG DI QUA `Advisor.advise()`: luc tu van, the ma
+        nguoi choi SE chon chua ton tai - advisor xep hang truoc, nguoi choi bam
+        sau. Suy tu pixel thi phai theo doi chuot. Nen no thuoc buoc gan nhan,
+        khong thuoc duong quyet dinh. `game_id` thi nguoc lai: runtime BIET no,
+        va no duoc truyen vao luc `log()`.
+
+        Truong nao truyen None thi giu nguyen gia tri cu - goi ham nay hai lan
+        voi hai truong khac nhau khong xoa lan nhau.
+        """
         p = Path(path)
         data = json.loads(p.read_text(encoding="utf-8"))
-        data["final_placement"] = int(placement)
+        if player_pick is not None:
+            data["player_pick"] = str(player_pick)
+        if final_placement is not None:
+            lo, hi = 1, 8
+            if not lo <= int(final_placement) <= hi:
+                raise ValueError(f"final_placement {final_placement} ngoài khoảng {lo}-{hi}")
+            data["final_placement"] = int(final_placement)
+        if game_id is not None:
+            if not GAME_ID_RE.match(str(game_id)):
+                raise ValueError(f"game_id {game_id!r} sai dạng '<source_id>#<n>'")
+            data["game_id"] = str(game_id)
         p.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         return Scenario.from_dict(data, p)
 
