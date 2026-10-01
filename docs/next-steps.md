@@ -1,6 +1,66 @@
 # Kế Hoạch & Nhiệm Vụ Tiếp Theo (Next Steps)
 
-> **Cập nhật ngày:** 2026-09-09  
+## ⏱️ Trạng thái 2026-09-30 — đọc mục này trước
+
+Hạn nộp: **~2027-01-20** (16 tuần từ 30-09). Trừ ngược: **4 tuần cuối viết luận văn**, **tuần 12
+đóng băng số**, còn **~11 tuần làm việc**.
+
+> Mọi mục **§1–§7 bên dưới là LỊCH SỬ** (09-09). Chúng ghi lại phép đo đã làm, giữ để tra cứu —
+> nhưng kế hoạch hiện hành là mục này.
+
+### Việc gấp có hạn bên ngoài
+
+| Việc | Hạn | Vì sao không hoãn được |
+|---|---|---|
+| Chạy `tools/probe_environment.py --closed` rồi `--seconds 5` trên máy game | **trước 2026-10-09** | Client TFT standalone đổi process/window class. Đây là bản ghi duy nhất về client hiện tại; sau mốc đó không truy ngược được. ~1 giờ |
+
+**10-09 là lý do để CHỜ, không phải để gấp:** đừng viết `WindowCaptureSource` nhắm client hiện
+tại — nó sẽ vỡ. Chạy probe lấy mốc, rồi hoãn phần capture tới khi client mới lên.
+
+### Bộ dữ liệu — đường găng của cả đồ án
+
+Có **20 video tự chơi chưa dùng** + dự kiến **10–20 video từ người khác** (Outplayed → Drive).
+≈ 30–40 ván × 3 màn chọn lõi = **90–120 quyết định / 30–40 cụm độc lập**.
+
+| # | Việc | File hướng dẫn |
+|---|---|---|
+| 1 | Chốt `data/eval/split.json` **trước khi gắn nhãn video đầu tiên** — 6 development / 14 held-out, chia bằng seed | [playtest-fixes/dataset-split.md](playtest-fixes/dataset-split.md) |
+| 2 | Gửi giao thức ghi cho người tham gia; **thử 1 video trước** khi xin 20 cái | [playtest-fixes/recording-protocol.md](playtest-fixes/recording-protocol.md) |
+| 3 | Gắn nhãn 6 ván development (tuần 1–3) → tinh chỉnh (3–8) → gắn nhãn held-out (9–11) → chạy **một lần** (tuần 12) | [playtest-fixes/labeling-guide.md](playtest-fixes/labeling-guide.md) |
+
+⚠️ `final_placement` **do người chơi tự khai**, không back-fill Riot API (bỏ hẳn 30-09, SPEC §12.0).
+
+### Việc code kế tiếp, theo thứ tự
+
+| # | Việc | Trạng thái |
+|---|---|---|
+| 1 | **Sửa lỗi centering `CompSelector`** — bug độc lập, phải làm trước directional | Đã đo + có 3 phương án, **chờ chốt phương án A**. [directional-augment/centering-fix.md](directional-augment/centering-fix.md) |
+| 2 | Sửa tầng feature: `econ_type` multi-label trích tất định, **khoá bằng test** để LLM không ghi đè | 13/13 lõi mất nhãn `reroll` do LLM. [directional-augment/blind-spots.md](directional-augment/blind-spots.md) §2 |
+| 3 | Directional augment evaluation — **tính năng bắt buộc**, phải là trục ablation tắt được | [directional-augment/architecture.md](directional-augment/architecture.md) |
+| 4 | SPEC v4: viết lại §1.1 (4 đóng góp), §3.6 (bỏ widget không tồn tại), tick lại §7 | Chưa bắt đầu |
+| 5 | Re-baseline tài liệu: `README` bảng trạng thái, `dev_log.md` thành lịch sử | Chưa bắt đầu |
+
+### Quyết định đã chốt trong phiên 30-09
+
+- **4 đóng góp**, không thêm mục thứ năm. Directional **phát biểu lại đóng góp #3** chứ không phải
+  Future Work.
+- **Bỏ hẳn Riot API** khỏi đường `final_placement`. `riot_api.py` **vẫn dùng** cho crawl meta comp.
+- Chia **6/14** development/held-out, chia theo **người** trước rồi theo video.
+- Mọi thay đổi scorer phải **tắt được bằng cờ** trong `config/scoring_weights.yaml`.
+
+### Còn chờ bạn quyết
+
+| Câu hỏi | Ở đâu |
+|---|---|
+| Chốt phương án **A** cho centering fix? | [centering-fix.md](directional-augment/centering-fix.md) |
+| Giữ hay bỏ hình ảnh "la bàn" trong §1 | [review-findings.md](directional-augment/review-findings.md) |
+| Có dùng khung *Evaluative AI* cho ca hoà điểm | [explainability.md](directional-augment/explainability.md) |
+| Có dẫn `tft.ninja` không (nguồn không nhãn set) | [review-findings.md](directional-augment/review-findings.md) |
+| Xoá `docs/directional-augment-evaluation.md` (bản phẳng đã bị thay thế) chưa | — |
+
+---
+
+> **Cập nhật ngày:** 2026-09-09 — **phần dưới đây là lịch sử, xem mục trên**  
 > **Trạng thái hiện tại:**  
 > - Thuật toán **Sequential Augment Reroll Policy** (`src/decision/reroll_policy.py`) và toàn bộ pipeline thị giác Track B đã hoàn thành, vượt qua **710/710 bài test** (`pytest` pass 100% offline).  
 > - Đường ống dữ liệu đã chặn hoàn toàn Mock data (`allow_fabricated=False`), độ tin cậy Bảng Tier `ordinal_trust` đã được nâng lên **0.65**, lõi chưa biết hạ điểm xuống **0.35** kèm chú thích rõ ràng.  
