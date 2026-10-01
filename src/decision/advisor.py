@@ -135,6 +135,7 @@ class Advisor:
         choices: Sequence[AugmentChoice | str] | None = None,
         frame_ref: str | None = None,
         rerolls: RerollState | None = None,
+        game_id: str | None = None,
     ) -> AdviceBundle:
         """Chay mot chu ky tu van day du.
 
@@ -144,6 +145,16 @@ class Advisor:
             rerolls: o nao con luot doi. Man hinh KHONG hien so dem nao nen
                 thong tin nay phai duoc truyen vao; None thi coi nhu con du
                 ba luot, tuc la trang thai vua vao man chon.
+            game_id: khoa khoi cap van cho SPEC 12.2 (`eval.scenario_logger.
+                derive_game_id`). Ba quyet dinh trong cung mot van mang dung
+                mot `final_placement`, nen chung KHONG phai ba quan sat doc lap
+                - thieu khoa nay thi `correlation` coi chung la doc lap va
+                p-value de dai hon that (dev_log 8c). None chi hop ly khi dang
+                demo hoac test, khong hop ly khi dang thu du lieu danh gia.
+
+        `player_pick` KHONG nam o day co chu y: luc tu van, the ma nguoi choi se
+        chon chua ton tai. No thuoc buoc gan nhan - xem
+        `ScenarioLogger.back_fill()`.
         """
         bundle = AdviceBundle(stale_data=list(self.stale_data))
 
@@ -176,7 +187,11 @@ class Advisor:
         # 3. Log - chi khi that su co mot quyet dinh augment de ghi.
         if bundle.ranking is not None:
             path = self.logger.log(
-                bundle.ranking, state, frame_ref=frame_ref, reroll=bundle.reroll
+                bundle.ranking,
+                state,
+                frame_ref=frame_ref,
+                reroll=bundle.reroll,
+                game_id=game_id,
             )
             bundle.scenario_path = str(path) if path else None
 

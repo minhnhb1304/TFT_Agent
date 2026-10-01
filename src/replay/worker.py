@@ -61,7 +61,7 @@ class AnalysisWorker(QtCore.QThread):
         self._mailbox: queue.Queue[Frame | None] = queue.Queue(maxsize=1)
         # Lenh dieu khien di duong RIENG va duoc xu ly truoc: tua/doc lai phai
         # tac dung ngay, khong duoc xep hang sau mot khung dang doc do.
-        self._control: queue.Queue[tuple[str, float]] = queue.Queue()
+        self._control: queue.Queue[tuple[str, Any]] = queue.Queue()
         self._running = True
 
     def submit(self, frame: Frame) -> None:
@@ -87,6 +87,12 @@ class AnalysisWorker(QtCore.QThread):
     def new_game(self) -> None:
         self._control.put(("new_game", 0.0))
 
+    def set_source(self, source_id: str) -> None:
+        """Doi video: dat lai `source_id` + bo dem van. Di qua HANG DOI dieu khien
+        chu khong gan thang thuoc tinh, de thay doi xay ra trong luong doc chu
+        khong giua hai lan doc."""
+        self._control.put(("source", source_id))
+
     def _drain_control(self) -> None:
         while True:
             try:
@@ -99,6 +105,8 @@ class AnalysisWorker(QtCore.QThread):
                 self.session.force_refresh()
             elif name == "new_game":
                 self.session.new_game()
+            elif name == "source":
+                self.session.set_source(str(value))
 
     def stop(self) -> None:
         self._running = False

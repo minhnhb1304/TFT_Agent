@@ -10,7 +10,14 @@ import numpy as np
 import pytest
 
 from src.eval.playtest_draft import Sample, group_screens, resolve_card_title, segment_screen
-from src.eval.playtest_labels import LabelError, from_dict, load, save, validate
+from src.eval.playtest_labels import (
+    LabelError,
+    from_dict,
+    load,
+    missing_for_correlation,
+    save,
+    validate,
+)
 from src.eval.playtest_review import augment_options, resolve_slot, save_payload
 from src.eval.playtest_metrics import ReadEvent, evaluate, load_run, save_run, slot_outcome
 from src.knowledge.name_index import NameIndex
@@ -70,6 +77,80 @@ def test_load_reports_all_errors(tmp_path):
         load(tmp_path / "bad.json", KNOWN)
     text = str(exc.value)
     assert "stage" in text and "ZZZ" in text and "hud.mana" in text
+
+
+# --- bon truong cap file (schema 2) -----------------------------------------
+
+
+def test_schema_1_file_is_still_valid():
+    """Hai file nhan da verify cua 2026-09-16 la schema 1 va PHAI con hop le.
+
+    Nang SCHEMA_VERSION len 2 ma khong noi long `validate` thi hai file do thanh
+    khong hop le, va baseline do duoc o M1/M2 khong chay lai duoc.
+    """
+    data = label_dict()
+    assert data["schema"] == 1
+    assert validate(from_dict(data), KNOWN) == []
+
+
+def test_file_with_no_schema_key_reads_as_schema_1():
+    """Mac dinh vao ban MOI NHAT la tu nhan mot file cu la file moi."""
+    data = label_dict()
+    del data["schema"]
+    assert from_dict(data).schema == 1
+
+
+def test_four_file_fields_roundtrip(tmp_path):
+    data = label_dict()
+    data.update({
+        "schema": 2, "game_id": "nam_01#1", "player_id": "nam", "final_placement": 4,
+        "capture_profile": {"tool": "outplayed", "lang": "vi"},
+    })
+    labels = from_dict(data)
+    assert validate(labels, KNOWN) == []
+    save(labels, tmp_path / "y.json")
+    back = load(tmp_path / "y.json", KNOWN)
+    assert back.game_id == "nam_01#1" and back.player_id == "nam"
+    assert back.final_placement == 4 and back.capture_profile == {"tool": "outplayed", "lang": "vi"}
+
+
+@pytest.mark.parametrize(
+    "field, value, needle",
+    [
+        ("game_id", "nam_01", "dạng"),          # thieu '#<so van>'
+        ("game_id", "nam 01#1", "dạng"),        # khoang trang khong hop
+        ("final_placement", 0, "ngoài khoảng"),
+        ("final_placement", 9, "ngoài khoảng"),
+        ("player_id", "  ", "rỗng"),
+        ("capture_profile", {"resolution": [1920, 1080]}, "capture_profile.resolution"),
+    ],
+)
+def test_file_field_formats_are_checked(field, value, needle):
+    data = label_dict()
+    data["schema"] = 2
+    data[field] = value
+    errors = validate(from_dict(data), KNOWN)
+    assert any(needle in e for e in errors), errors
+
+
+def test_missing_for_correlation_names_what_12_2_needs():
+    """Thieu truong de chay 12.2 KHONG phai loi nhan - nhan van dung cho 12.1.
+
+    Gop hai thu lam mot thi hoac chan oan bo nhan cu, hoac de 12.2 chay tren du
+    lieu khong du ma khong ai biet.
+    """
+    labels = from_dict(label_dict())                  # schema 1, chua co truong moi
+    assert validate(labels, KNOWN) == []
+    gaps = missing_for_correlation(labels)
+    assert any("game_id" in g for g in gaps)
+    assert any("player_id" in g for g in gaps)
+    assert any("final_placement" in g for g in gaps)
+
+
+def test_missing_for_correlation_is_empty_when_complete():
+    data = label_dict()
+    data.update({"schema": 2, "game_id": "nam_01#1", "player_id": "nam", "final_placement": 4})
+    assert missing_for_correlation(from_dict(data)) == []
 
 
 def test_verified_rerolled_slot_must_match_changed_slot():

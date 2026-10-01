@@ -30,6 +30,7 @@ from ..capture.frame_source import Frame
 from ..capture.regions import ScreenRegions
 from ..decision.augment_advisor import AugmentChoice
 from ..decision.reroll_policy import RerollState
+from ..eval.scenario_logger import derive_game_id
 from ..game_state.state_tracker import GameStateTracker
 from ..vision.augment_reader import CardRead
 from .card_reader import SLOTS, CardReader
@@ -53,6 +54,10 @@ class LiveSession:
     hud_every_s: float = 3.0
     grace_s: float = 30.0
     stable_frames: int = 3
+    # Dinh danh nguon khung hinh: `video_id` khi phat lai, moc thoi gian phien
+    # khi choi truc tiep. Rong thi `game_id` khong duoc sinh ra va scenario ghi
+    # ra KHONG dung duoc cho SPEC 12.2 - xem `_game_id`.
+    source_id: str = ""
 
     def __post_init__(self) -> None:
         self.screen_tracker = AugmentScreenTracker(self.regions, stable_frames=self.stable_frames)
@@ -65,14 +70,34 @@ class LiveSession:
         self._last_t = float("-inf")
         self._last_emit: tuple | None = None
         self._hud_signature: list | None = None
+        # Van thu may TRONG nguon nay. Chi tang khi PHAT HIEN duoc mot van moi
+        # (`_detect_new_game`), KHONG tang trong `new_game()`: replay tua lui
+        # cung goi `new_game()` de reset state, ma tua lui khong phai van moi -
+        # tang o day thi cung mot van doi khoa khoi moi lan tua.
+        self._game_index = 1
 
     # -- dieu khien tu vo --------------------------------------------------
 
     def new_game(self) -> None:
-        """Van moi: quen HUD da nho va man dang theo doi."""
+        """Van moi: quen HUD da nho va man dang theo doi.
+
+        KHONG tang `_game_index`: replay tua lui cung goi ham nay de reset state,
+        ma tua lui khong phai van moi. Chi `_detect_new_game` moi tang.
+        """
         self.game_tracker.reset()
         self._reset_screen()
         self._last_t = float("-inf")
+
+    def set_source(self, source_id: str) -> None:
+        """Doi nguon khung hinh: video khac, hoac phien live moi.
+
+        Dat lai bo dem van ve 1 - nguon moi thi van dau tien cua no la van 1.
+        Khong dat lai thi mo video thu hai se cho `game_id` la `...#2` cho van
+        dau cua no, va khoa khoi khong con khop file nhan.
+        """
+        self.source_id = str(source_id or "")
+        self._game_index = 1
+        self.new_game()
 
     def force_refresh(self) -> None:
         """Nguoi dung bam doc lai (F3 / nut Quet lai)."""
@@ -138,7 +163,11 @@ class LiveSession:
         state = self.game_tracker.state(traits=traits)
         t0 = time.perf_counter()
         bundle = self.advisor.advise(
-            state=state, choices=choices, rerolls=self._rerolls, frame_ref=frame.ref
+            state=state,
+            choices=choices,
+            rerolls=self._rerolls,
+            frame_ref=frame.ref,
+            game_id=self._game_id(),
         )
         latency["advise"] = (time.perf_counter() - t0) * 1000.0
 
@@ -230,6 +259,18 @@ class LiveSession:
         old_major = int(old.split("-")[0]) if "-" in old and old.split("-")[0].isdigit() else 0
         if new_major == 1 and old_major >= 3:
             self.new_game()
+            self._game_index += 1
+
+    def _game_id(self) -> str | None:
+        """Khoa khoi cap van cho ScenarioLogger, hoac None khi khong biet nguon.
+
+        `source_id` rong -> None, KHONG phai mot chuoi doan bua. Mot khoa bia ra
+        con te hon khong co khoa: `correlation` se tin no va gop cac van khac
+        nhau vao cung mot khoi.
+        """
+        if not self.source_id:
+            return None
+        return derive_game_id(self.source_id, self._game_index)
 
     def _read_traits(self, frame: Frame) -> dict[str, int]:
         try:

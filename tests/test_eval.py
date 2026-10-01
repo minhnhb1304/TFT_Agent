@@ -29,7 +29,13 @@ from src.eval.expert_study import (
     load_expert_entries,
 )
 from src.eval.recognition import Prediction, evaluate as evaluate_recognition, percentile
-from src.eval.scenario_logger import Scenario, ScenarioLogger, load_scenarios
+from src.eval.scenario_logger import (
+    GAME_ID_RE,
+    Scenario,
+    ScenarioLogger,
+    derive_game_id,
+    load_scenarios,
+)
 from src.game_state.models import Champion, GameState
 from src.knowledge.augment_features import AugmentFeature, FeatureTable
 from src.knowledge.stats_provider import AugmentStats
@@ -93,6 +99,71 @@ def test_back_fill_placement_overwrites_in_place(tmp_path) -> None:
 
     assert len(list(tmp_path.glob("*.json"))) == 1, "khong duoc de lai ban sao"
     assert json.loads(path.read_text(encoding="utf-8"))["final_placement"] == 2
+
+
+def test_back_fill_adds_player_pick_without_clobbering_placement(tmp_path) -> None:
+    """Hai truong duoc dien o hai luc khac nhau, khong duoc xoa nhau.
+
+    `player_pick` khong the di qua `Advisor.advise()`: luc tu van, the ma nguoi
+    choi SE chon chua ton tai. No thuoc buoc gan nhan.
+    """
+    logger = make_logger(tmp_path)
+    ranking = AugmentAdvisor(features()).rank(["ECON"], GameState())
+    path = logger.log(ranking, GameState())
+
+    logger.back_fill(path, final_placement=3)
+    logger.back_fill(path, player_pick="ECON")
+
+    data = json.loads(path.read_text(encoding="utf-8"))
+    assert data["final_placement"] == 3, "lan goi thu hai da xoa placement"
+    assert data["player_pick"] == "ECON"
+
+
+def test_back_fill_rejects_placement_outside_one_to_eight(tmp_path) -> None:
+    logger = make_logger(tmp_path)
+    ranking = AugmentAdvisor(features()).rank(["ECON"], GameState())
+    path = logger.log(ranking, GameState())
+    with pytest.raises(ValueError, match="ngoài khoảng"):
+        logger.back_fill(path, final_placement=9)
+
+
+def test_back_fill_rejects_malformed_game_id(tmp_path) -> None:
+    logger = make_logger(tmp_path)
+    ranking = AugmentAdvisor(features()).rank(["ECON"], GameState())
+    path = logger.log(ranking, GameState())
+    with pytest.raises(ValueError, match="sai dạng"):
+        logger.back_fill(path, game_id="duc_01")      # thieu '#<n>'
+
+
+# --- derive_game_id: khoa khoi cap van --------------------------------------
+
+
+def test_derive_game_id_format() -> None:
+    assert derive_game_id("duc_01") == "duc_01#1"
+    assert derive_game_id("duc_01", 3) == "duc_01#3"
+
+
+def test_derive_game_id_refuses_empty_source() -> None:
+    """Mot id rong gop MOI van vao cung mot khoi - va khong test nao thay.
+
+    Cung bai hoc voi bug 11g: `video_id` rong lam moi VOD do chung mot thu muc.
+    O day hau qua nang hon: `correlation` coi ca bo du lieu la mot van duy nhat
+    nen phan phoi null hep hon that, tuc p-value de dai.
+    """
+    for bad in ("", "   ", "///"):
+        with pytest.raises(ValueError):
+            derive_game_id(bad)
+
+
+def test_derive_game_id_rejects_zero_or_negative_index() -> None:
+    with pytest.raises(ValueError):
+        derive_game_id("duc_01", 0)
+
+
+def test_derive_game_id_sanitises_but_stays_unique() -> None:
+    a = derive_game_id("van 1 (final)")
+    b = derive_game_id("van 2 (final)")
+    assert a != b and GAME_ID_RE.match(a) and GAME_ID_RE.match(b)
 
 
 def test_pick_rank_is_one_based() -> None:
