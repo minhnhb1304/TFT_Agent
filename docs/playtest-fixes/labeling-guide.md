@@ -3,6 +3,17 @@
 Cách kiểm và sửa nhãn playtest — bước M0 của [playtest fixes](overview.md). Định dạng file:
 [eval-dataset.md](eval-dataset.md).
 
+## Bước 0 — tra `role` trước khi mở video
+
+Mở [`data/eval/split.json`](dataset-split.md) xem video này là `development` hay `heldout`.
+
+| `role` | Được làm gì |
+|---|---|
+| `development` | Gắn nhãn, xem đầu ra của máy, sửa ngưỡng, chạy lại — thoải mái |
+| `heldout` | **Chỉ** gắn nhãn. Không chạy `eval_playtest.py`, không xem ranking của advisor, không sửa gì sau khi xem |
+
+Xem kết quả máy trên một video held-out là làm nhiễm nó vĩnh viễn, và không có cách nào hoàn lại.
+
 ## Cách 1 — công cụ xem lại (khuyên dùng)
 
 ```powershell
@@ -24,6 +35,23 @@ Còn lỗi thì **không ghi gì cả** và trang liệt kê lỗi — sửa r�
 | File nhãn | `data\eval\playtest\<video_id>.json` |
 | Ảnh từng offer | `data\eval\playtest\snapshots\<video_id>\<giây>_<stage>_offerN.jpg` |
 | Video gốc | Thư mục bạn đã record, tua tới giây `at_s` / `open_s` |
+
+### Bốn trường cấp file — gắn một lần cho cả video
+
+| Trường | Lấy ở đâu |
+|---|---|
+| `game_id` | `"<video_id>#<số ván trong video>"`, ví dụ `"nam_01#1"`. Outplayed ghi một ván một file nên gần như luôn `#1`. Giữ hậu tố để định dạng thống nhất với VOD nhiều ván |
+| `player_id` | Copy từ `split.json`. **Đừng** parse ra từ tên file |
+| `final_placement` | Người chơi tự khai (xem [recording protocol](recording-protocol.md)). Đối chiếu với màn kết trận nếu video có |
+| `capture_profile` | Copy từ `split.json`: `tool`, `size`, `lang`, `fps`, `original_name` |
+
+`game_id` phải **giống hệt** giá trị mà `ScenarioLogger` ghi ở runtime, nếu không
+`correlation.py` sẽ không join được và nó **không báo lỗi** — chỉ trả `n_games = None` rồi coi
+mọi quyết định là độc lập, đúng cái bẫy [dev_log §8c](../../dev_log.md) đã sửa. Vì thế cả công
+cụ gắn nhãn và runtime phải dùng **một hàm dẫn xuất duy nhất**.
+
+> ⏳ Bốn trường này **chưa có** trong `src/eval/playtest_labels.py` (schema 1). Cần thêm ở cấp
+> `PlaytestLabels` trước khi gắn nhãn video đầu tiên — xem [eval-dataset.md](eval-dataset.md).
 
 ### Năm việc cho mỗi màn
 
@@ -65,6 +93,8 @@ In `OK` là hợp lệ. Có lỗi thì in đủ danh sách, kèm số màn và s
 
 ## Related
 
+- [Dataset split](dataset-split.md) — tra `role` trước khi gắn nhãn
+- [Recording protocol](recording-protocol.md) — nhận video và đổi tên
 - [Eval dataset](eval-dataset.md)
 - [Overview](overview.md)
 - [Expert knowledge](expert-knowledge.md)

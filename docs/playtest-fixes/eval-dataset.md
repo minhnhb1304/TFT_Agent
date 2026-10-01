@@ -12,6 +12,9 @@ Không có baseline thì không biết M2 sửa được bao nhiêu, và không 
 
 ```json
 { "video": "...", "video_sha256": "...", "size": [1920, 1080],
+  "game_id": "nam_01#1", "player_id": "nam", "final_placement": 7,
+  "capture_profile": {"tool": "outplayed", "lang": "vi", "fps": 30,
+                      "original_name": "TFT_2026-09-28_21-14-02.mp4"},
   "screens": [{ "stage": "3-2", "status": "verified", "open_s": 626.8, "close_s": 647.0,
     "hud": {"gold": 55, "level": 4, "xp": 8, "xp_needed": 10, "hp": 88, "streak": -1},
     "offers": [{"at_s": 628.3, "cards": [["DA_A"], ["DA_B"], ["DA_C"]], "rerolled_slot": null},
@@ -21,6 +24,13 @@ Không có baseline thì không biết M2 sửa được bao nhiêu, và không 
 
 - `hud` ghi giá trị **ngay trước khi mở màn**; `offers` có một mục cho mỗi trạng thái thẻ
   ổn định, gồm cả sau mỗi lần reroll.
+- `game_id` / `player_id` / `final_placement` / `capture_profile` là **cấp file**, một lần cho
+  cả video. `game_id` là khoá khối của phép hoán vị (§8c) và phải khớp đúng giá trị
+  `ScenarioLogger` ghi ở runtime. `player_id` là **tầng khối thứ hai**: nhiều người chơi thì
+  kỹ năng thành confound của §12.2, nên hoán vị phải nằm **trong** từng người.
+  ⏳ Bốn trường này chưa có trong `playtest_labels.py` (schema 1) — cần nâng lên schema 2.
+- `final_placement` do **người chơi tự khai**, không back-fill từ Riot API: key hết hạn 24h,
+  cần PUUID tức danh tính tài khoản người khác, và trận tuỳ chỉnh không lên `tft-match-v1`.
 - `expert` bỏ trống ở M0; điền ở [expert-knowledge.md](expert-knowledge.md) (`blind` = gắn
   nhãn khi chưa thấy ranking của advisor).
 - Video **không** commit (nặng, cá nhân); chỉ commit file nhãn, kèm `video_sha256` để biết
@@ -120,6 +130,8 @@ là trục ablation, sẽ hiệu chỉnh khi có nhãn chuyên gia (M4).
 ## Related
 
 - [Overview](overview.md)
+- [Dataset split](dataset-split.md)
+- [Recording protocol](recording-protocol.md)
 - [Labeling guide](labeling-guide.md)
 - [Augment reroll rescan](augment-reroll-rescan.md)
 - [Expert knowledge](expert-knowledge.md)
