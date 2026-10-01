@@ -49,5 +49,6 @@ Step 6 is the first real signal that ROIs fit this machine's resolution.
 
 ## Related
 
+- [Probe runbook](probe-runbook.md) — step-by-step for running this on the game machine
 - [Overview](overview.md)
 - [Phase 1 — Capture source](phase-1-capture.md)
