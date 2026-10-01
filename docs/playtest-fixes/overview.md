@@ -70,11 +70,25 @@ Tổng ≈ **11 ngày công** cho M0–M5; M6 sau khi có đủ nhãn.
 |---|---|
 | Live dùng OCR hay Gemini để đọc thẻ? | OCR mặc định (không mạng); Gemini bật bằng config để so |
 | Đọc chuỗi thắng/thua bằng ROI hay suy từ thay đổi HP? | Thêm ROI nếu HUD hiện số chuỗi; nếu không thì suy |
-| Có người chơi thứ hai gắn nhãn độc lập? | Tập giữ lại 30% từ chính người chơi |
+| ~~Có người chơi thứ hai gắn nhãn độc lập?~~ | **Đã chốt 2026-09-30**: nhận bản ghi từ nhiều người chơi (Outplayed → Drive). Chia **6 development / 14 held-out**, held-out chứa toàn bộ bản ghi của người khác — xem [dataset-split.md](dataset-split.md) |
+
+## Bộ dữ liệu (chốt 2026-09-30)
+
+~30–40 bản ghi, mỗi ván 3 màn chọn lõi ⇒ **90–120 quyết định / 30–40 cụm độc lập**.
+
+| Tài liệu | Nội dung |
+|---|---|
+| [recording-protocol.md](recording-protocol.md) | Thiết lập Outplayed, phải có gì trong khung, cách gửi và đổi tên |
+| [dataset-split.md](dataset-split.md) | Chia development / held-out, `split.json`, kỷ luật giữ tập niêm phong |
+| [labeling-guide.md](labeling-guide.md) | Gắn nhãn từng màn + bốn trường cấp file |
+
+`final_placement` **do người chơi tự khai**, không back-fill qua Riot API (bỏ hẳn 2026-09-30 —
+SPEC §12.0).
 
 ## Related
 
 - [Risks](risks.md)
+- [Recording protocol](recording-protocol.md) · [Dataset split](dataset-split.md)
 - [Live mode](../live-mode/overview.md)
 - [Expert prior](../expert-prior/overview.md)
 - [Next steps](../next-steps.md)

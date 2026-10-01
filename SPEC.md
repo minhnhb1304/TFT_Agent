@@ -386,7 +386,7 @@ class GameEvent(Enum):
 | `comp_database.py` | Comp tier list & database |
 | `item_guide.py` | Item combinations & BiS |
 | `roll_odds.py` | Roll probability tables |
-| `riot_api.py` | Riot API client — `tft-match-v1`, dùng cho stats tự crawl + back-fill placement |
+| `riot_api.py` | Riot API client — `tft-match-v1`, **chỉ** dùng cho crawl meta comp offline. Back-fill placement đã bỏ (2026-09-30, xem §12.0) |
 
 #### 3.4.1 Bảng đặc trưng Augment — **vì sao phải sinh offline**
 
@@ -1054,7 +1054,7 @@ Chi tiết đầy đủ: [`research/set-data.md`](research/set-data.md).
 |---|---|---|
 | 1 | Resolution? | ✅ **1920×1080** |
 | 2 | LLM Provider? | ✅ **Gemini Flash** qua `google-genai` — offline extraction + refinement tuỳ chọn |
-| 3 | Riot API Key? | 🔄 **Cần, nhưng cho việc khác v3 dự tính.** Augment stats **không lấy được** (trường `augments` đã bị gỡ ở Set 18). Vẫn dùng để crawl **meta comp** thật (`units`/`traits`/`placement` còn nguyên) và back-fill placement cho §12.2 |
+| 3 | Riot API Key? | 🔄 **Chỉ còn một việc: crawl meta comp offline.** Augment stats **không lấy được** (trường `augments` đã bị gỡ ở Set 18). Back-fill placement cho §12.2 **đã bỏ hẳn** (2026-09-30, §12.0) — placement gắn tay từ lời khai người chơi. Còn lại đúng `units`/`traits`/`placement` cho `data/meta_comps.json` |
 | 4 | Feature ưu tiên? | 🔄 **Augment Advisor → Comp → Economy → Item → Position → Contest** |
 | 5 | Overwolf SDK? | ❌ **Loại bỏ.** Cần runtime Electron/JS, và nó thay thế đúng phần CV vốn là đóng góp của đồ án. Dùng GEP thì không còn gì để đánh giá ở §12.1 |
 | 6 | Target Set? | ✅ **Set 18 (live)** — data từ `/latest/`. Giữ switch nhánh cho client 2026-10-09 |
@@ -1261,7 +1261,24 @@ Mỗi lần màn hình chọn augment xuất hiện, ghi 1 file JSON vào `data/
 }
 ```
 
-`final_placement` được **back-fill sau trận** từ `tft-match-v1`.
+`final_placement` do **người chơi tự khai** sau ván, gắn tay vào file nhãn
+([recording protocol](docs/playtest-fixes/recording-protocol.md)).
+
+> 🔄 **Đổi quyết định (2026-09-30) — bỏ hẳn đường back-fill qua Riot API.** v3 dự tính lấy
+> `final_placement` từ `tft-match-v1`. Ba lý do độc lập cùng loại bỏ nó:
+>
+> 1. **Personal Key hết hạn 24 giờ** — mỗi lần back-fill phải lấy key mới.
+> 2. **Cần PUUID của người chơi**, tức danh tính tài khoản của người tham gia khác. Trái với
+>    cam kết dữ liệu cá nhân ở §11.
+> 3. **Trận tuỳ chỉnh không lên `tft-match-v1`** (đo 2026-09-06, xem `dev_log` §9).
+>
+> Và lợi ích duy nhất của nó — tự điền placement — đã không cần nữa vì bộ nhãn gắn tay.
+> `ScenarioLogger.back_fill_placement()` **giữ nguyên**: nó nhận một số nguyên và không quan tâm
+> số đó từ đâu. Chỉ nguồn đổi, không phải cơ chế.
+>
+> `riot_api.py` **vẫn dùng** — cho việc crawl meta comp thật (`units`/`traits`/`placement` còn
+> nguyên, `data/meta_comps.json` = 249 trận). Bỏ Riot API khỏi đường *placement của scenario*
+> không có nghĩa là bỏ nó khỏi dự án.
 
 ### 12.1 Độ chính xác nhận diện (CV/OCR)
 
