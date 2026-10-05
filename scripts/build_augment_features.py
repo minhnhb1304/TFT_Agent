@@ -34,6 +34,7 @@ from src.knowledge.augment_features import (  # noqa: E402
     AugmentFeature,
     FeatureTable,
     extract_deterministic,
+    parse_manual_audit,
 )
 from src.knowledge.cdragon_client import CDragonClient, select_set_data  # noqa: E402
 from src.utils.env import load_env  # noqa: E402
@@ -333,6 +334,32 @@ def _map_trait_affinity(value: Any, traits: dict[str, str]) -> list[str] | None:
     return sorted(set(out))
 
 
+def keep_manual_audits(
+    table: FeatureTable, previous: dict[str, Any]
+) -> tuple[FeatureTable, list[str]]:
+    """Ap lai cac dong "manual-audit:" cua file cu len bang vua sinh.
+
+    Chi chep cac truong ghi trong label; moi truong khac lay tu bang moi, va
+    "(from ...)" ghi lai method cua dong moi. Khong co buoc nay thi moi lan
+    --write xoa sach quyet dinh audit ma khong test nao bao.
+    """
+    kept: list[str] = []
+    feats = dict(table.features)
+    for api, row in previous.get("augments", {}).items():
+        parsed = parse_manual_audit(str(row.get("extraction_method", "")))
+        if parsed is None or api not in feats:
+            continue
+        fields, _ = parsed
+        data = feats[api].to_dict()
+        origin = data["extraction_method"]
+        for f in fields:
+            data[f] = row[f]
+        data["extraction_method"] = f"manual-audit:{','.join(fields)} (from {origin})"
+        feats[api] = AugmentFeature(**data)
+        kept.append(api)
+    return FeatureTable(feats, table.meta), kept
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--locale", default="en_us", help="locale nguon (mac dinh en_us)")
@@ -363,6 +390,12 @@ def main(argv: list[str] | None = None) -> int:
         if len(changes) > 50:
             print(f"   ... con {len(changes) - 50} dong nua")
 
+    out = Path(args.out)
+    if out.exists():
+        previous = json.loads(out.read_text(encoding="utf-8"))
+        table, kept = keep_manual_audits(table, previous)
+        print(f"\ngiu {len(kept)} dong manual-audit tu {out.name}")
+
     if args.diff and not args.write:
         print("\n--diff: khong ghi file. Them --write de ghi de.")
         return 0
@@ -378,7 +411,6 @@ def main(argv: list[str] | None = None) -> int:
         "llm_refined": bool(args.llm),
         "n": len(table),
     }
-    out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     with io.open(out, "w", encoding="utf-8") as fh:
         json.dump(table.to_payload(meta), fh, indent=2, ensure_ascii=False)

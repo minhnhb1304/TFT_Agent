@@ -28,7 +28,38 @@ from dataclasses import dataclass, field, asdict
 from pathlib import Path
 from typing import Any, Iterable
 
+# Chinh sach version: them TRUONG MOI (vd trait_count_reward) giu nguyen v1;
+# doi GIA TRI ma luat cu sinh ra cho mot truong da co thi phai len v2 va sinh
+# lai ca bang.
 EXTRACTOR_VERSION = "deterministic-v1"
+
+# --- Dong audit tay ----------------------------------------------------------
+# extraction_method = "manual-audit:<truong,...> (from <method goc>)". Chi cac
+# truong PHAN DOAN duoc sua tay; truong dinh danh (trait_affinity, item_grants,
+# trait_count_reward) luon sinh lai tu tang 1. Script build ap lai cac dong nay
+# khi sinh lai bang, nen quyet dinh audit khong bi xoa am tham.
+MANUAL_AUDIT_PREFIX = "manual-audit:"
+MANUAL_AUDITABLE = ("category", "carry_type", "tempo", "econ_value", "board_condition")
+RE_MANUAL_AUDIT = re.compile(r"^manual-audit:([a-z_,]+) \(from ([^()]+)\)$")
+
+
+def parse_manual_audit(method: str) -> tuple[tuple[str, ...], str] | None:
+    """(cac truong sua tay, method goc), hoac None neu khong phai dong audit.
+
+    Label sai dinh dang hoac ghi truong khong duoc sua -> ValueError: dong
+    audit doc khong ra thi khong duoc am tham coi nhu dong thuong.
+    """
+    if not method.startswith(MANUAL_AUDIT_PREFIX):
+        return None
+    m = RE_MANUAL_AUDIT.match(method)
+    if not m:
+        raise ValueError(f"label audit sai dinh dang: {method!r}")
+    fields = tuple(m.group(1).split(","))
+    bad = [f for f in fields if f not in MANUAL_AUDITABLE]
+    if bad:
+        raise ValueError(f"truong khong duoc sua tay: {bad} trong {method!r}")
+    return fields, m.group(2)
+
 
 CATEGORIES = ("econ", "combat", "trait", "item", "utility", "reroll")
 CARRY_TYPES = ("AD", "AP", "tank", "none")
