@@ -150,6 +150,13 @@ CHECKS: list[tuple[str, Callable[[dict[str, Any]], bool], str]] = [
     ("econ_value>0 vs econ", lambda v: (v.get("econ_value") or 0) > 0, "econ"),
     ("tempo==scaling vs scaling", lambda v: v.get("tempo") == "scaling", "scaling"),
     ("trait_affinity vs trait", lambda v: bool(v.get("trait_affinity")), "trait"),
+    # trait_count_reward (vertical/wide) phu augment thuong theo so trait ma
+    # trait_affinity (chi trait cu the) khong thay.
+    (
+        "trait_affinity|count_reward vs trait",
+        lambda v: bool(v.get("trait_affinity")) or bool(v.get("trait_count_reward")),
+        "trait",
+    ),
     ("category==trait vs trait", lambda v: v.get("category") == "trait", "trait"),
     ("item_grants vs items", lambda v: bool(v.get("item_grants")), "items"),
     ("category==item vs items", lambda v: v.get("category") == "item", "items"),

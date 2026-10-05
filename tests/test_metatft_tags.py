@@ -103,6 +103,12 @@ def test_compare_counts_agreement():
     assert (scaling.tp, scaling.fp, scaling.fn, scaling.tn) == (0, 1, 1, 2)
     assert scaling.agree == pytest.approx(0.5)
 
+    # Ladder: trait_affinity rong nhung co trait_count_reward -> chi check gop moi bat duoc
+    with_count = {**FEATURES, "DA_Ladder": {**FEATURES["DA_Ladder"], "trait_count_reward": "wide"}}
+    cmp2 = compare(with_count, snap["tags"])
+    assert cmp2.check("trait_affinity vs trait").tp == 0
+    assert cmp2.check("trait_affinity|count_reward vs trait").tp == 1
+
     assert {k for k, _, _ in cmp.mismatches} == {"DA_Bag", "DA_Ladder"}
     assert cmp.by_method == {"det": (2, 2), "llm": (0, 2)}
     assert "category in MT tags: 2/4 = 50.0%" in format_report(cmp)

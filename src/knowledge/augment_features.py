@@ -210,6 +210,10 @@ def extract_econ_value(desc: str, name: str) -> int:
     (component, emblem, anvil...) KHONG tinh - chung thuoc `item_grants`.
     Neu tinh ca item thi EconFit (strength = econ_value / 3) se cham augment
     chi cho item nhu loi kinh te manh nhat.
+
+    Do lech da biet: tang 1 cham theo SO LON NHAT trong van ban (placeholder
+    "@X@ gold" -> 2, nhac "interest" -> 3, khong tinh tuong), con prompt tang 2
+    va audit tay cham theo TONG gia tri quy ra vang. Hai thang chua khop.
     """
     text = f"{name} {desc}"
     # Cong gate: mot augment co the la kinh te ma khong bao gio noi chu "gold"
