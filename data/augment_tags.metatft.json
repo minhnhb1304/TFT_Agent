@@ -1,0 +1,943 @@
+{
+  "meta": {
+    "source": "MetaTFT augment tier list tags",
+    "source_url": "https://www.metatft.com/augments",
+    "api_endpoint": "https://api-hc.metatft.com/tft-stat-api/augments_tiers?tft_set=TFTSet18",
+    "tft_set": "TFTSet18",
+    "crawled_at": "2026-10-05T07:12:00+00:00",
+    "metatft_updated_at": "2026-10-05T05:15:04.013Z",
+    "metatft_content_id": "1b860280",
+    "labeled_by": "META Spencer",
+    "tag_vocabulary": [
+      "combat",
+      "items",
+      "econ",
+      "trait",
+      "scaling",
+      "misc"
+    ],
+    "note": "Subjective expert labeling by MetaTFT (META Spencer), undocumented. Audit signal only, NOT ground truth.",
+    "n_catalog": 254,
+    "n_tagged": 253,
+    "missing_from_metatft": [
+      "DA_BuildABud"
+    ]
+  },
+  "tags": {
+    "DA_18_BigGrabBag": [
+      "items"
+    ],
+    "DA_18_BlossomTraitAugment": [
+      "econ",
+      "trait"
+    ],
+    "DA_18_BranchingOut": [
+      "items",
+      "trait"
+    ],
+    "DA_18_BranchingOutPlus": [
+      "items",
+      "trait"
+    ],
+    "DA_18_CaretakersAlly": [
+      "econ",
+      "scaling"
+    ],
+    "DA_18_CovenTraitAugment": [
+      "trait"
+    ],
+    "DA_18_CovenTraitAugment_LootToAP": [
+      "combat",
+      "trait"
+    ],
+    "DA_18_DuoQueue": [
+      "items",
+      "econ"
+    ],
+    "DA_18_ElderwoodTraitAugment": [
+      "combat",
+      "trait"
+    ],
+    "DA_18_FOURcing": [
+      "combat",
+      "econ"
+    ],
+    "DA_18_FaeTraitAugment": [
+      "combat",
+      "trait"
+    ],
+    "DA_18_FloraFatalisAugment": [
+      "items",
+      "trait"
+    ],
+    "DA_18_FloraFatalisAugmentPlus": [
+      "items",
+      "trait"
+    ],
+    "DA_18_GoodForSomethingI": [
+      "econ"
+    ],
+    "DA_18_InfernoTraitAugment": [
+      "combat",
+      "trait"
+    ],
+    "DA_18_LunarTraitAugment": [
+      "combat",
+      "trait"
+    ],
+    "DA_18_LunarTraitAugmentPlus": [
+      "combat",
+      "trait"
+    ],
+    "DA_18_LuxAugmentII": [
+      "items",
+      "trait"
+    ],
+    "DA_18_OneTwoFive": [
+      "items",
+      "econ"
+    ],
+    "DA_18_OnesTwosThree": [
+      "econ"
+    ],
+    "DA_18_PrimalAugmentPlus_Nidalee": [
+      "trait"
+    ],
+    "DA_18_PrimalAugmentPlus_Sivir": [
+      "trait"
+    ],
+    "DA_18_PrimalAugment_Nidalee": [
+      "trait"
+    ],
+    "DA_18_PrimalAugment_Sivir": [
+      "trait"
+    ],
+    "DA_18_ResidualMagic": [
+      "combat",
+      "scaling"
+    ],
+    "DA_18_ResidualMagicPlus": [
+      "combat",
+      "scaling"
+    ],
+    "DA_18_ResidualMagicPlusPlus": [
+      "combat",
+      "scaling"
+    ],
+    "DA_18_RiftbeastTraitAugment": [
+      "trait"
+    ],
+    "DA_18_RivalsAugment": [
+      "combat",
+      "trait"
+    ],
+    "DA_18_SolarTraitAugment": [
+      "trait",
+      "scaling"
+    ],
+    "DA_18_SprykinAugment": [
+      "combat",
+      "trait"
+    ],
+    "DA_18_WeightTheWorth": [
+      "econ",
+      "misc"
+    ],
+    "DA_18_WispRebatePlus": [
+      "econ"
+    ],
+    "DA_18_WispRebatePlusPlus": [
+      "econ"
+    ],
+    "DA_AdvancedLoan": [
+      "econ",
+      "misc"
+    ],
+    "DA_AdvancedLoanPlus": [
+      "econ",
+      "misc"
+    ],
+    "DA_ArcaneViktory": [
+      "combat"
+    ],
+    "DA_Ascension": [
+      "combat"
+    ],
+    "DA_AugmentedPower": [
+      "misc"
+    ],
+    "DA_BacklineBlueprint": [
+      "items",
+      "econ",
+      "trait"
+    ],
+    "DA_BackupBows": [
+      "items",
+      "scaling"
+    ],
+    "DA_BandOfThieves": [
+      "items"
+    ],
+    "DA_BandOfThievesII": [
+      "items"
+    ],
+    "DA_BandOfThievesIIPlus": [
+      "items"
+    ],
+    "DA_BandOfThievesIIPlusPlus": [
+      "items"
+    ],
+    "DA_BaronsLair": [
+      "combat",
+      "items"
+    ],
+    "DA_BeltOverflow": [
+      "combat",
+      "items"
+    ],
+    "DA_BirthdayPresent": [
+      "econ",
+      "scaling"
+    ],
+    "DA_BirthdayReunion": [
+      "items",
+      "econ",
+      "scaling"
+    ],
+    "DA_BlackthornTraitAugment": [
+      "items",
+      "trait"
+    ],
+    "DA_BodyguardTraining": [
+      "combat"
+    ],
+    "DA_BonusGift": [
+      "econ"
+    ],
+    "DA_BonusGiftPlus": [
+      "econ"
+    ],
+    "DA_BoosterPack": [
+      "econ"
+    ],
+    "DA_BoosterPackPlus": [
+      "econ"
+    ],
+    "DA_BoosterPackPlusPlus": [
+      "econ"
+    ],
+    "DA_BoxingLessons": [
+      "combat"
+    ],
+    "DA_BronzeForLifeI": [
+      "combat"
+    ],
+    "DA_BronzeForLifeII": [
+      "combat"
+    ],
+    "DA_BuriedTreasuresIII": [
+      "items"
+    ],
+    "DA_CalculatedLoss": [
+      "econ"
+    ],
+    "DA_CallToChaos": [
+      "misc"
+    ],
+    "DA_CalledShot": [
+      "econ"
+    ],
+    "DA_CapitalGainsI": [
+      "econ"
+    ],
+    "DA_CapitalGainsII": [
+      "econ"
+    ],
+    "DA_CaretakersFavor": [
+      "items",
+      "scaling"
+    ],
+    "DA_CarveAPath": [
+      "items",
+      "scaling"
+    ],
+    "DA_CelestialBlessingI": [
+      "combat"
+    ],
+    "DA_CelestialBlessingII": [
+      "combat"
+    ],
+    "DA_CelestialBlessingIII": [
+      "combat"
+    ],
+    "DA_ChallengersGrace": [
+      "combat"
+    ],
+    "DA_ChampDelivery": [
+      "econ"
+    ],
+    "DA_ChampDeliveryPlus": [
+      "econ"
+    ],
+    "DA_ChampDeliveryPlusPlus": [
+      "econ"
+    ],
+    "DA_ClearMind": [
+      "econ"
+    ],
+    "DA_ClockworkAccelerator": [
+      "combat"
+    ],
+    "DA_ClutteredMind": [
+      "econ"
+    ],
+    "DA_CognitiveOverload": [
+      "econ"
+    ],
+    "DA_CognitiveTax": [
+      "econ"
+    ],
+    "DA_CognitiveTaxPlus": [
+      "econ"
+    ],
+    "DA_ComebackStory": [
+      "combat",
+      "scaling"
+    ],
+    "DA_CommerceCore": [
+      "econ"
+    ],
+    "DA_ComponentBuffet": [
+      "items"
+    ],
+    "DA_ComponentQuest": [
+      "items",
+      "econ"
+    ],
+    "DA_ConstructACompanion": [
+      "econ",
+      "misc"
+    ],
+    "DA_CookingPot": [
+      "combat",
+      "items",
+      "scaling"
+    ],
+    "DA_Coronation": [
+      "combat",
+      "items"
+    ],
+    "DA_Corrosion": [
+      "combat"
+    ],
+    "DA_CraftedCrafting": [
+      "econ"
+    ],
+    "DA_CryMeARiver": [
+      "combat",
+      "items"
+    ],
+    "DA_CursedCrown": [
+      "combat",
+      "misc"
+    ],
+    "DA_CyberneticImplants_Gold": [
+      "combat",
+      "items"
+    ],
+    "DA_CyberneticUplink_Gold": [
+      "combat",
+      "items"
+    ],
+    "DA_DeadlierBlades": [
+      "items",
+      "scaling"
+    ],
+    "DA_DeadlierCaps": [
+      "items",
+      "scaling"
+    ],
+    "DA_DoubleTrouble": [
+      "combat",
+      "misc"
+    ],
+    "DA_Dummify": [
+      "combat",
+      "misc"
+    ],
+    "DA_EarlyLearnings": [
+      "combat",
+      "scaling",
+      "misc"
+    ],
+    "DA_ElectrochargeI": [
+      "combat"
+    ],
+    "DA_ElectrochargeII": [
+      "combat"
+    ],
+    "DA_EpicRolldown": [
+      "econ",
+      "scaling"
+    ],
+    "DA_Epoch": [
+      "econ"
+    ],
+    "DA_EpochPlus": [
+      "econ"
+    ],
+    "DA_ExclusiveCustomization": [
+      "items",
+      "econ"
+    ],
+    "DA_Expedition": [
+      "econ",
+      "misc"
+    ],
+    "DA_ExplosiveGrowth": [
+      "econ"
+    ],
+    "DA_ExplosiveGrowthPlus": [
+      "econ"
+    ],
+    "DA_ExtraBuckles": [
+      "items",
+      "scaling"
+    ],
+    "DA_FeelingLucky": [
+      "econ",
+      "misc"
+    ],
+    "DA_FindYourCenter": [
+      "combat"
+    ],
+    "DA_Flexible": [
+      "items",
+      "trait",
+      "scaling"
+    ],
+    "DA_FlowingTears": [
+      "items",
+      "scaling"
+    ],
+    "DA_FocusedFire": [
+      "combat"
+    ],
+    "DA_ForgeAFriend": [
+      "econ",
+      "misc"
+    ],
+    "DA_ForgedInStrength": [
+      "items"
+    ],
+    "DA_FrontlineFoundation": [
+      "items",
+      "econ",
+      "trait"
+    ],
+    "DA_FutureFocused": [
+      "econ",
+      "misc"
+    ],
+    "DA_GainGold": [
+      "econ"
+    ],
+    "DA_GiantAndMighty": [
+      "combat"
+    ],
+    "DA_GildedSteel": [
+      "combat",
+      "econ"
+    ],
+    "DA_GlassCannon_Gold": [
+      "combat"
+    ],
+    "DA_GlassCannon_Silver": [
+      "combat"
+    ],
+    "DA_GoingLong": [
+      "econ",
+      "misc"
+    ],
+    "DA_GoldDestiny": [
+      "econ",
+      "misc"
+    ],
+    "DA_GoldDestinyPlus": [
+      "econ",
+      "misc"
+    ],
+    "DA_GoldenEgg": [
+      "items",
+      "econ",
+      "scaling"
+    ],
+    "DA_GoldenGamble": [
+      "items",
+      "econ",
+      "misc"
+    ],
+    "DA_GoldenGamblePlus": [
+      "items",
+      "econ",
+      "misc"
+    ],
+    "DA_GoldenGamblePlusPlus": [
+      "items",
+      "econ",
+      "misc"
+    ],
+    "DA_GroupHugI": [
+      "combat"
+    ],
+    "DA_GroupHugII": [
+      "combat"
+    ],
+    "DA_HardBargain": [
+      "econ",
+      "misc"
+    ],
+    "DA_HardCommit": [
+      "items",
+      "econ",
+      "trait"
+    ],
+    "DA_HealingOrbsI": [
+      "combat"
+    ],
+    "DA_HealingOrbsII": [
+      "combat"
+    ],
+    "DA_HeartOfSteel": [
+      "combat",
+      "items",
+      "scaling"
+    ],
+    "DA_HedgeFund": [
+      "econ"
+    ],
+    "DA_HeroicGrabBag": [
+      "econ"
+    ],
+    "DA_HeroicGrabBagPlus": [
+      "econ"
+    ],
+    "DA_HeroicGrabBagPlusPlus": [
+      "econ"
+    ],
+    "DA_HoldTheLine": [
+      "combat"
+    ],
+    "DA_Hustler": [
+      "econ"
+    ],
+    "DA_InfinityProtection": [
+      "combat",
+      "items"
+    ],
+    "DA_InvestedPlus": [
+      "econ"
+    ],
+    "DA_InvestedPlusPlus": [
+      "econ"
+    ],
+    "DA_InvestmentStrategy": [
+      "combat",
+      "econ",
+      "scaling"
+    ],
+    "DA_InvestmentStrategyI": [
+      "combat",
+      "scaling"
+    ],
+    "DA_IronAssets": [
+      "items",
+      "econ"
+    ],
+    "DA_ItemGrabBag": [
+      "items"
+    ],
+    "DA_ItsMeBaby": [
+      "combat",
+      "econ"
+    ],
+    "DA_JeweledLotus_I": [
+      "combat"
+    ],
+    "DA_JeweledLotus_II": [
+      "combat"
+    ],
+    "DA_KickStart": [
+      "econ"
+    ],
+    "DA_Kingslayer": [
+      "econ"
+    ],
+    "DA_LateGameScaling": [
+      "combat",
+      "econ",
+      "scaling"
+    ],
+    "DA_LateGameSpecialist": [
+      "econ",
+      "scaling"
+    ],
+    "DA_LatentForge": [
+      "items"
+    ],
+    "DA_LegionOfThrees": [
+      "combat",
+      "items",
+      "trait"
+    ],
+    "DA_LevelUp": [
+      "econ"
+    ],
+    "DA_LivingForge": [
+      "items",
+      "scaling"
+    ],
+    "DA_LoadedDice": [
+      "econ",
+      "misc"
+    ],
+    "DA_LuckyGloves": [
+      "items"
+    ],
+    "DA_LuckyGlovesPlus": [
+      "items"
+    ],
+    "DA_LuxurySubscription": [
+      "econ",
+      "scaling"
+    ],
+    "DA_MagicRoll": [
+      "econ",
+      "misc"
+    ],
+    "DA_MakeshiftArmorI": [
+      "combat"
+    ],
+    "DA_MakeshiftArmorII": [
+      "combat"
+    ],
+    "DA_MaliciousMonetization": [
+      "econ"
+    ],
+    "DA_MaxBuild": [
+      "econ",
+      "scaling"
+    ],
+    "DA_Min_Max": [
+      "items"
+    ],
+    "DA_MissedConnections": [
+      "econ"
+    ],
+    "DA_MoneyHungryPlus": [
+      "econ"
+    ],
+    "DA_MoneyHungry_NotBroken": [
+      "econ"
+    ],
+    "DA_MoneyMonsoon": [
+      "econ",
+      "scaling"
+    ],
+    "DA_NestingAnvils": [
+      "items",
+      "econ"
+    ],
+    "DA_NestingAnvilsPlus": [
+      "items",
+      "econ"
+    ],
+    "DA_NestingDollsPlus": [
+      "combat",
+      "misc"
+    ],
+    "DA_NestingDollsPlusPlus": [
+      "combat",
+      "misc"
+    ],
+    "DA_NoScoutNoPivot": [
+      "combat",
+      "scaling",
+      "misc"
+    ],
+    "DA_OneBuffTwoBuff": [
+      "combat",
+      "items"
+    ],
+    "DA_PandorasBench": [
+      "econ"
+    ],
+    "DA_PandorasItemsI": [
+      "items"
+    ],
+    "DA_PandorasItemsII": [
+      "items"
+    ],
+    "DA_PandorasItemsIII": [
+      "items"
+    ],
+    "DA_PartialAscension": [
+      "combat"
+    ],
+    "DA_PatienceIsAVirtue": [
+      "econ"
+    ],
+    "DA_PatientStudy": [
+      "econ"
+    ],
+    "DA_Pilfer": [
+      "econ"
+    ],
+    "DA_PlotArmor": [
+      "combat"
+    ],
+    "DA_PortableForge": [
+      "items"
+    ],
+    "DA_PrismaticDestiny": [
+      "econ",
+      "misc"
+    ],
+    "DA_PrismaticDestinyPlus": [
+      "econ",
+      "misc"
+    ],
+    "DA_PrismaticTicket": [
+      "econ"
+    ],
+    "DA_PromisedProtection": [
+      "combat",
+      "items"
+    ],
+    "DA_QuickStreaks": [
+      "econ"
+    ],
+    "DA_RadiantRascal": [
+      "items"
+    ],
+    "DA_RadiantRelic": [
+      "items"
+    ],
+    "DA_Recombobulator": [
+      "econ",
+      "misc"
+    ],
+    "DA_Replication": [
+      "items"
+    ],
+    "DA_Retribution": [
+      "combat",
+      "items"
+    ],
+    "DA_RollingForDays": [
+      "econ"
+    ],
+    "DA_SalvageBin": [
+      "items"
+    ],
+    "DA_SalvageBinPlus": [
+      "items"
+    ],
+    "DA_SeraphimsStaff": [
+      "combat",
+      "items"
+    ],
+    "DA_ShimmerscaleEssence": [
+      "items",
+      "econ"
+    ],
+    "DA_ShoppingSpree": [
+      "econ",
+      "scaling"
+    ],
+    "DA_SilverDestiny": [
+      "econ",
+      "misc"
+    ],
+    "DA_SilverDestinyPlus": [
+      "econ",
+      "misc"
+    ],
+    "DA_SilverDestinyPlusPlus": [
+      "econ",
+      "misc"
+    ],
+    "DA_SilverSpoon": [
+      "econ"
+    ],
+    "DA_Slammin": [
+      "items",
+      "econ"
+    ],
+    "DA_SlamminPlus": [
+      "items",
+      "econ"
+    ],
+    "DA_SliceOfLife": [
+      "econ",
+      "scaling"
+    ],
+    "DA_SlightlyMagicRoll": [
+      "econ",
+      "misc"
+    ],
+    "DA_SmallGrabBag": [
+      "items"
+    ],
+    "DA_SoloLeveling": [
+      "combat",
+      "econ",
+      "misc"
+    ],
+    "DA_SoloPlate": [
+      "combat",
+      "items"
+    ],
+    "DA_SoulAwakening": [
+      "combat"
+    ],
+    "DA_SpeedyDoubleKill": [
+      "items",
+      "econ"
+    ],
+    "DA_SpiritOfRedemption": [
+      "combat",
+      "items"
+    ],
+    "DA_SpreadingRoots": [
+      "items",
+      "econ",
+      "trait"
+    ],
+    "DA_SpreadingRootsPlus": [
+      "items",
+      "econ",
+      "trait"
+    ],
+    "DA_Staffsmith": [
+      "items"
+    ],
+    "DA_StandUnited": [
+      "combat",
+      "trait"
+    ],
+    "DA_SweetTreats": [
+      "combat",
+      "items"
+    ],
+    "DA_SwordOverflow": [
+      "combat",
+      "items"
+    ],
+    "DA_Swordsmith": [
+      "items"
+    ],
+    "DA_TacticiansKitchen": [
+      "items",
+      "trait"
+    ],
+    "DA_TeamBuilding": [
+      "econ"
+    ],
+    "DA_TheGoldenDragon": [
+      "items",
+      "econ",
+      "misc"
+    ],
+    "DA_TheTower": [
+      "combat"
+    ],
+    "DA_TheTraitTree": [
+      "items",
+      "econ",
+      "trait"
+    ],
+    "DA_TheTraitTreePlus": [
+      "items",
+      "econ",
+      "trait"
+    ],
+    "DA_TimeSkip": [
+      "econ",
+      "misc"
+    ],
+    "DA_TonsOfStatsI": [
+      "combat"
+    ],
+    "DA_TonsOfStatsII": [
+      "combat"
+    ],
+    "DA_TradeSector": [
+      "econ"
+    ],
+    "DA_TradeSectorPlus": [
+      "econ"
+    ],
+    "DA_TraitLadder": [
+      "items",
+      "trait",
+      "misc"
+    ],
+    "DA_TwinGuardians": [
+      "combat"
+    ],
+    "DA_URF": [
+      "combat",
+      "items"
+    ],
+    "DA_UpwardMobility": [
+      "econ"
+    ],
+    "DA_UrfsGrabBag": [
+      "items",
+      "econ"
+    ],
+    "DA_VerticalityI": [
+      "combat",
+      "trait"
+    ],
+    "DA_VerticalityII": [
+      "combat",
+      "trait"
+    ],
+    "DA_VerticalityIII": [
+      "combat",
+      "trait"
+    ],
+    "DA_WandOverflow": [
+      "combat",
+      "items"
+    ],
+    "DA_Warpath": [
+      "items",
+      "econ",
+      "scaling"
+    ],
+    "DA_WeStickTogether": [
+      "combat",
+      "items",
+      "trait"
+    ],
+    "DA_WorththeWait": [
+      "econ",
+      "scaling"
+    ],
+    "DA_WorththeWaitII": [
+      "econ",
+      "scaling"
+    ],
+    "DA_WovenMagic": [
+      "items",
+      "scaling"
+    ],
+    "DA_YoungAndWildAndFree": [
+      "econ",
+      "misc"
+    ]
+  }
+}
