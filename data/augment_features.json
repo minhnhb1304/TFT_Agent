@@ -7,23 +7,25 @@
     "extractor_version": "deterministic-v1",
     "llm_refined": true,
     "n": 254,
-    "llm_model": "gemini-3.5-flash-lite"
+    "llm_model": "gemini-3.5-flash-lite",
+    "trait_count_reward_backfill": "2026-10-05: them truong trait_count_reward bang extract_trait_count_reward (tat dinh) cho ca 254 dong, KHONG chay lai --llm; cac truong khac giu nguyen"
   },
   "augments": {
     "DA_18_BigGrabBag": {
       "api_name": "DA_18_BigGrabBag",
       "name": "Big Grab Bag",
       "tier": 2,
-      "category": "econ",
+      "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "AnyComponent"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_18_BlossomTraitAugment": {
@@ -39,6 +41,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Blossom",
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -55,6 +58,7 @@
         "Emblem"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -71,6 +75,7 @@
         "Emblem"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -82,10 +87,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.2
     },
     "DA_18_CovenTraitAugment": {
@@ -101,6 +107,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Coven",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -117,6 +124,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Coven",
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.6
     },
@@ -127,13 +135,14 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 2,
       "tempo": "immediate",
       "item_grants": [
         "AnyComponent"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_18_ElderwoodTraitAugment": {
@@ -149,6 +158,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "Champions that start combat adjacent to an Elderwood plant",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -163,6 +173,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -179,6 +190,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Fae",
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -197,6 +209,7 @@
         "Emblem"
       ],
       "board_condition": "can unit thuoc trait: DA_FloraFatalis18",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.8
     },
@@ -215,6 +228,7 @@
         "Emblem"
       ],
       "board_condition": "can unit thuoc trait: DA_FloraFatalis18",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.8
     },
@@ -229,6 +243,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "Champions that aren't holding items",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -245,6 +260,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Inferno",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -262,6 +278,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "fielded Lunar champions and unique Solar champions",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -276,10 +293,11 @@
         "DA_18_Solar"
       ],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": "fielded unique Solar champions",
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_18_LuxAugmentII": {
@@ -295,6 +313,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_LuxUniqueTrait",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -305,13 +324,14 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "AnyComponent"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_18_OnesTwosThree": {
@@ -325,6 +345,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -341,6 +362,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_Primal18",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -357,6 +379,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_Primal18",
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -373,6 +396,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_Primal18",
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -386,10 +410,11 @@
         "DA_Primal18"
       ],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_Primal18",
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_18_ResidualMagic": {
@@ -403,6 +428,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -417,6 +443,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -431,6 +458,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -447,6 +475,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_Riftbeast18",
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -463,6 +492,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Rival",
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.6
     },
@@ -479,6 +509,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Solar",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -495,6 +526,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Sprykin",
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -509,6 +541,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": "Have a 3-star champion",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -523,6 +556,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -537,6 +571,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -551,6 +586,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -561,11 +597,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_ArcaneViktory": {
@@ -579,6 +616,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -590,10 +628,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_AugmentedPower": {
@@ -607,6 +646,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.2
     },
@@ -623,6 +663,7 @@
         "Emblem"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -639,6 +680,7 @@
         "RecurveBow"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -653,6 +695,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -660,28 +703,30 @@
       "api_name": "DA_BandOfThievesII",
       "name": "Band of Thieves II",
       "tier": 2,
-      "category": "econ",
+      "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
-      "tempo": "scaling",
+      "econ_value": 0,
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_BandOfThievesIIPlus": {
       "api_name": "DA_BandOfThievesIIPlus",
       "name": "Band of Thieves II+",
       "tier": 2,
-      "category": "econ",
+      "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
-      "tempo": "scaling",
+      "econ_value": 0,
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_BandOfThievesIIPlusPlus": {
@@ -692,10 +737,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_BaronsLair": {
@@ -706,10 +752,11 @@
       "carry_type": "AD",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_BeltOverflow": {
@@ -719,13 +766,14 @@
       "category": "item",
       "carry_type": "tank",
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 0,
       "tempo": "immediate",
       "item_grants": [
         "GiantsBelt"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_BirthdayPresent": {
@@ -736,10 +784,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 2,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_BirthdayReunion": {
@@ -755,6 +804,7 @@
         "AnyComponent"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -773,6 +823,7 @@
         "AnyComponent"
       ],
       "board_condition": "sacrificing a champion in the Blackthorn hex",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -784,10 +835,11 @@
       "carry_type": "tank",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_BonusGift": {
@@ -801,6 +853,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -815,6 +868,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -829,6 +883,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -843,6 +898,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -857,6 +913,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -871,6 +928,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -882,10 +940,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": "Bronze-tier trait",
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": "wide",
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_BronzeForLifeII": {
@@ -899,6 +958,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": "wide",
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -913,6 +973,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -920,16 +981,17 @@
       "api_name": "DA_BuriedTreasuresIII",
       "name": "Buried Treasures III",
       "tier": 3,
-      "category": "econ",
+      "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
-      "tempo": "scaling",
+      "econ_value": 0,
+      "tempo": "immediate",
       "item_grants": [
         "AnyComponent"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_CalculatedLoss": {
@@ -943,6 +1005,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -950,14 +1013,15 @@
       "api_name": "DA_CallToChaos",
       "name": "Call To Chaos",
       "tier": 3,
-      "category": "econ",
+      "category": "utility",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 0,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_CalledShot": {
@@ -971,6 +1035,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -982,10 +1047,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_CapitalGainsII": {
@@ -999,6 +1065,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1006,17 +1073,18 @@
       "api_name": "DA_CaretakersFavor",
       "name": "Caretaker's Favor",
       "tier": 2,
-      "category": "econ",
+      "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 0,
       "tempo": "scaling",
       "item_grants": [
         "AnyComponent",
         "Anvil"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_CarveAPath": {
@@ -1032,6 +1100,7 @@
         "BFSword"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1046,6 +1115,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1060,6 +1130,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1074,6 +1145,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1088,6 +1160,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -1098,11 +1171,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
-      "tempo": "scaling",
+      "econ_value": 2,
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_ChampDeliveryPlus": {
@@ -1112,11 +1186,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
-      "tempo": "scaling",
+      "econ_value": 2,
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_ChampDeliveryPlusPlus": {
@@ -1126,11 +1201,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
-      "tempo": "scaling",
+      "econ_value": 3,
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_ClearMind": {
@@ -1144,6 +1220,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": "no champions on your bench at the end of player combat",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1155,10 +1232,11 @@
       "carry_type": "AD",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_ClutteredMind": {
@@ -1172,6 +1250,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": "bench is full at the end of player combat",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1186,6 +1265,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1200,6 +1280,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1214,6 +1295,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1228,6 +1310,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.2
     },
@@ -1242,6 +1325,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1259,6 +1343,7 @@
         "Anvil"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -1269,13 +1354,14 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "scaling",
       "item_grants": [
         "AnyComponent"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_ConstructACompanion": {
@@ -1289,6 +1375,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -1299,14 +1386,15 @@
       "category": "item",
       "carry_type": "tank",
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 0,
       "tempo": "scaling",
       "item_grants": [
         "Spatula",
         "FryingPan"
       ],
       "board_condition": "Allies holding a Frying Pan or Spatula item",
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_Coronation": {
@@ -1320,6 +1408,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1331,10 +1420,11 @@
       "carry_type": "tank",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_CraftedCrafting": {
@@ -1350,6 +1440,7 @@
         "CompletedItem"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -1361,12 +1452,13 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [
         "TearOfTheGoddess"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_CursedCrown": {
@@ -1380,6 +1472,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -1396,6 +1489,7 @@
         "BFSword"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1412,6 +1506,7 @@
         "TearOfTheGoddess"
       ],
       "board_condition": "Your champions holding an item",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1426,6 +1521,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1440,6 +1536,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1454,6 +1551,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "field exactly 2 copies of a champion",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1468,6 +1566,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -1482,6 +1581,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -1496,6 +1596,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.2
     },
@@ -1510,6 +1611,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -1521,10 +1623,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 2,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_Epoch": {
@@ -1538,6 +1641,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1549,10 +1653,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 2,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_ExclusiveCustomization": {
@@ -1562,11 +1667,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_Expedition": {
@@ -1580,6 +1686,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1587,14 +1694,15 @@
       "api_name": "DA_ExplosiveGrowth",
       "name": "Explosive Growth",
       "tier": 2,
-      "category": "utility",
+      "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 3,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_ExplosiveGrowthPlus": {
@@ -1605,26 +1713,28 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_ExtraBuckles": {
       "api_name": "DA_ExtraBuckles",
       "name": "Extra Buckles",
       "tier": 1,
-      "category": "econ",
+      "category": "item",
       "carry_type": "tank",
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 0,
       "tempo": "scaling",
       "item_grants": [
         "GiantsBelt"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_FeelingLucky": {
@@ -1638,6 +1748,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1652,6 +1763,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "A champion starting combat in the center of the front row",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1668,6 +1780,7 @@
         "Emblem"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -1679,12 +1792,13 @@
       "carry_type": "AP",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [
         "TearOfTheGoddess"
       ],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.6
     },
     "DA_FocusedFire": {
@@ -1695,10 +1809,11 @@
       "carry_type": "AD",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_ForgeAFriend": {
@@ -1712,6 +1827,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1729,6 +1845,7 @@
         "CompletedItem"
       ],
       "board_condition": "drop below @Health@ Health",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -1745,6 +1862,7 @@
         "Emblem"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -1759,6 +1877,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1773,6 +1892,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -1787,6 +1907,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -1801,6 +1922,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "field at least one 5-cost champion",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1815,6 +1937,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "Allies must start combat in the back row",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1829,6 +1952,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "Allies that start combat in the back row",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1843,6 +1967,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -1857,6 +1982,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1871,6 +1997,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1885,6 +2012,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -1895,13 +2023,14 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "CompletedItem"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_GoldenGamblePlus": {
@@ -1911,13 +2040,14 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "CompletedItem"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_GoldenGamblePlusPlus": {
@@ -1927,13 +2057,14 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "CompletedItem"
       ],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from deterministic-v1)",
       "confidence": 0.6
     },
     "DA_GroupHugI": {
@@ -1947,6 +2078,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "Champions grant other adjacent champions Armor and Magic Resist",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1961,6 +2093,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "Champions adjacent to other champions at combat start",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1975,6 +2108,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1991,7 +2125,8 @@
         "Emblem"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_HealingOrbsI": {
@@ -2005,6 +2140,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2019,6 +2155,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2030,10 +2167,11 @@
       "carry_type": "tank",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_HedgeFund": {
@@ -2047,6 +2185,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2061,6 +2200,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2068,14 +2208,15 @@
       "api_name": "DA_HeroicGrabBagPlus",
       "name": "Heroic Grab Bag+",
       "tier": 2,
-      "category": "utility",
+      "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 2,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_HeroicGrabBagPlusPlus": {
@@ -2089,6 +2230,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2103,6 +2245,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "Champions in your back 2 rows gain stats for each champion that starts combat in your front row",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2117,6 +2260,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2124,14 +2268,15 @@
       "api_name": "DA_InfinityProtection",
       "name": "Infinity Protection",
       "tier": 2,
-      "category": "econ",
+      "category": "item",
       "carry_type": "tank",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_InvestedPlus": {
@@ -2142,10 +2287,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_InvestedPlusPlus": {
@@ -2156,10 +2302,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_InvestmentStrategy": {
@@ -2170,24 +2317,26 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_InvestmentStrategyI": {
       "api_name": "DA_InvestmentStrategyI",
       "name": "Investment Strategy I",
       "tier": 1,
-      "category": "econ",
+      "category": "combat",
       "carry_type": "tank",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_IronAssets": {
@@ -2197,14 +2346,15 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "AnyComponent",
         "Anvil"
       ],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from deterministic-v1)",
       "confidence": 0.6
     },
     "DA_ItemGrabBag": {
@@ -2220,6 +2370,7 @@
         "CompletedItem"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2234,6 +2385,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "a champion placed in the spotlight in the bottom right corner",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2248,6 +2400,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2262,6 +2415,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2276,6 +2430,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2290,6 +2445,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2304,6 +2460,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2318,6 +2475,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2334,6 +2492,7 @@
         "Anvil"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2350,6 +2509,7 @@
         "Emblem"
       ],
       "board_condition": "Your 3-cost champions and all allies equipped with an Emblem",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2364,6 +2524,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2380,6 +2541,7 @@
         "Anvil"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2394,6 +2556,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2401,22 +2564,6 @@
       "api_name": "DA_LuckyGloves",
       "name": "Lucky Gloves",
       "tier": 3,
-      "category": "econ",
-      "carry_type": "none",
-      "trait_affinity": [],
-      "econ_value": 2,
-      "tempo": "immediate",
-      "item_grants": [
-        "SparringGloves"
-      ],
-      "board_condition": null,
-      "extraction_method": "deterministic-v1",
-      "confidence": 0.6
-    },
-    "DA_LuckyGlovesPlus": {
-      "api_name": "DA_LuckyGlovesPlus",
-      "name": "Lucky Gloves+",
-      "tier": 2,
       "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
@@ -2426,7 +2573,25 @@
         "SparringGloves"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value (from deterministic-v1)",
+      "confidence": 0.6
+    },
+    "DA_LuckyGlovesPlus": {
+      "api_name": "DA_LuckyGlovesPlus",
+      "name": "Lucky Gloves+",
+      "tier": 2,
+      "category": "item",
+      "carry_type": "none",
+      "trait_affinity": [],
+      "econ_value": 0,
+      "tempo": "immediate",
+      "item_grants": [
+        "SparringGloves"
+      ],
+      "board_condition": null,
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_LuxurySubscription": {
@@ -2437,10 +2602,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 2,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_MagicRoll": {
@@ -2454,6 +2620,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2468,6 +2635,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "Champions without items equipped",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2482,6 +2650,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "Champions without items equipped",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2496,6 +2665,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2507,10 +2677,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 2,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_Min_Max": {
@@ -2526,6 +2697,7 @@
         "AnyComponent"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2540,6 +2712,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2551,10 +2724,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 2,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_MoneyHungry_NotBroken": {
@@ -2568,6 +2742,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2582,6 +2757,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2599,6 +2775,7 @@
         "Anvil"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -2616,6 +2793,7 @@
         "Anvil"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -2626,25 +2804,27 @@
       "category": "combat",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 0,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_NestingDollsPlusPlus": {
       "api_name": "DA_NestingDollsPlusPlus",
       "name": "Nesting Dolls",
       "tier": 3,
-      "category": "reroll",
+      "category": "combat",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:category,econ_value (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_NoScoutNoPivot": {
@@ -2655,10 +2835,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
       "confidence": 0.2
     },
     "DA_OneBuffTwoBuff": {
@@ -2672,6 +2853,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2686,6 +2868,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2702,6 +2885,7 @@
         "AnyComponent"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2718,6 +2902,7 @@
         "AnyComponent"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2732,6 +2917,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2743,10 +2929,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_PatienceIsAVirtue": {
@@ -2760,6 +2947,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": "did not buy a champion last round",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2774,6 +2962,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2788,6 +2977,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2799,10 +2989,11 @@
       "carry_type": "tank",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_PortableForge": {
@@ -2816,6 +3007,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2830,6 +3022,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2844,6 +3037,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2858,6 +3052,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2872,6 +3067,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.2
     },
@@ -2886,6 +3082,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2900,6 +3097,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2914,6 +3112,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2928,6 +3127,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2944,6 +3144,7 @@
         "AnyComponent"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2958,6 +3159,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2972,6 +3174,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -2983,13 +3186,14 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [
         "AnyComponent",
         "CompletedItem"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_SalvageBinPlus": {
@@ -3006,6 +3210,7 @@
         "CompletedItem"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -3020,6 +3225,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3034,6 +3240,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3045,10 +3252,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_SilverDestiny": {
@@ -3058,11 +3266,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_SilverDestinyPlus": {
@@ -3072,11 +3281,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_SilverDestinyPlusPlus": {
@@ -3086,11 +3296,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_SilverSpoon": {
@@ -3104,6 +3315,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -3118,6 +3330,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": "no items on your bench (other than consumables) after each player combat",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3129,10 +3342,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": "no items on your bench (other than consumables)",
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_SliceOfLife": {
@@ -3146,6 +3360,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3160,6 +3375,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3176,6 +3392,7 @@
         "AnyComponent"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -3192,6 +3409,7 @@
         "AnyComponent"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -3206,6 +3424,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "Allies holding Gargoyle Stoneplate start combat alone in their row",
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3217,10 +3436,11 @@
       "carry_type": "AD",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_SpeedyDoubleKill": {
@@ -3234,6 +3454,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -3245,10 +3466,11 @@
       "carry_type": "tank",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_SpreadingRoots": {
@@ -3258,11 +3480,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_SpreadingRootsPlus": {
@@ -3272,11 +3495,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_Staffsmith": {
@@ -3293,6 +3517,7 @@
         "CompletedItem"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -3304,10 +3529,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": "active non-unique Traits across your team",
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": "wide",
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_SweetTreats": {
@@ -3323,6 +3549,7 @@
         "Anvil"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.6
     },
@@ -3339,6 +3566,7 @@
         "BFSword"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.6
     },
@@ -3356,6 +3584,7 @@
         "CompletedItem"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -3372,6 +3601,7 @@
         "Emblem"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -3383,10 +3613,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 2,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_TheGoldenDragon": {
@@ -3400,6 +3631,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -3411,10 +3643,11 @@
       "carry_type": "tank",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_TheTraitTree": {
@@ -3424,11 +3657,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_TheTraitTreePlus": {
@@ -3438,11 +3672,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from deterministic-v1)",
       "confidence": 0.4
     },
     "DA_TimeSkip": {
@@ -3456,6 +3691,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -3470,6 +3706,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3484,6 +3721,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3495,10 +3733,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 2,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_TradeSectorPlus": {
@@ -3509,26 +3748,28 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 1,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_TraitLadder": {
       "api_name": "DA_TraitLadder",
       "name": "Trait Ladder",
       "tier": 3,
-      "category": "econ",
+      "category": "trait",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 0,
       "tempo": "scaling",
       "item_grants": [
         "Emblem"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": "wide",
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_TwinGuardians": {
@@ -3542,6 +3783,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -3559,6 +3801,7 @@
         "FryingPan"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.4
     },
@@ -3570,10 +3813,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 2,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_UrfsGrabBag": {
@@ -3583,14 +3827,15 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "Spatula",
         "AnyComponent"
       ],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from deterministic-v1)",
       "confidence": 0.6
     },
     "DA_VerticalityI": {
@@ -3601,10 +3846,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": "allies that share a trait with them",
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": "vertical",
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_VerticalityII": {
@@ -3618,6 +3864,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": "vertical",
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3629,10 +3876,11 @@
       "carry_type": "none",
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "scaling",
+      "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": "vertical",
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_WandOverflow": {
@@ -3648,6 +3896,7 @@
         "NeedlesslyLargeRod"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "deterministic-v1",
       "confidence": 0.6
     },
@@ -3662,6 +3911,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3680,6 +3930,7 @@
         "CompletedItem"
       ],
       "board_condition": "Allies that share a trait with that Emblem",
+      "trait_count_reward": "vertical",
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -3690,11 +3941,12 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "trait_count_reward": null,
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_WorththeWaitII": {
@@ -3708,6 +3960,7 @@
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3724,6 +3977,7 @@
         "AnyComponent"
       ],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -3738,6 +3992,7 @@
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
+      "trait_count_reward": null,
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     }

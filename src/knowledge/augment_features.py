@@ -28,11 +28,47 @@ from dataclasses import dataclass, field, asdict
 from pathlib import Path
 from typing import Any, Iterable
 
+# Chinh sach version: them TRUONG MOI (vd trait_count_reward) giu nguyen v1;
+# doi GIA TRI ma luat cu sinh ra cho mot truong da co thi phai len v2 va sinh
+# lai ca bang.
 EXTRACTOR_VERSION = "deterministic-v1"
+
+# --- Dong audit tay ----------------------------------------------------------
+# extraction_method = "manual-audit:<truong,...> (from <method goc>)". Chi cac
+# truong PHAN DOAN duoc sua tay; truong dinh danh (trait_affinity, item_grants,
+# trait_count_reward) luon sinh lai tu tang 1. Script build ap lai cac dong nay
+# khi sinh lai bang, nen quyet dinh audit khong bi xoa am tham.
+MANUAL_AUDIT_PREFIX = "manual-audit:"
+MANUAL_AUDITABLE = ("category", "carry_type", "tempo", "econ_value", "board_condition")
+RE_MANUAL_AUDIT = re.compile(r"^manual-audit:([a-z_,]+) \(from ([^()]+)\)$")
+
+
+def parse_manual_audit(method: str) -> tuple[tuple[str, ...], str] | None:
+    """(cac truong sua tay, method goc), hoac None neu khong phai dong audit.
+
+    Label sai dinh dang hoac ghi truong khong duoc sua -> ValueError: dong
+    audit doc khong ra thi khong duoc am tham coi nhu dong thuong.
+    """
+    if not method.startswith(MANUAL_AUDIT_PREFIX):
+        return None
+    m = RE_MANUAL_AUDIT.match(method)
+    if not m:
+        raise ValueError(f"label audit sai dinh dang: {method!r}")
+    fields = tuple(m.group(1).split(","))
+    bad = [f for f in fields if f not in MANUAL_AUDITABLE]
+    if bad:
+        raise ValueError(f"truong khong duoc sua tay: {bad} trong {method!r}")
+    return fields, m.group(2)
+
 
 CATEGORIES = ("econ", "combat", "trait", "item", "utility", "reroll")
 CARRY_TYPES = ("AD", "AP", "tank", "none")
 TEMPOS = ("immediate", "scaling")
+# Huong thuong theo SO LUONG trait (khong gan trait cu the nao):
+#   vertical - thuong theo so dong minh CHUNG trait (di sau mot trait)
+#   wide     - thuong theo so trait DANG BAT (bat nhieu trait khac nhau)
+# Hai huong nguoc nhau nen KHONG gop thanh mot bool.
+TRAIT_COUNT_REWARDS = ("vertical", "wide")
 
 # --- Tu vung component -----------------------------------------------------
 # 8 component co ban + spatula/frying pan. Ten on dinh qua nhieu set; ban
@@ -85,6 +121,17 @@ SCALING_PATTERNS = [
 ]
 IMMEDIATE_PATTERNS = [r"\bimmediately\b", r"\binstantly\b", r"\bnow\b", r"\bgain a\b"]
 
+# --- Tu vung thuong theo so luong trait ------------------------------------
+# Chi bat cau mo ta PHAN THUONG tang theo so trait / so dong minh chung trait.
+# Augment chi CHO emblem (Branching Out, The Trait Tree, ...) KHONG thuoc nhom
+# nay: emblem la nguon trait, da nam o item_grants; gia tri cua no khong tang
+# theo do sau/do rong trait tren board.
+VERTICAL_TRAIT_PATTERNS = [r"\bshares? a trait with\b"]
+WIDE_TRAIT_PATTERNS = [
+    r"\bfor each (?:[\w-]+ )?traits?\b",   # "for each non-unique Trait", "for each Bronze-tier trait"
+    r"\bfielding\b.{0,40}\btraits\b",      # Trait Ladder: "fielding N non-unique traits"
+]
+
 
 @dataclass
 class AugmentFeature:
@@ -101,10 +148,13 @@ class AugmentFeature:
     category: str = "utility"
     carry_type: str = "none"
     trait_affinity: list[str] = field(default_factory=list)
-    econ_value: int = 0           # 0-3
+    econ_value: int = 0           # 0-3, CHI vang/XP/reroll - item nam o item_grants
     tempo: str = "immediate"
     item_grants: list[str] = field(default_factory=list)
     board_condition: str | None = None
+    # None = khong thuong theo so trait. Tach khoi trait_affinity: truong do chi
+    # chua trait CU THE, nen augment kieu Verticality truoc day vo hinh voi scorer.
+    trait_count_reward: str | None = None
     extraction_method: str = EXTRACTOR_VERSION
     confidence: float = 0.0
 
@@ -155,6 +205,15 @@ def extract_econ_value(desc: str, name: str) -> int:
     Thang do co chu y tho: 254 augment khong the phan biet tinh te bang regex,
     va gia vo lam duoc dieu do se de lai mot con so trong ra dang tin hon thuc
     te. Tang 2 (LLM) chinh lai cai nay - do la ly do no ton tai.
+
+    Dinh nghia: econ_value CHI do vang, XP va reroll/gia tri shop. Item
+    (component, emblem, anvil...) KHONG tinh - chung thuoc `item_grants`.
+    Neu tinh ca item thi EconFit (strength = econ_value / 3) se cham augment
+    chi cho item nhu loi kinh te manh nhat.
+
+    Do lech da biet: tang 1 cham theo SO LON NHAT trong van ban (placeholder
+    "@X@ gold" -> 2, nhac "interest" -> 3, khong tinh tuong), con prompt tang 2
+    va audit tay cham theo TONG gia tri quy ra vang. Hai thang chua khop.
     """
     text = f"{name} {desc}"
     # Cong gate: mot augment co the la kinh te ma khong bao gio noi chu "gold"
@@ -206,6 +265,17 @@ def extract_tempo(desc: str, name: str) -> str:
     return "scaling" if scaling > immediate else "immediate"
 
 
+def extract_trait_count_reward(desc: str, name: str) -> str | None:
+    """vertical / wide / None. Vertical kiem truoc: cau "ally that shares a
+    trait" mo ta do sau, khong phai so trait dang bat."""
+    text = f"{name} {desc}"
+    if _matches(VERTICAL_TRAIT_PATTERNS, text):
+        return "vertical"
+    if _matches(WIDE_TRAIT_PATTERNS, text):
+        return "wide"
+    return None
+
+
 def extract_category(
     econ_value: int, item_grants: list[str], trait_affinity: list[str], desc: str, name: str
 ) -> str:
@@ -251,6 +321,7 @@ def extract_deterministic(
     category = extract_category(econ_value, item_grants, trait_affinity, desc, name)
     carry_type = extract_carry_type(desc, name, econ_context=category in ("econ", "reroll"))
     tempo = extract_tempo(desc, name)
+    trait_count_reward = extract_trait_count_reward(desc, name)
 
     # Confidence = ti le tin hieu THUC SU tim thay, khong phai do tin cua ta.
     signals = [
@@ -274,6 +345,7 @@ def extract_deterministic(
         tempo=tempo,
         item_grants=item_grants,
         board_condition=board_condition,
+        trait_count_reward=trait_count_reward,
         extraction_method=EXTRACTOR_VERSION,
         confidence=confidence,
     )

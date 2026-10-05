@@ -19,6 +19,7 @@ from scripts.build_augment_features import (
     LLM_REFINABLE,
     _merge,
     build_tier1,
+    keep_manual_audits,
     trait_display_map,
 )
 from src.knowledge.augment_catalog import AugmentCatalog
@@ -26,7 +27,9 @@ from src.knowledge.augment_features import (
     CARRY_TYPES,
     CATEGORIES,
     EXTRACTOR_VERSION,
+    MANUAL_AUDITABLE,
     TEMPOS,
+    TRAIT_COUNT_REWARDS,
     AugmentFeature,
     FeatureTable,
     extract_carry_type,
@@ -34,6 +37,8 @@ from src.knowledge.augment_features import (
     extract_econ_value,
     extract_item_grants,
     extract_trait_affinity,
+    extract_trait_count_reward,
+    parse_manual_audit,
 )
 
 FIXTURES = Path(__file__).parent / "fixtures" / "cdragon"
@@ -84,6 +89,12 @@ def test_interest_is_the_strongest_economic_signal() -> None:
     assert extract_econ_value("Your max interest is increased to 10.", "X") == 3
 
 
+def test_items_alone_are_not_economic_value() -> None:
+    """econ_value chi do vang/XP/reroll - item thuoc item_grants."""
+    assert extract_econ_value("Gain 3 random components and 1 Reforger.", "X") == 0
+    assert extract_econ_value("Gain a component anvil when you reach level 5.", "X") == 0
+
+
 def test_incidental_stat_mention_does_not_make_a_carry_type() -> None:
     """'Gain Health whenever you level up' la augment kinh te, khong phai tank."""
     desc = "Buying XP costs 1 less. Gain 20 Health whenever you level up."
@@ -108,6 +119,35 @@ def test_confidence_reflects_signals_found_not_self_belief() -> None:
     assert rich.confidence > poor.confidence
 
 
+def test_shared_trait_reward_is_vertical() -> None:
+    desc = "Champions gain 2% Attack Damage for each ally that shares a trait with them."
+    assert extract_trait_count_reward(desc, "Verticality I") == "vertical"
+
+
+def test_per_active_trait_reward_is_wide() -> None:
+    assert extract_trait_count_reward(
+        "Your units gain 1% Attack Damage for each non-unique Trait active across your team.",
+        "Stand United",
+    ) == "wide"
+    assert extract_trait_count_reward(
+        "Your team gains 2% Damage Amp for each Bronze-tier trait.", "Bronze For Life I"
+    ) == "wide"
+    assert extract_trait_count_reward(
+        "Gain a random emblem. After fielding @N@ non-unique traits in a player combat, "
+        "gain a reward.",
+        "Trait Ladder",
+    ) == "wide"
+
+
+def test_emblem_grant_alone_is_not_a_trait_count_reward() -> None:
+    """Emblem la NGUON trait (da o item_grants), khong phai phan thuong theo so trait."""
+    assert extract_trait_count_reward("Gain 3 random Emblems and 2 gold.", "The Trait Tree") is None
+    assert extract_trait_count_reward(
+        "Gain 1 random Emblem. Your team gains 30 Health for each Emblem they are holding.",
+        "Flexible",
+    ) is None
+
+
 # --- Bang sinh ra tu fixture ----------------------------------------------
 
 
@@ -123,6 +163,7 @@ def test_every_field_is_in_its_allowed_domain(table) -> None:
         assert feat.carry_type in CARRY_TYPES
         assert feat.tempo in TEMPOS
         assert 0 <= feat.econ_value <= 3
+        assert feat.trait_count_reward in (None, *TRAIT_COUNT_REWARDS)
         assert 0.0 <= feat.confidence <= 1.0
 
 
@@ -136,6 +177,24 @@ def test_tier_comes_from_the_catalog_ladder(table, locale) -> None:
 def test_trait_affinity_matches_measured_count(table) -> None:
     """Do duoc: dung 20/254 augment co associatedTraits, va van ban khong them cai nao."""
     assert sum(1 for f in table.features.values() if f.trait_affinity) == 20
+
+
+def test_trait_count_reward_matches_audited_set(table) -> None:
+    """Audit tay 2026-10-05 tren 18 augment MetaTFT gan 'trait' ma trait_affinity
+    rong, cong Bronze For Life (luat bat them, doc mo ta thay dung)."""
+    got = {a: f.trait_count_reward for a, f in table.features.items() if f.trait_count_reward}
+    assert got == {
+        "DA_VerticalityI": "vertical",
+        "DA_VerticalityII": "vertical",
+        "DA_VerticalityIII": "vertical",
+        "DA_WeStickTogether": "vertical",
+        "DA_StandUnited": "wide",
+        "DA_TraitLadder": "wide",
+        "DA_BronzeForLifeI": "wide",
+        "DA_BronzeForLifeII": "wide",
+    }
+    # Truong moi khong duoc lam doi nghia trait_affinity: van chi trait cu the.
+    assert all(not table.get(a).trait_affinity for a in got)
 
 
 def test_extraction_is_deterministic(locale) -> None:
@@ -172,13 +231,27 @@ def test_committed_table_is_reproducible(table) -> None:
 
     # Truong LLM TUYET DOI khong duoc dong den - chung chua apiName lay tu du
     # lieu co cau truc, khong phai phan doan doc tu van ban.
-    immutable = ("api_name", "name", "tier", "trait_affinity", "item_grants")
+    immutable = (
+        "api_name", "name", "tier", "trait_affinity", "item_grants", "trait_count_reward",
+    )
     n_llm = 0
     for api, row in committed.items():
-        if str(row["extraction_method"]).startswith("llm:"):
+        method = str(row["extraction_method"])
+        if method.startswith("llm:"):
             n_llm += 1
+        # Dong sua tay ("manual-audit:<truong> (from <nguon cu>)") chiu cung
+        # ranh gioi voi LLM: chi duoc sua truong phan doan.
+        if method.startswith(("llm:", "manual-audit:")):
             for f in immutable:
                 assert row[f] == generated[api][f], f"{api}.{f} bi tang 2 sua"
+        # Dong audit goc tang 1: moi truong KHONG ghi trong label phai sinh
+        # lai giong het - sua truong nao thi phai khai truong do.
+        audit = parse_manual_audit(method)
+        if audit and audit[1] == EXTRACTOR_VERSION:
+            fields = set(audit[0]) | {"extraction_method"}
+            for f, v in row.items():
+                if f not in fields:
+                    assert v == generated[api][f], f"{api}.{f} sua ma khong khai trong label"
 
     assert n_llm, "khong dong nao do LLM sinh - chay --llm chua?"
 
@@ -189,11 +262,94 @@ def test_committed_table_is_reproducible(table) -> None:
 
 
 @pytest.mark.skipif(not COMMITTED.exists(), reason="chua sinh data/augment_features.json")
+def test_item_augments_do_not_score_as_economy() -> None:
+    """Audit 2026-10-05 doi chieu MetaTFT: augment chi cho item bi LLM cham
+    econ_value toi 3, va EconFit (econ_value / 3) xep chung ngang loi kinh te
+    manh nhat. Item thuoc item_grants, khong thuoc econ_value.
+    """
+    rows = json.loads(COMMITTED.read_text(encoding="utf-8"))["augments"]
+    item_only = (
+        "DA_BandOfThievesII", "DA_BandOfThievesIIPlus", "DA_BuriedTreasuresIII",
+        "DA_CaretakersFavor", "DA_ExtraBuckles", "DA_BeltOverflow",
+        "DA_CookingPot", "DA_LuckyGlovesPlus",
+    )
+    for api in item_only:
+        assert rows[api]["econ_value"] == 0, api
+    # Item + mot it vang (< 8): chi phan vang duoc tinh -> muc 1.
+    small_gold = ("DA_18_BigGrabBag", "DA_LuckyGloves", "DA_GoldenGamble", "DA_IronAssets")
+    for api in small_gold:
+        assert rows[api]["econ_value"] == 1, api
+
+
+def test_llm_prompt_defines_econ_value_without_items() -> None:
+    """Tang 2 khong co dinh nghia econ_value la nguyen nhan goc cua loi tren."""
+    from scripts.build_augment_features import EXTRACT_PROMPT
+
+    assert "econ_value: CHI tinh vang, XP, reroll" in EXTRACT_PROMPT
+
+
+@pytest.mark.skipif(not COMMITTED.exists(), reason="chua sinh data/augment_features.json")
 def test_loader_round_trips_the_committed_file() -> None:
     loaded = FeatureTable.load(COMMITTED)
     assert len(loaded) == 254
     assert loaded.meta["extractor_version"] == "deterministic-v1"
     assert isinstance(loaded.get("DA_18_BigGrabBag"), AugmentFeature)
+
+
+@pytest.mark.skipif(not COMMITTED.exists(), reason="chua sinh data/augment_features.json")
+def test_committed_tempo_is_measured_in_rounds_not_combat_seconds() -> None:
+    """Moc cho dinh nghia tempo ma TempoFit can (audit doi chieu MetaTFT).
+
+    Cong don trong mot tran la immediate: tran ke tiep da co du suc manh.
+    Cong don qua cac vong / phan thuong o moc xa la scaling. Comeback Story
+    manh nhat khi it mau nen phai la immediate du MetaTFT gan "scaling".
+    """
+    loaded = FeatureTable.load(COMMITTED)
+    for api in ("DA_Ascension", "DA_ClockworkAccelerator", "DA_VerticalityI",
+                "DA_BandOfThievesII", "DA_ComebackStory"):
+        assert loaded.get(api).tempo == "immediate", api
+    for api in ("DA_HeartOfSteel", "DA_EpicRolldown", "DA_NoScoutNoPivot",
+                "DA_MoneyMonsoon", "DA_LatentForge",
+                # moi stage / moi vong cho den het tran -> scaling, ca bien the +
+                "DA_HardCommit", "DA_Epoch", "DA_EpochPlus", "DA_TradeSectorPlus"):
+        assert loaded.get(api).tempo == "scaling", api
+
+
+def test_manual_audit_label_lists_only_judgment_fields() -> None:
+    assert parse_manual_audit("deterministic-v1") is None
+    assert parse_manual_audit("manual-audit:econ_value,tempo (from llm:m)") == (
+        ("econ_value", "tempo"), "llm:m",
+    )
+    with pytest.raises(ValueError):
+        parse_manual_audit("manual-audit:econ-excludes-items")
+    with pytest.raises(ValueError):
+        parse_manual_audit("manual-audit:trait_affinity (from deterministic-v1)")
+    assert "trait_count_reward" not in MANUAL_AUDITABLE
+
+
+def test_rebuild_keeps_manual_audit_fields_only() -> None:
+    """Sinh lai bang khong duoc xoa am tham quyet dinh audit tay."""
+    fresh = FeatureTable({"DA_X": _feat(econ_value=3, tempo="scaling", category="econ")})
+    old_row = _feat(
+        econ_value=0, tempo="immediate", category="item",
+        extraction_method="manual-audit:econ_value (from llm:m)",
+    ).to_dict()
+    kept_table, kept = keep_manual_audits(fresh, {"augments": {"DA_X": old_row}})
+    got = kept_table.get("DA_X")
+    assert kept == ["DA_X"]
+    assert got.econ_value == 0                      # truong da audit: giu
+    assert (got.tempo, got.category) == ("scaling", "econ")  # truong khac: bang moi
+    assert got.extraction_method == "manual-audit:econ_value (from deterministic-v1)"
+
+
+def test_loader_accepts_old_json_without_trait_count_reward(tmp_path) -> None:
+    """File sinh truoc khi co truong moi van nap duoc, truong moi ve None."""
+    row = _feat().to_dict()
+    del row["trait_count_reward"]
+    path = tmp_path / "old.json"
+    path.write_text(json.dumps({"meta": {}, "augments": {"DA_X": row}}), encoding="utf-8")
+    loaded = FeatureTable.load(path).get("DA_X")
+    assert loaded is not None and loaded.trait_count_reward is None
 
 
 def test_missing_augment_returns_none_not_a_fabricated_feature() -> None:
@@ -277,6 +433,14 @@ def test_one_unmappable_trait_rejects_the_whole_list() -> None:
     )
     assert merged.trait_affinity == ["DA_Riftbeast18"]
     assert diff == []
+
+
+def test_llm_cannot_set_trait_count_reward() -> None:
+    """Truong tat dinh - khong nam trong LLM_REFINABLE."""
+    merged, diff = _merge(_feat(), {"trait_count_reward": "wide"}, "m", TRAITS)
+    assert merged.trait_count_reward is None
+    assert diff == []
+    assert "trait_count_reward" not in LLM_REFINABLE
 
 
 def test_out_of_domain_values_are_ignored() -> None:

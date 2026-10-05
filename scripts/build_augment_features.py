@@ -34,6 +34,7 @@ from src.knowledge.augment_features import (  # noqa: E402
     AugmentFeature,
     FeatureTable,
     extract_deterministic,
+    parse_manual_audit,
 )
 from src.knowledge.cdragon_client import CDragonClient, select_set_data  # noqa: E402
 from src.utils.env import load_env  # noqa: E402
@@ -53,10 +54,26 @@ EXTRACT_PROMPT = """Cho mo ta mot Augment trong Teamfight Tactics, tra ve JSON P
 Chi dua vao mo ta duoc cung cap. Khong suy doan chi so khong co trong text.
 Neu khong xac dinh duoc mot truong, tra ve null - KHONG BIA.
 
+tempo: do bang SO VONG DAU, khong phai so giay trong mot tran.
+- "scaling": phan lon gia tri den TRE hon ~3 vong - tich luy qua cac vong
+  (moi vong/moi stage/moi lan len cap, cong don vinh vien), hoac phan thuong
+  cho moc xa (dat cap 8-9, sau N tran, sau khi tieu X mana/sat thuong).
+- "immediate": phan lon gia tri co ngay hoac trong ~3 vong toi. Cong don
+  TRONG mot tran ("moi 2 giay", "sau 12 giay giao tranh", "het tran") van la
+  immediate vi tran sau da co du. Chi so theo board hien tai (moi trait, moi
+  dong minh chung trait) cung la immediate.
+- Nua nay nua kia (VD 2 mon bay gio + 1 mon sau 6 tran) -> immediate.
+
 trait_affinity: dung TEN TRAIT tieng Anh nhu hien trong game (VD "Riftbeast").
 Neu mo ta khong nhac den trait nao thi tra ve null, KHONG tra ve [].
 
 item_grants: bo qua truong nay, dieu phoi vien tu tinh.
+
+econ_value: CHI tinh vang, XP, reroll/gia tri shop (ke ca tuong duoc tang va
+Champion Duplicator, quy ra vang). Item, component, emblem, anvil, Thief's Gloves, Reforger KHONG
+tinh - chung da nam o item_grants. Augment chi cho item -> econ_value = 0.
+Thang do theo tong gia tri quy ra vang: 0 = khong co; 1 = duoi 8; 2 = 8-19;
+3 = tu 20 tro len hoac tang lai (interest).
 """
 
 
@@ -112,6 +129,7 @@ def summarize(table: FeatureTable) -> dict[str, Any]:
         "econ_value": dist("econ_value"),
         "with_trait_affinity": sum(1 for f in feats if f.trait_affinity),
         "with_item_grants": sum(1 for f in feats if f.item_grants),
+        "trait_count_reward": dist("trait_count_reward"),
         "mean_confidence": round(
             sum(f.confidence for f in feats) / len(feats), 3
         ) if feats else 0.0,
@@ -316,6 +334,32 @@ def _map_trait_affinity(value: Any, traits: dict[str, str]) -> list[str] | None:
     return sorted(set(out))
 
 
+def keep_manual_audits(
+    table: FeatureTable, previous: dict[str, Any]
+) -> tuple[FeatureTable, list[str]]:
+    """Ap lai cac dong "manual-audit:" cua file cu len bang vua sinh.
+
+    Chi chep cac truong ghi trong label; moi truong khac lay tu bang moi, va
+    "(from ...)" ghi lai method cua dong moi. Khong co buoc nay thi moi lan
+    --write xoa sach quyet dinh audit ma khong test nao bao.
+    """
+    kept: list[str] = []
+    feats = dict(table.features)
+    for api, row in previous.get("augments", {}).items():
+        parsed = parse_manual_audit(str(row.get("extraction_method", "")))
+        if parsed is None or api not in feats:
+            continue
+        fields, _ = parsed
+        data = feats[api].to_dict()
+        origin = data["extraction_method"]
+        for f in fields:
+            data[f] = row[f]
+        data["extraction_method"] = f"manual-audit:{','.join(fields)} (from {origin})"
+        feats[api] = AugmentFeature(**data)
+        kept.append(api)
+    return FeatureTable(feats, table.meta), kept
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--locale", default="en_us", help="locale nguon (mac dinh en_us)")
@@ -346,6 +390,12 @@ def main(argv: list[str] | None = None) -> int:
         if len(changes) > 50:
             print(f"   ... con {len(changes) - 50} dong nua")
 
+    out = Path(args.out)
+    if out.exists():
+        previous = json.loads(out.read_text(encoding="utf-8"))
+        table, kept = keep_manual_audits(table, previous)
+        print(f"\ngiu {len(kept)} dong manual-audit tu {out.name}")
+
     if args.diff and not args.write:
         print("\n--diff: khong ghi file. Them --write de ghi de.")
         return 0
@@ -361,7 +411,6 @@ def main(argv: list[str] | None = None) -> int:
         "llm_refined": bool(args.llm),
         "n": len(table),
     }
-    out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     with io.open(out, "w", encoding="utf-8") as fh:
         json.dump(table.to_payload(meta), fh, indent=2, ensure_ascii=False)
