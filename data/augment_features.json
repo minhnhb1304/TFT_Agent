@@ -14,16 +14,16 @@
       "api_name": "DA_18_BigGrabBag",
       "name": "Big Grab Bag",
       "tier": 2,
-      "category": "econ",
+      "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "AnyComponent"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.6
     },
     "DA_18_BlossomTraitAugment": {
@@ -127,13 +127,13 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 2,
       "tempo": "immediate",
       "item_grants": [
         "AnyComponent"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.4
     },
     "DA_18_ElderwoodTraitAugment": {
@@ -305,13 +305,13 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "AnyComponent"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.6
     },
     "DA_18_OnesTwosThree": {
@@ -660,28 +660,28 @@
       "api_name": "DA_BandOfThievesII",
       "name": "Band of Thieves II",
       "tier": 2,
-      "category": "econ",
+      "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 0,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.2
     },
     "DA_BandOfThievesIIPlus": {
       "api_name": "DA_BandOfThievesIIPlus",
       "name": "Band of Thieves II+",
       "tier": 2,
-      "category": "econ",
+      "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 0,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.2
     },
     "DA_BandOfThievesIIPlusPlus": {
@@ -719,13 +719,13 @@
       "category": "item",
       "carry_type": "tank",
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 0,
       "tempo": "immediate",
       "item_grants": [
         "GiantsBelt"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.6
     },
     "DA_BirthdayPresent": {
@@ -920,16 +920,16 @@
       "api_name": "DA_BuriedTreasuresIII",
       "name": "Buried Treasures III",
       "tier": 3,
-      "category": "econ",
+      "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 0,
       "tempo": "scaling",
       "item_grants": [
         "AnyComponent"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.4
     },
     "DA_CalculatedLoss": {
@@ -950,14 +950,14 @@
       "api_name": "DA_CallToChaos",
       "name": "Call To Chaos",
       "tier": 3,
-      "category": "econ",
+      "category": "utility",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 0,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.2
     },
     "DA_CalledShot": {
@@ -1006,17 +1006,17 @@
       "api_name": "DA_CaretakersFavor",
       "name": "Caretaker's Favor",
       "tier": 2,
-      "category": "econ",
+      "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 0,
       "tempo": "scaling",
       "item_grants": [
         "AnyComponent",
         "Anvil"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.4
     },
     "DA_CarveAPath": {
@@ -1269,13 +1269,13 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "scaling",
       "item_grants": [
         "AnyComponent"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.6
     },
     "DA_ConstructACompanion": {
@@ -1299,14 +1299,14 @@
       "category": "item",
       "carry_type": "tank",
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 0,
       "tempo": "scaling",
       "item_grants": [
         "Spatula",
         "FryingPan"
       ],
       "board_condition": "Allies holding a Frying Pan or Spatula item",
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.6
     },
     "DA_Coronation": {
@@ -1562,11 +1562,11 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.4
     },
     "DA_Expedition": {
@@ -1615,16 +1615,16 @@
       "api_name": "DA_ExtraBuckles",
       "name": "Extra Buckles",
       "tier": 1,
-      "category": "econ",
+      "category": "item",
       "carry_type": "tank",
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 0,
       "tempo": "scaling",
       "item_grants": [
         "GiantsBelt"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.4
     },
     "DA_FeelingLucky": {
@@ -1895,13 +1895,13 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "CompletedItem"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.6
     },
     "DA_GoldenGamblePlus": {
@@ -1911,13 +1911,13 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "CompletedItem"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.6
     },
     "DA_GoldenGamblePlusPlus": {
@@ -1927,13 +1927,13 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "CompletedItem"
       ],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.6
     },
     "DA_GroupHugI": {
@@ -2124,14 +2124,14 @@
       "api_name": "DA_InfinityProtection",
       "name": "Infinity Protection",
       "tier": 2,
-      "category": "econ",
+      "category": "item",
       "carry_type": "tank",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.6
     },
     "DA_InvestedPlus": {
@@ -2180,14 +2180,14 @@
       "api_name": "DA_InvestmentStrategyI",
       "name": "Investment Strategy I",
       "tier": 1,
-      "category": "econ",
+      "category": "combat",
       "carry_type": "tank",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.4
     },
     "DA_IronAssets": {
@@ -2197,14 +2197,14 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "AnyComponent",
         "Anvil"
       ],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.6
     },
     "DA_ItemGrabBag": {
@@ -2401,22 +2401,6 @@
       "api_name": "DA_LuckyGloves",
       "name": "Lucky Gloves",
       "tier": 3,
-      "category": "econ",
-      "carry_type": "none",
-      "trait_affinity": [],
-      "econ_value": 2,
-      "tempo": "immediate",
-      "item_grants": [
-        "SparringGloves"
-      ],
-      "board_condition": null,
-      "extraction_method": "deterministic-v1",
-      "confidence": 0.6
-    },
-    "DA_LuckyGlovesPlus": {
-      "api_name": "DA_LuckyGlovesPlus",
-      "name": "Lucky Gloves+",
-      "tier": 2,
       "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
@@ -2426,7 +2410,23 @@
         "SparringGloves"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
+      "confidence": 0.6
+    },
+    "DA_LuckyGlovesPlus": {
+      "api_name": "DA_LuckyGlovesPlus",
+      "name": "Lucky Gloves+",
+      "tier": 2,
+      "category": "item",
+      "carry_type": "none",
+      "trait_affinity": [],
+      "econ_value": 0,
+      "tempo": "immediate",
+      "item_grants": [
+        "SparringGloves"
+      ],
+      "board_condition": null,
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.4
     },
     "DA_LuxurySubscription": {
@@ -3258,11 +3258,11 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.4
     },
     "DA_SpreadingRootsPlus": {
@@ -3272,11 +3272,11 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.4
     },
     "DA_Staffsmith": {
@@ -3424,11 +3424,11 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.4
     },
     "DA_TheTraitTreePlus": {
@@ -3438,11 +3438,11 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.4
     },
     "DA_TimeSkip": {
@@ -3519,16 +3519,16 @@
       "api_name": "DA_TraitLadder",
       "name": "Trait Ladder",
       "tier": 3,
-      "category": "econ",
+      "category": "item",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 0,
       "tempo": "scaling",
       "item_grants": [
         "Emblem"
       ],
       "board_condition": null,
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.4
     },
     "DA_TwinGuardians": {
@@ -3583,14 +3583,14 @@
       "category": "econ",
       "carry_type": "none",
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [
         "Spatula",
         "AnyComponent"
       ],
       "board_condition": null,
-      "extraction_method": "deterministic-v1",
+      "extraction_method": "manual-audit:econ-excludes-items",
       "confidence": 0.6
     },
     "DA_VerticalityI": {
