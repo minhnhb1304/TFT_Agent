@@ -61,6 +61,7 @@ Luận điểm cốt lõi không đổi: hàm điểm hiện tại chỉ đo *cu
 | [trait-count-reward.md](trait-count-reward.md) | Trường `trait_count_reward` (vertical/wide) — audit 18 lõi, hook chưa nối |
 | [metatft-tag-audit.md](metatft-tag-audit.md) | Đối chiếu feature với tag MetaTFT — số trước/sau, giới hạn |
 | [feature-audit.md](feature-audit.md) | Định nghĩa `econ_value`/`tempo`/`trait_count_reward`, nhãn `manual-audit` |
+| [audit-merge-runbook.md](audit-merge-runbook.md) | Trình tự merge/push/rollback nhánh `wf/augment-integrated` |
 
 ## Related
 
