@@ -19,6 +19,7 @@ from scripts.build_augment_features import (
     LLM_REFINABLE,
     _merge,
     build_tier1,
+    keep_manual_audits,
     trait_display_map,
 )
 from src.knowledge.augment_catalog import AugmentCatalog
@@ -26,6 +27,7 @@ from src.knowledge.augment_features import (
     CARRY_TYPES,
     CATEGORIES,
     EXTRACTOR_VERSION,
+    MANUAL_AUDITABLE,
     TEMPOS,
     TRAIT_COUNT_REWARDS,
     AugmentFeature,
@@ -36,6 +38,7 @@ from src.knowledge.augment_features import (
     extract_item_grants,
     extract_trait_affinity,
     extract_trait_count_reward,
+    parse_manual_audit,
 )
 
 FIXTURES = Path(__file__).parent / "fixtures" / "cdragon"
@@ -241,6 +244,14 @@ def test_committed_table_is_reproducible(table) -> None:
         if method.startswith(("llm:", "manual-audit:")):
             for f in immutable:
                 assert row[f] == generated[api][f], f"{api}.{f} bi tang 2 sua"
+        # Dong audit goc tang 1: moi truong KHONG ghi trong label phai sinh
+        # lai giong het - sua truong nao thi phai khai truong do.
+        audit = parse_manual_audit(method)
+        if audit and audit[1] == EXTRACTOR_VERSION:
+            fields = set(audit[0]) | {"extraction_method"}
+            for f, v in row.items():
+                if f not in fields:
+                    assert v == generated[api][f], f"{api}.{f} sua ma khong khai trong label"
 
     assert n_llm, "khong dong nao do LLM sinh - chay --llm chua?"
 
@@ -300,6 +311,33 @@ def test_committed_tempo_is_measured_in_rounds_not_combat_seconds() -> None:
     for api in ("DA_HeartOfSteel", "DA_EpicRolldown", "DA_NoScoutNoPivot",
                 "DA_MoneyMonsoon", "DA_LatentForge"):
         assert loaded.get(api).tempo == "scaling", api
+
+
+def test_manual_audit_label_lists_only_judgment_fields() -> None:
+    assert parse_manual_audit("deterministic-v1") is None
+    assert parse_manual_audit("manual-audit:econ_value,tempo (from llm:m)") == (
+        ("econ_value", "tempo"), "llm:m",
+    )
+    with pytest.raises(ValueError):
+        parse_manual_audit("manual-audit:econ-excludes-items")
+    with pytest.raises(ValueError):
+        parse_manual_audit("manual-audit:trait_affinity (from deterministic-v1)")
+    assert "trait_count_reward" not in MANUAL_AUDITABLE
+
+
+def test_rebuild_keeps_manual_audit_fields_only() -> None:
+    """Sinh lai bang khong duoc xoa am tham quyet dinh audit tay."""
+    fresh = FeatureTable({"DA_X": _feat(econ_value=3, tempo="scaling", category="econ")})
+    old_row = _feat(
+        econ_value=0, tempo="immediate", category="item",
+        extraction_method="manual-audit:econ_value (from llm:m)",
+    ).to_dict()
+    kept_table, kept = keep_manual_audits(fresh, {"augments": {"DA_X": old_row}})
+    got = kept_table.get("DA_X")
+    assert kept == ["DA_X"]
+    assert got.econ_value == 0                      # truong da audit: giu
+    assert (got.tempo, got.category) == ("scaling", "econ")  # truong khac: bang moi
+    assert got.extraction_method == "manual-audit:econ_value (from deterministic-v1)"
 
 
 def test_loader_accepts_old_json_without_trait_count_reward(tmp_path) -> None:
