@@ -175,8 +175,12 @@ def test_committed_table_is_reproducible(table) -> None:
     immutable = ("api_name", "name", "tier", "trait_affinity", "item_grants")
     n_llm = 0
     for api, row in committed.items():
-        if str(row["extraction_method"]).startswith("llm:"):
+        method = str(row["extraction_method"])
+        if method.startswith("llm:"):
             n_llm += 1
+        # Dong sua tay ("manual-audit:<truong> (from <nguon cu>)") chiu cung
+        # ranh gioi voi LLM: chi duoc sua truong phan doan.
+        if method.startswith(("llm:", "manual-audit:")):
             for f in immutable:
                 assert row[f] == generated[api][f], f"{api}.{f} bi tang 2 sua"
 
@@ -194,6 +198,23 @@ def test_loader_round_trips_the_committed_file() -> None:
     assert len(loaded) == 254
     assert loaded.meta["extractor_version"] == "deterministic-v1"
     assert isinstance(loaded.get("DA_18_BigGrabBag"), AugmentFeature)
+
+
+@pytest.mark.skipif(not COMMITTED.exists(), reason="chua sinh data/augment_features.json")
+def test_committed_tempo_is_measured_in_rounds_not_combat_seconds() -> None:
+    """Moc cho dinh nghia tempo ma TempoFit can (audit doi chieu MetaTFT).
+
+    Cong don trong mot tran la immediate: tran ke tiep da co du suc manh.
+    Cong don qua cac vong / phan thuong o moc xa la scaling. Comeback Story
+    manh nhat khi it mau nen phai la immediate du MetaTFT gan "scaling".
+    """
+    loaded = FeatureTable.load(COMMITTED)
+    for api in ("DA_Ascension", "DA_ClockworkAccelerator", "DA_VerticalityI",
+                "DA_BandOfThievesII", "DA_ComebackStory"):
+        assert loaded.get(api).tempo == "immediate", api
+    for api in ("DA_HeartOfSteel", "DA_EpicRolldown", "DA_NoScoutNoPivot",
+                "DA_MoneyMonsoon", "DA_LatentForge"):
+        assert loaded.get(api).tempo == "scaling", api
 
 
 def test_missing_augment_returns_none_not_a_fabricated_feature() -> None:
