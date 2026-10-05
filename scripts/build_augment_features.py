@@ -53,6 +53,16 @@ EXTRACT_PROMPT = """Cho mo ta mot Augment trong Teamfight Tactics, tra ve JSON P
 Chi dua vao mo ta duoc cung cap. Khong suy doan chi so khong co trong text.
 Neu khong xac dinh duoc mot truong, tra ve null - KHONG BIA.
 
+tempo: do bang SO VONG DAU, khong phai so giay trong mot tran.
+- "scaling": phan lon gia tri den TRE hon ~3 vong - tich luy qua cac vong
+  (moi vong/moi stage/moi lan len cap, cong don vinh vien), hoac phan thuong
+  cho moc xa (dat cap 8-9, sau N tran, sau khi tieu X mana/sat thuong).
+- "immediate": phan lon gia tri co ngay hoac trong ~3 vong toi. Cong don
+  TRONG mot tran ("moi 2 giay", "sau 12 giay giao tranh", "het tran") van la
+  immediate vi tran sau da co du. Chi so theo board hien tai (moi trait, moi
+  dong minh chung trait) cung la immediate.
+- Nua nay nua kia (VD 2 mon bay gio + 1 mon sau 6 tran) -> immediate.
+
 trait_affinity: dung TEN TRAIT tieng Anh nhu hien trong game (VD "Riftbeast").
 Neu mo ta khong nhac den trait nao thi tra ve null, KHONG tra ve [].
 
