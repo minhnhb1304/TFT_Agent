@@ -18,6 +18,7 @@ là lập luận.
 | Nhóm lớn nhất cùng `econ_value = 3` | **75/131** | 75 lõi hoà ở đỉnh chiều kinh tế |
 
 Phân bố `econ_value`: `{1: 17, 2: 39, 3: 75}`.
+Audit 2026-10-05 co nhóm này 75 → 56 nhưng **không** hạ hoà điểm — xem [metatft-tag-audit.md](metatft-tag-audit.md).
 
 > Mẫu là 147 scenario trong `data/scenarios/` (3 bản ghi bị bỏ vì chỉ có một lựa chọn — một lựa
 > chọn thì không thể hoà; tính vào sẽ làm loãng tỉ lệ). Đây là scenario **chưa gắn nhãn**, nên con
