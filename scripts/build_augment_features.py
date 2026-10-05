@@ -69,8 +69,8 @@ Neu mo ta khong nhac den trait nao thi tra ve null, KHONG tra ve [].
 
 item_grants: bo qua truong nay, dieu phoi vien tu tinh.
 
-econ_value: CHI tinh vang, XP, reroll/gia tri shop (ke ca tuong duoc tang,
-quy ra vang). Item, component, emblem, anvil, Thief's Gloves, Reforger KHONG
+econ_value: CHI tinh vang, XP, reroll/gia tri shop (ke ca tuong duoc tang va
+Champion Duplicator, quy ra vang). Item, component, emblem, anvil, Thief's Gloves, Reforger KHONG
 tinh - chung da nam o item_grants. Augment chi cho item -> econ_value = 0.
 Thang do theo tong gia tri quy ra vang: 0 = khong co; 1 = duoi 8; 2 = 8-19;
 3 = tu 20 tro len hoac tang lai (interest).
