@@ -33,6 +33,11 @@ EXTRACTOR_VERSION = "deterministic-v1"
 CATEGORIES = ("econ", "combat", "trait", "item", "utility", "reroll")
 CARRY_TYPES = ("AD", "AP", "tank", "none")
 TEMPOS = ("immediate", "scaling")
+# Huong thuong theo SO LUONG trait (khong gan trait cu the nao):
+#   vertical - thuong theo so dong minh CHUNG trait (di sau mot trait)
+#   wide     - thuong theo so trait DANG BAT (bat nhieu trait khac nhau)
+# Hai huong nguoc nhau nen KHONG gop thanh mot bool.
+TRAIT_COUNT_REWARDS = ("vertical", "wide")
 
 # --- Tu vung component -----------------------------------------------------
 # 8 component co ban + spatula/frying pan. Ten on dinh qua nhieu set; ban
@@ -85,6 +90,17 @@ SCALING_PATTERNS = [
 ]
 IMMEDIATE_PATTERNS = [r"\bimmediately\b", r"\binstantly\b", r"\bnow\b", r"\bgain a\b"]
 
+# --- Tu vung thuong theo so luong trait ------------------------------------
+# Chi bat cau mo ta PHAN THUONG tang theo so trait / so dong minh chung trait.
+# Augment chi CHO emblem (Branching Out, The Trait Tree, ...) KHONG thuoc nhom
+# nay: emblem la nguon trait, da nam o item_grants; gia tri cua no khong tang
+# theo do sau/do rong trait tren board.
+VERTICAL_TRAIT_PATTERNS = [r"\bshares? a trait with\b"]
+WIDE_TRAIT_PATTERNS = [
+    r"\bfor each (?:[\w-]+ )?traits?\b",   # "for each non-unique Trait", "for each Bronze-tier trait"
+    r"\bfielding\b.{0,40}\btraits\b",      # Trait Ladder: "fielding N non-unique traits"
+]
+
 
 @dataclass
 class AugmentFeature:
@@ -105,6 +121,9 @@ class AugmentFeature:
     tempo: str = "immediate"
     item_grants: list[str] = field(default_factory=list)
     board_condition: str | None = None
+    # None = khong thuong theo so trait. Tach khoi trait_affinity: truong do chi
+    # chua trait CU THE, nen augment kieu Verticality truoc day vo hinh voi scorer.
+    trait_count_reward: str | None = None
     extraction_method: str = EXTRACTOR_VERSION
     confidence: float = 0.0
 
@@ -211,6 +230,17 @@ def extract_tempo(desc: str, name: str) -> str:
     return "scaling" if scaling > immediate else "immediate"
 
 
+def extract_trait_count_reward(desc: str, name: str) -> str | None:
+    """vertical / wide / None. Vertical kiem truoc: cau "ally that shares a
+    trait" mo ta do sau, khong phai so trait dang bat."""
+    text = f"{name} {desc}"
+    if _matches(VERTICAL_TRAIT_PATTERNS, text):
+        return "vertical"
+    if _matches(WIDE_TRAIT_PATTERNS, text):
+        return "wide"
+    return None
+
+
 def extract_category(
     econ_value: int, item_grants: list[str], trait_affinity: list[str], desc: str, name: str
 ) -> str:
@@ -256,6 +286,7 @@ def extract_deterministic(
     category = extract_category(econ_value, item_grants, trait_affinity, desc, name)
     carry_type = extract_carry_type(desc, name, econ_context=category in ("econ", "reroll"))
     tempo = extract_tempo(desc, name)
+    trait_count_reward = extract_trait_count_reward(desc, name)
 
     # Confidence = ti le tin hieu THUC SU tim thay, khong phai do tin cua ta.
     signals = [
@@ -279,6 +310,7 @@ def extract_deterministic(
         tempo=tempo,
         item_grants=item_grants,
         board_condition=board_condition,
+        trait_count_reward=trait_count_reward,
         extraction_method=EXTRACTOR_VERSION,
         confidence=confidence,
     )
