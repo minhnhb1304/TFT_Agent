@@ -27,6 +27,7 @@ from src.knowledge.augment_features import (
     CATEGORIES,
     EXTRACTOR_VERSION,
     TEMPOS,
+    TRAIT_COUNT_REWARDS,
     AugmentFeature,
     FeatureTable,
     extract_carry_type,
@@ -34,6 +35,7 @@ from src.knowledge.augment_features import (
     extract_econ_value,
     extract_item_grants,
     extract_trait_affinity,
+    extract_trait_count_reward,
 )
 
 FIXTURES = Path(__file__).parent / "fixtures" / "cdragon"
@@ -108,6 +110,35 @@ def test_confidence_reflects_signals_found_not_self_belief() -> None:
     assert rich.confidence > poor.confidence
 
 
+def test_shared_trait_reward_is_vertical() -> None:
+    desc = "Champions gain 2% Attack Damage for each ally that shares a trait with them."
+    assert extract_trait_count_reward(desc, "Verticality I") == "vertical"
+
+
+def test_per_active_trait_reward_is_wide() -> None:
+    assert extract_trait_count_reward(
+        "Your units gain 1% Attack Damage for each non-unique Trait active across your team.",
+        "Stand United",
+    ) == "wide"
+    assert extract_trait_count_reward(
+        "Your team gains 2% Damage Amp for each Bronze-tier trait.", "Bronze For Life I"
+    ) == "wide"
+    assert extract_trait_count_reward(
+        "Gain a random emblem. After fielding @N@ non-unique traits in a player combat, "
+        "gain a reward.",
+        "Trait Ladder",
+    ) == "wide"
+
+
+def test_emblem_grant_alone_is_not_a_trait_count_reward() -> None:
+    """Emblem la NGUON trait (da o item_grants), khong phai phan thuong theo so trait."""
+    assert extract_trait_count_reward("Gain 3 random Emblems and 2 gold.", "The Trait Tree") is None
+    assert extract_trait_count_reward(
+        "Gain 1 random Emblem. Your team gains 30 Health for each Emblem they are holding.",
+        "Flexible",
+    ) is None
+
+
 # --- Bang sinh ra tu fixture ----------------------------------------------
 
 
@@ -123,6 +154,7 @@ def test_every_field_is_in_its_allowed_domain(table) -> None:
         assert feat.carry_type in CARRY_TYPES
         assert feat.tempo in TEMPOS
         assert 0 <= feat.econ_value <= 3
+        assert feat.trait_count_reward in (None, *TRAIT_COUNT_REWARDS)
         assert 0.0 <= feat.confidence <= 1.0
 
 
@@ -136,6 +168,24 @@ def test_tier_comes_from_the_catalog_ladder(table, locale) -> None:
 def test_trait_affinity_matches_measured_count(table) -> None:
     """Do duoc: dung 20/254 augment co associatedTraits, va van ban khong them cai nao."""
     assert sum(1 for f in table.features.values() if f.trait_affinity) == 20
+
+
+def test_trait_count_reward_matches_audited_set(table) -> None:
+    """Audit tay 2026-10-05 tren 18 augment MetaTFT gan 'trait' ma trait_affinity
+    rong, cong Bronze For Life (luat bat them, doc mo ta thay dung)."""
+    got = {a: f.trait_count_reward for a, f in table.features.items() if f.trait_count_reward}
+    assert got == {
+        "DA_VerticalityI": "vertical",
+        "DA_VerticalityII": "vertical",
+        "DA_VerticalityIII": "vertical",
+        "DA_WeStickTogether": "vertical",
+        "DA_StandUnited": "wide",
+        "DA_TraitLadder": "wide",
+        "DA_BronzeForLifeI": "wide",
+        "DA_BronzeForLifeII": "wide",
+    }
+    # Truong moi khong duoc lam doi nghia trait_affinity: van chi trait cu the.
+    assert all(not table.get(a).trait_affinity for a in got)
 
 
 def test_extraction_is_deterministic(locale) -> None:
@@ -172,7 +222,9 @@ def test_committed_table_is_reproducible(table) -> None:
 
     # Truong LLM TUYET DOI khong duoc dong den - chung chua apiName lay tu du
     # lieu co cau truc, khong phai phan doan doc tu van ban.
-    immutable = ("api_name", "name", "tier", "trait_affinity", "item_grants")
+    immutable = (
+        "api_name", "name", "tier", "trait_affinity", "item_grants", "trait_count_reward",
+    )
     n_llm = 0
     for api, row in committed.items():
         if str(row["extraction_method"]).startswith("llm:"):
@@ -194,6 +246,16 @@ def test_loader_round_trips_the_committed_file() -> None:
     assert len(loaded) == 254
     assert loaded.meta["extractor_version"] == "deterministic-v1"
     assert isinstance(loaded.get("DA_18_BigGrabBag"), AugmentFeature)
+
+
+def test_loader_accepts_old_json_without_trait_count_reward(tmp_path) -> None:
+    """File sinh truoc khi co truong moi van nap duoc, truong moi ve None."""
+    row = _feat().to_dict()
+    del row["trait_count_reward"]
+    path = tmp_path / "old.json"
+    path.write_text(json.dumps({"meta": {}, "augments": {"DA_X": row}}), encoding="utf-8")
+    loaded = FeatureTable.load(path).get("DA_X")
+    assert loaded is not None and loaded.trait_count_reward is None
 
 
 def test_missing_augment_returns_none_not_a_fabricated_feature() -> None:
@@ -277,6 +339,14 @@ def test_one_unmappable_trait_rejects_the_whole_list() -> None:
     )
     assert merged.trait_affinity == ["DA_Riftbeast18"]
     assert diff == []
+
+
+def test_llm_cannot_set_trait_count_reward() -> None:
+    """Truong tat dinh - khong nam trong LLM_REFINABLE."""
+    merged, diff = _merge(_feat(), {"trait_count_reward": "wide"}, "m", TRAITS)
+    assert merged.trait_count_reward is None
+    assert diff == []
+    assert "trait_count_reward" not in LLM_REFINABLE
 
 
 def test_out_of_domain_values_are_ignored() -> None:

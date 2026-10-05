@@ -112,6 +112,7 @@ def summarize(table: FeatureTable) -> dict[str, Any]:
         "econ_value": dist("econ_value"),
         "with_trait_affinity": sum(1 for f in feats if f.trait_affinity),
         "with_item_grants": sum(1 for f in feats if f.item_grants),
+        "trait_count_reward": dist("trait_count_reward"),
         "mean_confidence": round(
             sum(f.confidence for f in feats) / len(feats), 3
         ) if feats else 0.0,
