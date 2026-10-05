@@ -309,7 +309,9 @@ def test_committed_tempo_is_measured_in_rounds_not_combat_seconds() -> None:
                 "DA_BandOfThievesII", "DA_ComebackStory"):
         assert loaded.get(api).tempo == "immediate", api
     for api in ("DA_HeartOfSteel", "DA_EpicRolldown", "DA_NoScoutNoPivot",
-                "DA_MoneyMonsoon", "DA_LatentForge"):
+                "DA_MoneyMonsoon", "DA_LatentForge",
+                # moi stage / moi vong cho den het tran -> scaling, ca bien the +
+                "DA_HardCommit", "DA_Epoch", "DA_EpochPlus", "DA_TradeSectorPlus"):
         assert loaded.get(api).tempo == "scaling", api
 
 
