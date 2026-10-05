@@ -101,7 +101,7 @@ class AugmentFeature:
     category: str = "utility"
     carry_type: str = "none"
     trait_affinity: list[str] = field(default_factory=list)
-    econ_value: int = 0           # 0-3
+    econ_value: int = 0           # 0-3, CHI vang/XP/reroll - item nam o item_grants
     tempo: str = "immediate"
     item_grants: list[str] = field(default_factory=list)
     board_condition: str | None = None
@@ -155,6 +155,11 @@ def extract_econ_value(desc: str, name: str) -> int:
     Thang do co chu y tho: 254 augment khong the phan biet tinh te bang regex,
     va gia vo lam duoc dieu do se de lai mot con so trong ra dang tin hon thuc
     te. Tang 2 (LLM) chinh lai cai nay - do la ly do no ton tai.
+
+    Dinh nghia: econ_value CHI do vang, XP va reroll/gia tri shop. Item
+    (component, emblem, anvil...) KHONG tinh - chung thuoc `item_grants`.
+    Neu tinh ca item thi EconFit (strength = econ_value / 3) se cham augment
+    chi cho item nhu loi kinh te manh nhat.
     """
     text = f"{name} {desc}"
     # Cong gate: mot augment co the la kinh te ma khong bao gio noi chu "gold"

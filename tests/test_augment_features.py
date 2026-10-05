@@ -84,6 +84,12 @@ def test_interest_is_the_strongest_economic_signal() -> None:
     assert extract_econ_value("Your max interest is increased to 10.", "X") == 3
 
 
+def test_items_alone_are_not_economic_value() -> None:
+    """econ_value chi do vang/XP/reroll - item thuoc item_grants."""
+    assert extract_econ_value("Gain 3 random components and 1 Reforger.", "X") == 0
+    assert extract_econ_value("Gain a component anvil when you reach level 5.", "X") == 0
+
+
 def test_incidental_stat_mention_does_not_make_a_carry_type() -> None:
     """'Gain Health whenever you level up' la augment kinh te, khong phai tank."""
     desc = "Buying XP costs 1 less. Gain 20 Health whenever you level up."
@@ -175,8 +181,10 @@ def test_committed_table_is_reproducible(table) -> None:
     immutable = ("api_name", "name", "tier", "trait_affinity", "item_grants")
     n_llm = 0
     for api, row in committed.items():
-        if str(row["extraction_method"]).startswith("llm:"):
-            n_llm += 1
+        method = str(row["extraction_method"])
+        n_llm += method.startswith("llm:")
+        # Dong sua tay (audit) cung chi duoc dong vao phan PHAN DOAN.
+        if method.startswith(("llm:", "manual-audit:")):
             for f in immutable:
                 assert row[f] == generated[api][f], f"{api}.{f} bi tang 2 sua"
 
@@ -186,6 +194,33 @@ def test_committed_table_is_reproducible(table) -> None:
     assert tier1, "khong dong tang 1 nao con lai"
     for api in tier1:
         assert committed[api] == generated[api], f"{api} khac voi ban sinh lai"
+
+
+@pytest.mark.skipif(not COMMITTED.exists(), reason="chua sinh data/augment_features.json")
+def test_item_augments_do_not_score_as_economy() -> None:
+    """Audit 2026-10-05 doi chieu MetaTFT: augment chi cho item bi LLM cham
+    econ_value toi 3, va EconFit (econ_value / 3) xep chung ngang loi kinh te
+    manh nhat. Item thuoc item_grants, khong thuoc econ_value.
+    """
+    rows = json.loads(COMMITTED.read_text(encoding="utf-8"))["augments"]
+    item_only = (
+        "DA_BandOfThievesII", "DA_BandOfThievesIIPlus", "DA_BuriedTreasuresIII",
+        "DA_CaretakersFavor", "DA_ExtraBuckles", "DA_BeltOverflow",
+        "DA_CookingPot", "DA_LuckyGlovesPlus",
+    )
+    for api in item_only:
+        assert rows[api]["econ_value"] == 0, api
+    # Item + mot it vang (< 8): chi phan vang duoc tinh -> muc 1.
+    small_gold = ("DA_18_BigGrabBag", "DA_LuckyGloves", "DA_GoldenGamble", "DA_IronAssets")
+    for api in small_gold:
+        assert rows[api]["econ_value"] == 1, api
+
+
+def test_llm_prompt_defines_econ_value_without_items() -> None:
+    """Tang 2 khong co dinh nghia econ_value la nguyen nhan goc cua loi tren."""
+    from scripts.build_augment_features import EXTRACT_PROMPT
+
+    assert "econ_value: CHI tinh vang, XP, reroll" in EXTRACT_PROMPT
 
 
 @pytest.mark.skipif(not COMMITTED.exists(), reason="chua sinh data/augment_features.json")
