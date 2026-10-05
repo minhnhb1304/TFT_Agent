@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Duyệt phân loại lõi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: sticky progress + filter rail, one card per augment; verdict buttons on the right, edit form unfolds under a "Sai" */
+:root{
+  --bg:#f3f5f2;--surface:#ffffff;--fg:#1c2420;--muted:#5b6862;--line:#dce2dd;
+  --accent:#2f6f5e;--accent-soft:#e1efe8;
+  --ok:#2c7a3f;--ok-soft:#e2f2e5;--bad:#a8382a;--bad-soft:#f8e3df;--unsure:#8a6a12;--unsure-soft:#f6eed6;
+  --s:#b4532a;--a:#8a6a12;--b:#3d5f8f;--c:#6b6f72;
+  --sans:"Be Vietnam Pro",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#131816;--surface:#1a201d;--fg:#e3e9e5;--muted:#99a59f;--line:#2c3430;
+  --accent:#7cc4ad;--accent-soft:#21332c;--ok:#7fd093;--ok-soft:#1d3323;--bad:#f08a7a;--bad-soft:#3a2420;
+  --unsure:#e0c060;--unsure-soft:#352d17;--s:#f0936b;--a:#e0c060;--b:#8fb2e8;--c:#a3a7aa;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131816;--surface:#1a201d;--fg:#e3e9e5;--muted:#99a59f;--line:#2c3430;
+  --accent:#7cc4ad;--accent-soft:#21332c;--ok:#7fd093;--ok-soft:#1d3323;--bad:#f08a7a;--bad-soft:#3a2420;
+  --unsure:#e0c060;--unsure-soft:#352d17;--s:#f0936b;--a:#e0c060;--b:#8fb2e8;--c:#a3a7aa;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:14px;line-height:1.45}
+.wrap{padding-inline:16px;padding-block:20px 60px;max-width:1100px;margin:0 auto;display:grid;gap:14px}
+h1{font-size:22px;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:4px 0 0;max-width:75ch}
+.banner{border:1px solid var(--line);background:var(--unsure-soft);border-radius:6px;padding:8px 12px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--bg);padding-block:8px;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.progress{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.bar{flex:1 1 200px;height:8px;border-radius:4px;background:var(--line);display:flex;overflow:hidden;min-width:0}
+.bar i{display:block;height:100%}
+.bar .o{background:var(--ok)}.bar .x{background:var(--bad)}.bar .u{background:var(--unsure)}
+.legend{display:flex;gap:10px;color:var(--muted);font-size:13px;flex-wrap:wrap}
+.legend b{color:var(--fg);font-family:var(--mono);font-weight:600}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters input,.filters select,.edit select,.edit input,.edit textarea{font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 8px;min-width:0}
+.filters input[type=search]{flex:1 1 200px}
+.count{color:var(--muted);margin-left:auto;font-variant-numeric:tabular-nums}
+.btn{font:inherit;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:6px;padding:6px 10px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.list{display:grid;gap:8px}
+.card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:6px;padding:10px 12px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px}
+.card.ok{border-left-color:var(--ok)}.card.wrong{border-left-color:var(--bad)}.card.unsure{border-left-color:var(--unsure)}
+.card.cur{box-shadow:0 0 0 2px var(--accent)}
+.head{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.name{font-weight:700;font-size:15px}
+.api{font-family:var(--mono);font-size:11.5px;color:var(--muted);overflow-wrap:anywhere}
+.tier{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.ac{font-family:var(--mono);font-weight:600;font-size:12px;padding:0 5px;border-radius:3px;border:1px solid currentColor}
+.ac.S{color:var(--s)}.ac.A{color:var(--a)}.ac.B{color:var(--b)}.ac.C,.ac.\-{color:var(--c)}
+.desc{grid-column:1;margin:0;max-width:85ch}
+.labels{grid-column:1;display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;border:1px solid var(--line);border-radius:4px;padding:1px 6px;display:inline-flex;gap:4px}
+.chip span{color:var(--muted)}
+.chip b{font-family:var(--mono);font-weight:600}
+.chip.cat{background:var(--accent-soft);border-color:transparent}
+.chip.fixed{background:var(--bad-soft);border-color:transparent}
+.chip.fixed s{color:var(--muted)}
+.meta{font-size:12px;color:var(--muted)}
+.verdicts{grid-column:2;grid-row:1 / span 3;display:flex;flex-direction:column;gap:6px;align-self:start}
+.v{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:6px;padding:5px 12px;cursor:pointer;white-space:nowrap}
+.v[aria-pressed=true].ok{background:var(--ok-soft);color:var(--ok);border-color:var(--ok)}
+.v[aria-pressed=true].wrong{background:var(--bad-soft);color:var(--bad);border-color:var(--bad)}
+.v[aria-pressed=true].unsure{background:var(--unsure-soft);color:var(--unsure);border-color:var(--unsure)}
+.edit{grid-column:1 / -1;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;border-top:1px dashed var(--line);padding-top:8px}
+.edit label{display:grid;gap:3px;font-size:12px;color:var(--muted)}
+.edit .wide{grid-column:1 / -1}
+.edit textarea{min-height:44px;resize:vertical}
+.edit .row{grid-column:1 / -1;display:flex;gap:8px;align-items:center}
+.saved{font-size:12px;color:var(--muted)}
+.empty{color:var(--muted);padding:20px;text-align:center}
+.keys{font-size:12px;color:var(--muted)}
+.keys kbd{font-family:var(--mono);border:1px solid var(--line);border-radius:3px;padding:0 4px;background:var(--surface)}
+@media (max-width:640px){.card{grid-template-columns:minmax(0,1fr)}.verdicts{grid-column:1;grid-row:auto;flex-direction:row}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Duyệt phân loại lõi</h1>
+    <p class="sub">Set 18 · <span id="nAll">0</span> lõi trong <code>data/augment_features.json</code>. Đọc mô tả, so với nhãn hiện tại, rồi bấm Đúng, Sai hoặc Chưa chắc. Khi chọn Sai, sửa nhãn ngay bên dưới. Mỗi lần bấm được ghi ngay vào <code id="outPath">…</code>.</p>
+  </header>
+  <div id="banner" class="banner" hidden></div>
+
+  <div class="top">
+    <div class="progress">
+      <div class="bar" aria-hidden="true"><i class="o" id="bo"></i><i class="x" id="bx"></i><i class="u" id="bu"></i></div>
+      <div class="legend">
+        <span>Đã duyệt <b id="nDone">0</b>/<b id="nTotal">0</b></span>
+        <span>Đúng <b id="nOk">0</b></span><span>Sai <b id="nBad">0</b></span><span>Chưa chắc <b id="nUn">0</b></span>
+      </div>
+    </div>
+    <div class="filters">
+      <input type="search" id="q" placeholder="Tìm tên, api_name, mô tả…" aria-label="Tìm">
+      <select id="fStatus" aria-label="Trạng thái">
+        <option value="todo">Chưa duyệt</option><option value="">Tất cả trạng thái</option>
+        <option value="ok">Đúng</option><option value="wrong">Sai</option><option value="unsure">Chưa chắc</option>
+      </select>
+      <select id="fCat" aria-label="Category"><option value="">Mọi category</option></select>
+      <select id="fMethod" aria-label="Cách trích">
+        <option value="">Mọi cách trích</option><option value="det">deterministic-v1</option><option value="llm">LLM</option>
+      </select>
+      <select id="fTier" aria-label="Tier"><option value="">Mọi tier</option><option value="1">Bạc (1)</option><option value="2">Vàng (2)</option><option value="3">Kim cương (3)</option></select>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="keys">Phím tắt: <kbd>j</kbd>/<kbd>k</kbd> lõi kế/trước · <kbd>1</kbd> Đúng · <kbd>2</kbd> Sai · <kbd>3</kbd> Chưa chắc</div>
+  </div>
+
+  <div class="list" id="list"></div>
+</div>
+
+<script>
+let DATA = [];
+const CATS = ["econ","combat","trait","item","utility","reroll"];
+const CARRY = ["AD","AP","tank","none"];
+const TEMPO = ["immediate","scaling"];
+const TIERN = {1:"Bạc",2:"Vàng",3:"Kim cương"};
+const reviews = {};          // api_name -> review doc
+let cur = 0, visible = [];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtList = a => (a && a.length) ? a.join(", ") : "—";
+
+CATS.forEach(c => $("#fCat").insertAdjacentHTML("beforeend", `<option value="${c}">${c}</option>`));
+
+
+function fixedValue(a, r, k){
+  if (!r || r.verdict !== "wrong" || !r.fix || !(k in r.fix)) return null;
+  const v = r.fix[k], o = a[k];
+  return JSON.stringify(v) === JSON.stringify(o) ? null : v;
+}
+function chip(a, r, k, label, cls=""){
+  const orig = Array.isArray(a[k]) ? fmtList(a[k]) : (a[k] ?? "—");
+  const f = fixedValue(a, r, k);
+  if (f !== null){
+    const nv = Array.isArray(f) ? fmtList(f) : f;
+    return `<span class="chip fixed"><span>${label}</span><s>${esc(orig)}</s><b>${esc(nv)}</b></span>`;
+  }
+  return `<span class="chip ${cls}"><span>${label}</span><b>${esc(orig)}</b></span>`;
+}
+
+function editForm(a, r){
+  const f = Object.assign({category:a.category,carry_type:a.carry_type,tempo:a.tempo,econ_value:a.econ_value,
+    trait_affinity:a.trait_affinity,item_grants:a.item_grants,board_condition:a.board_condition}, r.fix || {});
+  const sel = (k, opts) => `<select data-k="${k}" id="e-${k}-${a.api_name}">${opts.map(o=>`<option${String(o)===String(f[k])?" selected":""}>${o}</option>`).join("")}</select>`;
+  return `<div class="edit">
+    <label>category ${sel("category",CATS)}</label>
+    <label>carry_type ${sel("carry_type",CARRY)}</label>
+    <label>tempo ${sel("tempo",TEMPO)}</label>
+    <label>econ_value ${sel("econ_value",[0,1,2,3])}</label>
+    <label class="wide">trait_affinity (phân cách bằng dấu phẩy)<input data-k="trait_affinity" id="e-ta-${a.api_name}" value="${esc((f.trait_affinity||[]).join(", "))}"></label>
+    <label class="wide">item_grants (phân cách bằng dấu phẩy)<input data-k="item_grants" id="e-ig-${a.api_name}" value="${esc((f.item_grants||[]).join(", "))}"></label>
+    <label class="wide">board_condition<input data-k="board_condition" id="e-bc-${a.api_name}" value="${esc(f.board_condition||"")}"></label>
+    <label class="wide">Ghi chú<textarea data-k="note" id="e-note-${a.api_name}">${esc(r.note||"")}</textarea></label>
+    <div class="row"><button class="btn" data-act="savefix">Lưu chỉnh sửa</button><span class="saved">${r.updated_at ? "Đã lưu " + new Date(r.updated_at).toLocaleString("vi-VN") : ""}</span></div>
+  </div>`;
+}
+function noteForm(a, r){
+  return `<div class="edit"><label class="wide">Ghi chú (vì sao chưa chắc)<textarea data-k="note" id="e-note-${a.api_name}">${esc(r.note||"")}</textarea></label>
+    <div class="row"><button class="btn" data-act="savefix">Lưu ghi chú</button></div></div>`;
+}
+
+function card(a, i){
+  const r = reviews[a.api_name] || {};
+  const v = r.verdict || "";
+  const btn = (k, t) => `<button class="v ${k}" data-act="${k}" aria-pressed="${v===k}">${t}</button>`;
+  return `<article class="card ${v}${i===cur?" cur":""}" data-api="${esc(a.api_name)}" data-i="${i}">
+    <div class="head"><span class="name">${esc(a.name)}</span><span class="ac ${esc(a.academy)}">${esc(a.academy)}</span>
+      <span class="tier">${TIERN[a.tier]||a.tier}</span><span class="api">${esc(a.api_name)}</span></div>
+    <p class="desc">${esc(a.desc)}</p>
+    <div class="labels">
+      ${chip(a,r,"category","category","cat")}${chip(a,r,"carry_type","carry")}${chip(a,r,"tempo","tempo")}
+      ${chip(a,r,"econ_value","econ")}${chip(a,r,"trait_affinity","trait")}${chip(a,r,"item_grants","item")}
+      ${a.board_condition || fixedValue(a,r,"board_condition")!==null ? chip(a,r,"board_condition","board") : ""}
+    </div>
+    <div class="meta">${esc(a.extraction_method)} · confidence ${a.confidence}${a.random?" · có yếu tố ngẫu nhiên":""}</div>
+    <div class="verdicts">${btn("ok","Đúng")}${btn("wrong","Sai")}${btn("unsure","Chưa chắc")}</div>
+    ${v==="wrong" ? editForm(a,r) : v==="unsure" ? noteForm(a,r) : ""}
+  </article>`;
+}
+
+function filtered(){
+  const q = $("#q").value.trim().toLowerCase(), st = $("#fStatus").value, c = $("#fCat").value,
+        m = $("#fMethod").value, t = $("#fTier").value;
+  return DATA.filter(a => {
+    const v = reviews[a.api_name]?.verdict || "";
+    if (st === "todo" && v) return false;
+    if (st && st !== "todo" && v !== st) return false;
+    if (c && a.category !== c) return false;
+    if (m === "det" && a.extraction_method !== "deterministic-v1") return false;
+    if (m === "llm" && !a.extraction_method.startsWith("llm")) return false;
+    if (t && String(a.tier) !== t) return false;
+    if (q && !(a.name+" "+a.api_name+" "+a.desc).toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+function renderStats(){
+  const vs = Object.values(reviews).map(r => r.verdict);
+  const ok = vs.filter(v=>v==="ok").length, bad = vs.filter(v=>v==="wrong").length, un = vs.filter(v=>v==="unsure").length;
+  $("#nOk").textContent = ok; $("#nBad").textContent = bad; $("#nUn").textContent = un; $("#nDone").textContent = ok+bad+un;
+  const N = DATA.length;
+  $("#bo").style.width = (ok/N*100)+"%"; $("#bx").style.width = (bad/N*100)+"%"; $("#bu").style.width = (un/N*100)+"%";
+}
+
+let frozen = null;   // keep the list stable while working in "Chưa duyệt" so a card doesn't vanish on click
+function render(keepOrder){
+  if (!keepOrder || !frozen) frozen = filtered();
+  visible = frozen;
+  if (cur >= visible.length) cur = Math.max(0, visible.length-1);
+  $("#list").innerHTML = visible.length ? visible.map(card).join("") :
+    `<div class="empty">Không còn lõi nào khớp bộ lọc. Đổi trạng thái sang “Tất cả” để xem lại.</div>`;
+  $("#count").textContent = `${visible.length} lõi`;
+  renderStats();
+}
+function rerenderCard(api){
+  const i = visible.findIndex(a => a.api_name === api);
+  const el = document.querySelector(`.card[data-api="${CSS.escape(api)}"]`);
+  if (i < 0 || !el) return;
+  el.outerHTML = card(visible[i], i);
+  renderStats();
+}
+
+async function persist(api){
+  const r = reviews[api];
+  try {
+    const res = await fetch("/api/save", {method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({api_name: api, review: {verdict: r.verdict, fix: r.fix, note: r.note}})});
+    const out = await res.json();
+    if (!res.ok || !out.ok) throw new Error(out.error || res.status);
+    reviews[api] = out.entry; rerenderCard(api); $("#banner").hidden = true;
+  } catch(e){ showBanner("Không lưu được: " + e.message + ". Kiểm tra script còn chạy trong terminal không."); }
+}
+
+function readFix(el){
+  const fix = {}; let note = "";
+  el.querySelectorAll("[data-k]").forEach(x => {
+    const k = x.dataset.k, val = x.value.trim();
+    if (k === "note") note = val;
+    else if (k === "econ_value") fix[k] = Number(val);
+    else if (k === "trait_affinity" || k === "item_grants") fix[k] = val ? val.split(",").map(s=>s.trim()).filter(Boolean) : [];
+    else if (k === "board_condition") fix[k] = val || null;
+    else fix[k] = val;
+  });
+  return {fix, note};
+}
+
+function setVerdict(api, v){
+  const prev = reviews[api] || {};
+  const r = {...prev, verdict: v, updated_at: new Date().toISOString()};
+  if (v !== "wrong") delete r.fix;
+  else if (!r.fix) { const a = DATA.find(x=>x.api_name===api);
+    r.fix = {category:a.category,carry_type:a.carry_type,tempo:a.tempo,econ_value:a.econ_value,
+             trait_affinity:a.trait_affinity,item_grants:a.item_grants,board_condition:a.board_condition}; }
+  reviews[api] = r;
+  rerenderCard(api); persist(api);
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-act]"); if (!b) return;
+  const c = b.closest(".card"), api = c.dataset.api;
+  cur = Number(c.dataset.i);
+  document.querySelectorAll(".card.cur").forEach(x=>x.classList.remove("cur")); c.classList.add("cur");
+  const act = b.dataset.act;
+  if (act === "savefix"){
+    const {fix, note} = readFix(c);
+    const r = reviews[api]; if (!r) return;
+    if (r.verdict === "wrong") r.fix = fix;
+    r.note = note; r.updated_at = new Date().toISOString();
+    rerenderCard(api); persist(api);
+  } else setVerdict(api, act);
+});
+
+function focusCur(){
+  document.querySelectorAll(".card.cur").forEach(x=>x.classList.remove("cur"));
+  const el = document.querySelector(`.card[data-i="${cur}"]`);
+  if (el){ el.classList.add("cur"); el.scrollIntoView({block:"nearest"}); }
+}
+document.addEventListener("keydown", e => {
+  if (e.target.closest("input,textarea,select") || e.ctrlKey || e.metaKey || e.altKey) return;
+  const a = visible[cur];
+  if (e.key === "j"){ cur = Math.min(visible.length-1, cur+1); focusCur(); }
+  else if (e.key === "k"){ cur = Math.max(0, cur-1); focusCur(); }
+  else if (a && e.key === "1"){ setVerdict(a.api_name,"ok"); cur = Math.min(visible.length-1, cur+1); focusCur(); }
+  else if (a && e.key === "2"){ setVerdict(a.api_name,"wrong"); focusCur(); }
+  else if (a && e.key === "3"){ setVerdict(a.api_name,"unsure"); focusCur(); }
+});
+["#q","#fStatus","#fCat","#fMethod","#fTier"].forEach(s => $(s).addEventListener("input", () => { cur = 0; render(false); }));
+
+function showBanner(t){ const b = $("#banner"); b.textContent = t; b.hidden = false; }
+
+(async () => {
+  try {
+    const s = await (await fetch("/api/state")).json();
+    DATA = s.rows; Object.assign(reviews, s.reviews);
+    $("#outPath").textContent = s.path;
+    $("#nAll").textContent = $("#nTotal").textContent = DATA.length;
+    render(false);
+  } catch(e){ showBanner("Không tải được dữ liệu: " + e.message + ". Chạy lại scripts/review_augment_features.py."); }
+})();
+</script>
+</body>
+</html>
