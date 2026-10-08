@@ -1116,10 +1116,11 @@ Không có template để match.
 ```
 Primary:  Crop ROI augment → Gemini Vision → tên + tier
 Verify:   Normalize + fuzzy match phần GỐC (đã tách tier token) vào DB CommunityDragon
-Tier:     Ladder → 1) apiName/name token (75)  2) missing-t(N) (28)
-                   3) [-_](i{1,3}).tex (135)  4) (digit).tex (16)   = 254/254
-          → THỨ TỰ QUAN TRỌNG: đọc tên TRƯỚC, icon path chỉ là fallback.
-            Đảo lại thì 19/254 augment bị gán SAI tier.
+Tier:     Ladder icon → 1) missing-t(N)  2) [-_](i{1,3}).tex  3) (digit).tex   = 254/254
+          rồi luật cấp catalog: `+`/`++` cùng tier bản gốc; số La Mã tăng ngặt trong họ;
+          cuối cùng data/augment_tier_overrides.json (7 lõi, người dùng xác nhận).
+          → Tên KHÔNG cho tier tuyệt đối (sửa 2026-10-06, 38 lõi đổi; 70/115/69).
+            Xem docs/offer-rounds/tier-mismatch.md.
 Ambiguous: 5 cặp trùng cả tên lẫn icon → hiển thị CẢ HAI, gắn nhãn, KHÔNG đoán (số đo thực tế 5 cặp)
 Fallback: Từ chối và báo lỗi có lý do, KHÔNG dùng RapidOCR đoán bừa (thực nghiệm đo được 82% tên lõi Set 18 chứa ký tự dấu tổ hợp thiếu trong charset PP-OCRv6 (33/35 thiếu), gây sai ngay cả trên ảnh 96px sạch)
 Output:   3 apiName + confidence → đẩy sang Augment Scoring Engine (§3.5.4)

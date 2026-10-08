@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "set": "TFTSet18",
+    "confirmed_by": "user (in-game knowledge)",
+    "date": "2026-10-06",
+    "reason": "CDragon icon tier wrong; datatft agrees",
+    "doc": "docs/offer-rounds/tier-mismatch.md"
+  },
+  "tiers": {
+    "DA_PandorasBench": 1,
+    "DA_DeadlierBlades": 3,
+    "DA_DeadlierCaps": 3,
+    "DA_Flexible": 3,
+    "DA_ForgeAFriend": 1,
+    "DA_ConstructACompanion": 2,
+    "DA_WovenMagic": 2
+  }
+}
