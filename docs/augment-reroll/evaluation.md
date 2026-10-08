@@ -18,20 +18,20 @@ bootstrap trên chênh lệch đã ghép cặp.
 
 | chính sách | điểm TB | số lần đổi | Δ so với mốc [KTC 95%] |
 |---|---|---|---|
-| không đổi (mốc) | 0,59808 | 0,00 | — |
-| chọn bừa | 0,54896 | 0,00 | −0,04912 [−0,05029, −0,04794] |
-| vét hết ba lượt | 0,59845 | 3,00 | +0,00037 [−0,00064, +0,00143] |
-| **tuần tự** | **0,61652** | **2,12** | **+0,01844 [+0,01783, +0,01907]** |
-| biết trước (trần) | 0,61864 | 0,96 | +0,02056 [+0,01995, +0,02118] |
+| không đổi (mốc) | 0,58391 | 0,00 | — |
+| chọn bừa | 0,53597 | 0,00 | −0,04794 [−0,04907, −0,04679] |
+| vét hết ba lượt | 0,58439 | 3,00 | +0,00048 [−0,00044, +0,00147] |
+| **tuần tự** | **0,60113** | **2,20** | **+0,01722 [+0,01665, +0,01779]** |
+| biết trước (trần) | 0,60301 | 0,91 | +0,01911 [+0,01854, +0,01969] |
 
-Bậc prismatic: tuần tự +0,01898, và chỉ dùng **1,15** lượt đổi thay vì 2,12 — đúng chế độ
+Bậc prismatic: tuần tự +0,01130, và chỉ dùng **1,24** lượt đổi thay vì 2,20 — đúng chế độ
 mà `cost_matrix` mô tả. Dòng **vét hết ba lượt** là kết quả đáng chú ý nhất: nó không phân
 biệt được với việc không đổi lần nào, vì lượt thứ ba bắt buộc đổi chính ô đang giữ thẻ tốt
 nhất nên trả lại gần hết phần lợi của hai lượt đầu.
 
 > Bảng ba bậc, kiểm chứng trần bằng công thức đóng và nhánh β:
 > [ablation-results.md](ablation-results.md), [tailoring-beta-sweep.md](tailoring-beta-sweep.md).
-> Số ở đây đã chạy lại **sau** khi hiệu chuẩn bộ neo `TIER_PLACEMENT`.
+> Số ở đây chạy lại 2026-10-07: bậc đã sửa, pool theo lượt chào (N = 59), bảng tier patch 18.2.
 
 ### Trần và một đồng nhất thức
 

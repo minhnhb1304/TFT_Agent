@@ -33,20 +33,20 @@ giữa các bậc, xem [depletion-cost.md](depletion-cost.md).
 ## Nhưng vét hết lượt cũng sai
 
 Đo bằng mô phỏng (n = 10.000, bậc gold): chính sách **vét hết ba lượt** không hơn gì
-chính sách **không đổi lần nào** — chênh lệch +0,0004 với khoảng tin cậy ôm lấy 0.
+chính sách **không đổi lần nào** — chênh lệch +0,0005 với khoảng tin cậy ôm lấy 0.
 
 Lý do là một ràng buộc cơ chế dễ bỏ quên: lượt đổi thứ ba bắt buộc phải đổi chính ô đang
 giữ thẻ tốt nhất, nên nó trả lại gần hết phần lợi của hai lượt đầu.
 
 | chính sách | điểm TB | số lần đổi | Δ so với không đổi |
 |---|---|---|---|
-| không đổi (first_look) | 0,59808 | 0,00 | (mốc) |
-| chọn bừa | 0,54896 | 0,00 | −0,04912 |
-| vét hết ba lượt | 0,59845 | 3,00 | +0,00037 *(không phân biệt được với mốc)* |
-| **tuần tự (module này)** | **0,61652** | **2,12** | **+0,01844** |
-| biết trước (trần) | 0,61864 | 0,96 | +0,02056 |
+| không đổi (first_look) | 0,58391 | 0,00 | (mốc) |
+| chọn bừa | 0,53597 | 0,00 | −0,04794 |
+| vét hết ba lượt | 0,58439 | 3,00 | +0,00048 *(không phân biệt được với mốc)* |
+| **tuần tự (module này)** | **0,60113** | **2,20** | **+0,01722** |
+| biết trước (trần) | 0,60301 | 0,91 | +0,01911 |
 
-Chính sách tuần tự lấy được **89,7%** khoảng cách tới trần biết trước. Bảng đầy đủ cả ba bậc:
+Chính sách tuần tự lấy được **90,2%** khoảng cách tới trần biết trước. Bảng đầy đủ cả ba bậc:
 [ablation-results.md](ablation-results.md).
 
 ⚠️ Đây là **chính sách so với chính sách trên chính hàm Score của hệ thống**, không phải
@@ -69,6 +69,7 @@ bằng chứng về placement. Xem [evaluation.md](evaluation.md).
 
 ## Related
 
+- [offer-round-pool.md](offer-round-pool.md) — pool theo lượt chào (2-1 / 3-2 / 4-2), số trước/sau
 - [SPEC.md](../../SPEC.md) — §3.5.4 scoring engine, §3.5.5 chính sách reroll, §12 đánh giá
 - [dev_log.md](../../dev_log.md) — mục 2 (số liệu augment), mục 9 (VOD Set 18)
 - [augment-reroll-plan.md](../augment-reroll-plan.md) — kế hoạch đã duyệt

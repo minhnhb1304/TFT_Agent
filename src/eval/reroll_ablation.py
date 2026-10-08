@@ -49,7 +49,7 @@ import argparse
 import json
 import random
 import sys
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Any, Callable, Sequence
 
 from ..decision.reroll_policy import PoolDistribution, RerollState, RerollTuning, SlotView, decide
@@ -100,6 +100,7 @@ class AblationReport:
     tier: int = 2
     pool_n: int = 0
     pool_source: str = "unknown"
+    pool_scope: str = "tier"
     evidence: str = "uncalibrated"
     clairvoyant_ceiling: float = 0.0
 
@@ -112,8 +113,8 @@ class AblationReport:
     def table(self) -> str:
         head = (
             f"Doi chung chinh sach reroll - n = {self.n} tinh huong, seed {self.seed}\n"
-            f"Pool: bac {self.tier}, N = {self.pool_n}, nguon {self.pool_source} "
-            f"({self.evidence})\n"
+            f"Pool: bac {self.tier}, N = {self.pool_n}, pham vi {self.pool_scope}, "
+            f"nguon {self.pool_source} ({self.evidence})\n"
         )
         lines = [head, f"{'chinh sach':<22}{'diem TB':>10}{'so lan doi':>12}{'delta vs ' + self.baseline:>26}"]
         lines.append("-" * 70)
@@ -158,6 +159,7 @@ class AblationReport:
             "tier": self.tier,
             "pool_n": self.pool_n,
             "pool_source": self.pool_source,
+            "pool_scope": self.pool_scope,
             "evidence": self.evidence,
             "clairvoyant_ceiling": round(self.clairvoyant_ceiling, 5),
             "caveat": (
@@ -332,6 +334,7 @@ def analyze(
         tier=pool.tier,
         pool_n=len(pool),
         pool_source=pool.source,
+        pool_scope=pool.scope,
         evidence=pool.evidence,
         clairvoyant_ceiling=sum(
             max(list(d.initial) + list(d.redraws)) for d in draws
@@ -363,6 +366,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         help="Trait dang bat, dang 'key:count,key:count'. Quyet dinh augment nao "
         "duoc tailoring nhan trong so - nen la can gat duy nhat cua --tailoring-beta.",
     )
+    parser.add_argument(
+        "--pool-by-offer-round",
+        choices=("on", "off"),
+        default=None,
+        help="Ep co reroll_policy.pool_by_offer_round (mac dinh: theo file --weights). "
+        "on = pool chi gom augment chao o luot cua --stage.",
+    )
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args(argv)
 
@@ -387,13 +397,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     tuning = RerollTuning.from_config(config)
     if args.tailoring_beta is not None:
-        tuning = RerollTuning(
-            risk_lambda=tuning.risk_lambda,
-            tailoring_beta=args.tailoring_beta,
-            burn_on_reveal=tuning.burn_on_reveal,
-            cost_unit=tuning.cost_unit,
-            cost_matrix=tuning.cost_matrix,
-        )
+        tuning = replace(tuning, tailoring_beta=args.tailoring_beta)
+    if args.pool_by_offer_round is not None:
+        tuning = replace(tuning, pool_by_offer_round=args.pool_by_offer_round == "on")
 
     state = GameState(
         gold=30,
@@ -418,7 +424,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     # Pool phai dung `tailoring_beta` cua tuning nay, nen dung advisor voi
     # config da sua thay vi goi thang pool_distribution.
     advisor.config = config
-    pool = advisor.pool_distribution(args.tier, state)
+    pool = advisor.pool_distribution(args.tier, state, tuning=tuning)
     if args.tailoring_beta is not None:
         pool = PoolDistribution(
             tier=pool.tier,
@@ -431,6 +437,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             sample_n=pool.sample_n,
             is_evidence=pool.is_evidence,
             evidence=pool.evidence,
+            scope=pool.scope,
+            offer_round=pool.offer_round,
         )
 
     report = analyze(pool, tuning, args.stage, args.trials, args.seed)

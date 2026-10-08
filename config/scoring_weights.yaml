@@ -191,6 +191,16 @@ reroll_policy:
   # Xem docs/augment-reroll/mechanics-assumptions.md truoc khi tin so nay.
   burn_on_reveal: true
 
+  # Pool cua F_S = augment cung bac VA chao o luot hien tai (2-1 / 3-2 / 4-2,
+  # truong `offer_rounds` cua bang feature). false = pool "moi augment cung bac"
+  # nhu truoc 2026-10-06 - nhanh doi chung cua ablation.
+  # So do truoc/sau va ly do chon mac dinh: docs/augment-reroll/offer-round-pool.md
+  pool_by_offer_round: true
+  # Pool theo luot (chua tru the dang hien / da dot) nho hon so nay thi lui ve
+  # pool cung bac va ghi pool_scope = tier:fallback-small. 12 = 2 x 6 the mot man
+  # chon co the lo ra; pool that nho nhat la 23 nen nguong chi chan du lieu hong.
+  min_round_pool: 12
+
   # DON VI cua cost_matrix. `sigma` = boi cua do lech chuan diem cua chinh
   # pool do; `absolute` = don vi diem tho.
   # PHAI la sigma: do 2026-09-07 cho thay sd(Score) tren mot bac chi ~0,05 va

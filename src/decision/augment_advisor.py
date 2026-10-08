@@ -38,6 +38,7 @@ from .reroll_policy import (
     RerollTuning,
     build_advice,
     is_fabricated,
+    select_pool_members,
     slot_views,
     tailoring_weight,
 )
@@ -225,7 +226,11 @@ class AugmentAdvisor:
     # -- reroll (SPEC 3.5.5) -----------------------------------------------
 
     def pool_distribution(
-        self, tier: int, state: GameState, exclude: Iterable[str] = ()
+        self,
+        tier: int,
+        state: GameState,
+        exclude: Iterable[str] = (),
+        tuning: RerollTuning | None = None,
     ) -> PoolDistribution:
         """Phan bo diem cua ca MOT BAC augment duoi trang thai hien tai.
 
@@ -233,9 +238,20 @@ class AugmentAdvisor:
         1.39 ms p50 / 2.18 ms p95 cho bac dong nhat (N=132) - vua ngan sach
         5 ms. Cham ca 254 augment thi 4.5 ms p50 / 12.2 ms p95, tuc VO ngan
         sach: luon phai loc theo bac truoc, dung bao gio quet ca bang.
+
+        Pool = cung bac VA (khi `pool_by_offer_round` bat) chao o luot hien tai.
+        `exclude` (the dang hien + the da dot) duoc tru SAU khi chon pool: the
+        dang hien hien nhien thuoc luot nay, con the da dot ma khong chao o luot
+        nay thi bo loc da loai san - tru hai lan cung khong sai.
+        `tuning` truyen vao de ablation ep co ma khong sua file config.
         """
         skip = {str(x) for x in exclude}
-        tuning = RerollTuning.from_config(self.config)
+        tuning = tuning or RerollTuning.from_config(self.config)
+        members, scope, offer_round = select_pool_members(
+            [(a, f) for a, f in self.features.features.items() if f.tier == tier],
+            state.stage_number,
+            tuning,
+        )
         active = state.active_traits or {}
 
         rows: list[tuple[float, float, str]] = []
@@ -244,8 +260,8 @@ class AugmentAdvisor:
         n_ordinal = 0
         sources: set[str] = set()
 
-        for api_name, feature in self.features.features.items():
-            if feature.tier != tier or api_name in skip:
+        for api_name, feature in members:
+            if api_name in skip:
                 continue
             total, _ = self.score_one(api_name, state)
             rows.append((total, tailoring_weight(feature, active, tuning.tailoring_beta), api_name))
@@ -278,6 +294,8 @@ class AugmentAdvisor:
             sample_n=sample_n,
             is_evidence=evidence == "measured",
             evidence=evidence,
+            scope=scope,
+            offer_round=offer_round,
         )
 
     def advise_reroll(
@@ -301,7 +319,7 @@ class AugmentAdvisor:
             exclude = {a for v in views for a in v.api_names}
             if tuning.burn_on_reveal:
                 exclude |= set(rerolls.burned)
-            pool = self.pool_distribution(self._offered_tier(ranking), state, exclude)
+            pool = self.pool_distribution(self._offered_tier(ranking), state, exclude, tuning)
 
         return build_advice(views, rerolls, pool, tuning, state.stage_number)
 

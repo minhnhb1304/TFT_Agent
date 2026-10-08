@@ -49,6 +49,7 @@ from bisect import bisect_right
 from dataclasses import dataclass, field
 from typing import Any, Literal, Sequence
 
+from ..knowledge.augment_features import OFFER_ROUNDS
 from ..knowledge.stats_provider import is_fabricated  # noqa: F401 - tai xuat
 from .scoring.types import ScoringConfig
 
@@ -60,6 +61,24 @@ TIER_NAMES = {1: "silver", 2: "gold", 3: "prismatic"}
 NO_FLOOR = 0.0
 
 EvidenceLevel = Literal["measured", "ordinal", "uncalibrated"]
+
+# Pool nao da duoc dung de dung F_S - ghi vao log de truy lai duoc quyet dinh.
+# Xem docs/augment-reroll/offer-round-pool.md.
+POOL_SCOPE_TIER = "tier"                        # co tat: moi augment cung bac
+POOL_SCOPE_ROUND = "tier+round"                 # cung bac VA chao o luot nay
+POOL_SCOPE_NO_ROUND = "tier:no-round"           # stage khong phai luot chao augment
+POOL_SCOPE_NO_DATA = "tier:no-round-data"       # ca bac chua co offer_rounds
+POOL_SCOPE_FALLBACK = "tier:fallback-small"     # pool theo luot nho hon nguong
+
+# Chang N -> luot chao augment cua chang do (2 -> "2-1", 3 -> "3-2", 4 -> "4-2").
+# Tra theo SO CHANG chu khong so chuoi stage: man chon augment co the duoc doc
+# khi dong ho da nhay sang vong ke tiep, va moi chang chi co dung mot luot chao.
+_ROUND_BY_STAGE = {int(r.split("-")[0]): r for r in OFFER_ROUNDS}
+
+
+def offer_round_for(stage_number: int) -> str | None:
+    """Luot chao augment cua chang `stage_number`, None neu chang do khong chao."""
+    return _ROUND_BY_STAGE.get(int(stage_number))
 
 
 @dataclass(frozen=True)
@@ -113,6 +132,9 @@ class PoolDistribution:
     sample_n: int                  # tong co mau tu StatsProvider, 0 neu khong co
     is_evidence: bool
     evidence: EvidenceLevel = "uncalibrated"
+    # Pool nao da duoc dung (hang POOL_SCOPE_*) va luot chao da loc theo ("" = khong loc).
+    scope: str = POOL_SCOPE_TIER
+    offer_round: str = ""
     # Do lech chuan cua pool - DON VI cua chi phi doi. Xem `RerollTuning.cost_unit`.
     sigma: float = field(default=0.0, compare=False)
     # Tong hau to, de tra loi expected_max trong O(log N). Khong tham gia so sanh.
@@ -184,6 +206,8 @@ class RerollAdvice:
     pool_n: int
     evidence: EvidenceLevel = "uncalibrated"
     ambiguous: bool = False
+    # `pool_source` la xuat xu SO LIEU; `pool_scope` la TAP augment da dung lam pool.
+    pool_scope: str = POOL_SCOPE_TIER
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -196,6 +220,7 @@ class RerollAdvice:
             "depletion_cost": round(self.depletion_cost, 4),
             "pool_source": self.pool_source,
             "pool_n": self.pool_n,
+            "pool_scope": self.pool_scope,
             "evidence": self.evidence,
             "ambiguous": self.ambiguous,
         }
@@ -235,6 +260,12 @@ class RerollTuning:
     tailoring_beta: float = 1.0
     burn_on_reveal: bool = True
     cost_unit: str = "sigma"
+    # Pool = cung bac VA chao o luot hien tai (AugmentFeature.offered_at). False
+    # tra ve pool "moi augment cung bac" - nhanh doi chung cua ablation.
+    pool_by_offer_round: bool = True
+    # Pool theo luot (TRUOC khi tru the dang hien / da dot) nho hon so nay thi lui
+    # ve pool cung bac. Ly do chon 12: xem `select_pool_members`.
+    min_round_pool: int = 12
     cost_matrix: dict[str, dict[str, float]] = field(
         default_factory=lambda: {k: dict(v) for k, v in DEFAULT_COST_MATRIX.items()}
     )
@@ -249,6 +280,8 @@ class RerollTuning:
             tailoring_beta=float(t.get("tailoring_beta", base.tailoring_beta)),
             burn_on_reveal=bool(t.get("burn_on_reveal", base.burn_on_reveal)),
             cost_unit=str(t.get("cost_unit", base.cost_unit)),
+            pool_by_offer_round=bool(t.get("pool_by_offer_round", base.pool_by_offer_round)),
+            min_round_pool=int(t.get("min_round_pool", base.min_round_pool)),
             cost_matrix=(
                 {str(k): {str(kk): float(vv) for kk, vv in v.items()} for k, v in matrix.items()}
                 if isinstance(matrix, dict)
@@ -291,6 +324,40 @@ class RerollTuning:
         if self.cost_unit == "absolute":
             return coefficient
         return coefficient * pool.sigma
+
+
+def select_pool_members(
+    same_tier: Sequence[tuple[str, Any]], stage_number: int, tuning: RerollTuning
+) -> tuple[list[tuple[str, Any]], str, str]:
+    """Chon tap augment lam pool cho mot quyet dinh. Tra (thanh vien, scope, luot).
+
+    `same_tier` la MOI augment cung bac, CHUA tru the dang hien hay da dot. Nguong
+    `min_round_pool` duoc xet tren tap chua tru do, co chu dich: kich thuoc ay la
+    thuoc tinh cua (bac, luot), nen trong mot man chon pool khong the nhay giua
+    "theo luot" va "cung bac" chi vi vua doi them mot the.
+
+    Thieu du lieu thi KHONG BAO GIO lam pool nho di: augment khong co
+    `offer_rounds` van o lai (offered_at tra True), va bac chua co dong nao biet
+    luot thi dung nguyen pool cung bac.
+
+    VI SAO NGUONG LA 12. Mot man chon lo ra toi da 6 the (3 the dau + 3 lan doi),
+    va moi the lo ra bi tru khoi pool. Duoi 12 thi so the bi tru co the vuot nua
+    pool: phan con lai khong con dai dien cho F_S, va sigma (don vi cua cost_matrix)
+    uoc luong tren duoi ~6 diem. Pool that nho nhat do duoc la 23 (bac 3 o 3-2), nen
+    nguong nay chi chan du lieu hong/thieu chu khong cat pool that nao.
+    """
+    members = list(same_tier)
+    if not tuning.pool_by_offer_round:
+        return members, POOL_SCOPE_TIER, ""
+    offer_round = offer_round_for(stage_number)
+    if offer_round is None:
+        return members, POOL_SCOPE_NO_ROUND, ""
+    if not any(getattr(f, "offer_rounds", None) for _, f in members):
+        return members, POOL_SCOPE_NO_DATA, offer_round
+    offered = [(api, f) for api, f in members if f.offered_at(offer_round)]
+    if len(offered) < tuning.min_round_pool:
+        return members, POOL_SCOPE_FALLBACK, offer_round
+    return offered, POOL_SCOPE_ROUND, offer_round
 
 
 def tailoring_weight(feature: Any, active_traits: dict[str, int], beta: float) -> float:
@@ -472,6 +539,7 @@ def build_advice(
             pool_n=len(pool),
             evidence=pool.evidence,
             ambiguous=True,
+            pool_scope=pool.scope,
         )
 
     if action == "REROLL":
@@ -507,4 +575,5 @@ def build_advice(
         pool_n=len(pool),
         evidence=pool.evidence,
         ambiguous=has_ambiguous,
+        pool_scope=pool.scope,
     )
