@@ -19,6 +19,7 @@ from scripts.build_augment_features import (
     LLM_REFINABLE,
     _merge,
     build_tier1,
+    carry_llm_judgements,
     keep_manual_audits,
     trait_display_map,
 )
@@ -32,9 +33,13 @@ from src.knowledge.augment_features import (
     TRAIT_COUNT_REWARDS,
     AugmentFeature,
     FeatureTable,
+    check_feature,
+    compose_categories,
     extract_carry_type,
+    extract_categories,
     extract_deterministic,
     extract_econ_value,
+    extract_frontline,
     extract_item_grants,
     extract_trait_affinity,
     extract_trait_count_reward,
@@ -95,11 +100,62 @@ def test_items_alone_are_not_economic_value() -> None:
     assert extract_econ_value("Gain a component anvil when you reach level 5.", "X") == 0
 
 
-def test_incidental_stat_mention_does_not_make_a_carry_type() -> None:
-    """'Gain Health whenever you level up' la augment kinh te, khong phai tank."""
+def test_incidental_stat_mention_does_not_make_frontline() -> None:
+    """'Gain Health whenever you level up' la augment kinh te, khong phai frontline."""
     desc = "Buying XP costs 1 less. Gain 20 Health whenever you level up."
-    assert extract_carry_type(desc, "X", econ_context=True) == "none"
-    assert extract_carry_type(desc, "X", econ_context=False) == "tank"
+    assert extract_frontline(desc, "X", econ_context=True) is False
+    assert extract_frontline(desc, "X", econ_context=False) is True
+    # v2: chong chiu khong con la huong carry o bat ky ngu canh nao.
+    assert extract_carry_type(desc, "X", econ_context=False) == "none"
+
+
+def test_carry_type_never_says_tank() -> None:
+    desc = "Your team gains 20 Armor and Magic Resist."
+    assert extract_carry_type(desc, "X") == "none"
+    assert extract_frontline(desc, "X") is True
+
+
+def test_ad_and_ap_together_are_both() -> None:
+    desc = "Your champions gain 10% Attack Damage and Ability Power."
+    assert extract_carry_type(desc, "X") == "both"
+    assert extract_carry_type("Your team gains 10% Attack Speed.", "X") == "AD"
+
+
+def test_durability_tie_keeps_carry_none() -> None:
+    """Hoa giua chong chiu va sat thuong la khong ro huong - giu nhu v1."""
+    desc = "Your team gains 100 Health and 10% Attack Speed."
+    assert extract_carry_type(desc, "X") == "none"
+    assert extract_frontline(desc, "X") is False   # nua cong nua thu: khong "chu yeu"
+
+
+def test_player_health_is_not_durability() -> None:
+    assert extract_frontline("Heal 10 Tactician health. Gain 5 player health.", "X") is False
+
+
+def test_categories_add_mandatory_labels_after_primary() -> None:
+    cats = extract_categories(
+        "item", 1, ["AnyComponent"], [], "wide", "Gain a component and 2 gold.", "X"
+    )
+    assert cats == ["item", "econ", "trait"]
+
+
+def test_utility_never_shares_and_yields_to_mandatory() -> None:
+    """XP thuan (econ_value 1) truoc la utility - bat bien buoc nhan econ."""
+    assert compose_categories("utility", [], ["combat"]) == ["utility"]
+    assert compose_categories("utility", ["econ"]) == ["econ"]
+
+
+def test_cap_drops_suggestions_not_mandatory() -> None:
+    assert compose_categories("combat", ["econ", "item"], ["reroll", "trait"]) == [
+        "combat", "econ", "item",
+    ]
+
+
+def test_stats_from_a_granted_item_are_not_combat() -> None:
+    desc = "Gain 2 BF Swords. Your BF Swords grant +10% Attack Speed."
+    assert "combat" not in extract_categories("item", 0, ["BFSword"], [], None, desc, "X")
+    desc = "Gain an Artifact anvil. Your team gains 50 Health for each item equipped."
+    assert extract_categories("item", 0, ["Anvil"], [], None, desc, "X") == ["item", "combat"]
 
 
 def test_item_grants_catch_named_and_generic_forms() -> None:
@@ -159,6 +215,7 @@ def test_table_covers_every_augment(table, locale) -> None:
 def test_every_field_is_in_its_allowed_domain(table) -> None:
     """Scoring engine gia dinh cac mien nay - lech mot cai la diem sai am tham."""
     for feat in table.features.values():
+        assert check_feature(feat) == [], feat.api_name
         assert feat.category in CATEGORIES
         assert feat.carry_type in CARRY_TYPES
         assert feat.tempo in TEMPOS
@@ -213,21 +270,34 @@ def test_trait_display_map_reads_set_data(locale) -> None:
 
 @pytest.mark.skipif(not COMMITTED.exists(), reason="chua sinh data/augment_features.json")
 def test_committed_table_is_reproducible(table) -> None:
-    """Phan TANG 1 cua file trong repo phai sinh lai duoc, khong sai mot dong.
+    """File trong repo phai sinh lai duoc, khong sai mot dong.
 
-    File da commit hien co ca dong tang 2 (LLM), va LLM khong deterministic
-    nen KHONG the doi hoi tai lap toan bo. Nhung ranh gioi thi phai giu:
+    File da commit co ca dong tang 2 (LLM), va LLM khong deterministic nen
+    gia tri PHAN DOAN cua LLM (LLM_REFINABLE + nhan chinh cu) chi lay lai
+    duoc tu chinh file (build --migrate). Moi thu con lai phai tai lap:
 
-        extraction_method == "deterministic-v1"  ->  sinh lai giong het
-        extraction_method bat dau bang "llm:"    ->  chi cac truong LLM
-                                                     duoc phep sua moi khac
+        extraction_method == EXTRACTOR_VERSION  ->  sinh lai giong het tu tang 1
+        extraction_method bat dau bang "llm:"   ->  chi truong LLM khac tang 1;
+                                                    truong suy dien (categories,
+                                                    frontline) dung luat
+        ca file                                 ->  la diem bat dong cua
+                                                    tang 1 + --migrate + audit
 
-    Nho the "ai do sua tay file" van bi bat, va "LLM cham vao truong no
-    khong duoc cham" cung bi bat.
+    Nho the "ai do sua tay file" van bi bat, "LLM cham vao truong no khong
+    duoc cham" cung bi bat, va categories/frontline sua tay ma khong khai
+    trong label cung bi bat.
     """
-    committed = json.loads(COMMITTED.read_text(encoding="utf-8"))["augments"]
+    committed_payload = json.loads(COMMITTED.read_text(encoding="utf-8"))
+    committed = committed_payload["augments"]
     generated = table.to_payload({})["augments"]
     assert set(committed) == set(generated)
+
+    rebuilt, _ = carry_llm_judgements(table, committed_payload)
+    rebuilt, _ = keep_manual_audits(rebuilt, committed_payload)
+    rebuilt_rows = rebuilt.to_payload({})["augments"]
+    for api, row in committed.items():
+        assert row == rebuilt_rows[api], f"{api} khac voi ban sinh lai (--migrate)"
+        assert check_feature(AugmentFeature(**row)) == [], api
 
     # Truong LLM TUYET DOI khong duoc dong den - chung chua apiName lay tu du
     # lieu co cau truc, khong phai phan doan doc tu van ban.
@@ -248,7 +318,9 @@ def test_committed_table_is_reproducible(table) -> None:
         # lai giong het - sua truong nao thi phai khai truong do.
         audit = parse_manual_audit(method)
         if audit and audit[1] == EXTRACTOR_VERSION:
-            fields = set(audit[0]) | {"extraction_method"}
+            # categories la truong suy dien: doi theo nhan chinh (category)
+            # va nhan bat buoc (econ_value) da audit - da kiem o vong tren.
+            fields = set(audit[0]) | {"extraction_method", "categories"}
             for f, v in row.items():
                 if f not in fields:
                     assert v == generated[api][f], f"{api}.{f} sua ma khong khai trong label"
@@ -292,7 +364,7 @@ def test_llm_prompt_defines_econ_value_without_items() -> None:
 def test_loader_round_trips_the_committed_file() -> None:
     loaded = FeatureTable.load(COMMITTED)
     assert len(loaded) == 254
-    assert loaded.meta["extractor_version"] == "deterministic-v1"
+    assert loaded.meta["extractor_version"] == EXTRACTOR_VERSION
     assert isinstance(loaded.get("DA_18_BigGrabBag"), AugmentFeature)
 
 
@@ -339,7 +411,37 @@ def test_rebuild_keeps_manual_audit_fields_only() -> None:
     assert kept == ["DA_X"]
     assert got.econ_value == 0                      # truong da audit: giu
     assert (got.tempo, got.category) == ("scaling", "econ")  # truong khac: bang moi
-    assert got.extraction_method == "manual-audit:econ_value (from deterministic-v1)"
+    assert got.extraction_method == f"manual-audit:econ_value (from {EXTRACTOR_VERSION})"
+
+
+def test_rebuild_keeps_audited_primary_category() -> None:
+    """Audit chi `category` (truoc khi co categories): nhan do giu lam nhan chinh,
+    nhan bat buoc van du."""
+    fresh = FeatureTable({"DA_X": _feat(category="trait", categories=["trait", "item"])})
+    old_row = _feat(
+        category="combat", extraction_method="manual-audit:category (from llm:m)",
+    ).to_dict()
+    got = keep_manual_audits(fresh, {"augments": {"DA_X": old_row}})[0].get("DA_X")
+    assert got.categories[0] == "combat"
+    assert check_feature(got) == []
+
+
+def test_migrate_keeps_llm_judgement_and_converts_tank() -> None:
+    """--migrate: phan doan LLM giu nguyen, "tank" cu -> none + frontline,
+    nhan chinh cu giu, nhan bat buoc + goi y tang 1 them vao."""
+    fresh = FeatureTable({"DA_X": _feat(category="reroll", categories=["reroll", "item", "trait"])})
+    old = _feat(category="econ", carry_type="none", econ_value=2, tempo="scaling",
+                extraction_method="llm:m").to_dict()
+    old["carry_type"] = "tank"
+    del old["categories"], old["frontline"]          # dong v1 chua co hai truong nay
+    got = carry_llm_judgements(fresh, {"augments": {"DA_X": old}})[0].get("DA_X")
+    assert (got.carry_type, got.frontline) == ("none", True)
+    assert (got.econ_value, got.tempo) == (2, "scaling")
+    assert got.categories == ["econ", "item", "trait"]
+    assert got.extraction_method == "llm:m"
+    # Chay lai tren chinh ket qua: diem bat dong, frontline khong bi mat.
+    again = carry_llm_judgements(fresh, {"augments": {"DA_X": got.to_dict()}})[0].get("DA_X")
+    assert again == got
 
 
 def test_loader_accepts_old_json_without_trait_count_reward(tmp_path) -> None:
@@ -381,11 +483,38 @@ TRAITS = {"Riftbeast": "DA_Riftbeast18", "Ravager": "DA_18_Slayer"}
 
 def test_llm_may_refine_judgement_fields() -> None:
     """Cac truong doc duoc tu van ban mo ta thi LLM sua duoc."""
-    merged, diff = _merge(_feat(), {"category": "combat", "econ_value": 3}, "m", TRAITS)
-    assert merged.category == "combat"
-    assert merged.econ_value == 3
-    assert len(diff) == 2
+    merged, diff = _merge(
+        _feat(), {"tempo": "scaling", "econ_value": 3, "carry_type": "both"}, "m", TRAITS
+    )
+    assert (merged.tempo, merged.econ_value, merged.carry_type) == ("scaling", 3, "both")
+    assert len(diff) == 3
     assert merged.extraction_method == "llm:m"
+    # econ_value > 0 keo theo nhan bat buoc econ; nhan chinh khong doi.
+    assert merged.categories[0] == "trait" and "econ" in merged.categories
+    assert check_feature(merged) == []
+
+
+def test_llm_cannot_write_categories_or_frontline() -> None:
+    """blind-spots.md §2: LLM ghi de 13/13 nhan reroll. Nhan chi doi bang
+    luat tang 1 hoac audit tay - ke ca nhan chinh `category`."""
+    base = _feat()
+    merged, diff = _merge(
+        base,
+        {"category": "combat", "categories": ["combat", "econ"], "frontline": True},
+        "m", TRAITS,
+    )
+    assert merged.categories == base.categories
+    assert merged.category == base.category
+    assert merged.frontline is False
+    assert diff == []
+    for f in ("category", "categories", "frontline"):
+        assert f not in LLM_REFINABLE
+
+
+def test_llm_legacy_tank_answer_is_out_of_domain() -> None:
+    merged, diff = _merge(_feat(), {"carry_type": "tank"}, "m", TRAITS)
+    assert merged.carry_type == "none" and merged.frontline is False
+    assert diff == []
 
 
 def test_llm_cannot_wipe_item_grants() -> None:
@@ -444,8 +573,8 @@ def test_llm_cannot_set_trait_count_reward() -> None:
 
 
 def test_out_of_domain_values_are_ignored() -> None:
-    merged, diff = _merge(_feat(), {"category": "khong_ton_tai"}, "m", TRAITS)
-    assert merged.category == "trait"
+    merged, diff = _merge(_feat(), {"tempo": "khong_ton_tai"}, "m", TRAITS)
+    assert merged.tempo == "immediate"
     assert diff == []
 
 

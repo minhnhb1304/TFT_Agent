@@ -31,7 +31,9 @@ from typing import Any, Iterable
 # Chinh sach version: them TRUONG MOI (vd trait_count_reward) giu nguyen v1;
 # doi GIA TRI ma luat cu sinh ra cho mot truong da co thi phai len v2 va sinh
 # lai ca bang.
-EXTRACTOR_VERSION = "deterministic-v1"
+# v2 (2026-10-05): carry_type bo "tank" (-> frontline), them "both"; them
+# categories va frontline.
+EXTRACTOR_VERSION = "deterministic-v2"
 
 # --- Dong audit tay ----------------------------------------------------------
 # extraction_method = "manual-audit:<truong,...> (from <method goc>)". Chi cac
@@ -39,7 +41,8 @@ EXTRACTOR_VERSION = "deterministic-v1"
 # trait_count_reward) luon sinh lai tu tang 1. Script build ap lai cac dong nay
 # khi sinh lai bang, nen quyet dinh audit khong bi xoa am tham.
 MANUAL_AUDIT_PREFIX = "manual-audit:"
-MANUAL_AUDITABLE = ("category", "carry_type", "tempo", "econ_value", "board_condition")
+MANUAL_AUDITABLE = ("category", "categories", "carry_type", "frontline", "tempo", "econ_value",
+                    "board_condition")
 RE_MANUAL_AUDIT = re.compile(r"^manual-audit:([a-z_,]+) \(from ([^()]+)\)$")
 
 
@@ -62,7 +65,13 @@ def parse_manual_audit(method: str) -> tuple[tuple[str, ...], str] | None:
 
 
 CATEGORIES = ("econ", "combat", "trait", "item", "utility", "reroll")
-CARRY_TYPES = ("AD", "AP", "tank", "none")
+# Toi da 3 nhan/lose (khop MetaTFT 1-3 tag). categories[0] la nhan chinh = `category`.
+MAX_CATEGORIES = 3
+# carry_type = huong carry SAT THUONG ma lose phuc vu. "tank" KHONG phai huong carry
+# (doi nao cung can tank) - chi so chong chiu nam o `frontline`. "both" = phuc vu
+# ca carry AD lan AP. Dinh nghia: docs/category-multilabel/definition.md
+CARRY_TYPES = ("AD", "AP", "both", "none")
+LEGACY_CARRY_TANK = "tank"     # gia tri cu, chi con trong du lieu truoc 2026-10-05
 TEMPOS = ("immediate", "scaling")
 # Huong thuong theo SO LUONG trait (khong gan trait cu the nao):
 #   vertical - thuong theo so dong minh CHUNG trait (di sau mot trait)
@@ -107,11 +116,31 @@ ECON_KEYWORDS = {
 }
 
 # --- Tu vung carry type ----------------------------------------------------
+# Chi huong SAT THUONG. Chi so chong chiu tach sang DURABILITY_PATTERNS.
 CARRY_PATTERNS: dict[str, list[str]] = {
     "AD": [r"attack damage", r"attack speed", r"\bcrit", r"\bmarksman", r"\bad\b"],
     "AP": [r"ability power", r"\bmana\b", r"spell power", r"\bap\b", r"cast(s|ing)?\b"],
-    "tank": [r"\bhealth\b", r"\barmor\b", r"magic resist", r"\bshield", r"durabilit"],
 }
+# Bo "tank" cua v1 - giu nguyen de extract_category khong doi nhan chinh.
+LEGACY_TANK_PATTERNS = [r"\bhealth\b", r"\barmor\b", r"magic resist", r"\bshield", r"durabilit"]
+# Tin hieu frontline: nhu bo v1 nhung bo mau nguoi choi ("player/Tactician
+# health" la mau tuong, khong phai chi so tuong) va them hoi mau/giam sat thuong.
+DURABILITY_PATTERNS = [
+    # health/heal khong di kem "player"/"Tactician" (ke ca "@X@ Tactician health").
+    r"(?<!player )(?<!tactician )\bhealth\b(?!@?\s+(player|tactician)\s+health)",
+    r"\barmor\b", r"magic resist", r"\bshield", r"durabilit",
+    r"\bheal(s|ed|ing)?\b(?!\s+(\S+\s+)?(player|tactician))", r"damage reduction",
+]
+# Hieu ung trong tran khong thuoc nhom chi so nao o tren.
+COMBAT_EXTRA_PATTERNS = [
+    r"damage amp", r"omnivamp", r"\bstun", r"true damage", r"magic damage",
+    r"critical strike", r"\bprecision\b",
+]
+# Cau noi ve mon do (ten component, "holder", "spend/spent mana" de nhan them do)
+# khong tinh la tin hieu combat: chi so do mon do tang da thuoc nhan `item`.
+ITEM_SENTENCE_PATTERNS = [*COMPONENT_PATTERNS.values(), r"\bholders?\b", r"\bspen[dt]\b"]
+# Thu tu uu tien nhan - cung thu tu voi extract_category.
+CATEGORY_PRIORITY = ("reroll", "econ", "item", "trait", "combat", "utility")
 
 # --- Tu vung tempo ---------------------------------------------------------
 SCALING_PATTERNS = [
@@ -145,8 +174,10 @@ class AugmentFeature:
     api_name: str
     name: str = ""
     tier: int = 0
-    category: str = "utility"
+    category: str = "utility"     # = categories[0], giu cho cac cho doc cu
+    categories: list[str] = field(default_factory=list)
     carry_type: str = "none"
+    frontline: bool = False       # lose chu yeu cho chi so/hieu ung chong chiu
     trait_affinity: list[str] = field(default_factory=list)
     econ_value: int = 0           # 0-3, CHI vang/XP/reroll - item nam o item_grants
     tempo: str = "immediate"
@@ -158,8 +189,52 @@ class AugmentFeature:
     extraction_method: str = EXTRACTOR_VERSION
     confidence: float = 0.0
 
+    def __post_init__(self) -> None:
+        # Chuyen doi du lieu cu tai MOT cho, nen load file cu va constructor kieu cu
+        # (chi truyen `category`, hoac carry_type="tank") deu ra schema moi.
+        if self.carry_type == LEGACY_CARRY_TANK:
+            self.carry_type = "none"
+            self.frontline = True
+        if not self.categories:
+            self.categories = [self.category]
+        else:
+            self.category = self.categories[0]
+
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
+
+
+def check_feature(f: AugmentFeature) -> list[str]:
+    """Bat bien giua categories/carry_type va cac truong cau truc. Rong = hop le.
+
+    Nhan nao co nen du lieu thi phai KHOP voi du lieu do, de hai nguon khong
+    the noi nguoc nhau. Chieu nguoc (co `econ` => econ_value > 0) khong bat
+    buoc: reroll thuan co the co econ_value rieng.
+    """
+    errs: list[str] = []
+    cats = f.categories
+    if not 1 <= len(cats) <= MAX_CATEGORIES:
+        errs.append(f"can 1-{MAX_CATEGORIES} nhan category, dang co {len(cats)}")
+    if len(set(cats)) != len(cats):
+        errs.append("categories bi trung")
+    bad = [c for c in cats if c not in CATEGORIES]
+    if bad:
+        errs.append(f"category la: {bad}")
+    if cats and f.category != cats[0]:
+        errs.append("category phai bang categories[0]")
+    if "utility" in cats and len(cats) > 1:
+        errs.append("utility chi dung mot minh")
+    if f.econ_value > 0 and "econ" not in cats:
+        errs.append("econ_value > 0 nhung thieu nhan econ")
+    if f.item_grants and "item" not in cats:
+        errs.append("item_grants khac rong nhung thieu nhan item")
+    if (f.trait_affinity or f.trait_count_reward) and "trait" not in cats:
+        errs.append("co trait_affinity/trait_count_reward nhung thieu nhan trait")
+    if "Emblem" in f.item_grants and "trait" not in cats:
+        errs.append("lose cho Emblem nhung thieu nhan trait")
+    if f.carry_type not in CARRY_TYPES:
+        errs.append(f"carry_type la: {f.carry_type!r}")
+    return errs
 
 
 def _matches(patterns: Iterable[str], text: str) -> int:
@@ -240,21 +315,48 @@ def extract_econ_value(desc: str, name: str) -> int:
     return min(score, 3)
 
 
-def extract_carry_type(desc: str, name: str, econ_context: bool = False) -> str:
-    """Loai carry duoc huong loi. Chon nhom co nhieu tin hieu nhat, hoa -> none.
+def extract_frontline(desc: str, name: str, econ_context: bool = False) -> bool:
+    """True khi gia tri CHU YEU la chong chiu: tin hieu chong chiu nhieu hon
+    TONG tin hieu AD + AP + Damage Amp (bao thu - nua cong nua thu thi khong tinh).
 
-    `econ_context=True` khi augment da duoc phan loai econ/reroll. Khi do MOT
-    tin hieu chi so don le (vi du "Gain Health whenever you level up") la nhac
-    den ngau nhien, khong phai dinh huong carry - ha ve none thay vi gan nhan
-    "tank" sai. Do duoc: quy tac nay bo 40+ nhan tank giat gan tren 254 augment.
+    `econ_context=True` (augment econ/reroll): mot tin hieu don le la nhac den
+    ngau nhien ("Gain Health whenever you level up"), can it nhat 2.
     """
     text = f"{name} {desc}"
-    counts = {k: _matches(v, text) for k, v in CARRY_PATTERNS.items()}
-    best = max(counts.values())
+    durability = _matches(DURABILITY_PATTERNS, text)
+    if durability == 0 or (econ_context and durability < 2):
+        return False
+    damage = sum(_matches(v, text) for v in CARRY_PATTERNS.values())
+    # Damage Amp la sat thuong khong thuoc AD/AP: khong dinh huong carry nhung
+    # van la phia "cong" khi can xem augment co chu yeu chong chiu khong.
+    damage += _matches([r"damage amp"], text)
+    return durability > damage
+
+
+def extract_carry_type(desc: str, name: str, econ_context: bool = False) -> str:
+    """Huong carry SAT THUONG: AD / AP / both / none.
+
+    Nhieu tin hieu AD hon -> AD, AP hon -> AP. Hoa AD == AP >= 1 -> both (mo
+    ta cho ca chi so phia AD lan phia AP). Tin hieu chong chiu >= tin hieu sat
+    thuong -> none: "tank" khong phai huong carry, no nam o extract_frontline.
+
+    `econ_context=True` khi augment da duoc phan loai econ/reroll. Khi do MOT
+    tin hieu chi so don le la nhac den ngau nhien, khong phai dinh huong carry
+    - ha ve none. Do duoc o v1: quy tac nay bo 40+ nhan giat gan tren 254 augment.
+    """
+    text = f"{name} {desc}"
+    ad = _matches(CARRY_PATTERNS["AD"], text)
+    ap = _matches(CARRY_PATTERNS["AP"], text)
+    best = max(ad, ap)
     if best == 0 or (econ_context and best < 2):
         return "none"
-    winners = [k for k, v in counts.items() if v == best]
-    return winners[0] if len(winners) == 1 else "none"
+    # Tin hieu chong chiu ngang hoac hon tin hieu sat thuong -> khong ro huong
+    # carry (giu nghia hoa -> none cua v1, chi doi nhan "tank" thanh none).
+    if _matches(DURABILITY_PATTERNS, text) >= best:
+        return "none"
+    if ad == ap:
+        return "both"
+    return "AD" if ad > ap else "AP"
 
 
 def extract_tempo(desc: str, name: str) -> str:
@@ -294,9 +396,96 @@ def extract_category(
         return "item"
     if trait_affinity:
         return "trait"
-    if _matches([p for ps in CARRY_PATTERNS.values() for p in ps], text):
+    stat_patterns = [*CARRY_PATTERNS["AD"], *CARRY_PATTERNS["AP"], *LEGACY_TANK_PATTERNS]
+    if _matches(stat_patterns, text):
         return "combat"
     return "utility"
+
+
+def mandatory_categories(
+    econ_value: int,
+    item_grants: list[str],
+    trait_affinity: list[str],
+    trait_count_reward: str | None,
+) -> list[str]:
+    """Nhan BAT BUOC theo bat bien cua check_feature, theo thu tu uu tien."""
+    out = []
+    if econ_value > 0:
+        out.append("econ")
+    if item_grants:
+        out.append("item")
+    # An khong cho chi so: toan bo gia tri cua no la them mot toc he.
+    if trait_affinity or trait_count_reward or "Emblem" in item_grants:
+        out.append("trait")
+    return out
+
+
+def compose_categories(
+    primary: str, mandatory: Iterable[str], suggested: Iterable[str] = ()
+) -> list[str]:
+    """Ghep nhan: chinh + bat buoc + goi y, bo trung, toi da MAX_CATEGORIES.
+
+    Tran 3 chi cat nhan GOI Y, khong cat nhan bat buoc (neu chinh + bat buoc
+    da > 3 thi tra ve het - check_feature se bao dong do).
+    `utility` chi dung mot minh: chinh la utility ma co nhan bat buoc thi
+    utility bi bo va nhan bat buoc dau tien thanh nhan chinh; nhan goi y khong
+    bao gio la utility.
+    """
+    mandatory = [c for c in CATEGORY_PRIORITY if c in set(mandatory)]
+    if primary == "utility":
+        if not mandatory:
+            return ["utility"]
+        primary = mandatory[0]
+    head = list(dict.fromkeys([primary, *mandatory]))
+    rank = {c: i for i, c in enumerate(CATEGORY_PRIORITY)}
+    extra = sorted(
+        {c for c in suggested if c not in head and c != "utility"}, key=rank.__getitem__
+    )
+    return head + extra[: max(0, MAX_CATEGORIES - len(head))]
+
+
+def _combat_signals(desc: str, name: str) -> int:
+    """Dem tin hieu chi so/hieu ung trong tran, bo cac cau noi ve mon do."""
+    patterns = [
+        *CARRY_PATTERNS["AD"], *CARRY_PATTERNS["AP"], *DURABILITY_PATTERNS,
+        *COMBAT_EXTRA_PATTERNS,
+    ]
+    total = 0
+    for sentence in re.split(r"[.!?]", f"{name}. {desc}"):
+        if _matches(ITEM_SENTENCE_PATTERNS, sentence):
+            continue
+        total += _matches(patterns, sentence)
+    return total
+
+
+def extract_categories(
+    primary: str,
+    econ_value: int,
+    item_grants: list[str],
+    trait_affinity: list[str],
+    trait_count_reward: str | None,
+    desc: str,
+    name: str,
+) -> list[str]:
+    """1-3 nhan, `primary` (= extract_category) dung dau.
+
+    Nhan phu chi them khi co co che neu ro trong mo ta:
+      - bat buoc: econ (econ_value > 0), item (item_grants), trait
+        (trait_affinity / trait_count_reward) - khop check_feature;
+      - reroll: co tu khoa reroll (co tac dung khi nhan chinh khong phai
+        reroll, vd nhan chinh do LLM/audit dat);
+      - combat: co tin hieu chi so trong tran ngoai cau noi ve mon do. Nhan
+        chinh econ/reroll can >= 2 tin hieu (cung ly do voi econ_context).
+    """
+    text = f"{name} {desc}"
+    suggested = []
+    if re.search(ECON_KEYWORDS["reroll"], text, re.I):
+        suggested.append("reroll")
+    need = 2 if primary in ("econ", "reroll") else 1
+    if _combat_signals(desc, name) >= need:
+        suggested.append("combat")
+    mandatory = mandatory_categories(econ_value, item_grants, trait_affinity, trait_count_reward)
+    return compose_categories(primary, mandatory, suggested)
 
 
 def extract_deterministic(
@@ -319,9 +508,14 @@ def extract_deterministic(
     econ_value = extract_econ_value(desc, name)
     # Category truoc carry_type: phan loai la NGU CANH de doc tin hieu chi so.
     category = extract_category(econ_value, item_grants, trait_affinity, desc, name)
-    carry_type = extract_carry_type(desc, name, econ_context=category in ("econ", "reroll"))
+    econ_context = category in ("econ", "reroll")
+    carry_type = extract_carry_type(desc, name, econ_context=econ_context)
+    frontline = extract_frontline(desc, name, econ_context=econ_context)
     tempo = extract_tempo(desc, name)
     trait_count_reward = extract_trait_count_reward(desc, name)
+    categories = extract_categories(
+        category, econ_value, item_grants, trait_affinity, trait_count_reward, desc, name
+    )
 
     # Confidence = ti le tin hieu THUC SU tim thay, khong phai do tin cua ta.
     signals = [
@@ -338,8 +532,10 @@ def extract_deterministic(
         api_name=str(item.get("apiName", "")),
         name=name,
         tier=tier,
-        category=category,
+        category=categories[0],
+        categories=categories,
         carry_type=carry_type,
+        frontline=frontline,
         trait_affinity=trait_affinity,
         econ_value=econ_value,
         tempo=tempo,

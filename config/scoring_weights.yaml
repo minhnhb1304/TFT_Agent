@@ -46,6 +46,14 @@ tuning:
     carry_weight: 0.4
     # So unit cua mot trait tro len thi coi la dang theo trait do.
     active_trait_min_units: 2
+    # carry_type "both" (lose hop ca AD lan AP) gap board AD/AP. 0.8: tren 0.5
+    # trung tinh vi dung huong sat thuong, duoi 1.0 vi gia tri chia cho hai huong.
+    # LUA CHON chua fit tren du lieu; bi kep <= 1.0 (khong vuot exact match).
+    both_match: 0.8
+    # Tank KHONG phai huong carry (xem item_type ben duoi). true = tai hien hanh vi
+    # cu de ablation bat/tat: frontline coi la carry "tank", do tank bo phieu huong
+    # board -> lose tank bi 0.2 khi carry cam do AD/AP.
+    legacy_tank_direction: false
   econ_fit:
     # He so theo stage: econ som con thoi gian sinh loi, econ muon thi khong.
     stage_curve: [1.0, 1.0, 0.8, 0.5, 0.25, 0.1]

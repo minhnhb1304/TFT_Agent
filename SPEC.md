@@ -411,8 +411,10 @@ scripts/build_augment_features.py   (chạy 1 LẦN mỗi set, không phải m�
   output: data/augment_features.json   ← COMMIT vào repo, sửa tay được
 
   mỗi augment →
-    category        : econ | combat | trait | item | utility | reroll
-    carry_type      : AD | AP | tank | none
+    categories      : 1-3 nhãn ⊂ {econ, combat, trait, item, utility, reroll}, nhãn chính đầu tiên
+    category        : = categories[0] (giữ cho chỗ đọc cũ)
+    carry_type      : AD | AP | both | none   (carry SÁT THƯƠNG; chống chịu nằm ở frontline)
+    frontline       : bool — giá trị chủ yếu là chống chịu (máu, giáp, kháng, khiên, hồi máu)
     trait_affinity  : [trait_id, ...]
     econ_value      : 0-3
     tempo           : immediate | scaling
@@ -594,7 +596,7 @@ OUTPUT: top 3 comp directions
 # Vai trò A — offline, chạy bởi scripts/build_augment_features.py
 EXTRACT_PROMPT = """
 Cho mô tả một Augment trong Teamfight Tactics, trả về JSON PHẲNG:
-{category, carry_type, trait_affinity[], econ_value, tempo, item_grants[], board_condition}
+{carry_type, econ_value, tempo, board_condition}   # category/categories/frontline: tất định, LLM không ghi
 
 Chỉ dựa vào mô tả được cung cấp. Không suy đoán chỉ số không có trong text.
 Nếu không xác định được một trường, trả về null — KHÔNG bịa.

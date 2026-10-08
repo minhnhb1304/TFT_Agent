@@ -82,6 +82,20 @@ def tie_stats(scenario_dir: Path, near: float = NEAR) -> dict[str, Any]:
     }
 
 
+def _categories(row: dict[str, Any]) -> list[str]:
+    """categories cua row; row cu chi co `category` thi coi nhu mot nhan."""
+    cats = row.get("categories")
+    if isinstance(cats, list) and cats:
+        return [str(c) for c in cats]
+    cat = row.get("category")
+    return [str(cat)] if cat is not None else []
+
+
+def _primary(row: dict[str, Any]) -> str | None:
+    cats = _categories(row)
+    return cats[0] if cats else None
+
+
 def econ_degeneracy(features_path: Path) -> dict[str, Any]:
     """Bao nhieu loi kinh te dung chung mot gia tri `econ_value`."""
     raw = json.loads(features_path.read_text(encoding="utf-8"))
@@ -97,7 +111,12 @@ def econ_degeneracy(features_path: Path) -> dict[str, Any]:
         "by_econ_value": dict(sorted(by_value.items())),
         "largest_group_value": top_value,
         "largest_group_size": top_count,
-        "by_category": dict(collections.Counter(r.get("category") for r in rows)),
+        # Nhan chinh (category = categories[0]) - moi lose dem dung mot lan
+        "by_category": dict(collections.Counter(_primary(r) for r in rows)),
+        # Moi nhan trong categories (1-3/lose) - tong co the vuot so lose
+        "by_category_label": dict(
+            collections.Counter(c for r in rows for c in _categories(r))
+        ),
     }
 
 
@@ -119,6 +138,7 @@ def report(stats: dict[str, Any], econ: dict[str, Any]) -> str:
         f"{econ['largest_group_size']}/{econ['econ_positive']}",
         f"phan bo econ_value               : {econ['by_econ_value']}",
         f"category (khong scorer nao doc)  : {econ['by_category']}",
+        f"categories (moi nhan)            : {econ['by_category_label']}",
     ]
     return "\n".join(lines)
 

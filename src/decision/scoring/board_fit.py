@@ -17,13 +17,15 @@ from __future__ import annotations
 import re
 
 from ...game_state.models import GameState
-from ...knowledge.augment_features import AugmentFeature
+from ...knowledge.augment_features import LEGACY_CARRY_TANK, AugmentFeature
 from .types import ComponentScore, ScoringConfig, clamp01, neutral
 
 NAME = "board_fit"
 
 # Component -> loai carry ma no phuc vu. Ban do nay la kien thuc TFT on dinh
 # qua nhieu set (BF Sword luon la AD), khong phai so lieu can verify moi patch.
+# Muc "tank" giu lai cho position_advisor/comp_signals (nhan dien tuong do don);
+# infer_carry_type KHONG dem no la huong carry tru khi bat legacy_tank_direction.
 COMPONENT_CARRY_TYPE: dict[str, str] = {
     "BFSword": "AD",
     "RecurveBow": "AD",
@@ -55,35 +57,48 @@ def trait_key(trait: str) -> str:
     return re.sub(r"[^a-z]", "", key.lower())
 
 
-def infer_carry_type(state: GameState) -> tuple[str, str]:
+def infer_carry_type(state: GameState, legacy_tank: bool = False) -> tuple[str, str]:
     """Suy ra loai carry cua board tu item dang mang.
+
+    Chi AD/AP la HUONG carry. Do tank (ChainVest, Warmog, ...) va role TANK
+    KHONG bo phieu: doi nao cung can tank, nen mot board co tank cam do khong
+    noi gi ve huong sat thuong (xem config/scoring_weights.yaml muc item_type).
+
+    Args:
+        legacy_tank: True = hanh vi cu (do tank/role tank bo phieu "tank"),
+            chi de ablation so sanh bat/tat (`board_fit.legacy_tank_direction`).
 
     Returns:
         (loai carry, bang chung dang chuoi). Loai la "unknown" khi board chua
         co item nao - va "unknown" phai duoc doi xu nhu THIEU TIN HIEU, khong
         phai nhu mot loai carry that.
     """
-    votes: dict[str, int] = {"AD": 0, "AP": 0, "tank": 0}
+    votes: dict[str, int] = {"AD": 0, "AP": 0}
+    if legacy_tank:
+        votes[LEGACY_CARRY_TANK] = 0
     evidence: list[str] = []
 
     for champ in state.carries:
         for item in champ.items:
             direct = COMPONENT_CARRY_TYPE.get(item)
             if direct:
-                votes[direct] += 1
-                evidence.append(item)
+                # Map van giu "tank" cho position_advisor/comp_signals; o day bo qua
+                if direct in votes:
+                    votes[direct] += 1
+                    evidence.append(item)
                 continue
             for carry_type, hints in COMPLETED_ITEM_HINTS.items():
                 if any(re.search(h, item, re.I) for h in hints):
-                    votes[carry_type] += 1
-                    evidence.append(item)
+                    if carry_type in votes:
+                        votes[carry_type] += 1
+                        evidence.append(item)
                     break
 
     best = max(votes.values())
     if best == 0:
         # Fallback tu vai tro tuong (Riot champion roles: ADCarry, APCaster,...)
         # khi board chua co trang bi va Riot da cap nhat truong role vao CDragon.
-        role_votes: dict[str, int] = {"AD": 0, "AP": 0, "tank": 0}
+        role_votes: dict[str, int] = dict.fromkeys(votes, 0)
         role_ev: list[str] = []
         for champ in state.carries:
             r = getattr(champ, "role", None)
@@ -91,8 +106,10 @@ def infer_carry_type(state: GameState) -> tuple[str, str]:
                 continue
             r_upper = r.upper()
             if "TANK" in r_upper:
-                role_votes["tank"] += 1
-                role_ev.append(f"{champ.name} ({r})")
+                # Role tank khong phai huong carry - chi dem o che do legacy
+                if legacy_tank:
+                    role_votes[LEGACY_CARRY_TANK] += 1
+                    role_ev.append(f"{champ.name} ({r})")
             elif r_upper.startswith("AD"):
                 role_votes["AD"] += 1
                 role_ev.append(f"{champ.name} ({r})")
@@ -119,6 +136,14 @@ class BoardFitScorer:
         self.trait_weight = float(tune.get("trait_weight", 0.6))
         self.carry_weight = float(tune.get("carry_weight", 0.4))
         self.min_units = int(tune.get("active_trait_min_units", 2))
+        # Diem khi augment carry_type "both" gap board AD hoac AP. Mac dinh 0.8:
+        # tren 0.5 vi lose phuc vu dung huong sat thuong cua board (tin hieu that),
+        # duoi 1.0 vi gia tri cua no chia cho ca hai huong, con lose dung loai
+        # don tron vao mot huong. Khong duoc vuot exact match (1.0).
+        self.both_match = min(float(tune.get("both_match", 0.8)), 1.0)
+        # True = tai hien hanh vi cu de ablation: frontline duoc coi la carry
+        # "tank" va do tank bo phieu huong board (gay phat 0.2 cho lose tank).
+        self.legacy_tank = bool(tune.get("legacy_tank_direction", False))
 
     def __call__(
         self, api_name: str, feature: AugmentFeature | None, state: GameState
@@ -176,24 +201,35 @@ class BoardFitScorer:
     def _carry_part(
         self, feature: AugmentFeature, state: GameState
     ) -> tuple[float, str, dict]:
-        board_type, evidence = infer_carry_type(state)
+        board_type, evidence = infer_carry_type(state, legacy_tank=self.legacy_tank)
+        carry = feature.carry_type
+        if self.legacy_tank and carry == "none" and feature.frontline:
+            carry = LEGACY_CARRY_TANK
 
-        if feature.carry_type == "none":
+        # none = khong co huong carry; frontline khong anh huong nua carry
+        if carry == "none":
             return 0.5, "", {"board_carry_type": board_type}
         if board_type == "unknown":
             return (
                 0.5,
-                f"Board chưa đủ trang bị để biết đang theo hướng {feature.carry_type}",
+                f"Board chưa đủ trang bị để biết đang theo hướng {carry}",
                 {"board_carry_type": board_type},
             )
-        if board_type == feature.carry_type:
+        if board_type == carry:
             return (
                 1.0,
                 f"Đúng hướng carry {board_type} của board (căn cứ: {evidence})",
                 {"board_carry_type": board_type, "evidence": evidence},
             )
+        if carry == "both" and board_type in ("AD", "AP"):
+            return (
+                self.both_match,
+                f"Augment hợp cả AD lẫn AP — khớp hướng {board_type} của board "
+                f"(căn cứ: {evidence})",
+                {"board_carry_type": board_type, "evidence": evidence},
+            )
         return (
             0.2,
-            f"Augment thiên {feature.carry_type} nhưng board đang đi {board_type}",
+            f"Augment thiên {carry} nhưng board đang đi {board_type}",
             {"board_carry_type": board_type, "evidence": evidence},
         )
