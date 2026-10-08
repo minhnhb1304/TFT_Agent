@@ -428,6 +428,7 @@ def _pick_demo_augments(features: FeatureTable, n: int = 3) -> list[str]:
     picked: list[str] = []
     for category in wanted:
         for api, feat in sorted(features.features.items()):
+            # So nhan CHINH (categories[0]) de 3 augment demo khac loai that su
             if feat.category == category and api not in picked:
                 picked.append(api)
                 break

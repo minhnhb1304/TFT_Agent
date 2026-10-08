@@ -9,8 +9,10 @@ NGUON
 GIOI HAN PHAI NEU TRONG BAO CAO
     - Day la nhan CHU QUAN do mot nguoi (META Spencer) gan, khong co tai lieu dinh nghia.
       Bat dong voi MetaTFT la TIN HIEU de doc lai mo ta augment, khong phai bang chung loi.
-    - Hai bo nhan khong cung tu vung: ta co category don nhan + tempo + econ_value,
-      MetaTFT co multi-label. CATEGORY_TO_TAG la anh xa gan dung, vd reroll -> econ.
+    - Hai bo nhan khong cung tu vung: ta co categories (1-3 nhan, categories[0] = category
+      chinh) + tempo + econ_value, MetaTFT co multi-label. CATEGORY_TO_TAG la anh xa gan
+      dung, vd reroll -> econ. Tag `scaling` khong co category tuong ung nen phep so tap
+      hop chi cham cac tag anh xa duoc (SET_LABELS).
 
 Module nay chi doc file va tinh so; khong goi mang. Crawl o scripts/crawl_metatft_tags.py.
 """
@@ -34,6 +36,9 @@ CATEGORY_TO_TAG = {
     "utility": "misc",
     "reroll": "econ",
 }
+
+# Tag MetaTFT ma categories cua ta co the sinh ra qua CATEGORY_TO_TAG.
+SET_LABELS = tuple(sorted(set(CATEGORY_TO_TAG.values())))
 
 SNAPSHOT_NOTE = (
     "Subjective expert labeling by MetaTFT (META Spencer), undocumented. "
@@ -127,6 +132,57 @@ class BinaryCheck:
         return (self.tp + self.tn) / self.n if self.n else 0.0
 
 
+@dataclass(frozen=True)
+class LabelPRF:
+    """Precision/recall/F1 cua MOT tag tren phep so tap hop categories vs tag MetaTFT."""
+
+    tag: str
+    tp: int
+    fp: int
+    fn: int
+
+    @property
+    def precision(self) -> float:
+        return self.tp / (self.tp + self.fp) if self.tp + self.fp else 0.0
+
+    @property
+    def recall(self) -> float:
+        return self.tp / (self.tp + self.fn) if self.tp + self.fn else 0.0
+
+    @property
+    def f1(self) -> float:
+        p, r = self.precision, self.recall
+        return 2 * p * r / (p + r) if p + r else 0.0
+
+
+def _primary(v: Mapping[str, Any]) -> str | None:
+    """Nhan chinh dang chuoi (an toan de lam khoa dict du row loi ghi list vao category)."""
+    cats = _categories(v)
+    return cats[0] if cats else None
+
+
+def _categories(v: Mapping[str, Any]) -> list[str]:
+    """categories cua row; row cu chi co `category` thi coi nhu mot nhan."""
+    cats = v.get("categories")
+    if isinstance(cats, (list, tuple)) and cats:
+        return [str(c) for c in cats]
+    cat = v.get("category")
+    if isinstance(cat, (list, tuple)):
+        return [str(c) for c in cat]
+    return [str(cat)] if cat is not None else []
+
+
+def predicted_tags(v: Mapping[str, Any]) -> frozenset[str]:
+    """Tap tag MetaTFT suy tu categories (reroll va econ cung ve `econ`)."""
+    return frozenset(CATEGORY_TO_TAG[c] for c in _categories(v) if c in CATEGORY_TO_TAG)
+
+
+def jaccard(a: frozenset[str] | set[str], b: frozenset[str] | set[str]) -> float:
+    """|A giao B| / |A hop B|; hai tap rong coi nhu khop hoan toan."""
+    union = a | b
+    return len(a & b) / len(union) if union else 1.0
+
+
 @dataclass
 class Comparison:
     n: int
@@ -137,6 +193,11 @@ class Comparison:
     mismatches: list[tuple[str, dict[str, Any], list[str]]] = field(default_factory=list)
     by_method: dict[str, tuple[int, int]] = field(default_factory=dict)
     missing: list[str] = field(default_factory=list)
+    # So tap hop categories vs tag MetaTFT (chi tren SET_LABELS)
+    set_jaccard: float = 0.0
+    set_exact: int = 0
+    label_prf: dict[str, LabelPRF] = field(default_factory=dict)
+    set_by_method: dict[str, tuple[float, int]] = field(default_factory=dict)
 
     def check(self, name: str) -> BinaryCheck:
         for c in self.checks:
@@ -157,13 +218,13 @@ CHECKS: list[tuple[str, Callable[[dict[str, Any]], bool], str]] = [
         lambda v: bool(v.get("trait_affinity")) or bool(v.get("trait_count_reward")),
         "trait",
     ),
-    ("category==trait vs trait", lambda v: v.get("category") == "trait", "trait"),
+    ("category==trait vs trait", lambda v: _primary(v) == "trait", "trait"),
     ("item_grants vs items", lambda v: bool(v.get("item_grants")), "items"),
-    ("category==item vs items", lambda v: v.get("category") == "item", "items"),
-    ("category==combat vs combat", lambda v: v.get("category") == "combat", "combat"),
+    ("category==item vs items", lambda v: _primary(v) == "item", "items"),
+    ("category==combat vs combat", lambda v: _primary(v) == "combat", "combat"),
     (
         "category==econ/reroll vs econ",
-        lambda v: v.get("category") in ("econ", "reroll"),
+        lambda v: _primary(v) in ("econ", "reroll"),
         "econ",
     ),
 ]
@@ -176,13 +237,13 @@ def compare(
     """Tinh do dong thuan giua bang feature va tag MetaTFT tren cac apiName chung."""
     rows = [(k, v, tags[k]) for k, v in sorted(features.items()) if k in tags]
     n = len(rows)
-    in_tags = sum(CATEGORY_TO_TAG.get(v.get("category")) in ts for _, v, ts in rows)
-    first = sum(bool(ts) and CATEGORY_TO_TAG.get(v.get("category")) == ts[0] for _, v, ts in rows)
+    in_tags = sum(CATEGORY_TO_TAG.get(_primary(v)) in ts for _, v, ts in rows)
+    first = sum(bool(ts) and CATEGORY_TO_TAG.get(_primary(v)) == ts[0] for _, v, ts in rows)
 
     confusion: dict[str, Counter] = defaultdict(Counter)
     for _, v, ts in rows:
         for t in ts or ["(none)"]:
-            confusion[v.get("category")][t] += 1
+            confusion[_primary(v)][t] += 1
 
     checks = []
     for name, pred, tag in CHECKS:
@@ -203,15 +264,34 @@ def compare(
         checks.append(BinaryCheck(name, tag, tp, fp, fn, tn, tuple(fp_names), tuple(fn_names)))
 
     mismatches = [
-        (k, v, ts) for k, v, ts in rows if CATEGORY_TO_TAG.get(v.get("category")) not in ts
+        (k, v, ts) for k, v, ts in rows if CATEGORY_TO_TAG.get(_primary(v)) not in ts
     ]
-    mismatches.sort(key=lambda r: (str(r[1].get("category")), str(r[1].get("name", r[0]))))
+    mismatches.sort(key=lambda r: (str(_primary(r[1])), str(r[1].get("name", r[0]))))
 
     by_method: dict[str, tuple[int, int]] = {}
     for _, v, ts in rows:
         m = str(v.get("extraction_method"))
         hit, total = by_method.get(m, (0, 0))
-        by_method[m] = (hit + (CATEGORY_TO_TAG.get(v.get("category")) in ts), total + 1)
+        by_method[m] = (hit + (CATEGORY_TO_TAG.get(_primary(v)) in ts), total + 1)
+
+    # So tap hop: categories (qua CATEGORY_TO_TAG) vs tag MT, gioi han trong SET_LABELS
+    jac_sum, exact = 0.0, 0
+    counts = {t: [0, 0, 0] for t in SET_LABELS}   # tp, fp, fn
+    jac_by_method: dict[str, list[float]] = defaultdict(list)
+    for _, v, ts in rows:
+        ours = predicted_tags(v)
+        theirs = frozenset(t for t in ts if t in SET_LABELS)
+        j = jaccard(ours, theirs)
+        jac_sum += j
+        exact += ours == theirs
+        jac_by_method[str(v.get("extraction_method"))].append(j)
+        for t in SET_LABELS:
+            if t in ours and t in theirs:
+                counts[t][0] += 1
+            elif t in ours:
+                counts[t][1] += 1
+            elif t in theirs:
+                counts[t][2] += 1
 
     return Comparison(
         n=n,
@@ -222,6 +302,10 @@ def compare(
         mismatches=mismatches,
         by_method=by_method,
         missing=sorted(set(features) - set(tags)),
+        set_jaccard=jac_sum / n if n else 0.0,
+        set_exact=exact,
+        label_prf={t: LabelPRF(t, *c) for t, c in counts.items()},
+        set_by_method={m: (sum(js) / len(js), len(js)) for m, js in jac_by_method.items()},
     )
 
 
@@ -252,7 +336,7 @@ def format_report(cmp: Comparison, list_fp: bool = False) -> str:
     lines.append("\nMISMATCH (category not in MT tags):")
     for k, v, ts in cmp.mismatches:
         lines.append(
-            f"  {str(v.get('name', k))[:30]:30s} ours={str(v.get('category')):7s} "
+            f"  {str(v.get('name', k))[:30]:30s} ours={'+'.join(_categories(v)):20s} "
             f"econ={v.get('econ_value')} tempo={str(v.get('tempo')):9s} "
             f"conf={v.get('confidence')} via={str(v.get('extraction_method'))[:12]:12s} "
             f"MT={','.join(ts) or '-'}"
@@ -260,5 +344,20 @@ def format_report(cmp: Comparison, list_fp: bool = False) -> str:
     lines.append(
         "\nby extraction_method: "
         + ", ".join(f"{m}={h}/{t}" for m, (h, t) in sorted(cmp.by_method.items()))
+    )
+    lines.append(
+        f"\nSET categories vs MT tags (tren {','.join(SET_LABELS)}; scaling bo qua):"
+    )
+    lines.append(f"mean Jaccard: {cmp.set_jaccard:.3f}")
+    lines.append(f"exact set match: {cmp.set_exact}/{n} = {cmp.set_exact / n:.1%}")
+    for t in SET_LABELS:
+        m = cmp.label_prf[t]
+        lines.append(
+            f"  {t:7s} TP={m.tp:3d} FP={m.fp:3d} FN={m.fn:3d} "
+            f"P={m.precision:.1%} R={m.recall:.1%} F1={m.f1:.3f}"
+        )
+    lines.append(
+        "mean Jaccard by extraction_method: "
+        + ", ".join(f"{m}={j:.3f} (n={c})" for m, (j, c) in sorted(cmp.set_by_method.items()))
     )
     return "\n".join(lines)

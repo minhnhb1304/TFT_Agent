@@ -120,3 +120,45 @@ def test_committed_snapshot_matches_catalog():
     catalog = json.loads((ROOT / "data" / "augment_features.json").read_text(encoding="utf-8"))
     assert tags
     assert set(tags) <= set(catalog["augments"])
+
+
+def test_compare_set_based_categories_vs_tags():
+    """So tap hop categories vs tag MT: Jaccard + P/R/F1 tung nhan + theo extraction_method."""
+    snap = build_snapshot(parse_tags(PAYLOAD), list(FEATURES), {})
+    multi = {
+        **FEATURES,
+        # Bag: econ+item -> {econ, items} vs MT {items} -> J = 1/2
+        "DA_Bag": {**FEATURES["DA_Bag"], "categories": ["econ", "item"]},
+        # Ladder: reroll+item+trait -> {econ, items, trait} vs MT {items, trait, misc} -> J = 2/4
+        "DA_Ladder": {**FEATURES["DA_Ladder"], "categories": ["reroll", "item", "trait"]},
+    }
+    cmp = compare(multi, snap["tags"])
+    # Gold {econ}=={econ} -> 1; Slow {combat} vs {combat} (scaling bo qua) -> 1
+    assert cmp.set_jaccard == pytest.approx((1 + 0.5 + 0.5 + 1) / 4)
+    assert cmp.set_exact == 2
+    econ = cmp.label_prf["econ"]
+    assert (econ.tp, econ.fp, econ.fn) == (1, 2, 0)
+    assert econ.precision == pytest.approx(1 / 3) and econ.recall == pytest.approx(1.0)
+    assert econ.f1 == pytest.approx(0.5)
+    items = cmp.label_prf["items"]
+    assert (items.tp, items.fp, items.fn) == (2, 0, 0) and items.f1 == pytest.approx(1.0)
+    misc = cmp.label_prf["misc"]
+    assert (misc.tp, misc.fp, misc.fn) == (0, 0, 1) and misc.f1 == 0.0
+    assert "scaling" not in cmp.label_prf
+    assert cmp.set_by_method == {"det": (pytest.approx(1.0), 2), "llm": (pytest.approx(0.5), 2)}
+    # Kiem tra nhan chinh khong doi khi them categories (primary = categories[0])
+    assert cmp.category_in_tags == 2
+    report = format_report(cmp)
+    assert "mean Jaccard: 0.750" in report
+    assert "mean Jaccard by extraction_method: det=1.000 (n=2), llm=0.500 (n=2)" in report
+
+
+def test_compare_old_rows_without_categories_use_primary():
+    """Row cu chi co `category` van chay; categories co uu tien hon category."""
+    snap = build_snapshot(parse_tags(PAYLOAD), list(FEATURES), {})
+    cmp = compare(FEATURES, snap["tags"])
+    # Gold 1, Bag {econ} vs {items} 0, Ladder {econ} vs {items,trait,misc} 0, Slow 1
+    assert cmp.set_jaccard == pytest.approx(0.5)
+    # categories[0] la nhan chinh, ke ca khi `category` cu lech
+    swapped = {**FEATURES, "DA_Bag": {**FEATURES["DA_Bag"], "categories": ["item", "econ"]}}
+    assert compare(swapped, snap["tags"]).category_in_tags == 3

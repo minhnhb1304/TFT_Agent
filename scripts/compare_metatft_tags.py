@@ -5,6 +5,8 @@
 
 Tag lay tu data/augment_tags.metatft.json (tao boi scripts/crawl_metatft_tags.py).
 Logic o src/eval/metatft_tags.py; xem docs/directional-augment/metatft-tag-audit.md.
+Bao cao gom ca phep so nhan chinh (category) lan phep so TAP HOP categories vs tag
+(mean Jaccard, P/R/F1 tung nhan, Jaccard theo extraction_method).
 """
 
 from __future__ import annotations

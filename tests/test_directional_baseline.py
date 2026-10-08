@@ -149,6 +149,20 @@ def test_econ_degeneracy_reports_category_even_though_no_scorer_reads_it(tmp_pat
     ]
     out = db.econ_degeneracy(features_file(tmp_path, rows))
     assert out["by_category"] == {"reroll": 1, "econ": 1}
+    assert out["by_category_label"] == {"reroll": 1, "econ": 1}
+
+
+def test_econ_degeneracy_counts_primary_and_every_label(tmp_path):
+    """by_category dem nhan chinh categories[0]; by_category_label dem moi nhan."""
+    rows = [
+        {"api_name": "A", "econ_value": 2, "category": "econ", "categories": ["econ", "item"]},
+        {"api_name": "B", "econ_value": 0, "category": "item", "categories": ["item"]},
+        {"api_name": "C", "econ_value": 1, "category": "reroll",
+         "categories": ["reroll", "econ", "trait"]},
+    ]
+    out = db.econ_degeneracy(features_file(tmp_path, rows))
+    assert out["by_category"] == {"econ": 1, "item": 1, "reroll": 1}
+    assert out["by_category_label"] == {"econ": 2, "item": 2, "reroll": 1, "trait": 1}
 
 
 def test_report_renders_without_crashing(tmp_path):

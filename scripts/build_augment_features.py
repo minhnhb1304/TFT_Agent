@@ -3,6 +3,8 @@
     python scripts/build_augment_features.py                     # tang 1, khong can key
     python scripts/build_augment_features.py --llm --diff        # xem tang 2 doi gi
     python scripts/build_augment_features.py --llm --write       # ghi de sau khi da xem
+    python scripts/build_augment_features.py --offline --migrate --write
+                                                # doi sang extractor moi, KHONG goi LLM
 
 Dau ra la file JSON COMMIT vao repo va SUA TAY DUOC. Do la ca diem cua thiet
 ke nay: hoi dong cham do an mo file ra doc duoc 254 dong, khong phai tin vao
@@ -11,6 +13,16 @@ mot loi goi LLM khong tai lap duoc.
 Tang 2 (--llm) khong bao gio ghi de tang 1 mot cach am tham: no ghi
 `extraction_method = "gemini-<model>"` va giu nguyen cac truong no khong
 quyet duoc, de audit tay biet chinh xac dong nao do may sinh ra.
+
+--migrate (khong goi mang/LLM): sinh lai tang 1 bang extractor hien tai,
+roi lay PHAN DOAN LLM cua file cu cho cac dong "llm:..." (ke ca dong audit
+"(from llm:...)"): category cu lam nhan chinh, cac truong LLM_REFINABLE giu
+nguyen (carry_type "tank" cu -> "none" + frontline). Truong suy dien
+(categories = nhan chinh + nhan bat buoc + goi y tang 1; frontline = tang 1
+HOAC "tank" cu/frontline cu) tinh lai theo luat. Dong tang 1 sinh lai het,
+dong audit tay ap lai nhu moi lan ghi. Chay lai --migrate tren chinh file ra
+phai cho ra file y het (test_committed_table_is_reproducible khoa dieu nay).
+Dung khi doi EXTRACTOR_VERSION ma khong muon (hoac khong duoc) goi lai LLM.
 """
 
 from __future__ import annotations
@@ -30,10 +42,13 @@ sys.path.insert(0, str(ROOT))
 
 from src.knowledge.augment_catalog import AugmentCatalog  # noqa: E402
 from src.knowledge.augment_features import (  # noqa: E402
+    CATEGORIES,
     EXTRACTOR_VERSION,
     AugmentFeature,
     FeatureTable,
+    compose_categories,
     extract_deterministic,
+    mandatory_categories,
     parse_manual_audit,
 )
 from src.knowledge.cdragon_client import CDragonClient, select_set_data  # noqa: E402
@@ -43,8 +58,7 @@ DEFAULT_OUT = ROOT / "data" / "augment_features.json"
 
 # Vai tro A trong SPEC 3.5.3 - trich dac trung, chay offline.
 EXTRACT_PROMPT = """Cho mo ta mot Augment trong Teamfight Tactics, tra ve JSON PHANG:
-{"category": "econ|combat|trait|item|utility|reroll",
- "carry_type": "AD|AP|tank|none",
+{"carry_type": "AD|AP|both|none",
  "trait_affinity": ["trait_id", ...],
  "econ_value": 0-3,
  "tempo": "immediate|scaling",
@@ -53,6 +67,11 @@ EXTRACT_PROMPT = """Cho mo ta mot Augment trong Teamfight Tactics, tra ve JSON P
 
 Chi dua vao mo ta duoc cung cap. Khong suy doan chi so khong co trong text.
 Neu khong xac dinh duoc mot truong, tra ve null - KHONG BIA.
+
+carry_type: huong carry SAT THUONG ma augment phuc vu. "AD" / "AP"; "both" khi
+cho ro ca chi so phia AD lan phia AP, hoac buff "carry/tuong manh nhat" bat ke
+loai sat thuong; "none" cho buff chung ca doi hoac chi so chong chiu (mau,
+giap, khang phep, khien, hoi mau) - "tank" KHONG phai huong carry.
 
 tempo: do bang SO VONG DAU, khong phai so giay trong mot tran.
 - "scaling": phan lon gia tri den TRE hon ~3 vong - tich luy qua cac vong
@@ -121,10 +140,17 @@ def summarize(table: FeatureTable) -> dict[str, Any]:
         return dict(sorted(out.items(), key=lambda kv: -kv[1]))
 
     feats = list(table.features.values())
+    n_labels: dict[str, int] = {}
+    for f in feats:
+        k = str(len(f.categories))
+        n_labels[k] = n_labels.get(k, 0) + 1
     return {
         "n": len(feats),
         "category": dist("category"),
+        "categories_label": {c: sum(1 for f in feats if c in f.categories) for c in CATEGORIES},
+        "categories_count": dict(sorted(n_labels.items())),
         "carry_type": dist("carry_type"),
+        "frontline": sum(1 for f in feats if f.frontline),
         "tempo": dist("tempo"),
         "econ_value": dist("econ_value"),
         "with_trait_affinity": sum(1 for f in feats if f.trait_affinity),
@@ -260,7 +286,11 @@ def _parse_json_block(text: str) -> dict[str, Any] | None:
 #
 # Nguyen tac chung: LLM chi duoc dung cho phan PHAN DOAN doc tu van ban mo
 # ta. Phan dinh danh thi luon lay tu du lieu co cau truc.
-LLM_REFINABLE = ("category", "carry_type", "tempo", "econ_value", "board_condition")
+#
+# category/categories/frontline KHONG o day (blind-spots.md §2: LLM ghi de
+# 13/13 nhan reroll). category = categories[0] nen LLM sua category tuc la
+# sua categories. Nhan chi doi bang luat tang 1 hoac audit tay.
+LLM_REFINABLE = ("carry_type", "tempo", "econ_value", "board_condition")
 
 
 def _merge(
@@ -275,9 +305,9 @@ def _merge(
     trait_affinity do model de xuat duoc chap nhan CHI KHI moi phan tu anh xa
     duoc ve mot trait apiName co that. Khong anh xa duoc thi giu nguyen tang 1.
     """
-    from src.knowledge.augment_features import CARRY_TYPES, CATEGORIES, TEMPOS
+    from src.knowledge.augment_features import CARRY_TYPES, TEMPOS
 
-    allowed = {"category": CATEGORIES, "carry_type": CARRY_TYPES, "tempo": TEMPOS}
+    allowed = {"carry_type": CARRY_TYPES, "tempo": TEMPOS}
     data = feat.to_dict()
     diff: list[str] = []
 
@@ -304,7 +334,67 @@ def _merge(
         # `model` da chua ten nha cung cap ("gemini-3.5-flash-lite"), nen
         # them tien to "gemini-" nua se ra "gemini-gemini-...".
         data["extraction_method"] = f"llm:{model}"
+        _restore_mandatory(data)
     return AugmentFeature(**data), diff
+
+
+def _mandatory(data: dict[str, Any]) -> list[str]:
+    return mandatory_categories(
+        data["econ_value"], data["item_grants"], data["trait_affinity"],
+        data["trait_count_reward"],
+    )
+
+
+def _restore_mandatory(data: dict[str, Any]) -> None:
+    """Giu bat bien nhan bat buoc sau khi truong cau truc doi (vd econ_value).
+
+    Nhan chinh giu nguyen; day la suy dien theo luat, khong phai LLM ghi nhan.
+    """
+    cats = data["categories"]
+    data["categories"] = compose_categories(cats[0], _mandatory(data), cats[1:])
+    data["category"] = data["categories"][0]
+
+
+def _origin(method: str) -> str:
+    """Method goc cua mot dong: bo vo "manual-audit:... (from X)" neu co."""
+    audit = parse_manual_audit(method)
+    return audit[1] if audit else method
+
+
+def carry_llm_judgements(
+    table: FeatureTable, previous: dict[str, Any]
+) -> tuple[FeatureTable, list[str]]:
+    """--migrate: lay phan doan LLM cua file cu len bang tang 1 vua sinh.
+
+    Voi moi dong co goc "llm:..." trong file cu: cac truong LLM_REFINABLE lay
+    tu file cu (doc qua AugmentFeature nen carry_type "tank" da thanh "none" +
+    frontline), category cu lam nhan chinh. Phan con lai lay tu tang 1:
+    categories = nhan chinh + bat buoc + nhan tang 1 lam goi y; frontline =
+    tang 1 HOAC frontline cu (nen chay lai lan hai khong lam mat co "tank").
+    Khong goi LLM - khong co gi tai lap kem hon file cu.
+
+    Han che: phep HOAC lam frontline cua dong LLM chi bat, khong tat. Neu sua
+    luat extract_frontline thi phai --migrate lai tu file TRUOC lan migrate
+    dau (git), khong phai tu file da migrate.
+    """
+    feats = dict(table.features)
+    carried: list[str] = []
+    for api, row in previous.get("augments", {}).items():
+        origin = _origin(str(row.get("extraction_method", "")))
+        if not origin.startswith("llm:") or api not in feats:
+            continue
+        old = AugmentFeature(**row)
+        fresh = feats[api]
+        data = fresh.to_dict()
+        for f in LLM_REFINABLE:
+            data[f] = getattr(old, f)
+        data["frontline"] = fresh.frontline or old.frontline
+        data["categories"] = compose_categories(old.category, _mandatory(data), fresh.categories)
+        data["category"] = data["categories"][0]
+        data["extraction_method"] = origin
+        feats[api] = AugmentFeature(**data)
+        carried.append(api)
+    return FeatureTable(feats, table.meta), carried
 
 
 def _map_trait_affinity(value: Any, traits: dict[str, str]) -> list[str] | None:
@@ -354,6 +444,19 @@ def keep_manual_audits(
         origin = data["extraction_method"]
         for f in fields:
             data[f] = row[f]
+        if "categories" in fields:
+            data["category"] = data["categories"][0]
+        else:
+            # Chi audit `category` (nhan chinh) hoac truong cau truc: giu nhan
+            # chinh do, nhan con lai tu bang moi, va bu nhan bat buoc.
+            primary = data["category"] if "category" in fields else data["categories"][0]
+            data["categories"] = compose_categories(primary, _mandatory(data), data["categories"])
+            data["category"] = data["categories"][0]
+        if data["carry_type"] == "tank":
+            # Dong audit cu ghi carry_type "tank": doi o day thay vi de
+            # AugmentFeature lam, vi frontline co the cung nam trong label.
+            data["carry_type"] = "none"
+            data["frontline"] = data["frontline"] or "frontline" not in fields
         data["extraction_method"] = f"manual-audit:{','.join(fields)} (from {origin})"
         feats[api] = AugmentFeature(**data)
         kept.append(api)
@@ -374,6 +477,11 @@ def main(argv: list[str] | None = None) -> int:
         default=0,
         help="tang 2: chi xu ly N augment dau. 0 = het. Dung de thu truoc khi chay ca 254.",
     )
+    ap.add_argument(
+        "--migrate",
+        action="store_true",
+        help="giu phan doan LLM cua file --out cu, tinh lai truong suy dien; khong goi LLM",
+    )
     ap.add_argument("--diff", action="store_true", help="chi in thay doi, khong ghi")
     ap.add_argument("--write", action="store_true", help="ghi de file dau ra")
     args = ap.parse_args(argv)
@@ -391,10 +499,22 @@ def main(argv: list[str] | None = None) -> int:
             print(f"   ... con {len(changes) - 50} dong nua")
 
     out = Path(args.out)
-    if out.exists():
-        previous = json.loads(out.read_text(encoding="utf-8"))
+    previous = json.loads(out.read_text(encoding="utf-8")) if out.exists() else {}
+    if args.migrate:
+        if args.llm:
+            raise SystemExit("--migrate va --llm loai tru nhau")
+        if not previous:
+            raise SystemExit(f"--migrate can file cu: {out} khong ton tai")
+        table, carried = carry_llm_judgements(table, previous)
+        print(f"\ngiu phan doan LLM cua {len(carried)} dong tu {out.name}")
+
+    if previous:
         table, kept = keep_manual_audits(table, previous)
         print(f"\ngiu {len(kept)} dong manual-audit tu {out.name}")
+    if args.migrate:
+        # Thong ke o dau la cua tang 1 thuan; day moi la bang se ghi.
+        print("\nsau --migrate:")
+        print(json.dumps(summarize(table), indent=2, ensure_ascii=False))
 
     if args.diff and not args.write:
         print("\n--diff: khong ghi file. Them --write de ghi de.")
@@ -411,6 +531,12 @@ def main(argv: list[str] | None = None) -> int:
         "llm_refined": bool(args.llm),
         "n": len(table),
     }
+    if args.migrate:
+        old_meta = previous.get("meta", {})
+        meta["llm_refined"] = bool(old_meta.get("llm_refined"))
+        if "llm_model" in old_meta:
+            meta["llm_model"] = old_meta["llm_model"]
+        meta["migrated_from"] = old_meta.get("migrated_from") or old_meta.get("extractor_version")
     out.parent.mkdir(parents=True, exist_ok=True)
     with io.open(out, "w", encoding="utf-8") as fh:
         json.dump(table.to_payload(meta), fh, indent=2, ensure_ascii=False)

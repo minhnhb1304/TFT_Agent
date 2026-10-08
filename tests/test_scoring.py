@@ -169,7 +169,104 @@ def test_board_fit_penalizes_carry_type_mismatch(config) -> None:
     assert match.score > mismatch.score
 
 
-# --- EconFit (w3) ----------------------------------------------------------
+# --- BoardFit: tank khong phai huong carry ----------------------------------
+
+
+def _legacy_config(config: ScoringConfig) -> ScoringConfig:
+    tuning = {k: dict(v) for k, v in config.tuning.items()}
+    tuning.setdefault("board_fit", {})["legacy_tank_direction"] = True
+    return ScoringConfig(dict(config.weights), tuning)
+
+
+def _tank_board() -> GameState:
+    """Board ma con cam nhieu do nhat la tank (do giap) - carry AD cam it do hon."""
+    return GameState(board=[
+        Champion(name="T", cost=4, items=["ChainVest", "GiantsBelt", "Warmog's Armor"],
+                 position=(0, 0)),
+        Champion(name="C", cost=4, items=["BFSword"], position=(3, 3)),
+    ])
+
+
+def test_infer_carry_type_ignores_tank_items_and_roles() -> None:
+    assert infer_carry_type(_tank_board()) == ("AD", "BFSword")
+    tank_only = GameState(board=[
+        Champion(name="T", cost=4, items=["ChainVest", "NegatronCloak"], position=(0, 0)),
+    ])
+    assert infer_carry_type(tank_only)[0] == "unknown"
+    tank_role = GameState(board=[Champion(name="T", cost=4, role="Tank", position=(0, 0))])
+    assert infer_carry_type(tank_role)[0] == "unknown"
+
+
+def test_infer_carry_type_legacy_counts_tank_votes() -> None:
+    assert infer_carry_type(_tank_board(), legacy_tank=True)[0] == "tank"
+    tank_role = GameState(board=[Champion(name="T", cost=4, role="Tank", position=(0, 0))])
+    assert infer_carry_type(tank_role, legacy_tank=True)[0] == "tank"
+
+
+def test_board_fit_frontline_is_neutral_on_carry(config) -> None:
+    """Lose frontline (carry none) khong bi phat khi board di AD."""
+    scorer = BoardFitScorer(config)
+    ad_board = GameState(board=[Champion(name="X", cost=4, items=["BFSword"], position=(1, 1))])
+    res = scorer("A", feature(carry_type="none", frontline=True), ad_board)
+    assert res.score == pytest.approx(0.5)
+
+
+def test_board_fit_legacy_tank_feature_is_constructed_from_old_rows() -> None:
+    """Constructor kieu cu (carry_type='tank') -> none + frontline."""
+    f = feature(carry_type="tank")
+    assert (f.carry_type, f.frontline) == ("none", True)
+
+
+def test_board_fit_regression_old_tank_penalty_only_under_legacy_flag(config) -> None:
+    """Bug cu: lose tank bi 0.2 khi carry cam do AD. Chi con khi bat co legacy."""
+    ad_board = GameState(board=[Champion(name="X", cost=4, items=["BFSword"], position=(1, 1))])
+    tank_aug = feature(carry_type="none", frontline=True)
+
+    new = BoardFitScorer(config)
+    old = BoardFitScorer(_legacy_config(config))
+    # Nua carry: 0.5 trung tinh (moi) vs 0.2 phat lech huong (cu)
+    assert new._carry_part(tank_aug, ad_board)[0] == pytest.approx(0.5)
+    assert old._carry_part(tank_aug, ad_board)[0] == pytest.approx(0.2)
+    assert new("A", tank_aug, ad_board).score > old("A", tank_aug, ad_board).score
+
+    # Chieu nguoc cua bug: board nhieu do tank -> lose AD bi phat o legacy
+    ad_aug = feature(carry_type="AD")
+    assert new._carry_part(ad_aug, _tank_board())[0] == pytest.approx(1.0)
+    assert old._carry_part(ad_aug, _tank_board())[0] == pytest.approx(0.2)
+
+
+def test_board_fit_both_matches_ad_and_ap_below_exact(config) -> None:
+    scorer = BoardFitScorer(config)
+    ad_board = GameState(board=[Champion(name="X", cost=4, items=["BFSword"], position=(1, 1))])
+    ap_board = GameState(board=[
+        Champion(name="X", cost=4, items=["NeedlesslyLargeRod"], position=(1, 1)),
+    ])
+    both = feature(carry_type="both")
+    exact = scorer("A", feature(carry_type="AD"), ad_board).score
+    on_ad = scorer("A", both, ad_board).score
+    on_ap = scorer("A", both, ap_board).score
+    mismatch = scorer("A", feature(carry_type="AP"), ad_board).score
+    assert on_ad == pytest.approx(on_ap)
+    assert mismatch < on_ad < exact
+    assert scorer.both_match == pytest.approx(0.8)
+    # Gia tri cau hinh duoc va bi kep khong vuot exact match
+    tuning = {k: dict(v) for k, v in config.tuning.items()}
+    tuning["board_fit"]["both_match"] = 1.5
+    assert BoardFitScorer(ScoringConfig(dict(config.weights), tuning)).both_match == 1.0
+
+
+def test_yaml_config_declares_board_fit_flags() -> None:
+    import yaml
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parent.parent
+    cfg = yaml.safe_load((root / "config" / "scoring_weights.yaml").read_text(encoding="utf-8"))
+    bf = cfg["tuning"]["board_fit"]
+    assert bf["legacy_tank_direction"] is False
+    assert 0.5 < bf["both_match"] <= 1.0
+
+
+# --- EconFit (w3)----------------------------------------------------------
 
 
 def test_econ_fit_falls_with_stage(config) -> None:
