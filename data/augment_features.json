@@ -89,7 +89,7 @@
     "DA_18_BranchingOutPlus": {
       "api_name": "DA_18_BranchingOutPlus",
       "name": "Branching Out+",
-      "tier": 2,
+      "tier": 1,
       "category": "item",
       "categories": [
         "item",
@@ -447,7 +447,7 @@
     "DA_18_LuxAugmentII": {
       "api_name": "DA_18_LuxAugmentII",
       "name": "Master of All Origins",
-      "tier": 2,
+      "tier": 3,
       "category": "trait",
       "categories": [
         "trait"
@@ -637,7 +637,7 @@
     "DA_18_ResidualMagicPlus": {
       "api_name": "DA_18_ResidualMagicPlus",
       "name": "Residual Magic +",
-      "tier": 2,
+      "tier": 1,
       "category": "combat",
       "categories": [
         "combat"
@@ -659,7 +659,7 @@
     "DA_18_ResidualMagicPlusPlus": {
       "api_name": "DA_18_ResidualMagicPlusPlus",
       "name": "Residual Magic ++",
-      "tier": 3,
+      "tier": 1,
       "category": "combat",
       "categories": [
         "combat"
@@ -806,7 +806,7 @@
     "DA_18_WispRebatePlus": {
       "api_name": "DA_18_WispRebatePlus",
       "name": "Wisp Rebate",
-      "tier": 2,
+      "tier": 1,
       "category": "econ",
       "categories": [
         "econ"
@@ -828,7 +828,7 @@
     "DA_18_WispRebatePlusPlus": {
       "api_name": "DA_18_WispRebatePlusPlus",
       "name": "Wisp Rebate+",
-      "tier": 3,
+      "tier": 1,
       "category": "econ",
       "categories": [
         "econ"
@@ -1035,7 +1035,7 @@
     "DA_BandOfThievesII": {
       "api_name": "DA_BandOfThievesII",
       "name": "Band of Thieves II",
-      "tier": 2,
+      "tier": 3,
       "category": "item",
       "categories": [
         "item"
@@ -1057,7 +1057,7 @@
     "DA_BandOfThievesIIPlus": {
       "api_name": "DA_BandOfThievesIIPlus",
       "name": "Band of Thieves II+",
-      "tier": 2,
+      "tier": 3,
       "category": "item",
       "categories": [
         "item"
@@ -1334,7 +1334,7 @@
     "DA_BoosterPackPlusPlus": {
       "api_name": "DA_BoosterPackPlusPlus",
       "name": "Booster Pack++",
-      "tier": 3,
+      "tier": 2,
       "category": "econ",
       "categories": [
         "econ"
@@ -1379,7 +1379,7 @@
     "DA_BronzeForLifeI": {
       "api_name": "DA_BronzeForLifeI",
       "name": "Bronze For Life I",
-      "tier": 1,
+      "tier": 2,
       "category": "combat",
       "categories": [
         "combat",
@@ -1403,7 +1403,7 @@
     "DA_BronzeForLifeII": {
       "api_name": "DA_BronzeForLifeII",
       "name": "Bronze For Life II",
-      "tier": 2,
+      "tier": 3,
       "category": "combat",
       "categories": [
         "combat",
@@ -1747,7 +1747,7 @@
     "DA_ChampDeliveryPlus": {
       "api_name": "DA_ChampDeliveryPlus",
       "name": "Champ Delivery+",
-      "tier": 2,
+      "tier": 1,
       "category": "econ",
       "categories": [
         "econ"
@@ -1769,7 +1769,7 @@
     "DA_ChampDeliveryPlusPlus": {
       "api_name": "DA_ChampDeliveryPlusPlus",
       "name": "Champ Delivery++",
-      "tier": 3,
+      "tier": 1,
       "category": "econ",
       "categories": [
         "econ"
@@ -1903,7 +1903,7 @@
     "DA_CognitiveTaxPlus": {
       "api_name": "DA_CognitiveTaxPlus",
       "name": "Cognitive Tax+",
-      "tier": 2,
+      "tier": 1,
       "category": "econ",
       "categories": [
         "econ"
@@ -2020,7 +2020,7 @@
     "DA_ConstructACompanion": {
       "api_name": "DA_ConstructACompanion",
       "name": "Construct a Companion",
-      "tier": 3,
+      "tier": 2,
       "category": "econ",
       "categories": [
         "econ"
@@ -2241,7 +2241,7 @@
     "DA_DeadlierBlades": {
       "api_name": "DA_DeadlierBlades",
       "name": "Deadlier Blades",
-      "tier": 2,
+      "tier": 3,
       "category": "combat",
       "categories": [
         "combat"
@@ -2263,7 +2263,7 @@
     "DA_DeadlierCaps": {
       "api_name": "DA_DeadlierCaps",
       "name": "Deadlier Caps",
-      "tier": 2,
+      "tier": 3,
       "category": "item",
       "categories": [
         "item",
@@ -2628,7 +2628,7 @@
     "DA_Flexible": {
       "api_name": "DA_Flexible",
       "name": "Flexible",
-      "tier": 2,
+      "tier": 3,
       "category": "trait",
       "categories": [
         "trait",
@@ -2701,7 +2701,7 @@
     "DA_ForgeAFriend": {
       "api_name": "DA_ForgeAFriend",
       "name": "Forge A Friend",
-      "tier": 3,
+      "tier": 1,
       "category": "econ",
       "categories": [
         "econ"
@@ -3022,7 +3022,7 @@
     "DA_GoldenGamblePlus": {
       "api_name": "DA_GoldenGamblePlus",
       "name": "Golden Gamble+",
-      "tier": 2,
+      "tier": 3,
       "category": "econ",
       "categories": [
         "econ",
@@ -3300,7 +3300,7 @@
     "DA_HeroicGrabBagPlusPlus": {
       "api_name": "DA_HeroicGrabBagPlusPlus",
       "name": "Heroic Grab Bag++",
-      "tier": 3,
+      "tier": 2,
       "category": "econ",
       "categories": [
         "econ"
@@ -3391,7 +3391,7 @@
     "DA_InvestedPlus": {
       "api_name": "DA_InvestedPlus",
       "name": "Invested+",
-      "tier": 2,
+      "tier": 3,
       "category": "econ",
       "categories": [
         "econ",
@@ -3437,7 +3437,7 @@
     "DA_InvestmentStrategy": {
       "api_name": "DA_InvestmentStrategy",
       "name": "Investment Strategy II",
-      "tier": 2,
+      "tier": 3,
       "category": "econ",
       "categories": [
         "econ"
@@ -3459,7 +3459,7 @@
     "DA_InvestmentStrategyI": {
       "api_name": "DA_InvestmentStrategyI",
       "name": "Investment Strategy I",
-      "tier": 1,
+      "tier": 2,
       "category": "combat",
       "categories": [
         "combat",
@@ -3558,7 +3558,7 @@
     "DA_JeweledLotus_I": {
       "api_name": "DA_JeweledLotus_I",
       "name": "Jeweled Lotus I",
-      "tier": 1,
+      "tier": 2,
       "category": "combat",
       "categories": [
         "combat"
@@ -3581,7 +3581,7 @@
     "DA_JeweledLotus_II": {
       "api_name": "DA_JeweledLotus_II",
       "name": "Jeweled Lotus II",
-      "tier": 2,
+      "tier": 3,
       "category": "combat",
       "categories": [
         "combat"
@@ -3837,7 +3837,7 @@
     "DA_LuckyGlovesPlus": {
       "api_name": "DA_LuckyGlovesPlus",
       "name": "Lucky Gloves+",
-      "tier": 2,
+      "tier": 3,
       "category": "item",
       "categories": [
         "item"
@@ -4136,7 +4136,7 @@
     "DA_NestingAnvilsPlus": {
       "api_name": "DA_NestingAnvilsPlus",
       "name": "Nesting Anvils+",
-      "tier": 2,
+      "tier": 3,
       "category": "item",
       "categories": [
         "item",
@@ -4162,7 +4162,7 @@
     "DA_NestingDollsPlus": {
       "api_name": "DA_NestingDollsPlus",
       "name": "Nesting Dolls",
-      "tier": 2,
+      "tier": 3,
       "category": "combat",
       "categories": [
         "combat",
@@ -4255,7 +4255,7 @@
     "DA_PandorasBench": {
       "api_name": "DA_PandorasBench",
       "name": "Pandora's Bench",
-      "tier": 2,
+      "tier": 1,
       "category": "econ",
       "categories": [
         "econ"
@@ -4512,7 +4512,7 @@
     "DA_PrismaticDestinyPlus": {
       "api_name": "DA_PrismaticDestinyPlus",
       "name": "Prismatic Destiny+",
-      "tier": 2,
+      "tier": 3,
       "category": "econ",
       "categories": [
         "econ"
@@ -4888,7 +4888,7 @@
     "DA_SilverDestinyPlus": {
       "api_name": "DA_SilverDestinyPlus",
       "name": "Silver Destiny+",
-      "tier": 2,
+      "tier": 1,
       "category": "econ",
       "categories": [
         "econ"
@@ -4910,7 +4910,7 @@
     "DA_SilverDestinyPlusPlus": {
       "api_name": "DA_SilverDestinyPlusPlus",
       "name": "Silver Destiny++",
-      "tier": 3,
+      "tier": 1,
       "category": "econ",
       "categories": [
         "econ"
@@ -5473,7 +5473,7 @@
     "DA_TheTraitTreePlus": {
       "api_name": "DA_TheTraitTreePlus",
       "name": "The Trait Tree+",
-      "tier": 2,
+      "tier": 3,
       "category": "econ",
       "categories": [
         "econ"
@@ -5517,7 +5517,7 @@
     "DA_TonsOfStatsI": {
       "api_name": "DA_TonsOfStatsI",
       "name": "Tons of Stats!",
-      "tier": 1,
+      "tier": 2,
       "category": "combat",
       "categories": [
         "combat"
@@ -5540,7 +5540,7 @@
     "DA_TonsOfStatsII": {
       "api_name": "DA_TonsOfStatsII",
       "name": "TONS of Stats!",
-      "tier": 2,
+      "tier": 3,
       "category": "combat",
       "categories": [
         "combat"
@@ -5903,7 +5903,7 @@
     "DA_WorththeWaitII": {
       "api_name": "DA_WorththeWaitII",
       "name": "Worth the Wait II",
-      "tier": 2,
+      "tier": 3,
       "category": "econ",
       "categories": [
         "econ"
@@ -5925,7 +5925,7 @@
     "DA_WovenMagic": {
       "api_name": "DA_WovenMagic",
       "name": "Woven Magic",
-      "tier": 3,
+      "tier": 2,
       "category": "item",
       "categories": [
         "item"

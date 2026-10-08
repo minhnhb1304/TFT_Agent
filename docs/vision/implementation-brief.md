@@ -129,8 +129,8 @@ class AugmentChoice:
 | Is the HUD bar actually on screen? | `hud_bar_present(crop) -> bool` | `src/vision/preprocess.py:136` |
 | Read RapidOCR output safely across SDK versions | `ocr_texts(result)`, `ocr_join(result)`, `has_digit(result)` | `src/vision/preprocess.py:56,106,111` |
 | Vietnamese display name → `apiName` | `NameIndex.resolve(text, namespace, lang) -> list[str]`, `.resolve_stem(...)` | `src/knowledge/name_index.py:103,123` |
-| Augment tier from apiName/name (name first, icon only as fallback) | `resolve_tier(api, name, icon)` | `src/knowledge/augment_catalog.py:83` |
-| Text normalization (NFD + strip Mn + `đ→d` + lowercase) | `normalize(text)` | `src/knowledge/augment_catalog.py:39` |
+| Augment tier from icon path, then family rules + user overrides (changed 2026-10-06, see `docs/offer-rounds/tier-mismatch.md`) | `resolve_tier(api, name, icon)` | `src/knowledge/augment_catalog.py:123` |
+| Text normalization (NFD + strip Mn + `đ→d` + lowercase) | `normalize(text)` | `src/knowledge/augment_catalog.py:79` |
 | Target state object | `GameState` (all fields have safe defaults), `RE_STAGE` | `src/game_state/models.py:17,74` |
 | Read `.env` / API keys | `load_env()`, then `os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")` | `src/utils/env.py` |
 | Evaluation harness (already written, unused) | `Prediction(entity, predicted, truth, latency_ms, ambiguous_pair)`, `evaluate(preds)` | `src/eval/recognition.py` |
@@ -403,7 +403,7 @@ Follow the matching rules in SPEC §3.2 / `research/vision-stack/ocr.md:48-56`:
 
 > **Do NOT copy prior-art fuzzy thresholds.** `research/vision-stack/ocr.md:42-46` measured that `SequenceMatcher >= 0.85` is *actively harmful* here: `chuyen doi nang luong i` vs `…ii` scores **0.979**, and `van cuoc hoang kim+` vs `…++` scores **0.974**. Tier is exactly what must be distinguished.
 
-Tier resolution uses `augment_catalog.resolve_tier()` — **name first, icon path only as fallback**. Reversing that order mis-assigns tier for 19/254 augments.
+Tier resolution uses `augment_catalog.resolve_tier()` — **icon path for the absolute tier; names only for family constraints** (`+`/`++` share the base tier, roman numerals are rank within a family), plus `data/augment_tier_overrides.json`. The earlier "name first" rule was wrong for 38/254 augments (corrected 2026-10-06).
 
 #### 5.5 Resolving traits → apiName
 

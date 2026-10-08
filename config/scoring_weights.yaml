@@ -202,9 +202,9 @@ reroll_policy:
   # c(tier, stage) - gia phai tra cho viec lo them mot the, tinh theo sigma.
   # DAY LA TIEN NGHIEM DO NGUOI DAT, KHONG PHAI SO DO. Lap luan sinh ra hinh
   # dang cua bang nam o docs/augment-reroll/depletion-cost.md:
-  #   - prismatic pool nho nhat (60) va so augment S-tier cho mot loi choi chi
+  #   - prismatic pool nho nhat (69; truoc khi sua tier 2026-10-06: 60) va so augment S-tier cho mot loi choi chi
   #     3-5 cai -> lo them mot the tot ma khong lay duoc la dot that.
-  #   - gold (132) / silver (62) pool lon -> dot ~1%, khong dang ke.
+  #   - gold (115) / silver (70) pool lon -> dot ~1%, khong dang ke.
   #   - chang 4-2 la chang cuoi: khong con gi de dot, c = 0 tuyet doi.
   cost_matrix:
     prismatic: {stage_2: 0.08, stage_3: 0.04, stage_4: 0.00}
