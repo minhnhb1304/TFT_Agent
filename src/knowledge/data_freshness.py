@@ -100,6 +100,8 @@ class Dataset:
 
 DATASETS: tuple[Dataset, ...] = (
     Dataset("augment_features", "set", settings_key="augment_features"),
+    # Runtime khong doc truc tiep: la dau vao cua augment_features (truong offer_rounds).
+    Dataset("augment_offer_rounds", "set", path="data/augment_rounds.datatft.json"),
     Dataset("name_index", "set", settings_key="name_index"),
     Dataset("champion_costs", "set", settings_key="champion_costs"),
     Dataset("item_recipes", "set", settings_key="item_recipes"),

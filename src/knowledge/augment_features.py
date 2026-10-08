@@ -42,7 +42,7 @@ EXTRACTOR_VERSION = "deterministic-v2"
 # khi sinh lai bang, nen quyet dinh audit khong bi xoa am tham.
 MANUAL_AUDIT_PREFIX = "manual-audit:"
 MANUAL_AUDITABLE = ("category", "categories", "carry_type", "frontline", "tempo", "econ_value",
-                    "board_condition")
+                    "board_condition", "offer_rounds")
 RE_MANUAL_AUDIT = re.compile(r"^manual-audit:([a-z_,]+) \(from ([^()]+)\)$")
 
 
@@ -71,6 +71,10 @@ MAX_CATEGORIES = 3
 # (doi nao cung can tank) - chi so chong chiu nam o `frontline`. "both" = phuc vu
 # ca carry AD lan AP. Dinh nghia: docs/category-multilabel/definition.md
 CARRY_TYPES = ("AD", "AP", "both", "none")
+# Luot chao augment trong mot van. `offer_rounds` rong = CHUA BIET (coi nhu chao moi
+# luot), khong phai "khong chao luot nao". Nguon: data/augment_rounds.datatft.json
+# (may chu CN - la tin hieu, sua tay duoc). Xem docs/offer-rounds/overview.md
+OFFER_ROUNDS = ("2-1", "3-2", "4-2")
 LEGACY_CARRY_TANK = "tank"     # gia tri cu, chi con trong du lieu truoc 2026-10-05
 TEMPOS = ("immediate", "scaling")
 # Huong thuong theo SO LUONG trait (khong gan trait cu the nao):
@@ -186,6 +190,7 @@ class AugmentFeature:
     # None = khong thuong theo so trait. Tach khoi trait_affinity: truong do chi
     # chua trait CU THE, nen augment kieu Verticality truoc day vo hinh voi scorer.
     trait_count_reward: str | None = None
+    offer_rounds: list[str] = field(default_factory=list)   # con cua OFFER_ROUNDS
     extraction_method: str = EXTRACTOR_VERSION
     confidence: float = 0.0
 
@@ -200,8 +205,33 @@ class AugmentFeature:
         else:
             self.category = self.categories[0]
 
+    def offered_at(self, stage: str) -> bool:
+        """Lose co the duoc chao o `stage` khong. Thieu du lieu -> True: khong
+        biet thi KHONG loc, de mot nguon thieu khong lam rong pool."""
+        if not self.offer_rounds or stage not in OFFER_ROUNDS:
+            return True
+        return stage in self.offer_rounds
+
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
+
+
+def load_offer_rounds(path: str | Path) -> dict[str, list[str]]:
+    """api_name -> luot chao, doc tu snapshot data/augment_rounds.datatft.json.
+
+    Thieu file -> {} (moi lose thanh "chua biet", khong phai loi). Luot xep
+    theo thu tu OFFER_ROUNDS de bang sinh ra khong phu thuoc thu tu cua nguon.
+    Gia tri la khong bi loc o day: check_feature se bao dong.
+    """
+    p = Path(path)
+    if not p.exists():
+        return {}
+    augments = json.loads(p.read_text(encoding="utf-8")).get("augments") or {}
+    rank = {r: i for i, r in enumerate(OFFER_ROUNDS)}
+    return {
+        api: sorted(dict.fromkeys(row.get("rounds") or []), key=lambda r: rank.get(r, len(rank)))
+        for api, row in augments.items()
+    }
 
 
 def check_feature(f: AugmentFeature) -> list[str]:
@@ -234,6 +264,9 @@ def check_feature(f: AugmentFeature) -> list[str]:
         errs.append("lose cho Emblem nhung thieu nhan trait")
     if f.carry_type not in CARRY_TYPES:
         errs.append(f"carry_type la: {f.carry_type!r}")
+    bad_rounds = [r for r in f.offer_rounds if r not in OFFER_ROUNDS]
+    if bad_rounds or len(set(f.offer_rounds)) != len(f.offer_rounds):
+        errs.append(f"offer_rounds sai: {f.offer_rounds}")
     return errs
 
 

@@ -1,0 +1,113 @@
+{
+ "databaseUpdateTime": 1791117331734,
+ "hexs18": [
+  [
+   {
+    "hexId": "DA_18_InfernoTraitAugment",
+    "name": "烧起来",
+    "round": [
+     "2-1",
+     "3-2",
+     "4-2"
+    ],
+    "type": [
+     4,
+     2
+    ]
+   },
+   {
+    "hexId": "DA_18_ResidualMagic",
+    "name": "残留魔力",
+    "round": [
+     "2-1"
+    ],
+    "type": [
+     2
+    ]
+   },
+   {
+    "hexId": "DA_SilverDestinyPlus",
+    "name": "白银命运+",
+    "round": [
+     "3-2"
+    ],
+    "type": [
+     6
+    ]
+   }
+  ],
+  [
+   {
+    "hexId": "DA_TradeSector",
+    "name": "DD街区",
+    "round": [
+     "2-1"
+    ],
+    "type": [
+     1
+    ]
+   },
+   {
+    "hexId": "DA_18_BigGrabBag",
+    "name": "大百宝袋",
+    "round": [
+     "3-2",
+     "4-2"
+    ],
+    "type": [
+     3
+    ]
+   }
+  ],
+  [
+   {
+    "hexId": "DA_HedgeFund",
+    "name": "对冲基金",
+    "round": [
+     "2-1"
+    ],
+    "type": [
+     1
+    ]
+   },
+   {
+    "hexId": "DA_NestingDollsPlus",
+    "name": "弈子套娃",
+    "round": [
+     "3-2"
+    ]
+   },
+   {
+    "hexId": "DA_ExpectedUnexpectedness",
+    "name": "意料之中的意外",
+    "round": [
+     "2-1"
+    ],
+    "type": [
+     6
+    ]
+   },
+   {
+    "hexId": "DA_Flexible",
+    "name": "灵活",
+    "round": [
+     "2-1"
+    ],
+    "type": [
+     4
+    ]
+   },
+   {
+    "hexId": "TFT9_Augment_RollTheDice",
+    "name": "交给运气",
+    "round": [
+     "3-2",
+     "4-2"
+    ],
+    "type": [
+     3
+    ]
+   }
+  ]
+ ]
+}

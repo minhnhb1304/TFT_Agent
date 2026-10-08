@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<script id="h5-data-preload">(function () {
+  if (!/^\/h5(?:\/|$)/.test(window.location.pathname) || window.__DATA_TFT_H5_DATA__) return;
+  var urls = {"16":"/assets/h5-data-cn-16-CtnmK0r-.json","17":"/assets/h5-data-cn-17-BikBV7Ou.json","18":"/assets/h5-data-cn-18-DA3Z5d73.json","16.5":"/assets/h5-data-cn-16.5-CSN1GQ7f.json"};
+  var match = (window.location.search || '').match(/[?&]season=([^&]*)/);
+  var season = '18';
+  try { if (match) season = decodeURIComponent(match[1]); } catch (error) {}
+  var selectedUrl = typeof urls === 'string' ? urls : (urls[season] || urls['18']);
+  var state = window.__DATA_TFT_H5_DATA__ = { url: selectedUrl, done: false, text: '', error: '', listeners: [] };
+  function finish(text, error) {
+    if (state.done) return;
+    state.text = text;
+    state.error = error;
+    state.done = true;
+    var listeners = state.listeners;
+    state.listeners = [];
+    for (var i = 0; i < listeners.length; i++) listeners[i]();
+  }
+  try {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', state.url, true);
+    xhr.onload = function () {
+      finish(xhr.status >= 200 && xhr.status < 300 ? xhr.responseText : '', xhr.status >= 200 && xhr.status < 300 ? '' : 'H5 game data request failed: ' + xhr.status);
+    };
+    xhr.onerror = xhr.onabort = function () { finish('', 'H5 game data network error'); };
+    xhr.send();
+  } catch (error) { finish('', String(error)); }
+})();</script>
+<script type="module" crossorigin src="/assets/index-BbZIQS7g.js"></script>
+</head>
+<body><div id="app"></div></body>
+</html>

@@ -178,6 +178,35 @@ def test_step_outputs_are_known_datasets() -> None:
                 assert (ROOT / arg).exists(), arg
 
 
+def test_datatft_offer_rounds_step_is_registered_and_not_periodic() -> None:
+    """Snapshot luot chao la bang theo SET: con moi thi KHONG goi lai datatft."""
+    step = next(s for s in STEPS if s.name == "crawl_datatft_augments")
+    names = [s.name for s in STEPS]
+    assert names.index(step.name) < names.index("augment_features")
+    assert step.command("18.2b") == ["scripts/crawl_datatft_augments.py", "--set", "18", "--overwrite"]
+
+    sources = yaml.safe_load((ROOT / "config" / "data_sources.yaml").read_text(encoding="utf-8"))
+    entry = sources["augment_offer_rounds"]["datatft"]
+    assert step.source_key == "augment_offer_rounds.datatft"
+    assert (entry["status"], entry["server"]) == ("live", "CN")
+
+    def decide(status: str) -> str:
+        return plan((step,), [_fresh("augment_offer_rounds", status)], "18.2", sources)[0].decision
+
+    assert (decide(FRESH), decide(STALE), decide(MISSING)) == (SKIP, RUN, RUN)
+
+
+def test_committed_offer_rounds_snapshot_is_fresh_for_its_set() -> None:
+    from src.knowledge.data_freshness import DATASETS
+
+    ds = next(d for d in DATASETS if d.name == "augment_offer_rounds")
+    path = ROOT / ds.path
+    if not path.exists():
+        pytest.skip("chua crawl data/augment_rounds.datatft.json")
+    assert judge(ds, path, STATE).status == FRESH
+    assert judge(ds, path, PatchState("19.1")).status == STALE
+
+
 def test_step_command_fills_patch_and_set() -> None:
     step = Step("s", ("a.py", "--set", "{set}", "--patch", "{patch}"))
     assert step.command("18.2b") == ["a.py", "--set", "18", "--patch", "18.2b"]

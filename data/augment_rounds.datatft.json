@@ -1,0 +1,2457 @@
+{
+  "meta": {
+    "source": "datatft.com",
+    "source_url": "https://www.datatft.com/database",
+    "server": "CN",
+    "asset_url": "https://www.datatft.com/assets/h5-data-cn-18-DA3Z5d73.json",
+    "crawled_at": "2026-10-05T18:56:05+00:00",
+    "set": "TFTSet18",
+    "database_updated_at": "2026-10-04T12:35:31+00:00",
+    "matched": 254,
+    "n_catalog": 254,
+    "missing_from_datatft": []
+  },
+  "augments": {
+    "DA_18_BigGrabBag": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_18_BlossomTraitAugment": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        4,
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_18_BranchingOut": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 0
+    },
+    "DA_18_BranchingOutPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 0
+    },
+    "DA_18_CaretakersAlly": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_18_CovenTraitAugment": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4,
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_18_CovenTraitAugment_LootToAP": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        4,
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_18_DuoQueue": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1,
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_18_ElderwoodTraitAugment": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        4,
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_18_FOURcing": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        2,
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_18_FaeTraitAugment": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        4,
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_18_FloraFatalisAugment": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        4,
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_18_FloraFatalisAugmentPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        4,
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_18_GoodForSomethingI": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_18_InfernoTraitAugment": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        4,
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_18_LunarTraitAugment": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        4,
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_18_LunarTraitAugmentPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        4,
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_18_LuxAugmentII": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        5
+      ],
+      "list_index": 2
+    },
+    "DA_18_OneTwoFive": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1,
+        3
+      ],
+      "list_index": 0
+    },
+    "DA_18_OnesTwosThree": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_18_PrimalAugmentPlus_Nidalee": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 1
+    },
+    "DA_18_PrimalAugmentPlus_Sivir": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 1
+    },
+    "DA_18_PrimalAugment_Nidalee": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 1
+    },
+    "DA_18_PrimalAugment_Sivir": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 1
+    },
+    "DA_18_ResidualMagic": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_18_ResidualMagicPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_18_ResidualMagicPlusPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_18_RiftbeastTraitAugment": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 1
+    },
+    "DA_18_RivalsAugment": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        4,
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_18_SolarTraitAugment": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4,
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_18_SprykinAugment": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        4,
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_18_WeightTheWorth": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1,
+        6
+      ],
+      "list_index": 1
+    },
+    "DA_18_WispRebatePlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_18_WispRebatePlusPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_AdvancedLoan": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1,
+        6
+      ],
+      "list_index": 1
+    },
+    "DA_AdvancedLoanPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1,
+        6
+      ],
+      "list_index": 1
+    },
+    "DA_ArcaneViktory": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_Ascension": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_AugmentedPower": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 0
+    },
+    "DA_BacklineBlueprint": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 1
+    },
+    "DA_BackupBows": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 0
+    },
+    "DA_BandOfThieves": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 0
+    },
+    "DA_BandOfThievesII": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_BandOfThievesIIPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_BandOfThievesIIPlusPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_BaronsLair": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3,
+        2
+      ],
+      "list_index": 2
+    },
+    "DA_BeltOverflow": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_BirthdayPresent": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_BirthdayReunion": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1,
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_BlackthornTraitAugment": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        4,
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_BodyguardTraining": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_BonusGift": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1,
+        6
+      ],
+      "list_index": 1
+    },
+    "DA_BonusGiftPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1,
+        6
+      ],
+      "list_index": 1
+    },
+    "DA_BoosterPack": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_BoosterPackPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_BoosterPackPlusPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_BoxingLessons": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_BronzeForLifeI": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_BronzeForLifeII": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 2
+    },
+    "DA_BuildABud": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_BuriedTreasuresIII": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_CalculatedLoss": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_CallToChaos": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 2
+    },
+    "DA_CalledShot": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_CapitalGainsI": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_CapitalGainsII": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_CaretakersFavor": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_CarveAPath": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 0
+    },
+    "DA_CelestialBlessingI": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_CelestialBlessingII": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_CelestialBlessingIII": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 2
+    },
+    "DA_ChallengersGrace": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_ChampDelivery": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_ChampDeliveryPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_ChampDeliveryPlusPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_ClearMind": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_ClockworkAccelerator": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_ClutteredMind": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_CognitiveOverload": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_CognitiveTax": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_CognitiveTaxPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_ComebackStory": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 2
+    },
+    "DA_CommerceCore": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_ComponentBuffet": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 0
+    },
+    "DA_ComponentQuest": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3,
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_ConstructACompanion": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        6,
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_CookingPot": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4,
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_Coronation": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        1,
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_Corrosion": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_CraftedCrafting": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_CryMeARiver": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_CursedCrown": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 2
+    },
+    "DA_CyberneticImplants_Gold": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2,
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_CyberneticUplink_Gold": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2,
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_DeadlierBlades": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_DeadlierCaps": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_DoubleTrouble": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_Dummify": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_EarlyLearnings": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_ElectrochargeI": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_ElectrochargeII": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_EpicRolldown": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_Epoch": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_EpochPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_ExclusiveCustomization": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3,
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_Expedition": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        6,
+        3
+      ],
+      "list_index": 0
+    },
+    "DA_ExplosiveGrowth": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_ExplosiveGrowthPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_ExtraBuckles": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 0
+    },
+    "DA_FeelingLucky": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_FindYourCenter": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2,
+        6
+      ],
+      "list_index": 0
+    },
+    "DA_Flexible": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 2
+    },
+    "DA_FlowingTears": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 0
+    },
+    "DA_FocusedFire": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_ForgeAFriend": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_ForgedInStrength": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_FrontlineFoundation": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 1
+    },
+    "DA_FutureFocused": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1,
+        6
+      ],
+      "list_index": 0
+    },
+    "DA_GainGold": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_GiantAndMighty": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 2
+    },
+    "DA_GildedSteel": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_GlassCannon_Gold": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_GlassCannon_Silver": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_GoingLong": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_GoldDestiny": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 1
+    },
+    "DA_GoldDestinyPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 1
+    },
+    "DA_GoldenEgg": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 2
+    },
+    "DA_GoldenGamble": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3,
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_GoldenGamblePlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        3,
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_GoldenGamblePlusPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        3,
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_GroupHugI": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_GroupHugII": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_HardBargain": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_HardCommit": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 2
+    },
+    "DA_HealingOrbsI": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_HealingOrbsII": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_HeartOfSteel": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_HedgeFund": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_HeroicGrabBag": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_HeroicGrabBagPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_HeroicGrabBagPlusPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_HoldTheLine": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 2
+    },
+    "DA_Hustler": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_InfinityProtection": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_InvestedPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_InvestedPlusPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_InvestmentStrategy": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 2
+    },
+    "DA_InvestmentStrategyI": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_IronAssets": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3,
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_ItemGrabBag": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 0
+    },
+    "DA_ItsMeBaby": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2,
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_JeweledLotus_I": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_JeweledLotus_II": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 2
+    },
+    "DA_KickStart": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_Kingslayer": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_LateGameScaling": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1,
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_LateGameSpecialist": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_LatentForge": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 0
+    },
+    "DA_LegionOfThrees": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        2,
+        4
+      ],
+      "list_index": 1
+    },
+    "DA_LevelUp": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_LivingForge": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_LoadedDice": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1,
+        6
+      ],
+      "list_index": 0
+    },
+    "DA_LuckyGloves": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_LuckyGlovesPlus": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_LuxurySubscription": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_MagicRoll": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 1
+    },
+    "DA_MakeshiftArmorI": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_MakeshiftArmorII": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_MaliciousMonetization": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_MaxBuild": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_Min_Max": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_MissedConnections": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_MoneyHungryPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_MoneyHungry_NotBroken": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_MoneyMonsoon": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_NestingAnvils": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        3,
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_NestingAnvilsPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        3,
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_NestingDollsPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [],
+      "list_index": 2
+    },
+    "DA_NestingDollsPlusPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [],
+      "list_index": 2
+    },
+    "DA_NoScoutNoPivot": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_OneBuffTwoBuff": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_PandorasBench": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 0
+    },
+    "DA_PandorasItemsI": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 0
+    },
+    "DA_PandorasItemsII": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_PandorasItemsIII": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_PartialAscension": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_PatienceIsAVirtue": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_PatientStudy": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_Pilfer": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1,
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_PlotArmor": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_PortableForge": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_PrismaticDestiny": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 2
+    },
+    "DA_PrismaticDestinyPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 2
+    },
+    "DA_PrismaticTicket": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_PromisedProtection": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_QuickStreaks": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_RadiantRascal": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_RadiantRelic": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_Recombobulator": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 0
+    },
+    "DA_Replication": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_Retribution": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_RollingForDays": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_SalvageBin": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_SalvageBinPlus": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_SeraphimsStaff": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_ShimmerscaleEssence": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3,
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_ShoppingSpree": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_SilverDestiny": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 0
+    },
+    "DA_SilverDestinyPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 0
+    },
+    "DA_SilverDestinyPlusPlus": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 0
+    },
+    "DA_SilverSpoon": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_Slammin": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1,
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_SlamminPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1,
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_SliceOfLife": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_SlightlyMagicRoll": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 0
+    },
+    "DA_SmallGrabBag": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 0
+    },
+    "DA_SoloLeveling": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3,
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_SoloPlate": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_SoulAwakening": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 2
+    },
+    "DA_SpeedyDoubleKill": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3,
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_SpiritOfRedemption": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_SpreadingRoots": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 1
+    },
+    "DA_SpreadingRootsPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 1
+    },
+    "DA_Staffsmith": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_StandUnited": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_SweetTreats": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_SwordOverflow": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_Swordsmith": {
+      "rounds": [
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_TacticiansKitchen": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 2
+    },
+    "DA_TeamBuilding": {
+      "rounds": [
+        "2-1",
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    },
+    "DA_TheGoldenDragon": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_TheTower": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        6,
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_TheTraitTree": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 2
+    },
+    "DA_TheTraitTreePlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        4
+      ],
+      "list_index": 2
+    },
+    "DA_TimeSkip": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_TonsOfStatsI": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 1
+    },
+    "DA_TonsOfStatsII": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 2
+    },
+    "DA_TradeSector": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_TradeSectorPlus": {
+      "rounds": [
+        "3-2"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_TraitLadder": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4,
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_TwinGuardians": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2
+      ],
+      "list_index": 0
+    },
+    "DA_URF": {
+      "rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 1
+    },
+    "DA_UpwardMobility": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_UrfsGrabBag": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3,
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_VerticalityI": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2,
+        4
+      ],
+      "list_index": 0
+    },
+    "DA_VerticalityII": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2,
+        4
+      ],
+      "list_index": 1
+    },
+    "DA_VerticalityIII": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        2,
+        4
+      ],
+      "list_index": 2
+    },
+    "DA_WandOverflow": {
+      "rounds": [
+        "3-2",
+        "4-2"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_Warpath": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 1
+    },
+    "DA_WeStickTogether": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        4,
+        3
+      ],
+      "list_index": 2
+    },
+    "DA_WorththeWait": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 1
+    },
+    "DA_WorththeWaitII": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 2
+    },
+    "DA_WovenMagic": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        3
+      ],
+      "list_index": 1
+    },
+    "DA_YoungAndWildAndFree": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        1
+      ],
+      "list_index": 0
+    }
+  }
+}

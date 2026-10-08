@@ -10,6 +10,9 @@ TRINH TU
     1. Hoi MetaTFT, TFT Academy, lolchess -> data/patch_state.json
     2. Buoc nao co output stale/missing thi chay (xem STEPS trong
        src/knowledge/data_refresh.py). Mot buoc hong KHONG dung ca chuoi.
+       crawl_datatft_augments (luot chao augment) la bang theo SET: chi chay
+       khi thieu file / sang set moi / --force. Sau khi no ghi snapshot moi,
+       sinh lai bang feature: build_augment_features.py --offline --migrate --write.
     3. Kiem lai do tuoi, ghi meta.patch / last_verified vao config/data_sources.yaml.
 
 Ma thoat 1 neu con buoc hong, buoc phai lam tay, hoac bang con cu - de CI
