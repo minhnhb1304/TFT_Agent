@@ -215,3 +215,15 @@ def test_stage_four_lets_the_policy_reroll_more_than_stage_two() -> None:
     late = analyze(pris, RerollTuning(), stage_number=4, trials=2000, bootstrap=100)
     seq = lambda r: next(x for x in r.rows if x.name == "sequential").mean_rerolls
     assert seq(late) > seq(early)
+
+
+def test_report_says_which_pool_was_used() -> None:
+    """Bao cao doi chung phai noi pool la cung bac hay da loc theo luot chao."""
+    from dataclasses import replace
+
+    scoped = replace(LADDER, scope="tier+round", offer_round="3-2")
+    r = analyze(scoped, RerollTuning(), stage_number=3, trials=200, bootstrap=50)
+    assert r.pool_scope == "tier+round"
+    assert r.to_dict()["pool_scope"] == "tier+round"
+    assert "tier+round" in r.table()
+    assert analyze(LADDER, RerollTuning(), trials=200, bootstrap=50).pool_scope == "tier"

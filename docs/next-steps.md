@@ -1,5 +1,7 @@
 # Kế Hoạch & Nhiệm Vụ Tiếp Theo (Next Steps)
 
+> **Phiên gần nhất (2026-10-06):** việc tồn đọng và bước kế tiếp ở [session-handoff.md](session-handoff.md).
+
 ## ⏱️ Trạng thái 2026-09-30 — đọc mục này trước
 
 Hạn nộp: **~2027-01-20** (16 tuần từ 30-09). Trừ ngược: **4 tuần cuối viết luận văn**, **tuần 12
@@ -39,6 +41,9 @@ Có **20 video tự chơi chưa dùng** + dự kiến **10–20 video từ ngư�
 | 3 | Directional augment evaluation — **tính năng bắt buộc**, phải là trục ablation tắt được | [directional-augment/architecture.md](directional-augment/architecture.md) |
 | 4 | SPEC v4: viết lại §1.1 (4 đóng góp), §3.6 (bỏ widget không tồn tại), tick lại §7 | Chưa bắt đầu |
 | 5 | Re-baseline tài liệu: `README` bảng trạng thái, `dev_log.md` thành lịch sử | Chưa bắt đầu |
+| 6 | Tách `item_grants` chi tiết hơn: `Anvil` → `ComponentAnvil` / `CompletedAnvil` / `ArtifactAnvil`, thêm `Artifact`, `RadiantItem`. Phải sửa `extract_item_grants` (lên `deterministic-v2`, sinh lại bảng) rồi mới quyết ItemFit có trọng số riêng (sau cờ) hay giữ điểm cũ | **Nghiên cứu sau.** Hiện mới có trong trang duyệt tay (`scripts/review_augment_features.py`) làm ground truth. Lỗi đã thấy: "component anvil" ra `AnyComponent`+`Anvil`; "Completed Item anvils" mất `Anvil` (regex `anvil` không khớp số nhiều); Portable Forge, Radiant Relic… có `item_grants` rỗng |
+| 7 | `category` → `categories` 1–3 nhãn (giữ `category` = nhãn chính), cùng đợt: `carry_type` AD/AP/both/none + `frontline`. Không scorer nào đọc `category`: giá trị là mô tả + đo, đưa vào chấm điểm là cổng riêng | **Đang triển khai.** Q1–Q4 đã chốt; P1–P3 (schema, trích, trang duyệt) làm 2026-10-05, P4 duyệt tay tiếp theo. [category-multilabel/overview.md](category-multilabel/overview.md) |
+| 8 | `offer_rounds`: lõi chào ở lượt nào (2-1 / 3-2 / 4-2), lấy từ datatft.com (khớp 254/254). Sửa nhãn `tempo`, thu pool của reroll policy về đúng lượt | **Plan draft, chờ chốt Q1–Q4.** [offer-rounds/overview.md](offer-rounds/overview.md) |
 
 ### Quyết định đã chốt trong phiên 30-09
 

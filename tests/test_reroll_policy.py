@@ -573,3 +573,143 @@ def test_a_decision_is_cheap_once_the_pool_is_cached(advisor) -> None:
         samples.append((time.perf_counter() - t0) * 1000)
     samples.sort()
     assert samples[int(0.95 * len(samples))] < 0.5
+
+
+# --- Pool theo luot chao (offer_rounds) -------------------------------------
+# docs/augment-reroll/offer-round-pool.md
+
+
+def round_table(n_early: int = 14, n_late: int = 14, n_unknown: int = 2) -> FeatureTable:
+    """Bac 2: `n_early` the chi chao o 2-1 (econ thap -> diem thap), `n_late` the
+    chi chao o 4-2 (econ cao -> diem cao), `n_unknown` the chua biet luot."""
+    rows = {}
+    for i in range(n_early):
+        rows[f"DA_E{i}"] = feature(api_name=f"DA_E{i}", name=f"E{i}", econ_value=0,
+                                   offer_rounds=["2-1"])
+    for i in range(n_late):
+        rows[f"DA_L{i}"] = feature(api_name=f"DA_L{i}", name=f"L{i}", econ_value=1 + i % 3,
+                                   offer_rounds=["4-2"])
+    for i in range(n_unknown):
+        rows[f"DA_U{i}"] = feature(api_name=f"DA_U{i}", name=f"U{i}", econ_value=2)
+    return FeatureTable(rows)
+
+
+def round_advisor(table: FeatureTable | None = None, **reroll) -> AugmentAdvisor:
+    """Advisor voi khoi `reroll_policy` ghi de - dung nhu sua file YAML."""
+    config = ScoringConfig.default()
+    config.tuning["reroll_policy"] = dict(reroll)
+    return AugmentAdvisor(table or round_table(), FakeProvider(), config)
+
+
+def test_flag_on_keeps_only_augments_offered_at_this_round() -> None:
+    adv = round_advisor(pool_by_offer_round=True)
+    p = adv.pool_distribution(2, GameState(stage="2-1"))
+    assert p.scope == "tier+round" and p.offer_round == "2-1"
+    assert len(p) == 16  # 14 the 2-1 + 2 the chua biet luot
+    assert not any(a.startswith("DA_L") for a in p.api_names)
+
+
+def test_flag_off_keeps_the_whole_tier() -> None:
+    adv = round_advisor(pool_by_offer_round=False)
+    p = adv.pool_distribution(2, GameState(stage="2-1"))
+    assert p.scope == "tier" and p.offer_round == ""
+    assert len(p) == 30
+
+
+def test_augments_with_unknown_rounds_stay_in_every_round_pool() -> None:
+    adv = round_advisor(pool_by_offer_round=True)
+    for stage in ("2-1", "4-2"):
+        names = adv.pool_distribution(2, GameState(stage=stage)).api_names
+        assert {"DA_U0", "DA_U1"} <= set(names)
+
+
+def test_round_is_read_from_the_stage_number_not_the_exact_round() -> None:
+    """Man chon augment co the duoc doc khi dong ho da sang vong sau (2-2)."""
+    adv = round_advisor(pool_by_offer_round=True)
+    p = adv.pool_distribution(2, GameState(stage="2-2"))
+    assert p.offer_round == "2-1" and p.scope == "tier+round"
+
+
+def test_small_round_pool_falls_back_to_the_whole_tier() -> None:
+    # 3-2: khong the nao chao -> pool theo luot chi con 2 the chua biet luot.
+    adv = round_advisor(pool_by_offer_round=True)
+    p = adv.pool_distribution(2, GameState(stage="3-2"))
+    assert p.scope == "tier:fallback-small" and p.offer_round == "3-2"
+    assert len(p) == 30
+
+
+def test_min_round_pool_is_configurable() -> None:
+    adv = round_advisor(pool_by_offer_round=True, min_round_pool=2)
+    p = adv.pool_distribution(2, GameState(stage="3-2"))
+    assert p.scope == "tier+round" and len(p) == 2
+
+
+def test_fallback_is_judged_before_excluding_revealed_cards() -> None:
+    """Pool theo luot = 16 >= 12. Tru 6 the dang hien/da dot con 10 < 12 nhung
+    KHONG duoc lui: neu khong thi pool nhay kieu giua hai buoc cua mot man chon."""
+    adv = round_advisor(pool_by_offer_round=True)
+    burned = [f"DA_E{i}" for i in range(6)]
+    p = adv.pool_distribution(2, GameState(stage="2-1"), exclude=burned)
+    assert p.scope == "tier+round" and len(p) == 10
+
+
+def test_burned_cards_from_another_round_do_not_shrink_the_pool_twice() -> None:
+    """The da dot o 2-1 ma khong chao o 4-2 thi bo loc da loai san."""
+    adv = round_advisor(pool_by_offer_round=True)
+    state = GameState(stage="4-2")
+    ranking = adv.rank(["DA_L0", "DA_L1", "DA_L2"], state)
+    clean = adv.advise_reroll(ranking, state, RerollState())
+    burned = adv.advise_reroll(
+        ranking, state, RerollState(burned=("DA_E0", "DA_E1", "DA_E2"))
+    )
+    assert clean.pool_n == burned.pool_n == 13  # 14 + 2 - 3 the dang hien
+    assert clean.pool_scope == "tier+round"
+
+
+def test_tier_without_any_round_data_is_labelled_and_untouched(advisor) -> None:
+    """Bang chua co offer_rounds (truoc khi sinh lai) -> hanh vi y nhu cu."""
+    p = advisor.pool_distribution(2, GameState(stage="3-2"))
+    assert p.scope == "tier:no-round-data" and len(p) == 12
+
+
+def test_stage_without_an_augment_offer_uses_the_tier_pool() -> None:
+    adv = round_advisor(pool_by_offer_round=True)
+    p = adv.pool_distribution(2, GameState(stage="5-1"))
+    assert p.scope == "tier:no-round" and len(p) == 30
+
+
+def test_pool_statistics_differ_between_flag_states() -> None:
+    """HOI QUY: o 2-1 pool that chi gom the diem thap. Pool cung bac tron ca the
+    4-2 diem cao vao -> sigma lon hon va g(R) cao hon mot cach gia tao."""
+    state = GameState(stage="2-1")
+    off = round_advisor(pool_by_offer_round=False).pool_distribution(2, state)
+    on = round_advisor(pool_by_offer_round=True).pool_distribution(2, state)
+    assert len(on) < len(off)
+    assert on.sigma < off.sigma
+    floor = on.scores[0]
+    assert on.expected_max(floor) < off.expected_max(floor)
+    assert on.certainty_equivalent(floor, 2.0) < off.certainty_equivalent(floor, 2.0)
+
+
+def test_flag_flips_a_decision_when_the_better_cards_cannot_appear() -> None:
+    """Chang 2-1, gold c > 0, ba the dau deu la the 2-1 (diem bang nhau). Tin vao
+    pool cung bac thi doi vi tuong con the 4-2 de rut; pool that thi khong con gi
+    hon -> chot."""
+    state = GameState(stage="2-1")
+    cards = ["DA_E0", "DA_E1", "DA_E2"]
+    # Bo 2 the chua biet luot: pool that o 2-1 chi con the E dong diem.
+    table = round_table(n_unknown=0)
+    off = round_advisor(table, pool_by_offer_round=False)
+    on = round_advisor(table, pool_by_offer_round=True)
+    a_off = off.advise_reroll(off.rank(cards, state), state, RerollState())
+    a_on = on.advise_reroll(on.rank(cards, state), state, RerollState())
+    assert (a_off.action, a_off.pool_scope) == ("REROLL", "tier")
+    assert (a_on.action, a_on.pool_scope) == ("PICK", "tier+round")
+    assert a_on.to_dict()["pool_scope"] == "tier+round"
+
+
+def test_shipped_config_declares_the_offer_round_flag() -> None:
+    """Co phai nam trong file de ablation bat/tat duoc, khong chi trong code."""
+    block = ScoringConfig.load("config/scoring_weights.yaml").tune("reroll_policy")
+    assert block["pool_by_offer_round"] is True
+    assert block["min_round_pool"] == RerollTuning().min_round_pool
