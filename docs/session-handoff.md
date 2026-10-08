@@ -1,15 +1,15 @@
 # Session Handoff
 
-Việc tồn đọng sau phiên 2026-10-05 → 06. Đọc file này trước khi bắt đầu phiên sau. Trạng thái lúc
-viết: **1027 test xanh, 44 file thay đổi, CHƯA commit gì**.
+Việc tồn đọng sau phiên 2026-10-05 → 08. Đọc file này trước khi bắt đầu phiên sau. Trạng thái
+2026-10-08: **1027 test xanh, 4 commit đã push lên `main` (`253bafc`), duyệt tay xong 254/254**.
 
 ## Làm ngay đầu phiên
 
 | # | Việc | Ghi chú |
 |---|---|---|
-| 1 | **Commit**, tách 4 commit theo 4 việc bên dưới | Chưa commit vì chưa được yêu cầu. Không push khi chưa hỏi (bạn test trên máy khác) |
+| 1 | ~~Commit, tách 4 commit~~ **Xong 2026-10-08** (`410af32` · `c719a17` · `616c928` · `253bafc`) | Commit nhãn duyệt tay mới chỉ ở local, chưa push |
 | 2 | **Probe client trước 2026-10-09** | Hạn ngoài, ghi ở [next-steps.md](next-steps.md): `tools/probe_environment.py --closed` rồi `--seconds 5` trên máy game. Chưa rõ đã chạy chưa |
-| 3 | Chạy lại server duyệt trong terminal riêng | `.venv\Scripts\python scripts\review_augment_features.py` → `http://127.0.0.1:8766/` |
+| 3 | Chạy lại server duyệt khi cần sửa nhãn | `.venv\Scripts\python scripts\review_augment_features.py` → `http://127.0.0.1:8766/` |
 
 Đề xuất tách commit (thay đổi reroll phải đứng riêng để số trước/sau đọc được):
 
@@ -32,7 +32,8 @@ viết: **1027 test xanh, 44 file thay đổi, CHƯA commit gì**.
 
 ## Việc của bạn: duyệt tay
 
-Đã duyệt **122/254** (68 đúng · 51 sai · 3 chưa chắc), lưu ở `data/eval/augment_feature_review.json`.
+Đã duyệt **254/254** (111 đúng · 140 sai · 3 chưa chắc), lưu ở `data/eval/augment_feature_review.json`.
+Xong 2026-10-08; các gạch đầu dòng dưới là danh sách soát lại, việc code #1 đã hết bị chặn.
 
 - **21 lõi "Cần xem lại"** vì đã chấp nhận `immediate` cho lõi chỉ có ở 2-1. Hedge Fund vẫn đang `immediate` trong bảng, chờ sửa thành `scaling`.
 - Thêm vài lõi "Cần xem lại" từ đợt đổi schema (nhãn `tank` cũ, nhãn gốc đã đổi).
