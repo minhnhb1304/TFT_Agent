@@ -1,0 +1,3949 @@
+{
+  "meta": {
+    "features_file": "data/augment_features.json",
+    "updated_at": "2026-10-06T11:07:38+00:00"
+  },
+  "reviews": {
+    "DA_AdvancedLoan": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:31:05+00:00"
+    },
+    "DA_AdvancedLoanPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:econ_value (from deterministic-v1)",
+      "updated_at": "2026-10-05T14:12:07+00:00"
+    },
+    "DA_ArcaneViktory": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T14:12:22+00:00"
+    },
+    "DA_Ascension": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T14:12:40+00:00"
+    },
+    "DA_AugmentedPower": {
+      "verdict": "wrong",
+      "note": "đây là 1 lõi đặc biệt với tác dụng nâng cấp lõi ở vòng chọn lõi tiếp theo nên cần đánh giá khác",
+      "original": {
+        "category": "utility",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v1",
+      "updated_at": "2026-10-05T14:19:10+00:00",
+      "fix": {
+        "tempo": "scaling"
+      }
+    },
+    "DA_BacklineBlueprint": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "trait",
+        "categories": [
+          "trait",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "Emblem"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:31:25+00:00"
+    },
+    "DA_BackupBows": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "carry_type": "AD",
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "RecurveBow"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T14:15:37+00:00"
+    },
+    "DA_BandOfThieves": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "item",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T15:28:43+00:00",
+      "fix": {
+        "item_grants": [
+          "CompletedItem"
+        ]
+      }
+    },
+    "DA_BandOfThievesII": {
+      "verdict": "wrong",
+      "note": "cho 3 Thief's Gloves theo dạng 2 + 1  (2 now 1 later)",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "manual-audit:category,econ_value,tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T09:31:48+00:00",
+      "fix": {
+        "item_grants": [
+          "CompletedItem"
+        ]
+      }
+    },
+    "DA_BandOfThievesIIPlus": {
+      "verdict": "wrong",
+      "note": "cho 3 Thief's Gloves theo dạng 2 + 1  (2 now 1 later)",
+      "original": {
+        "category": "item",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:category,econ_value,tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T15:28:54+00:00",
+      "fix": {
+        "item_grants": [
+          "CompletedItem"
+        ]
+      }
+    },
+    "DA_BandOfThievesIIPlusPlus": {
+      "verdict": "wrong",
+      "note": "cho 3 Thief's Gloves theo dạng 2 + 1  (2 now 1 later)",
+      "original": {
+        "category": "item",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T15:29:00+00:00",
+      "fix": {
+        "item_grants": [
+          "CompletedItem"
+        ]
+      }
+    },
+    "DA_BaronsLair": {
+      "verdict": "wrong",
+      "note": "cho cả ad và ap nên là both chứ không phải ad, thêm nữa còn cho 1 đồ tank",
+      "original": {
+        "category": "combat",
+        "carry_type": "AD",
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T15:29:17+00:00",
+      "fix": {
+        "carry_type": "none",
+        "item_grants": [
+          "CompletedItem"
+        ]
+      }
+    },
+    "DA_18_PrimalAugment_Nidalee": {
+      "verdict": "wrong",
+      "note": "có cho 7 tiền dưới dạng tướng",
+      "original": {
+        "category": "trait",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_Primal18"
+        ],
+        "item_grants": [],
+        "board_condition": "can unit thuoc trait: DA_Primal18"
+      },
+      "extraction_method": "deterministic-v1",
+      "updated_at": "2026-10-05T16:01:37+00:00",
+      "fix": {
+        "category": "combat",
+        "econ_value": 2
+      }
+    },
+    "DA_18_PrimalAugment_Sivir": {
+      "verdict": "wrong",
+      "note": "có cho 7 tiền dưới dạng tướng",
+      "original": {
+        "category": "trait",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_Primal18"
+        ],
+        "item_grants": [],
+        "board_condition": "can unit thuoc trait: DA_Primal18"
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T16:01:43+00:00",
+      "fix": {
+        "category": "combat",
+        "econ_value": 2
+      }
+    },
+    "DA_18_PrimalAugmentPlus_Nidalee": {
+      "verdict": "wrong",
+      "note": "có cho 7 tiền dưới dạng tướng",
+      "original": {
+        "category": "combat",
+        "carry_type": "AD",
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_Primal18"
+        ],
+        "item_grants": [],
+        "board_condition": "can unit thuoc trait: DA_Primal18"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:02:08+00:00",
+      "fix": {
+        "carry_type": "none",
+        "econ_value": 2
+      }
+    },
+    "DA_18_PrimalAugmentPlus_Sivir": {
+      "verdict": "wrong",
+      "note": "có cho 7 tiền dưới dạng tướng",
+      "original": {
+        "category": "trait",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_Primal18"
+        ],
+        "item_grants": [],
+        "board_condition": "can unit thuoc trait: DA_Primal18"
+      },
+      "extraction_method": "deterministic-v1",
+      "updated_at": "2026-10-05T16:02:15+00:00",
+      "fix": {
+        "econ_value": 2
+      }
+    },
+    "DA_BeltOverflow": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "GiantsBelt"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T16:25:49+00:00",
+      "fix": {
+        "categories": [
+          "item",
+          "combat"
+        ]
+      }
+    },
+    "DA_18_BigGrabBag": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item",
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2",
+          "4-2"
+        ]
+      },
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T09:33:15+00:00"
+    },
+    "DA_BirthdayPresent": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "carry_type": "none",
+        "tempo": "scaling",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v1)",
+      "updated_at": "2026-10-05T15:37:11+00:00"
+    },
+    "DA_BirthdayReunion": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:33:19+00:00"
+    },
+    "DA_18_BlossomTraitAugment": {
+      "verdict": "unsure",
+      "note": "board fit không quá cần thiết vì lõi đã cho 3 tướng blossom\nlõi cũng thiên hướng scale theo số lượng wisp được mua\ncó thiên hướng econ vì cho tướng dựa vào wisp được mua",
+      "original": {
+        "category": "trait",
+        "categories": [
+          "trait"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_18_Blossom"
+        ],
+        "item_grants": [],
+        "board_condition": "can unit thuoc trait: DA_18_Blossom"
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T16:35:45+00:00"
+    },
+    "DA_BodyguardTraining": {
+      "verdict": "wrong",
+      "note": "lõi cũng có thiên hướng scale theo cấp người chơi",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T09:33:51+00:00",
+      "fix": {}
+    },
+    "DA_BonusGift": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:34:00+00:00"
+    },
+    "DA_BonusGiftPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:00:57+00:00"
+    },
+    "DA_BoosterPack": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:34:02+00:00"
+    },
+    "DA_BoosterPackPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:02:29+00:00"
+    },
+    "DA_BoosterPackPlusPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "carry_type": "none",
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:02:34+00:00"
+    },
+    "DA_BoxingLessons": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T16:20:49+00:00"
+    },
+    "DA_18_BranchingOut": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "trait",
+        "categories": [
+          "trait",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "Emblem"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:34:06+00:00"
+    },
+    "DA_18_BranchingOutPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item",
+          "trait"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "Emblem"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T16:35:05+00:00"
+    },
+    "DA_BronzeForLifeI": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "trait"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "Bronze-tier trait"
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T16:36:16+00:00"
+    },
+    "DA_BronzeForLifeII": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "trait"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T16:36:22+00:00"
+    },
+    "DA_BuildABud": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-06T09:34:12+00:00",
+      "fix": {
+        "econ_value": 3,
+        "categories": [
+          "combat",
+          "econ"
+        ],
+        "category": "combat"
+      }
+    },
+    "DA_BuriedTreasuresIII": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "manual-audit:category,econ_value,tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T09:34:19+00:00"
+    },
+    "DA_CalculatedLoss": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "reroll",
+        "categories": [
+          "reroll",
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-06T09:34:34+00:00",
+      "fix": {
+        "tempo": "scaling",
+        "econ_value": 3,
+        "categories": [
+          "econ",
+          "reroll"
+        ],
+        "category": "econ"
+      }
+    },
+    "DA_CallToChaos": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "utility",
+        "categories": [
+          "utility"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T16:40:01+00:00"
+    },
+    "DA_CalledShot": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:34:38+00:00"
+    },
+    "DA_CapitalGainsI": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "updated_at": "2026-10-05T16:43:36+00:00"
+    },
+    "DA_CapitalGainsII": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:44:35+00:00"
+    },
+    "DA_18_CaretakersAlly": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "utility",
+        "categories": [
+          "utility"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "updated_at": "2026-10-05T16:44:48+00:00"
+    },
+    "DA_CaretakersFavor": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent",
+          "Anvil"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T16:46:00+00:00",
+      "fix": {
+        "item_grants": [
+          "ComponentAnvil"
+        ]
+      }
+    },
+    "DA_CarveAPath": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "AD",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "BFSword"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:46:12+00:00"
+    },
+    "DA_CelestialBlessingI": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:46:47+00:00",
+      "fix": {
+        "frontline": false
+      }
+    },
+    "DA_CelestialBlessingII": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:46:59+00:00",
+      "fix": {
+        "frontline": false
+      }
+    },
+    "DA_CelestialBlessingIII": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:47:07+00:00",
+      "fix": {
+        "frontline": false
+      }
+    },
+    "DA_ChallengersGrace": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "AD",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T16:47:39+00:00"
+    },
+    "DA_ChampDelivery": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T09:34:51+00:00"
+    },
+    "DA_ChampDeliveryPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T16:48:07+00:00"
+    },
+    "DA_ChampDeliveryPlusPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T16:49:26+00:00"
+    },
+    "DA_18_SolarTraitAugment": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "trait"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_18_Solar"
+        ],
+        "item_grants": [],
+        "board_condition": "can unit thuoc trait: DA_18_Solar"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:50:10+00:00"
+    },
+    "DA_ClearMind": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "no champions on your bench at the end of player combat"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:50:25+00:00",
+      "fix": {}
+    },
+    "DA_ClockworkAccelerator": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "AD",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T16:51:29+00:00"
+    },
+    "DA_ClutteredMind": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "bench is full at the end of player combat"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:51:55+00:00"
+    },
+    "DA_CognitiveOverload": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "reroll"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:52:07+00:00"
+    },
+    "DA_CognitiveTax": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:34:56+00:00"
+    },
+    "DA_CognitiveTaxPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:52:30+00:00"
+    },
+    "DA_ComebackStory": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T16:53:03+00:00",
+      "fix": {
+        "tempo": "scaling"
+      }
+    },
+    "DA_CommerceCore": {
+      "verdict": "unsure",
+      "note": "phần lớn lõi là scaling nhưng cũng cho 1 lượng lớn tài nguyên ngay lập tức là 16 reroll = 32 gold",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "reroll"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:55:04+00:00"
+    },
+    "DA_ComponentBuffet": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent",
+          "Anvil"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T16:55:39+00:00"
+    },
+    "DA_ConstructACompanion": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T16:56:33+00:00",
+      "fix": {
+        "categories": [
+          "combat",
+          "econ"
+        ],
+        "category": "combat"
+      }
+    },
+    "DA_ComponentQuest": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T16:56:07+00:00"
+    },
+    "DA_18_FloraFatalisAugment": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "trait",
+        "categories": [
+          "trait",
+          "econ",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [
+          "DA_FloraFatalis18"
+        ],
+        "item_grants": [
+          "Emblem"
+        ],
+        "board_condition": "can unit thuoc trait: DA_FloraFatalis18"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:56:49+00:00"
+    },
+    "DA_18_FloraFatalisAugmentPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "trait",
+        "categories": [
+          "trait",
+          "econ",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [
+          "DA_FloraFatalis18"
+        ],
+        "item_grants": [
+          "Emblem"
+        ],
+        "board_condition": "can unit thuoc trait: DA_FloraFatalis18"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:56:52+00:00"
+    },
+    "DA_CookingPot": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "Spatula",
+          "FryingPan"
+        ],
+        "board_condition": "Allies holding a Frying Pan or Spatula item"
+      },
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T16:58:18+00:00",
+      "fix": {
+        "item_grants": [
+          "FryingPan"
+        ]
+      }
+    },
+    "DA_Coronation": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item",
+          "combat"
+        ],
+        "carry_type": "AD",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T16:58:34+00:00",
+      "fix": {
+        "carry_type": "both",
+        "categories": [
+          "combat",
+          "item"
+        ],
+        "category": "combat"
+      }
+    },
+    "DA_Corrosion": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T16:59:57+00:00",
+      "fix": {
+        "frontline": false
+      }
+    },
+    "DA_18_CovenTraitAugment": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "trait"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_18_Coven"
+        ],
+        "item_grants": [],
+        "board_condition": "can unit thuoc trait: DA_18_Coven"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:00:23+00:00",
+      "fix": {
+        "frontline": false,
+        "tempo": "scaling"
+      }
+    },
+    "DA_CraftedCrafting": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item",
+          "reroll",
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "CompletedItem"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:01:31+00:00",
+      "fix": {
+        "tempo": "scaling",
+        "item_grants": [],
+        "categories": [
+          "reroll",
+          "econ",
+          "item"
+        ],
+        "category": "reroll"
+      }
+    },
+    "DA_CryMeARiver": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "TearOfTheGoddess"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T17:02:01+00:00"
+    },
+    "DA_CursedCrown": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T17:03:53+00:00"
+    },
+    "DA_CyberneticImplants_Gold": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "item"
+        ],
+        "carry_type": "AD",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "BFSword"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:04:23+00:00"
+    },
+    "DA_CyberneticUplink_Gold": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "TearOfTheGoddess"
+        ],
+        "board_condition": "Your champions holding an item"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:04:34+00:00"
+    },
+    "DA_18_CovenTraitAugment_LootToAP": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "trait",
+        "categories": [
+          "trait",
+          "combat"
+        ],
+        "carry_type": "AP",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_18_Coven"
+        ],
+        "item_grants": [],
+        "board_condition": "can unit thuoc trait: DA_18_Coven"
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T17:05:00+00:00",
+      "fix": {}
+    },
+    "DA_DeadlierBlades": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "AD",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:05:45+00:00",
+      "fix": {
+        "item_grants": [
+          "CompletedItem"
+        ],
+        "categories": [
+          "combat",
+          "item"
+        ]
+      }
+    },
+    "DA_DeadlierCaps": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item",
+          "combat"
+        ],
+        "carry_type": "AP",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:06:12+00:00",
+      "fix": {
+        "item_grants": [
+          "CompletedItem"
+        ],
+        "categories": [
+          "combat",
+          "item"
+        ],
+        "category": "combat"
+      }
+    },
+    "DA_DoubleTrouble": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "field exactly 2 copies of a champion"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:06:21+00:00"
+    },
+    "DA_Dummify": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T17:06:23+00:00"
+    },
+    "DA_18_DuoQueue": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T17:06:57+00:00"
+    },
+    "DA_EarlyLearnings": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "AD",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:07:36+00:00",
+      "fix": {
+        "carry_type": "both"
+      }
+    },
+    "DA_ElectrochargeI": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "utility",
+        "categories": [
+          "utility"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T17:08:22+00:00",
+      "fix": {
+        "categories": [
+          "combat"
+        ],
+        "category": "combat"
+      }
+    },
+    "DA_ElectrochargeII": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:08:11+00:00"
+    },
+    "DA_18_FaeTraitAugment": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "trait",
+        "categories": [
+          "trait",
+          "combat"
+        ],
+        "carry_type": "both",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_18_Fae"
+        ],
+        "item_grants": [],
+        "board_condition": "can unit thuoc trait: DA_18_Fae"
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T17:08:54+00:00"
+    },
+    "DA_EpicRolldown": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "reroll",
+        "categories": [
+          "reroll",
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "updated_at": "2026-10-05T17:10:03+00:00",
+      "fix": {
+        "econ_value": 3,
+        "categories": [
+          "econ",
+          "reroll"
+        ],
+        "category": "econ"
+      }
+    },
+    "DA_EpochPlus": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "reroll",
+        "categories": [
+          "reroll",
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "updated_at": "2026-10-05T17:10:06+00:00",
+      "fix": {
+        "econ_value": 3,
+        "categories": [
+          "econ",
+          "reroll"
+        ],
+        "category": "econ"
+      }
+    },
+    "DA_Epoch": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "reroll"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:10:12+00:00"
+    },
+    "DA_ExclusiveCustomization": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T17:10:59+00:00",
+      "fix": {
+        "econ_value": 2,
+        "item_grants": [
+          "CompletedAnvil"
+        ],
+        "categories": [
+          "item",
+          "econ"
+        ],
+        "category": "item"
+      }
+    },
+    "DA_Expedition": {
+      "verdict": "wrong",
+      "note": "thuộc lớp lõi đặc biệt cần hi sinh tiền để nhận phần thưởng lớn về sau",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:13:06+00:00",
+      "fix": {
+        "econ_value": 1,
+        "categories": [
+          "item",
+          "econ"
+        ],
+        "category": "item"
+      }
+    },
+    "DA_ExplosiveGrowth": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:category,econ_value (from deterministic-v2)",
+      "updated_at": "2026-10-05T17:13:35+00:00"
+    },
+    "DA_ExplosiveGrowthPlus": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T17:18:59+00:00",
+      "fix": {
+        "tempo": "scaling"
+      }
+    },
+    "DA_ExtraBuckles": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "GiantsBelt"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T17:19:36+00:00"
+    },
+    "DA_FeelingLucky": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:20:10+00:00",
+      "fix": {
+        "econ_value": 3
+      }
+    },
+    "DA_FindYourCenter": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "A champion starting combat in the center of the front row"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:20:55+00:00",
+      "fix": {
+        "frontline": true
+      }
+    },
+    "DA_18_InfernoTraitAugment": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "trait"
+        ],
+        "carry_type": "AD",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_18_Inferno"
+        ],
+        "item_grants": [],
+        "board_condition": "can unit thuoc trait: DA_18_Inferno"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:21:54+00:00"
+    },
+    "DA_Flexible": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "trait",
+        "categories": [
+          "trait",
+          "item",
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "Emblem"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:22:11+00:00"
+    },
+    "DA_FlowingTears": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "AP",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "TearOfTheGoddess"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "updated_at": "2026-10-05T17:23:00+00:00"
+    },
+    "DA_FocusedFire": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "AD",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "updated_at": "2026-10-05T17:23:08+00:00"
+    },
+    "DA_ForgeAFriend": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:23:38+00:00",
+      "fix": {
+        "categories": [
+          "combat",
+          "econ"
+        ],
+        "category": "combat"
+      }
+    },
+    "DA_ForgedInStrength": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item",
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent",
+          "CompletedItem"
+        ],
+        "board_condition": "drop below @Health@ Health",
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:35:41+00:00",
+      "fix": {
+        "frontline": false,
+        "tempo": "scaling",
+        "item_grants": [
+          "AnyComponent",
+          "CompletedItem",
+          "ArtifactAnvil",
+          "Artifact"
+        ]
+      }
+    },
+    "DA_18_FOURcing": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:26:13+00:00",
+      "fix": {}
+    },
+    "DA_FrontlineFoundation": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item",
+          "trait"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "Emblem"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-06T09:35:49+00:00"
+    },
+    "DA_FutureFocused": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:27:14+00:00"
+    },
+    "DA_GainGold": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T17:27:15+00:00"
+    },
+    "DA_GiantAndMighty": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T17:27:18+00:00"
+    },
+    "DA_GildedSteel": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "field at least one 5-cost champion"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:28:07+00:00",
+      "fix": {
+        "categories": [
+          "combat",
+          "econ"
+        ]
+      }
+    },
+    "DA_GlassCannon_Silver": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "Allies that start combat in the back row"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:28:25+00:00"
+    },
+    "DA_GlassCannon_Gold": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "Allies must start combat in the back row"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:28:34+00:00"
+    },
+    "DA_GoingLong": {
+      "verdict": "unsure",
+      "note": "lõi có tính scale vì mỗi round cho 4 exp",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T17:29:23+00:00"
+    },
+    "DA_GoldDestiny": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:35:55+00:00",
+      "fix": {}
+    },
+    "DA_GoldDestinyPlus": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:29:54+00:00",
+      "fix": {}
+    },
+    "DA_GoldenGamble": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [
+          "CompletedItem"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T09:36:06+00:00",
+      "fix": {
+        "item_grants": [
+          "CompletedItem",
+          "RadiantItem"
+        ],
+        "categories": [
+          "item",
+          "econ"
+        ],
+        "category": "item"
+      }
+    },
+    "DA_GoldenGamblePlus": {
+      "verdict": "wrong",
+      "note": "lõi này thuộc lớp lõi kim cương",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [
+          "CompletedItem"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T17:32:30+00:00",
+      "fix": {
+        "item_grants": [
+          "CompletedItem",
+          "RadiantItem"
+        ],
+        "categories": [
+          "item",
+          "econ"
+        ],
+        "category": "item"
+      }
+    },
+    "DA_GoldenGamblePlusPlus": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [
+          "CompletedItem"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
+      "updated_at": "2026-10-05T17:31:16+00:00",
+      "fix": {
+        "item_grants": [
+          "CompletedItem",
+          "RadiantItem"
+        ],
+        "categories": [
+          "item",
+          "econ"
+        ],
+        "category": "item"
+      }
+    },
+    "DA_18_GoodForSomethingI": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "Champions that aren't holding items"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:32:57+00:00"
+    },
+    "DA_GroupHugI": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "Champions grant other adjacent champions Armor and Magic Resist"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:33:06+00:00"
+    },
+    "DA_GroupHugII": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "Champions adjacent to other champions at combat start"
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:33:10+00:00"
+    },
+    "DA_HardBargain": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:37:10+00:00",
+      "fix": {
+        "tempo": "scaling"
+      }
+    },
+    "DA_HardCommit": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "item",
+          "trait"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [
+          "Emblem"
+        ],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-05T17:34:14+00:00",
+      "fix": {
+        "econ_value": 2
+      }
+    },
+    "DA_HealingOrbsI": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:34:33+00:00"
+    },
+    "DA_HealingOrbsII": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-05T17:34:35+00:00"
+    },
+    "DA_HeartOfSteel": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "updated_at": "2026-10-05T17:34:46+00:00",
+      "fix": {}
+    },
+    "DA_HedgeFund": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-05T17:44:33+00:00",
+      "fix": {
+        "tempo": "scaling"
+      }
+    },
+    "DA_HeroicGrabBag": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-06T09:37:50+00:00",
+      "fix": {}
+    },
+    "DA_HeroicGrabBagPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
+      },
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T09:30:48+00:00"
+    },
+    "DA_HeroicGrabBagPlusPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "4-2"
+        ]
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-06T09:37:54+00:00"
+    },
+    "DA_HoldTheLine": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "AP",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "Champions in your back 2 rows gain stats for each champion that starts combat in your front row",
+        "offer_rounds": [
+          "3-2",
+          "4-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:38:12+00:00",
+      "fix": {
+        "carry_type": "both"
+      }
+    },
+    "DA_Hustler": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-06T09:38:31+00:00",
+      "fix": {
+        "tempo": "scaling"
+      }
+    },
+    "DA_InfinityProtection": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item",
+          "econ",
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "scaling",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T09:38:52+00:00",
+      "fix": {
+        "categories": [
+          "combat",
+          "econ",
+          "item"
+        ],
+        "category": "combat"
+      }
+    },
+    "DA_InvestedPlus": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "reroll"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T09:39:09+00:00",
+      "fix": {
+        "tempo": "scaling"
+      }
+    },
+    "DA_InvestedPlusPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "reroll"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "4-2"
+        ]
+      },
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T09:39:12+00:00"
+    },
+    "DA_InvestmentStrategyI": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "scaling",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T09:39:49+00:00"
+    },
+    "DA_InvestmentStrategy": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "updated_at": "2026-10-06T09:40:33+00:00",
+      "fix": {
+        "econ_value": 1
+      }
+    },
+    "DA_IronAssets": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent",
+          "Anvil"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
+      "updated_at": "2026-10-06T09:40:48+00:00",
+      "fix": {
+        "item_grants": [
+          "ComponentAnvil"
+        ],
+        "categories": [
+          "item",
+          "econ"
+        ],
+        "category": "item"
+      }
+    },
+    "DA_ItsMeBaby": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "a champion placed in the spotlight in the bottom right corner",
+        "offer_rounds": [
+          "3-2",
+          "4-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:40:58+00:00"
+    },
+    "DA_BlackthornTraitAugment": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item",
+          "trait"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_18_Blackthorn"
+        ],
+        "item_grants": [
+          "AnyComponent"
+        ],
+        "board_condition": "sacrificing a champion in the Blackthorn hex",
+        "offer_rounds": [
+          "2-1",
+          "3-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:41:21+00:00"
+    },
+    "DA_ItemGrabBag": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "CompletedItem"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1",
+          "3-2",
+          "4-2"
+        ]
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-06T09:41:27+00:00"
+    },
+    "DA_JeweledLotus_I": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "AD",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2",
+          "4-2"
+        ]
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-06T09:41:46+00:00",
+      "fix": {
+        "carry_type": "both"
+      }
+    },
+    "DA_JeweledLotus_II": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "AD",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2",
+          "4-2"
+        ]
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-06T09:42:10+00:00",
+      "fix": {
+        "carry_type": "AP"
+      }
+    },
+    "DA_KickStart": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:43:47+00:00",
+      "fix": {
+        "econ_value": 2
+      }
+    },
+    "DA_Kingslayer": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1",
+          "3-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:44:11+00:00"
+    },
+    "DA_LateGameScaling": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:44:46+00:00"
+    },
+    "DA_LateGameSpecialist": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:44:59+00:00"
+    },
+    "DA_LatentForge": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "Anvil"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:45:16+00:00",
+      "fix": {
+        "item_grants": [
+          "ArtifactAnvil"
+        ]
+      }
+    },
+    "DA_LegionOfThrees": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "item",
+          "trait"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "Emblem"
+        ],
+        "board_condition": "Your 3-cost champions and all allies equipped with an Emblem",
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:45:24+00:00"
+    },
+    "DA_LevelUp": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:45:47+00:00",
+      "fix": {
+        "tempo": "scaling"
+      }
+    },
+    "DA_LivingForge": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "Anvil"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:45:50+00:00"
+    },
+    "DA_LoadedDice": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:46:13+00:00"
+    },
+    "DA_LuckyGloves": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item",
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [
+          "SparringGloves"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "manual-audit:category,econ_value (from deterministic-v2)",
+      "updated_at": "2026-10-06T09:46:32+00:00"
+    },
+    "DA_LuckyGlovesPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "SparringGloves"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2",
+          "4-2"
+        ]
+      },
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T09:46:44+00:00"
+    },
+    "DA_LuxurySubscription": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "updated_at": "2026-10-06T09:47:40+00:00",
+      "fix": {
+        "categories": [
+          "econ",
+          "combat"
+        ]
+      }
+    },
+    "DA_MagicRoll": {
+      "verdict": "wrong",
+      "note": "đây là 1 lõi trả tài nguyên dựa trên số xúc xắc được đổ, phần thưởng được nhận thuộc 1 pool cho trước",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:49:02+00:00",
+      "fix": {
+        "econ_value": 0,
+        "categories": [
+          "utility"
+        ],
+        "category": "utility"
+      }
+    },
+    "DA_MakeshiftArmorI": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "Champions without items equipped",
+        "offer_rounds": [
+          "2-1",
+          "3-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:49:07+00:00"
+    },
+    "DA_MakeshiftArmorII": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": "Champions without items equipped",
+        "offer_rounds": [
+          "2-1",
+          "3-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:49:15+00:00"
+    },
+    "DA_MaliciousMonetization": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "4-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:49:24+00:00"
+    },
+    "DA_18_LuxAugmentII": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "trait",
+        "categories": [
+          "trait"
+        ],
+        "carry_type": "AP",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_18_LuxUniqueTrait"
+        ],
+        "item_grants": [],
+        "board_condition": "can unit thuoc trait: DA_18_LuxUniqueTrait",
+        "offer_rounds": [
+          "4-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:50:06+00:00",
+      "fix": {
+        "board_condition": null,
+        "item_grants": [
+          "CompletedAnvil"
+        ],
+        "categories": [
+          "trait",
+          "item"
+        ]
+      }
+    },
+    "DA_MaxBuild": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "reroll",
+        "categories": [
+          "reroll",
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "4-2"
+        ]
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "updated_at": "2026-10-06T09:50:34+00:00",
+      "fix": {
+        "econ_value": 3,
+        "categories": [
+          "econ",
+          "reroll"
+        ],
+        "category": "econ"
+      }
+    },
+    "DA_Min_Max": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-06T09:50:47+00:00"
+    },
+    "DA_MissedConnections": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2",
+          "4-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:51:07+00:00"
+    },
+    "DA_MoneyHungry_NotBroken": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:51:20+00:00"
+    },
+    "DA_MoneyHungryPlus": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "updated_at": "2026-10-06T09:51:46+00:00",
+      "fix": {
+        "econ_value": 3
+      }
+    },
+    "DA_MoneyMonsoon": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "4-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T09:51:56+00:00"
+    },
+    "DA_18_ElderwoodTraitAugment": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "trait"
+        ],
+        "carry_type": "AD",
+        "frontline": true,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_18_Elderwood"
+        ],
+        "item_grants": [],
+        "board_condition": "Champions that start combat adjacent to an Elderwood plant",
+        "offer_rounds": [
+          "2-1",
+          "3-2",
+          "4-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T11:04:01+00:00",
+      "fix": {
+        "carry_type": "both"
+      }
+    },
+    "DA_NestingAnvils": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item",
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent",
+          "Anvil"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T11:04:33+00:00",
+      "fix": {
+        "item_grants": [
+          "ComponentAnvil",
+          "ArtifactAnvil"
+        ]
+      }
+    },
+    "DA_NestingAnvilsPlus": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item",
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 2,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent",
+          "Anvil"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "4-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T11:04:46+00:00",
+      "fix": {
+        "item_grants": [
+          "ComponentAnvil",
+          "ArtifactAnvil"
+        ]
+      }
+    },
+    "DA_NestingDollsPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "econ",
+          "reroll"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
+      },
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T11:06:10+00:00"
+    },
+    "DA_NestingDollsPlusPlus": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat",
+          "econ",
+          "reroll"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "4-2"
+        ]
+      },
+      "extraction_method": "manual-audit:category,econ_value (from deterministic-v2)",
+      "updated_at": "2026-10-06T11:06:17+00:00"
+    },
+    "DA_NoScoutNoPivot": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "combat",
+        "categories": [
+          "combat"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "scaling",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "updated_at": "2026-10-06T11:06:42+00:00"
+    },
+    "DA_18_RiftbeastTraitAugment": {
+      "verdict": "wrong",
+      "note": "",
+      "original": {
+        "category": "trait",
+        "categories": [
+          "trait"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [
+          "DA_Riftbeast18"
+        ],
+        "item_grants": [],
+        "board_condition": "can unit thuoc trait: DA_Riftbeast18",
+        "offer_rounds": [
+          "2-1",
+          "3-2",
+          "4-2"
+        ]
+      },
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-06T11:07:07+00:00",
+      "fix": {
+        "econ_value": 1,
+        "categories": [
+          "combat",
+          "econ",
+          "trait"
+        ],
+        "category": "combat"
+      }
+    },
+    "DA_OneBuffTwoBuff": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "item",
+        "categories": [
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 0,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2",
+          "4-2"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T11:07:18+00:00"
+    },
+    "DA_18_OneTwoFive": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ",
+          "item"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 1,
+        "trait_affinity": [],
+        "item_grants": [
+          "AnyComponent"
+        ],
+        "board_condition": null,
+        "offer_rounds": [
+          "4-2"
+        ]
+      },
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "updated_at": "2026-10-06T11:07:31+00:00"
+    },
+    "DA_18_OnesTwosThree": {
+      "verdict": "ok",
+      "note": "",
+      "original": {
+        "category": "econ",
+        "categories": [
+          "econ"
+        ],
+        "carry_type": "none",
+        "frontline": false,
+        "tempo": "immediate",
+        "econ_value": 3,
+        "trait_affinity": [],
+        "item_grants": [],
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
+      },
+      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "updated_at": "2026-10-06T11:07:38+00:00"
+    }
+  }
+}

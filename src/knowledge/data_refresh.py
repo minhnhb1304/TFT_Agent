@@ -108,6 +108,12 @@ STEPS: tuple[Step, ...] = (
          outputs=("name_index", "champion_costs", "item_recipes"), source_key="static.cdragon"),
     Step("build_game_tables", ("scripts/build_game_tables.py",), outputs=("champion_costs", "item_recipes")),
     Step("build_name_index", ("scripts/build_name_index.py",), outputs=("name_index",)),
+    # Truoc augment_features: bang feature chep offer_rounds tu snapshot nay.
+    # Scope "set" nen chi tu chay khi thieu file hoac sang set moi (hoac --force):
+    # datatft la nguon mot nguoi duy tri, khong crawl dinh ky.
+    Step("crawl_datatft_augments",
+         ("scripts/crawl_datatft_augments.py", "--set", "{set}", "--overwrite"),
+         outputs=("augment_offer_rounds",), source_key="augment_offer_rounds.datatft"),
     Step("augment_features", outputs=("augment_features",),
          manual="python scripts/build_augment_features.py --llm --diff, xem roi --write "
                 "(ghi de mat phan LLM da duyet tay nen khong tu chay)"),

@@ -60,8 +60,17 @@ h1{font-size:22px;margin:0;text-wrap:balance}
 .chip.cat{background:var(--accent-soft);border-color:transparent}
 .chip.fixed{background:var(--bad-soft);border-color:transparent}
 .chip.fixed s{color:var(--muted)}
+.chip.round{border-style:dashed;border-color:var(--b);color:var(--b)}
+.chip.round span{color:inherit}
+.chip.round.unknown{border-color:var(--line);color:var(--muted)}
+.ctx{grid-column:1;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.dt{font-size:11.5px;color:var(--muted)}
+.dt b{font-family:var(--mono);font-weight:600}
+.toggle{display:inline-flex;gap:5px;align-items:center;font-size:13px;border:1px solid var(--line);border-radius:6px;padding:5px 8px;background:var(--surface);cursor:pointer;user-select:none}
+.toggle:has(input:checked){background:var(--accent-soft);border-color:var(--accent)}
+.filters .toggle input{padding:0;margin:0}
 .meta{font-size:12px;color:var(--muted)}
-.verdicts{grid-column:2;grid-row:1 / span 3;display:flex;flex-direction:column;gap:6px;align-self:start}
+.verdicts{grid-column:2;grid-row:1 / span 4;display:flex;flex-direction:column;gap:6px;align-self:start}
 .v{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:6px;padding:5px 12px;cursor:pointer;white-space:nowrap}
 .v[aria-pressed=true].ok{background:var(--ok-soft);color:var(--ok);border-color:var(--ok)}
 .v[aria-pressed=true].wrong{background:var(--bad-soft);color:var(--bad);border-color:var(--bad)}
@@ -70,6 +79,15 @@ h1{font-size:22px;margin:0;text-wrap:balance}
 .edit label{display:grid;gap:3px;font-size:12px;color:var(--muted)}
 .edit .wide{grid-column:1 / -1}
 .edit textarea{min-height:44px;resize:vertical}
+.picks{display:flex;flex-wrap:wrap;gap:4px 6px}
+.pick{display:inline-flex;gap:4px;align-items:center;font-size:12.5px;color:var(--fg);border:1px solid var(--line);border-radius:4px;padding:2px 6px;cursor:pointer;user-select:none}
+.pick:has(input:checked){background:var(--accent-soft);border-color:var(--accent)}
+.pick small{font-family:var(--mono);color:var(--muted);font-size:11px}
+.stale{font-size:12px;color:var(--bad)}
+.pick input[type=radio]{margin:0 0 0 4px}
+.pick em{font-style:normal;font-size:11px;color:var(--muted)}
+.hint{font-size:11.5px;color:var(--muted);margin:0}
+.recheck{grid-column:1;font-size:12px;color:var(--unsure);background:var(--unsure-soft);border-radius:4px;padding:3px 8px}
 .edit .row{grid-column:1 / -1;display:flex;gap:8px;align-items:center}
 .saved{font-size:12px;color:var(--muted)}
 .empty{color:var(--muted);padding:20px;text-align:center}
@@ -100,12 +118,20 @@ h1{font-size:22px;margin:0;text-wrap:balance}
       <select id="fStatus" aria-label="Trạng thái">
         <option value="todo">Chưa duyệt</option><option value="">Tất cả trạng thái</option>
         <option value="ok">Đúng</option><option value="wrong">Sai</option><option value="unsure">Chưa chắc</option>
+        <option value="recheck">Cần xem lại</option>
       </select>
-      <select id="fCat" aria-label="Category"><option value="">Mọi category</option></select>
+      <select id="fCat" aria-label="Có nhãn"><option value="">Mọi nhãn</option></select>
       <select id="fMethod" aria-label="Cách trích">
         <option value="">Mọi cách trích</option><option value="det">deterministic-v1</option><option value="llm">LLM</option>
       </select>
       <select id="fTier" aria-label="Tier"><option value="">Mọi tier</option><option value="1">Bạc (1)</option><option value="2">Vàng (2)</option><option value="3">Kim cương (3)</option></select>
+      <select id="fRound" aria-label="Lượt xuất hiện">
+        <option value="">Mọi lượt</option>
+        <option value="2-1">Có ở 2-1</option><option value="3-2">Có ở 3-2</option><option value="4-2">Có ở 4-2</option>
+        <option value="only:2-1">Chỉ 2-1</option><option value="only:3-2">Chỉ 3-2</option><option value="only:4-2">Chỉ 4-2</option>
+        <option value="unknown">Chưa rõ lượt</option>
+      </select>
+      <label class="toggle" title="Danh sách ưu tiên xem lại tempo: lõi chỉ lấy được ở 2-1 thì phần giá trị kéo dài chạy gần cả ván. Nhiều lõi trong đây vẫn đúng là immediate."><input type="checkbox" id="fEarly">immediate nhưng chỉ có ở 2-1 <b id="nEarly"></b></label>
       <span class="count" id="count"></span>
     </div>
     <div class="keys">Phím tắt: <kbd>j</kbd>/<kbd>k</kbd> lõi kế/trước · <kbd>1</kbd> Đúng · <kbd>2</kbd> Sai · <kbd>3</kbd> Chưa chắc</div>
@@ -116,19 +142,25 @@ h1{font-size:22px;margin:0;text-wrap:balance}
 
 <script>
 let DATA = [];
-const CATS = ["econ","combat","trait","item","utility","reroll"];
-const CARRY = ["AD","AP","tank","none"];
+// thu tu = thu tu uu tien khi hoa nhan chinh (docs/category-multilabel/definition.md)
+const CATS = ["reroll","econ","item","trait","combat","utility"];
+const CARRY = ["AD","AP","both","none"];
+const FIX_KEYS = ["categories","carry_type","frontline","tempo","econ_value","trait_affinity","item_grants","board_condition","offer_rounds"];
+const ROUNDS = ["2-1","3-2","4-2"];
+const pickFix = a => Object.fromEntries(FIX_KEYS.map(k => [k, a[k]]));
 const TEMPO = ["immediate","scaling"];
 const TIERN = {1:"Bạc",2:"Vàng",3:"Kim cương"};
 const reviews = {};          // api_name -> review doc
-let cur = 0, visible = [];
+let cur = 0, visible = [], OPTIONS = {item_grants: [], trait_affinity: []};
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmtList = a => (a && a.length) ? a.join(", ") : "—";
 
-CATS.forEach(c => $("#fCat").insertAdjacentHTML("beforeend", `<option value="${c}">${c}</option>`));
-
+CATS.forEach(c => $("#fCat").insertAdjacentHTML("beforeend", `<option value="${c}">có nhãn ${c}</option>`));
+const fmtCats = a => (a && a.length) ? a.map((c, i) => i === 0 ? c + "★" : c).join(", ") : "—";
+const fmtRounds = a => (a && a.length) ? a.join(" · ") : "chưa rõ";
+const FMT = {categories: fmtCats, offer_rounds: fmtRounds};
 
 function fixedValue(a, r, k){
   if (!r || r.verdict !== "wrong" || !r.fix || !(k in r.fix)) return null;
@@ -136,26 +168,44 @@ function fixedValue(a, r, k){
   return JSON.stringify(v) === JSON.stringify(o) ? null : v;
 }
 function chip(a, r, k, label, cls=""){
-  const orig = Array.isArray(a[k]) ? fmtList(a[k]) : (a[k] ?? "—");
+  const fmt = FMT[k] || fmtList;
+  const orig = Array.isArray(a[k]) ? fmt(a[k]) : (a[k] ?? "—");
   const f = fixedValue(a, r, k);
   if (f !== null){
-    const nv = Array.isArray(f) ? fmtList(f) : f;
+    const nv = Array.isArray(f) ? fmt(f) : f;
     return `<span class="chip fixed"><span>${label}</span><s>${esc(orig)}</s><b>${esc(nv)}</b></span>`;
   }
   return `<span class="chip ${cls}"><span>${label}</span><b>${esc(orig)}</b></span>`;
 }
 
+const GRANT_NAMES = {Anvil:"Anvil (chưa rõ loại)", ComponentAnvil:"Đe mảnh", CompletedAnvil:"Đe đồ hoàn chỉnh",
+  ArtifactAnvil:"Đe Artifact", Artifact:"Artifact (tặng thẳng)", RadiantItem:"Đồ Ánh Sáng (Radiant)"};
+function picks(a, k, label, chosen, opts){
+  const set = new Set(chosen || []), known = new Set(opts.map(o => o.api));
+  const stale = [...set].filter(v => !known.has(v));
+  return `<div class="wide" data-pick="${k}"><label>${label}</label><div class="picks">${opts.map(o =>
+    `<label class="pick"><input type="checkbox" id="e-${k}-${esc(o.api)}-${esc(a.api_name)}" value="${esc(o.api)}"${set.has(o.api) ? " checked" : ""}>${esc(o.name)}${o.name !== o.api ? ` <small>${esc(o.api)}</small>` : ""}</label>`).join("")}</div>
+    ${stale.length ? `<div class="stale">Giá trị cũ không hợp lệ, sẽ bị bỏ khi lưu: ${esc(stale.join(", "))}</div>` : ""}</div>`;
+}
+// 6 o tick + 1 nut tron "chinh" moi nhan; nhan chinh luon nam trong tap da tick
+function catPicks(a, chosen){
+  const set = new Set(chosen || []), prim = (chosen || [])[0], id = `e-cat-${a.api_name}`;
+  return `<div class="wide" data-cats><label>categories (1–3 nhãn, ★ = nhãn chính)</label><div class="picks">${CATS.map(c =>
+    `<label class="pick"><input type="checkbox" id="${esc(id)}-${c}" value="${c}"${set.has(c) ? " checked" : ""}>${c}<input type="radio" name="${esc(id)}-prim" value="${c}" title="nhãn chính" aria-label="${c} là nhãn chính"${c === prim ? " checked" : ""}><em>★</em></label>`).join("")}</div>
+    <p class="hint">Chính = phần lớn giá trị; hoà thì reroll &gt; econ &gt; item &gt; trait &gt; combat &gt; utility. Phụ chỉ khi là cơ chế nêu rõ, có giá trị độc lập. Bắt buộc: econ_value&gt;0 → econ; có item_grants → item; có trait_affinity/thưởng theo trait → trait. utility chỉ đi một mình.</p></div>`;
+}
 function editForm(a, r){
-  const f = Object.assign({category:a.category,carry_type:a.carry_type,tempo:a.tempo,econ_value:a.econ_value,
-    trait_affinity:a.trait_affinity,item_grants:a.item_grants,board_condition:a.board_condition}, r.fix || {});
+  const f = Object.assign(pickFix(a), r.fix || {});
   const sel = (k, opts) => `<select data-k="${k}" id="e-${k}-${a.api_name}">${opts.map(o=>`<option${String(o)===String(f[k])?" selected":""}>${o}</option>`).join("")}</select>`;
   return `<div class="edit">
-    <label>category ${sel("category",CATS)}</label>
-    <label>carry_type ${sel("carry_type",CARRY)}</label>
-    <label>tempo ${sel("tempo",TEMPO)}</label>
+    ${catPicks(a, f.categories)}
+    <label title="Carry SÁT THƯƠNG mà lõi phục vụ. both = phục vụ rõ cả AD lẫn AP (cả hai phía chỉ số, hoặc buff 'carry/tướng mạnh nhất' bất kể loại). Buff chung cả đội và chỉ số chống chịu → none">carry_type ${sel("carry_type",CARRY)}<span class="hint">carry sát thương; both = rõ cả AD lẫn AP; buff chung/chống chịu → none</span></label>
+    <label title="Đúng khi giá trị chủ yếu là chống chịu: máu, giáp, kháng phép, khiên, hồi máu, giảm sát thương"><span>frontline</span><span class="pick"><input type="checkbox" data-k="frontline" id="e-fl-${a.api_name}"${f.frontline ? " checked" : ""}>chủ yếu chống chịu</span><span class="hint">máu, giáp, kháng, khiên, hồi máu, giảm sát thương</span></label>
+    <label title="Xét tại lượt lõi được chào; chào ở nhiều lượt thì xét ở lượt muộn nhất">tempo ${sel("tempo",TEMPO)}<span class="hint">xét tại lượt xuất hiện (muộn nhất nếu nhiều lượt)</span></label>
     <label>econ_value ${sel("econ_value",[0,1,2,3])}</label>
-    <label class="wide">trait_affinity (phân cách bằng dấu phẩy)<input data-k="trait_affinity" id="e-ta-${a.api_name}" value="${esc((f.trait_affinity||[]).join(", "))}"></label>
-    <label class="wide">item_grants (phân cách bằng dấu phẩy)<input data-k="item_grants" id="e-ig-${a.api_name}" value="${esc((f.item_grants||[]).join(", "))}"></label>
+    ${picks(a, "item_grants", "item_grants (chỉ chọn loại, không tính số lượng)", f.item_grants, OPTIONS.item_grants.map(k => ({api:k, name: GRANT_NAMES[k] || k})))}
+    ${picks(a, "trait_affinity", "trait_affinity", f.trait_affinity, OPTIONS.trait_affinity)}
+    ${picks(a, "offer_rounds", "offer_rounds (lượt lõi được chào; bỏ trống = chưa rõ)", f.offer_rounds, ROUNDS.map(x => ({api:x, name:x})))}
     <label class="wide">board_condition<input data-k="board_condition" id="e-bc-${a.api_name}" value="${esc(f.board_condition||"")}"></label>
     <label class="wide">Ghi chú<textarea data-k="note" id="e-note-${a.api_name}">${esc(r.note||"")}</textarea></label>
     <div class="row"><button class="btn" data-act="savefix">Lưu chỉnh sửa</button><span class="saved">${r.updated_at ? "Đã lưu " + new Date(r.updated_at).toLocaleString("vi-VN") : ""}</span></div>
@@ -166,6 +216,22 @@ function noteForm(a, r){
     <div class="row"><button class="btn" data-act="savefix">Lưu ghi chú</button></div></div>`;
 }
 
+// gia tri dang co hieu luc cua mot truong: nhan da sua (verdict Sai) neu co, khong thi nhan trong bang
+const eff = (a, k) => fixedValue(a, reviews[a.api_name], k) ?? a[k];
+const only21 = a => { const r = eff(a, "offer_rounds") || []; return r.length === 1 && r[0] === "2-1"; };
+const earlyImmediate = a => eff(a, "tempo") === "immediate" && only21(a);
+// luot xuat hien = ngu canh de xet tempo, khong phai nhan phan loai -> ve khac chip nhan.
+// Ma type cua datatft chua xac nhan y nghia: chi hien ma tho.
+function roundCtx(a, r){
+  const src = a.offer_rounds_source === "datatft" ? "nguồn: datatft (máy chủ CN)" : a.offer_rounds_source ? "nguồn: bảng feature" : "chưa có nguồn";
+  const differs = a.offer_rounds_source === "feature" && JSON.stringify(a.datatft_rounds) !== JSON.stringify(a.offer_rounds) && (a.datatft_rounds || []).length;
+  return `<div class="ctx" title="${src}. Xét tempo tại lượt lõi được chào; nhiều lượt thì xét ở lượt muộn nhất.">
+    ${chip(a, r, "offer_rounds", "Xuất hiện:", "round" + ((a.offer_rounds || []).length ? "" : " unknown"))}
+    ${differs ? `<span class="dt">datatft ghi <b>${esc(fmtRounds(a.datatft_rounds))}</b></span>` : ""}
+    ${(a.datatft_types || []).length ? `<span class="dt">datatft type <b>${esc(a.datatft_types.join(", "))}</b></span>` : ""}
+  </div>`;
+}
+
 function card(a, i){
   const r = reviews[a.api_name] || {};
   const v = r.verdict || "";
@@ -174,11 +240,14 @@ function card(a, i){
     <div class="head"><span class="name">${esc(a.name)}</span><span class="ac ${esc(a.academy)}">${esc(a.academy)}</span>
       <span class="tier">${TIERN[a.tier]||a.tier}</span><span class="api">${esc(a.api_name)}</span></div>
     <p class="desc">${esc(a.desc)}</p>
+    ${roundCtx(a, r)}
     <div class="labels">
-      ${chip(a,r,"category","category","cat")}${chip(a,r,"carry_type","carry")}${chip(a,r,"tempo","tempo")}
+      ${chip(a,r,"categories","nhãn","cat")}${chip(a,r,"carry_type","carry")}
+      ${a.frontline || fixedValue(a,r,"frontline")!==null ? chip(a,r,"frontline","frontline") : ""}${chip(a,r,"tempo","tempo")}
       ${chip(a,r,"econ_value","econ")}${chip(a,r,"trait_affinity","trait")}${chip(a,r,"item_grants","item")}
       ${a.board_condition || fixedValue(a,r,"board_condition")!==null ? chip(a,r,"board_condition","board") : ""}
     </div>
+    ${r.recheck ? `<div class="recheck">Cần xem lại: ${esc(r.recheck.join(" · "))}</div>` : ""}
     <div class="meta">${esc(a.extraction_method)} · confidence ${a.confidence}${a.random?" · có yếu tố ngẫu nhiên":""}</div>
     <div class="verdicts">${btn("ok","Đúng")}${btn("wrong","Sai")}${btn("unsure","Chưa chắc")}</div>
     ${v==="wrong" ? editForm(a,r) : v==="unsure" ? noteForm(a,r) : ""}
@@ -187,15 +256,21 @@ function card(a, i){
 
 function filtered(){
   const q = $("#q").value.trim().toLowerCase(), st = $("#fStatus").value, c = $("#fCat").value,
-        m = $("#fMethod").value, t = $("#fTier").value;
+        m = $("#fMethod").value, t = $("#fTier").value, rd = $("#fRound").value, early = $("#fEarly").checked;
   return DATA.filter(a => {
     const v = reviews[a.api_name]?.verdict || "";
     if (st === "todo" && v) return false;
-    if (st && st !== "todo" && v !== st) return false;
-    if (c && a.category !== c) return false;
+    if (st === "recheck" && !reviews[a.api_name]?.recheck) return false;
+    if (st && st !== "todo" && st !== "recheck" && v !== st) return false;
+    if (c && !(fixedValue(a, reviews[a.api_name], "categories") ?? a.categories ?? []).includes(c)) return false;
     if (m === "det" && a.extraction_method !== "deterministic-v1") return false;
     if (m === "llm" && !a.extraction_method.startsWith("llm")) return false;
     if (t && String(a.tier) !== t) return false;
+    if (rd){
+      const rs = eff(a, "offer_rounds") || [];
+      if (rd === "unknown" ? rs.length : rd.startsWith("only:") ? !(rs.length === 1 && rs[0] === rd.slice(5)) : !rs.includes(rd)) return false;
+    }
+    if (early && !earlyImmediate(a)) return false;
     if (q && !(a.name+" "+a.api_name+" "+a.desc).toLowerCase().includes(q)) return false;
     return true;
   });
@@ -206,6 +281,7 @@ function renderStats(){
   const ok = vs.filter(v=>v==="ok").length, bad = vs.filter(v=>v==="wrong").length, un = vs.filter(v=>v==="unsure").length;
   $("#nOk").textContent = ok; $("#nBad").textContent = bad; $("#nUn").textContent = un; $("#nDone").textContent = ok+bad+un;
   const N = DATA.length;
+  $("#nEarly").textContent = `(${DATA.filter(earlyImmediate).length})`;
   $("#bo").style.width = (ok/N*100)+"%"; $("#bx").style.width = (bad/N*100)+"%"; $("#bu").style.width = (un/N*100)+"%";
 }
 
@@ -229,6 +305,10 @@ function rerenderCard(api){
 
 async function persist(api){
   const r = reviews[api];
+  if (r.fix){   // nhan cu go tay (truoc khi co danh sach chon) khong hop le -> bo, server se tu choi
+    const known = {item_grants: new Set(OPTIONS.item_grants), trait_affinity: new Set(OPTIONS.trait_affinity.map(o => o.api))};
+    for (const k in known) if (Array.isArray(r.fix[k])) r.fix[k] = r.fix[k].filter(v => known[k].has(v));
+  }
   try {
     const res = await fetch("/api/save", {method:"POST", headers:{"Content-Type":"application/json"},
       body: JSON.stringify({api_name: api, review: {verdict: r.verdict, fix: r.fix, note: r.note}})});
@@ -244,10 +324,19 @@ function readFix(el){
     const k = x.dataset.k, val = x.value.trim();
     if (k === "note") note = val;
     else if (k === "econ_value") fix[k] = Number(val);
-    else if (k === "trait_affinity" || k === "item_grants") fix[k] = val ? val.split(",").map(s=>s.trim()).filter(Boolean) : [];
+    else if (k === "frontline") fix[k] = x.checked;
     else if (k === "board_condition") fix[k] = val || null;
     else fix[k] = val;
   });
+  el.querySelectorAll("[data-pick]").forEach(box => {
+    fix[box.dataset.pick] = [...box.querySelectorAll("input:checked")].map(x => x.value);
+  });
+  const cb = el.querySelector("[data-cats]");
+  if (cb){
+    const on = [...cb.querySelectorAll("input[type=checkbox]:checked")].map(x => x.value);
+    const prim = cb.querySelector("input[type=radio]:checked")?.value;
+    fix.categories = on.includes(prim) ? [prim, ...on.filter(c => c !== prim)] : on;
+  }
   return {fix, note};
 }
 
@@ -255,9 +344,7 @@ function setVerdict(api, v){
   const prev = reviews[api] || {};
   const r = {...prev, verdict: v, updated_at: new Date().toISOString()};
   if (v !== "wrong") delete r.fix;
-  else if (!r.fix) { const a = DATA.find(x=>x.api_name===api);
-    r.fix = {category:a.category,carry_type:a.carry_type,tempo:a.tempo,econ_value:a.econ_value,
-             trait_affinity:a.trait_affinity,item_grants:a.item_grants,board_condition:a.board_condition}; }
+  else if (!r.fix) r.fix = pickFix(DATA.find(x=>x.api_name===api));
   reviews[api] = r;
   rerenderCard(api); persist(api);
 }
@@ -277,6 +364,18 @@ document.addEventListener("click", e => {
   } else setVerdict(api, act);
 });
 
+// giu nhan chinh nam trong tap da tick: chon ★ thi tick nhan do; bo tick nhan chinh thi ★ sang nhan tick dau tien
+document.addEventListener("change", e => {
+  const box = e.target.closest("[data-cats]"); if (!box) return;
+  const t = e.target, row = t.closest(".pick");
+  if (t.type === "radio") row.querySelector("input[type=checkbox]").checked = true;
+  else if (!t.checked && row.querySelector("input[type=radio]").checked){
+    row.querySelector("input[type=radio]").checked = false;
+    const nxt = box.querySelector("input[type=checkbox]:checked");
+    if (nxt) nxt.closest(".pick").querySelector("input[type=radio]").checked = true;
+  } else if (t.checked && !box.querySelector("input[type=radio]:checked")) row.querySelector("input[type=radio]").checked = true;
+});
+
 function focusCur(){
   document.querySelectorAll(".card.cur").forEach(x=>x.classList.remove("cur"));
   const el = document.querySelector(`.card[data-i="${cur}"]`);
@@ -291,14 +390,16 @@ document.addEventListener("keydown", e => {
   else if (a && e.key === "2"){ setVerdict(a.api_name,"wrong"); focusCur(); }
   else if (a && e.key === "3"){ setVerdict(a.api_name,"unsure"); focusCur(); }
 });
-["#q","#fStatus","#fCat","#fMethod","#fTier"].forEach(s => $(s).addEventListener("input", () => { cur = 0; render(false); }));
+["#q","#fStatus","#fCat","#fMethod","#fTier","#fRound","#fEarly"].forEach(s => $(s).addEventListener("input", () => { cur = 0; render(false); }));
+
+$("#fEarly").addEventListener("change", e => e.target.blur());   // tra focus de phim tat j/k/1/2/3 chay tiep
 
 function showBanner(t){ const b = $("#banner"); b.textContent = t; b.hidden = false; }
 
 (async () => {
   try {
     const s = await (await fetch("/api/state")).json();
-    DATA = s.rows; Object.assign(reviews, s.reviews);
+    DATA = s.rows; OPTIONS = s.options; Object.assign(reviews, s.reviews);
     $("#outPath").textContent = s.path;
     $("#nAll").textContent = $("#nTotal").textContent = DATA.length;
     render(false);

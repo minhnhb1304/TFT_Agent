@@ -30,6 +30,10 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
@@ -51,6 +55,9 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Blossom",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -73,6 +80,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -95,6 +105,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -114,6 +127,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.2
     },
@@ -136,6 +152,9 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Coven",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -158,6 +177,10 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Coven",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.6
     },
@@ -180,6 +203,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -202,6 +228,11 @@
       "item_grants": [],
       "board_condition": "Champions that start combat adjacent to an Elderwood plant",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -222,6 +253,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -244,6 +278,11 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Fae",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.6
     },
@@ -269,6 +308,10 @@
       ],
       "board_condition": "can unit thuoc trait: DA_FloraFatalis18",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.8
     },
@@ -294,6 +337,9 @@
       ],
       "board_condition": "can unit thuoc trait: DA_FloraFatalis18",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.8
     },
@@ -313,6 +359,9 @@
       "item_grants": [],
       "board_condition": "Champions that aren't holding items",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -335,6 +384,11 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Inferno",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -358,6 +412,9 @@
       "item_grants": [],
       "board_condition": "fielded Lunar champions and unique Solar champions",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -381,6 +438,9 @@
       "item_grants": [],
       "board_condition": "fielded unique Solar champions",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -402,6 +462,9 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_LuxUniqueTrait",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -424,6 +487,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
@@ -443,6 +509,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -465,6 +534,9 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_Primal18",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -486,6 +558,9 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_Primal18",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -507,6 +582,9 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_Primal18",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -528,6 +606,9 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_Primal18",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -547,6 +628,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -566,6 +650,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -585,6 +672,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -606,6 +696,11 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_Riftbeast18",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -628,6 +723,10 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Rival",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.6
     },
@@ -650,6 +749,9 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Solar",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -671,6 +773,11 @@
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Sprykin",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -690,6 +797,9 @@
       "item_grants": [],
       "board_condition": "Have a 3-star champion",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -709,6 +819,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -728,6 +841,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -747,6 +863,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -766,6 +885,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -785,6 +907,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -804,6 +930,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -823,6 +953,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -845,6 +978,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -866,6 +1002,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -885,6 +1024,11 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -904,6 +1048,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:category,econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -923,6 +1070,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:category,econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -942,6 +1092,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -961,6 +1114,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -982,6 +1139,10 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -1001,6 +1162,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -1023,6 +1187,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1047,6 +1214,10 @@
       ],
       "board_condition": "sacrificing a champion in the Blackthorn hex",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -1066,6 +1237,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -1085,6 +1259,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -1104,6 +1281,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -1123,6 +1303,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1142,6 +1325,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1161,6 +1347,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1180,6 +1369,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -1200,6 +1393,10 @@
       "item_grants": [],
       "board_condition": "Bronze-tier trait",
       "trait_count_reward": "wide",
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -1220,6 +1417,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": "wide",
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -1239,6 +1440,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -1260,6 +1464,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:category,econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -1280,6 +1487,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -1299,6 +1509,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -1318,6 +1531,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1337,6 +1553,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -1356,6 +1575,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1378,6 +1600,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -1399,6 +1624,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1418,6 +1646,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -1437,6 +1669,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -1456,6 +1692,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -1475,6 +1715,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -1494,6 +1738,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -1513,6 +1760,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -1532,6 +1782,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -1551,6 +1804,9 @@
       "item_grants": [],
       "board_condition": "no champions on your bench at the end of player combat",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1570,6 +1826,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -1589,6 +1849,9 @@
       "item_grants": [],
       "board_condition": "bench is full at the end of player combat",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1609,6 +1872,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1628,6 +1894,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1647,6 +1916,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1666,6 +1938,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -1686,6 +1961,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1708,6 +1986,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -1730,6 +2011,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
@@ -1749,6 +2033,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -1771,6 +2058,9 @@
       ],
       "board_condition": "Allies holding a Frying Pan or Spatula item",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -1791,6 +2081,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1810,6 +2104,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -1833,6 +2131,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -1855,6 +2156,10 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
@@ -1874,6 +2179,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -1896,6 +2205,10 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1918,6 +2231,10 @@
       ],
       "board_condition": "Your champions holding an item",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1937,6 +2254,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1957,6 +2277,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -1976,6 +2299,10 @@
       "item_grants": [],
       "board_condition": "field exactly 2 copies of a champion",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -1995,6 +2322,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -2014,6 +2344,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2033,6 +2366,11 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -2052,6 +2390,11 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2072,6 +2415,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -2092,6 +2438,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2112,6 +2461,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -2131,6 +2483,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -2150,6 +2506,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2169,6 +2528,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:category,econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -2188,6 +2550,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -2209,6 +2574,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -2228,6 +2596,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2247,6 +2618,10 @@
       "item_grants": [],
       "board_condition": "A champion starting combat in the center of the front row",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2270,6 +2645,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2291,6 +2669,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.6
     },
@@ -2310,6 +2691,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -2329,6 +2714,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2352,6 +2740,9 @@
       ],
       "board_condition": "drop below @Health@ Health",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2374,6 +2765,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -2393,6 +2787,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2412,6 +2809,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -2431,6 +2831,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -2450,6 +2854,9 @@
       "item_grants": [],
       "board_condition": "field at least one 5-cost champion",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2469,6 +2876,10 @@
       "item_grants": [],
       "board_condition": "Allies must start combat in the back row",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2488,6 +2899,10 @@
       "item_grants": [],
       "board_condition": "Allies that start combat in the back row",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2507,6 +2922,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -2526,6 +2944,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2545,6 +2966,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2564,6 +2988,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2586,6 +3013,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
@@ -2608,6 +3038,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
@@ -2630,6 +3063,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
       "confidence": 0.6
     },
@@ -2649,6 +3085,10 @@
       "item_grants": [],
       "board_condition": "Champions grant other adjacent champions Armor and Magic Resist",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2668,6 +3108,10 @@
       "item_grants": [],
       "board_condition": "Champions adjacent to other champions at combat start",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2687,6 +3131,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2710,6 +3157,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
@@ -2729,6 +3179,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2748,6 +3202,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -2767,6 +3225,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.2
     },
@@ -2786,6 +3247,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -2805,6 +3269,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -2824,6 +3291,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -2843,6 +3313,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -2862,6 +3335,10 @@
       "item_grants": [],
       "board_condition": "Champions in your back 2 rows gain stats for each champion that starts combat in your front row",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -2881,6 +3358,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -2902,6 +3382,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -2922,6 +3405,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -2942,6 +3428,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -2961,6 +3450,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -2981,6 +3473,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -3004,6 +3499,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
       "confidence": 0.6
     },
@@ -3025,6 +3523,11 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -3045,6 +3548,10 @@
       "item_grants": [],
       "board_condition": "a champion placed in the spotlight in the bottom right corner",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3064,6 +3571,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -3083,6 +3594,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -3102,6 +3617,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3121,6 +3639,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3141,6 +3663,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3160,6 +3685,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3181,6 +3709,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3204,6 +3735,9 @@
       ],
       "board_condition": "Your 3-cost champions and all allies equipped with an Emblem",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3223,6 +3757,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3244,6 +3781,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3263,6 +3803,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3285,6 +3828,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:category,econ_value (from deterministic-v2)",
       "confidence": 0.6
     },
@@ -3306,6 +3852,10 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -3325,6 +3875,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -3344,6 +3897,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3363,6 +3919,10 @@
       "item_grants": [],
       "board_condition": "Champions without items equipped",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3382,6 +3942,10 @@
       "item_grants": [],
       "board_condition": "Champions without items equipped",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3401,6 +3965,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3421,6 +3988,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -3442,6 +4012,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -3461,6 +4034,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3480,6 +4057,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -3499,6 +4079,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3518,6 +4101,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3541,6 +4127,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -3564,6 +4153,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -3585,6 +4177,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -3606,6 +4201,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "manual-audit:category,econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -3625,6 +4223,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.2
     },
@@ -3644,6 +4245,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3663,6 +4268,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3684,6 +4293,11 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -3705,6 +4319,11 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -3724,6 +4343,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3743,6 +4366,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -3763,6 +4390,9 @@
       "item_grants": [],
       "board_condition": "did not buy a champion last round",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3782,6 +4412,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -3801,6 +4434,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3820,6 +4456,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -3839,6 +4479,11 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3858,6 +4503,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3877,6 +4525,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -3897,6 +4548,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -3916,6 +4571,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -3935,6 +4594,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -3954,6 +4616,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3973,6 +4639,11 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -3993,6 +4664,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -4014,6 +4688,10 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -4034,6 +4712,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -4054,6 +4736,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -4076,6 +4762,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4098,6 +4787,10 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -4118,6 +4811,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -4137,6 +4834,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -4157,6 +4857,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4176,6 +4879,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4195,6 +4901,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4214,6 +4923,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -4233,6 +4945,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -4252,6 +4967,9 @@
       "item_grants": [],
       "board_condition": "no items on your bench (other than consumables) after each player combat",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -4271,6 +4989,9 @@
       "item_grants": [],
       "board_condition": "no items on your bench (other than consumables)",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4290,6 +5011,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -4309,6 +5033,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -4330,6 +5057,10 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -4353,6 +5084,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -4373,6 +5107,10 @@
       "item_grants": [],
       "board_condition": "Allies holding Gargoyle Stoneplate start combat alone in their row",
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -4392,6 +5130,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4411,6 +5153,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -4431,6 +5176,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -4450,6 +5199,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4469,6 +5221,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4491,6 +5246,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -4511,6 +5269,10 @@
       "item_grants": [],
       "board_condition": "active non-unique Traits across your team",
       "trait_count_reward": "wide",
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4533,6 +5295,10 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -4554,6 +5320,10 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.6
     },
@@ -4576,6 +5346,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -4598,6 +5371,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -4617,6 +5393,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -4638,6 +5418,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     },
@@ -4657,6 +5440,11 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -4676,6 +5464,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4695,6 +5486,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
@@ -4714,6 +5508,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.4
     },
@@ -4733,6 +5530,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -4752,6 +5553,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -4772,6 +5577,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4792,6 +5600,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4814,6 +5625,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": "wide",
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4833,6 +5647,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.2
     },
@@ -4855,6 +5673,11 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1",
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.6
     },
@@ -4875,6 +5698,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
@@ -4898,6 +5724,10 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
       "confidence": 0.6
     },
@@ -4918,6 +5748,10 @@
       "item_grants": [],
       "board_condition": "allies that share a trait with them",
       "trait_count_reward": "vertical",
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -4938,6 +5772,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": "vertical",
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -4958,6 +5796,10 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": "vertical",
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -4979,6 +5821,10 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "3-2",
+        "4-2"
+      ],
       "extraction_method": "deterministic-v2",
       "confidence": 0.6
     },
@@ -4998,6 +5844,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -5023,6 +5872,9 @@
       ],
       "board_condition": "Allies that share a trait with that Emblem",
       "trait_count_reward": "vertical",
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -5042,6 +5894,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
@@ -5061,6 +5916,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.2
     },
@@ -5082,6 +5940,9 @@
       ],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.6
     },
@@ -5101,6 +5962,9 @@
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
+      "offer_rounds": [
+        "2-1"
+      ],
       "extraction_method": "llm:gemini-3.5-flash-lite",
       "confidence": 0.4
     }

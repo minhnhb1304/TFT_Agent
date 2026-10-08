@@ -41,6 +41,28 @@ static:
     last_verified: null
     note: Nguon du phong cho cdragon. Chua doi chieu voi Set 18.
 
+# --- Luot chao augment (2-1 / 3-2 / 4-2) -----------------------------------
+# Nguon cua truong `offer_rounds` trong data/augment_features.json.
+# Xem docs/offer-rounds/source.md.
+augment_offer_rounds:
+  datatft:
+    url: https://www.datatft.com/database
+    provides: [augment_offer_rounds, augment_type_codes]
+    status: live
+    last_verified: 2026-10-06
+    server: CN
+    snapshot: data/augment_rounds.datatft.json
+    note: >-
+      MAY CHU TRUNG QUOC (国服), mot nguoi duy tri, khong tai lieu -> TIN HIEU,
+      khong phai ground truth; ban va co the lech may chu dang choi, sua tay
+      duoc qua manual-audit:offer_rounds. File JSON cong khai
+      /assets/h5-data-cn-18-<hash>.json, hash doi moi lan cap nhat nen
+      scripts/crawl_datatft_augments.py doc dia chi tu khoi `h5-data-preload`
+      cua trang. 2 GET/lan chay, khong cookie, khong dang nhap. Khop 254/254
+      api_name. KHAC muc placement_stats.datatft ben duoi (bang tier ma hoa
+      trong bundle JS - van dead). Y nghia ma `type` 1-6 CHUA xac nhan;
+      vi tri trong 3 danh sach la bac theo ICON, khong dung lam tier.
+
 # --- So lieu placement theo augment ----------------------------------------
 # KHONG CO NGUON NAO DUNG DUOC. Day la ly do data/augment_stats.csv van la
 # MOCK-NOT-REAL va vi sao Base (w1, 30% diem) dang trung tinh o ca 254 augment.

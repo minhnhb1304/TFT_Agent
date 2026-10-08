@@ -48,6 +48,7 @@ from src.knowledge.augment_features import (  # noqa: E402
     FeatureTable,
     compose_categories,
     extract_deterministic,
+    load_offer_rounds,
     mandatory_categories,
     parse_manual_audit,
 )
@@ -55,6 +56,8 @@ from src.knowledge.cdragon_client import CDragonClient, select_set_data  # noqa:
 from src.utils.env import load_env  # noqa: E402
 
 DEFAULT_OUT = ROOT / "data" / "augment_features.json"
+# Luot chao augment (datatft, may chu CN). Xem docs/offer-rounds/source.md.
+DEFAULT_ROUNDS = ROOT / "data" / "augment_rounds.datatft.json"
 
 # Vai tro A trong SPEC 3.5.3 - trich dac trung, chay offline.
 EXTRACT_PROMPT = """Cho mo ta mot Augment trong Teamfight Tactics, tra ve JSON PHANG:
@@ -113,8 +116,16 @@ def trait_display_map(locale: dict[str, Any]) -> dict[str, str]:
     return {t["name"]: t["apiName"] for t in select_set_data(locale).get("traits", [])}
 
 
-def build_tier1(locale: dict[str, Any]) -> FeatureTable:
-    """Trich tang 1 cho toan bo augment trong locale."""
+def build_tier1(
+    locale: dict[str, Any], offer_rounds: dict[str, list[str]] | None = None
+) -> FeatureTable:
+    """Trich tang 1 cho toan bo augment trong locale.
+
+    `offer_rounds` (api_name -> luot chao, tu load_offer_rounds) la truong
+    DINH DANH: chep thang tu snapshot, khong suy tu van ban. Khong truyen
+    hoac thieu augment -> [] (chua biet).
+    """
+    offer_rounds = offer_rounds or {}
     catalog = AugmentCatalog(locale)
     traits = trait_display_map(locale)
     by_api = {
@@ -126,7 +137,9 @@ def build_tier1(locale: dict[str, Any]) -> FeatureTable:
     features: dict[str, AugmentFeature] = {}
     for aug in catalog.augments:
         raw = by_api.get(aug.api_name, {})
-        features[aug.api_name] = extract_deterministic(raw, traits, tier=aug.tier)
+        feat = extract_deterministic(raw, traits, tier=aug.tier)
+        feat.offer_rounds = list(offer_rounds.get(aug.api_name, []))
+        features[aug.api_name] = feat
     return FeatureTable(features)
 
 
@@ -156,6 +169,7 @@ def summarize(table: FeatureTable) -> dict[str, Any]:
         "with_trait_affinity": sum(1 for f in feats if f.trait_affinity),
         "with_item_grants": sum(1 for f in feats if f.item_grants),
         "trait_count_reward": dist("trait_count_reward"),
+        "offer_rounds": dist("offer_rounds"),
         "mean_confidence": round(
             sum(f.confidence for f in feats) / len(feats), 3
         ) if feats else 0.0,
@@ -286,6 +300,9 @@ def _parse_json_block(text: str) -> dict[str, Any] | None:
 #
 # Nguyen tac chung: LLM chi duoc dung cho phan PHAN DOAN doc tu van ban mo
 # ta. Phan dinh danh thi luon lay tu du lieu co cau truc.
+#
+# offer_rounds KHONG o day: no la du lieu cua nguon ngoai (snapshot datatft),
+# khong doc duoc tu mo ta. Chi doi bang crawl lai hoac audit tay.
 #
 # category/categories/frontline KHONG o day (blind-spots.md §2: LLM ghi de
 # 13/13 nhan reroll). category = categories[0] nen LLM sua category tuc la
@@ -469,6 +486,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--locale-file", help="doc locale tu file thay vi tai ve")
     ap.add_argument("--offline", action="store_true", help="chi doc cache CDragon")
     ap.add_argument("--out", default=str(DEFAULT_OUT))
+    ap.add_argument(
+        "--rounds-file",
+        default=str(DEFAULT_ROUNDS),
+        help="snapshot luot chao (crawl_datatft_augments.py). Thieu file -> offer_rounds rong",
+    )
     ap.add_argument("--llm", action="store_true", help="bat tang 2 (can API key)")
     ap.add_argument("--model", default="gemini-3.5-flash-lite")
     ap.add_argument(
@@ -487,7 +509,10 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
 
     locale = load_locale(args)
-    table = build_tier1(locale)
+    offer_rounds = load_offer_rounds(args.rounds_file)
+    if not offer_rounds:
+        print(f"CANH BAO: khong co {args.rounds_file} - offer_rounds de rong", file=sys.stderr)
+    table = build_tier1(locale, offer_rounds)
     print(json.dumps(summarize(table), indent=2, ensure_ascii=False))
 
     if args.llm:

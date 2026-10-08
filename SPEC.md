@@ -417,7 +417,8 @@ scripts/build_augment_features.py   (chạy 1 LẦN mỗi set, không phải m�
     frontline       : bool — giá trị chủ yếu là chống chịu (máu, giáp, kháng, khiên, hồi máu)
     trait_affinity  : [trait_id, ...]
     econ_value      : 0-3
-    tempo           : immediate | scaling
+    tempo           : immediate | scaling   (xét TẠI LƯỢT lõi được chào; nhiều lượt → lượt muộn nhất)
+    offer_rounds    : ⊂ {2-1, 3-2, 4-2} — lượt lõi được chào; rỗng = chưa biết. Nguồn datatft (máy chủ CN), sửa tay được
     item_grants     : [component, ...]
     board_condition : điều kiện board cần có để augment phát huy
 ```

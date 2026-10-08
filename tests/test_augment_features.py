@@ -29,6 +29,7 @@ from src.knowledge.augment_features import (
     CATEGORIES,
     EXTRACTOR_VERSION,
     MANUAL_AUDITABLE,
+    OFFER_ROUNDS,
     TEMPOS,
     TRAIT_COUNT_REWARDS,
     AugmentFeature,
@@ -43,11 +44,14 @@ from src.knowledge.augment_features import (
     extract_item_grants,
     extract_trait_affinity,
     extract_trait_count_reward,
+    load_offer_rounds,
     parse_manual_audit,
 )
 
 FIXTURES = Path(__file__).parent / "fixtures" / "cdragon"
 COMMITTED = Path(__file__).parent.parent / "data" / "augment_features.json"
+# Snapshot luot chao (datatft). Bang da commit phai sinh lai duoc tu CHINH file nay.
+ROUNDS = Path(__file__).parent.parent / "data" / "augment_rounds.datatft.json"
 
 
 def _load(name: str) -> dict:
@@ -61,7 +65,7 @@ def locale() -> dict:
 
 @pytest.fixture(scope="module")
 def table(locale) -> FeatureTable:
-    return build_tier1(locale)
+    return build_tier1(locale, load_offer_rounds(ROUNDS))
 
 
 # --- Quy tac trich xuat ----------------------------------------------------
@@ -309,6 +313,8 @@ def test_committed_table_is_reproducible(table) -> None:
         method = str(row["extraction_method"])
         if method.startswith("llm:"):
             n_llm += 1
+            # offer_rounds la du lieu cua snapshot: LLM khong duoc cham (audit tay thi duoc).
+            assert row["offer_rounds"] == generated[api]["offer_rounds"], api
         # Dong sua tay ("manual-audit:<truong> (from <nguon cu>)") chiu cung
         # ranh gioi voi LLM: chi duoc sua truong phan doan.
         if method.startswith(("llm:", "manual-audit:")):
@@ -444,6 +450,63 @@ def test_migrate_keeps_llm_judgement_and_converts_tank() -> None:
     assert again == got
 
 
+# --- offer_rounds: chep tu snapshot datatft, khong suy tu van ban -------------
+
+
+def test_offer_rounds_come_from_the_snapshot(locale, tmp_path) -> None:
+    snap = tmp_path / "rounds.json"
+    snap.write_text(json.dumps({"augments": {
+        "DA_HedgeFund": {"rounds": ["2-1"], "types": [1], "list_index": 2},
+        "DA_18_BigGrabBag": {"rounds": ["4-2", "3-2"], "types": [3], "list_index": 1},
+    }}), encoding="utf-8")
+    built = build_tier1(locale, load_offer_rounds(snap))
+    assert built.get("DA_HedgeFund").offer_rounds == ["2-1"]
+    assert built.get("DA_18_BigGrabBag").offer_rounds == ["3-2", "4-2"]   # thu tu OFFER_ROUNDS
+    # Lose khong co trong snapshot -> rong = CHUA BIET, coi nhu chao moi luot.
+    unknown = built.get("DA_Epoch")
+    assert unknown.offer_rounds == [] and all(unknown.offered_at(r) for r in OFFER_ROUNDS)
+    assert not built.get("DA_HedgeFund").offered_at("4-2")
+
+
+def test_missing_snapshot_leaves_offer_rounds_empty(locale, tmp_path) -> None:
+    assert load_offer_rounds(tmp_path / "khong-co.json") == {}
+    built = build_tier1(locale)
+    assert all(f.offer_rounds == [] for f in built.features.values())
+    assert all(check_feature(f) == [] for f in built.features.values())
+
+
+@pytest.mark.skipif(not COMMITTED.exists(), reason="chua sinh data/augment_features.json")
+def test_committed_table_has_offer_rounds_for_every_augment() -> None:
+    loaded = FeatureTable.load(COMMITTED)
+    assert sum(1 for f in loaded.features.values() if f.offer_rounds) == 254
+    assert loaded.get("DA_HedgeFund").offer_rounds == ["2-1"]
+
+
+def test_rebuild_keeps_manually_audited_offer_rounds() -> None:
+    """Nguon la may chu CN: sua tay offer_rounds phai song qua lan sinh lai,
+    con lose khong audit thi theo snapshot moi."""
+    fresh = FeatureTable({"DA_X": _feat(offer_rounds=["2-1"])})
+    old_row = _feat(
+        offer_rounds=["2-1", "3-2"],
+        extraction_method="manual-audit:offer_rounds (from llm:m)",
+    ).to_dict()
+    got = keep_manual_audits(fresh, {"augments": {"DA_X": old_row}})[0].get("DA_X")
+    assert got.offer_rounds == ["2-1", "3-2"]
+    assert got.extraction_method == f"manual-audit:offer_rounds (from {EXTRACTOR_VERSION})"
+
+    not_audited = _feat(offer_rounds=["4-2"], tempo="scaling",
+                        extraction_method="manual-audit:tempo (from llm:m)").to_dict()
+    got = keep_manual_audits(fresh, {"augments": {"DA_X": not_audited}})[0].get("DA_X")
+    assert (got.offer_rounds, got.tempo) == (["2-1"], "scaling")
+
+
+def test_migrate_takes_offer_rounds_from_snapshot_not_from_old_llm_row() -> None:
+    fresh = FeatureTable({"DA_X": _feat(offer_rounds=["3-2"])})
+    old = _feat(offer_rounds=["2-1"], tempo="scaling", extraction_method="llm:m").to_dict()
+    got = carry_llm_judgements(fresh, {"augments": {"DA_X": old}})[0].get("DA_X")
+    assert (got.offer_rounds, got.tempo) == (["3-2"], "scaling")
+
+
 def test_loader_accepts_old_json_without_trait_count_reward(tmp_path) -> None:
     """File sinh truoc khi co truong moi van nap duoc, truong moi ve None."""
     row = _feat().to_dict()
@@ -570,6 +633,16 @@ def test_llm_cannot_set_trait_count_reward() -> None:
     assert merged.trait_count_reward is None
     assert diff == []
     assert "trait_count_reward" not in LLM_REFINABLE
+
+
+def test_llm_cannot_write_offer_rounds() -> None:
+    """offer_rounds la du lieu nguon ngoai - LLM khong doc duoc no tu mo ta."""
+    base = _feat(offer_rounds=["2-1"])
+    merged, diff = _merge(base, {"offer_rounds": ["4-2"], "tempo": "scaling"}, "m", TRAITS)
+    assert merged.offer_rounds == ["2-1"]
+    assert diff == ["tempo: 'immediate' -> 'scaling'"]
+    assert _merge(base, {"offer_rounds": []}, "m", TRAITS)[1] == []
+    assert "offer_rounds" not in LLM_REFINABLE
 
 
 def test_out_of_domain_values_are_ignored() -> None:
