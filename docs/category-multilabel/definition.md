@@ -13,7 +13,7 @@ không từ tag MetaTFT. Bản chốt 2026-10-05.
 | `item` | cho mảnh, đồ hoàn chỉnh, đe, emblem, Artifact, Radiant. **Bắt buộc** khi `item_grants ≠ ∅` | Chỉ sửa đồ đang có mà không cho thêm (Reforger đơn lẻ) |
 | `trait` | **liên quan đến tộc hệ**: cho ấn (kể cả ấn ngẫu nhiên), cho tướng một tộc cụ thể, hoặc thưởng theo độ sâu/rộng tộc hệ. **Bắt buộc** khi `trait_affinity ≠ ∅`, `trait_count_reward` khác `None`, hoặc `item_grants` có `Emblem` | Ấn ngẫu nhiên vẫn để `trait_affinity` **rỗng**: trường đó chỉ chứa tộc cụ thể, điền bừa thì BoardFit phạt sai |
 | `combat` | cho chỉ số / hiệu ứng **trong trận** (máu, sát thương, tốc đánh, khiên, choáng…) | Chỉ số đến từ món đồ được tặng: phần đó đã là `item` |
-| `utility` | làm việc khác: máu người chơi, vị trí, thông tin, thao tác bàn | Lõi đã có nhãn khác: `utility` **chỉ đi một mình** |
+| `utility` | làm việc khác: máu người chơi, vị trí, thông tin, thao tác bàn. Từ 2026-10-10 được làm **nhãn phụ** khi lõi có thêm cơ chế đặc biệt ngoài năm nhóm trên (đổi lõi, đánh đổi tài nguyên, phần thưởng ngẫu nhiên…), cùng vai trò với `misc` của MetaTFT và mã 6 của datatft | Chỉ vì lõi "lạ": phải chỉ ra được cơ chế nào không thuộc năm nhóm kia |
 
 Trần **3 nhãn** (Q1, `MAX_CATEGORIES`).
 
@@ -64,7 +64,7 @@ Dữ liệu cũ `carry_type = "tank"` được chuyển thành `none` + `frontli
 |---|---|
 | 1–3 nhãn, không trùng, nhãn thuộc `CATEGORIES` | Q1 |
 | `category == categories[0]` | D1 |
-| `utility` đi một mình | |
+| ~~`utility` đi một mình~~ | Bỏ 2026-10-10: người duyệt được gắn `utility` làm nhãn phụ. Bộ trích máy (`compose_categories`) vẫn không tự gắn `utility` kèm nhãn khác |
 | `econ_value > 0` ⇒ `econ`; `item_grants ≠ ∅` ⇒ `item`; `trait_affinity` / `trait_count_reward` / `Emblem` trong `item_grants` ⇒ `trait` | D3 |
 | `carry_type ∈ CARRY_TYPES` | D6 |
 
