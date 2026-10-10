@@ -3,6 +3,25 @@
 Việc tồn đọng sau phiên 2026-10-05 → 08. Đọc file này trước khi bắt đầu phiên sau. Trạng thái
 2026-10-08: **1027 test xanh, 4 commit đã push lên `main` (`253bafc`), duyệt tay xong 254/254**.
 
+## Phiên 2026-10-10: duyệt vòng 2 đang dở (26/47)
+
+Nhãn tay được so lại với MetaTFT và datatft, rồi mở vòng duyệt 2. **Chưa commit gì của phiên này.**
+
+| Việc | Trạng thái |
+|---|---|
+| Vòng 2a: 32 lõi lệch cả hai nguồn hoặc tự mâu thuẫn | Xong 26; 6 lõi còn lại chuyển sang 2b |
+| Vòng 2b: 47 lõi (`data/eval/augment_review_round2.json`) | **26/47**, dừng sau NO SCOUT NO PIVOT. Còn 21: Omega Riftbeast, Pandora's Bench, Pandora's Items I/II/III, Prismatic Destiny (2), Recombobulator, Silver Destiny (3), Weight The Worth, Solo Leveling, The Golden Dragon, The Golden Egg, The Tower, Time Skip, Trait Ladder, U.R.F, Warpath, Young and Wild and Free |
+| Làm tiếp | `.venv\Scripts\python scripts\review_augment_features.py` → bộ lọc "Vòng 2: chưa duyệt lại" |
+| Sau khi duyệt xong | So lại với hai nguồn, rồi việc code #1 bên dưới (áp nhãn tay vào bảng feature) |
+
+Đổi trong phiên:
+
+- **Bỏ luật "`utility` chỉ đi một mình"** (`check_feature`): người duyệt được gắn `utility` làm nhãn phụ cho lõi có cơ chế đặc biệt. [category-multilabel/definition.md](category-multilabel/definition.md)
+- **Mã `type` của datatft đã xác nhận** từ mã nguồn trang (`DatabaseView-*.js`): 1 kinh tế, 2 chiến đấu, 3 trang bị, 4 tộc hệ, 5 độc quyền, 6 khác. Việc code #5 hết bị chặn; [offer-rounds/overview.md](offer-rounds/overview.md) vẫn ghi "chưa xác nhận", chưa sửa.
+- **Trang duyệt**: bộ lọc "Vòng 2", thẻ báo "CHƯA LƯU ĐƯỢC" khi server từ chối (trước đó thẻ vẫn ghi "Đã lưu").
+- **Khuôn ghi chú** người duyệt đang dùng: `<cơ chế> => nên/không nên chọn nếu <điều kiện>` và `đã có <lõi> => ưu tiên <lõi khác>`. Chưa code nào đọc; là nguyên liệu cho luật chuyên gia và directional.
+- Phép so tay ↔ MetaTFT ↔ datatft mới chạy bằng script tạm, **chưa vào repo** (việc code #4).
+
 ## Làm ngay đầu phiên
 
 | # | Việc | Ghi chú |
