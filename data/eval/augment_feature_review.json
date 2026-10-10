@@ -1,12 +1,12 @@
 {
   "meta": {
     "features_file": "data/augment_features.json",
-    "updated_at": "2026-10-08T09:23:49+00:00"
+    "updated_at": "2026-10-10T17:50:33+00:00"
   },
   "reviews": {
     "DA_AdvancedLoan": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "wrong",
+      "note": "giảm bậc của lớp lõi tiếp theo =>nên chọn khi biết lớp lõi sau là lớp lõi vàng / không nên chọn nếu biết lớp lõi sau là lớp lõi kim cương",
       "original": {
         "category": "econ",
         "categories": [
@@ -24,22 +24,41 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-06T09:31:05+00:00"
+      "updated_at": "2026-10-10T16:43:12+00:00",
+      "fix": {
+        "categories": [
+          "econ",
+          "utility"
+        ]
+      }
     },
     "DA_AdvancedLoanPlus": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "wrong",
+      "note": "giảm bậc của lớp lõi tiếp theo =>nên chọn khi biết lớp lõi sau là lớp lõi vàng / không nên chọn nếu biết lớp lõi sau là lớp lõi kim cương",
       "original": {
         "category": "econ",
+        "categories": [
+          "econ"
+        ],
         "carry_type": "none",
+        "frontline": false,
         "tempo": "immediate",
         "econ_value": 3,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
       },
-      "extraction_method": "manual-audit:econ_value (from deterministic-v1)",
-      "updated_at": "2026-10-05T14:12:07+00:00"
+      "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
+      "updated_at": "2026-10-10T16:43:18+00:00",
+      "fix": {
+        "categories": [
+          "econ",
+          "utility"
+        ]
+      }
     },
     "DA_ArcaneViktory": {
       "verdict": "ok",
@@ -220,106 +239,156 @@
     },
     "DA_BaronsLair": {
       "verdict": "wrong",
-      "note": "cho cả ad và ap nên là both chứ không phải ad, thêm nữa còn cho 1 đồ tank",
+      "note": "",
       "original": {
         "category": "combat",
+        "categories": [
+          "combat"
+        ],
         "carry_type": "AD",
+        "frontline": false,
         "tempo": "immediate",
         "econ_value": 0,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2",
+          "4-2"
+        ]
       },
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-05T15:29:17+00:00",
+      "updated_at": "2026-10-10T15:35:24+00:00",
       "fix": {
-        "carry_type": "none",
+        "carry_type": "both",
         "item_grants": [
           "CompletedItem"
+        ],
+        "categories": [
+          "combat",
+          "item"
         ]
       }
     },
     "DA_18_PrimalAugment_Nidalee": {
       "verdict": "wrong",
-      "note": "có cho 7 tiền dưới dạng tướng",
+      "note": "",
       "original": {
         "category": "trait",
+        "categories": [
+          "trait"
+        ],
         "carry_type": "none",
+        "frontline": false,
         "tempo": "immediate",
         "econ_value": 0,
         "trait_affinity": [
           "DA_Primal18"
         ],
         "item_grants": [],
-        "board_condition": "can unit thuoc trait: DA_Primal18"
+        "board_condition": "can unit thuoc trait: DA_Primal18",
+        "offer_rounds": [
+          "3-2"
+        ]
       },
-      "extraction_method": "deterministic-v1",
-      "updated_at": "2026-10-05T16:01:37+00:00",
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-10T15:36:19+00:00",
       "fix": {
-        "category": "combat",
-        "econ_value": 2
+        "categories": [
+          "combat",
+          "trait"
+        ],
+        "category": "combat"
       }
     },
     "DA_18_PrimalAugment_Sivir": {
       "verdict": "wrong",
-      "note": "có cho 7 tiền dưới dạng tướng",
+      "note": "",
       "original": {
         "category": "trait",
+        "categories": [
+          "trait"
+        ],
         "carry_type": "none",
+        "frontline": false,
         "tempo": "immediate",
         "econ_value": 0,
         "trait_affinity": [
           "DA_Primal18"
         ],
         "item_grants": [],
-        "board_condition": "can unit thuoc trait: DA_Primal18"
+        "board_condition": "can unit thuoc trait: DA_Primal18",
+        "offer_rounds": [
+          "3-2"
+        ]
       },
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-05T16:01:43+00:00",
+      "updated_at": "2026-10-10T15:36:31+00:00",
       "fix": {
-        "category": "combat",
-        "econ_value": 2
+        "categories": [
+          "combat",
+          "trait"
+        ],
+        "category": "combat"
       }
     },
     "DA_18_PrimalAugmentPlus_Nidalee": {
       "verdict": "wrong",
-      "note": "có cho 7 tiền dưới dạng tướng",
+      "note": "",
       "original": {
         "category": "combat",
+        "categories": [
+          "combat",
+          "trait"
+        ],
         "carry_type": "AD",
+        "frontline": false,
         "tempo": "immediate",
         "econ_value": 0,
         "trait_affinity": [
           "DA_Primal18"
         ],
         "item_grants": [],
-        "board_condition": "can unit thuoc trait: DA_Primal18"
+        "board_condition": "can unit thuoc trait: DA_Primal18",
+        "offer_rounds": [
+          "4-2"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T16:02:08+00:00",
+      "updated_at": "2026-10-10T15:36:40+00:00",
       "fix": {
-        "carry_type": "none",
-        "econ_value": 2
+        "carry_type": "none"
       }
     },
     "DA_18_PrimalAugmentPlus_Sivir": {
       "verdict": "wrong",
-      "note": "có cho 7 tiền dưới dạng tướng",
+      "note": "",
       "original": {
         "category": "trait",
+        "categories": [
+          "trait"
+        ],
         "carry_type": "none",
+        "frontline": false,
         "tempo": "immediate",
         "econ_value": 0,
         "trait_affinity": [
           "DA_Primal18"
         ],
         "item_grants": [],
-        "board_condition": "can unit thuoc trait: DA_Primal18"
+        "board_condition": "can unit thuoc trait: DA_Primal18",
+        "offer_rounds": [
+          "4-2"
+        ]
       },
-      "extraction_method": "deterministic-v1",
-      "updated_at": "2026-10-05T16:02:15+00:00",
+      "extraction_method": "deterministic-v2",
+      "updated_at": "2026-10-10T15:36:52+00:00",
       "fix": {
-        "econ_value": 2
+        "categories": [
+          "combat",
+          "trait"
+        ],
+        "category": "combat"
       }
     },
     "DA_BeltOverflow": {
@@ -416,8 +485,8 @@
       "updated_at": "2026-10-06T09:33:19+00:00"
     },
     "DA_18_BlossomTraitAugment": {
-      "verdict": "unsure",
-      "note": "board fit không quá cần thiết vì lõi đã cho 3 tướng blossom\nlõi cũng thiên hướng scale theo số lượng wisp được mua\ncó thiên hướng econ vì cho tướng dựa vào wisp được mua",
+      "verdict": "wrong",
+      "note": "",
       "original": {
         "category": "trait",
         "categories": [
@@ -431,10 +500,22 @@
           "DA_18_Blossom"
         ],
         "item_grants": [],
-        "board_condition": "can unit thuoc trait: DA_18_Blossom"
+        "board_condition": "can unit thuoc trait: DA_18_Blossom",
+        "offer_rounds": [
+          "4-2"
+        ]
       },
       "extraction_method": "deterministic-v2",
-      "updated_at": "2026-10-05T16:35:45+00:00"
+      "updated_at": "2026-10-10T15:38:09+00:00",
+      "fix": {
+        "tempo": "scaling",
+        "econ_value": 3,
+        "categories": [
+          "econ",
+          "trait"
+        ],
+        "category": "econ"
+      }
     },
     "DA_BodyguardTraining": {
       "verdict": "wrong",
@@ -460,8 +541,8 @@
       "fix": {}
     },
     "DA_BonusGift": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "wrong",
+      "note": "có tỉ lệ nhận được thêm 1 gray orb (giá trị 3 gold) khi nhận 1 orb bất kì => nên kết hợp với các lõi khác cho orb nếu muốn tối ưu",
       "original": {
         "category": "econ",
         "categories": [
@@ -479,22 +560,38 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-06T09:34:00+00:00"
+      "updated_at": "2026-10-10T16:46:57+00:00",
+      "fix": {
+        "categories": [
+          "econ",
+          "utility"
+        ]
+      }
     },
     "DA_BonusGiftPlus": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "wrong",
+      "note": "có tỉ lệ nhận được thêm 1 gray orb (giá trị 3 gold) khi nhận 1 orb bất kì => nên kết hợp với các lõi khác cho orb nếu muốn tối ưu",
       "original": {
         "category": "econ",
+        "categories": [
+          "econ"
+        ],
         "carry_type": "none",
+        "frontline": false,
         "tempo": "immediate",
         "econ_value": 3,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T16:00:57+00:00"
+      "updated_at": "2026-10-10T16:46:54+00:00",
+      "fix": {
+        "tempo": "scaling"
+      }
     },
     "DA_BoosterPack": {
       "verdict": "ok",
@@ -820,7 +917,7 @@
       "updated_at": "2026-10-05T16:44:35+00:00"
     },
     "DA_18_CaretakersAlly": {
-      "verdict": "ok",
+      "verdict": "wrong",
       "note": "",
       "original": {
         "category": "utility",
@@ -833,10 +930,14 @@
         "econ_value": 0,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
       },
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
-      "updated_at": "2026-10-05T16:44:48+00:00"
+      "updated_at": "2026-10-10T15:38:23+00:00",
+      "fix": {}
     },
     "DA_CaretakersFavor": {
       "verdict": "wrong",
@@ -1238,7 +1339,7 @@
     },
     "DA_ConstructACompanion": {
       "verdict": "wrong",
-      "note": "",
+      "note": "=> nên chọn nếu bạn thiếu 1 mảnh ghép quan trọng là 1 tướng 1 vàng 3 sao",
       "original": {
         "category": "econ",
         "categories": [
@@ -1250,16 +1351,19 @@
         "econ_value": 2,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
       },
       "extraction_method": "deterministic-v2",
-      "updated_at": "2026-10-05T16:56:33+00:00",
+      "updated_at": "2026-10-10T17:15:15+00:00",
       "fix": {
         "categories": [
-          "combat",
+          "utility",
           "econ"
         ],
-        "category": "combat"
+        "category": "utility"
       }
     },
     "DA_ComponentQuest": {
@@ -1351,13 +1455,20 @@
           "Spatula",
           "FryingPan"
         ],
-        "board_condition": "Allies holding a Frying Pan or Spatula item"
+        "board_condition": "Allies holding a Frying Pan or Spatula item",
+        "offer_rounds": [
+          "2-1"
+        ]
       },
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-05T16:58:18+00:00",
+      "updated_at": "2026-10-10T15:39:35+00:00",
       "fix": {
         "item_grants": [
           "FryingPan"
+        ],
+        "categories": [
+          "item",
+          "combat"
         ]
       }
     },
@@ -1376,12 +1487,19 @@
         "econ_value": 0,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2",
+          "4-2"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T16:58:34+00:00",
+      "updated_at": "2026-10-10T15:40:31+00:00",
       "fix": {
         "carry_type": "both",
+        "item_grants": [
+          "CompletedItem"
+        ],
         "categories": [
           "combat",
           "item"
@@ -1413,7 +1531,7 @@
     },
     "DA_18_CovenTraitAugment": {
       "verdict": "wrong",
-      "note": "",
+      "note": "đây là lõi gắn với tộc hệ 'nổ hũ' với thiên hướng chơi lose streak - comeback => chọn nếu thích lối chơi mạo hiểm, nhiều rủi ro / không nên chọn trong trường hợp đánh an toàn hoặc có bài def mạnh",
       "original": {
         "category": "econ",
         "categories": [
@@ -1428,13 +1546,23 @@
           "DA_18_Coven"
         ],
         "item_grants": [],
-        "board_condition": "can unit thuoc trait: DA_18_Coven"
+        "board_condition": "can unit thuoc trait: DA_18_Coven",
+        "offer_rounds": [
+          "2-1"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:00:23+00:00",
+      "updated_at": "2026-10-10T16:52:14+00:00",
       "fix": {
         "frontline": false,
-        "tempo": "scaling"
+        "tempo": "scaling",
+        "econ_value": 1,
+        "categories": [
+          "utility",
+          "econ",
+          "trait"
+        ],
+        "category": "utility"
       }
     },
     "DA_CraftedCrafting": {
@@ -1455,17 +1583,20 @@
         "item_grants": [
           "CompletedItem"
         ],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:01:31+00:00",
+      "updated_at": "2026-10-10T15:41:14+00:00",
       "fix": {
         "tempo": "scaling",
+        "econ_value": 3,
         "item_grants": [],
         "categories": [
           "reroll",
-          "econ",
-          "item"
+          "econ"
         ],
         "category": "reroll"
       }
@@ -1493,8 +1624,8 @@
       "updated_at": "2026-10-05T17:02:01+00:00"
     },
     "DA_CursedCrown": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "wrong",
+      "note": "nhận 2 slot đội hình + chỉ số chống chịu cho unit NHƯNG phải nhận gấp đôi sát thương lên linh thú nếu thua => phải ước tính rủi ro => không nên chọn nếu không có khả năng đánh winsteak ngay lập tức",
       "original": {
         "category": "combat",
         "categories": [
@@ -1506,10 +1637,20 @@
         "econ_value": 0,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1",
+          "3-2"
+        ]
       },
       "extraction_method": "deterministic-v2",
-      "updated_at": "2026-10-05T17:03:53+00:00"
+      "updated_at": "2026-10-10T17:16:24+00:00",
+      "fix": {
+        "categories": [
+          "combat",
+          "utility"
+        ]
+      }
     },
     "DA_CyberneticImplants_Gold": {
       "verdict": "ok",
@@ -1592,18 +1733,22 @@
         "econ_value": 0,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:05:45+00:00",
+      "updated_at": "2026-10-10T15:41:45+00:00",
       "fix": {
         "item_grants": [
           "CompletedItem"
         ],
         "categories": [
-          "combat",
-          "item"
-        ]
+          "item",
+          "combat"
+        ],
+        "category": "item"
       }
     },
     "DA_DeadlierCaps": {
@@ -1621,24 +1766,22 @@
         "econ_value": 0,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:06:12+00:00",
+      "updated_at": "2026-10-10T15:41:53+00:00",
       "fix": {
         "item_grants": [
           "CompletedItem"
-        ],
-        "categories": [
-          "combat",
-          "item"
-        ],
-        "category": "combat"
+        ]
       }
     },
     "DA_DoubleTrouble": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "unsure",
+      "note": "lõi này không xuất hiện trong mùa này",
       "original": {
         "category": "combat",
         "categories": [
@@ -1650,14 +1793,18 @@
         "econ_value": 0,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": "field exactly 2 copies of a champion"
+        "board_condition": "field exactly 2 copies of a champion",
+        "offer_rounds": [
+          "2-1",
+          "3-2"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:06:21+00:00"
+      "updated_at": "2026-10-10T17:00:21+00:00"
     },
     "DA_Dummify": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "wrong",
+      "note": "chuyển hóa toàn bộ bàn đấu và hàng dự bị của bạn thành 1 hình nhân (1 tanker chất lượng) => nên chọn khi có lượng kinh tế ổn và nhiều tướng trên hàng chờ để tối ưu lượng máu của hình nhân",
       "original": {
         "category": "combat",
         "categories": [
@@ -1669,10 +1816,19 @@
         "econ_value": 0,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
       },
       "extraction_method": "deterministic-v2",
-      "updated_at": "2026-10-05T17:06:23+00:00"
+      "updated_at": "2026-10-10T17:06:36+00:00",
+      "fix": {
+        "categories": [
+          "combat",
+          "utility"
+        ]
+      }
     },
     "DA_18_DuoQueue": {
       "verdict": "ok",
@@ -1698,7 +1854,7 @@
     },
     "DA_EarlyLearnings": {
       "verdict": "wrong",
-      "note": "",
+      "note": "tướng 1 vàng nhận được nhiều chỉ số hơn => nên chọn nếu bạn dùng tướng 1 vàng làm carry chính",
       "original": {
         "category": "combat",
         "categories": [
@@ -1710,12 +1866,19 @@
         "econ_value": 0,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:07:36+00:00",
+      "updated_at": "2026-10-10T17:08:11+00:00",
       "fix": {
-        "carry_type": "both"
+        "carry_type": "both",
+        "categories": [
+          "combat",
+          "utility"
+        ]
       }
     },
     "DA_ElectrochargeI": {
@@ -1892,7 +2055,7 @@
     },
     "DA_Expedition": {
       "verdict": "wrong",
-      "note": "thuộc lớp lõi đặc biệt cần hi sinh tiền để nhận phần thưởng lớn về sau",
+      "note": "cần hy sinh unit mỗi round để nhận phần thưởng lớn về sau. Nên tính toán hợp lý để 'nổ hũ' ở round 4.1 hoặc sớm hơn",
       "original": {
         "category": "econ",
         "categories": [
@@ -1904,17 +2067,24 @@
         "econ_value": 3,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:13:06+00:00",
+      "updated_at": "2026-10-10T17:10:34+00:00",
       "fix": {
-        "econ_value": 1,
-        "categories": [
-          "item",
-          "econ"
+        "item_grants": [
+          "ComponentAnvil",
+          "RadiantItem"
         ],
-        "category": "item"
+        "categories": [
+          "utility",
+          "econ",
+          "item"
+        ],
+        "category": "utility"
       }
     },
     "DA_ExplosiveGrowth": {
@@ -1993,13 +2163,14 @@
         "econ_value": 2,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:20:10+00:00",
-      "fix": {
-        "econ_value": 3
-      }
+      "updated_at": "2026-10-10T17:16:53+00:00",
+      "fix": {}
     },
     "DA_FindYourCenter": {
       "verdict": "wrong",
@@ -2015,10 +2186,14 @@
         "econ_value": 0,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": "A champion starting combat in the center of the front row"
+        "board_condition": "A champion starting combat in the center of the front row",
+        "offer_rounds": [
+          "3-2",
+          "4-2"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:20:55+00:00",
+      "updated_at": "2026-10-10T17:12:07+00:00",
       "fix": {
         "frontline": true
       }
@@ -2110,7 +2285,7 @@
     },
     "DA_ForgeAFriend": {
       "verdict": "wrong",
-      "note": "",
+      "note": "=> nên chọn nếu bạn thiếu 1 mảnh ghép quan trọng là 1 tướng 1 vàng 3 sao",
       "original": {
         "category": "econ",
         "categories": [
@@ -2122,16 +2297,19 @@
         "econ_value": 3,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "4-2"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:23:38+00:00",
+      "updated_at": "2026-10-10T17:17:16+00:00",
       "fix": {
         "categories": [
-          "combat",
+          "utility",
           "econ"
         ],
-        "category": "combat"
+        "category": "utility"
       }
     },
     "DA_ForgedInStrength": {
@@ -2217,8 +2395,8 @@
       "updated_at": "2026-10-06T09:35:49+00:00"
     },
     "DA_FutureFocused": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "wrong",
+      "note": "lập tức mất 20 máu linh thú => không nên chọn nếu cần sự an toàn",
       "original": {
         "category": "econ",
         "categories": [
@@ -2230,10 +2408,19 @@
         "econ_value": 3,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:27:14+00:00"
+      "updated_at": "2026-10-10T17:18:44+00:00",
+      "fix": {
+        "categories": [
+          "econ",
+          "utility"
+        ]
+      }
     },
     "DA_GainGold": {
       "verdict": "ok",
@@ -2287,11 +2474,15 @@
         "econ_value": 0,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": "field at least one 5-cost champion"
+        "board_condition": "field at least one 5-cost champion",
+        "offer_rounds": [
+          "4-2"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:28:07+00:00",
+      "updated_at": "2026-10-10T15:50:12+00:00",
       "fix": {
+        "econ_value": 1,
         "categories": [
           "combat",
           "econ"
@@ -2337,8 +2528,8 @@
       "updated_at": "2026-10-05T17:28:34+00:00"
     },
     "DA_GoingLong": {
-      "verdict": "unsure",
-      "note": "lõi có tính scale vì mỗi round cho 4 exp",
+      "verdict": "wrong",
+      "note": "vô hiệu hóa lợi tức đổi lại lượng lớn exp mỗi vòng =>nên chọn nếu chốt những bài đấu fast 8/fast 9 => không phù hợp cho bài đấu reroll",
       "original": {
         "category": "econ",
         "categories": [
@@ -2350,14 +2541,24 @@
         "econ_value": 3,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
       },
       "extraction_method": "deterministic-v2",
-      "updated_at": "2026-10-05T17:29:23+00:00"
+      "updated_at": "2026-10-10T17:22:22+00:00",
+      "fix": {
+        "tempo": "scaling",
+        "categories": [
+          "econ",
+          "utility"
+        ]
+      }
     },
     "DA_GoldDestiny": {
       "verdict": "wrong",
-      "note": "",
+      "note": "nhận 1 lõi vàng ngẫu nhiên và 3 vàng => có thể chọn trong phần lớn trường hợp => không nên chọn nếu đã hài lòng với 1 trong 2 lõi còn lại",
       "original": {
         "category": "econ",
         "categories": [
@@ -2375,12 +2576,12 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-06T09:35:55+00:00",
+      "updated_at": "2026-10-10T17:25:37+00:00",
       "fix": {}
     },
     "DA_GoldDestinyPlus": {
       "verdict": "wrong",
-      "note": "",
+      "note": "nhận 1 lõi vàng ngẫu nhiên và 6 vàng => có thể chọn trong phần lớn trường hợp => không nên chọn nếu đã hài lòng với 1 trong 2 lõi còn lại",
       "original": {
         "category": "econ",
         "categories": [
@@ -2392,10 +2593,13 @@
         "econ_value": 3,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-05T17:29:54+00:00",
+      "updated_at": "2026-10-10T17:26:12+00:00",
       "fix": {}
     },
     "DA_GoldenGamble": {
@@ -2421,7 +2625,7 @@
         ]
       },
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-06T09:36:06+00:00",
+      "updated_at": "2026-10-10T17:32:02+00:00",
       "fix": {
         "item_grants": [
           "CompletedItem",
@@ -2436,7 +2640,7 @@
     },
     "DA_GoldenGamblePlus": {
       "verdict": "wrong",
-      "note": "lõi này thuộc lớp lõi kim cương",
+      "note": "",
       "original": {
         "category": "econ",
         "categories": [
@@ -2451,10 +2655,13 @@
         "item_grants": [
           "CompletedItem"
         ],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "3-2"
+        ]
       },
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-05T17:32:30+00:00",
+      "updated_at": "2026-10-10T17:32:19+00:00",
       "fix": {
         "item_grants": [
           "CompletedItem",
@@ -2484,10 +2691,13 @@
         "item_grants": [
           "CompletedItem"
         ],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "4-2"
+        ]
       },
       "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
-      "updated_at": "2026-10-05T17:31:16+00:00",
+      "updated_at": "2026-10-10T17:32:33+00:00",
       "fix": {
         "item_grants": [
           "CompletedItem",
@@ -2559,7 +2769,7 @@
     },
     "DA_HardBargain": {
       "verdict": "wrong",
-      "note": "",
+      "note": "- không được tự chọn ở vòng đi chợ, đổi lại 6 máu + 8 vàng mỗi vòng => không nên chọn nếu đội hình cần mảnh đồ phù hợp từ vòng đi chợ\n- không được tự chọn ở vòng đi chợ => không nên chọn nếu đang cầm mảnh đồ xấu và cần vòng đi chợ để sửa",
       "original": {
         "category": "econ",
         "categories": [
@@ -2577,7 +2787,7 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-06T09:37:10+00:00",
+      "updated_at": "2026-10-10T17:37:40+00:00",
       "fix": {
         "tempo": "scaling"
       }
@@ -2660,11 +2870,22 @@
         "econ_value": 0,
         "trait_affinity": [],
         "item_grants": [],
-        "board_condition": null
+        "board_condition": null,
+        "offer_rounds": [
+          "2-1"
+        ]
       },
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
-      "updated_at": "2026-10-05T17:34:46+00:00",
-      "fix": {}
+      "updated_at": "2026-10-10T15:50:28+00:00",
+      "fix": {
+        "item_grants": [
+          "CompletedItem"
+        ],
+        "categories": [
+          "combat",
+          "item"
+        ]
+      }
     },
     "DA_HedgeFund": {
       "verdict": "wrong",
@@ -2828,8 +3049,11 @@
         ]
       },
       "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-06T09:38:52+00:00",
+      "updated_at": "2026-10-10T15:50:40+00:00",
       "fix": {
+        "item_grants": [
+          "Artifact"
+        ],
         "categories": [
           "combat",
           "econ",
@@ -2908,7 +3132,7 @@
         ]
       },
       "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-06T09:39:49+00:00"
+      "updated_at": "2026-10-10T16:06:25+00:00"
     },
     "DA_InvestmentStrategy": {
       "verdict": "wrong",
@@ -2930,9 +3154,14 @@
         ]
       },
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
-      "updated_at": "2026-10-06T09:40:33+00:00",
+      "updated_at": "2026-10-10T15:51:01+00:00",
       "fix": {
-        "econ_value": 1
+        "econ_value": 1,
+        "categories": [
+          "combat",
+          "econ"
+        ],
+        "category": "combat"
       }
     },
     "DA_IronAssets": {
@@ -3299,8 +3528,8 @@
       "updated_at": "2026-10-06T09:45:50+00:00"
     },
     "DA_LoadedDice": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "wrong",
+      "note": "- xúc xắc và đồng xu may mắn hơn => nên chọn nếu định đi theo hướng lõi/tinh linh tung xúc xắc, đồng xu\n- đã có Loaded Dice => ưu tiên Feeling Lucky, Magic Roll (3-2) và tinh linh có tung xúc xắc/đồng xu",
       "original": {
         "category": "econ",
         "categories": [
@@ -3318,7 +3547,13 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-06T09:46:13+00:00"
+      "updated_at": "2026-10-10T17:42:48+00:00",
+      "fix": {
+        "categories": [
+          "econ",
+          "utility"
+        ]
+      }
     },
     "DA_LuckyGloves": {
       "verdict": "ok",
@@ -3343,7 +3578,7 @@
         ]
       },
       "extraction_method": "manual-audit:category,econ_value (from deterministic-v2)",
-      "updated_at": "2026-10-06T09:46:32+00:00"
+      "updated_at": "2026-10-10T15:51:21+00:00"
     },
     "DA_LuckyGlovesPlus": {
       "verdict": "ok",
@@ -3368,7 +3603,7 @@
         ]
       },
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-06T09:46:44+00:00"
+      "updated_at": "2026-10-10T15:51:34+00:00"
     },
     "DA_LuxurySubscription": {
       "verdict": "wrong",
@@ -3771,8 +4006,8 @@
       }
     },
     "DA_NestingDollsPlus": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "unsure",
+      "note": "lõi này hiện đang vô hiệu hóa ở nhiều bản cập nhật cho đến hiện tại là bản 18.4b",
       "original": {
         "category": "combat",
         "categories": [
@@ -3792,11 +4027,11 @@
         ]
       },
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-06T11:06:10+00:00"
+      "updated_at": "2026-10-10T17:45:45+00:00"
     },
     "DA_NestingDollsPlusPlus": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "unsure",
+      "note": "lõi này hiện đang vô hiệu hóa ở nhiều bản cập nhật cho đến hiện tại là bản 18.4b",
       "original": {
         "category": "combat",
         "categories": [
@@ -3816,11 +4051,11 @@
         ]
       },
       "extraction_method": "manual-audit:category,econ_value (from deterministic-v2)",
-      "updated_at": "2026-10-06T11:06:17+00:00"
+      "updated_at": "2026-10-10T17:45:44+00:00"
     },
     "DA_NoScoutNoPivot": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "wrong",
+      "note": "- tướng đã giao tranh với người chơi thì không thể bán hoặc cho về hàng dự bị => nên chọn nếu có form và chốt bài ngay thời điểm chọn lõi\n- đã có NO SCOUT NO PIVOT => không được cho các unit ngoài kế hoạch vào giao tranh người chơi để tránh rắc rối về sau.",
       "original": {
         "category": "combat",
         "categories": [
@@ -3838,7 +4073,13 @@
         ]
       },
       "extraction_method": "manual-audit:tempo (from deterministic-v2)",
-      "updated_at": "2026-10-06T11:06:42+00:00"
+      "updated_at": "2026-10-10T17:50:33+00:00",
+      "fix": {
+        "categories": [
+          "combat",
+          "utility"
+        ]
+      }
     },
     "DA_18_RiftbeastTraitAugment": {
       "verdict": "wrong",
@@ -3876,7 +4117,7 @@
       }
     },
     "DA_OneBuffTwoBuff": {
-      "verdict": "ok",
+      "verdict": "wrong",
       "note": "",
       "original": {
         "category": "item",
@@ -3896,7 +4137,8 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-06T11:07:18+00:00"
+      "updated_at": "2026-10-10T15:52:21+00:00",
+      "fix": {}
     },
     "DA_18_OneTwoFive": {
       "verdict": "ok",
@@ -3946,7 +4188,7 @@
       "updated_at": "2026-10-06T11:07:38+00:00"
     },
     "DA_PandorasBench": {
-      "verdict": "ok",
+      "verdict": "wrong",
       "note": "",
       "original": {
         "category": "econ",
@@ -3966,7 +4208,8 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T08:32:09+00:00"
+      "updated_at": "2026-10-10T16:19:18+00:00",
+      "fix": {}
     },
     "DA_PandorasItemsI": {
       "verdict": "wrong",
@@ -4532,9 +4775,12 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T08:41:11+00:00",
+      "updated_at": "2026-10-10T15:52:55+00:00",
       "fix": {
-        "carry_type": "both"
+        "carry_type": "both",
+        "item_grants": [
+          "CompletedItem"
+        ]
       }
     },
     "DA_RollingForDays": {
@@ -4623,7 +4869,7 @@
       "fix": {}
     },
     "DA_SeraphimsStaff": {
-      "verdict": "ok",
+      "verdict": "wrong",
       "note": "",
       "original": {
         "category": "item",
@@ -4644,7 +4890,12 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T08:43:32+00:00"
+      "updated_at": "2026-10-10T15:53:12+00:00",
+      "fix": {
+        "item_grants": [
+          "CompletedItem"
+        ]
+      }
     },
     "DA_ShimmerscaleEssence": {
       "verdict": "wrong",
@@ -4666,8 +4917,9 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T08:48:22+00:00",
+      "updated_at": "2026-10-10T15:53:22+00:00",
       "fix": {
+        "econ_value": 2,
         "item_grants": [
           "Artifact"
         ],
@@ -4821,7 +5073,7 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T08:51:59+00:00",
+      "updated_at": "2026-10-10T15:53:41+00:00",
       "fix": {
         "econ_value": 3
       }
@@ -4846,7 +5098,7 @@
         ]
       },
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-08T08:51:45+00:00"
+      "updated_at": "2026-10-10T15:54:03+00:00"
     },
     "DA_SliceOfLife": {
       "verdict": "ok",
@@ -5473,8 +5725,9 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T09:11:57+00:00",
+      "updated_at": "2026-10-10T15:54:15+00:00",
       "fix": {
+        "econ_value": 1,
         "item_grants": [
           "Artifact"
         ]
