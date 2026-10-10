@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "created_at": "2026-10-10T16:22:51+00:00",
+    "purpose": "Vòng duyệt 2b: lõi lưu bị từ chối vì luật utility cũ, và lõi mà nguồn ngoài gắn nhãn 'khác' nhưng nhãn tay chưa có utility",
+    "sources": {
+      "metatft": "data/augment_tags.metatft.json",
+      "datatft": "data/augment_rounds.datatft.json"
+    },
+    "note": "Nguồn ngoài chỉ là tín hiệu để đọc lại, không phải đáp án. Vòng 2a (32 lõi lệch/mâu thuẫn) đã duyệt 26, 6 lõi còn lại nằm trong danh sách này.",
+    "n": 47
+  },
+  "flags": {
+    "DA_ConstructACompanion": [
+      "lần lưu trước bị từ chối vì luật 'utility chỉ đi một mình' (đã bỏ luật): lưu lại",
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other + econ · MetaTFT: econ, misc)"
+    ],
+    "DA_18_CovenTraitAugment": [
+      "lần lưu trước bị từ chối vì luật 'utility chỉ đi một mình' (đã bỏ luật): lưu lại"
+    ],
+    "DA_Expedition": [
+      "lần lưu trước bị từ chối vì luật 'utility chỉ đi một mình' (đã bỏ luật): lưu lại",
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other + item · MetaTFT: econ, misc)"
+    ],
+    "DA_ForgeAFriend": [
+      "lần lưu trước bị từ chối vì luật 'utility chỉ đi một mình' (đã bỏ luật): lưu lại",
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ · MetaTFT: econ, misc)"
+    ],
+    "DA_18_RiftbeastTraitAugment": [
+      "lần lưu trước bị từ chối vì luật 'utility chỉ đi một mình' (đã bỏ luật): lưu lại"
+    ],
+    "DA_PandorasBench": [
+      "lần lưu trước bị từ chối vì luật 'utility chỉ đi một mình' (đã bỏ luật): lưu lại",
+      "chỉ datatft gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: econ)"
+    ],
+    "DA_PandorasItemsI": [
+      "lần lưu trước bị từ chối vì luật 'utility chỉ đi một mình' (đã bỏ luật): lưu lại"
+    ],
+    "DA_PandorasItemsII": [
+      "lần lưu trước bị từ chối vì luật 'utility chỉ đi một mình' (đã bỏ luật): lưu lại"
+    ],
+    "DA_PandorasItemsIII": [
+      "lần lưu trước bị từ chối vì luật 'utility chỉ đi một mình' (đã bỏ luật): lưu lại"
+    ],
+    "DA_AdvancedLoan": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ + other · MetaTFT: econ, misc)"
+    ],
+    "DA_AdvancedLoanPlus": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ + other · MetaTFT: econ, misc)"
+    ],
+    "DA_CursedCrown": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: combat, misc)"
+    ],
+    "DA_FutureFocused": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ + other · MetaTFT: econ, misc)"
+    ],
+    "DA_GoldDestiny": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: econ, misc)"
+    ],
+    "DA_GoldDestinyPlus": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: econ, misc)"
+    ],
+    "DA_LoadedDice": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ + other · MetaTFT: econ, misc)"
+    ],
+    "DA_PrismaticDestiny": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: econ, misc)"
+    ],
+    "DA_PrismaticDestinyPlus": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: econ, misc)"
+    ],
+    "DA_Recombobulator": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: econ, misc)"
+    ],
+    "DA_SilverDestiny": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: econ, misc)"
+    ],
+    "DA_SilverDestinyPlus": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: econ, misc)"
+    ],
+    "DA_SilverDestinyPlusPlus": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: econ, misc)"
+    ],
+    "DA_18_WeightTheWorth": [
+      "cả hai nguồn gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ + other · MetaTFT: econ, misc)"
+    ],
+    "DA_BonusGift": [
+      "chỉ datatft gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ + other · MetaTFT: econ)"
+    ],
+    "DA_BonusGiftPlus": [
+      "chỉ datatft gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ + other · MetaTFT: econ)"
+    ],
+    "DA_DoubleTrouble": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: combat · MetaTFT: combat, misc)"
+    ],
+    "DA_Dummify": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: combat · MetaTFT: combat, misc)"
+    ],
+    "DA_EarlyLearnings": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: combat · MetaTFT: combat, scaling, misc)"
+    ],
+    "DA_FeelingLucky": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ · MetaTFT: econ, misc)"
+    ],
+    "DA_FindYourCenter": [
+      "chỉ datatft gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: combat + other · MetaTFT: combat)"
+    ],
+    "DA_GoingLong": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ · MetaTFT: econ, misc)"
+    ],
+    "DA_GoldenGamble": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: item + econ · MetaTFT: items, econ, misc)"
+    ],
+    "DA_GoldenGamblePlus": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: item + econ · MetaTFT: items, econ, misc)"
+    ],
+    "DA_GoldenGamblePlusPlus": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: item + econ · MetaTFT: items, econ, misc)"
+    ],
+    "DA_HardBargain": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ · MetaTFT: econ, misc)"
+    ],
+    "DA_NestingDollsPlus": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: (không có) · MetaTFT: combat, misc)"
+    ],
+    "DA_NestingDollsPlusPlus": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: (không có) · MetaTFT: combat, misc)"
+    ],
+    "DA_NoScoutNoPivot": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: combat · MetaTFT: combat, scaling, misc)"
+    ],
+    "DA_SoloLeveling": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: item + econ · MetaTFT: combat, econ, misc)"
+    ],
+    "DA_TheGoldenDragon": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: item · MetaTFT: items, econ, misc)"
+    ],
+    "DA_GoldenEgg": [
+      "chỉ datatft gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: items, econ, scaling)"
+    ],
+    "DA_TheTower": [
+      "chỉ datatft gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other + combat · MetaTFT: combat)"
+    ],
+    "DA_TimeSkip": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ · MetaTFT: econ, misc)"
+    ],
+    "DA_TraitLadder": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: trait + item · MetaTFT: items, trait, misc)"
+    ],
+    "DA_URF": [
+      "chỉ datatft gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: combat, items)"
+    ],
+    "DA_Warpath": [
+      "chỉ datatft gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: other · MetaTFT: items, econ, scaling)"
+    ],
+    "DA_YoungAndWildAndFree": [
+      "chỉ MetaTFT gắn nhãn 'khác': có nên thêm utility làm nhãn phụ? (datatft: econ · MetaTFT: econ, misc)"
+    ]
+  }
+}

@@ -119,6 +119,7 @@ h1{font-size:22px;margin:0;text-wrap:balance}
         <option value="todo">Chưa duyệt</option><option value="">Tất cả trạng thái</option>
         <option value="ok">Đúng</option><option value="wrong">Sai</option><option value="unsure">Chưa chắc</option>
         <option value="recheck">Cần xem lại</option>
+        <option value="round2todo">Vòng 2: chưa duyệt lại</option><option value="round2">Vòng 2: tất cả</option>
       </select>
       <select id="fCat" aria-label="Có nhãn"><option value="">Mọi nhãn</option></select>
       <select id="fMethod" aria-label="Cách trích">
@@ -142,6 +143,7 @@ h1{font-size:22px;margin:0;text-wrap:balance}
 
 <script>
 let DATA = [];
+let FLAGS_SINCE = null;      // luc tao danh sach vong 2 (ISO), null = khong co vong 2
 // thu tu = thu tu uu tien khi hoa nhan chinh (docs/category-multilabel/definition.md)
 const CATS = ["reroll","econ","item","trait","combat","utility"];
 const CARRY = ["AD","AP","both","none"];
@@ -192,7 +194,7 @@ function catPicks(a, chosen){
   const set = new Set(chosen || []), prim = (chosen || [])[0], id = `e-cat-${a.api_name}`;
   return `<div class="wide" data-cats><label>categories (1–3 nhãn, ★ = nhãn chính)</label><div class="picks">${CATS.map(c =>
     `<label class="pick"><input type="checkbox" id="${esc(id)}-${c}" value="${c}"${set.has(c) ? " checked" : ""}>${c}<input type="radio" name="${esc(id)}-prim" value="${c}" title="nhãn chính" aria-label="${c} là nhãn chính"${c === prim ? " checked" : ""}><em>★</em></label>`).join("")}</div>
-    <p class="hint">Chính = phần lớn giá trị; hoà thì reroll &gt; econ &gt; item &gt; trait &gt; combat &gt; utility. Phụ chỉ khi là cơ chế nêu rõ, có giá trị độc lập. Bắt buộc: econ_value&gt;0 → econ; có item_grants → item; có trait_affinity/thưởng theo trait → trait. utility chỉ đi một mình.</p></div>`;
+    <p class="hint">Chính = phần lớn giá trị; hoà thì reroll &gt; econ &gt; item &gt; trait &gt; combat &gt; utility. Phụ chỉ khi là cơ chế nêu rõ, có giá trị độc lập. Bắt buộc: econ_value&gt;0 → econ; có item_grants → item; có trait_affinity/thưởng theo trait → trait. utility làm nhãn phụ khi lõi có thêm cơ chế đặc biệt ngoài các nhóm trên.</p></div>`;
 }
 function editForm(a, r){
   const f = Object.assign(pickFix(a), r.fix || {});
@@ -248,11 +250,16 @@ function card(a, i){
       ${a.board_condition || fixedValue(a,r,"board_condition")!==null ? chip(a,r,"board_condition","board") : ""}
     </div>
     ${r.recheck ? `<div class="recheck">Cần xem lại: ${esc(r.recheck.join(" · "))}</div>` : ""}
+    ${r.save_error ? `<div class="recheck">CHƯA LƯU ĐƯỢC: ${esc(r.save_error)}</div>` : ""}
+    ${(a.flags || []).length ? `<div class="recheck">Vòng 2${round2Done(a) ? " (đã duyệt lại)" : ""}: ${esc(a.flags.join(" · "))}</div>` : ""}
     <div class="meta">${esc(a.extraction_method)} · confidence ${a.confidence}${a.random?" · có yếu tố ngẫu nhiên":""}</div>
     <div class="verdicts">${btn("ok","Đúng")}${btn("wrong","Sai")}${btn("unsure","Chưa chắc")}</div>
     ${v==="wrong" ? editForm(a,r) : v==="unsure" ? noteForm(a,r) : ""}
   </article>`;
 }
+
+// vong 2: loi co co `flags`; da duyet lai = entry luu sau luc danh sach co duoc tao
+const round2Done = a => !!FLAGS_SINCE && Date.parse(reviews[a.api_name]?.updated_at || 0) > Date.parse(FLAGS_SINCE);
 
 function filtered(){
   const q = $("#q").value.trim().toLowerCase(), st = $("#fStatus").value, c = $("#fCat").value,
@@ -261,7 +268,9 @@ function filtered(){
     const v = reviews[a.api_name]?.verdict || "";
     if (st === "todo" && v) return false;
     if (st === "recheck" && !reviews[a.api_name]?.recheck) return false;
-    if (st && st !== "todo" && st !== "recheck" && v !== st) return false;
+    if (st.startsWith("round2") && !(a.flags || []).length) return false;
+    if (st === "round2todo" && round2Done(a)) return false;
+    if (st && st !== "todo" && st !== "recheck" && !st.startsWith("round2") && v !== st) return false;
     if (c && !(fixedValue(a, reviews[a.api_name], "categories") ?? a.categories ?? []).includes(c)) return false;
     if (m === "det" && a.extraction_method !== "deterministic-v1") return false;
     if (m === "llm" && !a.extraction_method.startsWith("llm")) return false;
@@ -303,7 +312,7 @@ function rerenderCard(api){
   renderStats();
 }
 
-async function persist(api){
+async function persist(api, savedAt){
   const r = reviews[api];
   if (r.fix){   // nhan cu go tay (truoc khi co danh sach chon) khong hop le -> bo, server se tu choi
     const known = {item_grants: new Set(OPTIONS.item_grants), trait_affinity: new Set(OPTIONS.trait_affinity.map(o => o.api))};
@@ -315,7 +324,11 @@ async function persist(api){
     const out = await res.json();
     if (!res.ok || !out.ok) throw new Error(out.error || res.status);
     reviews[api] = out.entry; rerenderCard(api); $("#banner").hidden = true;
-  } catch(e){ showBanner("Không lưu được: " + e.message + ". Kiểm tra script còn chạy trong terminal không."); }
+  } catch(e){
+    // server tu choi: the khong duoc trong nhu da luu (gio luu cu, loi hien ngay tren the)
+    r.updated_at = savedAt; r.save_error = e.message; rerenderCard(api);
+    showBanner("Không lưu được: " + e.message + ". Kiểm tra script còn chạy trong terminal không.");
+  }
 }
 
 function readFix(el){
@@ -343,10 +356,11 @@ function readFix(el){
 function setVerdict(api, v){
   const prev = reviews[api] || {};
   const r = {...prev, verdict: v, updated_at: new Date().toISOString()};
+  delete r.save_error;
   if (v !== "wrong") delete r.fix;
   else if (!r.fix) r.fix = pickFix(DATA.find(x=>x.api_name===api));
   reviews[api] = r;
-  rerenderCard(api); persist(api);
+  rerenderCard(api); persist(api, prev.updated_at);
 }
 
 document.addEventListener("click", e => {
@@ -359,8 +373,9 @@ document.addEventListener("click", e => {
     const {fix, note} = readFix(c);
     const r = reviews[api]; if (!r) return;
     if (r.verdict === "wrong") r.fix = fix;
-    r.note = note; r.updated_at = new Date().toISOString();
-    rerenderCard(api); persist(api);
+    const savedAt = r.updated_at;
+    r.note = note; r.updated_at = new Date().toISOString(); delete r.save_error;
+    rerenderCard(api); persist(api, savedAt);
   } else setVerdict(api, act);
 });
 
@@ -400,6 +415,8 @@ function showBanner(t){ const b = $("#banner"); b.textContent = t; b.hidden = fa
   try {
     const s = await (await fetch("/api/state")).json();
     DATA = s.rows; OPTIONS = s.options; Object.assign(reviews, s.reviews);
+    FLAGS_SINCE = s.flags_since || null;
+    if (DATA.some(a => (a.flags || []).length && !round2Done(a))) $("#fStatus").value = "round2todo";
     $("#outPath").textContent = s.path;
     $("#nAll").textContent = $("#nTotal").textContent = DATA.length;
     render(false);

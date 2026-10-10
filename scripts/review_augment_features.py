@@ -113,7 +113,16 @@ def load_datatft(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8")).get("augments", {})
 
 
-def build_rows(features: dict, locale: dict, tiers_path: Path, datatft: dict | None = None) -> list[dict]:
+def load_flags(path: Path) -> tuple[dict, str | None]:
+    """`({api_name: [ly do, ...]}, created_at)` cua vong duyet 2; thieu file = rong."""
+    if not path.is_file():
+        return {}, None
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return data.get("flags", {}), data.get("meta", {}).get("created_at")
+
+
+def build_rows(features: dict, locale: dict, tiers_path: Path, datatft: dict | None = None,
+               flags: dict | None = None) -> list[dict]:
     raw = {str(i.get("apiName")): i for i in locale.get("items", []) if i.get("isAugment")}
     academy: dict[str, str] = {}
     if tiers_path.is_file():
@@ -134,7 +143,8 @@ def build_rows(features: dict, locale: dict, tiers_path: Path, datatft: dict | N
                      "offer_rounds": own or src_rounds,
                      "offer_rounds_source": "feature" if own else ("datatft" if src_rounds else None),
                      "datatft_rounds": src_rounds,
-                     "datatft_types": list(src.get("types", []))})
+                     "datatft_types": list(src.get("types", [])),
+                     "flags": list((flags or {}).get(api, []))})
     rows.sort(key=lambda x: (x["name"] or x["api_name"]).lower())
     return rows
 
@@ -245,7 +255,8 @@ def write_reviews(path: Path, data: dict) -> None:
     tmp.replace(path)
 
 
-def make_handler(rows: list[dict], options: dict, review_path: Path, features_path: Path):
+def make_handler(rows: list[dict], options: dict, review_path: Path, features_path: Path,
+                 flags_since: str | None = None):
     by_api = {r["api_name"]: r for r in rows}
     allowed = {"item_grants": set(options["item_grants"]),
                "trait_affinity": {t["api"] for t in options["trait_affinity"]}}
@@ -277,6 +288,7 @@ def make_handler(rows: list[dict], options: dict, review_path: Path, features_pa
                     raw = load_reviews(review_path)["reviews"]
                 reviews = {k: migrate_review(v, by_api.get(k)) for k, v in raw.items()}
                 return self._json(200, {"rows": rows, "options": options, "reviews": reviews,
+                                        "flags_since": flags_since,
                                         "path": str(review_path.relative_to(ROOT))})
             self._json(404, {"error": "không có endpoint này"})
 
@@ -318,6 +330,7 @@ def make_handler(rows: list[dict], options: dict, review_path: Path, features_pa
                                 return self._json(400, {"error": f"{k} có giá trị không hợp lệ: {bad}"})
                         errs = validate_fix(row, fix)
                         if errs:
+                            print(f"TỪ CHỐI {api}: {'; '.join(errs)}", flush=True)
                             return self._json(400, {"error": "Nhãn chưa hợp lệ: " + "; ".join(errs)})
                         if fix.get("categories"):
                             fix["category"] = fix["categories"][0]
@@ -338,6 +351,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--tiers", default="data/augment_tiers.json")
     ap.add_argument("--rounds", default="data/augment_rounds.datatft.json",
                     help="snapshot datatft: lượt chào cho dòng chưa có offer_rounds, và mã type")
+    ap.add_argument("--flags", default="data/eval/augment_review_round2.json",
+                    help="danh sách lõi cần duyệt lại (vòng 2) kèm lý do; thiếu file thì bỏ qua")
     ap.add_argument("--out", default="data/eval/augment_feature_review.json")
     ap.add_argument("--port", type=int, default=8766)
     ap.add_argument("--no-browser", action="store_true")
@@ -349,12 +364,13 @@ def main(argv: list[str] | None = None) -> int:
     # "tank") cung duoc chuyen doi y nhu luc runtime.
     features = {k: f.to_dict() for k, f in FeatureTable.load(features_path).features.items()}
     locale = json.loads((ROOT / args.locale).read_text(encoding="utf-8"))
+    flags, flags_since = load_flags((ROOT / args.flags).resolve())
     rows = build_rows(features, locale, (ROOT / args.tiers).resolve(),
-                      load_datatft((ROOT / args.rounds).resolve()))
+                      load_datatft((ROOT / args.rounds).resolve()), flags)
     options = build_options(locale)
 
     server = ThreadingHTTPServer(("127.0.0.1", args.port),
-                                 make_handler(rows, options, review_path, features_path))
+                                 make_handler(rows, options, review_path, features_path, flags_since))
     url = f"http://127.0.0.1:{args.port}/"
     print(f"Mở {url} để duyệt {len(rows)} lõi. Kết quả ghi vào {review_path.relative_to(ROOT)}. Ctrl+C để dừng.")
     if not args.no_browser:
