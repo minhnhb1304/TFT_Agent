@@ -252,8 +252,6 @@ def check_feature(f: AugmentFeature) -> list[str]:
         errs.append(f"category la: {bad}")
     if cats and f.category != cats[0]:
         errs.append("category phai bang categories[0]")
-    if "utility" in cats and len(cats) > 1:
-        errs.append("utility chi dung mot minh")
     if f.econ_value > 0 and "econ" not in cats:
         errs.append("econ_value > 0 nhung thieu nhan econ")
     if f.item_grants and "item" not in cats:
