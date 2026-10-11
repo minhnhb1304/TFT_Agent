@@ -6,7 +6,7 @@ Việc tồn đọng sau phiên 2026-10-05 → 08. Đọc file này trước khi
 ## Phiên 2026-10-10 → 12: duyệt vòng 2 xong, nhãn tay đã vào bảng
 
 Vòng 2 xong **47/47** (2026-10-12); bản nhãn tay được chốt: 155 sai · 94 đúng · 5 chưa chắc, 27 lõi
-có `utility`. **Phần 2026-10-12 chưa commit.**
+có `utility`. Đã commit và push (`37a7445`, `4446f40`).
 
 | Việc | Kết quả |
 |---|---|
