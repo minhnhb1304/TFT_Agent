@@ -39,7 +39,7 @@ nhiều lõi chỉ có ở 2-1 vẫn đúng là `immediate`.
 
 | Lõi | Nhãn | Vì sao |
 |---|---|---|
-| Comeback Story | `immediate` | Mạnh theo **máu đã mất**, không theo số vòng; TempoFit phạt lõi `scaling` khi máu thấp, đúng lúc lõi này mạnh nhất |
+| Comeback Story | `scaling` (duyệt tay 2026-10-05) | Trước đó neo `immediate` vì mạnh theo **máu đã mất**; người duyệt đổi lại. Hệ quả cần nhớ: TempoFit phạt lõi `scaling` khi máu thấp |
 | Hard Commit | `trait_count_reward = None` | Cho tướng một trait mỗi stage nhưng thưởng không tăng theo độ sâu. Tín hiệu "commit" định hướng cho nó **chưa có** — xem câu hỏi mở |
 
 ## Nhãn `manual-audit`
@@ -67,6 +67,18 @@ vd  "manual-audit:category,econ_value,tempo (from llm:gemini-3.5-flash-lite)"
 
 Danh sách đầy đủ: `grep manual-audit data/augment_features.json`. Lý do từng dòng nằm trong
 commit message của nhánh tương ứng.
+
+## Đợt duyệt tay 2026-10-12
+
+Nhãn tay 254/254 (`data/eval/augment_feature_review.json`) được áp bằng
+`python scripts/apply_manual_review.py --write`: 122 dòng đổi, bảng có 161 dòng `manual-audit`.
+
+| Quy tắc | Chi tiết |
+|---|---|
+| Chỉ áp verdict đúng / sai | 5 lõi "chưa chắc" giữ dòng máy |
+| Chỉ áp trường `MANUAL_AUDITABLE` | 44 lõi sửa `item_grants` **không** áp; script liệt kê |
+| Nhãn bắt buộc ở lại | Bảng còn `item_grants` thì còn nhãn `item`, dù người duyệt đã bỏ (Crafted Crafting) |
+| Chạy lại không đổi gì | Có test `test_apply_manual_review_writes_only_auditable_fields` |
 
 ## Related
 

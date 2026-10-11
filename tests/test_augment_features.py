@@ -380,11 +380,12 @@ def test_committed_tempo_is_measured_in_rounds_not_combat_seconds() -> None:
 
     Cong don trong mot tran la immediate: tran ke tiep da co du suc manh.
     Cong don qua cac vong / phan thuong o moc xa la scaling. Comeback Story
-    manh nhat khi it mau nen phai la immediate du MetaTFT gan "scaling".
+    tung duoc neo la immediate (manh nhat khi it mau); nguoi duyet tay da doi
+    thanh scaling (2026-10-05), nen no khong con la moc o day.
     """
     loaded = FeatureTable.load(COMMITTED)
     for api in ("DA_Ascension", "DA_ClockworkAccelerator", "DA_VerticalityI",
-                "DA_BandOfThievesII", "DA_ComebackStory"):
+                "DA_BandOfThievesII"):
         assert loaded.get(api).tempo == "immediate", api
     for api in ("DA_HeartOfSteel", "DA_EpicRolldown", "DA_NoScoutNoPivot",
                 "DA_MoneyMonsoon", "DA_LatentForge",
@@ -667,3 +668,35 @@ def test_unknown_keys_from_the_model_are_ignored() -> None:
     merged, diff = _merge(_feat(), {"khong_phai_truong": "gi do"}, "m", TRAITS)
     assert diff == []
     assert merged == _feat()
+
+
+def test_apply_manual_review_writes_only_auditable_fields() -> None:
+    """Nhan tay vao bang: khai truong doi trong label, bo qua unsure va truong dinh danh."""
+    from scripts.apply_manual_review import apply_review
+
+    def row(api: str, **kw: object) -> dict:
+        return AugmentFeature(api_name=api, name=api, tier=1, **kw).to_dict()
+
+    payload = {"augments": {
+        "DA_A": row("DA_A", category="item", item_grants=["CompletedItem"],
+                    extraction_method="manual-audit:tempo (from llm:m)"),
+        "DA_B": row("DA_B", category="combat"),
+        "DA_C": row("DA_C", category="combat"),
+    }}
+    reviews = {
+        # Bo `item` va xoa item_grants: bang van con item_grants nen `item` phai o lai.
+        "DA_A": {"verdict": "wrong", "original": {},
+                 "fix": {"categories": ["econ"], "econ_value": 2, "item_grants": []}},
+        "DA_B": {"verdict": "unsure", "original": {}, "fix": {"tempo": "scaling"}},
+        "DA_C": {"verdict": "ok", "original": {"tempo": "immediate"}, "fix": None},
+    }
+    out, report = apply_review(payload, reviews)
+    a = out["augments"]["DA_A"]
+    assert a["categories"] == ["econ", "item"] and a["category"] == "econ"
+    assert a["econ_value"] == 2 and a["item_grants"] == ["CompletedItem"]
+    assert a["extraction_method"] == "manual-audit:categories,category,econ_value,tempo (from llm:m)"
+    assert report["forced"] == {"DA_A": ["item"]} and report["identity"] == {"DA_A": {"item_grants": []}}
+    assert out["augments"]["DA_B"] == payload["augments"]["DA_B"]
+    assert out["augments"]["DA_C"] == payload["augments"]["DA_C"]
+    assert report["skipped_unsure"] == ["DA_B"] and not report["invalid"]
+    assert apply_review(out, reviews)[1]["applied"] == {}

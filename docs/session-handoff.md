@@ -3,16 +3,23 @@
 Việc tồn đọng sau phiên 2026-10-05 → 08. Đọc file này trước khi bắt đầu phiên sau. Trạng thái
 2026-10-08: **1027 test xanh, 4 commit đã push lên `main` (`253bafc`), duyệt tay xong 254/254**.
 
-## Phiên 2026-10-10: duyệt vòng 2 đang dở (26/47)
+## Phiên 2026-10-10 → 12: duyệt vòng 2 xong, nhãn tay đã vào bảng
 
-Nhãn tay được so lại với MetaTFT và datatft, rồi mở vòng duyệt 2. **Chưa commit gì của phiên này.**
+Vòng 2 xong **47/47** (2026-10-12); bản nhãn tay được chốt: 155 sai · 94 đúng · 5 chưa chắc, 27 lõi
+có `utility`. **Phần 2026-10-12 chưa commit.**
 
-| Việc | Trạng thái |
+| Việc | Kết quả |
 |---|---|
-| Vòng 2a: 32 lõi lệch cả hai nguồn hoặc tự mâu thuẫn | Xong 26; 6 lõi còn lại chuyển sang 2b |
-| Vòng 2b: 47 lõi (`data/eval/augment_review_round2.json`) | **26/47**, dừng sau NO SCOUT NO PIVOT. Còn 21: Omega Riftbeast, Pandora's Bench, Pandora's Items I/II/III, Prismatic Destiny (2), Recombobulator, Silver Destiny (3), Weight The Worth, Solo Leveling, The Golden Dragon, The Golden Egg, The Tower, Time Skip, Trait Ladder, U.R.F, Warpath, Young and Wild and Free |
-| Làm tiếp | `.venv\Scripts\python scripts\review_augment_features.py` → bộ lọc "Vòng 2: chưa duyệt lại" |
-| Sau khi duyệt xong | So lại với hai nguồn, rồi việc code #1 bên dưới (áp nhãn tay vào bảng feature) |
+| Áp nhãn tay (việc code #1) | `python scripts/apply_manual_review.py --write`: **122 dòng đổi**, bảng có 161 dòng `manual-audit`. 5 lõi "chưa chắc" giữ dòng máy |
+| Không áp | 44 lõi người duyệt sửa `item_grants` (trường định danh, dùng cả key chỉ có ở trang duyệt). Chờ việc code #6. Crafted Crafting vì thế giữ nhãn `item` |
+| Độ khớp bảng cũ với nhãn tay | `categories` 64,9% (deterministic) · 78,8% (llm); `econ_value` 84,2% · 88,5%; `tempo` 84,2% · 92,0%. Script in đủ bảng |
+| So với nguồn ngoài | MetaTFT: Jaccard 0,884, trùng khít 192/253, nhãn chính ∈ tag 242/253. datatft: Jaccard 0,818, trùng khít 171/252 |
+| Chấm lại 147 scenario (việc code #2) | Hoà tuyệt đối top-1 **20 → 14/147** (4 → 3 bộ lựa chọn); cách < 0,01: 40 → 34. Top-1 đổi 9/147. `legacy_tank_direction` bật/tắt không đổi số nào |
+| Nhóm `econ_value = 3` | **56 → 72 lõi** (128 lõi có `econ_value > 0`): nhãn tay làm đỉnh chiều kinh tế đông hơn |
+| Đổi theo nhãn tay | `data/augment_stats.csv` sinh lại; Comeback Story `immediate → scaling`, bỏ khỏi mốc `immediate` trong test |
+
+Số chấm lại và phép so tay ↔ MetaTFT ↔ datatft chạy bằng script tạm, **chưa vào repo** (việc code #4).
+Omega Riftbeast có nhãn `econ` nhưng `econ_value = 0` (người duyệt giữ).
 
 Đổi trong phiên:
 
@@ -64,8 +71,8 @@ Xong 2026-10-08; các gạch đầu dòng dưới là danh sách soát lại, vi
 
 | # | Việc | Chặn bởi |
 |---|---|---|
-| 1 | Áp nhãn tay vào `data/augment_features.json` dưới `manual-audit:…`, tính độ chính xác theo `extraction_method` | Duyệt xong (hoặc xong một phần) |
-| 2 | Đo lại baseline (tỉ lệ hoà top-1…) với cờ `legacy_tank_direction` bật/tắt | — |
+| 1 | ~~Áp nhãn tay vào `data/augment_features.json`~~ **Xong 2026-10-12** (`scripts/apply_manual_review.py`) | — |
+| 2 | ~~Đo lại baseline~~ **Xong 2026-10-12** bằng script tạm; đưa phép chấm lại vào `directional_baseline.py` nếu cần dẫn số trong báo cáo | — |
 | 3 | ~~Chạy lại Monte-Carlo tháng 9~~ **Xong 2026-10-07** ([augment-reroll/ablation-results.md](augment-reroll/ablation-results.md)). Còn [tailoring-beta-sweep.md](augment-reroll/tailoring-beta-sweep.md) vẫn dùng pool cũ N = 132 | — |
 | 4 | So `categories` với nhãn tay: Jaccard, P/R/F1 từng nhãn ([category-multilabel/phases.md](category-multilabel/phases.md) P5) | Việc 1 |
 | 5 | Xác nhận ý nghĩa 6 mã `type` của datatft, rồi dùng làm nguồn so thứ hai (offer-rounds P6) | Cần ≥2 request nữa tới file JS tải sau |

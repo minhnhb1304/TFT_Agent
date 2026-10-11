@@ -41,8 +41,9 @@
       "api_name": "DA_18_BlossomTraitAugment",
       "name": "Blossom's Call",
       "tier": 2,
-      "category": "trait",
+      "category": "econ",
       "categories": [
+        "econ",
         "trait"
       ],
       "carry_type": "none",
@@ -50,15 +51,15 @@
       "trait_affinity": [
         "DA_18_Blossom"
       ],
-      "econ_value": 0,
-      "tempo": "immediate",
+      "econ_value": 3,
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Blossom",
       "trait_count_reward": null,
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category,econ_value,tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_18_BranchingOut": {
@@ -137,25 +138,26 @@
       "api_name": "DA_18_CovenTraitAugment",
       "name": "Coven Acolyte",
       "tier": 2,
-      "category": "econ",
+      "category": "utility",
       "categories": [
+        "utility",
         "econ",
         "trait"
       ],
       "carry_type": "none",
-      "frontline": true,
+      "frontline": false,
       "trait_affinity": [
         "DA_18_Coven"
       ],
-      "econ_value": 0,
-      "tempo": "immediate",
+      "econ_value": 1,
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": "can unit thuoc trait: DA_18_Coven",
       "trait_count_reward": null,
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category,econ_value,frontline,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_18_CovenTraitAugment_LootToAP": {
@@ -218,7 +220,7 @@
         "combat",
         "trait"
       ],
-      "carry_type": "AD",
+      "carry_type": "both",
       "frontline": true,
       "trait_affinity": [
         "DA_18_Elderwood"
@@ -233,7 +235,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:carry_type (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_18_FOURcing": {
@@ -396,18 +398,19 @@
       "api_name": "DA_18_LunarTraitAugment",
       "name": "Sun and Moon",
       "tier": 2,
-      "category": "trait",
+      "category": "combat",
       "categories": [
-        "trait",
-        "combat"
+        "combat",
+        "econ",
+        "trait"
       ],
-      "carry_type": "AP",
-      "frontline": false,
+      "carry_type": "both",
+      "frontline": true,
       "trait_affinity": [
         "DA_18_Lunar",
         "DA_18_Solar"
       ],
-      "econ_value": 0,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "fielded Lunar champions and unique Solar champions",
@@ -415,7 +418,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:carry_type,categories,category,econ_value,frontline (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_18_LunarTraitAugmentPlus": {
@@ -425,15 +428,16 @@
       "category": "combat",
       "categories": [
         "combat",
+        "econ",
         "trait"
       ],
       "carry_type": "none",
-      "frontline": false,
+      "frontline": true,
       "trait_affinity": [
         "DA_18_Lunar",
         "DA_18_Solar"
       ],
-      "econ_value": 0,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "fielded unique Solar champions",
@@ -441,7 +445,7 @@
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:categories,category,econ_value,frontline,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_18_LuxAugmentII": {
@@ -450,7 +454,8 @@
       "tier": 3,
       "category": "trait",
       "categories": [
-        "trait"
+        "trait",
+        "item"
       ],
       "carry_type": "AP",
       "frontline": false,
@@ -460,12 +465,12 @@
       "econ_value": 0,
       "tempo": "immediate",
       "item_grants": [],
-      "board_condition": "can unit thuoc trait: DA_18_LuxUniqueTrait",
+      "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:board_condition,categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_18_OneTwoFive": {
@@ -524,7 +529,7 @@
         "combat",
         "trait"
       ],
-      "carry_type": "AD",
+      "carry_type": "none",
       "frontline": false,
       "trait_affinity": [
         "DA_Primal18"
@@ -537,15 +542,16 @@
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:carry_type (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_18_PrimalAugmentPlus_Sivir": {
       "api_name": "DA_18_PrimalAugmentPlus_Sivir",
       "name": "Beast Within+",
       "tier": 2,
-      "category": "trait",
+      "category": "combat",
       "categories": [
+        "combat",
         "trait"
       ],
       "carry_type": "none",
@@ -561,15 +567,16 @@
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_18_PrimalAugment_Nidalee": {
       "api_name": "DA_18_PrimalAugment_Nidalee",
       "name": "Beast Within",
       "tier": 2,
-      "category": "trait",
+      "category": "combat",
       "categories": [
+        "combat",
         "trait"
       ],
       "carry_type": "none",
@@ -585,15 +592,16 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_18_PrimalAugment_Sivir": {
       "api_name": "DA_18_PrimalAugment_Sivir",
       "name": "Beast Within",
       "tier": 2,
-      "category": "trait",
+      "category": "combat",
       "categories": [
+        "combat",
         "trait"
       ],
       "carry_type": "none",
@@ -609,7 +617,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:categories,category,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_18_ResidualMagic": {
@@ -682,8 +690,10 @@
       "api_name": "DA_18_RiftbeastTraitAugment",
       "name": "Omega Riftbeast",
       "tier": 2,
-      "category": "trait",
+      "category": "combat",
       "categories": [
+        "combat",
+        "econ",
         "trait"
       ],
       "carry_type": "none",
@@ -701,7 +711,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_18_RivalsAugment": {
@@ -713,7 +723,7 @@
         "trait",
         "combat"
       ],
-      "carry_type": "AP",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [
         "DA_18_Rival"
@@ -727,7 +737,7 @@
         "2-1",
         "3-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:carry_type (from deterministic-v2)",
       "confidence": 0.6
     },
     "DA_18_SolarTraitAugment": {
@@ -759,8 +769,9 @@
       "api_name": "DA_18_SprykinAugment",
       "name": "Small Furry Friend",
       "tier": 2,
-      "category": "trait",
+      "category": "combat",
       "categories": [
+        "combat",
         "trait"
       ],
       "carry_type": "none",
@@ -778,7 +789,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_18_WeightTheWorth": {
@@ -815,14 +826,14 @@
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_18_WispRebatePlusPlus": {
@@ -837,14 +848,14 @@
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_AdvancedLoan": {
@@ -853,7 +864,8 @@
       "tier": 2,
       "category": "econ",
       "categories": [
-        "econ"
+        "econ",
+        "utility"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -866,7 +878,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_AdvancedLoanPlus": {
@@ -875,7 +887,8 @@
       "tier": 2,
       "category": "econ",
       "categories": [
-        "econ"
+        "econ",
+        "utility"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -888,7 +901,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_ArcaneViktory": {
@@ -949,14 +962,14 @@
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.2
     },
     "DA_BacklineBlueprint": {
@@ -1104,9 +1117,10 @@
       "tier": 3,
       "category": "combat",
       "categories": [
-        "combat"
+        "combat",
+        "item"
       ],
-      "carry_type": "AD",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -1118,7 +1132,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:carry_type,categories,category,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_BeltOverflow": {
@@ -1127,7 +1141,8 @@
       "tier": 3,
       "category": "item",
       "categories": [
-        "item"
+        "item",
+        "combat"
       ],
       "carry_type": "none",
       "frontline": true,
@@ -1143,7 +1158,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_BirthdayPresent": {
@@ -1249,7 +1264,8 @@
       "tier": 2,
       "category": "econ",
       "categories": [
-        "econ"
+        "econ",
+        "utility"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -1262,7 +1278,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_BonusGiftPlus": {
@@ -1277,14 +1293,14 @@
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_BoosterPack": {
@@ -1428,14 +1444,15 @@
       "api_name": "DA_BuildABud",
       "name": "Build A Bud",
       "tier": 3,
-      "category": "econ",
+      "category": "combat",
       "categories": [
+        "combat",
         "econ"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -1443,7 +1460,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category,econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_BuriedTreasuresIII": {
@@ -1474,23 +1491,23 @@
       "api_name": "DA_CalculatedLoss",
       "name": "Calculated Loss",
       "tier": 2,
-      "category": "reroll",
+      "category": "econ",
       "categories": [
-        "reroll",
-        "econ"
+        "econ",
+        "reroll"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
-      "tempo": "immediate",
+      "econ_value": 3,
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category,econ_value,tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_CallToChaos": {
@@ -1639,7 +1656,7 @@
         "combat"
       ],
       "carry_type": "none",
-      "frontline": true,
+      "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
       "tempo": "immediate",
@@ -1650,7 +1667,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:frontline (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_CelestialBlessingII": {
@@ -1662,7 +1679,7 @@
         "combat"
       ],
       "carry_type": "none",
-      "frontline": true,
+      "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
       "tempo": "immediate",
@@ -1673,7 +1690,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:frontline (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_CelestialBlessingIII": {
@@ -1685,7 +1702,7 @@
         "combat"
       ],
       "carry_type": "none",
-      "frontline": true,
+      "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
       "tempo": "immediate",
@@ -1696,7 +1713,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:frontline (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_ChallengersGrace": {
@@ -1934,14 +1951,14 @@
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.2
     },
     "DA_CommerceCore": {
@@ -2021,8 +2038,9 @@
       "api_name": "DA_ConstructACompanion",
       "name": "Construct a Companion",
       "tier": 2,
-      "category": "econ",
+      "category": "utility",
       "categories": [
+        "utility",
         "econ"
       ],
       "carry_type": "none",
@@ -2036,7 +2054,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_CookingPot": {
@@ -2045,7 +2063,8 @@
       "tier": 2,
       "category": "item",
       "categories": [
-        "item"
+        "item",
+        "combat"
       ],
       "carry_type": "none",
       "frontline": true,
@@ -2061,19 +2080,19 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_Coronation": {
       "api_name": "DA_Coronation",
       "name": "Coronation",
       "tier": 3,
-      "category": "item",
+      "category": "combat",
       "categories": [
-        "item",
-        "combat"
+        "combat",
+        "item"
       ],
-      "carry_type": "AD",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -2085,7 +2104,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:carry_type,categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_Corrosion": {
@@ -2097,7 +2116,7 @@
         "combat"
       ],
       "carry_type": "none",
-      "frontline": true,
+      "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
       "tempo": "immediate",
@@ -2108,24 +2127,24 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:frontline,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_CraftedCrafting": {
       "api_name": "DA_CraftedCrafting",
       "name": "Crafted Crafting",
       "tier": 1,
-      "category": "item",
+      "category": "reroll",
       "categories": [
-        "item",
         "reroll",
-        "econ"
+        "econ",
+        "item"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 0,
-      "tempo": "immediate",
+      "econ_value": 3,
+      "tempo": "scaling",
       "item_grants": [
         "CompletedItem"
       ],
@@ -2134,7 +2153,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category,econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_CryMeARiver": {
@@ -2169,7 +2188,8 @@
       "tier": 3,
       "category": "combat",
       "categories": [
-        "combat"
+        "combat",
+        "utility"
       ],
       "carry_type": "none",
       "frontline": true,
@@ -2183,7 +2203,7 @@
         "2-1",
         "3-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.2
     },
     "DA_CyberneticImplants_Gold": {
@@ -2242,8 +2262,9 @@
       "api_name": "DA_DeadlierBlades",
       "name": "Deadlier Blades",
       "tier": 3,
-      "category": "combat",
+      "category": "item",
       "categories": [
+        "item",
         "combat"
       ],
       "carry_type": "AD",
@@ -2257,7 +2278,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_DeadlierCaps": {
@@ -2312,7 +2333,8 @@
       "tier": 1,
       "category": "combat",
       "categories": [
-        "combat"
+        "combat",
+        "utility"
       ],
       "carry_type": "none",
       "frontline": true,
@@ -2325,7 +2347,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.2
     },
     "DA_EarlyLearnings": {
@@ -2334,9 +2356,10 @@
       "tier": 2,
       "category": "combat",
       "categories": [
-        "combat"
+        "combat",
+        "utility"
       ],
-      "carry_type": "AD",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -2347,16 +2370,16 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:carry_type,categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_ElectrochargeI": {
       "api_name": "DA_ElectrochargeI",
       "name": "Electrocharge I",
       "tier": 1,
-      "category": "utility",
+      "category": "combat",
       "categories": [
-        "utility"
+        "combat"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -2371,7 +2394,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.2
     },
     "DA_ElectrochargeII": {
@@ -2402,15 +2425,15 @@
       "api_name": "DA_EpicRolldown",
       "name": "Epic Rolldown",
       "tier": 2,
-      "category": "reroll",
+      "category": "econ",
       "categories": [
-        "reroll",
-        "econ"
+        "econ",
+        "reroll"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
@@ -2418,7 +2441,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "extraction_method": "manual-audit:categories,category,econ_value,tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_Epoch": {
@@ -2448,15 +2471,15 @@
       "api_name": "DA_EpochPlus",
       "name": "Epoch+",
       "tier": 2,
-      "category": "reroll",
+      "category": "econ",
       "categories": [
-        "reroll",
-        "econ"
+        "econ",
+        "reroll"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
@@ -2464,21 +2487,22 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "extraction_method": "manual-audit:categories,category,econ_value,tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_ExclusiveCustomization": {
       "api_name": "DA_ExclusiveCustomization",
       "name": "Exclusive Customization",
       "tier": 2,
-      "category": "econ",
+      "category": "item",
       "categories": [
+        "item",
         "econ"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 2,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -2487,16 +2511,18 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_Expedition": {
       "api_name": "DA_Expedition",
       "name": "Expedition",
       "tier": 1,
-      "category": "econ",
+      "category": "utility",
       "categories": [
-        "econ"
+        "utility",
+        "econ",
+        "item"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -2509,7 +2535,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_ExplosiveGrowth": {
@@ -2546,7 +2572,7 @@
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
@@ -2611,7 +2637,7 @@
         "combat"
       ],
       "carry_type": "none",
-      "frontline": false,
+      "frontline": true,
       "trait_affinity": [],
       "econ_value": 0,
       "tempo": "immediate",
@@ -2622,7 +2648,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:frontline (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_Flexible": {
@@ -2702,8 +2728,9 @@
       "api_name": "DA_ForgeAFriend",
       "name": "Forge A Friend",
       "tier": 1,
-      "category": "econ",
+      "category": "utility",
       "categories": [
+        "utility",
         "econ"
       ],
       "carry_type": "none",
@@ -2717,7 +2744,7 @@
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_ForgedInStrength": {
@@ -2730,10 +2757,10 @@
         "combat"
       ],
       "carry_type": "none",
-      "frontline": true,
+      "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [
         "AnyComponent",
         "CompletedItem"
@@ -2743,7 +2770,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:frontline,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_FrontlineFoundation": {
@@ -2777,7 +2804,8 @@
       "tier": 1,
       "category": "econ",
       "categories": [
-        "econ"
+        "econ",
+        "utility"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -2790,7 +2818,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_GainGold": {
@@ -2844,12 +2872,13 @@
       "tier": 2,
       "category": "combat",
       "categories": [
-        "combat"
+        "combat",
+        "econ"
       ],
       "carry_type": "none",
       "frontline": true,
       "trait_affinity": [],
-      "econ_value": 0,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": "field at least one 5-cost champion",
@@ -2857,7 +2886,7 @@
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_GlassCannon_Gold": {
@@ -2912,20 +2941,21 @@
       "tier": 3,
       "category": "econ",
       "categories": [
-        "econ"
+        "econ",
+        "utility"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category,tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_GoldDestiny": {
@@ -2976,8 +3006,9 @@
       "api_name": "DA_GoldenEgg",
       "name": "The Golden Egg",
       "tier": 3,
-      "category": "econ",
+      "category": "utility",
       "categories": [
+        "utility",
         "econ"
       ],
       "carry_type": "none",
@@ -2991,17 +3022,17 @@
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_GoldenGamble": {
       "api_name": "DA_GoldenGamble",
       "name": "Golden Gamble",
       "tier": 3,
-      "category": "econ",
+      "category": "item",
       "categories": [
-        "econ",
-        "item"
+        "item",
+        "econ"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -3016,17 +3047,17 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_GoldenGamblePlus": {
       "api_name": "DA_GoldenGamblePlus",
       "name": "Golden Gamble+",
       "tier": 3,
-      "category": "econ",
+      "category": "item",
       "categories": [
-        "econ",
-        "item"
+        "item",
+        "econ"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -3041,17 +3072,17 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_GoldenGamblePlusPlus": {
       "api_name": "DA_GoldenGamblePlusPlus",
       "name": "Golden Gamble++",
       "tier": 3,
-      "category": "econ",
+      "category": "item",
       "categories": [
-        "econ",
-        "item"
+        "item",
+        "econ"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -3066,7 +3097,7 @@
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from deterministic-v2)",
       "confidence": 0.6
     },
     "DA_GroupHugI": {
@@ -3127,14 +3158,14 @@
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_HardCommit": {
@@ -3150,7 +3181,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 2,
       "tempo": "scaling",
       "item_grants": [
         "Emblem"
@@ -3160,7 +3191,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_HealingOrbsI": {
@@ -3215,7 +3246,8 @@
       "tier": 2,
       "category": "combat",
       "categories": [
-        "combat"
+        "combat",
+        "item"
       ],
       "carry_type": "none",
       "frontline": true,
@@ -3228,7 +3260,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "extraction_method": "manual-audit:categories,category,tempo (from deterministic-v2)",
       "confidence": 0.2
     },
     "DA_HedgeFund": {
@@ -3243,14 +3275,14 @@
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_HeroicGrabBag": {
@@ -3327,7 +3359,7 @@
       "categories": [
         "combat"
       ],
-      "carry_type": "AP",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -3339,7 +3371,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:carry_type (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_Hustler": {
@@ -3354,25 +3386,25 @@
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_InfinityProtection": {
       "api_name": "DA_InfinityProtection",
       "name": "Infinity Protection",
       "tier": 2,
-      "category": "item",
+      "category": "combat",
       "categories": [
-        "item",
+        "combat",
         "econ",
-        "combat"
+        "item"
       ],
       "carry_type": "none",
       "frontline": true,
@@ -3385,7 +3417,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_InvestedPlus": {
@@ -3401,7 +3433,7 @@
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
@@ -3438,14 +3470,15 @@
       "api_name": "DA_InvestmentStrategy",
       "name": "Investment Strategy II",
       "tier": 3,
-      "category": "econ",
+      "category": "combat",
       "categories": [
+        "combat",
         "econ"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 1,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
@@ -3453,7 +3486,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "extraction_method": "manual-audit:categories,category,econ_value,tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_InvestmentStrategyI": {
@@ -3483,10 +3516,10 @@
       "api_name": "DA_IronAssets",
       "name": "Iron Assets",
       "tier": 1,
-      "category": "econ",
+      "category": "item",
       "categories": [
-        "econ",
-        "item"
+        "item",
+        "econ"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -3502,7 +3535,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from deterministic-v2)",
       "confidence": 0.6
     },
     "DA_ItemGrabBag": {
@@ -3563,7 +3596,7 @@
       "categories": [
         "combat"
       ],
-      "carry_type": "AD",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -3575,7 +3608,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:carry_type (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_JeweledLotus_II": {
@@ -3586,7 +3619,7 @@
       "categories": [
         "combat"
       ],
-      "carry_type": "AD",
+      "carry_type": "AP",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -3598,7 +3631,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:carry_type (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_KickStart": {
@@ -3612,7 +3645,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 3,
+      "econ_value": 2,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -3620,7 +3653,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_Kingslayer": {
@@ -3753,14 +3786,14 @@
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 3,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_LivingForge": {
@@ -3793,7 +3826,8 @@
       "tier": 1,
       "category": "econ",
       "categories": [
-        "econ"
+        "econ",
+        "utility"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -3806,7 +3840,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_LuckyGloves": {
@@ -3865,7 +3899,8 @@
       "tier": 3,
       "category": "econ",
       "categories": [
-        "econ"
+        "econ",
+        "combat"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -3878,21 +3913,21 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "extraction_method": "manual-audit:categories,category,tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_MagicRoll": {
       "api_name": "DA_MagicRoll",
       "name": "Magic Roll",
       "tier": 2,
-      "category": "econ",
+      "category": "utility",
       "categories": [
-        "econ"
+        "utility"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 0,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -3900,7 +3935,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_MakeshiftArmorI": {
@@ -3975,15 +4010,15 @@
       "api_name": "DA_MaxBuild",
       "name": "Max Build",
       "tier": 2,
-      "category": "reroll",
+      "category": "econ",
       "categories": [
-        "reroll",
-        "econ"
+        "econ",
+        "reroll"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
@@ -3991,7 +4026,7 @@
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "extraction_method": "manual-audit:categories,category,econ_value,tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_Min_Max": {
@@ -4052,7 +4087,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
@@ -4060,7 +4095,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "extraction_method": "manual-audit:econ_value,tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_MoneyHungry_NotBroken": {
@@ -4213,7 +4248,8 @@
       "tier": 2,
       "category": "combat",
       "categories": [
-        "combat"
+        "combat",
+        "utility"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -4226,7 +4262,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
+      "extraction_method": "manual-audit:categories,category,tempo (from deterministic-v2)",
       "confidence": 0.2
     },
     "DA_OneBuffTwoBuff": {
@@ -4256,8 +4292,9 @@
       "api_name": "DA_PandorasBench",
       "name": "Pandora's Bench",
       "tier": 1,
-      "category": "econ",
+      "category": "utility",
       "categories": [
+        "utility",
         "econ"
       ],
       "carry_type": "none",
@@ -4272,7 +4309,7 @@
         "2-1",
         "3-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_PandorasItemsI": {
@@ -4281,7 +4318,8 @@
       "tier": 1,
       "category": "item",
       "categories": [
-        "item"
+        "item",
+        "utility"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -4298,7 +4336,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_PandorasItemsII": {
@@ -4307,7 +4345,8 @@
       "tier": 2,
       "category": "item",
       "categories": [
-        "item"
+        "item",
+        "utility"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -4324,7 +4363,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_PandorasItemsIII": {
@@ -4358,7 +4397,7 @@
       "categories": [
         "combat"
       ],
-      "carry_type": "none",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -4370,7 +4409,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:carry_type,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_PatienceIsAVirtue": {
@@ -4385,7 +4424,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": "did not buy a champion last round",
@@ -4393,7 +4432,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_PatientStudy": {
@@ -4407,7 +4446,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 3,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -4415,7 +4454,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_Pilfer": {
@@ -4424,7 +4463,8 @@
       "tier": 2,
       "category": "econ",
       "categories": [
-        "econ"
+        "econ",
+        "item"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -4437,7 +4477,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_PlotArmor": {
@@ -4543,7 +4583,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -4552,7 +4592,7 @@
         "2-1",
         "3-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_PromisedProtection": {
@@ -4561,7 +4601,8 @@
       "tier": 2,
       "category": "combat",
       "categories": [
-        "combat"
+        "combat",
+        "item"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -4575,7 +4616,7 @@
         "2-1",
         "3-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.2
     },
     "DA_QuickStreaks": {
@@ -4590,14 +4631,14 @@
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 2,
-      "tempo": "immediate",
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_RadiantRascal": {
@@ -4654,7 +4695,7 @@
       "category": "econ",
       "categories": [
         "econ",
-        "reroll"
+        "utility"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -4667,7 +4708,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_Replication": {
@@ -4704,7 +4745,7 @@
         "item",
         "combat"
       ],
-      "carry_type": "none",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -4716,22 +4757,22 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:carry_type (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_RollingForDays": {
       "api_name": "DA_RollingForDays",
       "name": "Rolling For Days",
       "tier": 1,
-      "category": "reroll",
+      "category": "econ",
       "categories": [
-        "reroll",
-        "econ"
+        "econ",
+        "reroll"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -4740,7 +4781,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category,econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_SalvageBin": {
@@ -4824,12 +4865,13 @@
       "tier": 3,
       "category": "item",
       "categories": [
-        "item"
+        "item",
+        "econ"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 0,
+      "econ_value": 2,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
@@ -4837,7 +4879,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_ShoppingSpree": {
@@ -4874,7 +4916,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 2,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -4896,7 +4938,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 2,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -4918,7 +4960,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 3,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -4940,7 +4982,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 2,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -4948,7 +4990,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_Slammin": {
@@ -4962,7 +5004,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": "no items on your bench (other than consumables) after each player combat",
@@ -4970,7 +5012,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_SlamminPlus": {
@@ -5021,14 +5063,14 @@
       "api_name": "DA_SlightlyMagicRoll",
       "name": "Slightly Magic Roll",
       "tier": 1,
-      "category": "econ",
+      "category": "utility",
       "categories": [
-        "econ"
+        "utility"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 0,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -5036,7 +5078,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_SmallGrabBag": {
@@ -5068,17 +5110,17 @@
       "api_name": "DA_SoloLeveling",
       "name": "Solo Leveling",
       "tier": 2,
-      "category": "combat",
+      "category": "utility",
       "categories": [
-        "combat",
+        "utility",
         "econ",
         "item"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 1,
-      "tempo": "immediate",
+      "econ_value": 2,
+      "tempo": "scaling",
       "item_grants": [
         "AnyComponent"
       ],
@@ -5087,7 +5129,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category,econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_SoloPlate": {
@@ -5122,7 +5164,7 @@
       "categories": [
         "combat"
       ],
-      "carry_type": "AD",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -5134,7 +5176,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:carry_type,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_SpeedyDoubleKill": {
@@ -5143,30 +5185,31 @@
       "tier": 2,
       "category": "econ",
       "categories": [
-        "econ"
+        "econ",
+        "item"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
-      "tempo": "immediate",
+      "econ_value": 3,
+      "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
       "trait_count_reward": null,
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category,econ_value,tempo (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_SpiritOfRedemption": {
       "api_name": "DA_SpiritOfRedemption",
       "name": "Spirit Of Redemption",
       "tier": 2,
-      "category": "item",
+      "category": "combat",
       "categories": [
-        "item",
-        "combat"
+        "combat",
+        "item"
       ],
       "carry_type": "none",
       "frontline": true,
@@ -5180,16 +5223,18 @@
         "2-1",
         "3-2"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:categories,category,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_SpreadingRoots": {
       "api_name": "DA_SpreadingRoots",
       "name": "Spreading Roots",
       "tier": 2,
-      "category": "econ",
+      "category": "trait",
       "categories": [
-        "econ"
+        "trait",
+        "econ",
+        "item"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -5202,16 +5247,18 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_SpreadingRootsPlus": {
       "api_name": "DA_SpreadingRootsPlus",
       "name": "Spreading Roots+",
       "tier": 2,
-      "category": "econ",
+      "category": "trait",
       "categories": [
-        "econ"
+        "trait",
+        "econ",
+        "item"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -5224,7 +5271,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_Staffsmith": {
@@ -5235,7 +5282,7 @@
       "categories": [
         "item"
       ],
-      "carry_type": "none",
+      "carry_type": "AP",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -5249,7 +5296,7 @@
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:carry_type (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_StandUnited": {
@@ -5261,7 +5308,7 @@
         "combat",
         "trait"
       ],
-      "carry_type": "none",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -5273,17 +5320,17 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:carry_type,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_SweetTreats": {
       "api_name": "DA_SweetTreats",
       "name": "Sweet Treats",
       "tier": 3,
-      "category": "item",
+      "category": "combat",
       "categories": [
-        "item",
-        "combat"
+        "combat",
+        "item"
       ],
       "carry_type": "none",
       "frontline": true,
@@ -5299,7 +5346,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_SwordOverflow": {
@@ -5335,7 +5382,7 @@
       "categories": [
         "item"
       ],
-      "carry_type": "none",
+      "carry_type": "AD",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -5349,17 +5396,17 @@
       "offer_rounds": [
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:carry_type (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_TacticiansKitchen": {
       "api_name": "DA_TacticiansKitchen",
       "name": "Tactician's Kitchen",
       "tier": 3,
-      "category": "item",
+      "category": "trait",
       "categories": [
-        "item",
-        "trait"
+        "trait",
+        "item"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -5374,7 +5421,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_TeamBuilding": {
@@ -5413,7 +5460,7 @@
       "carry_type": "none",
       "frontline": true,
       "trait_affinity": [],
-      "econ_value": 0,
+      "econ_value": 1,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -5421,7 +5468,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_TheTower": {
@@ -5433,7 +5480,7 @@
         "combat"
       ],
       "carry_type": "none",
-      "frontline": true,
+      "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
       "tempo": "immediate",
@@ -5445,16 +5492,18 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:frontline,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_TheTraitTree": {
       "api_name": "DA_TheTraitTree",
       "name": "The Trait Tree",
       "tier": 3,
-      "category": "econ",
+      "category": "trait",
       "categories": [
-        "econ"
+        "trait",
+        "econ",
+        "item"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -5467,16 +5516,18 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_TheTraitTreePlus": {
       "api_name": "DA_TheTraitTreePlus",
       "name": "The Trait Tree+",
       "tier": 3,
-      "category": "econ",
+      "category": "trait",
       "categories": [
-        "econ"
+        "trait",
+        "econ",
+        "item"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -5489,7 +5540,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_TimeSkip": {
@@ -5503,7 +5554,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 3,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -5511,7 +5562,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
       "confidence": 0.4
     },
     "DA_TonsOfStatsI": {
@@ -5572,7 +5623,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
@@ -5580,7 +5631,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_TradeSectorPlus": {
@@ -5595,7 +5646,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 3,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
@@ -5603,7 +5654,7 @@
       "offer_rounds": [
         "3-2"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_TraitLadder": {
@@ -5660,7 +5711,8 @@
       "tier": 2,
       "category": "item",
       "categories": [
-        "item"
+        "item",
+        "combat"
       ],
       "carry_type": "both",
       "frontline": false,
@@ -5678,7 +5730,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:categories,category (from deterministic-v2)",
       "confidence": 0.6
     },
     "DA_UpwardMobility": {
@@ -5693,7 +5745,7 @@
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 2,
+      "econ_value": 3,
       "tempo": "scaling",
       "item_grants": [],
       "board_condition": null,
@@ -5701,17 +5753,18 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:econ_value,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     },
     "DA_UrfsGrabBag": {
       "api_name": "DA_UrfsGrabBag",
       "name": "Urf's Grab Bag",
       "tier": 3,
-      "category": "econ",
+      "category": "item",
       "categories": [
+        "item",
         "econ",
-        "item"
+        "trait"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -5728,7 +5781,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
+      "extraction_method": "manual-audit:categories,category,econ_value (from deterministic-v2)",
       "confidence": 0.6
     },
     "DA_VerticalityI": {
@@ -5740,7 +5793,7 @@
         "combat",
         "trait"
       ],
-      "carry_type": "none",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -5752,7 +5805,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:carry_type,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_VerticalityII": {
@@ -5764,7 +5817,7 @@
         "combat",
         "trait"
       ],
-      "carry_type": "none",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -5776,7 +5829,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:carry_type (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_VerticalityIII": {
@@ -5788,7 +5841,7 @@
         "combat",
         "trait"
       ],
-      "carry_type": "none",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -5800,7 +5853,7 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
+      "extraction_method": "manual-audit:carry_type,tempo (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_WandOverflow": {
@@ -5811,7 +5864,7 @@
       "categories": [
         "item"
       ],
-      "carry_type": "AD",
+      "carry_type": "AP",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -5825,16 +5878,18 @@
         "3-2",
         "4-2"
       ],
-      "extraction_method": "deterministic-v2",
+      "extraction_method": "manual-audit:carry_type (from deterministic-v2)",
       "confidence": 0.6
     },
     "DA_Warpath": {
       "api_name": "DA_Warpath",
       "name": "Warpath",
       "tier": 2,
-      "category": "econ",
+      "category": "utility",
       "categories": [
-        "econ"
+        "utility",
+        "econ",
+        "item"
       ],
       "carry_type": "none",
       "frontline": false,
@@ -5847,7 +5902,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.2
     },
     "DA_WeStickTogether": {
@@ -5860,7 +5915,7 @@
         "item",
         "trait"
       ],
-      "carry_type": "AD",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -5875,7 +5930,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:carry_type (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_WorththeWait": {
@@ -5930,7 +5985,7 @@
       "categories": [
         "item"
       ],
-      "carry_type": "AP",
+      "carry_type": "both",
       "frontline": false,
       "trait_affinity": [],
       "econ_value": 0,
@@ -5943,21 +5998,22 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:carry_type (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.6
     },
     "DA_YoungAndWildAndFree": {
       "api_name": "DA_YoungAndWildAndFree",
       "name": "Young and Wild and Free",
       "tier": 1,
-      "category": "econ",
+      "category": "utility",
       "categories": [
+        "utility",
         "econ"
       ],
       "carry_type": "none",
       "frontline": false,
       "trait_affinity": [],
-      "econ_value": 1,
+      "econ_value": 2,
       "tempo": "immediate",
       "item_grants": [],
       "board_condition": null,
@@ -5965,7 +6021,7 @@
       "offer_rounds": [
         "2-1"
       ],
-      "extraction_method": "llm:gemini-3.5-flash-lite",
+      "extraction_method": "manual-audit:categories,category,econ_value (from llm:gemini-3.5-flash-lite)",
       "confidence": 0.4
     }
   }
