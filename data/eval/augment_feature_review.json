@@ -1,7 +1,7 @@
 {
   "meta": {
     "features_file": "data/augment_features.json",
-    "updated_at": "2026-10-10T17:50:33+00:00"
+    "updated_at": "2026-10-11T17:31:25+00:00"
   },
   "reviews": {
     "DA_AdvancedLoan": {
@@ -4105,9 +4105,8 @@
         ]
       },
       "extraction_method": "deterministic-v2",
-      "updated_at": "2026-10-06T11:07:07+00:00",
+      "updated_at": "2026-10-11T17:31:25+00:00",
       "fix": {
-        "econ_value": 1,
         "categories": [
           "combat",
           "econ",
@@ -4189,7 +4188,7 @@
     },
     "DA_PandorasBench": {
       "verdict": "wrong",
-      "note": "",
+      "note": "- 3 tướng trên hàng dự bị sẽ biến thành tướng khác cùng giá tiền mỗi vòng => tìm tướng thích hợp dễ hơn\n- 3 tướng trên hàng dự bị sẽ biến thành tướng khác cùng giá tiền mỗi vòng => hợp với các bài reroll 2-3 vàng",
       "original": {
         "category": "econ",
         "categories": [
@@ -4208,12 +4207,18 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-10T16:19:18+00:00",
-      "fix": {}
+      "updated_at": "2026-10-11T16:43:04+00:00",
+      "fix": {
+        "categories": [
+          "utility",
+          "econ"
+        ],
+        "category": "utility"
+      }
     },
     "DA_PandorasItemsI": {
       "verdict": "wrong",
-      "note": "",
+      "note": "- trang bị trên hàng chờ biến đổi ngẫu nhiên thành trang bị khác cùng bậc => nên chọn nếu đồ xấu, cần tìm những đồ đẹp hơn\n- trang bị trên hàng chờ biến đổi ngẫu nhiên thành trang bị khác cùng bậc => không nên chọn nếu đã lắp những đồ đẹp, khi này lõi sẽ ít giá trị đi",
       "original": {
         "category": "item",
         "categories": [
@@ -4235,12 +4240,17 @@
         ]
       },
       "extraction_method": "deterministic-v2",
-      "updated_at": "2026-10-08T08:32:59+00:00",
-      "fix": {}
+      "updated_at": "2026-10-11T16:47:24+00:00",
+      "fix": {
+        "categories": [
+          "item",
+          "utility"
+        ]
+      }
     },
     "DA_PandorasItemsII": {
       "verdict": "wrong",
-      "note": "",
+      "note": "- trang bị trên hàng chờ biến đổi ngẫu nhiên thành trang bị khác cùng bậc => nên chọn nếu đồ xấu, cần tìm những đồ đẹp hơn\n- trang bị trên hàng chờ biến đổi ngẫu nhiên thành trang bị khác cùng bậc => không nên chọn nếu đã lắp những đồ đẹp, khi này lõi sẽ ít giá trị đi",
       "original": {
         "category": "item",
         "categories": [
@@ -4262,12 +4272,17 @@
         ]
       },
       "extraction_method": "deterministic-v2",
-      "updated_at": "2026-10-08T08:32:57+00:00",
-      "fix": {}
+      "updated_at": "2026-10-11T16:47:33+00:00",
+      "fix": {
+        "categories": [
+          "item",
+          "utility"
+        ]
+      }
     },
     "DA_PandorasItemsIII": {
       "verdict": "wrong",
-      "note": "",
+      "note": "- trang bị trên hàng chờ biến đổi ngẫu nhiên thành trang bị khác cùng bậc => nên chọn nếu đồ xấu, cần tìm những đồ đẹp hơn\n- trang bị trên hàng chờ biến đổi ngẫu nhiên thành trang bị khác cùng bậc => không nên chọn nếu đã lắp những đồ đẹp, khi này lõi sẽ ít giá trị đi",
       "original": {
         "category": "item",
         "categories": [
@@ -4286,7 +4301,7 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T08:32:48+00:00",
+      "updated_at": "2026-10-11T16:47:40+00:00",
       "fix": {}
     },
     "DA_PartialAscension": {
@@ -4469,7 +4484,7 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T08:37:35+00:00"
+      "updated_at": "2026-10-11T16:55:45+00:00"
     },
     "DA_PrismaticDestinyPlus": {
       "verdict": "ok",
@@ -4491,7 +4506,7 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T08:37:38+00:00"
+      "updated_at": "2026-10-11T16:55:45+00:00"
     },
     "DA_PrismaticTicket": {
       "verdict": "wrong",
@@ -4636,7 +4651,7 @@
     },
     "DA_Recombobulator": {
       "verdict": "wrong",
-      "note": "",
+      "note": "- unit trên bàn biến thành unit có giá trị lớn 1 vàng => có thể chọn nếu board value cao sẵn, muốn tìm kiếm form mạnh hơn\n- unit trên bàn biến thành unit có giá trị lớn 1 vàng => kết hợp tốt với lõi Worth the Wait, Worth the Wait II (2-1)",
       "original": {
         "category": "econ",
         "categories": [
@@ -4655,10 +4670,11 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T08:40:16+00:00",
+      "updated_at": "2026-10-11T17:06:14+00:00",
       "fix": {
         "categories": [
-          "econ"
+          "econ",
+          "utility"
         ]
       }
     },
@@ -4973,7 +4989,7 @@
         ]
       },
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-08T08:50:24+00:00",
+      "updated_at": "2026-10-11T17:06:31+00:00",
       "fix": {
         "econ_value": 2
       }
@@ -4998,7 +5014,7 @@
         ]
       },
       "extraction_method": "manual-audit:econ_value (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-08T08:50:33+00:00",
+      "updated_at": "2026-10-11T17:06:33+00:00",
       "fix": {
         "econ_value": 2
       }
@@ -5023,7 +5039,7 @@
         ]
       },
       "extraction_method": "manual-audit:econ_value (from deterministic-v2)",
-      "updated_at": "2026-10-08T08:50:49+00:00",
+      "updated_at": "2026-10-11T17:06:43+00:00",
       "fix": {
         "econ_value": 3
       }
@@ -5211,7 +5227,7 @@
     },
     "DA_SoloLeveling": {
       "verdict": "wrong",
-      "note": "",
+      "note": "chỉ có thể cho ra trận 1 unit, unit đó nhận lượng lớn chỉ số => nên chọn nếu có sẵn 1 unit rất mạnh và đồ phù hợp để ra trận",
       "original": {
         "category": "combat",
         "categories": [
@@ -5233,9 +5249,16 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T09:01:18+00:00",
+      "updated_at": "2026-10-11T17:10:28+00:00",
       "fix": {
-        "econ_value": 2
+        "tempo": "scaling",
+        "econ_value": 2,
+        "categories": [
+          "utility",
+          "econ",
+          "item"
+        ],
+        "category": "utility"
       }
     },
     "DA_SoloPlate": {
@@ -5725,7 +5748,7 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-10T15:54:15+00:00",
+      "updated_at": "2026-10-11T17:11:05+00:00",
       "fix": {
         "econ_value": 1,
         "item_grants": [
@@ -5734,8 +5757,8 @@
       }
     },
     "DA_GoldenEgg": {
-      "verdict": "ok",
-      "note": "",
+      "verdict": "wrong",
+      "note": "- nhận 1 quả trứng sẽ nở ra phần thưởng lớn sau 11 vòng đấu, mỗi chiến thắng sẽ đẩy nhanh thêm 1 vòng => không nên chọn trong phần lớn trường hợp\n- nhận 1 quả trứng sẽ nở ra phần thưởng lớn sau 11 vòng đấu, mỗi chiến thắng sẽ đẩy nhanh thêm 1 vòng => chỉ chọn nếu bài đấu đủ mạnh để có thể nổ thưởng",
       "original": {
         "category": "econ",
         "categories": [
@@ -5753,7 +5776,14 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T09:12:23+00:00"
+      "updated_at": "2026-10-11T17:13:53+00:00",
+      "fix": {
+        "categories": [
+          "utility",
+          "econ"
+        ],
+        "category": "utility"
+      }
     },
     "DA_TheTower": {
       "verdict": "wrong",
@@ -5777,7 +5807,7 @@
         ]
       },
       "extraction_method": "manual-audit:tempo (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-08T09:12:44+00:00",
+      "updated_at": "2026-10-11T17:29:45+00:00",
       "fix": {
         "frontline": false
       }
@@ -5868,7 +5898,7 @@
         ]
       },
       "extraction_method": "deterministic-v2",
-      "updated_at": "2026-10-08T09:13:56+00:00",
+      "updated_at": "2026-10-11T17:29:42+00:00",
       "fix": {
         "econ_value": 3
       }
@@ -5975,7 +6005,7 @@
     },
     "DA_TraitLadder": {
       "verdict": "wrong",
-      "note": "",
+      "note": "- kích đủ số Tộc/Hệ không độc nhất trong giao người chơi để nhận thưởng; sau mỗi lần, mốc Tộc/Hệ và phần thưởng sẽ tăng lên => nên chọn nếu có khả năng flex ấn, tộc/hệ tốt\n- kích đủ số Tộc/Hệ không độc nhất trong giao người chơi để nhận thưởng; sau mỗi lần, mốc Tộc/Hệ và phần thưởng sẽ tăng lên => không nên chọn nếu mới chơi, khả năng flex ấn, tộc/hệ còn hạn chế",
       "original": {
         "category": "trait",
         "categories": [
@@ -5996,7 +6026,7 @@
         ]
       },
       "extraction_method": "manual-audit:category,econ_value (from llm:gemini-3.5-flash-lite)",
-      "updated_at": "2026-10-08T09:15:31+00:00",
+      "updated_at": "2026-10-11T17:29:40+00:00",
       "fix": {}
     },
     "DA_TwinGuardians": {
@@ -6047,8 +6077,13 @@
         ]
       },
       "extraction_method": "deterministic-v2",
-      "updated_at": "2026-10-08T09:16:45+00:00",
-      "fix": {}
+      "updated_at": "2026-10-11T17:29:36+00:00",
+      "fix": {
+        "categories": [
+          "item",
+          "combat"
+        ]
+      }
     },
     "DA_18_RivalsAugment": {
       "verdict": "wrong",
@@ -6251,7 +6286,7 @@
     },
     "DA_Warpath": {
       "verdict": "wrong",
-      "note": "",
+      "note": "- khi gây 80 sát thương lên linh thú, nhận 1 phần thưởng lớn => không nên chọn trong phần lớn trường hợp vì điều kiện nhận thưởng rất khó\n- khi gây 80 sát thương lên linh thú, nhận 1 phần thưởng lớn => chỉ chọn nếu bài đấu vượt trội cả lobby xuyên suốt giai đoạn 2, 3 đến đầu giai đoạn 4",
       "original": {
         "category": "econ",
         "categories": [
@@ -6269,8 +6304,15 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T09:20:10+00:00",
-      "fix": {}
+      "updated_at": "2026-10-11T17:29:33+00:00",
+      "fix": {
+        "categories": [
+          "utility",
+          "econ",
+          "item"
+        ],
+        "category": "utility"
+      }
     },
     "DA_WeStickTogether": {
       "verdict": "wrong",
@@ -6308,8 +6350,8 @@
       }
     },
     "DA_18_WeightTheWorth": {
-      "verdict": "wrong",
-      "note": "",
+      "verdict": "unsure",
+      "note": "lõi này bị vô hiệu hóa ở bản cập nhật hiện tại - 18.4b",
       "original": {
         "category": "econ",
         "categories": [
@@ -6327,10 +6369,7 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T09:21:55+00:00",
-      "fix": {
-        "board_condition": null
-      }
+      "updated_at": "2026-10-11T17:29:32+00:00"
     },
     "DA_18_WispRebatePlus": {
       "verdict": "wrong",
@@ -6457,7 +6496,7 @@
     },
     "DA_YoungAndWildAndFree": {
       "verdict": "wrong",
-      "note": "",
+      "note": "bạn sẽ được di chuyển tự do ở vòng đi chợ (đi chợ đầu tiên) => luôn chọn được phần quà ưng ý từ vòng đi chợ",
       "original": {
         "category": "econ",
         "categories": [
@@ -6475,8 +6514,15 @@
         ]
       },
       "extraction_method": "llm:gemini-3.5-flash-lite",
-      "updated_at": "2026-10-08T09:23:49+00:00",
-      "fix": {}
+      "updated_at": "2026-10-11T17:29:14+00:00",
+      "fix": {
+        "econ_value": 2,
+        "categories": [
+          "utility",
+          "econ"
+        ],
+        "category": "utility"
+      }
     }
   }
 }
