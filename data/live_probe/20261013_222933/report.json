@@ -1,0 +1,100 @@
+{
+  "at": "20261013_222933",
+  "mode": "in-game",
+  "system": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.6",
+    "windows_build": 26200,
+    "build_ok": true,
+    "dwm_composition": true,
+    "dpi_aware": true
+  },
+  "keys": {
+    "GEMINI_API_KEY": false,
+    "GOOGLE_API_KEY": false,
+    "RIOT_API_KEY": false
+  },
+  "window": {
+    "found": true,
+    "candidates_tried": [
+      null,
+      "League of Legends (TM) Client",
+      "Teamfight Tactics",
+      "League of Legends"
+    ],
+    "matched_by": {
+      "title": null,
+      "class": "UnrealWindow"
+    },
+    "hwnd": 395108,
+    "title": "TFT  ",
+    "class": "UnrealWindow",
+    "client_rect": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080
+    },
+    "window_rect": [
+      0,
+      0,
+      1920,
+      1080
+    ],
+    "has_caption": false,
+    "monitor_rect": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080
+    },
+    "chrome_offset": {
+      "x": 0,
+      "y": 0
+    },
+    "borderless": true
+  },
+  "capture": {
+    "backend": "windows-capture",
+    "frames": 3,
+    "fps": 0.59,
+    "first_frame_s": 0.513,
+    "wgc_available": true,
+    "elapsed_s": 5.077,
+    "consent_dialog": false,
+    "frame_shape": [
+      1080,
+      1920,
+      3
+    ],
+    "frame_means": [
+      68.77,
+      71.6,
+      72.38
+    ],
+    "all_black": false
+  },
+  "readers": {
+    "source_size": [
+      1920,
+      1080
+    ],
+    "reroll_states": [
+      "unknown",
+      "unknown",
+      "unknown"
+    ],
+    "reroll_screen_present": false,
+    "hud": {
+      "stage": "2-6",
+      "gold": 31,
+      "level": 4,
+      "xp": 6,
+      "xp_needed": 10,
+      "hp": 71,
+      "streak": -5
+    },
+    "hud_bar_visible": true,
+    "hud_latency_s": 12.047
+  }
+}

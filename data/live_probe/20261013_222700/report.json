@@ -1,0 +1,105 @@
+{
+  "at": "20261013_222700",
+  "mode": "in-game",
+  "system": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.6",
+    "windows_build": 26200,
+    "build_ok": true,
+    "dwm_composition": true,
+    "dpi_aware": true
+  },
+  "keys": {
+    "GEMINI_API_KEY": false,
+    "GOOGLE_API_KEY": false,
+    "RIOT_API_KEY": false
+  },
+  "window": {
+    "found": true,
+    "candidates_tried": [
+      "League of Legends (TM) Client",
+      "Teamfight Tactics",
+      "League of Legends",
+      null
+    ],
+    "matched_by": {
+      "title": "League of Legends",
+      "class": null
+    },
+    "hwnd": 262648,
+    "title": "League of Legends",
+    "class": "RCLIENT",
+    "client_rect": {
+      "x": 0,
+      "y": 0,
+      "w": 136,
+      "h": 39
+    },
+    "window_rect": [
+      0,
+      0,
+      136,
+      39
+    ],
+    "has_caption": false,
+    "monitor_rect": {
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1080
+    },
+    "chrome_offset": {
+      "x": 0,
+      "y": 0
+    },
+    "borderless": false
+  },
+  "capture": {
+    "backend": "mss (du phong - KHONG tra loi duoc Q1/Q2)",
+    "frames": 497,
+    "fps": 99.2,
+    "first_frame_s": null,
+    "wgc_available": true,
+    "wgc_timeout": true,
+    "note": "WGC treo qua timeout - fall sang mss",
+    "elapsed_s": 5.01,
+    "frame_shape": [
+      39,
+      136,
+      3
+    ],
+    "frame_means": [
+      115.57,
+      115.57,
+      115.96
+    ],
+    "all_black": false
+  },
+  "readers": {
+    "source_size": [
+      136,
+      39
+    ],
+    "resized_to": [
+      1920,
+      1080
+    ],
+    "reroll_states": [
+      "unknown",
+      "unknown",
+      "unknown"
+    ],
+    "reroll_screen_present": false,
+    "hud": {
+      "stage": null,
+      "gold": null,
+      "level": null,
+      "xp": null,
+      "xp_needed": null,
+      "hp": null,
+      "streak": 0
+    },
+    "hud_bar_visible": false,
+    "hud_latency_s": 6.058
+  }
+}

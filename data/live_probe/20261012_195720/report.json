@@ -1,0 +1,37 @@
+{
+  "at": "20261012_195720",
+  "mode": "in-game",
+  "system": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.6",
+    "windows_build": 26200,
+    "build_ok": true,
+    "dwm_composition": true,
+    "dpi_aware": true
+  },
+  "keys": {
+    "GEMINI_API_KEY": false,
+    "GOOGLE_API_KEY": false,
+    "RIOT_API_KEY": false
+  },
+  "window": {
+    "found": false,
+    "candidates_tried": [
+      "League of Legends (TM) Client",
+      "Teamfight Tactics",
+      "League of Legends"
+    ],
+    "visible_windows": [],
+    "error": "khong tim thay cua so game - xem visible_windows"
+  },
+  "capture": {
+    "backend": null,
+    "frames": 0,
+    "fps": null,
+    "first_frame_s": null,
+    "error": "chua tim thay cua so - bo qua"
+  },
+  "readers": {
+    "error": "khong co khung nao de thu"
+  }
+}
