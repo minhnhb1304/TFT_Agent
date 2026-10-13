@@ -53,7 +53,7 @@ WINDOW_CANDIDATES = (
 # Bo qua cua so qua nho (vi du Riot Client nen 136x39) - khong the la cua so game
 MIN_GAME_PX = 400 * 300
 
-HUD_READS = 3             # lan dau ganh ca viec nap OCR; cac lan sau moi la so that
+HUD_READS = 4             # lan dau ganh ca viec nap OCR; cac lan sau moi la so that
 
 OUT_ROOT = ROOT / "data" / "live_probe"
 BLACK_MEAN = 8.0          # duoi muc nay coi nhu khung den (capture bi chan)
@@ -386,13 +386,12 @@ def probe_readers(out_dir: Path) -> dict:
     try:
         from src.vision.hud_reader import HudReader
 
-        started = time.perf_counter()
-        hud_reader = HudReader.load()
-        out["hud_load_s"] = round(time.perf_counter() - started, 3)
         runs = []
         for _ in range(HUD_READS):
+            # Reader MOI moi lan: HudReader nho ket qua theo tung o, nen doc lai
+            # cung mot khung bang cung mot reader chi do duoc cache.
             started = time.perf_counter()
-            reading = hud_reader.read(frame)
+            reading = HudReader.load().read(frame)
             runs.append(round(time.perf_counter() - started, 3))
         out["hud"] = {f.field: f.value for f in reading.fields}
         out["hud_bar_visible"] = reading.bar_visible
@@ -400,7 +399,7 @@ def probe_readers(out_dir: Path) -> dict:
         # repo deu do tren may ranh, nen day la lan dau co so that.
         # Lan dau nap mo hinh OCR; so de so voi ngan sach la cac lan sau.
         out["hud_read_s"] = runs
-        out["hud_latency_s"] = min(runs[1:])
+        out["hud_latency_s"] = sorted(runs[1:])[len(runs[1:]) // 2]     # trung vi
     except Exception as exc:
         out["hud_error"] = repr(exc)
     return out
@@ -444,7 +443,7 @@ def summarize(report: dict) -> list[str]:
         f" · DWM {mark(system.get('dwm_composition'))} · DPI aware {mark(system.get('dpi_aware'))}",
         f"—  ROI trên máy này: nút {readers.get('reroll_states') or readers.get('reroll_error')}",
         f"—  đọc HUD: {readers.get('hud_read_s') or readers.get('hud_error')} s"
-        f" (lần đầu gồm nạp OCR) · nạp reader {readers.get('hud_load_s')} s",
+        f" (lần đầu gồm nạp OCR)",
     ]
     return lines
 
