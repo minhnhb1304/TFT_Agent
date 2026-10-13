@@ -3,6 +3,21 @@
 Việc tồn đọng sau phiên 2026-10-05 → 08. Đọc file này trước khi bắt đầu phiên sau. Trạng thái
 2026-10-08: **1027 test xanh, 4 commit đã push lên `main` (`253bafc`), duyệt tay xong 254/254**.
 
+## Phiên 2026-10-13: probe client mới
+
+Client TFT standalone: cửa sổ `'TFT  '`, lớp `UnrealWindow`, borderless 1920×1080. Đã push (`e55dee6`).
+
+| Mục | Kết quả (`data/live_probe/20261013_*`) |
+|---|---|
+| WGC | Chạy, không hộp thoại, không viền vàng, **49,9 fps**, khung đầu 0,37 s |
+| HUD, ván Normal (22:29) | Đúng cả 7 trường: 2-6 · vàng 31 · cấp 4 · XP 6/10 · máu 71 · chuỗi −5 |
+| Màn chọn lõi (23:21, 23:32) | Nút đổi lõi `active` ×3 đúng. Stage, máu rỗng: ván **người đấu máy**, bố cục khác (lõi ở 1-5, 2-5) |
+| Độ trễ HUD | ~1,1 s máy rảnh. `hud_read_s` ở 23:21 và 23:32 là số cache, **không trích**. 12 s ở 22:29 gồm nạp OCR |
+| Còn thiếu | Probe ở màn chọn lõi **2-1 ván Normal** (stage, máu khi mờ; độ trễ khi game chạy). Máy test chưa có khoá Gemini |
+
+Chưa sửa: [live-mode/phase-0-spike.md](live-mode/phase-0-spike.md), [live-mode/probe-runbook.md](live-mode/probe-runbook.md) còn ghi tên
+cửa sổ cũ. Cô kiểm tra tiến độ lần 1 (dòng 1 kế hoạch): trang tóm tắt chưa soạn, chờ chọn dạng.
+
 ## Phiên 2026-10-10 → 12: duyệt vòng 2 xong, nhãn tay đã vào bảng
 
 Vòng 2 xong **47/47** (2026-10-12); bản nhãn tay được chốt: 155 sai · 94 đúng · 5 chưa chắc, 27 lõi
@@ -34,17 +49,8 @@ Omega Riftbeast có nhãn `econ` nhưng `econ_value = 0` (người duyệt giữ
 | # | Việc | Ghi chú |
 |---|---|---|
 | 1 | ~~Commit, tách 4 commit~~ **Xong 2026-10-08** (`410af32` · `c719a17` · `616c928` · `253bafc`) | Commit nhãn duyệt tay mới chỉ ở local, chưa push |
-| 2 | **Probe client trước 2026-10-09** | Hạn ngoài, ghi ở [next-steps.md](next-steps.md): `tools/probe_environment.py --closed` rồi `--seconds 5` trên máy game. Chưa rõ đã chạy chưa |
+| 2 | **Probe màn chọn lõi 2-1, ván Normal** | `tools\probe_environment.py --seconds 5` trên máy test rồi push `data/live_probe/`. Probe client mới đã chạy 2026-10-13, xem mục trên |
 | 3 | Chạy lại server duyệt khi cần sửa nhãn | `.venv\Scripts\python scripts\review_augment_features.py` → `http://127.0.0.1:8766/` |
-
-Đề xuất tách commit (thay đổi reroll phải đứng riêng để số trước/sau đọc được):
-
-| Commit | Gồm |
-|---|---|
-| Schema nhãn | `categories` 1–3 nhãn, `carry_type` AD/AP/both/none, `frontline`, luật Emblem ⇒ `trait`, sửa BoardFit + cờ `legacy_tank_direction`, trang duyệt |
-| Offer rounds | Crawler datatft, snapshot, trường `offer_rounds`, đăng ký nguồn, định nghĩa `tempo` |
-| Sửa bậc | `resolve_tier` chỉ theo icon, luật `+`/`++` và số La Mã, `data/augment_tier_overrides.json`, 38 lõi đổi bậc |
-| Reroll pool | Lọc theo bậc + lượt, cờ `reroll_policy.pool_by_offer_round`, tài liệu số đo |
 
 ## Chờ bạn quyết
 
