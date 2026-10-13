@@ -41,9 +41,10 @@ sys.path.insert(0, str(ROOT))
 # viec cai nao khop la mot ket qua can ghi lai, va sau 2026-10-09 danh sach
 # nay se phai dai them.
 WINDOW_CANDIDATES = (
-    # TFT standalone client (Unreal Engine, xac nhan 2026-10-13):
-    # Phai o dau: class-only match tranh bi "League of Legends"/RCLIENT chen truoc.
-    (None, "UnrealWindow"),
+    # TFT standalone client (Unreal Engine, xac nhan 2026-10-13): tieu de that
+    # la 'TFT  ' (co khoang trang duoi) nen tieu de duoc so sau khi strip. Kem
+    # tieu de de mot game Unreal khac dang mo khong bi nhan nham.
+    ("TFT", "UnrealWindow"),
     ("League of Legends (TM) Client", "RiotWindowClass"),
     ("Teamfight Tactics", None),
     ("League of Legends", None),
@@ -51,6 +52,8 @@ WINDOW_CANDIDATES = (
 
 # Bo qua cua so qua nho (vi du Riot Client nen 136x39) - khong the la cua so game
 MIN_GAME_PX = 400 * 300
+
+HUD_READS = 3             # lan dau ganh ca viec nap OCR; cac lan sau moi la so that
 
 OUT_ROOT = ROOT / "data" / "live_probe"
 BLACK_MEAN = 8.0          # duoi muc nay coi nhu khung den (capture bi chan)
@@ -100,6 +103,30 @@ def probe_system() -> dict:
 
 # -- 2-3. Cua so game -----------------------------------------------------
 
+def pick_window(windows: list[dict], candidates) -> tuple[dict | None, dict | None, list[dict]]:
+    """Chon cua so game tu danh sach da liet ke. Thuan, khong goi Win32.
+
+    `windows`: moi phan tu co `title`, `class`, `w`, `h` (client rect).
+    Tra ve (cua so, ung vien da khop, cac cua so khop ten nhung qua nho).
+    Moi ung vien thu khop ca tieu de lan lop truoc, roi moi chi tieu de -
+    lop cua so la thu client doi dau tien.
+    """
+    skipped: list[dict] = []
+    for want, cls in candidates:
+        for need_class in ((True, False) if cls else (False,)):
+            for win in windows:
+                if win["title"].strip() != want.strip():
+                    continue
+                if need_class and win["class"] != cls:
+                    continue
+                if win["w"] * win["h"] < MIN_GAME_PX:
+                    if win not in skipped:
+                        skipped.append(win)
+                    continue
+                return win, {"title": want, "class": cls if need_class else None}, skipped
+    return None, None, skipped
+
+
 def probe_window(title: str | None = None) -> dict:
     """Q3, Q5, Q6-phu: hwnd, tieu de/lop that, client rect, borderless?
 
@@ -116,30 +143,33 @@ def probe_window(title: str | None = None) -> dict:
         out["error"] = f"thieu pywin32 ({exc}) - `pip install pywin32`"
         return out
 
-    hwnd = 0
-    for want, cls in candidates:
-        hwnd = win32gui.FindWindow(cls, want) or win32gui.FindWindow(None, want)
-        if hwnd:
-            out["matched_by"] = {"title": want, "class": cls}
-            break
+    # Liet ke roi tu chon, KHONG dung FindWindow: FindWindow(None, None) tra ve
+    # mot cua so bat ky, va no khong loc duoc theo kich thuoc.
+    visible: list[dict] = []
 
-    if not hwnd:
+    def collect(h, _):
+        if win32gui.IsWindowVisible(h):
+            text = win32gui.GetWindowText(h)
+            if text.strip():
+                _, _, w, h_px = win32gui.GetClientRect(h)
+                visible.append({"hwnd": h, "title": text,
+                                "class": win32gui.GetClassName(h), "w": w, "h": h_px})
+
+    win32gui.EnumWindows(collect, None)
+    match, matched_by, skipped = pick_window(visible, candidates)
+    if skipped:
+        out["skipped_small"] = [{k: w[k] for k in ("title", "class", "w", "h")} for w in skipped]
+
+    if match is None:
         # Khong khop ung vien nao -> liet ke cua so co the nhin thay de nguoi
         # chay tu doc ra tieu de moi. Day chinh la gia tri cua lan chay nay
         # neu client da doi ten.
-        visible: list[dict] = []
-
-        def collect(h, _):
-            if win32gui.IsWindowVisible(h):
-                text = win32gui.GetWindowText(h)
-                if text.strip():
-                    visible.append({"title": text, "class": win32gui.GetClassName(h)})
-
-        win32gui.EnumWindows(collect, None)
-        out["visible_windows"] = visible[:60]
+        out["visible_windows"] = [{"title": w["title"], "class": w["class"]} for w in visible[:60]]
         out["error"] = "khong tim thay cua so game - xem visible_windows"
         return out
 
+    hwnd = match["hwnd"]
+    out["matched_by"] = matched_by
     out["found"] = True
     out["hwnd"] = int(hwnd)
     out["title"] = win32gui.GetWindowText(hwnd)
@@ -197,6 +227,7 @@ def probe_capture(window: dict, seconds: float, out_dir: Path) -> dict:
     frames: list = []
     started = time.perf_counter()
     first: list[float] = []
+    arrivals = [0, 0.0]                # so khung, thoi diem khung cuoi
     wgc_exc: list = []
 
     import threading
@@ -208,8 +239,11 @@ def probe_capture(window: dict, seconds: float, out_dir: Path) -> dict:
 
             @capture.event
             def on_frame_arrived(frame, capture_control):      # noqa: ANN001
+                now = time.perf_counter() - started
                 if not first:
-                    first.append(time.perf_counter() - started)
+                    first.append(now)
+                arrivals[0] += 1
+                arrivals[1] = now
                 if len(frames) < 3:
                     frames.append(frame.frame_buffer.copy())
                 if time.perf_counter() - started >= seconds:
@@ -236,11 +270,15 @@ def probe_capture(window: dict, seconds: float, out_dir: Path) -> dict:
         out["note"] = "WGC that bai - xem loi tren, roi thu duong mss"
         return _probe_capture_mss(window, seconds, out_dir, out)
 
-
     elapsed = time.perf_counter() - started
-    out["frames"] = len(frames)
+    out["frames"] = arrivals[0]
     out["elapsed_s"] = round(elapsed, 3)
     out["first_frame_s"] = round(first[0], 3) if first else None
+    # Tinh tu khung dau den khung cuoi: thoi gian khoi dong WGC khong phai
+    # toc do chup. WGC chi giao khung khi noi dung doi, nen day la can duoi.
+    span = arrivals[1] - first[0] if first else 0.0
+    if arrivals[0] > 1 and span > 0:
+        out["fps"] = round((arrivals[0] - 1) / span, 2)
     out["consent_dialog"] = False      # Q1: toi day ma khong hien dialog nao
     return _save_frames(frames, out_dir, out)
 
@@ -349,12 +387,20 @@ def probe_readers(out_dir: Path) -> dict:
         from src.vision.hud_reader import HudReader
 
         started = time.perf_counter()
-        reading = HudReader.load().read(frame)
+        hud_reader = HudReader.load()
+        out["hud_load_s"] = round(time.perf_counter() - started, 3)
+        runs = []
+        for _ in range(HUD_READS):
+            started = time.perf_counter()
+            reading = hud_reader.read(frame)
+            runs.append(round(time.perf_counter() - started, 3))
         out["hud"] = {f.field: f.value for f in reading.fields}
         out["hud_bar_visible"] = reading.bar_visible
         # Q6-phu: do TRONG luc game dang chay. Moi con so latency khac trong
         # repo deu do tren may ranh, nen day la lan dau co so that.
-        out["hud_latency_s"] = round(time.perf_counter() - started, 3)
+        # Lan dau nap mo hinh OCR; so de so voi ngan sach la cac lan sau.
+        out["hud_read_s"] = runs
+        out["hud_latency_s"] = min(runs[1:])
     except Exception as exc:
         out["hud_error"] = repr(exc)
     return out
@@ -397,6 +443,8 @@ def summarize(report: dict) -> list[str]:
         f"—  build Windows {system.get('windows_build')} {mark(system.get('build_ok'))}"
         f" · DWM {mark(system.get('dwm_composition'))} · DPI aware {mark(system.get('dpi_aware'))}",
         f"—  ROI trên máy này: nút {readers.get('reroll_states') or readers.get('reroll_error')}",
+        f"—  đọc HUD: {readers.get('hud_read_s') or readers.get('hud_error')} s"
+        f" (lần đầu gồm nạp OCR) · nạp reader {readers.get('hud_load_s')} s",
     ]
     return lines
 

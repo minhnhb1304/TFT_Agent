@@ -34,41 +34,20 @@ except ImportError as e:
 
 # --- 2. Tim cua so ---
 try:
-    import win32gui
+    # Dung chung bo do cua so voi probe_environment de hai script khong lech
+    # danh sach ung vien.
+    from tools.probe_environment import probe_window
 
-    CANDIDATES = [
-        ("League of Legends (TM) Client", "RiotWindowClass"),
-        ("Teamfight Tactics", None),
-        ("League of Legends", None),
-    ]
-
-    hwnd = 0
-    matched = None
-    for title, cls in CANDIDATES:
-        hwnd = win32gui.FindWindow(cls, title) or win32gui.FindWindow(None, title)
-        if hwnd:
-            matched = title
-            break
-
-    if hwnd:
-        report["window_found"] = True
-        report["window_title"] = win32gui.GetWindowText(hwnd)
-        report["window_class"] = win32gui.GetClassName(hwnd)
-        left, top, right, bottom = win32gui.GetClientRect(hwnd)
-        sx, sy = win32gui.ClientToScreen(hwnd, (left, top))
-        report["client_rect"] = {"x": sx, "y": sy, "w": right - left, "h": bottom - top}
+    window = probe_window()
+    report["window_found"] = window["found"]
+    if window["found"]:
+        report["window_title"] = window["title"]
+        report["window_class"] = window["class"]
+        report["client_rect"] = window["client_rect"]
     else:
-        report["window_found"] = False
-        visible: list[dict] = []
-
-        def _collect(h, _):
-            if win32gui.IsWindowVisible(h):
-                t = win32gui.GetWindowText(h)
-                if t.strip():
-                    visible.append({"title": t, "class": win32gui.GetClassName(h)})
-
-        win32gui.EnumWindows(_collect, None)
-        report["visible_windows"] = visible[:60]
+        for key in ("error", "skipped_small", "visible_windows"):
+            if key in window:
+                report[key] = window[key]
 
 except Exception as e:
     report["window_error"] = repr(e)
