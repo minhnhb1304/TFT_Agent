@@ -41,10 +41,16 @@ sys.path.insert(0, str(ROOT))
 # viec cai nao khop la mot ket qua can ghi lai, va sau 2026-10-09 danh sach
 # nay se phai dai them.
 WINDOW_CANDIDATES = (
+    # TFT standalone client (Unreal Engine, xac nhan 2026-10-13):
+    # Phai o dau: class-only match tranh bi "League of Legends"/RCLIENT chen truoc.
+    (None, "UnrealWindow"),
     ("League of Legends (TM) Client", "RiotWindowClass"),
     ("Teamfight Tactics", None),
     ("League of Legends", None),
 )
+
+# Bo qua cua so qua nho (vi du Riot Client nen 136x39) - khong the la cua so game
+MIN_GAME_PX = 400 * 300
 
 OUT_ROOT = ROOT / "data" / "live_probe"
 BLACK_MEAN = 8.0          # duoi muc nay coi nhu khung den (capture bi chan)
@@ -191,29 +197,45 @@ def probe_capture(window: dict, seconds: float, out_dir: Path) -> dict:
     frames: list = []
     started = time.perf_counter()
     first: list[float] = []
+    wgc_exc: list = []
 
-    try:
-        capture = WindowsCapture(cursor_capture=False, draw_border=False,
-                                 window_name=window["title"])
+    import threading
 
-        @capture.event
-        def on_frame_arrived(frame, capture_control):          # noqa: ANN001
-            if not first:
-                first.append(time.perf_counter() - started)
-            if len(frames) < 3:
-                frames.append(frame.frame_buffer.copy())
-            if time.perf_counter() - started >= seconds:
-                capture_control.stop()
+    def _run_wgc():
+        try:
+            capture = WindowsCapture(cursor_capture=False, draw_border=False,
+                                     window_name=window["title"])
 
-        @capture.event
-        def on_closed():
-            pass
+            @capture.event
+            def on_frame_arrived(frame, capture_control):      # noqa: ANN001
+                if not first:
+                    first.append(time.perf_counter() - started)
+                if len(frames) < 3:
+                    frames.append(frame.frame_buffer.copy())
+                if time.perf_counter() - started >= seconds:
+                    capture_control.stop()
 
-        capture.start()                                        # chan den khi stop()
-    except Exception as exc:
-        out["error"] = repr(exc)
+            @capture.event
+            def on_closed():
+                pass
+
+            capture.start()                                    # chan den khi stop()
+        except Exception as exc:
+            wgc_exc.append(exc)
+
+    t = threading.Thread(target=_run_wgc, daemon=True)
+    t.start()
+    # timeout = seconds + 15s du de WGC khoi dong; neu qua thi fall sang mss
+    t.join(timeout=seconds + 15)
+    if t.is_alive():
+        out["wgc_timeout"] = True
+        out["note"] = "WGC treo qua timeout - fall sang mss"
+        return _probe_capture_mss(window, seconds, out_dir, out)
+    if wgc_exc:
+        out["error"] = repr(wgc_exc[0])
         out["note"] = "WGC that bai - xem loi tren, roi thu duong mss"
         return _probe_capture_mss(window, seconds, out_dir, out)
+
 
     elapsed = time.perf_counter() - started
     out["frames"] = len(frames)
