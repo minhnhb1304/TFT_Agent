@@ -143,6 +143,13 @@ def probe_window(title: str | None = None) -> dict:
         out["error"] = f"thieu pywin32 ({exc}) - `pip install pywin32`"
         return out
 
+    try:
+        import win32service
+        d = win32service.OpenDesktop("Default", 0, False, win32con.GENERIC_ALL)
+        d.SetThreadDesktop()
+    except Exception:
+        pass
+
     # Liet ke roi tu chon, KHONG dung FindWindow: FindWindow(None, None) tra ve
     # mot cua so bat ky, va no khong loc duoc theo kich thuoc.
     visible: list[dict] = []
@@ -234,6 +241,13 @@ def probe_capture(window: dict, seconds: float, out_dir: Path) -> dict:
 
     def _run_wgc():
         try:
+            try:
+                import win32con
+                import win32service
+                _d = win32service.OpenDesktop("Default", 0, False, win32con.GENERIC_ALL)
+                _d.SetThreadDesktop()
+            except Exception:
+                pass
             capture = WindowsCapture(cursor_capture=False, draw_border=False,
                                      window_name=window["title"])
 
