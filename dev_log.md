@@ -1,8 +1,8 @@
 # Nhật Ký Phát Triển
 
 > Lịch sử dự án. Checkbox trong [`SPEC.md §7`](SPEC.md) đã lỗi thời ở vài chỗ.
-> Kế hoạch hiện hành: [`docs/next-steps.md`](docs/next-steps.md). Việc tồn đọng giữa các phiên:
-> [`docs/session-handoff.md`](docs/session-handoff.md).
+> Kế hoạch hiện hành và việc tồn đọng giữa các phiên:
+> [`docs/next-steps.md`](docs/next-steps.md).
 >
 > Cập nhật: **2026-10-15** · 1034 test xanh · 178 file Python. Mục 1–13 và "Dự kiến triển khai"
 > viết lúc 2026-09-07, giữ làm lịch sử.

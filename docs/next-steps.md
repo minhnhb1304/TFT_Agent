@@ -1,23 +1,29 @@
 # Kế Hoạch & Nhiệm Vụ Tiếp Theo (Next Steps)
 
-> **Phiên gần nhất (2026-10-06):** việc tồn đọng và bước kế tiếp ở [session-handoff.md](session-handoff.md).
+> Đọc mục này trước khi bắt đầu phiên mới. Lịch sử dự án: [`dev_log.md`](../dev_log.md).
 
-## ⏱️ Trạng thái 2026-09-30 — đọc mục này trước
+## ⏱️ Trạng thái 2026-10-15 — đọc mục này trước
 
 Hạn nộp: **~2027-01-20** (16 tuần từ 30-09). Trừ ngược: **4 tuần cuối viết luận văn**, **tuần 12
-đóng băng số**, còn **~11 tuần làm việc**.
+đóng băng số**. 1034 test xanh.
 
 > Mọi mục **§1–§7 bên dưới là LỊCH SỬ** (09-09). Chúng ghi lại phép đo đã làm, giữ để tra cứu —
 > nhưng kế hoạch hiện hành là mục này.
 
-### Việc gấp có hạn bên ngoài
+### Live mode: client standalone
 
-| Việc | Hạn | Vì sao không hoãn được |
+Probe đã chạy 2026-10-13 và 10-15 (`data/live_probe/`, chi tiết ở `dev_log.md` mục 14). Cửa sổ
+`'TFT  '`, lớp `UnrealWindow`; WGC ~49,9 fps; màn chọn lõi 4-2 ván Normal đọc đúng stage và nút
+đổi lõi (cùng bố cục với 2-1, 3-2 nên không cần probe 2-1).
+
+| # | Việc còn mở | Ghi chú |
 |---|---|---|
-| Chạy `tools/probe_environment.py --closed` rồi `--seconds 5` trên máy game | **trước 2026-10-09** | Client TFT standalone đổi process/window class. Đây là bản ghi duy nhất về client hiện tại; sau mốc đó không truy ngược được. ~1 giờ |
+| 1 | **Độ trễ HUD khi game chạy: 15–26 s** | Lần đọc 2–4 (OCR đã nạp) vẫn chậm; CPU 97% trong ảnh. Máy rảnh ~1,1 s |
+| 2 | Màn chọn lõi ẩn thanh HUD | Giữ vàng, cấp, máu từ khung trước khi màn chọn lõi hiện |
+| 3 | Máy test chưa có khoá Gemini | Cần cho `augment_reader` khi chạy live |
+| 4 | [live-mode/phase-0-spike.md](live-mode/phase-0-spike.md), [live-mode/probe-runbook.md](live-mode/probe-runbook.md) còn ghi tên cửa sổ cũ | Sửa tài liệu |
 
-**10-09 là lý do để CHỜ, không phải để gấp:** đừng viết `WindowCaptureSource` nhắm client hiện
-tại — nó sẽ vỡ. Chạy probe lấy mốc, rồi hoãn phần capture tới khi client mới lên.
+Probe lại: `tools\probe_environment.py --seconds 5` trên máy test rồi push `data/live_probe/`.
 
 ### Bộ dữ liệu — đường găng của cả đồ án
 
@@ -40,28 +46,73 @@ Có **20 video tự chơi chưa dùng** + dự kiến **10–20 video từ ngư�
 | 2 | Sửa tầng feature: `econ_type` multi-label trích tất định, **khoá bằng test** để LLM không ghi đè | 13/13 lõi mất nhãn `reroll` do LLM. [directional-augment/blind-spots.md](directional-augment/blind-spots.md) §2 |
 | 3 | Directional augment evaluation — **tính năng bắt buộc**, phải là trục ablation tắt được | [directional-augment/architecture.md](directional-augment/architecture.md) |
 | 4 | SPEC v4: viết lại §1.1 (4 đóng góp), §3.6 (bỏ widget không tồn tại), tick lại §7 | Chưa bắt đầu |
-| 5 | Re-baseline tài liệu: `README` bảng trạng thái, `dev_log.md` thành lịch sử | Chưa bắt đầu |
-| 6 | Tách `item_grants` chi tiết hơn: `Anvil` → `ComponentAnvil` / `CompletedAnvil` / `ArtifactAnvil`, thêm `Artifact`, `RadiantItem`. Phải sửa `extract_item_grants` (lên `deterministic-v2`, sinh lại bảng) rồi mới quyết ItemFit có trọng số riêng (sau cờ) hay giữ điểm cũ | **Nghiên cứu sau.** Hiện mới có trong trang duyệt tay (`scripts/review_augment_features.py`) làm ground truth. Lỗi đã thấy: "component anvil" ra `AnyComponent`+`Anvil`; "Completed Item anvils" mất `Anvil` (regex `anvil` không khớp số nhiều); Portable Forge, Radiant Relic… có `item_grants` rỗng |
-| 7 | `category` → `categories` 1–3 nhãn (giữ `category` = nhãn chính), cùng đợt: `carry_type` AD/AP/both/none + `frontline`. Không scorer nào đọc `category`: giá trị là mô tả + đo, đưa vào chấm điểm là cổng riêng | **Đang triển khai.** Q1–Q4 đã chốt; P1–P3 (schema, trích, trang duyệt) làm 2026-10-05, P4 duyệt tay tiếp theo. [category-multilabel/overview.md](category-multilabel/overview.md) |
-| 8 | `offer_rounds`: lõi chào ở lượt nào (2-1 / 3-2 / 4-2), lấy từ datatft.com (khớp 254/254). Sửa nhãn `tempo`, thu pool của reroll policy về đúng lượt | **Plan draft, chờ chốt Q1–Q4.** [offer-rounds/overview.md](offer-rounds/overview.md) |
+| 5 | Re-baseline tài liệu: `README` bảng trạng thái | `dev_log.md` đã thành lịch sử (2026-10-15); README chưa |
+| 6 | Tách `item_grants` chi tiết hơn: `Anvil` → `ComponentAnvil` / `CompletedAnvil` / `ArtifactAnvil`, thêm `Artifact`, `RadiantItem`. Phải sửa `extract_item_grants` (lên `deterministic-v2`, sinh lại bảng) rồi mới quyết ItemFit có trọng số riêng (sau cờ) hay giữ điểm cũ | **Nghiên cứu sau.** Hiện mới có trong trang duyệt tay (`scripts/review_augment_features.py`) làm ground truth. **44 lõi người duyệt sửa `item_grants` chưa áp vào bảng**, chờ việc này (Crafted Crafting vì thế giữ nhãn `item`). Lỗi đã thấy: "component anvil" ra `AnyComponent`+`Anvil`; "Completed Item anvils" mất `Anvil` (regex `anvil` không khớp số nhiều); Portable Forge, Radiant Relic… có `item_grants` rỗng |
+| 7 | So `categories` với nhãn tay: Jaccard, P/R/F1 từng nhãn ([category-multilabel/phases.md](category-multilabel/phases.md) P5). Đưa phép so tay ↔ MetaTFT ↔ datatft và phép chấm lại 147 scenario vào repo (hiện là script tạm; chấm lại thì vào `directional_baseline.py` nếu cần dẫn số) | P1–P4 xong: nhãn tay đã áp vào bảng 2026-10-12 (`scripts/apply_manual_review.py`) |
+| 8 | Dùng datatft làm nguồn so thứ hai (offer-rounds P6) | Mã `type` đã xác nhận (xem dưới); [offer-rounds/overview.md](offer-rounds/overview.md) vẫn ghi "chưa xác nhận", chưa sửa. `offer_rounds` và pool theo lượt chào đã xong 2026-10-08 |
+| 9 | [augment-reroll/tailoring-beta-sweep.md](augment-reroll/tailoring-beta-sweep.md) vẫn dùng pool cũ N = 132 | Chạy lại nếu cần dẫn số. Monte-Carlo chính đã chạy lại 2026-10-07 ([ablation-results.md](augment-reroll/ablation-results.md)) |
 
-### Quyết định đã chốt trong phiên 30-09
+Trang duyệt nhãn: `.venv\Scripts\python scripts\review_augment_features.py` → `http://127.0.0.1:8766/`.
+
+### Nhãn tay: kết quả và việc soát lại
+
+Duyệt vòng 1 **254/254** (`data/eval/augment_feature_review.json`), vòng 2 **47/47** (2026-10-12).
+Bản chốt: 155 sai · 94 đúng · 5 chưa chắc, 27 lõi có `utility`. Áp vào bảng: **122 dòng đổi**,
+161 dòng `manual-audit`; 5 lõi "chưa chắc" giữ dòng máy.
+
+| Phép đo (2026-10-12, script tạm) | Kết quả |
+|---|---|
+| Bảng cũ khớp nhãn tay | `categories` 64,9% (deterministic) · 78,8% (llm); `econ_value` 84,2% · 88,5%; `tempo` 84,2% · 92,0% |
+| So nguồn ngoài | MetaTFT: Jaccard 0,884, trùng khít 192/253, nhãn chính ∈ tag 242/253. datatft: Jaccard 0,818, trùng khít 171/252 |
+| Chấm lại 147 scenario | Hoà tuyệt đối top-1 **20 → 14/147**; cách < 0,01: 40 → 34. Top-1 đổi 9/147. `legacy_tank_direction` bật/tắt không đổi số nào |
+| `econ_value = 3` | **56 → 72 lõi** (128 lõi có `econ_value > 0`) |
+
+Danh sách soát lại:
+
+- **21 lõi "Cần xem lại"** vì đã chấp nhận `immediate` cho lõi chỉ có ở 2-1. Hedge Fund vẫn đang `immediate` trong bảng, chờ sửa thành `scaling`.
+- Vài lõi "Cần xem lại" từ đợt đổi schema (nhãn `tank` cũ, nhãn gốc đã đổi).
+- 4 lõi Band of Thieves: `item_grants` phải là `CompletedItem`.
+- Soát kỹ: nhãn phụ `combat` (máy đếm từ khoá), `frontline` của Forged in Strength / FOURcing / Gilded Steel, `both` (máy chỉ gắn 2 lõi), nhãn chính ★ của nhóm lõi cho ấn.
+- Lõi "trả ngay một phần, còn lại scale": ghi **"lai"** vào Ghi chú.
+- Omega Riftbeast có nhãn `econ` nhưng `econ_value = 0` (người duyệt giữ).
+
+**Khuôn ghi chú** người duyệt đang dùng: `<cơ chế> => nên/không nên chọn nếu <điều kiện>` và
+`đã có <lõi> => ưu tiên <lõi khác>`. Chưa code nào đọc; là nguyên liệu cho luật chuyên gia và directional.
+
+### Quyết định đã chốt
 
 - **4 đóng góp**, không thêm mục thứ năm. Directional **phát biểu lại đóng góp #3** chứ không phải
   Future Work.
 - **Bỏ hẳn Riot API** khỏi đường `final_placement`. `riot_api.py` **vẫn dùng** cho crawl meta comp.
 - Chia **6/14** development/held-out, chia theo **người** trước rồi theo video.
 - Mọi thay đổi scorer phải **tắt được bằng cờ** trong `config/scoring_weights.yaml`.
+- **Bỏ luật "`utility` chỉ đi một mình"** (10-11): `utility` được làm nhãn phụ. [category-multilabel/definition.md](category-multilabel/definition.md)
+- **Mã `type` của datatft** (từ `DatabaseView-*.js`): 1 kinh tế, 2 chiến đấu, 3 trang bị, 4 tộc hệ, 5 độc quyền, 6 khác.
+- **Probe màn chọn lõi 4-2 thay cho 2-1** (10-15): cùng bố cục.
 
 ### Còn chờ bạn quyết
 
-| Câu hỏi | Ở đâu |
+| Câu hỏi | Ở đâu / bối cảnh |
 |---|---|
 | Chốt phương án **A** cho centering fix? | [centering-fix.md](directional-augment/centering-fix.md) |
 | Giữ hay bỏ hình ảnh "la bàn" trong §1 | [review-findings.md](directional-augment/review-findings.md) |
 | Có dùng khung *Evaluative AI* cho ca hoà điểm | [explainability.md](directional-augment/explainability.md) |
 | Có dẫn `tft.ninja` không (nguồn không nhãn set) | [review-findings.md](directional-augment/review-findings.md) |
 | Xoá `docs/directional-augment-evaluation.md` (bản phẳng đã bị thay thế) chưa | — |
+| Giữ `pool_by_offer_round: true`? | Mục tiêu tăng ở 7/9 ô, **giảm nhẹ ở Kim cương 3-2** (−0,00014). [augment-reroll/offer-round-pool.md](augment-reroll/offer-round-pool.md) |
+| `both_match = 0.8` có hợp lý? | Điểm BoardFit của lõi `both` trên board AD/AP. Lựa chọn thiết kế, chưa chỉnh theo dữ liệu |
+| Tách `tempo` thành 3 mức (`immediate / mixed / scaling`)? | Quyết bằng số: đếm lõi có chữ "lai" trong Ghi chú |
+| Ghi mục "board_condition có cấu trúc" vào việc code? | Trường chữ tự do, không code nào đọc |
+| `reroll` là nhãn riêng hay gộp vào `econ`? | Tạm giữ riêng tới khi làm `econ_type` (việc code #2) |
+| Dạng trang tóm tắt cho lần cô kiểm tra tiến độ 1 (dòng 1 kế hoạch) | Chưa soạn, chờ chọn dạng |
+
+### Không làm, đã có lý do
+
+- Tách lõi trùng tên theo lượt (offer-rounds P5): 3/5 nhóm có lượt giống hệt nhau.
+- Đưa `categories` vào chấm điểm (category-multilabel P6): dễ đếm hai lần; mặc định đóng.
+
+Việc của bạn: hai artifact trên claude.ai ("Duyệt phân loại lõi", "Bảng phân loại lõi") **chưa
+xoá**: gõ `/artifacts` rồi bấm `d`.
 
 ---
 
