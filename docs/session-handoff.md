@@ -15,7 +15,7 @@ Client TFT standalone: cửa sổ `'TFT  '`, lớp `UnrealWindow`, borderless 19
 | Độ trễ HUD | ~1,1 s máy rảnh. `hud_read_s` ở 23:21 và 23:32 là số cache, **không trích**. 12 s ở 22:29 gồm nạp OCR |
 | Màn chọn lõi ván Normal (2026-10-15 16:58, `b2b7544`) | Lõi 4-2: stage `4-2` đúng, nút đổi lõi `disabled / active / active` đúng với ảnh. Thanh HUD ẩn nên vàng, cấp, máu rỗng. Độ trễ ~2 s |
 | HUD ván Normal (2026-10-15 16:52, 16:56) | Độ trễ **15–26 s**, CPU 97% trong ảnh. 16:52 mất stage, 16:56 mất máu |
-| Còn thiếu | Lõi **2-1** ván Normal chưa probe (mới có 4-2). Độ trễ HUD khi game chạy chưa đạt. Máy test chưa có khoá Gemini |
+| Còn thiếu | Độ trễ HUD khi game chạy chưa đạt: lần 2–4 (OCR đã nạp) vẫn 15–26 s. Màn chọn lõi ẩn thanh HUD: cần giữ vàng, cấp, máu từ khung trước. Máy test chưa có khoá Gemini |
 
 Chưa sửa: [live-mode/phase-0-spike.md](live-mode/phase-0-spike.md), [live-mode/probe-runbook.md](live-mode/probe-runbook.md) còn ghi tên
 cửa sổ cũ. Cô kiểm tra tiến độ lần 1 (dòng 1 kế hoạch): trang tóm tắt chưa soạn, chờ chọn dạng.
@@ -51,7 +51,7 @@ Omega Riftbeast có nhãn `econ` nhưng `econ_value = 0` (người duyệt giữ
 | # | Việc | Ghi chú |
 |---|---|---|
 | 1 | ~~Commit, tách 4 commit~~ **Xong 2026-10-08** (`410af32` · `c719a17` · `616c928` · `253bafc`) | Commit nhãn duyệt tay đã push (`37a7445`, `4446f40`) |
-| 2 | **Probe màn chọn lõi 2-1, ván Normal** | `tools\probe_environment.py --seconds 5` trên máy test rồi push `data/live_probe/`. Lõi 4-2 ván Normal đã probe 2026-10-15, xem mục trên |
+| 2 | ~~Probe màn chọn lõi ván Normal~~ **Xong 2026-10-15** ở lõi 4-2 (cùng bố cục với 2-1, 3-2), xem mục trên | Còn lại: độ trễ HUD khi game chạy |
 | 3 | Chạy lại server duyệt khi cần sửa nhãn | `.venv\Scripts\python scripts\review_augment_features.py` → `http://127.0.0.1:8766/` |
 
 ## Chờ bạn quyết
