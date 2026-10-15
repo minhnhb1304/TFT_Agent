@@ -1,9 +1,11 @@
 # Nhật Ký Phát Triển
 
-> Trạng thái **thực tế** của dự án. Checkbox trong [`SPEC.md §7`](SPEC.md) đã lỗi thời ở vài chỗ —
-> file này mới là nguồn đúng.
+> Lịch sử dự án. Checkbox trong [`SPEC.md §7`](SPEC.md) đã lỗi thời ở vài chỗ.
+> Kế hoạch hiện hành: [`docs/next-steps.md`](docs/next-steps.md). Việc tồn đọng giữa các phiên:
+> [`docs/session-handoff.md`](docs/session-handoff.md).
 >
-> Cập nhật: **2026-09-07** · 579 test xanh, chạy hoàn toàn offline · 87 file Python
+> Cập nhật: **2026-10-15** · 1034 test xanh · 178 file Python. Mục 1–13 và "Dự kiến triển khai"
+> viết lúc 2026-09-07, giữ làm lịch sử.
 
 ---
 
@@ -12,8 +14,8 @@
 | | |
 |---|---|
 | **Track A** — lõi offline, không cần game | ✅ **Xong** |
-| **Track B** — cần máy đang chạy TFT | ⛔ **Chưa bắt đầu** — chặn toàn bộ phần còn lại |
-| Nút thắt hiện tại | Không có dữ liệu nhận diện. Mọi số ở §12.1–12.4 đều cần Track B |
+| **Track B** — cần máy đang chạy TFT | ✅ Đường ống vision chạy trên VOD (09-09). Probe client standalone xong (10-13, 10-15), xem [mục 14](#14-probe-client-standalone-wgc-chạy-hud-chậm-khi-game-chạy) |
+| Nút thắt hiện tại | Tập đánh giá tự quay chưa có: mọi số nhận diện vẫn đo trên tập phát triển. Đọc HUD khi game chạy mất 15–26 s |
 
 ---
 
@@ -31,6 +33,15 @@
 | 09-01 | `c3ddd6c` | Crawl đội hình meta thật; augment thì **không lấy được** |
 | 09-02 | — | Nguồn tactics.tools + bảng tier do người xếp; **xác nhận augment tắc ở mọi nguồn** |
 | 09-04 | — | Đánh giá rủi ro Vanguard (8 agent, EN+ZH+RU). Bịt 4 lỗ ở test read-only; chốt chụp theo cửa sổ; bỏ `WDA_EXCLUDEFROMCAPTURE` |
+| 09-07 | `8044aac`…`61ad56b` | Capture VOD + quét khung; chính sách reroll tuần tự + Monte-Carlo; chặn nguồn giả lập; banner reroll trên overlay (mục 9–13) |
+| 09-08 → 09-09 | `015a5de`…`cdd0a95` | Bảng tier TFT Academy + MetaTFT; reader nút reroll (105/105), HUD reader, Gemini augment reader; 60 khung gán nhãn. **Track B đóng** |
+| 09-14 → 09-15 | `fb6e9b1`…`0b7371d` | Công thức trang bị, giá tướng; cơ chế Set 18 từ lolchess.gg; kinh tế Set 18 (chuỗi, thu nhập, XP); chọn đội hình theo archetype; báo dữ liệu cũ khi đổi patch; dữ liệu patch 18.2 |
+| 09-16 → 09-19 | `fd6b54d`…`347f5d1` | Trình phát replay + live dùng chung lõi; gán nhãn và chấm bản ghi playtest; đọc máu, chuỗi, HUD mờ; gold/chuỗi/cấp đổi thứ hạng |
+| 10-01 → 10-02 | `3549aa7`…`8237ae1` | Khoá khối theo ván cho tập đánh giá; bỏ đường placement từ Riot; đo khối lượng hoà điểm; runbook probe |
+| 10-05 | `771689e`…`ba11239` | Audit bảng đặc trưng theo tag MetaTFT (`tempo`, `econ_value`, `trait_count_reward`); trang duyệt tay cục bộ |
+| 10-08 | `410af32`…`e982018` | `categories` đa nhãn, `carry_type` both, `frontline`; `offer_rounds` từ datatft; pool reroll theo lượt chào; duyệt tay 254/254 |
+| 10-11 → 10-12 | `463de63`…`4446f40` | Duyệt vòng 2 (47/47); áp nhãn tay vào bảng đặc trưng (122 dòng đổi) |
+| 10-13 → 10-15 | `4153624`…`b2b7544` | Probe client standalone: dò cửa sổ, WGC, độ trễ HUD; kết quả ván đấu máy và ván Normal (mục 14) |
 
 ---
 
@@ -478,13 +489,32 @@ nhiễu giả lập không"*.
 `c` **tự co giãn** theo σ nên không phải hiệu chỉnh tay. 573 → **579 test**.
 
 ⏳ **Đang chờ**: `data/augment_tiers.json` chưa tồn tại. Đường ống xong, thiếu dữ liệu — xem
-[docs/expert-prior/ingestion.md](docs/expert-prior/ingestion.md).
+[docs/expert-prior/ingestion.md](docs/expert-prior/ingestion.md). *(Đã nạp 2026-09-15: TFT Academy,
+patch 18.2, 246 lõi.)*
+
+### 14. Probe client standalone: WGC chạy, HUD chậm khi game chạy
+
+Client TFT standalone: cửa sổ `'TFT  '`, lớp `UnrealWindow`, borderless 1920×1080. Probe phải dò
+cửa sổ bằng liệt kê (`bd6e3bf`) và gắn thread vào desktop `Default` khi chạy trong shell sandbox
+(`33200ed`). Kết quả ở `data/live_probe/20261013_*`, `20261015_*`.
+
+| Mục | Kết quả |
+|---|---|
+| WGC | Không hộp thoại, không viền vàng, ~49,9 fps, khung đầu 0,4–0,9 s |
+| HUD ván Normal, máy rảnh (10-13) | Đúng cả 7 trường, ~1,1 s |
+| Màn chọn lõi ván đấu máy (10-13) | Nút đổi lõi đúng; stage, máu rỗng vì bố cục khác (lõi ở 1-5, 2-5) |
+| Màn chọn lõi 4-2 ván Normal (10-15) | Stage `4-2` đúng; nút `disabled / active / active` đúng với ảnh. Thanh HUD ẩn nên vàng, cấp, máu rỗng |
+| HUD khi game chạy (10-15) | **15–26 s** ở các lần đọc sau khi OCR đã nạp; CPU 97% trong ảnh. Mất stage hoặc máu ở 2 lần |
+
+Màn chọn lõi 2-1, 3-2, 4-2 cùng bố cục, nên probe 4-2 thay cho 2-1. Hai việc còn mở: độ trễ HUD
+khi game chạy, và giữ vàng/cấp/máu từ khung trước khi màn chọn lõi ẩn thanh HUD.
 
 ## Dự kiến triển khai
 
 ### Chặn mọi thứ — Track B, Phase 0 (§7)
 
-Phải chạy trên máy đang mở TFT thật. Chưa làm được cái nào.
+Phải chạy trên máy đang mở TFT thật. *(Trạng thái 2026-10-15: #1–#3 đã chạy, xem mục 14; #0, #4
+chưa có ghi nhận.)*
 
 | # | Việc | Chi phí | Quyết định điều gì |
 |---|---|---|---|
@@ -521,6 +551,7 @@ thiếu dữ liệu. **Tier 5**: nhờ 3–5 người chơi rank khá đánh gi�
 
 Client TFT standalone. Khả năng đổi process name / window class → vỡ window targeting và overlay
 owner-window. PBE báo cáo ~09-09. **Đây là lý do việc #1 ở trên phải làm sớm.**
+*(Đã qua. Client mới đổi cửa sổ thành `'TFT  '` / `UnrealWindow`; probe đã sửa theo, xem mục 14.)*
 
 ---
 
@@ -529,13 +560,11 @@ owner-window. PBE báo cáo ~09-09. **Đây là lý do việc #1 ở trên phả
 | Vấn đề | Ảnh hưởng |
 |---|---|
 | `augment_stats.csv` giả lập | Không trích được vào báo cáo. Đã loại trừ ba nguồn ngoài (09-02) — chỉ còn chờ Riot trả lại trường |
-| `data/augment_tiers.json` chưa có dữ liệu | Khung chạy được nhưng rỗng: phải đọc bảng tier bằng mắt rồi nạp tay. Cố tình — cùng nguyên tắc với `comp_database.py`, không nhét bảng tier từ bìa vào repo |
 | `tactics_tools_stats.json` chưa có ai đọc | Số unit/trait/item đã đo được nhưng chưa nối vào `item_advisor` / `board_fit`. Nối vào là thêm một đường ảnh hưởng chưa đo được trong ablation |
 | Cỡ mẫu vn2 nhỏ (2 challenger / 160 apex) | Số đội hình mang bất định. Crawl lại gần deadline sẽ tốt hơn |
 | Riot Personal Key hết hạn 24h | Mỗi lần crawl phải lấy key mới |
 | `roll_odds.py` chưa có importer nào | Đã gắn nhãn `Unverified Data (Set 18.1)` nhưng chưa nối vào `rules_engine` |
 | `styles.py` không ai import | `augment_panel` hardcode lại cùng giá trị — theme bị nhân đôi |
-| `data/item_recipes.json` chưa sinh | Sinh được từ locale đầy đủ, chưa cần tới |
 | `role` tướng CDragon Set 18 bị rỗng 63/65 tướng | **Đã tìm được nguồn thay thế (2026-09-18):** datatft.com công bố đủ 12 role cho cả 65 tướng. Chưa nạp — xem [`research/unit-roles.md`](research/unit-roles.md) để biết cách crawl và ba việc cần làm |
 | Checkbox SPEC §7 lỗi thời | Nhiều mục Phase 1–3 đã xong nhưng chưa tick |
 
