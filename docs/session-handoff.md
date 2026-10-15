@@ -1,7 +1,7 @@
 # Session Handoff
 
-Việc tồn đọng sau phiên 2026-10-05 → 08. Đọc file này trước khi bắt đầu phiên sau. Trạng thái
-2026-10-08: **1027 test xanh, 4 commit đã push lên `main` (`253bafc`), duyệt tay xong 254/254**.
+Việc tồn đọng sau phiên 2026-10-05 → 13. Đọc file này trước khi bắt đầu phiên sau. Trạng thái
+2026-10-15: **1034 test xanh, mọi commit đã push lên `main` (`b2b7544`), nhãn tay đã vào bảng**.
 
 ## Phiên 2026-10-13: probe client mới
 
@@ -13,7 +13,9 @@ Client TFT standalone: cửa sổ `'TFT  '`, lớp `UnrealWindow`, borderless 19
 | HUD, ván Normal (22:29) | Đúng cả 7 trường: 2-6 · vàng 31 · cấp 4 · XP 6/10 · máu 71 · chuỗi −5 |
 | Màn chọn lõi (23:21, 23:32) | Nút đổi lõi `active` ×3 đúng. Stage, máu rỗng: ván **người đấu máy**, bố cục khác (lõi ở 1-5, 2-5) |
 | Độ trễ HUD | ~1,1 s máy rảnh. `hud_read_s` ở 23:21 và 23:32 là số cache, **không trích**. 12 s ở 22:29 gồm nạp OCR |
-| Còn thiếu | Probe ở màn chọn lõi **2-1 ván Normal** (stage, máu khi mờ; độ trễ khi game chạy). Máy test chưa có khoá Gemini |
+| Màn chọn lõi ván Normal (2026-10-15 16:58, `b2b7544`) | Lõi 4-2: stage `4-2` đúng, nút đổi lõi `disabled / active / active` đúng với ảnh. Thanh HUD ẩn nên vàng, cấp, máu rỗng. Độ trễ ~2 s |
+| HUD ván Normal (2026-10-15 16:52, 16:56) | Độ trễ **15–26 s**, CPU 97% trong ảnh. 16:52 mất stage, 16:56 mất máu |
+| Còn thiếu | Lõi **2-1** ván Normal chưa probe (mới có 4-2). Độ trễ HUD khi game chạy chưa đạt. Máy test chưa có khoá Gemini |
 
 Chưa sửa: [live-mode/phase-0-spike.md](live-mode/phase-0-spike.md), [live-mode/probe-runbook.md](live-mode/probe-runbook.md) còn ghi tên
 cửa sổ cũ. Cô kiểm tra tiến độ lần 1 (dòng 1 kế hoạch): trang tóm tắt chưa soạn, chờ chọn dạng.
@@ -48,8 +50,8 @@ Omega Riftbeast có nhãn `econ` nhưng `econ_value = 0` (người duyệt giữ
 
 | # | Việc | Ghi chú |
 |---|---|---|
-| 1 | ~~Commit, tách 4 commit~~ **Xong 2026-10-08** (`410af32` · `c719a17` · `616c928` · `253bafc`) | Commit nhãn duyệt tay mới chỉ ở local, chưa push |
-| 2 | **Probe màn chọn lõi 2-1, ván Normal** | `tools\probe_environment.py --seconds 5` trên máy test rồi push `data/live_probe/`. Probe client mới đã chạy 2026-10-13, xem mục trên |
+| 1 | ~~Commit, tách 4 commit~~ **Xong 2026-10-08** (`410af32` · `c719a17` · `616c928` · `253bafc`) | Commit nhãn duyệt tay đã push (`37a7445`, `4446f40`) |
+| 2 | **Probe màn chọn lõi 2-1, ván Normal** | `tools\probe_environment.py --seconds 5` trên máy test rồi push `data/live_probe/`. Lõi 4-2 ván Normal đã probe 2026-10-15, xem mục trên |
 | 3 | Chạy lại server duyệt khi cần sửa nhãn | `.venv\Scripts\python scripts\review_augment_features.py` → `http://127.0.0.1:8766/` |
 
 ## Chờ bạn quyết
