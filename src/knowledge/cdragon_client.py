@@ -38,6 +38,10 @@ EXPECTED_TIER_DISTRIBUTION = {1: 14, 2: 13, 3: 14, 4: 14, 5: 10}
 # File locale cu hon nguong nay -> nghi ngo nap nham nguon hoac nguon da chet.
 MAX_LOCALE_AGE_DAYS = 30
 
+# /latest/ khong khop client live o vai cho (do tay 2026-10-27): lose con trong
+# game da bi xoa, lose chua vao game da co, ten tieng Viet khac. File nay bu lai.
+DEFAULT_OVERRIDES = Path(__file__).resolve().parents[2] / "data" / "augment_overrides.json"
+
 
 class CDragonError(RuntimeError):
     """Loi nap du lieu CommunityDragon - luon fail sang, khong bao gio nuot."""
@@ -71,6 +75,43 @@ def select_set_data(locale: dict[str, Any], mutator: str = EXPECTED_SET_NAME) ->
     )
 
 
+def apply_overrides(
+    locale: dict[str, Any], lang: str, path: str | Path | None = DEFAULT_OVERRIDES
+) -> dict[str, Any]:
+    """Gop data/augment_overrides.json vao locale. Tra ban MOI, khong sua `locale`.
+
+    Ba viec, deu tren `items`:
+        retained_items[lang] -> them lose da bi xoa khoi /latest/ (chi khi chua co)
+        live                 -> gan `live` (true/false/null) cho item; item khong
+                                ghi la live
+        vi_names (vi_vn)     -> doi `name` sang ten client live, ten CDragon giu
+                                trong `aliases` de van tra duoc
+    Thieu file hoac path=None -> tra nguyen locale.
+    """
+    if path is None or not Path(path).is_file():
+        return locale
+    spec = json.loads(Path(path).read_text(encoding="utf-8"))
+    live = {k: v for k, v in (spec.get("live") or {}).items() if not k.startswith("_")}
+    names = {k: v for k, v in (spec.get("vi_names") or {}).items() if not k.startswith("_")}
+    names = names if lang == "vi_vn" else {}
+
+    items = list(locale.get("items") or [])
+    have = {str(i.get("apiName")) for i in items}
+    items += [dict(i) for i in (spec.get("retained_items") or {}).get(lang, []) if i["apiName"] not in have]
+    out = []
+    for item in items:
+        api = str(item.get("apiName"))
+        if api in live or api in names:
+            item = dict(item)
+            if api in live:
+                item["live"] = live[api]
+            if api in names and item.get("name") != names[api]:
+                item["aliases"] = [*item.get("aliases", []), item.get("name", "")]
+                item["name"] = names[api]
+        out.append(item)
+    return {**locale, "items": out}
+
+
 @dataclass(frozen=True)
 class ChampionEntry:
     """Mot tuong trong roster Set 18."""
@@ -101,12 +142,14 @@ class CDragonClient:
             giong het nhau; "pbe" se co gia tri lai khi standalone client len PBE.
         cache_dir: noi luu file da tai.
         offline: neu True, chi doc tu cache - dung cho test khong co mang.
+        overrides: file bu cho locale (`apply_overrides`). None = locale nguyen ban.
     """
 
     branch: str = DEFAULT_BRANCH
     cache_dir: Path = field(default_factory=lambda: Path("data/cdragon_cache"))
     offline: bool = False
     timeout: int = 60
+    overrides: Path | None = DEFAULT_OVERRIDES
 
     def __post_init__(self) -> None:
         self.cache_dir = Path(self.cache_dir)
@@ -237,7 +280,7 @@ class CDragonClient:
                     f"{lang}.json cu {age_days:.0f} ngay (Last-Modified: {last_mod}). "
                     f"Nguong {MAX_LOCALE_AGE_DAYS} ngay - nghi ngo nap nham nguon hoac nguon da chet."
                 )
-        return data
+        return apply_overrides(data, lang, self.overrides)
 
     @staticmethod
     def _age_in_days(last_modified: str) -> float | None:

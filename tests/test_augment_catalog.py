@@ -50,16 +50,16 @@ def vi() -> AugmentCatalog:
 
 
 def test_catalog_size(en: AugmentCatalog, vi: AugmentCatalog) -> None:
-    """Set 18 co dung 253 augment o patch 18.5b (254 truoc do; bo 6, them 5)."""
-    assert len(en) == 253
-    assert len(vi) == 253
+    """Set 18 co dung 254 augment (apiName bat dau DA_, isAugment=true)."""
+    assert len(en) == 254
+    assert len(vi) == 254
 
 
 # --- ladder giai tier ------------------------------------------------------
 
 
 def test_tier_ladder_reproduces_measured_counts(en: AugmentCatalog) -> None:
-    """Giai het 253/253 voi dung phan bo nguon tier (do 2026-10-06, cap nhat 18.5b 2026-10-26).
+    """Giai het 254/254 voi dung phan bo nguon tier da do 2026-10-06.
 
     Ba nguon dau la ladder icon cua resolve_tier, hai nguon ke do buoc
     catalog ghi (quy tac A va B cua nguoi dung), nguon cuoi la file override.
@@ -69,25 +69,25 @@ def test_tier_ladder_reproduces_measured_counts(en: AugmentCatalog) -> None:
         "missing-tN": 38,
         "icon roman": 149,
         "icon digit": 26,
-        "variant-of-base": 32,
+        "variant-of-base": 33,
         "roman-order": 1,
         "user-override": 7,
     }
-    assert sum(counts.values()) == 253
+    assert sum(counts.values()) == 254
     assert "UNRESOLVED" not in counts
 
 
 def test_tier_distribution(en: AugmentCatalog, vi: AugmentCatalog) -> None:
-    """71 / 115 / 67 o 18.5b (2026-10-06: 70 / 115 / 69; truoc khi sua tier 62 / 132 / 60).
+    """70 / 115 / 69 sau khi sua tier 2026-10-06 (truoc do 62 / 132 / 60).
 
-    Chi voi quy tac A + B (khong override) la 69 / 117 / 67.
+    Chi voi quy tac A + B (khong override) la 68 / 117 / 69.
     """
     for cat in (en, vi):
         by_tier = {t: sum(1 for a in cat.augments if a.tier == t) for t in (1, 2, 3)}
-        assert by_tier == {1: 71, 2: 115, 3: 67}
+        assert by_tier == {1: 70, 2: 115, 3: 69}
     rules_only = AugmentCatalog(_load("en_us.trimmed.json"), tier_overrides={})
     by_tier = {t: sum(1 for a in rules_only.augments if a.tier == t) for t in (1, 2, 3)}
-    assert by_tier == {1: 69, 2: 117, 3: 67}
+    assert by_tier == {1: 68, 2: 117, 3: 69}
 
 
 def test_every_augment_has_valid_tier(en: AugmentCatalog) -> None:
@@ -112,7 +112,7 @@ def test_plus_variants_share_the_base_tier(en: AugmentCatalog) -> None:
         assert a.tier == en.get(base_api).tier, a.api_name
         assert a.tier_source == "variant-of-base"
         checked += 1
-    assert checked == 32
+    assert checked == 33
 
     # Vi du tung bi gan nguoc: ban "bac" ++ la tier 3, ban "kim cuong" + la tier 2.
     assert en.get("DA_SilverDestinyPlusPlus").tier == 1
@@ -132,8 +132,8 @@ def test_variants_without_base_are_reported_not_guessed(en: AugmentCatalog) -> N
     """7 bien the khong co ban goc trong catalog: giu tier icon va bao cao."""
     gaps = dict(en.tier_rule_gaps)
     assert set(gaps) == {
-        "DA_PandorasItemsIIPlus",       # 18.5b: ban goc la DA_PandorasItemsIIMinus
-        "DA_PandorasItemsIIPlusPlus",
+        "DA_NestingDollsPlus",
+        "DA_NestingDollsPlusPlus",
         "DA_18_WispRebatePlus",
         "DA_18_WispRebatePlusPlus",
         "DA_InvestedPlus",
@@ -252,7 +252,7 @@ def test_tiers_agree_with_datatft_lists(en: AugmentCatalog) -> None:
     """
     snapshot = json.loads(DATATFT_SNAPSHOT.read_text(encoding="utf-8"))["augments"]
     compared = [a for a in en.augments if a.api_name in snapshot]
-    assert len(compared) == 249   # 18.5b: datatft (CN) chua co 4 lose moi
+    assert len(compared) == 254
     disagree = {
         a.api_name: (a.tier, snapshot[a.api_name]["list_index"] + 1)
         for a in compared
@@ -329,13 +329,13 @@ def test_strip_tier_token() -> None:
 
 
 def test_ambiguous_group_counts(en: AugmentCatalog, vi: AugmentCatalog) -> None:
-    """Sau chuan hoa, ca hai ngon ngu deu co 3 nhom trung ten (18.5b; truoc do 5).
+    """Sau chuan hoa, ca hai ngon ngu deu co 5 nhom trung ten.
 
     Nhung EN cuu duoc 1 nhom nho tie-break phan biet hoa thuong, con VI thi
     khong - nen VI thuc su TE HON EN, dung 1 cap.
     """
-    assert len(en.ambiguous_groups) == 3
-    assert len(vi.ambiguous_groups) == 3
+    assert len(en.ambiguous_groups) == 5
+    assert len(vi.ambiguous_groups) == 5
 
 
 def test_case_tiebreak_rescues_tons_of_stats(en: AugmentCatalog) -> None:
@@ -362,11 +362,10 @@ def test_vietnamese_cannot_rescue_tons_of_stats(vi: AugmentCatalog) -> None:
 
 
 def test_truly_ambiguous_pairs_return_both_never_guess(en: AugmentCatalog) -> None:
-    """2 cap thuc su khong phan biet duoc trong EN -> luon tra CA HAI.
-
-    18.5b bo Nesting Dolls + / ++ va Consuming Flora+, nen hai cap do het map mo.
-    """
+    """4 cap thuc su khong phan biet duoc trong EN -> luon tra CA HAI."""
     truly_ambiguous = [
+        ("Nesting Dolls", {"DA_NestingDollsPlus", "DA_NestingDollsPlusPlus"}),
+        ("Consuming Flora", {"DA_18_FloraFatalisAugment", "DA_18_FloraFatalisAugmentPlus"}),
         ("Beast Within", {"DA_18_PrimalAugment_Sivir", "DA_18_PrimalAugment_Nidalee"}),
         ("Beast Within+", {"DA_18_PrimalAugmentPlus_Nidalee", "DA_18_PrimalAugmentPlus_Sivir"}),
     ]
@@ -378,7 +377,7 @@ def test_truly_ambiguous_pairs_return_both_never_guess(en: AugmentCatalog) -> No
 
 
 def test_ambiguous_pairs_break_down_by_cause(en: AugmentCatalog, vi: AugmentCatalog) -> None:
-    """Phan loai chinh xac 3 nhom map mo theo NGUYEN NHAN (18.5b; truoc do 5).
+    """Phan loai chinh xac 5 nhom map mo theo NGUYEN NHAN.
 
     Ban dau bao cao ghi "3 trong 4 cap chi khac nhau o tier". Test nay bac bo
     dieu do tren du lieu that. Sau khi sua tier 2026-10-06 (bien the `+`/`++`
@@ -397,18 +396,18 @@ def test_ambiguous_pairs_break_down_by_cause(en: AugmentCatalog, vi: AugmentCata
         k for k, g in en.ambiguous_groups.items()
         if en.match_name(g[0].name).ambiguous
     }
-    assert len(truly_lost_en) == 2
+    assert len(truly_lost_en) == 4
     assert "tons of stats!" not in truly_lost_en
 
-    # Trong 2 cap that su mat, khong cap nao khac tier.
+    # Trong 4 cap that su mat, khong cap nao khac tier.
     assert truly_lost_en & by_tier == set()
 
-    # Tieng Viet mat ca 3 - cap mat THEM chinh la cap khac tier duy nhat.
+    # Tieng Viet mat ca 5 - cap mat THEM chinh la cap khac tier duy nhat.
     truly_lost_vi = {
         k for k, g in vi.ambiguous_groups.items()
         if vi.match_name(g[0].name).ambiguous
     }
-    assert len(truly_lost_vi) == 3
+    assert len(truly_lost_vi) == 5
 
 
 # --- khop ten thong thuong -------------------------------------------------

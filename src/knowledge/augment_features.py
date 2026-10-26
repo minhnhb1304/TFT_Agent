@@ -194,6 +194,9 @@ class AugmentFeature:
     # chua trait CU THE, nen augment kieu Verticality truoc day vo hinh voi scorer.
     trait_count_reward: str | None = None
     offer_rounds: list[str] = field(default_factory=list)   # con cua OFFER_ROUNDS
+    # Con trong game khong: True / False / None = chua biet. Do tay tren client
+    # live (data/augment_overrides.json); pool reroll chi lay True.
+    live: bool | None = True
     extraction_method: str = EXTRACTOR_VERSION
     confidence: float = 0.0
 

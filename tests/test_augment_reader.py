@@ -134,7 +134,7 @@ def test_ambiguous_title_returns_multiple_api_names(name_index: NameIndex) -> No
     """Tieu de map mo phai giu du tat ca apiName va tao AugmentChoice.ambiguous = True."""
     canned = {
         "cards": [
-            {"slot": 0, "title": "Quái Thú Bên Trong", "body": "Mô tả quái thú bên trong"},
+            {"slot": 0, "title": "Búp Bê Xây Tổ", "body": "Mô tả búp bê xây tổ"},
             {"slot": 1, "title": "Băng Trộm II", "body": "Nhận 2 Găng"},
             {"slot": 2, "title": "Chỉ Một Con Đường II", "body": "Nhận SMCK"},
         ],
@@ -153,20 +153,20 @@ def test_ambiguous_title_returns_multiple_api_names(name_index: NameIndex) -> No
     assert reading.resolved() is True
     c0 = reading.cards[0]
     assert len(c0.api_names) == 2
-    assert "DA_18_PrimalAugment_Nidalee" in c0.api_names
-    assert "DA_18_PrimalAugment_Sivir" in c0.api_names
+    assert "DA_NestingDollsPlus" in c0.api_names
+    assert "DA_NestingDollsPlusPlus" in c0.api_names
     assert "mập mờ" in c0.reason.lower()
 
     choices = reading.to_choices()
     assert choices[0].ambiguous is True
-    assert set(choices[0].api_names) == {"DA_18_PrimalAugment_Nidalee", "DA_18_PrimalAugment_Sivir"}
+    assert set(choices[0].api_names) == {"DA_NestingDollsPlus", "DA_NestingDollsPlusPlus"}
 
 
 def test_api_names_flat_raises_on_ambiguity(name_index: NameIndex) -> None:
     """api_names_flat phai nem AugmentReadError khi bat ky o nao bi map mo."""
     canned = {
         "cards": [
-            {"slot": 0, "title": "Quái Thú Bên Trong", "body": "Mô tả quái thú"},
+            {"slot": 0, "title": "Búp Bê Xây Tổ", "body": "Mô tả búp bê"},
             {"slot": 1, "title": "Băng Trộm II", "body": "Nhận 2 Găng"},
             {"slot": 2, "title": "Chỉ Một Con Đường II", "body": "Nhận SMCK"},
         ],

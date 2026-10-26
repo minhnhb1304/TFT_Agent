@@ -139,6 +139,7 @@ def build_tier1(
         raw = by_api.get(aug.api_name, {})
         feat = extract_deterministic(raw, traits, tier=aug.tier)
         feat.offer_rounds = list(offer_rounds.get(aug.api_name, []))
+        feat.live = raw.get("live", True)
         features[aug.api_name] = feat
     return FeatureTable(features)
 

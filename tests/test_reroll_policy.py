@@ -623,6 +623,18 @@ def test_augments_with_unknown_rounds_stay_in_every_round_pool() -> None:
         assert {"DA_U0", "DA_U1"} <= set(names)
 
 
+def test_augments_not_live_never_enter_the_pool() -> None:
+    """live False (da bi xoa) va None (chua biet) khong bao gio duoc chao - ke ca
+    khi tat loc theo luot: pool la cua game dang chay, khong phai cua bang."""
+    table = round_table()
+    table.features["DA_E0"].live = False
+    table.features["DA_E1"].live = None
+    for flag in (True, False):
+        names = set(round_advisor(table, pool_by_offer_round=flag)
+                    .pool_distribution(2, GameState(stage="2-1")).api_names)
+        assert not {"DA_E0", "DA_E1"} & names and "DA_E2" in names
+
+
 def test_round_is_read_from_the_stage_number_not_the_exact_round() -> None:
     """Man chon augment co the duoc doc khi dong ho da sang vong sau (2-2)."""
     adv = round_advisor(pool_by_offer_round=True)

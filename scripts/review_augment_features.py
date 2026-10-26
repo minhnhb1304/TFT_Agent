@@ -49,7 +49,7 @@ from src.knowledge.augment_features import (  # noqa: E402
     CARRY_TYPES, COMPONENT_PATTERNS, GENERIC_ITEM_PATTERNS, LEGACY_CARRY_TANK, OFFER_ROUNDS, TEMPOS,
     AugmentFeature, FeatureTable, check_feature,
 )
-from src.knowledge.cdragon_client import select_set_data  # noqa: E402
+from src.knowledge.cdragon_client import apply_overrides, select_set_data  # noqa: E402
 
 PAGE = (Path(__file__).parent / "review_augment_features.html").read_text(encoding="utf-8")
 
@@ -363,7 +363,8 @@ def main(argv: list[str] | None = None) -> int:
     # Qua FeatureTable/AugmentFeature de bang shape cu (chua co categories, carry
     # "tank") cung duoc chuyen doi y nhu luc runtime.
     features = {k: f.to_dict() for k, f in FeatureTable.load(features_path).features.items()}
-    locale = json.loads((ROOT / args.locale).read_text(encoding="utf-8"))
+    locale = apply_overrides(json.loads((ROOT / args.locale).read_text(encoding="utf-8")),
+                             Path(args.locale).stem)
     flags, flags_since = load_flags((ROOT / args.flags).resolve())
     rows = build_rows(features, locale, (ROOT / args.tiers).resolve(),
                       load_datatft((ROOT / args.rounds).resolve()), flags)

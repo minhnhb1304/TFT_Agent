@@ -20,6 +20,7 @@ from src.knowledge.cdragon_client import (
     EXPECTED_TIER_DISTRIBUTION,
     CDragonClient,
     CDragonError,
+    apply_overrides,
     select_set_data,
 )
 
@@ -191,3 +192,47 @@ def test_trimmed_fixture_still_resolves(client: CDragonClient) -> None:
     """Fixture chi co mot khoi - duong nay van phai chay dung."""
     locale = json.loads((FIXTURES / "en_us.trimmed.json").read_text(encoding="utf-8"))
     assert len(select_set_data(locale)["traits"]) == 36
+
+
+# --- bu cho client live (data/augment_overrides.json) ----------------------
+
+
+def _overrides(tmp_path: Path) -> Path:
+    spec = {
+        "live": {"_note": "bo qua", "DA_Gone": False, "DA_Kept": True, "DA_Maybe": None},
+        "vi_names": {"DA_Fae": "Phình Đại"},
+        "retained_items": {"vi_vn": [{"apiName": "DA_Kept", "name": "Giữ", "isAugment": True}]},
+    }
+    path = tmp_path / "overrides.json"
+    path.write_text(json.dumps(spec, ensure_ascii=False), encoding="utf-8")
+    return path
+
+
+def test_overrides_add_retained_items_and_mark_live(tmp_path: Path) -> None:
+    locale = {"items": [{"apiName": "DA_Gone", "name": "X"}, {"apiName": "DA_Fae", "name": "Hóa Lớn"}]}
+    out = apply_overrides(locale, "vi_vn", _overrides(tmp_path))
+    by = {i["apiName"]: i for i in out["items"]}
+    assert by["DA_Kept"]["live"] is True and by["DA_Kept"]["name"] == "Giữ"
+    assert by["DA_Gone"]["live"] is False
+    assert "live" not in by["DA_Fae"]           # khong ghi = live, de mac dinh lo
+    assert len(locale["items"]) == 2 and "live" not in locale["items"][0]   # khong sua dau vao
+
+
+def test_live_vietnamese_name_wins_and_cdragon_name_stays_an_alias(tmp_path: Path) -> None:
+    locale = {"items": [{"apiName": "DA_Fae", "name": "Hóa Lớn"}]}
+    vi = apply_overrides(locale, "vi_vn", _overrides(tmp_path))["items"][0]
+    assert vi["name"] == "Phình Đại" and vi["aliases"] == ["Hóa Lớn"]
+    en = apply_overrides(locale, "en_us", _overrides(tmp_path))["items"][0]
+    assert en["name"] == "Hóa Lớn" and "aliases" not in en
+
+
+def test_retained_item_already_in_cdragon_is_not_duplicated(tmp_path: Path) -> None:
+    locale = {"items": [{"apiName": "DA_Kept", "name": "Bản CDragon"}]}
+    out = apply_overrides(locale, "vi_vn", _overrides(tmp_path))
+    assert [i["name"] for i in out["items"]] == ["Bản CDragon"]
+
+
+def test_no_overrides_file_returns_locale_untouched(tmp_path: Path) -> None:
+    locale = {"items": [{"apiName": "DA_A"}]}
+    assert apply_overrides(locale, "vi_vn", tmp_path / "khong-co.json") is locale
+    assert apply_overrides(locale, "vi_vn", None) is locale

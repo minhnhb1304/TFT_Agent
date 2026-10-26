@@ -346,7 +346,8 @@ def select_pool_members(
     uoc luong tren duoi ~6 diem. Pool that nho nhat do duoc la 23 (bac 3 o 3-2), nen
     nguong nay chi chan du lieu hong/thieu chu khong cat pool that nao.
     """
-    members = list(same_tier)
+    # Lose khong con (hoac chua biet con) trong game khong bao gio duoc chao.
+    members = [(api, f) for api, f in same_tier if getattr(f, "live", True) is True]
     if not tuning.pool_by_offer_round:
         return members, POOL_SCOPE_TIER, ""
     offer_round = offer_round_for(stage_number)

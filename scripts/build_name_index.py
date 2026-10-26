@@ -51,6 +51,17 @@ def augment_pairs(locale: dict[str, Any]) -> list[tuple[str, str]]:
     ]
 
 
+def augment_alias_pairs(locale: dict[str, Any]) -> list[tuple[str, str]]:
+    """(apiName, ten phu): ten CDragon cua lose da doi sang ten client live
+    (cdragon_client.apply_overrides). Chi vao index de tra, khong vao display/counts."""
+    return [
+        (str(i["apiName"]), str(alias))
+        for i in locale.get("items", [])
+        if str(i.get("apiName", "")).startswith("DA_") and i.get("isAugment")
+        for alias in i.get("aliases", [])
+    ]
+
+
 def trait_pairs(locale: dict[str, Any]) -> list[tuple[str, str]]:
     """(apiName, ten hien thi) cho 36 trait - qua DUNG khoi setData cua Set 18."""
     return [
@@ -116,7 +127,7 @@ def build(cache_dir: Path) -> dict[str, Any]:
             "champions": champion_pairs(locale, roster_ids),
         }
         for ns, pairs in extracted.items():
-            built = index_pairs(pairs)
+            built = index_pairs(pairs + (augment_alias_pairs(locale) if ns == "augments" else []))
             by_norm[ns][lang] = built["by_norm"]
             by_stem[ns][lang] = built["by_stem"]
             exact[ns][lang] = built["exact"]
