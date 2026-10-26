@@ -19,10 +19,10 @@ giữ phần LLM và 157 dòng audit tay), lượt chào (datatft), tag MetaTFT,
 | Thay đổi | Hệ quả |
 |---|---|
 | Bỏ 6 lõi (Consuming Flora+, Cursed Crown, Double Trouble, Nesting Dolls+/++, Pandora's Items II), thêm 5 (Expected Unexpectedness, Know Your Enemy, Pandora's Items II/II+/II++) | 254 → **253** lõi; cặp trùng tên 5 → **3** |
-| 18 lõi đổi mô tả, 57 lõi đổi chỉ số | 18 lõi này đã duyệt tay → cần đọc lại |
+| 18 lõi đổi mô tả, 57 lõi đổi chỉ số | Nhãn không ghi sức mạnh (sức mạnh theo patch ở `augment_tiers.json`), nên chỉ 7/18 đổi đủ để đổi nhãn; 11 lõi chỉ đổi số/câu chữ ghi ở `meta.skipped` |
 | datatft (máy CN) chưa có 4 lõi mới | `offer_rounds` rỗng = không lọc theo lượt; `MIN_MATCHED` 250 → 245 |
 
-**Việc của bạn — duyệt 23 lõi** (18 đổi mô tả + 5 mới), cờ nằm ở `data/eval/augment_review_patch_18_5b.json`:
+**Việc của bạn — duyệt 12 lõi** (7 đổi cơ chế + 5 mới), cờ nằm ở `data/eval/augment_review_patch_18_5b.json`:
 `.venv\Scripts\python scripts\review_augment_features.py --flags data/eval/augment_review_patch_18_5b.json`
 (trang ghi "Vòng 2" cho mọi cờ, ở đây nghĩa là vòng 18.5b). Duyệt xong → `scripts/apply_manual_review.py`.
 
