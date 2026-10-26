@@ -480,7 +480,7 @@ def test_missing_snapshot_leaves_offer_rounds_empty(locale, tmp_path) -> None:
 @pytest.mark.skipif(not COMMITTED.exists(), reason="chua sinh data/augment_features.json")
 def test_committed_table_has_offer_rounds_for_every_augment() -> None:
     loaded = FeatureTable.load(COMMITTED)
-    assert sum(1 for f in loaded.features.values() if f.offer_rounds) == 249   # 18.5b: datatft (CN) chua co 4 lose moi
+    assert sum(1 for f in loaded.features.values() if f.offer_rounds) == 252   # 18.5b: Know Your Enemy chua co nguon nao (datatft CN thieu, chua duyet tay)
     assert loaded.get("DA_HedgeFund").offer_rounds == ["2-1"]
 
 
