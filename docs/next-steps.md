@@ -2,10 +2,10 @@
 
 > Đọc mục này trước khi bắt đầu phiên mới. Lịch sử dự án: [`dev_log.md`](../dev_log.md).
 
-## ⏱️ Trạng thái 2026-10-15 — đọc mục này trước
+## ⏱️ Trạng thái 2026-10-26 — đọc mục này trước
 
 Hạn nộp: **~2027-01-20** (16 tuần từ 30-09). Trừ ngược: **4 tuần cuối viết luận văn**, **tuần 12
-đóng băng số**. 1034 test xanh.
+đóng băng số**. 1043 test xanh.
 
 > Mọi mục **§1–§7 bên dưới là LỊCH SỬ** (09-09). Chúng ghi lại phép đo đã làm, giữ để tra cứu —
 > nhưng kế hoạch hiện hành là mục này.
@@ -37,6 +37,21 @@ Có **20 video tự chơi chưa dùng** + dự kiến **10–20 video từ ngư�
 | 3 | Gắn nhãn 6 ván development (tuần 1–3) → tinh chỉnh (3–8) → gắn nhãn held-out (9–11) → chạy **một lần** (tuần 12) | [playtest-fixes/labeling-guide.md](playtest-fixes/labeling-guide.md) |
 
 ⚠️ `final_placement` **do người chơi tự khai**, không back-fill Riot API (bỏ hẳn 30-09, SPEC §12.0).
+
+**2026-10-26 — người tham gia đầu tiên (Đạt), 5 video** (Outplayed, **1728×1080 = 16:10**, tiếng Việt,
+60 fps) trong `D:\workspace	ft_record`. Đã đổi tên `dat_01`…`dat_05`; tên gốc và hạng tự khai
+(2, 2, 8, 3, 3) ở `rename_log.tsv` cùng thư mục.
+
+| # | Việc | Trạng thái |
+|---|---|---|
+| 1 | Gắn nhãn thử `dat_01` → `data/eval/playtest/dat_01.json` (3 màn, đã verify) | Xong |
+| 2 | **`dat_01` chuyển held-out → development** (dùng gắn nhãn thử + kiểm bản sửa 16:10). `dat_02–05` giữ held-out, **không chạy `eval_playtest.py`** | Ghi vào `split.json` khi tạo |
+| 3 | Vùng cắt ở 16:10 lệch (ROI lưu theo bề ngang 16:9). Đã sửa: mỗi vùng có điểm neo `center`/`left`/`right` (`DEFAULT_ANCHORS` trong `src/capture/regions.py`, vì `screen_regions.yaml` bị gitignore). 16:9 không lệch pixel nào; `dat_01`: số offer 3/4/3 đúng, tên lõi 28/30, vàng/cấp/XP đúng | Xong |
+| 4 | Ở 16:10 còn sai: **stage** màn chọn lõi (chữ tối, đọc 3-1 thay vì 3-2), **máu** 4-2, **chuỗi thắng/thua** — lỗi OCR, chỉ có 1 video để thử | Mở — người gắn nhãn sửa tay |
+| 5 | Bảng tên phụ: client đang dùng "Phình Đại", cdragon vi_vn ghi "Hóa Lớn" (`DA_18_FaeTraitAugment`) | Mở |
+| 6 | Chờ video của mình tải xong → đổi tên `<player>_NN`, tạo `split.json` (seed) | Mở |
+
+Quy tắc HUD khi gắn nhãn: điền **giá trị cuối cùng nhìn thấy trước khi màn chọn lõi hiện**, không tự tính.
 
 ### Việc code kế tiếp, theo thứ tự
 
