@@ -365,6 +365,18 @@ def test_segment_press_across_flicker_is_not_lost():
     assert screen.offers[-1].at_s == 1.25                 # khung SAU khi doi, khong phai khung cu
 
 
+def test_segment_keeps_first_offer_when_reroll_comes_before_it_settles():
+    """dat_01 2-1: the yen 0.5 s, re chuot lam o 2 nhich, roi bam doi o 2 - offer dau khong duoc mat."""
+    seq = [Sample(0.0, True, thumbs(0, 0, 0), (A, A, A)),                    # dang lat
+           Sample(0.25, True, thumbs(100, 100, 100), (A, A, A)),
+           Sample(0.5, True, thumbs(100, 109, 100), (A, A, A)),              # hover o 2
+           Sample(0.75, True, thumbs(100, 109, 100), (A, A, A)),
+           Sample(1.0, True, thumbs(100, 125, 100), (A, D, A))]              # bam doi o 2
+    seq += [Sample(1.25 + 0.25 * i, True, thumbs(100, 125, 100), (A, D, A)) for i in range(3)]
+    screen = segment_screen(seq, stable_n=3)
+    assert [(o.at_s, o.rerolled_slot, o.settled) for o in screen.offers] == [(0.75, None, False), (1.0, 1, True)]
+
+
 def test_segment_none_without_screen():
     assert segment_screen([Sample(0.0, False)]) is None
 

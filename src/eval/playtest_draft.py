@@ -18,6 +18,8 @@ Thuat toan, cho moi mau (t, co man?, trang thai 3 nut, anh thu nho 3 o):
        co su kien nut -> van la offer moi, KHONG gan rerolled_slot.
     5. Man dong (hoac hinh nhap nhay) truoc khi the kip yen ma van co man chua
        chot / o da bam chua chot -> lay mau IT CHUYEN DONG NHAT, settled=False.
+       Bam doi khi chua chot offer nao cung vay: offer dau lay tu mau yen nhat
+       TRUOC luc bam, khong bo.
 """
 
 from __future__ import annotations
@@ -104,6 +106,12 @@ def segment_screen(
         # So nut voi mau CO MAN truoc do, ke ca khi giua chung hinh nhap nhay mat man.
         pressed = _pressed_slots(samples[prev].buttons, samples[cur].buttons) if prev is not None else []
         if pressed:
+            if committed is None and since_change:
+                # Bam doi truoc khi the kip yen du stable_n mau (dat_01 2-1: yen 0,5 s,
+                # hover lam dem lai, roi bam) - offer dau van ton tai, lay mau yen nhat.
+                first = _calmest(samples, since_change)
+                offers.append(DraftOffer(samples[first].t, first, settled=False))
+                committed = samples[first].thumbs
             pending += pressed
             since_change = []               # the doi SAU khi bam - khung truoc do la noi dung cu
         else:
