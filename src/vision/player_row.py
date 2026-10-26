@@ -19,9 +19,10 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from ..capture.regions import ScreenRegions
+from ..capture.regions import ScreenRegions, anchor_x
 
-# Ty le do tren khung 1920x1080 cua ban record. Cot avatar nam sat mep phai.
+# Ty le do tren khung 1920x1080 cua ban record. Cot avatar nam sat mep phai -
+# quy doi bang anchor_x(..., "right") de dung ca o khung khac 16:9.
 AVATAR_COLUMN = (0.920, 1.000)      # x tu - den
 PANEL_ROWS = (0.10, 0.92)           # y tu - den, bo ra ngoai vung chu chay chu
 HP_BOX = (0.906, 0.945)             # x cua o so mau, nam ben trai avatar
@@ -57,7 +58,7 @@ def find_player_row(image: np.ndarray, regions: ScreenRegions | None = None) -> 
         return None
     h, w = image.shape[:2]
     y0, y1 = int(PANEL_ROWS[0] * h), int(PANEL_ROWS[1] * h)
-    x0, x1 = int(AVATAR_COLUMN[0] * w), int(AVATAR_COLUMN[1] * w)
+    x0, x1 = (int(anchor_x(v, w, h, "right")) for v in AVATAR_COLUMN)
     strip = image[y0:y1, x0:x1]
     if strip.size == 0:
         return None
@@ -67,7 +68,7 @@ def find_player_row(image: np.ndarray, regions: ScreenRegions | None = None) -> 
     if count < 2:
         return None
 
-    scale = w / 1920.0
+    scale = h / 1080.0                  # UI co theo chieu cao
     best: PlayerRow | None = None
     for index in range(1, count):
         area = int(stats[index, cv2.CC_STAT_AREA])
@@ -90,4 +91,5 @@ def hp_box(image: np.ndarray, row: PlayerRow) -> np.ndarray:
     half = HP_BOX_HEIGHT // 2
     top = max(0, row.center_y - half)
     bottom = min(h, row.center_y + half)
-    return image[top:bottom, int(HP_BOX[0] * w):int(HP_BOX[1] * w)]
+    x0, x1 = (int(anchor_x(v, w, h, "right")) for v in HP_BOX)
+    return image[top:bottom, x0:x1]

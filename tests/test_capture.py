@@ -61,6 +61,47 @@ def test_regions_that_touch_edge_to_edge_do_not_intersect() -> None:
     assert left.intersects(Region(0.49, 0.0, 0.5, 1.0))
 
 
+@pytest.mark.parametrize("size", [(1920, 1080), (1280, 720), (3840, 2160)])
+def test_every_anchor_is_unchanged_on_16_9(size) -> None:
+    """Diem neo khong duoc dich mot pixel nao tren khung da hieu chuan."""
+    regions = ScreenRegions.load("config/screen_regions.s7h-jHMpFmQ.yaml")    # file duoc track
+    anchored = 0
+    for boxes in regions.screens.values():
+        for box in boxes.values():
+            anchored += box.anchor != "stretch"
+            plain = Region(box.x, box.y, box.w, box.h)
+            assert box.to_pixels(*size) == plain.to_pixels(*size)
+    assert anchored == 17                      # neo mac dinh da ap khi YAML khong ghi
+
+
+def test_blockers_and_unknown_regions_stay_stretched() -> None:
+    regions = ScreenRegions.load("config/screen_regions.s7h-jHMpFmQ.yaml")
+    assert regions.blockers["stream_chat"].anchor == "stretch"
+    assert regions.region("augment_select", "reroll_0").anchor == "center"
+    assert regions.region("hud", "opponents").anchor == "right"
+
+
+def test_center_anchor_keeps_ui_size_and_centres_it_on_16_10() -> None:
+    """Do tren record 1728x1080: nut doi o trai that o x ~404 px, rong ~100 px."""
+    reroll_0 = Region(0.260417, 0.772222, 0.052083, 0.048148, anchor="center")
+    left, top, right, bottom = reroll_0.to_pixels(1728, 1080)
+    assert abs(left - 404) <= 1 and abs((right - left) - 100) <= 1
+    assert (top, bottom) == Region(0.260417, 0.772222, 0.052083, 0.048148).to_pixels(1728, 1080)[1::2]
+
+
+def test_edge_anchors_stick_to_their_edge_on_16_10() -> None:
+    assert Region(0.0, 0.2, 0.12, 0.5, anchor="left").to_pixels(1728, 1080)[0] == 0
+    assert Region(0.88, 0.2, 0.12, 0.5, anchor="right").to_pixels(1728, 1080)[2] == 1728
+    # bang nguoi choi giu nguyen be ngang, khong co lai theo man hep
+    left, _, right, _ = Region(0.88, 0.2, 0.12, 0.5, anchor="right").to_pixels(1728, 1080)
+    assert abs((right - left) - round(0.12 * 1920)) <= 1
+
+
+def test_unknown_anchor_is_rejected() -> None:
+    with pytest.raises(RegionError, match="anchor"):
+        Region(0.1, 0.1, 0.1, 0.1, anchor="middle")
+
+
 def test_crop_returns_the_requested_pixels() -> None:
     image = np.arange(100 * 200 * 3, dtype=np.uint8).reshape(100, 200, 3)
     piece = crop(image, Region.from_pixels(10, 20, 30, 40, 200, 100))
@@ -88,6 +129,17 @@ def test_yaml_round_trip_preserves_geometry(tmp_path) -> None:
     loaded = ScreenRegions.load(p)
     assert loaded.region("hud", "gold").to_pixels(1920, 1080) == (1022, 882, 1058, 910)
     assert loaded.meta["set"] == "TFTSet18"
+
+
+def test_yaml_round_trip_preserves_anchor(tmp_path) -> None:
+    regions = _regions()
+    regions.screens["hud"]["stage"] = Region(0.4, 0.0, 0.02, 0.03, anchor="left")   # ghi de mac dinh
+    p = tmp_path / "screen_regions.yaml"
+    p.write_text(regions.to_yaml(), encoding="utf-8")
+    loaded = ScreenRegions.load(p)
+    assert loaded.region("hud", "stage").anchor == "left"
+    assert loaded.region("hud", "gold").anchor == "center"          # khong ghi -> mac dinh
+    assert loaded.blockers["stream_chat"].anchor == "stretch"
 
 
 def test_missing_file_says_how_to_generate_it(tmp_path) -> None:

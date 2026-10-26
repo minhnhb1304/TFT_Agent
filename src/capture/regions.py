@@ -16,6 +16,19 @@ qua 2026-08-26 khi Set 18 chuyen sang Unreal. Do lai tren frame Set 18 that
 200..700 - tuc la neu dung so cu thi ROI se an vao overlay chat cua stream o
 y 200..215 va doc phai chu cua nguoi xem.
 
+TI LE KHUNG KHAC 16:9 - MOI VUNG CO MOT DIEM NEO
+
+Ti le 0..1 chi dung khi khung cung ti le voi khung tham chieu (16:9). TFT
+khong gian giao dien theo chieu ngang: no co UI theo CHIEU CAO roi dat vao
+giua (the, nut, cua hang), sat mep trai (bang toc) hoac sat mep phai (bang
+nguoi choi). Do tren record 16:10 (1728x1080, 2026-10-26): nut doi o trai
+that o x ~404 px, con `x * width` cho 450 px - lech gan nua nut.
+
+`anchor` noi vung bam vao dau: `center` / `left` / `right` quy doi theo chieu
+cao; `stretch` giu cach cu, cho vung khong thuoc UI cua game (khung chat cua
+stream). Mac dinh theo ten vung o `DEFAULT_ANCHORS`. O 16:9 moi diem neo cho
+DUNG cung mot ket qua.
+
 ROI KHONG DUOC GIAO VOI VUNG BI CHE
 
 `config/settings.yaml` co `capture.assert_roi_disjoint_from_overlay: true`.
@@ -38,16 +51,54 @@ class RegionError(ValueError):
     """File ROI thieu, sai dinh dang, hoac ROI nam ngoai khung hinh."""
 
 
+REFERENCE_ASPECT = 16 / 9       # khung da hieu chuan ROI (meta.reference_size = 1920x1080)
+ANCHORS = ("stretch", "left", "center", "right")
+
+# Diem neo la bo cuc cua GAME, khong phai ket qua hieu chuan, nen nam o day chu
+# khong nam trong screen_regions.yaml (file do do calibrate.py sinh va bi
+# .gitignore - neo ghi vao do se mat o may khac va o lan hieu chuan sau).
+# YAML van ghi de duoc bang khoa `anchor`. Vung khong co ten o day: `stretch`.
+DEFAULT_ANCHORS: dict[str, dict[str, str]] = {
+    "hud": {
+        "stage": "center", "gold": "center", "level": "center", "xp": "center",
+        "shop": "center", "bench": "center", "board": "center",
+        "traits": "left", "hp": "right", "opponents": "right",
+    },
+    "augment_select": {
+        "reroll_0": "center", "reroll_1": "center", "reroll_2": "center",
+        "card_text_0": "center", "card_text_1": "center", "card_text_2": "center",
+        "cards": "center",
+    },
+}
+
+
+def anchor_x(x: float, width: int, height: int, anchor: str = "stretch") -> float:
+    """Toa do ngang ti le tren khung 16:9 -> pixel tren khung `width` x `height`."""
+    if anchor not in ANCHORS:
+        raise RegionError(f"anchor '{anchor}' khong hop le, chon trong {ANCHORS}")
+    ui = REFERENCE_ASPECT * height          # be ngang cua UI khi co theo chieu cao
+    if anchor == "stretch" or abs(ui - width) < 0.5:
+        return x * width                    # khung 16:9: dung cong thuc cu, khong lech 1 px nao
+    if anchor == "left":
+        return x * ui
+    if anchor == "right":
+        return width - (1.0 - x) * ui
+    return width / 2 + (x - 0.5) * ui       # center
+
+
 @dataclass(frozen=True)
 class Region:
-    """Mot hinh chu nhat theo ti le khung hinh (0..1)."""
+    """Mot hinh chu nhat theo ti le khung 16:9 (0..1), kem diem neo ngang."""
 
     x: float
     y: float
     w: float
     h: float
+    anchor: str = "stretch"
 
     def __post_init__(self) -> None:
+        if self.anchor not in ANCHORS:
+            raise RegionError(f"anchor '{self.anchor}' khong hop le, chon trong {ANCHORS}")
         for name, v in (("x", self.x), ("y", self.y), ("w", self.w), ("h", self.h)):
             if not 0.0 <= v <= 1.0:
                 raise RegionError(f"{name}={v} nam ngoai 0..1")
@@ -74,15 +125,20 @@ class Region:
         mang RONG va cv2 nem mot loi kho hieu o tan sau. Kep o day de loi (neu
         co) hien ra dung cho no sinh ra.
         """
-        left = max(0, min(int(round(self.x * width)), max(0, width - 1)))
+        x0 = anchor_x(self.x, width, height, self.anchor)
+        span = anchor_x(self.x + self.w, width, height, self.anchor) - x0
+        left = max(0, min(int(round(x0)), max(0, width - 1)))
         top = max(0, min(int(round(self.y * height)), max(0, height - 1)))
-        right = min(width, max(left + 1, left + int(round(self.w * width))))
+        right = min(width, max(left + 1, left + int(round(span))))
         bottom = min(height, max(top + 1, top + int(round(self.h * height))))
         return left, top, right, bottom
 
-    def to_dict(self) -> dict[str, float]:
-        return {"x": round(self.x, 6), "y": round(self.y, 6),
-                "w": round(self.w, 6), "h": round(self.h, 6)}
+    def to_dict(self) -> dict[str, float | str]:
+        out: dict[str, float | str] = {"x": round(self.x, 6), "y": round(self.y, 6),
+                                       "w": round(self.w, 6), "h": round(self.h, 6)}
+        if self.anchor != "stretch":
+            out["anchor"] = self.anchor
+        return out
 
     def intersects(self, other: "Region") -> bool:
         return not (
@@ -131,7 +187,9 @@ class ScreenRegions:
                 raise RegionError(f"{where}.{name} thieu khoa: {sorted(missing)}")
             try:
                 return Region(x=float(box["x"]), y=float(box["y"]),
-                              w=float(box["w"]), h=float(box["h"]))
+                              w=float(box["w"]), h=float(box["h"]),
+                              anchor=str(box.get("anchor") or
+                                         DEFAULT_ANCHORS.get(where, {}).get(name, "stretch")))
             except (TypeError, ValueError) as exc:
                 raise RegionError(f"{where}.{name} co gia tri khong phai so: {exc}") from exc
 

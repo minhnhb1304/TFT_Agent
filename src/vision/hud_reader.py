@@ -16,7 +16,7 @@ from typing import Any, Callable, Literal
 
 import numpy as np
 
-from ..capture.regions import ScreenRegions
+from ..capture.regions import ScreenRegions, anchor_x
 from ..game_state.models import RE_STAGE
 from .ocr_engine import DigitRead, engine, read_digits
 from .preprocess import binarize_for_ocr, brighten_dimmed, hud_bar_present, ocr_texts
@@ -29,10 +29,15 @@ HUD_FIELDS: tuple[HudField, ...] = ("stage", "gold", "level", "xp", "hp", "strea
 # Chuoi thang/thua: SO nam ben phai bieu tuong lua, DAU nam o MAU bieu tuong -
 # lua cam la thang lien tiep, lua xanh la thua lien tiep. Do tren ban record
 # 2026-09-16: hue 8-22 khi thang, 94-105 khi thua, khong bieu tuong khi chuoi = 0.
-STREAK_NUMBER = (0.590, 0.612, 0.809, 0.841)      # x0, x1, y0, y1 theo ty le khung
+STREAK_NUMBER = (0.590, 0.612, 0.809, 0.841)      # x0, x1, y0, y1 theo ty le khung 16:9, neo giua
 STREAK_ICON = (0.578, 0.591, 0.812, 0.838)
 STREAK_WIN_HUE = 40
 STREAK_MIN_ICON_PX = 20
+
+
+def _cx(x: float, w: int, h: int) -> int:
+    """Toa do ngang cua o chuoi (giua man hinh, ngay canh o vang) tren khung bat ky."""
+    return int(anchor_x(x, w, h, "center"))
 
 # Truong doc theo ty le khung thay vi ROI trong config (them sau khi config da chot).
 FRACTION_FIELDS: tuple[HudField, ...] = ("streak",)
@@ -340,7 +345,7 @@ class HudReader:
     def _streak_crop(self, frame: np.ndarray) -> np.ndarray:
         h, w = frame.shape[:2]
         nx0, nx1, ny0, ny1 = STREAK_NUMBER
-        return frame[int(ny0 * h):int(ny1 * h), int(nx0 * w):int(nx1 * w)]
+        return frame[int(ny0 * h):int(ny1 * h), _cx(nx0, w, h):_cx(nx1, w, h)]
 
     def _read_hp_row(self, frame: np.ndarray, _static_crop: np.ndarray, t0: float) -> FieldRead:
         """Doc mau cua NGUOI CHOI, tim dong bang vong tron vang quanh avatar.
@@ -371,7 +376,7 @@ class HudReader:
         h, w = frame.shape[:2]
         nx0, nx1, ny0, ny1 = STREAK_NUMBER
         ix0, ix1, iy0, iy1 = STREAK_ICON
-        icon = frame[int(iy0 * h):int(iy1 * h), int(ix0 * w):int(ix1 * w)]
+        icon = frame[int(iy0 * h):int(iy1 * h), _cx(ix0, w, h):_cx(ix1, w, h)]
         hsv = cv2.cvtColor(icon, cv2.COLOR_BGR2HSV)
         lit = (hsv[..., 1] > 110) & (hsv[..., 2] > 90)
 
