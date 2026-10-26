@@ -585,7 +585,8 @@
     "{9b25dff5}": 0.15000000596046448
    },
    "associatedTraits": [],
-   "isAugment": true
+   "isAugment": true,
+   "live": false
   },
   {
    "apiName": "DA_GlassCannon_Gold",
@@ -2978,6 +2979,72 @@
    },
    "associatedTraits": [],
    "isAugment": true
+  },
+  {
+   "apiName": "DA_CursedCrown",
+   "name": "Cursed Crown",
+   "desc": "Gain +@MaxArmySizeIncrease@ max team size and your team gains @DurabilityBonus*100@% Durability, but you take double player damage when you lose a player combat.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/cursedcrown-iii.tex",
+   "effects": {
+    "DurabilityBonus": 0.04000002145767212,
+    "MaxArmySizeIncrease": 2.0
+   },
+   "associatedTraits": [],
+   "isAugment": true,
+   "live": true
+  },
+  {
+   "apiName": "DA_DoubleTrouble",
+   "name": "Double Trouble",
+   "desc": "When you field exactly 2 copies of a champion, they both gain @DamageStatAdd*100@% Attack Damage and Ability Power and @DefenseStatAdd@ Armor, and Magic Resist. When you 3-star, gain a 2-star copy.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/double-trouble-ii.tex",
+   "effects": {
+    "{14ae3030}": 25.0,
+    "{65020e89}": 0.25
+   },
+   "associatedTraits": [],
+   "isAugment": true,
+   "live": false
+  },
+  {
+   "apiName": "DA_NestingDollsPlus",
+   "name": "Nesting Dolls",
+   "desc": "After a champion dies in combat, spawn a copy of them one star level lower with @HealthMultiplier*100@% health. Gain @NumRerolls@ free rerolls.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+   "effects": {
+    "NumRerolls": 3.0,
+    "{52fcdfb4}": 0.6000000238418579
+   },
+   "associatedTraits": [],
+   "isAugment": true,
+   "live": false
+  },
+  {
+   "apiName": "DA_NestingDollsPlusPlus",
+   "name": "Nesting Dolls",
+   "desc": "After a champion dies in combat, spawn a copy of them one star level lower with @HealthMultiplier*100@% health. Gain @NumRerolls@ free rerolls.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+   "effects": {
+    "NumRerolls": 3.0,
+    "{52fcdfb4}": 0.6000000238418579
+   },
+   "associatedTraits": [],
+   "isAugment": true,
+   "live": false
+  },
+  {
+   "apiName": "DA_18_FloraFatalisAugmentPlus",
+   "name": "Consuming Flora",
+   "desc": "Gain a Flora Fatalis emblem. The champion holding the emblem gains double benefits from the Flora Fatalis trait. Gain @PlusGold@ gold.",
+   "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+   "effects": {
+    "{22830bc3}": 3.0
+   },
+   "associatedTraits": [
+    "DA_FloraFatalis18"
+   ],
+   "isAugment": true,
+   "live": null
   }
  ],
  "setData": [

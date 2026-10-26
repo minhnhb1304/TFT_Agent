@@ -212,7 +212,7 @@ def test_emblem_grant_alone_is_not_a_trait_count_reward() -> None:
 
 
 def test_table_covers_every_augment(table, locale) -> None:
-    assert len(table) == 253
+    assert len(table) == 258
     assert len(table) == len(AugmentCatalog(locale).augments)
 
 
@@ -236,9 +236,8 @@ def test_tier_comes_from_the_catalog_ladder(table, locale) -> None:
 
 
 def test_trait_affinity_matches_measured_count(table) -> None:
-    """Do duoc: dung 19/253 augment co associatedTraits (18.5b bo Consuming Flora+;
-    truoc do 20/254), va van ban khong them cai nao."""
-    assert sum(1 for f in table.features.values() if f.trait_affinity) == 19
+    """Do duoc: dung 20/258 augment co associatedTraits, va van ban khong them cai nao."""
+    assert sum(1 for f in table.features.values() if f.trait_affinity) == 20
 
 
 def test_trait_count_reward_matches_audited_set(table) -> None:
@@ -370,7 +369,7 @@ def test_llm_prompt_defines_econ_value_without_items() -> None:
 @pytest.mark.skipif(not COMMITTED.exists(), reason="chua sinh data/augment_features.json")
 def test_loader_round_trips_the_committed_file() -> None:
     loaded = FeatureTable.load(COMMITTED)
-    assert len(loaded) == 253
+    assert len(loaded) == 258
     assert loaded.meta["extractor_version"] == EXTRACTOR_VERSION
     assert isinstance(loaded.get("DA_18_BigGrabBag"), AugmentFeature)
 
@@ -480,7 +479,7 @@ def test_missing_snapshot_leaves_offer_rounds_empty(locale, tmp_path) -> None:
 @pytest.mark.skipif(not COMMITTED.exists(), reason="chua sinh data/augment_features.json")
 def test_committed_table_has_offer_rounds_for_every_augment() -> None:
     loaded = FeatureTable.load(COMMITTED)
-    assert sum(1 for f in loaded.features.values() if f.offer_rounds) == 252   # 18.5b: Know Your Enemy chua co nguon nao (datatft CN thieu, chua duyet tay)
+    assert sum(1 for f in loaded.features.values() if f.offer_rounds) == 256   # thieu Know Your Enemy, Consuming Flora+: datatft (CN) khong co, chua duyet tay
     assert loaded.get("DA_HedgeFund").offer_rounds == ["2-1"]
 
 

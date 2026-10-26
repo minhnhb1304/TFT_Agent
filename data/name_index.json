@@ -182,7 +182,8 @@
           "DA_ConstructACompanion"
         ],
         "consuming flora": [
-          "DA_18_FloraFatalisAugment"
+          "DA_18_FloraFatalisAugment",
+          "DA_18_FloraFatalisAugmentPlus"
         ],
         "cooking pot": [
           "DA_CookingPot"
@@ -202,6 +203,9 @@
         "cry me a river": [
           "DA_CryMeARiver"
         ],
+        "cursed crown": [
+          "DA_CursedCrown"
+        ],
         "cybernetic implants": [
           "DA_CyberneticImplants_Gold"
         ],
@@ -216,6 +220,9 @@
         ],
         "deadlier caps": [
           "DA_DeadlierCaps"
+        ],
+        "double trouble": [
+          "DA_DoubleTrouble"
         ],
         "dummify": [
           "DA_Dummify"
@@ -483,6 +490,10 @@
         ],
         "nesting anvils+": [
           "DA_NestingAnvilsPlus"
+        ],
+        "nesting dolls": [
+          "DA_NestingDollsPlus",
+          "DA_NestingDollsPlusPlus"
         ],
         "no scout no pivot": [
           "DA_NoScoutNoPivot"
@@ -802,6 +813,10 @@
         "bung chay": [
           "DA_18_InfernoTraitAugment"
         ],
+        "bup be xay to": [
+          "DA_NestingDollsPlus",
+          "DA_NestingDollsPlusPlus"
+        ],
         "cam re phan tan": [
           "DA_SpreadingRoots"
         ],
@@ -810,6 +825,9 @@
         ],
         "cam thay may man": [
           "DA_FeelingLucky"
+        ],
+        "cap doi hoan canh": [
+          "DA_DoubleTrouble"
         ],
         "cau hoi phuc i": [
           "DA_HealingOrbsI"
@@ -1016,6 +1034,15 @@
         "hop pandora i": [
           "DA_PandorasItemsI"
         ],
+        "hop pandora ii": [
+          "DA_PandorasItemsIIMinus"
+        ],
+        "hop pandora ii+": [
+          "DA_PandorasItemsIIPlus"
+        ],
+        "hop pandora ii++": [
+          "DA_PandorasItemsIIPlusPlus"
+        ],
         "hop pandora iii": [
           "DA_PandorasItemsIII"
         ],
@@ -1205,6 +1232,9 @@
         "phan phoi tuong++": [
           "DA_ChampDeliveryPlusPlus"
         ],
+        "phinh dai": [
+          "DA_18_FaeTraitAugment"
+        ],
         "phuoc lanh vu tru i": [
           "DA_CelestialBlessingI"
         ],
@@ -1337,7 +1367,8 @@
           "DA_SoulAwakening"
         ],
         "thuc vat hap thu": [
-          "DA_18_FloraFatalisAugment"
+          "DA_18_FloraFatalisAugment",
+          "DA_18_FloraFatalisAugmentPlus"
         ],
         "thue nhan thuc": [
           "DA_CognitiveTax"
@@ -1355,6 +1386,9 @@
           "DA_FindYourCenter"
         ],
         "tieng goi hoa linh": [
+          "DA_18_BlossomTraitAugment"
+        ],
+        "tieng goi hoa no": [
           "DA_18_BlossomTraitAugment"
         ],
         "tiep te trang bi i": [
@@ -1488,6 +1522,9 @@
         ],
         "ve kim cuong": [
           "DA_PrismaticTicket"
+        ],
+        "vuong mien hac hoa": [
+          "DA_CursedCrown"
         ],
         "vuot thoi gian": [
           "DA_TimeSkip"
@@ -2282,7 +2319,8 @@
           "DA_ConstructACompanion"
         ],
         "consuming flora": [
-          "DA_18_FloraFatalisAugment"
+          "DA_18_FloraFatalisAugment",
+          "DA_18_FloraFatalisAugmentPlus"
         ],
         "cooking pot": [
           "DA_CookingPot"
@@ -2302,6 +2340,9 @@
         "cry me a river": [
           "DA_CryMeARiver"
         ],
+        "cursed crown": [
+          "DA_CursedCrown"
+        ],
         "cybernetic implants": [
           "DA_CyberneticImplants_Gold"
         ],
@@ -2316,6 +2357,9 @@
         ],
         "deadlier caps": [
           "DA_DeadlierCaps"
+        ],
+        "double trouble": [
+          "DA_DoubleTrouble"
         ],
         "dummify": [
           "DA_Dummify"
@@ -2547,6 +2591,10 @@
         "nesting anvils": [
           "DA_NestingAnvils",
           "DA_NestingAnvilsPlus"
+        ],
+        "nesting dolls": [
+          "DA_NestingDollsPlus",
+          "DA_NestingDollsPlusPlus"
         ],
         "no scout no pivot": [
           "DA_NoScoutNoPivot"
@@ -2822,12 +2870,19 @@
         "bung chay": [
           "DA_18_InfernoTraitAugment"
         ],
+        "bup be xay to": [
+          "DA_NestingDollsPlus",
+          "DA_NestingDollsPlusPlus"
+        ],
         "cam re phan tan": [
           "DA_SpreadingRoots",
           "DA_SpreadingRootsPlus"
         ],
         "cam thay may man": [
           "DA_FeelingLucky"
+        ],
+        "cap doi hoan canh": [
+          "DA_DoubleTrouble"
         ],
         "cau hoi phuc": [
           "DA_HealingOrbsI",
@@ -2999,7 +3054,10 @@
         ],
         "hop pandora": [
           "DA_PandorasItemsI",
-          "DA_PandorasItemsIII"
+          "DA_PandorasItemsIII",
+          "DA_PandorasItemsIIMinus",
+          "DA_PandorasItemsIIPlus",
+          "DA_PandorasItemsIIPlusPlus"
         ],
         "huan luyen can ve": [
           "DA_BodyguardTraining"
@@ -3167,6 +3225,9 @@
           "DA_ChampDeliveryPlus",
           "DA_ChampDeliveryPlusPlus"
         ],
+        "phinh dai": [
+          "DA_18_FaeTraitAugment"
+        ],
         "phuoc lanh vu tru": [
           "DA_CelestialBlessingI",
           "DA_CelestialBlessingII",
@@ -3285,7 +3346,8 @@
           "DA_SoulAwakening"
         ],
         "thuc vat hap thu": [
-          "DA_18_FloraFatalisAugment"
+          "DA_18_FloraFatalisAugment",
+          "DA_18_FloraFatalisAugmentPlus"
         ],
         "thue nhan thuc": [
           "DA_CognitiveTax",
@@ -3301,6 +3363,9 @@
           "DA_FindYourCenter"
         ],
         "tieng goi hoa linh": [
+          "DA_18_BlossomTraitAugment"
+        ],
+        "tieng goi hoa no": [
           "DA_18_BlossomTraitAugment"
         ],
         "tiep te trang bi": [
@@ -3408,6 +3473,9 @@
         ],
         "ve kim cuong": [
           "DA_PrismaticTicket"
+        ],
+        "vuong mien hac hoa": [
+          "DA_CursedCrown"
         ],
         "vuot thoi gian": [
           "DA_TimeSkip"
@@ -4059,7 +4127,7 @@
       },
       "DA_18_BlossomTraitAugment": {
         "en": "Blossom's Call",
-        "vi": "Tiếng Gọi Hoa Linh"
+        "vi": "Tiếng Gọi Hoa Nở"
       },
       "DA_18_BranchingOut": {
         "en": "Branching Out",
@@ -4095,9 +4163,13 @@
       },
       "DA_18_FaeTraitAugment": {
         "en": "Embiggen",
-        "vi": "Hóa Lớn"
+        "vi": "Phình Đại"
       },
       "DA_18_FloraFatalisAugment": {
+        "en": "Consuming Flora",
+        "vi": "Thực Vật Hấp Thụ"
+      },
+      "DA_18_FloraFatalisAugmentPlus": {
         "en": "Consuming Flora",
         "vi": "Thực Vật Hấp Thụ"
       },
@@ -4413,6 +4485,10 @@
         "en": "Cry Me A River",
         "vi": "Giọt Lệ Bi Ai"
       },
+      "DA_CursedCrown": {
+        "en": "Cursed Crown",
+        "vi": "Vương Miện Hắc Hóa"
+      },
       "DA_CyberneticImplants_Gold": {
         "en": "Cybernetic Implants",
         "vi": "Cấy Ghép Siêu Công Nghệ"
@@ -4428,6 +4504,10 @@
       "DA_DeadlierCaps": {
         "en": "Deadlier Caps",
         "vi": "Mũ Tử Thần"
+      },
+      "DA_DoubleTrouble": {
+        "en": "Double Trouble",
+        "vi": "Cặp Đôi Hoàn Cảnh"
       },
       "DA_Dummify": {
         "en": "Dummify",
@@ -4757,6 +4837,14 @@
         "en": "Nesting Anvils+",
         "vi": "Gói Trang Bị Bất Ngờ+"
       },
+      "DA_NestingDollsPlus": {
+        "en": "Nesting Dolls",
+        "vi": "Búp Bê Xây Tổ"
+      },
+      "DA_NestingDollsPlusPlus": {
+        "en": "Nesting Dolls",
+        "vi": "Búp Bê Xây Tổ"
+      },
       "DA_NoScoutNoPivot": {
         "en": "NO SCOUT NO PIVOT",
         "vi": "NHẮM MẮT CHƠI BỪA"
@@ -4779,15 +4867,15 @@
       },
       "DA_PandorasItemsIIMinus": {
         "en": "Pandora's Items II",
-        "vi": "Trang Bị Pandora II"
+        "vi": "Hộp Pandora II"
       },
       "DA_PandorasItemsIIPlus": {
         "en": "Pandora's Items II+",
-        "vi": "Trang Bị Pandora II+"
+        "vi": "Hộp Pandora II+"
       },
       "DA_PandorasItemsIIPlusPlus": {
         "en": "Pandora's Items II++",
-        "vi": "Trang Bị Pandora II++"
+        "vi": "Hộp Pandora II++"
       },
       "DA_PartialAscension": {
         "en": "Partial Ascension",
@@ -5658,7 +5746,8 @@
           "DA_ConstructACompanion"
         ],
         "Consuming Flora": [
-          "DA_18_FloraFatalisAugment"
+          "DA_18_FloraFatalisAugment",
+          "DA_18_FloraFatalisAugmentPlus"
         ],
         "Cooking Pot": [
           "DA_CookingPot"
@@ -5678,6 +5767,9 @@
         "Cry Me A River": [
           "DA_CryMeARiver"
         ],
+        "Cursed Crown": [
+          "DA_CursedCrown"
+        ],
         "Cybernetic Implants": [
           "DA_CyberneticImplants_Gold"
         ],
@@ -5692,6 +5784,9 @@
         ],
         "Deadlier Caps": [
           "DA_DeadlierCaps"
+        ],
+        "Double Trouble": [
+          "DA_DoubleTrouble"
         ],
         "Dummify": [
           "DA_Dummify"
@@ -5962,6 +6057,10 @@
         ],
         "Nesting Anvils+": [
           "DA_NestingAnvilsPlus"
+        ],
+        "Nesting Dolls": [
+          "DA_NestingDollsPlus",
+          "DA_NestingDollsPlusPlus"
         ],
         "Omega Riftbeast": [
           "DA_18_RiftbeastTraitAugment"
@@ -6253,6 +6352,10 @@
         "Bùng Cháy": [
           "DA_18_InfernoTraitAugment"
         ],
+        "Búp Bê Xây Tổ": [
+          "DA_NestingDollsPlus",
+          "DA_NestingDollsPlusPlus"
+        ],
         "Băng Trộm": [
           "DA_BandOfThieves"
         ],
@@ -6346,6 +6449,9 @@
         "Cắm Rễ Phân Tán+": [
           "DA_SpreadingRootsPlus"
         ],
+        "Cặp Đôi Hoàn Cảnh": [
+          "DA_DoubleTrouble"
+        ],
         "Cố Gắng Lật Kèo": [
           "DA_ComebackStory"
         ],
@@ -6433,6 +6539,15 @@
         ],
         "Hộp Pandora I": [
           "DA_PandorasItemsI"
+        ],
+        "Hộp Pandora II": [
+          "DA_PandorasItemsIIMinus"
+        ],
+        "Hộp Pandora II+": [
+          "DA_PandorasItemsIIPlus"
+        ],
+        "Hộp Pandora II++": [
+          "DA_PandorasItemsIIPlusPlus"
         ],
         "Hộp Pandora III": [
           "DA_PandorasItemsIII"
@@ -6611,6 +6726,9 @@
         "Phân Phối Tướng++": [
           "DA_ChampDeliveryPlusPlus"
         ],
+        "Phình Đại": [
+          "DA_18_FaeTraitAugment"
+        ],
         "Phước Lành Vũ Trụ I": [
           "DA_CelestialBlessingI"
         ],
@@ -6725,7 +6843,8 @@
           "DA_SoulAwakening"
         ],
         "Thực Vật Hấp Thụ": [
-          "DA_18_FloraFatalisAugment"
+          "DA_18_FloraFatalisAugment",
+          "DA_18_FloraFatalisAugmentPlus"
         ],
         "Tinh Linh Hoàn Tiền": [
           "DA_18_WispRebatePlus"
@@ -6740,6 +6859,9 @@
           "DA_ShimmerscaleEssence"
         ],
         "Tiếng Gọi Hoa Linh": [
+          "DA_18_BlossomTraitAugment"
+        ],
+        "Tiếng Gọi Hoa Nở": [
           "DA_18_BlossomTraitAugment"
         ],
         "Tiếp Tế Trang Bị I": [
@@ -6873,6 +6995,9 @@
         ],
         "Vé Kim Cương": [
           "DA_PrismaticTicket"
+        ],
+        "Vương Miện Hắc Hóa": [
+          "DA_CursedCrown"
         ],
         "Vượt Thời Gian": [
           "DA_TimeSkip"
@@ -7612,8 +7737,8 @@
   "meta": {
     "ambiguous_group_counts": {
       "augments": {
-        "en": 3,
-        "vi": 3
+        "en": 5,
+        "vi": 5
       },
       "champions": {
         "en": 0,
@@ -7626,8 +7751,8 @@
     },
     "counts": {
       "augments": {
-        "en": 253,
-        "vi": 253
+        "en": 258,
+        "vi": 258
       },
       "champions": {
         "en": 65,
@@ -7638,7 +7763,7 @@
         "vi": 36
       }
     },
-    "generated_at": "2026-10-26T15:44:28+00:00",
+    "generated_at": "2026-10-26T18:01:01+00:00",
     "set": "TFTSet18",
     "source": {
       "en": "cdragon:en_us",

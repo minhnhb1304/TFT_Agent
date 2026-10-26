@@ -61,9 +61,13 @@ def test_covers_all_three_namespaces(index: NameIndex) -> None:
 
 @needs_index
 def test_counts_match_the_measured_set18_numbers(index: NameIndex) -> None:
-    """254 augment / 36 trait / 65 champion - xem research/set-data.md."""
+    """258 augment / 36 trait / 65 champion.
+
+    254 lose cua research/set-data.md; patch 18.5b: CDragon bo 6 them 5, cong 5
+    lose giu lai qua data/augment_overrides.json (2026-10-27) = 258.
+    """
     counts = index.meta["counts"]
-    assert counts["augments"] == {"vi": 254, "en": 254}
+    assert counts["augments"] == {"vi": 258, "en": 258}
     assert counts["traits"] == {"vi": 36, "en": 36}
     assert counts["champions"] == {"vi": 65, "en": 65}
 

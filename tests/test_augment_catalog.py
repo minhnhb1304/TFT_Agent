@@ -50,44 +50,43 @@ def vi() -> AugmentCatalog:
 
 
 def test_catalog_size(en: AugmentCatalog, vi: AugmentCatalog) -> None:
-    """Set 18 co dung 254 augment (apiName bat dau DA_, isAugment=true)."""
-    assert len(en) == 254
-    assert len(vi) == 254
+    """258 augment: CDragon 18.5b (253) + 5 lose giu lai qua augment_overrides.json."""
+    assert len(en) == 258
+    assert len(vi) == 258
 
 
 # --- ladder giai tier ------------------------------------------------------
 
 
 def test_tier_ladder_reproduces_measured_counts(en: AugmentCatalog) -> None:
-    """Giai het 254/254 voi dung phan bo nguon tier da do 2026-10-06.
+    """Giai het 258/258 voi dung phan bo nguon tier (do 2026-10-06, cap nhat 18.5b 2026-10-27).
 
     Ba nguon dau la ladder icon cua resolve_tier, hai nguon ke do buoc
     catalog ghi (quy tac A va B cua nguoi dung), nguon cuoi la file override.
     """
     counts = en.tier_source_counts()
     assert counts == {
-        "missing-tN": 38,
-        "icon roman": 149,
+        "missing-tN": 40,
+        "icon roman": 151,
         "icon digit": 26,
         "variant-of-base": 33,
         "roman-order": 1,
         "user-override": 7,
     }
-    assert sum(counts.values()) == 254
+    assert sum(counts.values()) == 258
     assert "UNRESOLVED" not in counts
 
 
 def test_tier_distribution(en: AugmentCatalog, vi: AugmentCatalog) -> None:
-    """70 / 115 / 69 sau khi sua tier 2026-10-06 (truoc do 62 / 132 / 60).
-
-    Chi voi quy tac A + B (khong override) la 68 / 117 / 69.
+    """71 / 117 / 70 o 18.5b + lose giu lai (2026-10-06: 70 / 115 / 69; truoc khi sua
+    tier 62 / 132 / 60). Chi voi quy tac A + B (khong override) la 69 / 119 / 70.
     """
     for cat in (en, vi):
         by_tier = {t: sum(1 for a in cat.augments if a.tier == t) for t in (1, 2, 3)}
-        assert by_tier == {1: 70, 2: 115, 3: 69}
+        assert by_tier == {1: 71, 2: 117, 3: 70}
     rules_only = AugmentCatalog(_load("en_us.trimmed.json"), tier_overrides={})
     by_tier = {t: sum(1 for a in rules_only.augments if a.tier == t) for t in (1, 2, 3)}
-    assert by_tier == {1: 68, 2: 117, 3: 69}
+    assert by_tier == {1: 69, 2: 119, 3: 70}
 
 
 def test_every_augment_has_valid_tier(en: AugmentCatalog) -> None:
@@ -129,11 +128,13 @@ def test_plus_variants_share_the_base_tier(en: AugmentCatalog) -> None:
 
 
 def test_variants_without_base_are_reported_not_guessed(en: AugmentCatalog) -> None:
-    """7 bien the khong co ban goc trong catalog: giu tier icon va bao cao."""
+    """9 bien the khong co ban goc trong catalog: giu tier icon va bao cao."""
     gaps = dict(en.tier_rule_gaps)
     assert set(gaps) == {
         "DA_NestingDollsPlus",
         "DA_NestingDollsPlusPlus",
+        "DA_PandorasItemsIIPlus",       # 18.5b: ban goc la DA_PandorasItemsIIMinus
+        "DA_PandorasItemsIIPlusPlus",
         "DA_18_WispRebatePlus",
         "DA_18_WispRebatePlusPlus",
         "DA_InvestedPlus",
@@ -252,7 +253,7 @@ def test_tiers_agree_with_datatft_lists(en: AugmentCatalog) -> None:
     """
     snapshot = json.loads(DATATFT_SNAPSHOT.read_text(encoding="utf-8"))["augments"]
     compared = [a for a in en.augments if a.api_name in snapshot]
-    assert len(compared) == 254
+    assert len(compared) == 253   # datatft (CN) thieu Consuming Flora+ va 4 lose moi
     disagree = {
         a.api_name: (a.tier, snapshot[a.api_name]["list_index"] + 1)
         for a in compared

@@ -1,0 +1,153 @@
+{
+ "meta": {
+  "purpose": "Bu cho CDragon /latest/ o nhung cho no lech voi client live. Gop vao locale boi cdragon_client.apply_overrides (moi lan load_locale).",
+  "observed_at": "2026-10-27",
+  "observed_by": "nguoi dung choi tren client live (patch 18.5b) + metatft.gg (ten tieng Viet)",
+  "retained_source": "cdragon 2026-09-01, lay tu tests/fixtures/cdragon/*.trimmed.json tai commit 0b58097"
+ },
+ "live": {
+  "_note": "Lose khong ghi o day = true. false = khong con trong game; null = chua biet. Pool reroll chi lay true.",
+  "DA_CursedCrown": true,
+  "DA_DoubleTrouble": false,
+  "DA_NestingDollsPlus": false,
+  "DA_NestingDollsPlusPlus": false,
+  "DA_KnowYourEnemy": false,
+  "DA_18_FloraFatalisAugmentPlus": null
+ },
+ "vi_names": {
+  "_note": "Ten client live (metatft.gg) khac CDragon vi_vn. Ten CDragon van tra duoc (alias).",
+  "DA_18_FaeTraitAugment": "Phình Đại",
+  "DA_18_BlossomTraitAugment": "Tiếng Gọi Hoa Nở",
+  "DA_PandorasItemsIIMinus": "Hộp Pandora II",
+  "DA_PandorasItemsIIPlus": "Hộp Pandora II+",
+  "DA_PandorasItemsIIPlusPlus": "Hộp Pandora II++"
+ },
+ "retained_items": {
+  "en_us": [
+   {
+    "apiName": "DA_CursedCrown",
+    "name": "Cursed Crown",
+    "desc": "Gain +@MaxArmySizeIncrease@ max team size and your team gains @DurabilityBonus*100@% Durability, but you take double player damage when you lose a player combat.",
+    "icon": "assets/maps/tft/icons/augments/hexcore/cursedcrown-iii.tex",
+    "effects": {
+     "DurabilityBonus": 0.04000002145767212,
+     "MaxArmySizeIncrease": 2.0
+    },
+    "associatedTraits": [],
+    "isAugment": true
+   },
+   {
+    "apiName": "DA_DoubleTrouble",
+    "name": "Double Trouble",
+    "desc": "When you field exactly 2 copies of a champion, they both gain @DamageStatAdd*100@% Attack Damage and Ability Power and @DefenseStatAdd@ Armor, and Magic Resist. When you 3-star, gain a 2-star copy.",
+    "icon": "assets/maps/tft/icons/augments/hexcore/double-trouble-ii.tex",
+    "effects": {
+     "{14ae3030}": 25.0,
+     "{65020e89}": 0.25
+    },
+    "associatedTraits": [],
+    "isAugment": true
+   },
+   {
+    "apiName": "DA_NestingDollsPlus",
+    "name": "Nesting Dolls",
+    "desc": "After a champion dies in combat, spawn a copy of them one star level lower with @HealthMultiplier*100@% health. Gain @NumRerolls@ free rerolls.",
+    "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+    "effects": {
+     "NumRerolls": 3.0,
+     "{52fcdfb4}": 0.6000000238418579
+    },
+    "associatedTraits": [],
+    "isAugment": true
+   },
+   {
+    "apiName": "DA_NestingDollsPlusPlus",
+    "name": "Nesting Dolls",
+    "desc": "After a champion dies in combat, spawn a copy of them one star level lower with @HealthMultiplier*100@% health. Gain @NumRerolls@ free rerolls.",
+    "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+    "effects": {
+     "NumRerolls": 3.0,
+     "{52fcdfb4}": 0.6000000238418579
+    },
+    "associatedTraits": [],
+    "isAugment": true
+   },
+   {
+    "apiName": "DA_18_FloraFatalisAugmentPlus",
+    "name": "Consuming Flora",
+    "desc": "Gain a Flora Fatalis emblem. The champion holding the emblem gains double benefits from the Flora Fatalis trait. Gain @PlusGold@ gold.",
+    "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+    "effects": {
+     "{22830bc3}": 3.0
+    },
+    "associatedTraits": [
+     "DA_FloraFatalis18"
+    ],
+    "isAugment": true
+   }
+  ],
+  "vi_vn": [
+   {
+    "apiName": "DA_CursedCrown",
+    "name": "Vương Miện Hắc Hóa",
+    "desc": "Tăng +@MaxArmySizeIncrease@ số lượng tướng tối đa và đội của bạn nhận @DurabilityBonus*100@% Chống Chịu, nhưng bạn sẽ nhận gấp đôi sát thương lên Linh Thú khi thua giao tranh người chơi.",
+    "icon": "assets/maps/tft/icons/augments/hexcore/cursedcrown-iii.tex",
+    "effects": {
+     "DurabilityBonus": 0.04000002145767212,
+     "MaxArmySizeIncrease": 2.0
+    },
+    "associatedTraits": [],
+    "isAugment": true
+   },
+   {
+    "apiName": "DA_DoubleTrouble",
+    "name": "Cặp Đôi Hoàn Cảnh",
+    "desc": "Khi triển khai đúng 2 bản sao của một tướng, cả 2 tướng đó được tăng @DamageStatAdd*100@% SMCK và SMPT, và @DefenseStatAdd@ Giáp và Kháng Phép. Khi ghép tướng 3 sao, nhận 1 bản sao 2 sao.",
+    "icon": "assets/maps/tft/icons/augments/hexcore/double-trouble-ii.tex",
+    "effects": {
+     "{14ae3030}": 25.0,
+     "{65020e89}": 0.25
+    },
+    "associatedTraits": [],
+    "isAugment": true
+   },
+   {
+    "apiName": "DA_NestingDollsPlus",
+    "name": "Búp Bê Xây Tổ",
+    "desc": "Sau khi tướng bị hạ gục trong giao tranh, tạo ra một bản sao của tướng đó thấp hơn 1 cấp sao với @HealthMultiplier*100@% máu. Nhận @NumRerolls@ lượt đổi miễn phí.",
+    "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+    "effects": {
+     "NumRerolls": 3.0,
+     "{52fcdfb4}": 0.6000000238418579
+    },
+    "associatedTraits": [],
+    "isAugment": true
+   },
+   {
+    "apiName": "DA_NestingDollsPlusPlus",
+    "name": "Búp Bê Xây Tổ",
+    "desc": "Sau khi tướng bị hạ gục trong giao tranh, tạo ra một bản sao của tướng đó thấp hơn 1 cấp sao với @HealthMultiplier*100@% máu. Nhận @NumRerolls@ lượt đổi miễn phí.",
+    "icon": "assets/maps/tft/icons/augments/hexcore/missing-t3.tex",
+    "effects": {
+     "NumRerolls": 3.0,
+     "{52fcdfb4}": 0.6000000238418579
+    },
+    "associatedTraits": [],
+    "isAugment": true
+   },
+   {
+    "apiName": "DA_18_FloraFatalisAugmentPlus",
+    "name": "Thực Vật Hấp Thụ",
+    "desc": "Nhận 1 ấn Thực Vật. Tướng mang ấn sẽ nhận gấp đôi hiệu ứng từ tộc/hệ Thực Vật. Nhận @PlusGold@ vàng.",
+    "icon": "assets/maps/tft/icons/augments/hexcore/missing-t2.tex",
+    "effects": {
+     "{22830bc3}": 3.0
+    },
+    "associatedTraits": [
+     "DA_FloraFatalis18"
+    ],
+    "isAugment": true
+   }
+  ]
+ }
+}
