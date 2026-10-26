@@ -10,6 +10,25 @@ Hạn nộp: **~2027-01-20** (16 tuần từ 30-09). Trừ ngược: **4 tuần 
 > Mọi mục **§1–§7 bên dưới là LỊCH SỬ** (09-09). Chúng ghi lại phép đo đã làm, giữ để tra cứu —
 > nhưng kế hoạch hiện hành là mục này.
 
+### Dữ liệu game: đã lên patch 18.5b (2026-10-26)
+
+`refresh_data.py` báo 18.5b (dữ liệu cũ ghi 18.2). Đã cập nhật tier lõi và đội hình meta, rồi
+CDragon (bản 21-10, bản cũ tải 01-09). Từ đó sinh lại `name_index`, bảng game, bảng đặc trưng lõi (`--migrate`:
+giữ phần LLM và 157 dòng audit tay), lượt chào (datatft), tag MetaTFT, mock stats.
+
+| Thay đổi | Hệ quả |
+|---|---|
+| Bỏ 6 lõi (Consuming Flora+, Cursed Crown, Double Trouble, Nesting Dolls+/++, Pandora's Items II), thêm 5 (Expected Unexpectedness, Know Your Enemy, Pandora's Items II/II+/II++) | 254 → **253** lõi; cặp trùng tên 5 → **3** |
+| 18 lõi đổi mô tả, 57 lõi đổi chỉ số | 18 lõi này đã duyệt tay → cần đọc lại |
+| datatft (máy CN) chưa có 4 lõi mới | `offer_rounds` rỗng = không lọc theo lượt; `MIN_MATCHED` 250 → 245 |
+
+**Việc của bạn — duyệt 23 lõi** (18 đổi mô tả + 5 mới), cờ nằm ở `data/eval/augment_review_patch_18_5b.json`:
+`.venv\Scripts\python scripts\review_augment_features.py --flags data/eval/augment_review_patch_18_5b.json`
+(trang ghi "Vòng 2" cho mọi cờ, ở đây nghĩa là vòng 18.5b). Duyệt xong → `scripts/apply_manual_review.py`.
+
+Còn cũ: `item_stats` (sửa tay `SET18_PATCH` trong `src/knowledge/tactics_tools.py`), lolchess (WAF).
+"Phình Đại" vẫn là "Hóa Lớn" trong CDragon mới.
+
 ### Live mode: client standalone
 
 Probe đã chạy 2026-10-13 và 10-15 (`data/live_probe/`, chi tiết ở `dev_log.md` mục 14). Cửa sổ
