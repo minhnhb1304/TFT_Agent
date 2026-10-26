@@ -346,16 +346,16 @@ def test_ambiguous_pairs_are_reported_separately() -> None:
     assert report.ambiguous.support == 1
     assert report.ambiguous.f1 == 0.0
     assert "GIOI HAN DU LIEU" in report.table()
-    assert "5 cap map mo" in report.table()
+    assert "3 cap map mo" in report.table()
 
 
 def test_ambiguous_pairs_count_derived_from_name_index() -> None:
-    """So cap map mo duoc doc tu name_index.json (5 cap o Set 18) hoac nhan qua tham so."""
+    """So cap map mo duoc doc tu name_index.json (3 cap o Set 18, patch 18.5b) hoac nhan qua tham so."""
     report = evaluate_recognition([
         Prediction("augment", "X", "Y", ambiguous_pair=True),
     ])
-    assert "5 cap map mo" in report.table()
-    assert report.ambiguous_count == 5
+    assert "3 cap map mo" in report.table()
+    assert report.ambiguous_count == 3
 
     custom_report = evaluate_recognition(
         [Prediction("augment", "X", "Y", ambiguous_pair=True)],

@@ -61,9 +61,12 @@ def test_covers_all_three_namespaces(index: NameIndex) -> None:
 
 @needs_index
 def test_counts_match_the_measured_set18_numbers(index: NameIndex) -> None:
-    """254 augment / 36 trait / 65 champion - xem research/set-data.md."""
+    """253 augment / 36 trait / 65 champion - cdragon 2026-10-21 (patch 18.5b).
+
+    Ban 2026-09-01 co 254 (research/set-data.md); 18.5b bo 6, them 5.
+    """
     counts = index.meta["counts"]
-    assert counts["augments"] == {"vi": 254, "en": 254}
+    assert counts["augments"] == {"vi": 253, "en": 253}
     assert counts["traits"] == {"vi": 36, "en": 36}
     assert counts["champions"] == {"vi": 65, "en": 65}
 
@@ -86,12 +89,12 @@ def test_every_value_is_a_list(index: NameIndex) -> None:
 def test_vietnamese_loses_one_more_pair_than_english(index: NameIndex) -> None:
     """VI te hon EN dung mot cap - do duoc, khong phai uoc luong.
 
-    Ca hai deu co 5 nhom trung sau khi normalize; EN cuu duoc mot nhom bang
+    Ca hai deu co 3 nhom trung sau khi normalize; EN cuu duoc mot nhom bang
     tie-break phan biet hoa thuong ("Tons of Stats!" vs "TONS of Stats!"),
     tieng Viet dich ca hai thanh cung mot chuoi nen khong cuu duoc.
     """
-    assert len(index.ambiguous_groups("augments", "vi")) == 5
-    assert len(index.ambiguous_groups("augments", "en")) == 5
+    assert len(index.ambiguous_groups("augments", "vi")) == 3
+    assert len(index.ambiguous_groups("augments", "en")) == 3
 
 
 @needs_index
