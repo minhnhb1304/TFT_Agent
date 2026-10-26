@@ -1,0 +1,291 @@
+{
+  "schema": 2,
+  "video": "dat_01.mp4",
+  "video_sha256": "1f5b54d4fe7999680233a3798c5957ed1bb324b9763bdb4e0d8fe7b7af19f3f3",
+  "size": [
+    1728,
+    1080
+  ],
+  "game_id": "dat_01#1",
+  "player_id": "dat",
+  "final_placement": 2,
+  "capture_profile": {
+    "tool": "outplayed",
+    "size": [
+      1728,
+      1080
+    ],
+    "lang": "vi",
+    "fps": 60,
+    "original_name": "TiennDat-Teamfight Tactics_09-16-2026_22-20-1-366-002.mp4"
+  },
+  "screens": [
+    {
+      "stage": "2-1",
+      "status": "verified",
+      "open_s": 125.75,
+      "close_s": 129.25,
+      "hud": {
+        "gold": 0,
+        "level": 3,
+        "xp": 0,
+        "xp_needed": 6,
+        "hp": 100,
+        "streak": 0
+      },
+      "traits": null,
+      "offers": [
+        {
+          "at_s": 127.5,
+          "cards": [
+            [
+              "DA_BirthdayReunion"
+            ],
+            [
+              "DA_BodyguardTraining"
+            ],
+            [
+              "DA_18_FaeTraitAugment"
+            ]
+          ],
+          "rerolled_slot": null,
+          "ocr_raw": [
+            "(chèn tay)"
+          ],
+          "snapshot": "data/eval/playtest/snapshots/dat_01/manual_127.50.jpg"
+        },
+        {
+          "at_s": 127.9,
+          "cards": [
+            [
+              "DA_BirthdayReunion"
+            ],
+            [
+              "DA_EarlyLearnings"
+            ],
+            [
+              "DA_18_FaeTraitAugment"
+            ]
+          ],
+          "rerolled_slot": 1,
+          "ocr_raw": [
+            "(chèn tay)"
+          ],
+          "snapshot": "data/eval/playtest/snapshots/dat_01/manual_127.90.jpg"
+        },
+        {
+          "at_s": 128.25,
+          "cards": [
+            [
+              "DA_BirthdayReunion"
+            ],
+            [
+              "DA_EarlyLearnings"
+            ],
+            [
+              "DA_MoneyHungry_NotBroken"
+            ]
+          ],
+          "rerolled_slot": 2,
+          "ocr_raw": [
+            "ô 1: Sinh Nht Đoàn T / in 1 tưng 2 vàng 2 sao / u nhiên.  Cp 6, nhn 1 / ng bi thành phn ngu / n.  Cp 9, nhn 1 tưng / yàng 2 sao ngãu nhiên.",
+            "ô 2: Bài Hc Sơ Khai / Đi ca bn nhn 5% Sc / Mnh Công Kích & Sc Mnh / Phép Thut. Lưng này s / tăng thêm 1% sau mõi giao / tranh ngưi chơi. Tưng 1 / vàng nhân gp đôi",
+            "ô 3: Cơn Khát Vàng / Nhn 7 vàng ngay lp tc / đó nhn thêm 7 vàng vào / đu mi giai đon. Nht / s khin Linh Thú ca b / hơn."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/dat_01/manual_128.25.jpg"
+        }
+      ],
+      "picked": "DA_BirthdayReunion",
+      "expert": null,
+      "notes": ""
+    },
+    {
+      "stage": "3-2",
+      "status": "verified",
+      "open_s": 644.25,
+      "close_s": 648.5,
+      "hud": {
+        "gold": 40,
+        "level": 5,
+        "xp": 6,
+        "xp_needed": 20,
+        "hp": 96,
+        "streak": 2
+      },
+      "traits": null,
+      "offers": [
+        {
+          "at_s": 644.75,
+          "cards": [
+            [
+              "DA_TonsOfStatsI",
+              "DA_TonsOfStatsII"
+            ],
+            [
+              "DA_CryMeARiver"
+            ],
+            [
+              "DA_18_PrimalAugment_Nidalee",
+              "DA_18_PrimalAugment_Sivir"
+            ]
+          ],
+          "rerolled_slot": null,
+          "ocr_raw": [
+            "ô 1: Cng Mt Nghi! / ca bn nhn thêm 44 / áu, 4% Sc Mnh Công / ch, 4% Sc Mnh Phép / it, 4 Giáp, 4 Kháng Phép, / Tc Đ Đánh và 4 Năng / Luơna",
+            "ô 2: Git L Bi Ai / Nhn 1 Nưc Mt N Thn. / Đi ca bn nhn 1 Hi Năng / Lưng. Sau 12 giây giao / tranh, tăng hiu ng này lên / thành 4.",
+            "ô 3: Quái Thú Bên Tron / Tưng Nguyên Sinh cho / mt Phưc Lành nũa. Nh / Vi ngay bây gi và 1 Nio / sau 3 vòng đu."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/dat_01/00644_x-x_offer1.jpg"
+        },
+        {
+          "at_s": 646.5,
+          "cards": [
+            [
+              "DA_TonsOfStatsI",
+              "DA_TonsOfStatsII"
+            ],
+            [
+              "DA_CryMeARiver"
+            ],
+            [
+              "DA_Ascension"
+            ]
+          ],
+          "rerolled_slot": 2,
+          "ocr_raw": [
+            "ô 1: Cng Mt Nghi! / ca bn nhn thêm 44 / áu, 4% Sc Mnh Công / ch, 4% Sc Mnh Phép / it, 4 Giáp, 4 Kháng Phép, / Tc Đ Đánh và 4 Năng / Luơna",
+            "ô 2: Git L Bi Ai / Nhn 1 Nưc Mt N Thn. / Đi ca bn nhn 1 Hi Năng / Lưng. Sau 12 giây giao / tranh, tăng hiu ng này lên / thành 4.",
+            "ô 3: Thăng Hoa / Sau 12 giây giao tranh, / tưng ca bn nhn th / 35% Khuch Đi Sát Thu"
+          ],
+          "snapshot": "data/eval/playtest/snapshots/dat_01/00644_x-x_offer2.jpg"
+        },
+        {
+          "at_s": 647.5,
+          "cards": [
+            [
+              "DA_TonsOfStatsI",
+              "DA_TonsOfStatsII"
+            ],
+            [
+              "DA_BoosterPackPlus"
+            ],
+            [
+              "DA_Ascension"
+            ]
+          ],
+          "rerolled_slot": 1,
+          "ocr_raw": [
+            "ô 1: Cng Mt Nghi! / ca bn nhn thêm 44 / áu, 4% Sc Mnh Công / ch, 4% Sc Mnh Phép / it, 4 Giáp, 4 Kháng Phép, / Tc Đ Đánh và 4 Năng / Luơna",
+            "ô 2: Gói Tăng Cưng+ / Nhn các tưng ngu nhiên / có tng giá là 18 vàng. (Đm / bo có ít nht mt tưng 4 / vàng!)",
+            "ô 3: Thăng Hoa / Sau 12 giây giao tranh, / tưng ca bn nhn th / 35% Khuch Đi Sát Thu"
+          ],
+          "snapshot": "data/eval/playtest/snapshots/dat_01/00644_x-x_offer3.jpg"
+        },
+        {
+          "at_s": 648.5,
+          "cards": [
+            [
+              "DA_HealingOrbsII"
+            ],
+            [
+              "DA_BoosterPackPlus"
+            ],
+            [
+              "DA_Ascension"
+            ]
+          ],
+          "rerolled_slot": 0,
+          "ocr_raw": [
+            "CHƯA ỔN ĐỊNH — thẻ chưa kịp đứng yên, kiểm kỹ ảnh",
+            "ô 1: Cu Hồi Phc II / i 1 k đch b h gc, 1 / ng minh gn đó s đưc / hi 575 Máu.",
+            "ô 2: Gói Tăng Cưng+ / Nhn các tưng ngu nhiên / có tng giá là 18 vàng. (Đn / bo có ít nht mt tung 4 / vàD!)",
+            "ô 3: Thăng Hoa / Sau 12 giây giao tranh, / tưng ca bn nhn th / 35% Khuch Đi Sát Thu"
+          ],
+          "snapshot": "data/eval/playtest/snapshots/dat_01/00644_x-x_offer4.jpg"
+        }
+      ],
+      "picked": "DA_BoosterPackPlus",
+      "expert": null,
+      "notes": ""
+    },
+    {
+      "stage": "4-2",
+      "status": "verified",
+      "open_s": 1121.0,
+      "close_s": 1123.25,
+      "hud": {
+        "gold": 53,
+        "level": 7,
+        "xp": 34,
+        "xp_needed": 56,
+        "hp": 76,
+        "streak": -2
+      },
+      "traits": null,
+      "offers": [
+        {
+          "at_s": 1121.75,
+          "cards": [
+            [
+              "DA_HeroicGrabBagPlusPlus"
+            ],
+            [
+              "DA_18_DuoQueue"
+            ],
+            [
+              "DA_Staffsmith"
+            ]
+          ],
+          "rerolled_slot": null,
+          "ocr_raw": [
+            "ô 1: Túi Đò Siêu Hùng++ / n 2 Máy Sao Chép Tưng / õ Nh. Nhn 14 vàng.",
+            "ô 2: Hàng Ch Đu Đôi / Nhn 2 tưng 5 vàng ngãu / nhiên và 2 bn sao ca mt / trang bį thành phn ngu / nhiên.",
+            "ô 3: Th Rèn Gy / Nhn 2 trang b hoàn c / ngu nhiên đưc ghép tù / Quá Kh."
+          ],
+          "snapshot": "data/eval/playtest/snapshots/dat_01/01121_x-x_offer1.jpg"
+        },
+        {
+          "at_s": 1122.9,
+          "cards": [
+            [
+              "DA_JeweledLotus_I"
+            ],
+            [
+              "DA_18_DuoQueue"
+            ],
+            [
+              "DA_Staffsmith"
+            ]
+          ],
+          "rerolled_slot": 0,
+          "ocr_raw": [
+            "(chèn tay)"
+          ],
+          "snapshot": "data/eval/playtest/snapshots/dat_01/manual_1122.90.jpg"
+        },
+        {
+          "at_s": 1123.25,
+          "cards": [
+            [
+              "DA_JeweledLotus_I"
+            ],
+            [
+              "DA_18_DuoQueue"
+            ],
+            [
+              "DA_GroupHugII"
+            ]
+          ],
+          "rerolled_slot": 2,
+          "ocr_raw": [
+            "(chèn tay)"
+          ],
+          "snapshot": "data/eval/playtest/snapshots/dat_01/manual_1123.25.jpg"
+        }
+      ],
+      "picked": "DA_18_DuoQueue",
+      "expert": null,
+      "notes": "dat đổi lại 2 lõi rất nhanh là 1 và 3 "
+    }
+  ]
+}
