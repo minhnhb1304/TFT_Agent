@@ -47,8 +47,9 @@ from src.knowledge.augment_features import OFFER_ROUNDS  # noqa: E402
 PAGE_URL = "https://www.datatft.com/database"
 DEFAULT_OUT = ROOT / "data" / "augment_rounds.datatft.json"
 DEFAULT_FEATURES = ROOT / "data" / "augment_features.json"
-# Catalog Set 18 co 254 lose; cho phep lech vai cai khi ho chua kip cap nhat.
-MIN_MATCHED = 250
+# Catalog Set 18 co 253 lose (18.5b); cho phep lech vai cai khi ho chua kip cap nhat
+# (2026-10-26: may chu CN chua co 4/5 lose moi cua 18.5b -> 249/253).
+MIN_MATCHED = 245
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"

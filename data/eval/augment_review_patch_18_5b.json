@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "created_at": "2026-10-26T15:50:49+00:00",
+    "purpose": "Duyệt lại sau khi cập nhật CDragon lên patch 18.5b (bản 2026-10-21): lõi mới và lõi đổi mô tả",
+    "sources": {
+      "old": "cdragon en_us tải 2026-09-01",
+      "new": "cdragon en_us Last-Modified 2026-10-21"
+    },
+    "note": "Mở trang bằng --flags data/eval/augment_review_patch_18_5b.json. 6 lõi bị bỏ (Consuming Flora+, Cursed Crown, Double Trouble, Nesting Dolls+/++, Pandora's Items II) đã ra khỏi bảng; entry review cũ của chúng giữ nguyên trong file review.",
+    "n": 23
+  },
+  "flags": {
+    "DA_18_FloraFatalisAugment": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: Gain a Flora Fatalis emblem. The champion holding the emblem gains double benefits from the Flora Fatalis trait. Gain 3 gold."
+    ],
+    "DA_18_InfernoTraitAugment": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: The Inferno champion that dealt the most damage last combat is On Fire, gaining 55% Attack Speed. Gain a Varus and an Akali."
+    ],
+    "DA_18_RiftbeastTraitAugment": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: You can now choose a second Alpha Riftbeast. Gain a Scuttlecrab, a Cinderling, and a Pebbles."
+    ],
+    "DA_18_WeightTheWorth": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: The first time you 3-star a champion, gain a copy of them each round for the rest of the game. 3-starring the same champion again grants additional copies. Gain a Lesser Champion Duplicator and a Tiny Champion Duplicator."
+    ],
+    "DA_BlackthornTraitAugment": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: The first 3 times you sacrifice a champion in the Blackthorn hex, gain a copy of a random component they're holding. Gain a Veigar and a Rek'Sai."
+    ],
+    "DA_ElectrochargeI": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: Every 4 attacks an ally takes, they deal 30-90 (based on current Stage) magic damage to nearby enemies (1 second cooldown)."
+    ],
+    "DA_ExpectedUnexpectedness": [
+      "lõi mới ở patch 18.5b: chưa duyệt lần nào (nhãn đang là máy trích)"
+    ],
+    "DA_ForgedInStrength": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: Gain 1 random Artifact. When you drop below 35 Health, gain 1 more random Artifact, 1 random completed item, and 2 random component.  Remix Rumble Championship, 2023"
+    ],
+    "DA_GoingLong": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: You no longer gain interest. Gain 10 gold now. Round start: gain 4 XP.  Interest is extra gold you gain per 10 g saved."
+    ],
+    "DA_ItsMeBaby": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: Gain a spotlight in the bottom right corner. The champion in it gains 15% Damage Amp and 15% Attack Speed, and drops 1 gold every 5 takedowns.  Lore & Legends Tactician's Crown, 2026"
+    ],
+    "DA_KnowYourEnemy": [
+      "lõi mới ở patch 18.5b: chưa duyệt lần nào (nhãn đang là máy trích)"
+    ],
+    "DA_Min_Max": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: Gain a Golden Item Remover and 4 random components."
+    ],
+    "DA_PandorasItemsIIMinus": [
+      "lõi mới ở patch 18.5b: chưa duyệt lần nào (nhãn đang là máy trích)"
+    ],
+    "DA_PandorasItemsIIPlus": [
+      "lõi mới ở patch 18.5b: chưa duyệt lần nào (nhãn đang là máy trích)"
+    ],
+    "DA_PandorasItemsIIPlusPlus": [
+      "lõi mới ở patch 18.5b: chưa duyệt lần nào (nhãn đang là máy trích)"
+    ],
+    "DA_ShimmerscaleEssence": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: Gain a Mogul's Mail. After 7 player combats, gain a Gamblers Blade."
+    ],
+    "DA_ShoppingSpree": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: When you level up, gain a number of free shop refreshes equal to your level +1. Gain 6 gold."
+    ],
+    "DA_SpreadingRoots": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: Gain 2 random Emblems and 1 gold."
+    ],
+    "DA_SpreadingRootsPlus": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: Gain 2 random Emblems, a Reforger, and 2 gold."
+    ],
+    "DA_TradeSector": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: Gain a free Shop reroll every round. Gain 2 gold."
+    ],
+    "DA_TradeSectorPlus": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: Gain a free Shop reroll every round. Gain 8 gold."
+    ],
+    "DA_UpwardMobility": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: Buying XP costs 1 less. Gain 2 Health and 1 free reroll whenever you level up."
+    ],
+    "DA_WeStickTogether": [
+      "mô tả đổi ở patch 18.5b: đọc lại nhãn theo mô tả mới. Mô tả cũ: Gain a random Emblem and a completed item anvil. Allies that share a trait with that Emblem gain 30% Attack Speed. 0 0  Into The Arcane Tactician's Crown, 2025"
+    ]
+  }
+}

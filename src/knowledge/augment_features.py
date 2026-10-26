@@ -159,7 +159,10 @@ IMMEDIATE_PATTERNS = [r"\bimmediately\b", r"\binstantly\b", r"\bnow\b", r"\bgain
 # Augment chi CHO emblem (Branching Out, The Trait Tree, ...) KHONG thuoc nhom
 # nay: emblem la nguon trait, da nam o item_grants; gia tri cua no khong tang
 # theo do sau/do rong trait tren board.
-VERTICAL_TRAIT_PATTERNS = [r"\bshares? a trait with\b"]
+VERTICAL_TRAIT_PATTERNS = [
+    r"\bshares? a trait with\b",
+    r"\ballies with that trait\b",        # We Stick Together 18.5b: viet lai mo ta, cung co che
+]
 WIDE_TRAIT_PATTERNS = [
     r"\bfor each (?:[\w-]+ )?traits?\b",   # "for each non-unique Trait", "for each Bronze-tier trait"
     r"\bfielding\b.{0,40}\btraits\b",      # Trait Ladder: "fielding N non-unique traits"

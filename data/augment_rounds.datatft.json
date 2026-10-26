@@ -3,13 +3,18 @@
     "source": "datatft.com",
     "source_url": "https://www.datatft.com/database",
     "server": "CN",
-    "asset_url": "https://www.datatft.com/assets/h5-data-cn-18-DA3Z5d73.json",
-    "crawled_at": "2026-10-05T18:56:05+00:00",
+    "asset_url": "https://www.datatft.com/assets/h5-data-cn-18-DJVGVRvJ.json",
+    "crawled_at": "2026-10-26T15:47:15+00:00",
     "set": "TFTSet18",
-    "database_updated_at": "2026-10-04T12:35:31+00:00",
-    "matched": 254,
-    "n_catalog": 254,
-    "missing_from_datatft": []
+    "database_updated_at": "2026-10-23T11:26:49+00:00",
+    "matched": 249,
+    "n_catalog": 253,
+    "missing_from_datatft": [
+      "DA_KnowYourEnemy",
+      "DA_PandorasItemsIIMinus",
+      "DA_PandorasItemsIIPlus",
+      "DA_PandorasItemsIIPlusPlus"
+    ]
   },
   "augments": {
     "DA_18_BigGrabBag": {
@@ -127,16 +132,6 @@
     "DA_18_FloraFatalisAugment": {
       "rounds": [
         "2-1",
-        "3-2"
-      ],
-      "types": [
-        4,
-        3
-      ],
-      "list_index": 1
-    },
-    "DA_18_FloraFatalisAugmentPlus": {
-      "rounds": [
         "3-2"
       ],
       "types": [
@@ -307,7 +302,7 @@
         4,
         2
       ],
-      "list_index": 1
+      "list_index": 0
     },
     "DA_18_SprykinAugment": {
       "rounds": [
@@ -891,16 +886,6 @@
       ],
       "list_index": 1
     },
-    "DA_CursedCrown": {
-      "rounds": [
-        "2-1",
-        "3-2"
-      ],
-      "types": [
-        6
-      ],
-      "list_index": 2
-    },
     "DA_CyberneticImplants_Gold": {
       "rounds": [
         "3-2",
@@ -940,16 +925,6 @@
         3
       ],
       "list_index": 2
-    },
-    "DA_DoubleTrouble": {
-      "rounds": [
-        "2-1",
-        "3-2"
-      ],
-      "types": [
-        2
-      ],
-      "list_index": 1
     },
     "DA_Dummify": {
       "rounds": [
@@ -1028,6 +1003,15 @@
         1
       ],
       "list_index": 1
+    },
+    "DA_ExpectedUnexpectedness": {
+      "rounds": [
+        "2-1"
+      ],
+      "types": [
+        6
+      ],
+      "list_index": 2
     },
     "DA_Expedition": {
       "rounds": [
@@ -1608,7 +1592,6 @@
     },
     "DA_MakeshiftArmorI": {
       "rounds": [
-        "2-1",
         "3-2"
       ],
       "types": [
@@ -1618,7 +1601,6 @@
     },
     "DA_MakeshiftArmorII": {
       "rounds": [
-        "2-1",
         "3-2"
       ],
       "types": [
@@ -1710,20 +1692,6 @@
       ],
       "list_index": 2
     },
-    "DA_NestingDollsPlus": {
-      "rounds": [
-        "3-2"
-      ],
-      "types": [],
-      "list_index": 2
-    },
-    "DA_NestingDollsPlusPlus": {
-      "rounds": [
-        "4-2"
-      ],
-      "types": [],
-      "list_index": 2
-    },
     "DA_NoScoutNoPivot": {
       "rounds": [
         "2-1"
@@ -1763,17 +1731,6 @@
         3
       ],
       "list_index": 0
-    },
-    "DA_PandorasItemsII": {
-      "rounds": [
-        "2-1",
-        "3-2",
-        "4-2"
-      ],
-      "types": [
-        3
-      ],
-      "list_index": 1
     },
     "DA_PandorasItemsIII": {
       "rounds": [
