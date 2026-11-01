@@ -58,6 +58,44 @@ Trả về DUY NHẤT một đối tượng JSON phẳng theo cấu trúc sau (k
 }
 """
 
+# Ep cau truc dau ra ngay luc sinh (constrained decoding), khong chi dan trong prompt.
+# Schema chi dam bao HINH DANG; ten the van phai qua NameIndex (_resolve_card) vi
+# JSON hop le van co the chua ten bia.
+RESPONSE_SCHEMA: dict[str, Any] = {
+    "type": "OBJECT",
+    "properties": {
+        "cards": {
+            "type": "ARRAY",
+            "min_items": 3,
+            "max_items": 3,
+            "items": {
+                "type": "OBJECT",
+                "properties": {
+                    "slot": {"type": "INTEGER", "minimum": 0, "maximum": 2},
+                    "title": {"type": "STRING"},
+                    "body": {"type": "STRING"},
+                },
+                "required": ["slot", "title", "body"],
+                "property_ordering": ["slot", "title", "body"],
+            },
+        },
+        "traits": {
+            "type": "ARRAY",
+            "items": {
+                "type": "OBJECT",
+                "properties": {
+                    "name": {"type": "STRING"},
+                    "count": {"type": "INTEGER", "minimum": 0},
+                },
+                "required": ["name", "count"],
+                "property_ordering": ["name", "count"],
+            },
+        },
+    },
+    "required": ["cards", "traits"],
+    "property_ordering": ["cards", "traits"],
+}
+
 
 class AugmentReadError(RuntimeError):
     """Loi cau truc hoac yeu cau du lieu khong hop le tu ket qua doc augment."""
@@ -309,7 +347,10 @@ class AugmentReader:
                 PROMPT,
                 types.Part.from_bytes(data=image_png, mime_type="image/png"),
             ],
-            config={"response_mime_type": "application/json"},
+            config={
+                "response_mime_type": "application/json",
+                "response_schema": RESPONSE_SCHEMA,
+            },
         )
         return getattr(resp, "text", "") or ""
 

@@ -418,3 +418,17 @@ def test_compute_ahash_and_build_composite() -> None:
     assert composite.ndim == 3
     assert composite.shape[0] >= 120
     assert composite.shape[1] >= (60 + 80 * 3)
+
+
+def test_response_schema_is_valid_for_gemini_sdk() -> None:
+    # Schema sai ten truong se bi SDK tu choi luc goi that; bat no o day, offline.
+    types = pytest.importorskip("google.genai.types")
+    from src.vision.augment_reader import RESPONSE_SCHEMA
+
+    schema = types.Schema.model_validate(RESPONSE_SCHEMA)
+    card = schema.properties["cards"].items
+    trait = schema.properties["traits"].items
+    assert schema.properties["cards"].min_items == schema.properties["cards"].max_items == 3
+    # Dung cac truong _resolve_card / _resolve_traits doc ra
+    assert set(card.required) == {"slot", "title", "body"}
+    assert set(trait.required) == {"name", "count"}
