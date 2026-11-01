@@ -1,0 +1,183 @@
+{
+ "frames": {
+  "D:\\workspace\\TFT_Agent\\data\\live_probe\\20261015_165242\\frame_0.png": {
+   "read_ms": [
+    1466.2,
+    1529.1,
+    1469.6,
+    1595.0,
+    1740.4
+   ],
+   "read_ms_median": 1529.1,
+   "ocr_calls_per_read": 6,
+   "det_ms_total": 1287.4,
+   "cls_ms_total": 23.1,
+   "rec_ms_total": 231.1,
+   "calls_one_read": [
+    {
+     "shape": [
+      174,
+      282
+     ],
+     "wall_ms": 291.8,
+     "det_ms": 280.3,
+     "cls_ms": 1.9,
+     "rec_ms": 7.9
+    },
+    {
+     "shape": [
+      168,
+      216
+     ],
+     "wall_ms": 162.2,
+     "det_ms": 150.7,
+     "cls_ms": 1.7,
+     "rec_ms": 8.6
+    },
+    {
+     "shape": [
+      192,
+      402
+     ],
+     "wall_ms": 292.8,
+     "det_ms": 247.0,
+     "cls_ms": 15.1,
+     "rec_ms": 27.7
+    },
+    {
+     "shape": [
+      192,
+      390
+     ],
+     "wall_ms": 271.9,
+     "det_ms": 227.8,
+     "cls_ms": 28.8,
+     "rec_ms": 13.3
+    },
+    {
+     "shape": [
+      216,
+      450
+     ],
+     "wall_ms": 250.9,
+     "det_ms": 229.3,
+     "cls_ms": 1.7,
+     "rec_ms": 18.7
+    },
+    {
+     "shape": [
+      210,
+      258
+     ],
+     "wall_ms": 173.3,
+     "det_ms": 120.5,
+     "cls_ms": 2.2,
+     "rec_ms": 49.3
+    }
+   ],
+   "values": {
+    "stage": null,
+    "gold": 62,
+    "level": 5,
+    "xp": 14,
+    "xp_needed": 20,
+    "hp": 69,
+    "streak": 2
+   }
+  },
+  "D:\\workspace\\TFT_Agent\\data\\live_probe\\20261015_165627\\frame_0.png": {
+   "read_ms": [
+    1477.5,
+    1472.8,
+    1412.7,
+    1499.5,
+    1693.0
+   ],
+   "read_ms_median": 1477.5,
+   "ocr_calls_per_read": 6,
+   "det_ms_total": 1244.5,
+   "cls_ms_total": 34.9,
+   "rec_ms_total": 216.6,
+   "calls_one_read": [
+    {
+     "shape": [
+      174,
+      282
+     ],
+     "wall_ms": 216.6,
+     "det_ms": 202.1,
+     "cls_ms": 1.9,
+     "rec_ms": 10.8
+    },
+    {
+     "shape": [
+      168,
+      216
+     ],
+     "wall_ms": 178.9,
+     "det_ms": 135.6,
+     "cls_ms": 8.8,
+     "rec_ms": 33.0
+    },
+    {
+     "shape": [
+      192,
+      402
+     ],
+     "wall_ms": 279.4,
+     "det_ms": 256.2,
+     "cls_ms": 2.9,
+     "rec_ms": 17.0
+    },
+    {
+     "shape": [
+      192,
+      390
+     ],
+     "wall_ms": 326.0,
+     "det_ms": 314.3,
+     "cls_ms": 1.7,
+     "rec_ms": 8.5
+    },
+    {
+     "shape": [
+      216,
+      450
+     ],
+     "wall_ms": 296.5,
+     "det_ms": 284.0,
+     "cls_ms": 1.9,
+     "rec_ms": 9.3
+    },
+    {
+     "shape": [
+      210,
+      258
+     ],
+     "wall_ms": 177.4,
+     "det_ms": 165.6,
+     "cls_ms": 2.0,
+     "rec_ms": 8.7
+    }
+   ],
+   "values": {
+    "stage": "3-6",
+    "gold": 41,
+    "level": 7,
+    "xp": 2,
+    "xp_needed": 56,
+    "hp": null,
+    "streak": 4
+   }
+  }
+ },
+ "config": {
+  "reps": 5,
+  "burn": 15,
+  "threads": null,
+  "variant": "full",
+  "cpu_count": 16,
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.14.7"
+ }
+}
