@@ -18,7 +18,7 @@ import numpy as np
 
 from ..capture.regions import ScreenRegions, anchor_x
 from ..game_state.models import RE_STAGE
-from .ocr_engine import DigitRead, engine, read_digits
+from .ocr_engine import DigitRead, read_digits, recognize
 from .preprocess import binarize_for_ocr, brighten_dimmed, hud_bar_present, ocr_texts
 
 HudField = Literal["stage", "gold", "level", "xp", "xp_needed", "hp", "streak"]
@@ -208,7 +208,7 @@ class HudReader:
     def _read_stage(self, crop: np.ndarray, t0: float) -> FieldRead:
         try:
             binarized = binarize_for_ocr(crop)
-            ocr_fn = self.call if self.call is not None else engine()
+            ocr_fn = self.call if self.call is not None else recognize
             result = ocr_fn(binarized)
             raw_text = "".join(ocr_texts(result)).strip()
         except Exception as exc:

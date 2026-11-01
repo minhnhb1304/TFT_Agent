@@ -28,6 +28,12 @@ class DigitRead:
 
 _ENGINE: Any | None = None
 
+# Crop HUD da cat san theo ROI, nen buoc phat hien chu (det) va xoay chu (cls) la thua.
+# Do 2026-10-31 (tools/bench_hud_latency.py): det chiem ~85% thoi gian doc HUD; bo det+cls
+# thi 1,1 s -> 54 ms, ket qua giong het (20 khung gan nhan + 420 luot doc tren dat_01).
+# Dat False de quay ve OCR day du. Doc ten the (card_reader) van can det, khong dung ham nay.
+RECOGNIZE_ONLY = True
+
 
 def engine() -> Any:
     """Process-wide lazy singleton. Tao mot lan, khong bao gio tren frame path."""
@@ -39,6 +45,13 @@ def engine() -> Any:
         except Exception as exc:
             raise OcrError(f"khong the khoi tao RapidOCR: {exc}") from exc
     return _ENGINE
+
+
+def recognize(img: np.ndarray) -> Any:
+    """OCR cho crop da cat san: chi chay buoc nhan dang khi RECOGNIZE_ONLY."""
+    if RECOGNIZE_ONLY:
+        return engine()(img, use_det=False, use_cls=False)
+    return engine()(img)
 
 
 def read_digits(
@@ -56,7 +69,7 @@ def read_digits(
 
     binarized = binarize_for_ocr(crop, scale=scale)
 
-    ocr_fn = call if call is not None else engine()
+    ocr_fn = call if call is not None else recognize
     try:
         result = ocr_fn(binarized)
     except Exception as exc:

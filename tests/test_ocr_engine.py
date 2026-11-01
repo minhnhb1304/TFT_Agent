@@ -117,6 +117,38 @@ def test_singleton_engine_reused() -> None:
         mod._ENGINE = old
 
 
+class _SpyEngine:
+    def __init__(self) -> None:
+        self.kwargs: list[dict] = []
+
+    def __call__(self, img: np.ndarray, **kwargs: Any) -> list[str]:
+        self.kwargs.append(kwargs)
+        return ["7"]
+
+
+@pytest.mark.parametrize(
+    ("recognize_only", "expected_kwargs"),
+    [
+        (True, {"use_det": False, "use_cls": False}),
+        (False, {}),
+    ],
+)
+def test_read_digits_default_skips_detection(
+    monkeypatch: pytest.MonkeyPatch,
+    recognize_only: bool,
+    expected_kwargs: dict,
+) -> None:
+    # Crop HUD da cat san: mac dinh bo det+cls; tat co thi quay ve OCR day du
+    import src.vision.ocr_engine as mod
+
+    spy = _SpyEngine()
+    monkeypatch.setattr(mod, "_ENGINE", spy)
+    monkeypatch.setattr(mod, "RECOGNIZE_ONLY", recognize_only)
+    res = read_digits(_dummy_crop())
+    assert res.value == 7
+    assert spy.kwargs == [expected_kwargs]
+
+
 def test_singleton_engine_cached() -> None:
     import src.vision.ocr_engine as mod
 

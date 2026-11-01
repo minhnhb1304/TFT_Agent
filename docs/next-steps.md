@@ -38,7 +38,7 @@ Probe đã chạy 2026-10-13 và 10-15 (`data/live_probe/`, chi tiết ở `dev_
 
 | # | Việc còn mở | Ghi chú |
 |---|---|---|
-| 1 | **Độ trễ HUD khi game chạy: 15–26 s** | Lần đọc 2–4 (OCR đã nạp) vẫn chậm; CPU 97% trong ảnh. Máy rảnh ~1,1 s |
+| 1 | **Độ trễ HUD khi game chạy: 15–26 s** | Lần đọc 2–4 (OCR đã nạp) vẫn chậm; CPU 97% trong ảnh. Máy rảnh ~1,1 s. **Đo tách khâu 2026-10-31** (`tools/bench_hud_latency.py`, kết quả ở `data/live_probe/bench/`): 6 lượt OCR mỗi lần đọc, **khâu phát hiện chữ chiếm ~85%**. Chỉ chạy nhận dạng (`use_det=False, use_cls=False`, vì ROI đã cắt sẵn): **1,1 s → 54 ms** (máy rảnh), 1,5 s → 80 ms (giả lập CPU bận 15 tiến trình). Độ chính xác trên 20 khung gán nhãn không đổi (stage 20/20, máu 3/20 ở cả hai); khung probe `165242` stage rỗng → đọc đúng `3-3`. Giả lập CPU bận **không tái hiện được 15–26 s**. **Đã chuyển (2026-11-01):** `read_digits` và `_read_stage` gọi `ocr_engine.recognize` (cờ `RECOGNIZE_ONLY`, mặc định bật; `card_reader` vẫn OCR đầy đủ vì cần phát hiện dòng chữ). Kiểm trên `dat_01` (development): 420/420 lượt đọc HUD giống hệt chế độ cũ. Còn mở: **chạy `tools\bench_hud_latency.py` trên máy test khi game mở** để xác nhận 15–26 s đã giảm |
 | 2 | Màn chọn lõi ẩn thanh HUD | Giữ vàng, cấp, máu từ khung trước khi màn chọn lõi hiện |
 | 3 | Máy test chưa có khoá Gemini | Cần cho `augment_reader` khi chạy live |
 | 4 | [live-mode/phase-0-spike.md](live-mode/phase-0-spike.md), [live-mode/probe-runbook.md](live-mode/probe-runbook.md) còn ghi tên cửa sổ cũ | Sửa tài liệu |
