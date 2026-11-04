@@ -65,3 +65,41 @@ def test_scan_module_has_no_qt():
         if isinstance(node, ast.Import) for name in node.names
     ] + [node.module or "" for node in ast.walk(tree) if isinstance(node, ast.ImportFrom)]
     assert not any(m.lower().startswith(("pyqt", "pyside")) for m in imported)
+
+
+def test_overlay_badges_sit_on_the_reader_regions_at_16_10():
+    """Huy hiệu neo vào đúng vùng bộ đọc cắt — 16:10 dùng chung điểm neo `center`."""
+    from src.capture.regions import Region, ScreenRegions
+    from src.replay import overlay
+
+    boxes = {f"card_text_{i}": Region(0.213542 + 0.213541 * i, 0.476852, 0.145833, 0.171296, "center")
+             for i in range(3)}
+    boxes |= {f"reroll_{i}": Region(0.260417 + 0.213541 * i, 0.772222, 0.052083, 0.048148, "center")
+              for i in range(3)}
+    regions = ScreenRegions({"augment_select": boxes}, {}, {})
+
+    lay = overlay.layout(regions, 1728, 1080)
+    assert lay.cards[0] == (314, 515, 594, 700)          # đo trên khung dat_01, 2-1
+    assert lay.rerolls[2][0] == 1224
+    left, _, right, _ = lay.verdict
+    assert abs((left + right) / 2 - 864) <= 1
+
+
+def test_overlay_frost_only_touches_its_rect():
+    import numpy as np
+
+    from src.replay import overlay
+
+    rgb = np.full((100, 200, 3), 200, dtype=np.uint8)
+    overlay.frost(rgb, (50, 20, 150, 60))
+    assert rgb[40, 100].max() < 200
+    assert (rgb[0:20] == 200).all() and (rgb[:, 0:50] == 200).all()
+
+
+def test_overlay_badge_text_flags_unread_and_uncertain_cards():
+    from src.replay.overlay import badge_text
+    from src.replay.viewmodel import SlotVM
+
+    assert badge_text(SlotVM(0, "x", unread=True)) == "chưa đọc được"
+    assert badge_text(SlotVM(0, "x", score=6.1, rank=2)) == "#2  6.10"
+    assert badge_text(SlotVM(0, "x", score=6.1, rank=2, low_confidence=True)).endswith("~")

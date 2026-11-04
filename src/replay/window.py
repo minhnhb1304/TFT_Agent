@@ -27,7 +27,7 @@ from ..live.session import LiveSession
 from ..utils.settings import Settings
 from ..vision.hud_reader import HudReader
 from ..vision.reroll_buttons import RerollButtonReader
-from . import theme, widgets
+from . import overlay, theme, widgets
 from .scan import ScreenMarker
 from .viewmodel import build_view
 from .worker import AnalysisWorker, ScanWorker
@@ -82,6 +82,10 @@ class ReplayWindow(QtWidgets.QMainWindow):
         self.playback_speed = 1.0
         self.is_playing = False
         self._last_submit_t = float("-inf")
+        # Overlay ve len video: (cot the, ket luan) cua lan khuyen gan nhat.
+        self.show_overlay = True
+        self._overlay: tuple[list, Any] | None = None
+        self._frame = None
 
         self._init_ui()
         self._clear_panel("Đang quét video…")
@@ -294,6 +298,7 @@ class ReplayWindow(QtWidgets.QMainWindow):
         target = max(0, min(index, max(0, self.total_frames - 1)))
         self.cap.set(cv2.CAP_PROP_POS_FRAMES, target)
         self.worker.seek(target / self.fps)
+        self._overlay = None                 # loi khuyen cu khong thuoc khung moi
         self._last_submit_t = float("-inf")
         self._show_frame()
 
@@ -326,6 +331,7 @@ class ReplayWindow(QtWidgets.QMainWindow):
             self._last_submit_t = t
             self.worker.submit(Frame(image=image.copy(), t=t, ref=format_ref(self.ref_prefix, t)))
 
+        self._frame = image
         self._paint(image, t)
 
     def _paint(self, image, t: float) -> None:
@@ -341,8 +347,17 @@ class ReplayWindow(QtWidgets.QMainWindow):
         scale = min(max(320, size.width()) / w, max(180, size.height()) / h)
         resized = cv2.resize(image, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_LINEAR)
         rgb = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
+        lay = None
+        if self.show_overlay and self._overlay is not None:
+            lay = overlay.layout(self.regions, rgb.shape[1], rgb.shape[0])
+            if self._overlay[1].action:
+                overlay.frost(rgb, lay.verdict)
         qimg = QtGui.QImage(rgb.data, rgb.shape[1], rgb.shape[0], rgb.shape[1] * 3,
                             QtGui.QImage.Format.Format_RGB888)
+        if lay is not None:
+            painter = QtGui.QPainter(qimg)
+            overlay.paint(painter, lay, *self._overlay)
+            painter.end()
         self.video_label.setPixmap(QtGui.QPixmap.fromImage(qimg))
 
     # -- nhan su kien tu lõi ----------------------------------------------
@@ -363,6 +378,7 @@ class ReplayWindow(QtWidgets.QMainWindow):
         from .viewmodel import SlotVM, StripVM, VerdictVM
 
         self._last_strip = StripVM()
+        self._set_overlay(None)
         self.strip.set_data(self._last_strip, status)
         self.verdict.set_data(VerdictVM())
         for i, column in enumerate(self.columns):
@@ -375,7 +391,14 @@ class ReplayWindow(QtWidgets.QMainWindow):
         self.verdict.set_data(verdict)
         for column, slot in zip(self.columns, slots):
             column.set_data(slot)
+        self._set_overlay((slots, verdict))
         self.timeline.set_position(event.t)
+
+    def _set_overlay(self, value: tuple[list, Any] | None) -> None:
+        """Doi noi dung overlay roi ve lai khung dang dung - video co the dang dung."""
+        self._overlay = value
+        if self._frame is not None:
+            self._paint(self._frame, self.frame_index / self.fps)
 
     def _status_line(self, event: AdviceReady) -> str:
         notes = []
@@ -399,6 +422,9 @@ class ReplayWindow(QtWidgets.QMainWindow):
             self.seek_relative(5)
         elif key == QtCore.Qt.Key.Key_F3:
             self.force_refresh()
+        elif key == QtCore.Qt.Key.Key_O:
+            self.show_overlay = not self.show_overlay
+            self._set_overlay(self._overlay)
         elif key in (QtCore.Qt.Key.Key_Escape, QtCore.Qt.Key.Key_Q):
             self.close()
 
