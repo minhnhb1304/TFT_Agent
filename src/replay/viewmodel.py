@@ -53,7 +53,7 @@ class VerdictVM:
     action: str = ""                 # CHỌN | ĐỔI
     slot: int | None = None
     name: str = ""
-    delta: float | None = None       # chenh lech voi lua chon ke tiep
+    delta: float | None = None       # CHON: hon lua chon ke; DOI: loi ky vong khi doi
     note: str = ""
     edge: str = ""                   # chenh lech do tach ve thanh phan (A2)
 
@@ -68,6 +68,8 @@ class VerdictVM:
     def delta_text(self) -> str:
         if self.delta is None:
             return ""
+        if self.action == "ĐỔI":         # `expected_gain` cua chinh sach, khong phai chenh lech xep hang
+            return f"lợi kỳ vọng {self.delta:+.2f}"
         return f"hơn lựa chọn kế +{self.delta:.2f}" if self.delta >= 0 else f"kém {abs(self.delta):.2f}"
 
 
@@ -101,9 +103,8 @@ def build_view(
     bundle = getattr(event, "bundle", None)
     ranking = getattr(bundle, "ranking", None)
     entries = {e.api_name: e for e in getattr(ranking, "entries", [])}
-    order = [e.api_name for e in getattr(ranking, "entries", [])]
 
-    slots = _slots(event, entries, order, rarity_of)
+    slots = _slots(event, entries, rarity_of)
     shared, drop = _shared_reasons(slots)
     for s in slots:
         s.reasons = [r for r in s.reasons if r not in drop][:MAX_REASONS]
@@ -132,14 +133,16 @@ def _sources(ranking) -> list[str]:
     return out
 
 
-def _slots(event, entries, order, rarity_of) -> list[SlotVM]:
+def _slots(event, entries, rarity_of) -> list[SlotVM]:
     out: list[SlotVM] = []
     for card in getattr(event, "cards", []):
         api = card.api_names[0] if card.api_names else ""
         entry = entries.get(api)
         vm = SlotVM(
             slot=card.slot,
-            name=(entry.name if entry else card.title) or "chưa đọc được",
+            # Ten tren the (tieng client) truoc: `entry.name` la ten CDragon en_us,
+            # lech voi chu nguoi choi dang nhin.
+            name=card.title or (entry.name if entry else "") or "chưa đọc được",
             api_name=api,
             unread=not card.api_names,
             ambiguous=len(card.api_names) > 1,
@@ -150,11 +153,15 @@ def _slots(event, entries, order, rarity_of) -> list[SlotVM]:
         )
         if entry is not None:
             vm.score = entry.total
-            vm.rank = order.index(api) + 1
             vm.tier = str((entry.components.get("base").detail or {}).get("tier") or "") \
                 if entry.components.get("base") else ""
             vm.reasons = list(entry.reasons)
         out.append(vm)
+    # Hang tinh trong CAC O, khong trong `ranking`: the doc ra hai ung vien
+    # (Nidalee/Sivir) them mot dong vao ranking va day o cuoi thanh "#4".
+    for vm in out:
+        if vm.score is not None:
+            vm.rank = 1 + sum(1 for o in out if o.score is not None and o.score > vm.score)
     return sorted(out, key=lambda s: s.slot)
 
 

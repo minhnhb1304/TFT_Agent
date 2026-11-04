@@ -103,3 +103,50 @@ def test_overlay_badge_text_flags_unread_and_uncertain_cards():
     assert badge_text(SlotVM(0, "x", unread=True)) == "chưa đọc được"
     assert badge_text(SlotVM(0, "x", score=6.1, rank=2)) == "#2  6.10"
     assert badge_text(SlotVM(0, "x", score=6.1, rank=2, low_confidence=True)).endswith("~")
+
+
+def _advice_event(cards, entries, reroll=None):
+    from types import SimpleNamespace as NS
+
+    return NS(
+        cards=[NS(slot=i, title=t, api_names=tuple(a), confidence=c, reason="") for i, (t, a, c) in enumerate(cards)],
+        bundle=NS(ranking=NS(entries=[NS(api_name=a, name=n, total=v, components={}, reasons=[])
+                                      for a, n, v in entries]),
+                  reroll=reroll, economy=[], stale_data=[]),
+        state=None, rerolls=None,
+    )
+
+
+def test_view_names_cards_as_the_client_does():
+    """Tên trên thẻ (tiếng client), không phải tên CDragon en_us của ranking."""
+    from src.replay.viewmodel import build_view
+
+    event = _advice_event([("Phình Đại", ["DA_Embiggen"], 1.0)], [("DA_Embiggen", "Embiggen", 0.4)])
+    _, verdict, slots = build_view(event)
+    assert slots[0].name == "Phình Đại" and verdict.name == "Phình Đại"
+
+
+def test_view_ranks_within_the_three_slots_when_a_card_is_ambiguous():
+    """dat_01 3-2: ô 3 đọc ra Nidalee/Sivir → ranking 4 dòng, ô cuối từng hiện #4."""
+    from src.replay.viewmodel import build_view
+
+    event = _advice_event(
+        [("X", ["A1", "A2"], 0.6), ("Y", ["B"], 1.0), ("Z", ["C1", "C2"], 0.6)],
+        [("B", "B", 0.57), ("A1", "A", 0.51), ("A2", "A", 0.51), ("C1", "C", 0.45), ("C2", "C", 0.45)],
+    )
+    _, _, slots = build_view(event)
+    assert [s.rank for s in slots] == [2, 1, 3]
+
+
+def test_reroll_verdict_labels_its_number_as_expected_gain():
+    """Khi ĐỔI, `delta` là lợi kỳ vọng của chính sách — không phải 'hơn lựa chọn kế'."""
+    from types import SimpleNamespace as NS
+
+    from src.replay.viewmodel import build_view
+
+    event = _advice_event(
+        [("X", ["A"], 1.0), ("Y", ["B"], 1.0)], [("A", "A", 0.5), ("B", "B", 0.4)],
+        reroll=NS(action="REROLL", target_slot=1, expected_gain=0.012, reason=""),
+    )
+    _, verdict, _ = build_view(event)
+    assert verdict.delta_text == "lợi kỳ vọng +0.01"
