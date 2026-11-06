@@ -33,6 +33,7 @@ from ..decision.reroll_policy import RerollState
 from ..eval.scenario_logger import derive_game_id
 from ..game_state.state_tracker import GameStateTracker
 from ..vision.augment_reader import CardRead
+from ..vision.hud_reader import HudReading
 from .card_reader import SLOTS, CardReader
 from .events import AdviceReady, Cleared, Idle, LiveEvent, Status
 from .screen_tracker import AugmentScreenTracker, thumb_diff
@@ -105,9 +106,17 @@ class LiveSession:
         self._last_emit = None
 
     def seek(self, t: float) -> None:
-        """Replay tua. Lui ve qua khu thi coi nhu van moi; tua toi thi giu HUD da doc."""
+        """Replay tua. Lui ve qua khu thi coi nhu van moi; tua toi gan thi giu HUD da doc.
+
+        Tua toi xa (qua `grace_s`) thi HUD da doc la cua mot vong khac - giu lai
+        se in vang/cap/stage cu len man chon loi. Quen no, nhung giu so van.
+        """
         if t < self._last_t:
             self.new_game()
+        elif t - self._last_t > self.grace_s:
+            self.game_tracker.reset()
+            self._hud_signature = None
+            self._reset_screen()
         else:
             self._reset_screen()
         self._last_t = t
@@ -135,6 +144,7 @@ class LiveSession:
             self.screen_tracker.reset()
             self._cards = [None] * SLOTS
             self._last_emit = None
+            self._read_stage_in_screen(frame, latency)
         if reading.settled:
             self._rerolls = reading.to_reroll_state(self._rerolls)
 
@@ -154,7 +164,8 @@ class LiveSession:
 
         cards = tuple(self._cards[i] or CardRead(i, "", "", (), 0.0, "chưa đọc") for i in range(SLOTS))
         choices = [
-            AugmentChoice(list(c.api_names), c.confidence, c.title) for c in cards if c.api_names
+            AugmentChoice(list(c.api_names), c.confidence, c.title, slot=c.slot)
+            for c in cards if c.api_names
         ]
         if not choices:
             return Status(t, "đang ở màn chọn lõi nhưng chưa đọc được thẻ nào",
@@ -212,6 +223,22 @@ class LiveSession:
             latency["hud"] = (time.perf_counter() - t0) * 1000.0
 
         return Cleared(t) if left_screen else Idle(t)
+
+    def _read_stage_in_screen(self, frame: Frame, latency: dict[str, float]) -> None:
+        """Man chon loi che vang/cap/mau nhung VAN hien stage: lay rieng stage.
+
+        Cac truong con lai giu gia tri truoc man (tracker danh dau stale).
+        """
+        t0 = time.perf_counter()
+        try:
+            reading = self.hud_reader.read(frame.image)
+        except Exception:                             # noqa: BLE001 - thieu stage khong lam hong chu ky
+            return
+        stage = reading.find("stage") if hasattr(reading, "find") else None
+        if stage is None or not stage.present or not stage.value:
+            return
+        self.game_tracker.update(HudReading(fields=(stage,)))
+        latency["hud"] = (time.perf_counter() - t0) * 1000.0
 
     def _hud_unchanged(self, image: Any) -> bool:
         """Vung HUD y het lan doc truoc -> khoi OCR lai (~1 s moi lan)."""

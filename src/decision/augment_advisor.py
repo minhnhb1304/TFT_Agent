@@ -65,6 +65,9 @@ class AugmentChoice:
     api_names: list[str]
     confidence: float = 1.0
     display_name: str = ""
+    # O tren man hinh (0-2). None = dung vi tri trong danh sach. Phai co khi
+    # danh sach bo o chua doc duoc, neu khong chi so bi don va tro sai o.
+    slot: int | None = None
 
     @property
     def ambiguous(self) -> bool:
@@ -213,7 +216,7 @@ class AugmentAdvisor:
                         total=total,
                         components=components,
                         ambiguous=choice.ambiguous,
-                        choice_index=idx,
+                        choice_index=idx if choice.slot is None else choice.slot,
                         confidence=choice.confidence,
                     )
                 )

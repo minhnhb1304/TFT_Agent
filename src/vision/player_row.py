@@ -25,7 +25,7 @@ from ..capture.regions import ScreenRegions, anchor_x
 # quy doi bang anchor_x(..., "right") de dung ca o khung khac 16:9.
 AVATAR_COLUMN = (0.920, 1.000)      # x tu - den
 PANEL_ROWS = (0.10, 0.92)           # y tu - den, bo ra ngoai vung chu chay chu
-HP_BOX = (0.906, 0.945)             # x cua o so mau, nam ben trai avatar
+HP_BOX = (0.906, 0.950)             # x cua o so mau, nam ben trai avatar. 0.945 cat mat nua chu so thu hai (87 -> 8)
 HP_BOX_HEIGHT = 36                  # px quanh tam vong vang
 
 # Vong vang: HSV. Nguong nay tach duoc vong vang khoi bay vong do va khoi nen.

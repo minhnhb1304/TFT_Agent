@@ -432,3 +432,22 @@ def test_response_schema_is_valid_for_gemini_sdk() -> None:
     # Dung cac truong _resolve_card / _resolve_traits doc ra
     assert set(card.required) == {"slot", "title", "body"}
     assert set(trait.required) == {"name", "count"}
+
+
+def test_timeout_returns_on_time_instead_of_waiting_for_the_hung_call(name_index: NameIndex) -> None:
+    """`with ThreadPoolExecutor` cho luot goi treo xong: timeout 12 s thanh 20,9 s (2026-11-06)."""
+    def hung_call(img_bytes: bytes) -> str:
+        time.sleep(3.0)
+        return "{}"
+
+    reader = AugmentReader(
+        regions=_make_regions(),
+        names=name_index,
+        timeout_s=0.3,
+        call=hung_call,
+    )
+
+    t0 = time.perf_counter()
+    reading = reader.read(_make_frame())
+    assert time.perf_counter() - t0 < 1.5
+    assert reading.resolved() is False

@@ -69,6 +69,10 @@ class VerdictVM:
         if self.delta is None:
             return ""
         if self.action == "ĐỔI":         # `expected_gain` cua chinh sach, khong phai chenh lech xep hang
+            if abs(self.delta) < 0.01:
+                # Doi o kem nhat khi gan nhu mien phi: loi nho nhung khong am
+                # (dominance-theorem.md). '+0.00' doc nhu vo nghia - noi ro ra.
+                return f"không mất gì · lợi kỳ vọng {self.delta:+.3f}"
             return f"lợi kỳ vọng {self.delta:+.2f}"
         return f"hơn lựa chọn kế +{self.delta:.2f}" if self.delta >= 0 else f"kém {abs(self.delta):.2f}"
 

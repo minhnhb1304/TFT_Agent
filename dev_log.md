@@ -509,6 +509,47 @@ cửa sổ bằng liệt kê (`bd6e3bf`) và gắn thread vào desktop `Default`
 Màn chọn lõi 2-1, 3-2, 4-2 cùng bố cục, nên probe 4-2 thay cho 2-1. Hai việc còn mở: độ trễ HUD
 khi game chạy, và giữ vàng/cấp/máu từ khung trước khi màn chọn lõi ẩn thanh HUD.
 
+### 15. Replay trên 6 ván development: 4 lỗi sửa, 2 thứ trông như lỗi nhưng không phải
+
+2026-11-06. Đổi tên 10 video tự quay thành `minh_01`…`minh_10` (tên gốc ở `rename_log.tsv`) và
+chốt `data/eval/split.json` **trước** khi chạy bất cứ thứ gì: seed `20260930` bốc 6 development
+`minh_03`–`minh_08`; held-out = `minh_01, 02, 09, 10` + `dat_02–05`; `dat_01` sang development
+(ghi `note`). Rồi chạy replay + overlay (Gemini) không cửa sổ trên 6 ván development, 18 màn chọn lõi.
+
+| # | Triệu chứng | Nguyên nhân | Sửa |
+|---|---|---|---|
+| 1 | Overlay khoanh ô 1 "U.R.F" nhưng lý do nói đổi Seraphim (ô 2); có lúc "CHỌN Ô 1 · chưa đọc được" | `LiveSession` bỏ ô chưa đọc khỏi `choices` → chỉ số bị dồn; `choice_index`, lượt đổi theo ô và `target_slot` đều theo danh sách dồn, overlay hiểu là ô màn hình | `AugmentChoice.slot`; `rank()` dùng nó làm `choice_index` |
+| 2 | Stage 2-1 ở màn 3-2 (3/18 màn), vàng/cấp của màn trước | (a) tracker bỏ phiếu đa số cho cả stage — màn mở ngay đầu vòng nên lịch sử toàn vòng cũ; (b) HUD chỉ đọc ngoài màn, mà nút mốc tua tới `open_s − 1 s` (đã ở trong màn); (c) tua tới xa vẫn giữ HUD của 10 phút trước | Stage lấy giá trị mới nhất; vào màn thì đọc **riêng stage** (màn che vàng/cấp/máu, không che stage); tua tới > `grace_s` thì xoá HUD (giữ số ván); nút mốc tua `open_s − 10 s` (5 s rơi vào hiệu ứng chuyển vòng, HUD ẩn — `minh_07` 4-2) |
+| 3 | Máu 8 khi thật là 87 | `HP_BOX` mép phải 0,945 (x=1814) cắt nửa chữ số thứ hai (kết thúc x≈1818) | 0,950. Quét 0,945/0,950/0,955 trên 607 khung (7 ván dev, mỗi 20 s): đọc một chữ số 48/14/16, máu "tăng" vô lý 17/4/8 |
+| 4 | Gemini 3,3 s trung vị, **20,9 s** tối đa dù timeout 12 s | `with ThreadPoolExecutor` → `shutdown(wait=True)` chờ lượt gọi treo xong; mỗi lần gọi tạo `genai.Client` mới (lần đầu 3,07 s, các lần sau ~1,9 s) | Bỏ `with`, `shutdown(wait=False)`; giữ client. `thinking_level=minimal` không đổi gì (1,95 s vs 1,98 s); `thinking_budget=0` bị API từ chối |
+
+| Chỉ số (6 ván, 18 màn) | Trước | Sau |
+|---|---|---|
+| Stage đúng | 15/18 | 18/18 |
+| Máu < 10 (sai) | 3 | 1 |
+| Khuyến nghị trỏ vào ô chưa đọc | 9 | 0 |
+| Gemini đọc lõi: trung vị / p90 / max | 3,3 / 4,2 / 20,9 s | 2,2 / 2,9 / 4,2 s |
+
+Số "sau" đo với mốc tua 10 s (bản 5 s để `minh_07` 4-2 ra vàng 0, cấp 1; giờ 56, 7, máu 69).
+
+Máu vẫn chưa ổn: `minh_08` 3-2 đọc 2; `minh_04` và `minh_06` 4-2 đọc 100 sau khi màn trước đã là
+73 và 87 — máu không bao giờ tăng, nên có thể chặn bằng luật đơn điệu, chưa làm. `dat_01` (16:10)
+4-2 vẫn đọc stage `4-1`: lỗi chữ tối đã biết ở 16:10, không phải lỗi bỏ phiếu.
+
+**Không phải lỗi:**
+
+- **Khuyên ĐỔI 42/64 lần với lợi +0,00.** Đúng thiết kế: đổi ô *kém nhất* không bao giờ làm mất lõi
+  tốt nhất ([dominance-theorem](docs/augment-reroll/dominance-theorem.md)), và `cost_matrix` ở
+  stage 2–3 chỉ 0,01σ. Lỗi là cách hiện: lợi 0,004 làm tròn thành "+0,00". Giờ hiện
+  `không mất gì · lợi kỳ vọng +0.004` khi lợi < 0,01.
+- **Nhiều lõi đúng 0,50.** `base` lấy từ bảng tier (bậc A = 0,50) vì `augment_stats.csv` vẫn là
+  `MOCK-NOT-REAL` (xem Nợ kỹ thuật); lõi không gắn tộc, không kinh tế, không trang bị thì bốn thành
+  phần còn lại cũng trung tính. Hệ quả: các lõi bậc A không phân biệt được với nhau — giới hạn dữ
+  liệu, phải nói rõ trong báo cáo.
+
+Còn mở: phần `body` trong JSON Gemini chiếm phần lớn token đầu ra nhưng chỉ được truyền qua — bỏ
+đi có thể nhanh hơn, chưa đo. Test 1043 → 1067.
+
 ## Dự kiến triển khai
 
 ### Chặn mọi thứ — Track B, Phase 0 (§7)

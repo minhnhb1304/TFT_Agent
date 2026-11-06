@@ -58,7 +58,11 @@ class GameStateTracker:
 
         for f_name in HUD_TRACKED_FIELDS:
             # Truong co mat va co gia tri hop le o khung hien tai
-            if _field(current, f_name)[0]:
+            if _field(current, f_name)[0] and f_name == "stage":
+                # Stage chi tang: bo phieu se giu vong cu (3-1 khi da sang 3-2,
+                # vi man chon loi mo ngay dau vong). Lay gia tri moi nhat.
+                self._last_good[f_name] = _field(current, f_name)[1]
+            elif _field(current, f_name)[0]:
                 # Majority vote trong window
                 valid_vals = [v for ok, v in (_field(r, f_name) for r in self._history) if ok]
                 # Dem so phieu

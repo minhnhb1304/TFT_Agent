@@ -56,6 +56,12 @@ def build_session(
     )
 
 
+# Bam moc thi tua toi truoc man chon loi chung nay giay: man che vang/cap/mau,
+# nen can it nhat mot lan doc HUD ben ngoai (`LiveSession.hud_every_s` = 3 s).
+# 5 s roi dung hieu ung chuyen vong (HUD an ~6 s truoc man) - minh_07 4-2.
+MARKER_LEAD_S = 10.0
+
+
 class ReplayWindow(QtWidgets.QMainWindow):
     """Trinh phat video kem bang co van."""
 
@@ -267,11 +273,11 @@ class ReplayWindow(QtWidgets.QMainWindow):
             return
         for marker in self.markers:
             btn = QtWidgets.QPushButton(marker.label)
-            btn.clicked.connect(lambda _, m=marker: self.seek_to_seconds(max(0.0, m.open_s - 1.0)))
+            btn.clicked.connect(lambda _, m=marker: self.seek_to_seconds(max(0.0, m.open_s - MARKER_LEAD_S)))
             self.markers_box.addWidget(btn)
         self.timeline.set_data(self.duration_s, [m.open_s for m in self.markers], [])
         self._clear_panel(f"Thấy {len(self.markers)} vòng chọn lõi. Bấm một mốc để xem.")
-        self.seek_to_seconds(max(0.0, self.markers[0].open_s - 1.0))
+        self.seek_to_seconds(max(0.0, self.markers[0].open_s - MARKER_LEAD_S))
 
     # -- phat / tua --------------------------------------------------------
 

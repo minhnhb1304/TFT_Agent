@@ -340,7 +340,10 @@ class AugmentReader:
         from google import genai  # noqa: PLC0415
         from google.genai import types  # noqa: PLC0415
 
-        client = genai.Client(api_key=api_key)
+        # Giu client giua cac lan goi: tao moi moi lan la them mot lan bat tay TLS.
+        if getattr(self, "_client", None) is None:
+            self._client = genai.Client(api_key=api_key)
+        client = self._client
         resp = client.models.generate_content(
             model=self.model,
             contents=[
@@ -518,9 +521,11 @@ class AugmentReader:
 
         # 3. Goi Gemini hoac plain callable tiem vao
         caller = self.call or self._default_call
+        # KHONG dung `with`: __exit__ goi shutdown(wait=True) va CHO luot goi
+        # mang dang treo xong - timeout 12 s thanh 20,9 s (minh_03..08, 2026-11-06).
+        pool = ThreadPoolExecutor(max_workers=1)
         try:
-            with ThreadPoolExecutor(max_workers=1) as pool:
-                raw = pool.submit(caller, image_png).result(timeout=self.timeout_s)
+            raw = pool.submit(caller, image_png).result(timeout=self.timeout_s)
         except FutureTimeout:
             elapsed_ms = (time.perf_counter() - t0) * 1000.0
             return self._unresolved_reading(
@@ -533,6 +538,8 @@ class AugmentReader:
                 reason=f"Lỗi gọi Gemini: {exc}",
                 latency_ms=elapsed_ms,
             )
+        finally:
+            pool.shutdown(wait=False)
 
         # 4. Parse JSON
         parsed = self._parse(raw)

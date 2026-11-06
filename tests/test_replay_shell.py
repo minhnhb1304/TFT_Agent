@@ -150,3 +150,17 @@ def test_reroll_verdict_labels_its_number_as_expected_gain():
     )
     _, verdict, _ = build_view(event)
     assert verdict.delta_text == "lợi kỳ vọng +0.01"
+
+
+def test_a_near_free_reroll_says_so_instead_of_plus_zero():
+    """Lợi 0,004 làm tròn thành '+0.00' trông vô nghĩa (minh_03, 2026-11-06)."""
+    from types import SimpleNamespace as NS
+
+    from src.replay.viewmodel import build_view
+
+    event = _advice_event(
+        [("X", ["A"], 1.0), ("Y", ["B"], 1.0)], [("A", "A", 0.5), ("B", "B", 0.4)],
+        reroll=NS(action="REROLL", target_slot=1, expected_gain=0.004, reason=""),
+    )
+    _, verdict, _ = build_view(event)
+    assert verdict.delta_text == "không mất gì · lợi kỳ vọng +0.004"

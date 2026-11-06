@@ -199,3 +199,21 @@ def test_xp_needed_stays_unknown_until_read() -> None:
     tracker = GameStateTracker()
     tracker.update(_make_reading(xp_needed=(None, False)))
     assert tracker.state().xp_needed is None
+
+
+def test_stage_takes_the_latest_reading_not_the_majority() -> None:
+    """Man chon loi 3-2 mo ngay dau vong: lich su con toan 3-1, bo phieu se ra 3-1."""
+    tracker = GameStateTracker(window=5)
+    for _ in range(4):
+        tracker.update(_make_reading(stage=("3-1", True)))
+    tracker.update(_make_reading(stage=("3-2", True)))
+    assert tracker.state().stage == "3-2"
+
+
+def test_stage_only_reading_keeps_the_hidden_fields_as_stale() -> None:
+    tracker = GameStateTracker(window=5)
+    tracker.update(_make_reading(stage=("3-1", True), gold=(30, True)))
+    tracker.update(HudReading(fields=(FieldRead("stage", "3-2", "3-2", True, "hợp lệ", 1.0),)))
+    assert tracker.state().stage == "3-2"
+    assert tracker.state().gold == 30
+    assert "gold" in tracker.stale

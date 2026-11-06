@@ -725,3 +725,25 @@ def test_shipped_config_declares_the_offer_round_flag() -> None:
     block = ScoringConfig.load("config/scoring_weights.yaml").tune("reroll_policy")
     assert block["pool_by_offer_round"] is True
     assert block["min_round_pool"] == RerollTuning().min_round_pool
+
+
+def test_target_slot_is_the_screen_slot_when_an_earlier_slot_is_unread() -> None:
+    """O 1 chua doc duoc -> danh sach chi con o 2, 3. Khuyen nghi van phai tro o man hinh.
+
+    dat lai tu minh_03 (2026-11-06): chi so bi don lam overlay khoanh o 1 (U.R.F) trong khi
+    chinh sach muon doi o 2 (Seraphim's Staff).
+    """
+    table = FeatureTable({
+        "WEAK": AugmentFeature(api_name="WEAK", name="WEAK"),
+        "STRONG": AugmentFeature(api_name="STRONG", name="STRONG", econ_value=3),
+    })
+    choices = [AugmentChoice(["WEAK"], slot=1), AugmentChoice(["STRONG"], slot=2)]
+    ranking = AugmentAdvisor(table).rank(choices, GameState(stage="2-1"))
+    assert {e.api_name: e.choice_index for e in ranking.entries} == {"WEAK": 1, "STRONG": 2}
+
+    advice = AugmentAdvisor(table).advise_reroll(
+        ranking, GameState(stage="2-1"), RerollState((True, True, True))
+    )
+    assert advice.target_slot in (1, 2)
+    assert advice.fallback_slot in (1, 2)
+    assert f"ô {advice.target_slot + 1}" in advice.reason

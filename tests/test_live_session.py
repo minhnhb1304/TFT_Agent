@@ -397,3 +397,50 @@ def test_live_core_never_imports_qt():
             elif isinstance(node, ast.ImportFrom):
                 names = [node.module or ""]
             assert not any(n.lower().startswith(("pyqt", "pyside")) for n in names), path.name
+
+
+def test_choices_keep_their_screen_slot_when_an_earlier_slot_is_unread():
+    class BlindFirst(FakeCardReader):
+        def read_slot(self, image, slot):
+            if slot == 0:
+                return CardRead(0, "U.R.F", "", (), 0.0, "không khớp tên")
+            return super().read_slot(image, slot)
+
+    seen = []
+
+    class SlotAdvisor(FakeAdvisor):
+        def advise(self, state, choices=None, **kw):
+            seen.append([c.slot for c in choices or []])
+            return super().advise(state, choices, **kw)
+
+    s, reroll, cards, hud = session()
+    s.card_reader = BlindFirst()
+    s.advisor = SlotAdvisor()
+    feed(s, 0.0, 5)
+    assert seen and seen[-1] == [1, 2]
+
+
+def test_entering_the_screen_reads_the_stage_shown_on_it():
+    """Tua thang vao man chon loi: khong co khung ngoai nao, stage van phai dung."""
+    s, reroll, cards, hud = session()
+    hud.values["stage"] = "3-2"
+    ev = feed(s, 0.0, 5)
+    assert isinstance(ev, AdviceReady)
+    assert ev.stage == "3-2"
+
+
+def test_a_long_forward_seek_forgets_the_old_hud():
+    s, reroll, cards, hud = session()
+    reroll.present = False
+    feed(s, 0.0, 2)
+    assert s.game_tracker.state().gold == 32
+    s.seek(600.0)
+    assert "gold" in s.game_tracker.never_seen
+
+
+def test_a_short_forward_seek_keeps_the_hud():
+    s, reroll, cards, hud = session()
+    reroll.present = False
+    feed(s, 0.0, 2)
+    s.seek(5.0)
+    assert s.game_tracker.state().gold == 32

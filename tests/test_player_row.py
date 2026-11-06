@@ -78,3 +78,18 @@ def test_works_at_other_resolutions(width: int):
     row = find_player_row(frame)
     assert row is not None
     assert abs(row.center_y - int(0.37 * height)) <= 6
+
+
+def test_hp_box_holds_both_digits_but_not_the_avatar_ring():
+    """Đo trên minh_06 @646 s (1920×1080): '87' kết thúc ở x≈1818, vòng avatar bắt đầu x≈1830.
+
+    Mép phải cũ 0,945 (x=1814) cắt mất nửa số 7 → OCR đọc ra 8.
+    """
+    frame = frame_with_rows(gold_y=400)
+    xs = np.arange(W)
+    frame[:, :, 1] = (xs // 256).astype(np.uint8)
+    frame[:, :, 2] = (xs % 256).astype(np.uint8)
+    cv2.circle(frame, (1880, 400), 24, GOLD, thickness=6)
+    box = hp_box(frame, find_player_row(frame))
+    right = int(box[0, -1, 1]) * 256 + int(box[0, -1, 2])
+    assert 1820 <= right < 1830
