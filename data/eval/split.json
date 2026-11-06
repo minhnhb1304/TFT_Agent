@@ -1,0 +1,263 @@
+{
+  "seed": 20260930,
+  "decided_at": "2026-11-06",
+  "rule": "random.Random(seed).sample(sorted minh_* ids, 6) -> development; con lai va moi video nguoi tham gia -> heldout (tru dat_01, xem note)",
+  "videos": [
+    {
+      "video_id": "minh_01",
+      "player_id": "minh",
+      "role": "heldout",
+      "video_sha256": "66855315bf10f80375b26e3d3a86151c086de2cf6af54cb8767e8d0714266a9e",
+      "final_placement": null,
+      "capture_profile": {
+        "tool": "windows-screen-recorder",
+        "size": [
+          1920,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 60,
+        "original_name": "Screen recorder_09-16-2026_17-43-52-150-001.mp4"
+      }
+    },
+    {
+      "video_id": "minh_02",
+      "player_id": "minh",
+      "role": "heldout",
+      "video_sha256": "81488b403765b4902e446c2bbd752d8919abfc02641b54cb48d816527a559068",
+      "final_placement": null,
+      "capture_profile": {
+        "tool": "windows-screen-recorder",
+        "size": [
+          1920,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 60,
+        "original_name": "Screen recorder_09-16-2026_22-26-36-983-002.mp4"
+      }
+    },
+    {
+      "video_id": "minh_03",
+      "player_id": "minh",
+      "role": "development",
+      "video_sha256": "d31d53c6d0842c2f95ecdd2956d2db794dfa056b186f6d4024dbcb0cf903c64b",
+      "final_placement": null,
+      "capture_profile": {
+        "tool": "windows-screen-recorder",
+        "size": [
+          1920,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 60,
+        "original_name": "Screen recorder_09-21-2026_18-56-6-833-004.mp4"
+      }
+    },
+    {
+      "video_id": "minh_04",
+      "player_id": "minh",
+      "role": "development",
+      "video_sha256": "54c3ebf0121ae802202de0f35756b09330693276b4ec4d019f5259fd336b3c28",
+      "final_placement": null,
+      "capture_profile": {
+        "tool": "outplayed",
+        "size": [
+          1920,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 30,
+        "original_name": "Teamfight Tactics_09-24-2026_13-25-55-433-003.mp4"
+      }
+    },
+    {
+      "video_id": "minh_05",
+      "player_id": "minh",
+      "role": "development",
+      "video_sha256": "828e8932b0f2694646524bb793f806b76b76e6f6783f82a5d9ac2367888ce4a7",
+      "final_placement": null,
+      "capture_profile": {
+        "tool": "outplayed",
+        "size": [
+          1920,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 30,
+        "original_name": "Teamfight Tactics_09-24-2026_14-23-30-233-003.mp4"
+      }
+    },
+    {
+      "video_id": "minh_06",
+      "player_id": "minh",
+      "role": "development",
+      "video_sha256": "be66fb24385eff4e983bd19bad12d5ea3a8686c6dc3769c148a0ebec04daad91",
+      "final_placement": null,
+      "capture_profile": {
+        "tool": "outplayed",
+        "size": [
+          1920,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 30,
+        "original_name": "Teamfight Tactics_09-24-2026_22-28-38-200-002.mp4"
+      }
+    },
+    {
+      "video_id": "minh_07",
+      "player_id": "minh",
+      "role": "development",
+      "video_sha256": "bf12a1bc5ee8cc4548b17b8d00c01f49e29928574cc3d591a3670ed88094f70b",
+      "final_placement": null,
+      "capture_profile": {
+        "tool": "outplayed",
+        "size": [
+          1920,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 30,
+        "original_name": "Teamfight Tactics_09-24-2026_23-10-42-366-004.mp4"
+      }
+    },
+    {
+      "video_id": "minh_08",
+      "player_id": "minh",
+      "role": "development",
+      "video_sha256": "bc4f6557e645e554e260bcbc0e337020e6aa97c5047c39c90ade0aac4245c8e4",
+      "final_placement": null,
+      "capture_profile": {
+        "tool": "outplayed",
+        "size": [
+          1920,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 30,
+        "original_name": "Teamfight Tactics_09-24-2026_23-49-27-633-001.mp4"
+      }
+    },
+    {
+      "video_id": "minh_09",
+      "player_id": "minh",
+      "role": "heldout",
+      "video_sha256": "fe550988dd582df958c4dc402b3ce4b10eb7ebad0682909f4682a6ba3241d2ff",
+      "final_placement": null,
+      "capture_profile": {
+        "tool": "outplayed",
+        "size": [
+          1920,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 30,
+        "original_name": "Teamfight Tactics_09-25-2026_0-24-42-900-001.mp4"
+      }
+    },
+    {
+      "video_id": "minh_10",
+      "player_id": "minh",
+      "role": "heldout",
+      "video_sha256": "6b44d9239331299ec2e1eb3ca10786f6acc03d504d523808c06bf687cfc4aa63",
+      "final_placement": null,
+      "capture_profile": {
+        "tool": "outplayed",
+        "size": [
+          1920,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 30,
+        "original_name": "Teamfight Tactics_09-25-2026_0-58-53-300-002.mp4"
+      }
+    },
+    {
+      "video_id": "dat_01",
+      "player_id": "dat",
+      "role": "development",
+      "video_sha256": "1f5b54d4fe7999680233a3798c5957ed1bb324b9763bdb4e0d8fe7b7af19f3f3",
+      "final_placement": 2,
+      "capture_profile": {
+        "tool": "outplayed",
+        "size": [
+          1728,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 60,
+        "original_name": "TiennDat-Teamfight Tactics_09-16-2026_22-20-1-366-002.mp4"
+      },
+      "note": "held-out -> development (2026-10-26): dung gan nhan thu va kiem ban sua 16:10, truoc khi co split.json"
+    },
+    {
+      "video_id": "dat_02",
+      "player_id": "dat",
+      "role": "heldout",
+      "video_sha256": "1078be4ef1add1d0be0ced926035a16aa7de1ba41b708a536719e021cb940e48",
+      "final_placement": 2,
+      "capture_profile": {
+        "tool": "outplayed",
+        "size": [
+          1728,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 60,
+        "original_name": "TiennDat-Teamfight Tactics_09-16-2026_22-57-39-866-005.mp4"
+      }
+    },
+    {
+      "video_id": "dat_03",
+      "player_id": "dat",
+      "role": "heldout",
+      "video_sha256": "946fbf51f6fa4af4d77e82f6818c080f5a848068fd22a65813151583b47906b9",
+      "final_placement": 8,
+      "capture_profile": {
+        "tool": "outplayed",
+        "size": [
+          1728,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 60,
+        "original_name": "Teamfight Tactics_09-17-2026_11-37-7-900-004.mp4"
+      }
+    },
+    {
+      "video_id": "dat_04",
+      "player_id": "dat",
+      "role": "heldout",
+      "video_sha256": "517327e648e391ca52918c0002a206ce67ba1bc92e5055037dd692ec829baee0",
+      "final_placement": 3,
+      "capture_profile": {
+        "tool": "outplayed",
+        "size": [
+          1728,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 60,
+        "original_name": "Teamfight Tactics_09-17-2026_12-17-28-833-003.mp4"
+      }
+    },
+    {
+      "video_id": "dat_05",
+      "player_id": "dat",
+      "role": "heldout",
+      "video_sha256": "fa759dbac03c1412cb24ccda9870535b8cdfe79d4bb9529f280949ed5dd1d70b",
+      "final_placement": 3,
+      "capture_profile": {
+        "tool": "outplayed",
+        "size": [
+          1728,
+          1080
+        ],
+        "lang": "vi",
+        "fps": 60,
+        "original_name": "Teamfight Tactics_09-17-2026_13-59-44-50-001.mp4"
+      }
+    }
+  ]
+}
